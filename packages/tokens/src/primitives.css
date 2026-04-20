@@ -1,0 +1,7 @@
+/* Layer 1 — Neutral primitive tokens (shared across all brands) */
+/* Gray scale + base colors. NO brand-specific values here. */
+/* Defined in @theme {} — becomes Tailwind utilities if needed. */
+
+@theme {
+  /* populated in Task 3 */
+}

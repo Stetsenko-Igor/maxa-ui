@@ -3,7 +3,14 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./src/theme.css",
+    "./primitives.css": "./src/primitives.css",
+    "./semantic.css": "./src/semantic.css",
+    "./dimensions.css": "./src/dimensions.css",
+    "./themes/maxa.css": "./src/themes/maxa.css"
+  },
   "scripts": {
     "build": "tsc --build",
     "typecheck": "tsc --noEmit",

@@ -1,0 +1,11 @@
+/* Layer 2 — Semantic tokens */
+/* Meaningful names that reference Layer 1 primitives. */
+/* NOT in @theme — consumed via var() only, not Tailwind utilities. */
+
+:root {
+  /* populated in Tasks 4 + 5 */
+}
+
+[data-theme="dark"] {
+  /* populated in Tasks 2 + 4 + 5 */
+}

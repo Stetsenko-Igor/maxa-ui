@@ -1,0 +1,13 @@
+/* MAXA UI Design Tokens — Maxa theme bundle */
+/* Consumer usage: @import "@maxa/tokens/theme.css" */
+/*                                                    */
+/* For custom brand: import each file individually:   */
+/*   @import "@maxa/tokens/primitives.css"            */
+/*   @import "@maxa/tokens/semantic.css"              */
+/*   @import "@maxa/tokens/dimensions.css"            */
+/*   @import "./your-brand.css"  <- brand-* values    */
+
+@import "./primitives.css";
+@import "./themes/maxa.css";
+@import "./semantic.css";
+@import "./dimensions.css";
