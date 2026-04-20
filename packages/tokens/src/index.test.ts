@@ -60,3 +60,19 @@ describe("themes/maxa.css — dark brand override", () => {
     expect(css.toLowerCase()).toContain("#09483c")
   })
 })
+
+// ── primitives.css — gray ──────────────────────────────────────────────────
+
+describe("primitives.css — gray", () => {
+  const css = readFileSync(join(src, "primitives.css"), "utf-8")
+
+  it("defines gray-0 (white)", () => {
+    expect(css).toContain("--color-gray-0:")
+  })
+
+  it("defines all 11 standard gray steps", () => {
+    for (const step of [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
+      expect(css).toContain(`--color-gray-${step}:`)
+    }
+  })
+})
