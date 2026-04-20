@@ -147,3 +147,33 @@ describe("semantic.css — bg + action", () => {
     expect(css).toContain("#1b1a1a")
   })
 })
+
+// ── dimensions.css ─────────────────────────────────────────────────────────
+
+describe("dimensions.css — spacing + radius + width", () => {
+  const css = readFileSync(join(src, "dimensions.css"), "utf-8")
+
+  it("defines spacing tokens 1-12 + larger", () => {
+    for (const n of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
+      expect(css).toContain(`--spacing-${n}:`)
+    }
+  })
+
+  it("defines all 7 radius tokens", () => {
+    for (const n of ["none", "sm", "md", "lg", "xl", "2xl", "full"]) {
+      expect(css).toContain(`--radius-${n}:`)
+    }
+  })
+
+  it("defines width tokens", () => {
+    for (const n of [1, 2, 4]) {
+      expect(css).toContain(`--width-${n}:`)
+    }
+  })
+
+  it("defines font-sans and font-display", () => {
+    expect(css).toContain("--font-sans:")
+    expect(css).toContain("--font-display:")
+    expect(css).toContain("--font-mono:")
+  })
+})
