@@ -210,3 +210,96 @@ describe("tokens.ts — fontFamily", () => {
     expect(fontFamily.mono).toContain("monospace")
   })
 })
+
+// ── Runtime smoke — dark mode override ────────────────────────────────────
+// Uses happy-dom environment (set in vitest.config.ts).
+// Inlines the theme CSS manually since @import is not processed by happy-dom.
+// Purpose: prove [data-theme="dark"] overrides actually change CSS variable values.
+
+function injectCSS(content: string) {
+  const style = document.createElement("style")
+  style.textContent = content
+  document.head.appendChild(style)
+  return style
+}
+
+function readThemeCSS() {
+  // Inline all @import sources since happy-dom doesn't resolve @imports
+  const primitives = readFileSync(join(src, "primitives.css"), "utf-8")
+  const maxa = readFileSync(join(src, "themes/maxa.css"), "utf-8")
+  const semantic = readFileSync(join(src, "semantic.css"), "utf-8")
+  const dimensions = readFileSync(join(src, "dimensions.css"), "utf-8")
+  // Strip @import lines (already inlined above) and @theme wrappers
+  // happy-dom doesn't process @theme — extract variable declarations directly
+  const strip = (css: string) =>
+    css
+      .replace(/@import\s+["'][^"']+["'];/g, "")
+      .replace(/@theme\s*\{/g, ":root {")
+  return [primitives, maxa, semantic, dimensions].map(strip).join("\n")
+}
+
+describe("runtime — dark mode CSS variable override", () => {
+  let styleEl: HTMLStyleElement
+
+  beforeAll(() => {
+    styleEl = injectCSS(readThemeCSS())
+  })
+
+  afterAll(() => {
+    styleEl.remove()
+    document.documentElement.removeAttribute("data-theme")
+  })
+
+  it("light mode: --color-bg-default is set", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const val = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-default")
+      .trim()
+    expect(val).toBeTruthy()
+    expect(val).not.toBe("")
+  })
+
+  it("dark mode: --color-bg-default differs from light mode", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const light = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-default")
+      .trim()
+
+    document.documentElement.setAttribute("data-theme", "dark")
+    const dark = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-default")
+      .trim()
+
+    expect(dark).toBeTruthy()
+    expect(dark).not.toBe(light)
+  })
+
+  it("dark mode: --color-brand-50 differs from light mode (theme override)", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const light = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-brand-50")
+      .trim()
+
+    document.documentElement.setAttribute("data-theme", "dark")
+    const dark = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-brand-50")
+      .trim()
+
+    // Light: #E9FCF8 (pale teal)  Dark: #09483C (very dark teal)
+    expect(dark).not.toBe(light)
+  })
+
+  it("dark mode: --color-content-primary differs from light mode", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const light = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-content-primary")
+      .trim()
+
+    document.documentElement.setAttribute("data-theme", "dark")
+    const dark = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-content-primary")
+      .trim()
+
+    expect(dark).not.toBe(light)
+  })
+})
