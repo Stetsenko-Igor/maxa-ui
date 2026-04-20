@@ -13,7 +13,8 @@
     "lint": {},
     "test": {
       "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "cache": false
     },
     "dev": {
       "persistent": true,
