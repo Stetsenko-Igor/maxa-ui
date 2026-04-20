@@ -1,2 +1,2 @@
-// Design tokens — populated in Phase 1
-export const version = "0.0.0"
+// CSS entry: @import "@maxa/tokens/theme.css" in your stylesheet
+export * from "./tokens"

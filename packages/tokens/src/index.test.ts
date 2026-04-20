@@ -177,3 +177,36 @@ describe("dimensions.css — spacing + radius + width", () => {
     expect(css).toContain("--font-mono:")
   })
 })
+
+// ── tokens.ts — JS constants ───────────────────────────────────────────────
+
+import { radius, spacing, fontFamily } from "./tokens"
+
+describe("tokens.ts — radius", () => {
+  it("exports correct values", () => {
+    expect(radius.none).toBe("0px")
+    expect(radius.sm).toBe("4px")
+    expect(radius.md).toBe("8px")
+    expect(radius.lg).toBe("12px")
+    expect(radius.xl).toBe("16px")
+    expect(radius["2xl"]).toBe("24px")
+    expect(radius.full).toBe("9999px")
+  })
+})
+
+describe("tokens.ts — spacing", () => {
+  it("exports correct values", () => {
+    expect(spacing[1]).toBe("4px")
+    expect(spacing[4]).toBe("16px")
+    expect(spacing[8]).toBe("32px")
+    expect(spacing[12]).toBe("48px")
+  })
+})
+
+describe("tokens.ts — fontFamily", () => {
+  it("contains correct font names", () => {
+    expect(fontFamily.sans).toContain("Montserrat")
+    expect(fontFamily.display).toContain("Bebas Neue")
+    expect(fontFamily.mono).toContain("monospace")
+  })
+})
