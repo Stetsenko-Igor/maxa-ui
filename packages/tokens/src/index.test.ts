@@ -110,3 +110,40 @@ describe("semantic.css — content + border", () => {
     expect(css.slice(darkIdx)).toContain("--color-content-primary:")
   })
 })
+
+// ── semantic.css — bg + action ─────────────────────────────────────────────
+
+describe("semantic.css — bg + action", () => {
+  const css = readFileSync(join(src, "semantic.css"), "utf-8")
+
+  it("defines all background tokens", () => {
+    for (const t of [
+      "bg-default", "bg-surface-layer1", "bg-surface-layer2",
+      "bg-neutral-subtle", "bg-neutral-on-subtle", "bg-neutral-strong",
+      "bg-disabled", "bg-overlay", "bg-nav",
+      "bg-brand-subtle", "bg-brand-surface",
+      "bg-info-subtle", "bg-info-surface",
+      "bg-success-subtle", "bg-success-surface", "bg-success-strong",
+      "bg-error-subtle", "bg-error-surface", "bg-error-strong",
+      "bg-warning-subtle", "bg-warning-surface", "bg-warning-strong",
+    ]) {
+      expect(css).toContain(`--color-${t}:`)
+    }
+  })
+
+  it("defines all action tokens", () => {
+    for (const t of [
+      "action-primary-normal", "action-primary-hover", "action-primary-active",
+      "action-success-normal", "action-success-hover",
+      "action-error-normal", "action-error-hover",
+      "action-outline-normal",
+    ]) {
+      expect(css).toContain(`--color-${t}:`)
+    }
+  })
+
+  it("bg-nav uses hardcoded dark value", () => {
+    expect(css).toContain("--color-bg-nav:")
+    expect(css).toContain("#1b1a1a")
+  })
+})

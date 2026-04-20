@@ -29,6 +29,40 @@
   --color-border-warning-strong: var(--color-orange-600);
   --color-border-neutral-strong: var(--color-gray-700);
   --color-border-neutral-subtle: var(--color-gray-300);
+
+  /* ── Background ─────────────────────────────────────────────────── */
+  --color-bg-default:           var(--color-gray-0);
+  --color-bg-surface-layer1:    var(--color-gray-50);
+  --color-bg-surface-layer2:    var(--color-gray-100);
+  --color-bg-neutral-subtle:    var(--color-gray-100);
+  --color-bg-neutral-on-subtle: var(--color-gray-200);
+  --color-bg-neutral-strong:    var(--color-gray-800);
+  --color-bg-disabled:          var(--color-gray-100);
+  --color-bg-overlay:           rgba(10, 10, 10, 0.5);
+  --color-bg-nav:               #1b1a1a;
+  --color-bg-brand-subtle:      var(--color-brand-50);
+  --color-bg-brand-surface:     var(--color-brand-100);
+  --color-bg-info-subtle:       var(--color-blue-50);
+  --color-bg-info-surface:      var(--color-blue-50);
+  --color-bg-success-subtle:    var(--color-green-50);
+  --color-bg-success-surface:   var(--color-green-50);
+  --color-bg-success-strong:    var(--color-green-700);
+  --color-bg-error-subtle:      var(--color-red-50);
+  --color-bg-error-surface:     var(--color-red-50);
+  --color-bg-error-strong:      var(--color-red-700);
+  --color-bg-warning-subtle:    var(--color-orange-50);
+  --color-bg-warning-surface:   var(--color-orange-50);
+  --color-bg-warning-strong:    var(--color-orange-600);
+
+  /* ── Action — interactive element backgrounds ───────────────────── */
+  --color-action-primary-normal:  var(--color-brand-800);
+  --color-action-primary-hover:   var(--color-brand-900);
+  --color-action-primary-active:  var(--color-brand-950);
+  --color-action-success-normal:  var(--color-green-700);
+  --color-action-success-hover:   var(--color-green-800);
+  --color-action-error-normal:    var(--color-red-700);
+  --color-action-error-hover:     var(--color-red-800);
+  --color-action-outline-normal:  var(--color-gray-300);
 }
 
 [data-theme="dark"] {
@@ -56,4 +90,25 @@
   --color-border-warning-strong: var(--color-orange-500);
   --color-border-neutral-strong: var(--color-gray-500);
   --color-border-neutral-subtle: var(--color-gray-700);
+
+  /* ── Background — dark ───────────────────────────────────────────── */
+  --color-bg-default:           var(--color-gray-950);
+  --color-bg-surface-layer1:    var(--color-gray-900);
+  --color-bg-surface-layer2:    var(--color-gray-800);
+  --color-bg-neutral-subtle:    var(--color-gray-800);
+  --color-bg-neutral-on-subtle: var(--color-gray-700);
+  --color-bg-neutral-strong:    var(--color-gray-400);
+  --color-bg-disabled:          var(--color-gray-800);
+  --color-bg-overlay:           rgba(0, 0, 0, 0.7);
+  --color-bg-brand-subtle:      var(--color-brand-50);
+  --color-bg-brand-surface:     var(--color-brand-100);
+  --color-bg-success-strong:    var(--color-green-500);
+  --color-bg-error-strong:      var(--color-red-500);
+  --color-bg-warning-strong:    var(--color-orange-500);
+
+  /* ── Action — dark ───────────────────────────────────────────────── */
+  --color-action-primary-normal:  var(--color-brand-600);
+  --color-action-primary-hover:   var(--color-brand-700);
+  --color-action-primary-active:  var(--color-brand-800);
+  --color-action-outline-normal:  var(--color-gray-700);
 }
