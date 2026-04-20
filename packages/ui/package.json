@@ -1,0 +1,23 @@
+{
+  "name": "@maxa/ui",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "build": "tsc --build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "vitest": "*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

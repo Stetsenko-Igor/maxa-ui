@@ -1,0 +1,18 @@
+{
+  "name": "@maxa/cli",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "bin": { "maxa-ui": "./dist/index.js" },
+  "exports": { ".": "./src/index.ts" },
+  "scripts": {
+    "build": "tsc --build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "*",
+    "vitest": "*"
+  }
+}
