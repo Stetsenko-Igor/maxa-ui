@@ -1,0 +1,17 @@
+# MAXA UI
+
+> React component library with Tailwind v4 and Radix UI primitives
+
+Status: Under development
+
+## Packages
+- @maxa/ui: React components
+- @maxa/tokens: CSS variables (theme.css)
+- @maxa/icons: SVG icon components
+- @maxa/hooks: Reusable React hooks
+- @maxa/cli: CLI tool
+- @maxa/mcp: MCP server for AI tool integration
+
+## Docs
+- https://ui.maxa.com/docs
+- https://ui.maxa.com/AGENT.md
