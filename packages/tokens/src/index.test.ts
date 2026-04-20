@@ -35,3 +35,28 @@ describe("theme.css", () => {
     expect(semIdx).toBeLessThan(dimIdx)
   })
 })
+
+// ── themes/maxa.css — brand ────────────────────────────────────────────────
+
+describe("themes/maxa.css — brand", () => {
+  const css = readFileSync(join(src, "themes/maxa.css"), "utf-8")
+
+  it("defines all 11 brand steps", () => {
+    for (const step of [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
+      expect(css).toContain(`--color-brand-${step}:`)
+    }
+  })
+
+  it("brand-600 is teal hinge #31E5C2", () => {
+    expect(css.toLowerCase()).toContain("#31e5c2")
+  })
+})
+
+describe("themes/maxa.css — dark brand override", () => {
+  const css = readFileSync(join(src, "themes/maxa.css"), "utf-8")
+
+  it("has [data-theme='dark'] block with dark brand scale", () => {
+    expect(css).toContain('[data-theme="dark"]')
+    expect(css.toLowerCase()).toContain("#09483c")
+  })
+})

@@ -3,5 +3,34 @@
 /* To create a new client theme: copy this file, replace hex values. */
 
 @theme {
-  /* populated in Task 2 */
+  /* Brand — MAXA teal. Light mode values. */
+  /* To create a new theme: copy this file, replace hex values. */
+  /* Dark mode overrides below in [data-theme="dark"]. */
+  --color-brand-50:  #E9FCF8;
+  --color-brand-100: #D2F9F2;
+  --color-brand-200: #A8F3E5;
+  --color-brand-300: #81EED9;
+  --color-brand-400: #59EACE;
+  --color-brand-500: #45E7C8;
+  --color-brand-600: #31E5C2;
+  --color-brand-700: #28C6A8;
+  --color-brand-800: #2C9A85;
+  --color-brand-900: #2C7365;
+  --color-brand-950: #284F48;
+}
+
+[data-theme="dark"] {
+  /* Brand primitive overrides — dark scale values */
+  /* Kept in themes/maxa.css (not semantic.css) to preserve multi-brand isolation. */
+  --color-brand-50:  #09483C;
+  --color-brand-100: #0C5A4C;
+  --color-brand-200: #107864;
+  --color-brand-300: #15A287;
+  --color-brand-400: #1ACCAA;
+  --color-brand-500: #1DE2BC;
+  --color-brand-600: #31E5C2;
+  --color-brand-700: #59DEC4;
+  --color-brand-800: #7EDAC8;
+  --color-brand-900: #9FDACF;
+  --color-brand-950: #BDDED7;
 }
