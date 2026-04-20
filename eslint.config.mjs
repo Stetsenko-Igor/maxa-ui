@@ -8,5 +8,5 @@ export default tseslint.config(
       "@typescript-eslint/consistent-type-imports": "error",
     },
   },
-  { ignores: ["dist/**", ".next/**", "node_modules/**"] }
+  { ignores: ["dist/**", ".next/**", "node_modules/**", "**/node_modules/**", ".turbo/**"] }
 )
