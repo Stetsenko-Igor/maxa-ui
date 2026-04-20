@@ -76,3 +76,37 @@ describe("primitives.css — gray", () => {
     }
   })
 })
+
+// ── semantic.css — content + border ───────────────────────────────────────
+
+describe("semantic.css — content + border", () => {
+  const css = readFileSync(join(src, "semantic.css"), "utf-8")
+
+  it("defines all 12 content tokens in :root", () => {
+    for (const t of [
+      "content-primary", "content-secondary", "content-tertiary",
+      "content-placeholder", "content-disabled", "content-on-brand",
+      "content-brand", "content-info", "content-success",
+      "content-error", "content-warning", "content-neutral",
+    ]) {
+      expect(css).toContain(`--color-${t}:`)
+    }
+  })
+
+  it("defines all 10 border tokens", () => {
+    for (const t of [
+      "border-default", "border-subtle", "border-focus",
+      "border-brand-strong", "border-info-strong", "border-success-strong",
+      "border-error-strong", "border-warning-strong",
+      "border-neutral-strong", "border-neutral-subtle",
+    ]) {
+      expect(css).toContain(`--color-${t}:`)
+    }
+  })
+
+  it("has dark mode section with content-primary override", () => {
+    const darkIdx = css.indexOf('[data-theme="dark"]')
+    expect(darkIdx).toBeGreaterThan(-1)
+    expect(css.slice(darkIdx)).toContain("--color-content-primary:")
+  })
+})

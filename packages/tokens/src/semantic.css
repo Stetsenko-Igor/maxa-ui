@@ -1,11 +1,59 @@
-/* Layer 2 — Semantic tokens */
-/* Meaningful names that reference Layer 1 primitives. */
-/* NOT in @theme — consumed via var() only, not Tailwind utilities. */
+/* MAXA Design Tokens — Semantic layer */
+/* Light mode. Dark overrides below in [data-theme="dark"]. */
+/* Tailwind color refs (--color-red-*, --color-green-* etc.) resolve */
+/* because consumers run @import "tailwindcss" before this file.    */
 
 :root {
-  /* populated in Tasks 4 + 5 */
+  /* ── Content — text AND icon fill ──────────────────────────────── */
+  --color-content-primary:       var(--color-gray-950);
+  --color-content-secondary:     var(--color-gray-800);
+  --color-content-tertiary:      var(--color-gray-600);
+  --color-content-placeholder:   var(--color-gray-500);
+  --color-content-disabled:      var(--color-gray-400);
+  --color-content-on-brand:      var(--color-white);
+  --color-content-brand:         var(--color-brand-800);
+  --color-content-info:          var(--color-blue-700);
+  --color-content-success:       var(--color-green-800);
+  --color-content-error:         var(--color-red-700);
+  --color-content-warning:       var(--color-orange-700);
+  --color-content-neutral:       var(--color-gray-700);
+
+  /* ── Border ─────────────────────────────────────────────────────── */
+  --color-border-default:        var(--color-gray-300);
+  --color-border-subtle:         var(--color-gray-200);
+  --color-border-focus:          var(--color-brand-700);
+  --color-border-brand-strong:   var(--color-brand-800);
+  --color-border-info-strong:    var(--color-blue-700);
+  --color-border-success-strong: var(--color-green-700);
+  --color-border-error-strong:   var(--color-red-700);
+  --color-border-warning-strong: var(--color-orange-600);
+  --color-border-neutral-strong: var(--color-gray-700);
+  --color-border-neutral-subtle: var(--color-gray-300);
 }
 
 [data-theme="dark"] {
-  /* populated in Tasks 2 + 4 + 5 */
+  /* ── Content — dark ─────────────────────────────────────────────── */
+  --color-content-primary:       var(--color-gray-50);
+  --color-content-secondary:     var(--color-gray-200);
+  --color-content-tertiary:      var(--color-gray-400);
+  --color-content-placeholder:   var(--color-gray-500);
+  --color-content-disabled:      var(--color-gray-600);
+  --color-content-brand:         var(--color-brand-700);
+  --color-content-info:          var(--color-blue-400);
+  --color-content-success:       var(--color-green-400);
+  --color-content-error:         var(--color-red-400);
+  --color-content-warning:       var(--color-orange-400);
+  --color-content-neutral:       var(--color-gray-400);
+
+  /* ── Border — dark ───────────────────────────────────────────────── */
+  --color-border-default:        var(--color-gray-700);
+  --color-border-subtle:         var(--color-gray-800);
+  --color-border-focus:          var(--color-brand-500);
+  --color-border-brand-strong:   var(--color-brand-600);
+  --color-border-info-strong:    var(--color-blue-500);
+  --color-border-success-strong: var(--color-green-500);
+  --color-border-error-strong:   var(--color-red-500);
+  --color-border-warning-strong: var(--color-orange-500);
+  --color-border-neutral-strong: var(--color-gray-500);
+  --color-border-neutral-subtle: var(--color-gray-700);
 }
