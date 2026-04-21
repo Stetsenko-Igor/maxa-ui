@@ -176,11 +176,24 @@ describe("dimensions.css — spacing + radius + width", () => {
     expect(css).toContain("--font-display:")
     expect(css).toContain("--font-mono:")
   })
+
+  it("defines all 11 font-size tokens", () => {
+    for (const n of ["xs", "sm", "md", "lg", "xl", "display-xs", "display-sm", "display-md", "display-lg", "display-xl", "display-2xl"]) {
+      expect(css).toContain(`--text-${n}:`)
+      expect(css).toContain(`--text-${n}--line-height:`)
+    }
+  })
+
+  it("defines all 4 font-weight tokens", () => {
+    for (const n of ["regular", "medium", "semibold", "bold"]) {
+      expect(css).toContain(`--font-weight-${n}:`)
+    }
+  })
 })
 
 // ── tokens.ts — JS constants ───────────────────────────────────────────────
 
-import { radius, spacing, fontFamily } from "./tokens"
+import { radius, spacing, fontFamily, fontSize, fontWeight } from "./tokens"
 
 describe("tokens.ts — radius", () => {
   it("exports correct values", () => {
@@ -208,6 +221,25 @@ describe("tokens.ts — fontFamily", () => {
     expect(fontFamily.sans).toContain("Montserrat")
     expect(fontFamily.display).toContain("Bebas Neue")
     expect(fontFamily.mono).toContain("monospace")
+  })
+})
+
+describe("tokens.ts — fontSize", () => {
+  it("exports correct values", () => {
+    expect(fontSize.xs).toBe("12px")
+    expect(fontSize.sm).toBe("14px")
+    expect(fontSize.md).toBe("16px")
+    expect(fontSize["display-xs"]).toBe("24px")
+    expect(fontSize["display-2xl"]).toBe("72px")
+  })
+})
+
+describe("tokens.ts — fontWeight", () => {
+  it("exports correct values", () => {
+    expect(fontWeight.regular).toBe(400)
+    expect(fontWeight.medium).toBe(500)
+    expect(fontWeight.semibold).toBe(600)
+    expect(fontWeight.bold).toBe(700)
   })
 })
 

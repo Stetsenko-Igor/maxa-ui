@@ -34,5 +34,28 @@ export const fontFamily = {
   mono:    "ui-monospace, Cascadia Code, monospace",
 } as const
 
+export const fontSize = {
+  xs:            "12px",
+  sm:            "14px",
+  md:            "16px",
+  lg:            "18px",
+  xl:            "20px",
+  "display-xs":  "24px",
+  "display-sm":  "30px",
+  "display-md":  "36px",
+  "display-lg":  "48px",
+  "display-xl":  "60px",
+  "display-2xl": "72px",
+} as const
+
+export const fontWeight = {
+  regular:  400,
+  medium:   500,
+  semibold: 600,
+  bold:     700,
+} as const
+
 export type Radius = keyof typeof radius
 export type Spacing = keyof typeof spacing
+export type FontSize = keyof typeof fontSize
+export type FontWeight = keyof typeof fontWeight
