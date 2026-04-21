@@ -9,6 +9,7 @@
     "./primitives.css": "./src/primitives.css",
     "./semantic.css": "./src/semantic.css",
     "./dimensions.css": "./src/dimensions.css",
+    "./typography.css": "./src/typography.css",
     "./themes/maxa.css": "./src/themes/maxa.css"
   },
   "scripts": {

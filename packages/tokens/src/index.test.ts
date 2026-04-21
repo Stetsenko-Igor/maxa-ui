@@ -25,6 +25,10 @@ describe("theme.css", () => {
     expect(css).toContain('@import "./dimensions.css"')
   })
 
+  it("imports typography", () => {
+    expect(css).toContain('@import "./typography.css"')
+  })
+
   it("imports in correct order: primitives → maxa → semantic → dimensions", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
     const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
@@ -171,18 +175,33 @@ describe("dimensions.css — spacing + radius + width", () => {
     }
   })
 
-  it("defines font-sans and font-display", () => {
+})
+
+// ── typography.css ─────────────────────────────────────────────────────────
+
+describe("typography.css — font families", () => {
+  const css = readFileSync(join(src, "typography.css"), "utf-8")
+
+  it("defines font-sans, font-display, font-mono", () => {
     expect(css).toContain("--font-sans:")
     expect(css).toContain("--font-display:")
     expect(css).toContain("--font-mono:")
   })
+})
 
-  it("defines all 11 font-size tokens", () => {
+describe("typography.css — font sizes + line-heights", () => {
+  const css = readFileSync(join(src, "typography.css"), "utf-8")
+
+  it("defines all 11 font-size tokens with line-height pairs", () => {
     for (const n of ["xs", "sm", "md", "lg", "xl", "display-xs", "display-sm", "display-md", "display-lg", "display-xl", "display-2xl"]) {
       expect(css).toContain(`--text-${n}:`)
       expect(css).toContain(`--text-${n}--line-height:`)
     }
   })
+})
+
+describe("typography.css — font weights", () => {
+  const css = readFileSync(join(src, "typography.css"), "utf-8")
 
   it("defines all 4 font-weight tokens", () => {
     for (const n of ["regular", "medium", "semibold", "bold"]) {
@@ -261,13 +280,14 @@ function readThemeCSS() {
   const maxa = readFileSync(join(src, "themes/maxa.css"), "utf-8")
   const semantic = readFileSync(join(src, "semantic.css"), "utf-8")
   const dimensions = readFileSync(join(src, "dimensions.css"), "utf-8")
+  const typography = readFileSync(join(src, "typography.css"), "utf-8")
   // Strip @import lines (already inlined above) and @theme wrappers
   // happy-dom doesn't process @theme — extract variable declarations directly
   const strip = (css: string) =>
     css
       .replace(/@import\s+["'][^"']+["'];/g, "")
       .replace(/@theme\s*\{/g, ":root {")
-  return [primitives, maxa, semantic, dimensions].map(strip).join("\n")
+  return [primitives, maxa, semantic, dimensions, typography].map(strip).join("\n")
 }
 
 describe("runtime — dark mode CSS variable override", () => {
