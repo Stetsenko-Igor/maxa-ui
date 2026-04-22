@@ -13,7 +13,7 @@ This folder contains the import-ready token source for the MAXA design system.
 - `Radius`
   Foundation radius scale.
 - `Typography`
-  Foundation font family, weight, size, and line-height tokens.
+  Responsive typography tokens with `Desktop`, `Tablet`, and `Mobile` modes.
 - `Containers`
   Semantic container paddings and max width.
 - `Breakpoints`
@@ -56,7 +56,8 @@ This order keeps aliases resolvable during import:
 
 ## Usage Notes
 
-- `Typography` is mode-independent foundation data. Responsive text styles should be built above it, not encoded as separate foundation modes.
+- `Typography` now carries responsive foundation data through `Desktop`, `Tablet`, and `Mobile` modes.
+- Font families and weights stay consistent across modes; sizes and line heights adapt per viewport.
 - `Color modes` is the source of truth for light and dark semantic behavior.
 - `Containers` owns horizontal content paddings. Do not reintroduce side-padding tokens in separate layout collections.
 

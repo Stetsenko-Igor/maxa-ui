@@ -29,7 +29,9 @@
     },
     "Typography": {
       "modes": {
-        "Value": ["typography.json"]
+        "Desktop": ["typography.json"],
+        "Tablet": ["typography-tablet.json"],
+        "Mobile": ["typography-mobile.json"]
       }
     },
     "Containers": {

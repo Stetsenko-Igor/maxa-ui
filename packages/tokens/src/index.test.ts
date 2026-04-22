@@ -189,8 +189,10 @@ describe("figma manifest", () => {
     expect(manifest.collections.Radius?.modes.Value).toEqual(["radius.json"])
   })
 
-  it("maps Typography to a single Value mode", () => {
-    expect(manifest.collections.Typography?.modes.Value).toEqual(["typography.json"])
+  it("maps Typography to responsive Desktop, Tablet, and Mobile modes", () => {
+    expect(manifest.collections.Typography?.modes.Desktop).toEqual(["typography.json"])
+    expect(manifest.collections.Typography?.modes.Tablet).toEqual(["typography-tablet.json"])
+    expect(manifest.collections.Typography?.modes.Mobile).toEqual(["typography-mobile.json"])
   })
 
   it("includes Containers collection", () => {
@@ -295,12 +297,20 @@ describe("figma color modes", () => {
 })
 
 describe("figma typography tokens", () => {
-  const typographyFile = JSON.parse(
+  const desktopTypographyFile = JSON.parse(
     readFileSync(join(root, "figma/typography.json"), "utf-8"),
   ) as Record<string, Record<string, { $value: number | string; $type: string }>>
 
+  const tabletTypographyFile = JSON.parse(
+    readFileSync(join(root, "figma/typography-tablet.json"), "utf-8"),
+  ) as Record<string, Record<string, { $value: number | string; $type: string }>>
+
+  const mobileTypographyFile = JSON.parse(
+    readFileSync(join(root, "figma/typography-mobile.json"), "utf-8"),
+  ) as Record<string, Record<string, { $value: number | string; $type: string }>>
+
   it("uses Untitled-style foundation groups", () => {
-    expect(Object.keys(typographyFile)).toEqual([
+    expect(Object.keys(desktopTypographyFile)).toEqual([
       "Font family",
       "Font weight",
       "Font size",
@@ -309,24 +319,42 @@ describe("figma typography tokens", () => {
   })
 
   it("matches web font-family naming", () => {
-    expect(Object.keys(typographyFile["Font family"] ?? {})).toEqual([
+    expect(Object.keys(desktopTypographyFile["Font family"] ?? {})).toEqual([
       "body",
       "mono",
     ])
   })
 
   it("uses Montserrat for all font family tokens", () => {
-    expect(typographyFile["Font family"].body?.$value).toBe("Montserrat")
-    expect(typographyFile["Font family"].mono?.$value).toBe("Bebas Neue")
+    for (const file of [desktopTypographyFile, tabletTypographyFile, mobileTypographyFile]) {
+      expect(file["Font family"].body?.$value).toBe("Montserrat")
+      expect(file["Font family"].mono?.$value).toBe("Bebas Neue")
+    }
   })
 
-  it("keeps the canonical size and line-height scale", () => {
-    expect(typographyFile["Font size"]["heading-2xl"]?.$value).toBe(40)
-    expect(typographyFile["Font size"]["text-md"]?.$value).toBe(14)
-    expect(typographyFile["Font size"]["caption-sm"]?.$value).toBe(10)
-    expect(typographyFile["Font size"]["caption-xs"]?.$value).toBe(8)
-    expect(typographyFile["Line height"]["heading-2xl"]?.$value).toBe(48)
-    expect(typographyFile["Line height"]["text-md"]?.$value).toBe(20)
+  it("keeps the canonical desktop scale", () => {
+    expect(desktopTypographyFile["Font size"]["heading-2xl"]?.$value).toBe(40)
+    expect(desktopTypographyFile["Font size"]["text-md"]?.$value).toBe(14)
+    expect(desktopTypographyFile["Font size"]["caption-sm"]?.$value).toBe(10)
+    expect(desktopTypographyFile["Font size"]["caption-xs"]?.$value).toBe(8)
+    expect(desktopTypographyFile["Line height"]["heading-2xl"]?.$value).toBe(48)
+    expect(desktopTypographyFile["Line height"]["text-md"]?.$value).toBe(20)
+  })
+
+  it("adds a reduced tablet scale", () => {
+    expect(tabletTypographyFile["Font size"]["heading-2xl"]?.$value).toBe(36)
+    expect(tabletTypographyFile["Font size"]["heading-md"]?.$value).toBe(20)
+    expect(tabletTypographyFile["Font size"]["text-lg"]?.$value).toBe(15)
+    expect(tabletTypographyFile["Line height"]["heading-2xl"]?.$value).toBe(44)
+    expect(tabletTypographyFile["Line height"]["text-lg"]?.$value).toBe(22)
+  })
+
+  it("adds a reduced mobile scale", () => {
+    expect(mobileTypographyFile["Font size"]["heading-2xl"]?.$value).toBe(32)
+    expect(mobileTypographyFile["Font size"]["heading-md"]?.$value).toBe(19)
+    expect(mobileTypographyFile["Font size"]["text-md"]?.$value).toBe(13)
+    expect(mobileTypographyFile["Line height"]["heading-2xl"]?.$value).toBe(40)
+    expect(mobileTypographyFile["Line height"]["text-md"]?.$value).toBe(18)
   })
 })
 
@@ -378,9 +406,12 @@ describe("figma spacing tokens", () => {
 })
 
 describe("figma spacing primitive tokens", () => {
+  type PrimitiveLeaf = { $value: number | string; $type: string; $description?: string }
+  type PrimitiveGroup = Record<string, PrimitiveLeaf | PrimitiveGroup>
+
   const primitivesFile = JSON.parse(
     readFileSync(join(root, "figma/primitives.json"), "utf-8"),
-  ) as Record<string, any>
+  ) as PrimitiveGroup
 
   it("includes color and spacing primitives in one file", () => {
     expect(primitivesFile.Colors).toBeDefined()

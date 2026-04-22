@@ -1,0 +1,138 @@
+{
+  "Font family": {
+    "body": {
+      "$type": "string",
+      "$value": "Montserrat"
+    },
+    "mono": {
+      "$type": "string",
+      "$value": "Bebas Neue"
+    }
+  },
+  "Font weight": {
+    "regular": {
+      "$type": "string",
+      "$value": "Regular"
+    },
+    "regular-italic": {
+      "$type": "string",
+      "$value": "Regular Italic"
+    },
+    "medium": {
+      "$type": "string",
+      "$value": "Medium"
+    },
+    "medium-italic": {
+      "$type": "string",
+      "$value": "Medium Italic"
+    },
+    "semibold": {
+      "$type": "string",
+      "$value": "SemiBold"
+    },
+    "semibold-italic": {
+      "$type": "string",
+      "$value": "SemiBold Italic"
+    },
+    "bold": {
+      "$type": "string",
+      "$value": "Bold"
+    },
+    "bold-italic": {
+      "$type": "string",
+      "$value": "Bold Italic"
+    }
+  },
+  "Font size": {
+    "heading-2xl": {
+      "$type": "number",
+      "$value": 32
+    },
+    "heading-xl": {
+      "$type": "number",
+      "$value": 28
+    },
+    "heading-lg": {
+      "$type": "number",
+      "$value": 22
+    },
+    "heading-md": {
+      "$type": "number",
+      "$value": 19
+    },
+    "heading-sm": {
+      "$type": "number",
+      "$value": 16
+    },
+    "heading-xs": {
+      "$type": "number",
+      "$value": 14
+    },
+    "text-lg": {
+      "$type": "number",
+      "$value": 14
+    },
+    "text-md": {
+      "$type": "number",
+      "$value": 13
+    },
+    "text-sm": {
+      "$type": "number",
+      "$value": 12
+    },
+    "caption-sm": {
+      "$type": "number",
+      "$value": 10
+    },
+    "caption-xs": {
+      "$type": "number",
+      "$value": 8
+    }
+  },
+  "Line height": {
+    "heading-2xl": {
+      "$type": "number",
+      "$value": 40
+    },
+    "heading-xl": {
+      "$type": "number",
+      "$value": 36
+    },
+    "heading-lg": {
+      "$type": "number",
+      "$value": 30
+    },
+    "heading-md": {
+      "$type": "number",
+      "$value": 26
+    },
+    "heading-sm": {
+      "$type": "number",
+      "$value": 22
+    },
+    "heading-xs": {
+      "$type": "number",
+      "$value": 20
+    },
+    "text-lg": {
+      "$type": "number",
+      "$value": 20
+    },
+    "text-md": {
+      "$type": "number",
+      "$value": 18
+    },
+    "text-sm": {
+      "$type": "number",
+      "$value": 18
+    },
+    "caption-sm": {
+      "$type": "number",
+      "$value": 16
+    },
+    "caption-xs": {
+      "$type": "number",
+      "$value": 12
+    }
+  }
+}
