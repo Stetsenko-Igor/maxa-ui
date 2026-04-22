@@ -1,10 +1,14 @@
 export const radius = {
   none: "0px",
-  sm:   "4px",
+  xxs:  "2px",
+  xs:   "4px",
+  sm:   "6px",
   md:   "8px",
-  lg:   "12px",
-  xl:   "16px",
-  "2xl": "24px",
+  lg:   "10px",
+  xl:   "12px",
+  "2xl": "16px",
+  "3xl": "20px",
+  "4xl": "24px",
   full: "9999px",
 } as const
 
@@ -29,23 +33,22 @@ export const spacing = {
 } as const
 
 export const fontFamily = {
-  sans:    "Montserrat, ui-sans-serif, system-ui, sans-serif",
-  display: "Bebas Neue, ui-sans-serif, sans-serif",
-  mono:    "ui-monospace, Cascadia Code, monospace",
+  body: "Montserrat, ui-sans-serif, system-ui, sans-serif",
+  mono: "Bebas Neue, ui-sans-serif, sans-serif",
 } as const
 
 export const fontSize = {
-  xs:            "12px",
-  sm:            "14px",
-  md:            "16px",
-  lg:            "18px",
-  xl:            "20px",
-  "display-xs":  "24px",
-  "display-sm":  "30px",
-  "display-md":  "36px",
-  "display-lg":  "48px",
-  "display-xl":  "60px",
-  "display-2xl": "72px",
+  "heading-2xl": "40px",
+  "heading-xl": "32px",
+  "heading-lg": "26px",
+  "heading-md": "22px",
+  "heading-sm": "18px",
+  "heading-xs": "16px",
+  "text-lg": "16px",
+  "text-md": "14px",
+  "text-sm": "12px",
+  "caption-sm": "10px",
+  "caption-xs": "8px",
 } as const
 
 export const fontWeight = {

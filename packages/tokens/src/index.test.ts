@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs"
 import { join } from "node:path"
 
 const src = join(import.meta.dirname, ".")
+const root = join(src, "..")
 
 // ── theme.css ──────────────────────────────────────────────────────────────
 
@@ -163,8 +164,8 @@ describe("dimensions.css — spacing + radius + width", () => {
     }
   })
 
-  it("defines all 7 radius tokens", () => {
-    for (const n of ["none", "sm", "md", "lg", "xl", "2xl", "full"]) {
+  it("defines the full radius scale", () => {
+    for (const n of ["none", "xxs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "full"]) {
       expect(css).toContain(`--radius-${n}:`)
     }
   })
@@ -177,23 +178,255 @@ describe("dimensions.css — spacing + radius + width", () => {
 
 })
 
+// ── figma tokens ───────────────────────────────────────────────────────────
+
+describe("figma manifest", () => {
+  const manifest = JSON.parse(readFileSync(join(root, "figma/manifest.json"), "utf-8")) as {
+    collections: Record<string, { modes: Record<string, string[]> }>
+  }
+
+  it("includes Radius collection", () => {
+    expect(manifest.collections.Radius?.modes.Value).toEqual(["radius.json"])
+  })
+
+  it("maps Typography to a single Value mode", () => {
+    expect(manifest.collections.Typography?.modes.Value).toEqual(["typography.json"])
+  })
+
+  it("includes Containers collection", () => {
+    expect(manifest.collections.Containers?.modes.Value).toEqual(["containers.json"])
+  })
+
+  it("includes unified Primitives collection", () => {
+    expect(manifest.collections.Primitives?.modes.Value).toEqual(["primitives.json"])
+  })
+
+  it("uses Color modes collection naming", () => {
+    expect(manifest.collections["Color modes"]?.modes.Light).toEqual(["colors-semantic-light.json"])
+    expect(manifest.collections["Color modes"]?.modes.Dark).toEqual(["colors-semantic-dark.json"])
+  })
+
+  it("does not keep deprecated Layout collection", () => {
+    expect(manifest.collections.Layout).toBeUndefined()
+  })
+})
+
+describe("figma radius tokens", () => {
+  const radiusFile = JSON.parse(
+    readFileSync(join(root, "figma/radius.json"), "utf-8"),
+  ) as Record<string, { $value: number; $type: string }>
+
+  it("defines the full radius scale", () => {
+    for (const token of [
+      "radius-none",
+      "radius-xxs",
+      "radius-xs",
+      "radius-sm",
+      "radius-md",
+      "radius-lg",
+      "radius-xl",
+      "radius-2xl",
+      "radius-3xl",
+      "radius-4xl",
+      "radius-full",
+    ]) {
+      expect(radiusFile[token]).toBeDefined()
+    }
+  })
+})
+
+describe("figma breakpoint tokens", () => {
+  const breakpointsFile = JSON.parse(
+    readFileSync(join(root, "figma/breakpoints.json"), "utf-8"),
+  ) as Record<string, { $value: number; $type: string; $description?: string }>
+
+  it("uses semantic breakpoint names", () => {
+    expect(Object.keys(breakpointsFile)).toEqual([
+      "mobile",
+      "tablet",
+      "laptop",
+      "desktop",
+      "wide",
+      "ultra",
+      "max",
+    ])
+  })
+
+  it("keeps scale aliases in descriptions", () => {
+    expect(breakpointsFile.mobile?.$description).toBe("Legacy alias: xs.")
+    expect(breakpointsFile.tablet?.$description).toBe("Legacy alias: sm.")
+    expect(breakpointsFile.laptop?.$description).toBe("Legacy alias: md.")
+    expect(breakpointsFile.desktop?.$description).toBe("Legacy alias: lg.")
+    expect(breakpointsFile.wide?.$description).toBe("Legacy alias: xl.")
+    expect(breakpointsFile.ultra?.$description).toBe("Legacy alias: 2xl.")
+    expect(breakpointsFile.max?.$description).toBe("Legacy alias: 3xl.")
+  })
+})
+
+describe("figma color modes", () => {
+  const lightFile = JSON.parse(
+    readFileSync(join(root, "figma/colors-semantic-light.json"), "utf-8"),
+  ) as Record<string, Record<string, { $value: string; $type: string }>>
+
+  const darkFile = JSON.parse(
+    readFileSync(join(root, "figma/colors-semantic-dark.json"), "utf-8"),
+  ) as Record<string, Record<string, { $value: string; $type: string }>>
+
+  it("keeps light and dark semantic groups aligned", () => {
+    expect(Object.keys(lightFile)).toEqual(Object.keys(darkFile))
+    expect(Object.keys(lightFile.text)).toEqual(Object.keys(darkFile.text))
+    expect(Object.keys(lightFile.bg)).toEqual(Object.keys(darkFile.bg))
+    expect(Object.keys(lightFile.border)).toEqual(Object.keys(darkFile.border))
+    expect(Object.keys(lightFile.action)).toEqual(Object.keys(darkFile.action))
+  })
+
+  it("matches agreed semantic values for key tokens", () => {
+    expect(lightFile.text.info?.$value).toBe("{Colors.Blue.600}")
+    expect(lightFile.action["primary-subtle-hover"]?.$value).toBe("{Colors.Blue.50}")
+    expect(lightFile.action["brand-subtle-hover"]?.$value).toBe("{Colors.Brand.50}")
+    expect(darkFile.text.secondary?.$value).toBe("{Colors.Neutral.400}")
+    expect(darkFile.text.brand?.$value).toBe("{Colors.Brand.400}")
+    expect(darkFile.bg.inverse?.$value).toBe("{Colors.Neutral.950}")
+    expect(darkFile.border.focus?.$value).toBe("{Colors.Blue.400}")
+    expect(darkFile.action.primary?.$value).toBe("{Colors.Blue.400}")
+    expect(darkFile.action["primary-subtle-hover"]?.$value).toBe("{Colors.Blue.950}")
+    expect(darkFile.action["brand-subtle-active"]?.$value).toBe("{Colors.Brand.900}")
+  })
+})
+
+describe("figma typography tokens", () => {
+  const typographyFile = JSON.parse(
+    readFileSync(join(root, "figma/typography.json"), "utf-8"),
+  ) as Record<string, Record<string, { $value: number | string; $type: string }>>
+
+  it("uses Untitled-style foundation groups", () => {
+    expect(Object.keys(typographyFile)).toEqual([
+      "Font family",
+      "Font weight",
+      "Font size",
+      "Line height",
+    ])
+  })
+
+  it("matches web font-family naming", () => {
+    expect(Object.keys(typographyFile["Font family"] ?? {})).toEqual([
+      "body",
+      "mono",
+    ])
+  })
+
+  it("uses Montserrat for all font family tokens", () => {
+    expect(typographyFile["Font family"].body?.$value).toBe("Montserrat")
+    expect(typographyFile["Font family"].mono?.$value).toBe("Bebas Neue")
+  })
+
+  it("keeps the canonical size and line-height scale", () => {
+    expect(typographyFile["Font size"]["heading-2xl"]?.$value).toBe(40)
+    expect(typographyFile["Font size"]["text-md"]?.$value).toBe(14)
+    expect(typographyFile["Font size"]["caption-sm"]?.$value).toBe(10)
+    expect(typographyFile["Font size"]["caption-xs"]?.$value).toBe(8)
+    expect(typographyFile["Line height"]["heading-2xl"]?.$value).toBe(48)
+    expect(typographyFile["Line height"]["text-md"]?.$value).toBe(20)
+  })
+})
+
+describe("figma container tokens", () => {
+  const containersFile = JSON.parse(
+    readFileSync(join(root, "figma/containers.json"), "utf-8"),
+  ) as Record<string, { $value: number | string; $type: string; $description?: string }>
+
+  it("defines container paddings for mobile, tablet, and desktop", () => {
+    expect(containersFile["container-padding-mobile"]?.$value).toBe("{spacing-xl}")
+    expect(containersFile["container-padding-tablet"]?.$value).toBe("{spacing-3xl}")
+    expect(containersFile["container-padding-desktop"]?.$value).toBe("{spacing-4xl}")
+  })
+
+  it("defines desktop max width", () => {
+    expect(containersFile["container-max-width-desktop"]?.$value).toBe(1568)
+  })
+
+  it("documents container token usage", () => {
+    expect(containersFile["container-padding-mobile"]?.$description).toBe(
+      "Horizontal container padding for mobile. Alias: spacing-xl.",
+    )
+    expect(containersFile["container-max-width-desktop"]?.$description).toBe(
+      "Maximum desktop container width.",
+    )
+  })
+})
+
+describe("figma spacing tokens", () => {
+  const spacingFile = JSON.parse(
+    readFileSync(join(root, "figma/spacing.json"), "utf-8"),
+  ) as Record<string, { $value: string; $type: string; $description?: string }>
+
+  it("aliases semantic spacing tokens to primitives", () => {
+    expect(spacingFile["spacing-none"]?.$value).toBe("{Primitives/Spacing/0 (0px)}")
+    expect(spacingFile["spacing-xl"]?.$value).toBe("{Primitives/Spacing/4 (16px)}")
+    expect(spacingFile["spacing-4xl"]?.$value).toBe("{Primitives/Spacing/8 (32px)}")
+  })
+
+  it("documents spacing token intent", () => {
+    expect(spacingFile["spacing-none"]?.$description).toBe("Alias: Spacing/0 (0px). No spacing.")
+    expect(spacingFile["spacing-xl"]?.$description).toBe(
+      "Alias: Spacing/4 (16px). Standard mobile padding and common UI gap.",
+    )
+    expect(spacingFile["spacing-4xl"]?.$description).toBe(
+      "Alias: Spacing/8 (32px). Desktop container padding and large component gap.",
+    )
+  })
+})
+
+describe("figma spacing primitive tokens", () => {
+  const primitivesFile = JSON.parse(
+    readFileSync(join(root, "figma/primitives.json"), "utf-8"),
+  ) as Record<string, any>
+
+  it("includes color and spacing primitives in one file", () => {
+    expect(primitivesFile.Colors).toBeDefined()
+    expect(primitivesFile.Colors.Brand).toBeDefined()
+    expect(primitivesFile.Spacing).toBeDefined()
+    expect(primitivesFile.Spacing["0 (0px)"]?.$value).toBe(0)
+    expect(primitivesFile.Spacing["0․5 (2px)"]?.$value).toBe(2)
+    expect(primitivesFile.Spacing["4 (16px)"]?.$value).toBe(16)
+    expect(primitivesFile.Spacing["40 (160px)"]?.$value).toBe(160)
+  })
+
+  it("adds readable spacing labels to primitive tokens", () => {
+    expect(primitivesFile.Spacing["4 (16px)"]?.$description).toBe("Primitive spacing step 4 (16px).")
+  })
+})
+
 // ── typography.css ─────────────────────────────────────────────────────────
 
 describe("typography.css — font families", () => {
   const css = readFileSync(join(src, "typography.css"), "utf-8")
 
-  it("defines font-sans, font-display, font-mono", () => {
-    expect(css).toContain("--font-sans:")
-    expect(css).toContain("--font-display:")
+  it("defines font-body and font-mono", () => {
+    expect(css).toContain("--font-body:")
     expect(css).toContain("--font-mono:")
+    expect(css).toContain('"Montserrat", ui-sans-serif, system-ui, sans-serif')
+    expect(css).toContain('"Bebas Neue", ui-sans-serif, sans-serif')
   })
 })
 
 describe("typography.css — font sizes + line-heights", () => {
   const css = readFileSync(join(src, "typography.css"), "utf-8")
 
-  it("defines all 11 font-size tokens with line-height pairs", () => {
-    for (const n of ["xs", "sm", "md", "lg", "xl", "display-xs", "display-sm", "display-md", "display-lg", "display-xl", "display-2xl"]) {
+  it("defines heading, text, and caption tokens with line-height pairs", () => {
+    for (const n of [
+      "heading-2xl",
+      "heading-xl",
+      "heading-lg",
+      "heading-md",
+      "heading-sm",
+      "heading-xs",
+      "lg",
+      "md",
+      "sm",
+      "caption-sm",
+      "caption-xs",
+    ]) {
       expect(css).toContain(`--text-${n}:`)
       expect(css).toContain(`--text-${n}--line-height:`)
     }
@@ -217,11 +450,15 @@ import { radius, spacing, fontFamily, fontSize, fontWeight } from "./tokens"
 describe("tokens.ts — radius", () => {
   it("exports correct values", () => {
     expect(radius.none).toBe("0px")
-    expect(radius.sm).toBe("4px")
+    expect(radius.xxs).toBe("2px")
+    expect(radius.xs).toBe("4px")
+    expect(radius.sm).toBe("6px")
     expect(radius.md).toBe("8px")
-    expect(radius.lg).toBe("12px")
-    expect(radius.xl).toBe("16px")
-    expect(radius["2xl"]).toBe("24px")
+    expect(radius.lg).toBe("10px")
+    expect(radius.xl).toBe("12px")
+    expect(radius["2xl"]).toBe("16px")
+    expect(radius["3xl"]).toBe("20px")
+    expect(radius["4xl"]).toBe("24px")
     expect(radius.full).toBe("9999px")
   })
 })
@@ -237,19 +474,20 @@ describe("tokens.ts — spacing", () => {
 
 describe("tokens.ts — fontFamily", () => {
   it("contains correct font names", () => {
-    expect(fontFamily.sans).toContain("Montserrat")
-    expect(fontFamily.display).toContain("Bebas Neue")
-    expect(fontFamily.mono).toContain("monospace")
+    expect(fontFamily.body).toContain("Montserrat")
+    expect(fontFamily.mono).toContain("Bebas Neue")
   })
 })
 
 describe("tokens.ts — fontSize", () => {
   it("exports correct values", () => {
-    expect(fontSize.xs).toBe("12px")
-    expect(fontSize.sm).toBe("14px")
-    expect(fontSize.md).toBe("16px")
-    expect(fontSize["display-xs"]).toBe("24px")
-    expect(fontSize["display-2xl"]).toBe("72px")
+    expect(fontSize["heading-2xl"]).toBe("40px")
+    expect(fontSize["heading-xl"]).toBe("32px")
+    expect(fontSize["text-lg"]).toBe("16px")
+    expect(fontSize["text-md"]).toBe("14px")
+    expect(fontSize["text-sm"]).toBe("12px")
+    expect(fontSize["caption-sm"]).toBe("10px")
+    expect(fontSize["caption-xs"]).toBe("8px")
   })
 })
 

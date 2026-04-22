@@ -1,0 +1,37 @@
+{
+  "mobile": {
+    "$value": 375,
+    "$type": "number",
+    "$description": "Legacy alias: xs."
+  },
+  "tablet": {
+    "$value": 768,
+    "$type": "number",
+    "$description": "Legacy alias: sm."
+  },
+  "laptop": {
+    "$value": 1024,
+    "$type": "number",
+    "$description": "Legacy alias: md."
+  },
+  "desktop": {
+    "$value": 1280,
+    "$type": "number",
+    "$description": "Legacy alias: lg."
+  },
+  "wide": {
+    "$value": 1440,
+    "$type": "number",
+    "$description": "Legacy alias: xl."
+  },
+  "ultra": {
+    "$value": 1680,
+    "$type": "number",
+    "$description": "Legacy alias: 2xl."
+  },
+  "max": {
+    "$value": 1920,
+    "$type": "number",
+    "$description": "Legacy alias: 3xl."
+  }
+}

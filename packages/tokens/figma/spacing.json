@@ -1,0 +1,87 @@
+{
+  "spacing-none": {
+    "$value": "{Primitives/Spacing/0 (0px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/0 (0px). No spacing."
+  },
+  "spacing-xxs": {
+    "$value": "{Primitives/Spacing/0․5 (2px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/0․5 (2px). Hairline spacing for tight UI adjustments."
+  },
+  "spacing-xs": {
+    "$value": "{Primitives/Spacing/1 (4px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/1 (4px). Minimal spacing inside dense components."
+  },
+  "spacing-sm": {
+    "$value": "{Primitives/Spacing/1․5 (6px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/1․5 (6px). Tight spacing for compact controls."
+  },
+  "spacing-md": {
+    "$value": "{Primitives/Spacing/2 (8px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/2 (8px). Base small spacing."
+  },
+  "spacing-lg": {
+    "$value": "{Primitives/Spacing/3 (12px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/3 (12px). Default gap inside small component groups."
+  },
+  "spacing-xl": {
+    "$value": "{Primitives/Spacing/4 (16px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/4 (16px). Standard mobile padding and common UI gap."
+  },
+  "spacing-2xl": {
+    "$value": "{Primitives/Spacing/5 (20px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/5 (20px). Spacious gap for grouped content."
+  },
+  "spacing-3xl": {
+    "$value": "{Primitives/Spacing/6 (24px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/6 (24px). Tablet container padding and section inner spacing."
+  },
+  "spacing-4xl": {
+    "$value": "{Primitives/Spacing/8 (32px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/8 (32px). Desktop container padding and large component gap."
+  },
+  "spacing-5xl": {
+    "$value": "{Primitives/Spacing/10 (40px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/10 (40px). Large section spacing."
+  },
+  "spacing-6xl": {
+    "$value": "{Primitives/Spacing/12 (48px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/12 (48px). Mobile section spacing."
+  },
+  "spacing-7xl": {
+    "$value": "{Primitives/Spacing/16 (64px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/16 (64px). Tablet section spacing."
+  },
+  "spacing-8xl": {
+    "$value": "{Primitives/Spacing/20 (80px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/20 (80px). Desktop section spacing."
+  },
+  "spacing-9xl": {
+    "$value": "{Primitives/Spacing/24 (96px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/24 (96px). Large layout spacing."
+  },
+  "spacing-10xl": {
+    "$value": "{Primitives/Spacing/32 (128px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/32 (128px). Large-format layout spacing."
+  },
+  "spacing-11xl": {
+    "$value": "{Primitives/Spacing/40 (160px)}",
+    "$type": "number",
+    "$description": "Alias: Spacing/40 (160px). Extra large layout spacing."
+  }
+}

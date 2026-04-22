@@ -1,0 +1,13 @@
+{
+  "radius-none": { "$value": 0,    "$type": "number" },
+  "radius-xxs":  { "$value": 2,    "$type": "number" },
+  "radius-xs":   { "$value": 4,    "$type": "number" },
+  "radius-sm":   { "$value": 6,    "$type": "number" },
+  "radius-md":   { "$value": 8,    "$type": "number" },
+  "radius-lg":   { "$value": 10,   "$type": "number" },
+  "radius-xl":   { "$value": 12,   "$type": "number" },
+  "radius-2xl":  { "$value": 16,   "$type": "number" },
+  "radius-3xl":  { "$value": 20,   "$type": "number" },
+  "radius-4xl":  { "$value": 24,   "$type": "number" },
+  "radius-full": { "$value": 9999, "$type": "number" }
+}

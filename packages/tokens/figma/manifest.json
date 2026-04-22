@@ -1,0 +1,41 @@
+{
+  "name": "MAXA Design System",
+  "collections": {
+    "Breakpoints": {
+      "modes": {
+        "Value": ["breakpoints.json"]
+      }
+    },
+    "Spacing": {
+      "modes": {
+        "Value": ["spacing.json"]
+      }
+    },
+    "Radius": {
+      "modes": {
+        "Value": ["radius.json"]
+      }
+    },
+    "Primitives": {
+      "modes": {
+        "Value": ["primitives.json"]
+      }
+    },
+    "Color modes": {
+      "modes": {
+        "Light": ["colors-semantic-light.json"],
+        "Dark":  ["colors-semantic-dark.json"]
+      }
+    },
+    "Typography": {
+      "modes": {
+        "Value": ["typography.json"]
+      }
+    },
+    "Containers": {
+      "modes": {
+        "Value": ["containers.json"]
+      }
+    }
+  }
+}

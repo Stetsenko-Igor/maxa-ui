@@ -1,0 +1,22 @@
+{
+  "container-padding-mobile": {
+    "$type": "number",
+    "$value": "{spacing-xl}",
+    "$description": "Horizontal container padding for mobile. Alias: spacing-xl."
+  },
+  "container-padding-tablet": {
+    "$type": "number",
+    "$value": "{spacing-3xl}",
+    "$description": "Horizontal container padding for tablet. Alias: spacing-3xl."
+  },
+  "container-padding-desktop": {
+    "$type": "number",
+    "$value": "{spacing-4xl}",
+    "$description": "Horizontal container padding for desktop. Alias: spacing-4xl."
+  },
+  "container-max-width-desktop": {
+    "$type": "number",
+    "$value": 1568,
+    "$description": "Maximum desktop container width."
+  }
+}

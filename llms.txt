@@ -12,6 +12,28 @@ Status: Under development
 - @maxa/cli: CLI tool
 - @maxa/mcp: MCP server for AI tool integration
 
+## Current DS Snapshot
+- MAXA is design-system-first.
+- Figma source of truth: `packages/tokens/figma/`
+- Figma collections:
+  - `Primitives`
+  - `Color modes`
+  - `Spacing`
+  - `Radius`
+  - `Typography`
+  - `Containers`
+  - `Breakpoints`
+- `Primitives` contains `Colors/...` and `Spacing/...`
+- Typography currently uses:
+  - `Font family/body = Montserrat`
+  - `Font family/mono = Bebas Neue`
+- Typography roles:
+  - `heading-2xl`, `heading-xl`, `heading-lg`, `heading-md`, `heading-sm`, `heading-xs`
+  - `text-lg`, `text-md`, `text-sm`
+  - `caption-sm`, `caption-xs`
+- Regenerate Figma import bundle from repo root with:
+  - `pnpm figma:bundle`
+
 ## Docs
 - https://ui.maxa.com/docs
 - https://ui.maxa.com/AGENT.md

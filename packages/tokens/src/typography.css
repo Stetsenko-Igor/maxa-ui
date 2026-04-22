@@ -5,23 +5,22 @@
 @theme {
   /* ── Font families ───────────────────────────────────────────────── */
   /* Fonts must be loaded by the consumer (Google Fonts / self-hosted). */
-  --font-sans:    "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Bebas Neue", ui-sans-serif, sans-serif;
-  --font-mono:    ui-monospace, "Cascadia Code", monospace;
+  --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Bebas Neue", ui-sans-serif, sans-serif;
 
   /* ── Font sizes + line-heights ───────────────────────────────────── */
   /* Tailwind v4: --text-{name}--line-height pairs with --text-{name}  */
-  --text-xs:              12px;  --text-xs--line-height:          18px;
-  --text-sm:              14px;  --text-sm--line-height:          20px;
-  --text-md:              16px;  --text-md--line-height:          24px;
-  --text-lg:              18px;  --text-lg--line-height:          28px;
-  --text-xl:              20px;  --text-xl--line-height:          30px;
-  --text-display-xs:      24px;  --text-display-xs--line-height:  32px;
-  --text-display-sm:      30px;  --text-display-sm--line-height:  38px;
-  --text-display-md:      36px;  --text-display-md--line-height:  44px;
-  --text-display-lg:      48px;  --text-display-lg--line-height:  60px;
-  --text-display-xl:      60px;  --text-display-xl--line-height:  72px;
-  --text-display-2xl:     72px;  --text-display-2xl--line-height: 90px;
+  --text-heading-2xl:     40px;  --text-heading-2xl--line-height: 48px;
+  --text-heading-xl:      32px;  --text-heading-xl--line-height:  40px;
+  --text-heading-lg:      26px;  --text-heading-lg--line-height:  34px;
+  --text-heading-md:      22px;  --text-heading-md--line-height:  30px;
+  --text-heading-sm:      18px;  --text-heading-sm--line-height:  26px;
+  --text-heading-xs:      16px;  --text-heading-xs--line-height:  24px;
+  --text-lg:              16px;  --text-lg--line-height:          24px;
+  --text-md:              14px;  --text-md--line-height:          20px;
+  --text-sm:              12px;  --text-sm--line-height:          18px;
+  --text-caption-sm:      10px;  --text-caption-sm--line-height:  16px;
+  --text-caption-xs:      8px;   --text-caption-xs--line-height:  12px;
 
   /* ── Font weights ────────────────────────────────────────────────── */
   --font-weight-regular:  400;

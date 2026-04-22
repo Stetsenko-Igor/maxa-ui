@@ -1,0 +1,16 @@
+{
+  "name": "MAXA Token Importer v4",
+  "id": "maxa-token-importer-v4",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": [
+    "figma"
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  }
+}
