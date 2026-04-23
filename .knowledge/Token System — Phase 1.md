@@ -130,6 +130,7 @@
 | Инструмент | Назначение |
 |------------|-----------|
 | **Microsoft Variables Import** (Figma plugin) | Импорт JSON в Variables с модами |
+| **MAXA Token Importer v5** | Локальный dev plugin, может загрузить свежий `import-bundle.json` из GitHub Raw |
 | **Token Studio** | ❌ Free plan не поддерживает Variables+Modes (Pro only) |
 | Tailwind v4 `@theme {}` | CSS токены становятся utilities автоматически |
 
@@ -142,4 +143,6 @@
 - **Примитивный spacing** — абсолютные значения; `Spacing` — semantic aliases; `Layout` — designer-facing usage layer
 - **Layout naming** — только через grouped path names (`Stack/*`, `Inline/*`, `Container/*`, `Grid/*`), чтобы Figma сохранял рабочие группы
 - **Grid/margin** и **Container/padding** — разные по смыслу токены, даже если временно совпадают по значению
+- **Brand surface foreground** — использовать `text/on-brand` поверх `bg/brand-solid`, не белый текст по умолчанию
+- **Figma import workflow** — после push в `main` можно обновить plugin через `Load latest from GitHub`, без copy-paste из `import-bundle.json`
 - **Типографика** — размерное именование (Untitled UI), не HTML (не h1/h2/p)

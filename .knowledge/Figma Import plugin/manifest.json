@@ -1,6 +1,6 @@
 {
-  "name": "MAXA Token Importer v4",
-  "id": "maxa-token-importer-v4",
+  "name": "MAXA Token Importer v5",
+  "id": "maxa-token-importer-v5",
   "api": "1.0.0",
   "main": "code.js",
   "ui": "ui.html",
@@ -10,7 +10,7 @@
   "documentAccess": "dynamic-page",
   "networkAccess": {
     "allowedDomains": [
-      "none"
+      "https://raw.githubusercontent.com"
     ]
   }
 }

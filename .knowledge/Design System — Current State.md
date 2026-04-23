@@ -163,6 +163,20 @@ Semantic color layer называется:
 
 Semantic colors ссылаются на primitive colors внутри `Primitives/Colors/...`.
 
+Текущее решение по brand surfaces:
+
+- `bg/brand-solid` не должен автоматически означать белый текст сверху
+- для текста на brand solid surface используется отдельный foreground token:
+  - `text/on-brand`
+- текущее значение:
+  - Light: `text/on-brand -> Colors.Neutral.950`
+  - Dark: `text/on-brand -> Colors.Neutral.950`
+
+Причина:
+
+- текущий MAXA teal достаточно яркий, поэтому белый текст на `bg/brand-solid` плохо читается
+- подход совпадает с логикой paired surface/foreground tokens в shadcn-like системах
+
 ## 8. Radius
 
 Текущая шкала радиусов:
@@ -270,6 +284,8 @@ Descriptions содержат legacy aliases вроде:
 
 Текущее состояние плагина:
 
+- версия: `MAXA Token Importer v5`
+- умеет загружать свежий `import-bundle.json` напрямую из GitHub Raw кнопкой `Load latest from GitHub`
 - умеет импортировать `import-bundle.json`
 - умеет принимать drag-and-drop:
   - `import-bundle.json`
@@ -281,8 +297,13 @@ Descriptions содержат legacy aliases вроде:
 Если после изменений токенов нужно обновить Figma import:
 
 1. из корня репо выполнить `pnpm figma:bundle`
-2. импортировать свежий `packages/tokens/figma/import-bundle.json`
-3. использовать обновлённый local dev plugin
+2. закоммитить и запушить изменения в `main`
+3. в Figma plugin нажать `Load latest from GitHub`
+4. нажать `Import tokens + styles`
+
+Fallback:
+
+- если GitHub Raw недоступен, можно импортировать свежий `packages/tokens/figma/import-bundle.json` через drag-and-drop или paste
 
 ## 12. Что ещё не внедрено
 

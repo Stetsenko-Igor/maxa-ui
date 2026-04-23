@@ -1,15 +1,15 @@
 {
   "text": {
     "primary": {
-      "$value": "{Colors.Neutral.800}",
+      "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "secondary": {
-      "$value": "{Colors.Neutral.600}",
+      "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "tertiary": {
-      "$value": "{Colors.Neutral.500}",
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "disabled": {
@@ -18,6 +18,10 @@
     },
     "inverse": {
       "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "on-brand": {
+      "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "brand": {

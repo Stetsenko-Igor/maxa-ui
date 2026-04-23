@@ -73,10 +73,14 @@ Docs: https://ui.maxa.com/docs
   - `48, 40, 34, 30, 26, 24, 24, 20, 18, 16, 12`
 - Figma import is handled by the local dev plugin in `.knowledge/Figma Import plugin/`.
 - Current plugin status:
+  - plugin version is `MAXA Token Importer v5`
+  - supports loading latest `import-bundle.json` from GitHub Raw with the `Load latest from GitHub` button
   - supports paste of `import-bundle.json`
   - supports drag-and-drop of `manifest.json` plus token files
   - shows import progress with autoscroll
   - removes stale variables from collections during re-import
+- The plugin cannot read local repo files directly from disk. The no-copy-paste workflow fetches:
+  - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - `packages/tokens/figma/import-bundle.json` must be regenerated before import when token files change.
 - Command to regenerate bundle from repo root:
   - `pnpm figma:bundle`

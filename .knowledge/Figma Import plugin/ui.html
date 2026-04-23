@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Token Importer v4</title>
+  <title>MAXA Token Importer v5</title>
   <style>
     body { font-family: Inter, system-ui, sans-serif; margin: 0; padding: 16px; color: #111; }
     h1 { font-size: 16px; margin: 0 0 8px; }
@@ -34,11 +34,12 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Token Importer v4</h1>
-  <p>Paste a generated MAXA import bundle JSON, or drag token files from `packages/tokens/figma`. This version preserves alias links and creates text styles from the current Typography collection.</p>
+  <h1>MAXA Token Importer v5</h1>
+  <p>Load the latest MAXA import bundle from GitHub, paste JSON, or drag token files from `packages/tokens/figma`. This version preserves alias links and creates text styles from the current Typography collection.</p>
   <div class="dropzone" id="dropzone">
     Drop `import-bundle.json` here, or drop `manifest.json` together with the referenced token files.
     <div class="row">
+      <button class="secondary" id="loadLatestBtn" type="button">Load latest from GitHub</button>
       <button class="secondary" id="chooseFilesBtn" type="button">Choose files</button>
       <input id="fileInput" type="file" accept=".json,application/json" multiple hidden />
     </div>
@@ -48,10 +49,12 @@
     <button class="primary" id="importBtn">Import tokens + styles</button>
     <button class="secondary" id="closeBtn">Close</button>
   </div>
-  <div class="log" id="log">Ready. UI loaded: v4.</div>
+  <div class="log" id="log">Ready. UI loaded: v5.</div>
   <script>
+    const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
     const importBtn = document.getElementById('importBtn');
     const closeBtn = document.getElementById('closeBtn');
+    const loadLatestBtn = document.getElementById('loadLatestBtn');
     const chooseFilesBtn = document.getElementById('chooseFilesBtn');
     const fileInput = document.getElementById('fileInput');
     const dropzone = document.getElementById('dropzone');
@@ -61,7 +64,7 @@
       Spacing: 'Primitives',
       'Color modes': 'Primitives',
     };
-    let currentLogs = ['Ready. UI loaded: v4.'];
+    let currentLogs = ['Ready. UI loaded: v5.'];
     let isImporting = false;
 
     function setLog(lines) {
@@ -79,10 +82,56 @@
     function setImporting(nextValue) {
       isImporting = nextValue;
       importBtn.disabled = nextValue;
+      loadLatestBtn.disabled = nextValue;
       chooseFilesBtn.disabled = nextValue;
       closeBtn.disabled = nextValue;
       fileInput.disabled = nextValue;
       input.disabled = nextValue;
+    }
+
+    async function loadLatestBundleFromGitHub() {
+      if (isImporting) return;
+
+      loadLatestBtn.disabled = true;
+      chooseFilesBtn.disabled = true;
+      input.disabled = true;
+      setLog([
+        'Loading latest import-bundle.json from GitHub...',
+        BUNDLE_URL,
+      ]);
+
+      try {
+        const response = await fetch(`${BUNDLE_URL}?t=${Date.now()}`, {
+          method: 'GET',
+          cache: 'no-store',
+        });
+
+        if (!response.ok) {
+          throw new Error(`GitHub request failed: ${response.status} ${response.statusText}`);
+        }
+
+        const bundle = await response.json();
+        if (!bundle || typeof bundle !== 'object' || !bundle.collections) {
+          throw new Error('Downloaded JSON is not a valid MAXA import bundle.');
+        }
+
+        input.value = JSON.stringify(bundle, null, 2);
+        setLog([
+          'Loaded latest import-bundle.json from GitHub.',
+          `Collections: ${Object.keys(bundle.collections).join(', ')}`,
+          'Review if needed, then click "Import tokens + styles".',
+        ]);
+      } catch (error) {
+        setLog([
+          'Failed to load latest bundle from GitHub.',
+          error && error.message ? error.message : String(error),
+          'Fallback: drag import-bundle.json into the plugin or paste it manually.',
+        ]);
+      } finally {
+        loadLatestBtn.disabled = false;
+        chooseFilesBtn.disabled = false;
+        input.disabled = false;
+      }
     }
 
     importBtn.onclick = () => {
@@ -96,6 +145,7 @@
       parent.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
     };
 
+    loadLatestBtn.onclick = loadLatestBundleFromGitHub;
     chooseFilesBtn.onclick = () => fileInput.click();
     fileInput.onchange = async (event) => {
       const files = Array.from(event.target.files || []);
