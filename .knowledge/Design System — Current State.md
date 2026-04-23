@@ -18,13 +18,14 @@
 - `Spacing`
 - `Radius`
 - `Typography`
-- `Containers`
+- `Layout`
 - `Breakpoints`
 
 Удалённые устаревшие слои:
 
 - старые `layout-*`
 - старая responsive typography по отдельным файлам `desktop/tablet/mobile`
+- отдельная коллекция `Containers`
 
 ## 3. Primitives
 
@@ -74,7 +75,82 @@ Semantic spacing aliases указывают на primitive spacing:
 
 - например `spacing-xl -> {Primitives/Spacing/4 (16px)}`
 
-## 5. Colors / Semantic
+## 5. Layout Methodology
+
+Текущая принятая методология для Figma:
+
+- `Primitives -> Spacing -> Layout`
+
+Где:
+
+- `Primitives` = raw spacing values и color primitives
+- `Spacing` = универсальная semantic spacing scale
+- `Layout` = designer-facing слой для ежедневного выбора в Auto layout
+
+Это значит:
+
+- дизайнеры не работают напрямую с primitive spacing
+- для layout-решений используется отдельная коллекция `Layout`
+- `Layout` ссылается на `Spacing`
+
+Важно:
+
+- `Spacing` не подменяется `Layout`
+- `Layout` не заменяет `Spacing`, а выражает usage intent
+- `Grid/margin` и `Container/padding` считаются разными по смыслу токенами, даже если их значения временно совпадают
+
+## 6. Layout Collection
+
+Коллекция `Layout` использует modes:
+
+- `Desktop`
+- `Tablet`
+- `Mobile`
+
+Внутри коллекции используется group-based naming, чтобы Figma показывал отдельные группы:
+
+- `Stack/*`
+- `Inline/*`
+- `Container/*`
+- `Grid/*`
+
+Текущий состав `Layout`:
+
+- `Stack/tight`
+- `Stack/text`
+- `Stack/default`
+- `Stack/group`
+- `Stack/section`
+- `Inline/tight`
+- `Inline/default`
+- `Inline/group`
+- `Container/padding`
+- `Container/max-width`
+- `Grid/gutter`
+- `Grid/margin`
+
+Текущие рабочие значения:
+
+| Token | Desktop | Tablet | Mobile |
+|------|---------|--------|--------|
+| `Stack/tight` | `spacing-xs` | `spacing-xs` | `spacing-xs` |
+| `Stack/text` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
+| `Stack/default` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
+| `Stack/group` | `spacing-3xl` | `spacing-3xl` | `spacing-3xl` |
+| `Stack/section` | `spacing-8xl` | `spacing-7xl` | `spacing-6xl` |
+| `Inline/tight` | `spacing-md` | `spacing-md` | `spacing-md` |
+| `Inline/default` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
+| `Inline/group` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
+| `Container/padding` | `spacing-4xl` | `spacing-3xl` | `spacing-xl` |
+| `Container/max-width` | `1568` | `1568` | `1568` |
+| `Grid/gutter` | `spacing-3xl` | `spacing-2xl` | `spacing-xl` |
+| `Grid/margin` | `Container/padding` | `Container/padding` | `Container/padding` |
+
+Это временно принятые рабочие значения.
+
+Дальше ожидается отдельный проход по реальным макетам, после которого mapping может быть скорректирован без изменения самой методологии.
+
+## 7. Colors / Semantic
 
 Semantic color layer называется:
 
@@ -87,7 +163,7 @@ Semantic color layer называется:
 
 Semantic colors ссылаются на primitive colors внутри `Primitives/Colors/...`.
 
-## 6. Radius
+## 8. Radius
 
 Текущая шкала радиусов:
 
@@ -103,20 +179,7 @@ Semantic colors ссылаются на primitive colors внутри `Primitive
 - `radius-4xl = 24`
 - `radius-full = 9999`
 
-## 7. Containers
-
-Текущие container tokens:
-
-- `container-padding-mobile`
-- `container-padding-tablet`
-- `container-padding-desktop`
-- `container-max-width-desktop`
-
-Текущее значение max width desktop:
-
-- `1568`
-
-## 8. Breakpoints
+## 9. Breakpoints
 
 Текущие breakpoint names:
 
@@ -132,7 +195,7 @@ Descriptions содержат legacy aliases вроде:
 
 - `Legacy alias: lg.`
 
-## 9. Typography
+## 10. Typography
 
 ### Font family
 
@@ -199,7 +262,7 @@ Descriptions содержат legacy aliases вроде:
 - `label` пока не выносится в foundation role
 - `label` считается ближе к component usage layer
 
-## 10. Figma Import Plugin
+## 11. Figma Import Plugin
 
 Локальный dev plugin находится в:
 
@@ -221,15 +284,12 @@ Descriptions содержат legacy aliases вроде:
 2. импортировать свежий `packages/tokens/figma/import-bundle.json`
 3. использовать обновлённый local dev plugin
 
-## 11. Что ещё не внедрено
+## 12. Что ещё не внедрено
 
-На текущий момент **не внедрено**, только обсуждено:
+На текущий момент **не внедрено**, только обсуждено или оставлено на потом:
 
 - client-specific typography modes
-- responsive typography modes:
-  - `Desktop`
-  - `Tablet`
-  - `Mobile`
+- более точная калибровка `Layout` значений по реальным макетам
+- возможное уточнение mapping для `Stack/tight`, `Stack/group` и `Grid/gutter`
 
-Это будет следующим отдельным слоем работы.
-
+Responsive typography modes уже внедрены.

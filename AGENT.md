@@ -18,7 +18,7 @@ Docs: https://ui.maxa.com/docs
   - `Spacing`
   - `Radius`
   - `Typography`
-  - `Containers`
+  - `Layout`
   - `Breakpoints`
 - `Primitives` contains:
   - `Colors/...`
@@ -27,6 +27,26 @@ Docs: https://ui.maxa.com/docs
   - `Spacing/4 (16px)`
   - `Spacing/0․5 (2px)`
 - Semantic spacing aliases point to primitive spacing tokens.
+- MAXA Figma methodology for spacing/layout is now:
+  - `Primitives -> Spacing -> Layout`
+  - `Primitives` = raw values
+  - `Spacing` = universal semantic spacing aliases
+  - `Layout` = designer-facing usage layer for Auto layout decisions
+- `Layout` uses grouped variable names so Figma shows separate groups:
+  - `Stack/*`
+  - `Inline/*`
+  - `Container/*`
+  - `Grid/*`
+- Current `Layout` values use responsive modes:
+  - `Desktop`
+  - `Tablet`
+  - `Mobile`
+- Current `Layout` tokens include:
+  - `Stack/tight`, `Stack/text`, `Stack/default`, `Stack/group`, `Stack/section`
+  - `Inline/tight`, `Inline/default`, `Inline/group`
+  - `Container/padding`, `Container/max-width`
+  - `Grid/gutter`, `Grid/margin`
+- `Grid/margin` intentionally stays separate from `Container/padding` by name, even when it aliases it, because the semantics are different.
 - Color semantic tokens point to primitive color tokens in `Primitives/Colors/...`.
 - Typography foundation is currently app-oriented, not marketing-oriented.
 - Typography uses:

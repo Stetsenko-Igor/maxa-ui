@@ -35,12 +35,16 @@
 
 ### 2. Figma Variables — импортировано через Microsoft Variables Import plugin
 
-**Файлы:** `packages/tokens/figma/` (8 файлов)
+**Файлы:** `packages/tokens/figma/`
 
 | Коллекция | Моды | Файлы |
 |-----------|------|-------|
 | Breakpoints | Value | `breakpoints.json` |
-| Typography | Desktop / Tablet / Mobile | `typography-desktop/tablet/mobile.json` |
+| Primitives | Value | `primitives.json` |
+| Spacing | Value | `spacing.json` |
+| Radius | Value | `radius.json` |
+| Color modes | Light / Dark | `colors-semantic-light.json`, `colors-semantic-dark.json` |
+| Typography | Desktop / Tablet / Mobile | `typography.json`, `typography-tablet.json`, `typography-mobile.json` |
 | Layout | Desktop / Tablet / Mobile | `layout-desktop/tablet/mobile.json` |
 
 **Формат:** W3C DTCG — `{"$value": 72, "$type": "number"}`  
@@ -50,64 +54,73 @@
 
 | Token | Value |
 |-------|-------|
-| sm | 375px |
-| md | 768px |
-| lg | 1280px |
-| xl | 1440px |
-| 2xl | 1920px |
+| mobile | 375px |
+| tablet | 768px |
+| laptop | 1024px |
+| desktop | 1280px |
+| wide | 1440px |
+| ultra | 1680px |
+| max | 1920px |
 
-**Layout токены (responsive):**
+**Layout methodology:**
+
+- `Primitives -> Spacing -> Layout`
+- `Spacing` = universal semantic spacing aliases
+- `Layout` = designer-facing usage layer
+- group-based naming in Figma:
+  - `Stack/*`
+  - `Inline/*`
+  - `Container/*`
+  - `Grid/*`
+
+**Layout токены (responsive, current agreed working state):**
 
 | Token | Desktop | Tablet | Mobile |
 |-------|---------|--------|--------|
-| outer-margin | 32 | 24 | 16 |
-| section-gap | 80 | 64 | 48 |
-| component-gap | 24 | 20 | 16 |
-| grid.columns | 12 | 8 | 4 |
-| grid.gutter | 24 | 16 | 12 |
-| grid.margin | 32 | 24 | 16 |
+| `Stack/tight` | `spacing-xs` | `spacing-xs` | `spacing-xs` |
+| `Stack/text` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
+| `Stack/default` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
+| `Stack/group` | `spacing-3xl` | `spacing-3xl` | `spacing-3xl` |
+| `Stack/section` | `spacing-8xl` | `spacing-7xl` | `spacing-6xl` |
+| `Inline/tight` | `spacing-md` | `spacing-md` | `spacing-md` |
+| `Inline/default` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
+| `Inline/group` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
+| `Container/padding` | `spacing-4xl` | `spacing-3xl` | `spacing-xl` |
+| `Container/max-width` | `1568` | `1568` | `1568` |
+| `Grid/gutter` | `spacing-3xl` | `spacing-2xl` | `spacing-xl` |
+| `Grid/margin` | `Container/padding` | `Container/padding` | `Container/padding` |
 
 ---
 
 ## Текущее состояние в Figma
 
-✅ Коллекция **Breakpoints** — 1 мод, 5 переменных  
+✅ Коллекция **Breakpoints** — 1 мод, viewport references  
+✅ Коллекция **Primitives** — colors + spacing primitives  
+✅ Коллекция **Spacing** — semantic spacing aliases  
+✅ Коллекция **Radius** — radius scale  
+✅ Коллекция **Color modes** — Light / Dark semantic colors  
 ✅ Коллекция **Typography** — 3 мода (Desktop/Tablet/Mobile), font-size + line-height + font-weight + font-family  
-✅ Коллекция **Layout** — 3 мода (Desktop/Tablet/Mobile), layout + grid переменные  
+✅ Коллекция **Layout** — 3 мода (Desktop/Tablet/Mobile), grouped designer-facing layout variables  
 
-❌ **Цвета** — ещё не импортированы в Variables  
-❌ **Семантические токены** — ещё не импортированы  
-❌ **Связи между коллекциями** (aliases) — не настроены  
+✅ Связи aliases между `Primitives`, `Spacing`, `Color modes` и `Layout` настроены через import files  
 
 ---
 
 ## Следующие шаги
 
-### Шаг 1 — Цвета в Figma Variables
-Структура и именование согласованы — см. [[Token Structure — Semantic Colors]] и [[Token Naming — Research]].
+### Шаг 1 — Калибровка Layout на реальных макетах
 
-Создать JSON файлы для импорта:
-- `colors-primitives.json` — Base + Neutral + Alpha + Brand + полный Tailwind спектр (21 семейство × 11 стопов)
-- `colors-semantic-light.json` — ~45 токенов, Light мод
-- `colors-semantic-dark.json` — те же токены, Dark мод
+Текущие значения `Layout` приняты как рабочая стартовая версия.
 
-> ⚠️ **Именования:**
-> - Brand: `brand-500` (НЕ `brand-teal-500`) — без цвета в названии
-> - Semantic: только тире — `bg-error-subtle`, `text-primary` (НЕ `bg/error/subtle`)
-> - Tailwind `neutral` не дублируется — он = наш `Neutral` в primitives
+Следующий практический шаг:
+- пройтись по реальным макетам
+- проверить `Stack/tight`, `Stack/group`, `Grid/gutter`
+- при необходимости скорректировать alias mapping, не ломая саму архитектуру
 
-Добавить в `manifest.json` новую коллекцию `Colors`.
-
-### Шаг 2 — Связи (aliases)
-После импорта всех коллекций настроить в Figma:
-- Semantic токены → ссылаются на Primitive токены
-- Typography styles → используют Typography Variables
-- Компоненты → используют Semantic Variables
-
-### Шаг 3 — Тест: применить Variables в компоненте
+### Шаг 2 — Тест: применить Variables в компоненте
 Взять один компонент (кнопка или инпут) и связать со всеми переменными. Проверить что responsive modes работают.
 
-### Шаг 4 — Документация для разработчиков
+### Шаг 3 — Документация для разработчиков
 Обновить `docs/figma-token-component-reference.md` с полной картой CSS → Figma Variables.
 
 ---
@@ -126,5 +139,7 @@
 
 - **Всегда стандартизировать** — не копировать то что есть в Figma как есть, использовать лучший отраслевой стандарт
 - **Font-weight в Figma** — строки (`"Regular"`, `"SemiBold"`), в CSS — числа (400, 600)
-- **Примитивный spacing** — абсолютные значения (--spacing-*); Layout токены — семантические и mode-зависимые
+- **Примитивный spacing** — абсолютные значения; `Spacing` — semantic aliases; `Layout` — designer-facing usage layer
+- **Layout naming** — только через grouped path names (`Stack/*`, `Inline/*`, `Container/*`, `Grid/*`), чтобы Figma сохранял рабочие группы
+- **Grid/margin** и **Container/padding** — разные по смыслу токены, даже если временно совпадают по значению
 - **Типографика** — размерное именование (Untitled UI), не HTML (не h1/h2/p)
