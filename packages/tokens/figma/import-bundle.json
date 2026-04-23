@@ -609,13 +609,49 @@
         }
       }
     },
-    "Containers": {
+    "Layout": {
       "modes": {
-        "Value": {
-          "container-padding-mobile": "{Spacing/spacing-xl}",
-          "container-padding-tablet": "{Spacing/spacing-3xl}",
-          "container-padding-desktop": "{Spacing/spacing-4xl}",
-          "container-max-width-desktop": 1568
+        "Desktop": {
+          "Stack/tight": "{Spacing/spacing-xs}",
+          "Stack/text": "{Spacing/spacing-lg}",
+          "Stack/default": "{Spacing/spacing-xl}",
+          "Stack/group": "{Spacing/spacing-3xl}",
+          "Stack/section": "{Spacing/spacing-8xl}",
+          "Inline/tight": "{Spacing/spacing-md}",
+          "Inline/default": "{Spacing/spacing-lg}",
+          "Inline/group": "{Spacing/spacing-xl}",
+          "Container/padding": "{Spacing/spacing-4xl}",
+          "Container/max-width": 1568,
+          "Grid/gutter": "{Spacing/spacing-3xl}",
+          "Grid/margin": "{Layout/Container/padding}"
+        },
+        "Tablet": {
+          "Stack/tight": "{Spacing/spacing-xs}",
+          "Stack/text": "{Spacing/spacing-lg}",
+          "Stack/default": "{Spacing/spacing-xl}",
+          "Stack/group": "{Spacing/spacing-3xl}",
+          "Stack/section": "{Spacing/spacing-7xl}",
+          "Inline/tight": "{Spacing/spacing-md}",
+          "Inline/default": "{Spacing/spacing-lg}",
+          "Inline/group": "{Spacing/spacing-xl}",
+          "Container/padding": "{Spacing/spacing-3xl}",
+          "Container/max-width": 1568,
+          "Grid/gutter": "{Spacing/spacing-2xl}",
+          "Grid/margin": "{Layout/Container/padding}"
+        },
+        "Mobile": {
+          "Stack/tight": "{Spacing/spacing-xs}",
+          "Stack/text": "{Spacing/spacing-lg}",
+          "Stack/default": "{Spacing/spacing-xl}",
+          "Stack/group": "{Spacing/spacing-3xl}",
+          "Stack/section": "{Spacing/spacing-6xl}",
+          "Inline/tight": "{Spacing/spacing-md}",
+          "Inline/default": "{Spacing/spacing-lg}",
+          "Inline/group": "{Spacing/spacing-xl}",
+          "Container/padding": "{Spacing/spacing-xl}",
+          "Container/max-width": 1568,
+          "Grid/gutter": "{Spacing/spacing-xl}",
+          "Grid/margin": "{Layout/Container/padding}"
         }
       }
     }

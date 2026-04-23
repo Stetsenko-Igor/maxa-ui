@@ -34,9 +34,11 @@
         "Mobile": ["typography-mobile.json"]
       }
     },
-    "Containers": {
+    "Layout": {
       "modes": {
-        "Value": ["containers.json"]
+        "Desktop": ["layout-desktop.json"],
+        "Tablet": ["layout-tablet.json"],
+        "Mobile": ["layout-mobile.json"]
       }
     }
   }

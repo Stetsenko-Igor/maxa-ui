@@ -1,0 +1,62 @@
+{
+  "Stack/tight": {
+    "$type": "number",
+    "$value": "{spacing-xs}",
+    "$description": "Dense vertical gap for tightly related elements. Alias: spacing-xs."
+  },
+  "Stack/text": {
+    "$type": "number",
+    "$value": "{spacing-lg}",
+    "$description": "Vertical rhythm for text blocks. Alias: spacing-lg."
+  },
+  "Stack/default": {
+    "$type": "number",
+    "$value": "{spacing-xl}",
+    "$description": "Default vertical gap for component internals. Alias: spacing-xl."
+  },
+  "Stack/group": {
+    "$type": "number",
+    "$value": "{spacing-3xl}",
+    "$description": "Vertical gap between related component groups. Alias: spacing-3xl."
+  },
+  "Stack/section": {
+    "$type": "number",
+    "$value": "{spacing-7xl}",
+    "$description": "Tablet section spacing. Alias: spacing-7xl."
+  },
+  "Inline/tight": {
+    "$type": "number",
+    "$value": "{spacing-md}",
+    "$description": "Dense horizontal gap for tightly paired items. Alias: spacing-md."
+  },
+  "Inline/default": {
+    "$type": "number",
+    "$value": "{spacing-lg}",
+    "$description": "Default horizontal gap for inline groups. Alias: spacing-lg."
+  },
+  "Inline/group": {
+    "$type": "number",
+    "$value": "{spacing-xl}",
+    "$description": "Horizontal gap for grouped inline actions. Alias: spacing-xl."
+  },
+  "Container/padding": {
+    "$type": "number",
+    "$value": "{spacing-3xl}",
+    "$description": "Tablet horizontal container padding. Alias: spacing-3xl."
+  },
+  "Container/max-width": {
+    "$type": "number",
+    "$value": 1568,
+    "$description": "Maximum container width."
+  },
+  "Grid/gutter": {
+    "$type": "number",
+    "$value": "{spacing-2xl}",
+    "$description": "Tablet grid gutter. Alias: spacing-2xl."
+  },
+  "Grid/margin": {
+    "$type": "number",
+    "$value": "{Container/padding}",
+    "$description": "Outer grid margin. Alias: Container/padding."
+  }
+}

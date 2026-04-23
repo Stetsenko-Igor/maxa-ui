@@ -195,8 +195,10 @@ describe("figma manifest", () => {
     expect(manifest.collections.Typography?.modes.Mobile).toEqual(["typography-mobile.json"])
   })
 
-  it("includes Containers collection", () => {
-    expect(manifest.collections.Containers?.modes.Value).toEqual(["containers.json"])
+  it("includes responsive Layout collection", () => {
+    expect(manifest.collections.Layout?.modes.Desktop).toEqual(["layout-desktop.json"])
+    expect(manifest.collections.Layout?.modes.Tablet).toEqual(["layout-tablet.json"])
+    expect(manifest.collections.Layout?.modes.Mobile).toEqual(["layout-mobile.json"])
   })
 
   it("includes unified Primitives collection", () => {
@@ -208,8 +210,8 @@ describe("figma manifest", () => {
     expect(manifest.collections["Color modes"]?.modes.Dark).toEqual(["colors-semantic-dark.json"])
   })
 
-  it("does not keep deprecated Layout collection", () => {
-    expect(manifest.collections.Layout).toBeUndefined()
+  it("does not keep deprecated Containers collection", () => {
+    expect(manifest.collections.Containers).toBeUndefined()
   })
 })
 
@@ -358,27 +360,57 @@ describe("figma typography tokens", () => {
   })
 })
 
-describe("figma container tokens", () => {
-  const containersFile = JSON.parse(
-    readFileSync(join(root, "figma/containers.json"), "utf-8"),
+describe("figma layout tokens", () => {
+  const desktopLayoutFile = JSON.parse(
+    readFileSync(join(root, "figma/layout-desktop.json"), "utf-8"),
   ) as Record<string, { $value: number | string; $type: string; $description?: string }>
 
-  it("defines container paddings for mobile, tablet, and desktop", () => {
-    expect(containersFile["container-padding-mobile"]?.$value).toBe("{spacing-xl}")
-    expect(containersFile["container-padding-tablet"]?.$value).toBe("{spacing-3xl}")
-    expect(containersFile["container-padding-desktop"]?.$value).toBe("{spacing-4xl}")
+  const tabletLayoutFile = JSON.parse(
+    readFileSync(join(root, "figma/layout-tablet.json"), "utf-8"),
+  ) as Record<string, { $value: number | string; $type: string; $description?: string }>
+
+  const mobileLayoutFile = JSON.parse(
+    readFileSync(join(root, "figma/layout-mobile.json"), "utf-8"),
+  ) as Record<string, { $value: number | string; $type: string; $description?: string }>
+
+  it("defines shared stack and inline aliases across modes", () => {
+    for (const file of [desktopLayoutFile, tabletLayoutFile, mobileLayoutFile]) {
+      expect(file["Stack/tight"]?.$value).toBe("{spacing-xs}")
+      expect(file["Stack/default"]?.$value).toBe("{spacing-xl}")
+      expect(file["Stack/group"]?.$value).toBe("{spacing-3xl}")
+      expect(file["Inline/default"]?.$value).toBe("{spacing-lg}")
+    }
   })
 
-  it("defines desktop max width", () => {
-    expect(containersFile["container-max-width-desktop"]?.$value).toBe(1568)
+  it("uses responsive values for section spacing and container padding", () => {
+    expect(desktopLayoutFile["Stack/section"]?.$value).toBe("{spacing-8xl}")
+    expect(tabletLayoutFile["Stack/section"]?.$value).toBe("{spacing-7xl}")
+    expect(mobileLayoutFile["Stack/section"]?.$value).toBe("{spacing-6xl}")
+
+    expect(desktopLayoutFile["Container/padding"]?.$value).toBe("{spacing-4xl}")
+    expect(tabletLayoutFile["Container/padding"]?.$value).toBe("{spacing-3xl}")
+    expect(mobileLayoutFile["Container/padding"]?.$value).toBe("{spacing-xl}")
   })
 
-  it("documents container token usage", () => {
-    expect(containersFile["container-padding-mobile"]?.$description).toBe(
-      "Horizontal container padding for mobile. Alias: spacing-xl.",
+  it("defines responsive grid spacing tokens", () => {
+    expect(desktopLayoutFile["Grid/gutter"]?.$value).toBe("{spacing-3xl}")
+    expect(tabletLayoutFile["Grid/gutter"]?.$value).toBe("{spacing-2xl}")
+    expect(mobileLayoutFile["Grid/gutter"]?.$value).toBe("{spacing-xl}")
+    expect(desktopLayoutFile["Grid/margin"]?.$value).toBe("{Container/padding}")
+  })
+
+  it("documents layout token intent", () => {
+    expect(desktopLayoutFile["Stack/default"]?.$description).toBe(
+      "Default vertical gap for component internals. Alias: spacing-xl.",
     )
-    expect(containersFile["container-max-width-desktop"]?.$description).toBe(
-      "Maximum desktop container width.",
+    expect(desktopLayoutFile["Stack/tight"]?.$description).toBe(
+      "Dense vertical gap for tightly related elements. Alias: spacing-xs.",
+    )
+    expect(mobileLayoutFile["Container/padding"]?.$description).toBe(
+      "Mobile horizontal container padding. Alias: spacing-xl.",
+    )
+    expect(desktopLayoutFile["Container/max-width"]?.$description).toBe(
+      "Maximum container width.",
     )
   })
 })
