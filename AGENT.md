@@ -10,6 +10,9 @@ Docs: https://ui.maxa.com/docs
 
 ## Current Design System Decisions
 
+- Project documentation must be written in English.
+- This includes `AGENT.md`, `.knowledge/*`, package READMEs, docs pages, and design-system memory notes.
+- Conversation with the user may be in Russian, but persisted documentation and repo knowledge should stay in English.
 - MAXA is design-system-first, not Tailwind-first.
 - Figma token source of truth lives in `packages/tokens/figma/`.
 - Figma collections currently use:
@@ -41,6 +44,10 @@ Docs: https://ui.maxa.com/docs
   - `Desktop`
   - `Tablet`
   - `Mobile`
+- `Layout` and `Typography` intentionally remain separate Figma collections for now, even though both use `Desktop / Tablet / Mobile` modes.
+- Designers may need to switch both `Layout` and `Typography` modes manually on a frame/page; this is accepted as a reasonable two-click tradeoff.
+- Do not merge them into a single `Responsive` collection yet. That option remains a future possibility only if the team finds manual mode switching painful.
+- Reason for keeping them separate: cleaner token architecture, better code sync, and easier developer readability.
 - Current `Layout` tokens include:
   - `Stack/tight`, `Stack/text`, `Stack/default`, `Stack/group`, `Stack/section`
   - `Inline/tight`, `Inline/default`, `Inline/group`

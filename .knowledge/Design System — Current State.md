@@ -1,17 +1,18 @@
 # MAXA Design System — Current State
 
-> Проектная заметка для Obsidian / локальной памяти репозитория.  
-> Фиксирует текущее agreed state foundation-слоя перед следующими изменениями.
+> Project note for Obsidian and local repository memory.  
+> Captures the current agreed foundation-layer state before the next design-system changes.
 
-## 1. Общая позиция
+## 1. General Position
 
-- MAXA — **Design System-first**, не Tailwind-first.
-- Источник истины для Figma token import находится в `packages/tokens/figma/`.
-- `packages/tokens/figma/import-bundle.json` считается артефактом сборки, а не ручным source of truth.
+- MAXA is **Design System-first**, not Tailwind-first.
+- The source of truth for Figma token import lives in `packages/tokens/figma/`.
+- `packages/tokens/figma/import-bundle.json` is treated as a generated build artifact, not as the hand-edited source of truth.
+- All persistent documentation and project memory should be written in English.
 
 ## 2. Figma Collections
 
-Текущая структура коллекций:
+Current collection structure:
 
 - `Primitives`
 - `Color modes`
@@ -21,33 +22,33 @@
 - `Layout`
 - `Breakpoints`
 
-Удалённые устаревшие слои:
+Removed legacy layers:
 
-- старые `layout-*`
-- старая responsive typography по отдельным файлам `desktop/tablet/mobile`
-- отдельная коллекция `Containers`
+- old `layout-*` token files
+- old responsive typography split that was not aligned with the current modes
+- separate `Containers` collection
 
 ## 3. Primitives
 
 ### Colors
 
-Цвета объединены в одну верхнеуровневую группу:
+Colors are grouped under one top-level primitive namespace:
 
 - `Colors/Base/...`
 - `Colors/Neutral/...`
 - `Colors/Neutral (alpha)/...`
 - `Colors/Brand/...`
-- и остальные hue groups
+- other hue groups
 
-Это сделано по аналогии с подходом Untitled UI: единый цветовой primitive layer внутри одной коллекции.
+This follows the Untitled UI-style approach: one color primitive layer inside a single collection.
 
 ### Spacing
 
-Spacing primitives живут внутри:
+Spacing primitives live under:
 
 - `Primitives/Spacing/...`
 
-Имена spacing primitives читаемые и включают размер в пикселях:
+Spacing primitive names are readable and include the pixel value:
 
 - `Spacing/0 (0px)`
 - `Spacing/0․5 (2px)`
@@ -56,13 +57,13 @@ Spacing primitives живут внутри:
 - `Spacing/4 (16px)`
 - `Spacing/12 (48px)`
 
-Важно:
+Important:
 
-- для дробных шагов используется `․` вместо обычной ASCII-точки, потому что Figma import конфликтовал с `0.5` и `1.5`
+- Fractional steps use `․` instead of the ASCII dot because the Figma import flow conflicted with `0.5` and `1.5`.
 
 ## 4. Semantic Spacing
 
-Semantic spacing живёт отдельным слоем:
+Semantic spacing lives as a separate layer:
 
 - `spacing-none`
 - `spacing-xxs`
@@ -71,50 +72,64 @@ Semantic spacing живёт отдельным слоем:
 - ...
 - `spacing-11xl`
 
-Semantic spacing aliases указывают на primitive spacing:
+Semantic spacing aliases point to primitive spacing, for example:
 
-- например `spacing-xl -> {Primitives/Spacing/4 (16px)}`
+- `spacing-xl -> {Primitives/Spacing/4 (16px)}`
 
 ## 5. Layout Methodology
 
-Текущая принятая методология для Figma:
+Current accepted Figma methodology:
 
 - `Primitives -> Spacing -> Layout`
 
-Где:
+Meaning:
 
-- `Primitives` = raw spacing values и color primitives
-- `Spacing` = универсальная semantic spacing scale
-- `Layout` = designer-facing слой для ежедневного выбора в Auto layout
+- `Primitives` = raw spacing values and color primitives
+- `Spacing` = universal semantic spacing scale
+- `Layout` = designer-facing usage layer for daily Auto layout decisions
 
-Это значит:
+Implications:
 
-- дизайнеры не работают напрямую с primitive spacing
-- для layout-решений используется отдельная коллекция `Layout`
-- `Layout` ссылается на `Spacing`
+- Designers do not work directly with primitive spacing for layout decisions.
+- Layout decisions use the separate `Layout` collection.
+- `Layout` aliases `Spacing`.
 
-Важно:
+Important:
 
-- `Spacing` не подменяется `Layout`
-- `Layout` не заменяет `Spacing`, а выражает usage intent
-- `Grid/margin` и `Container/padding` считаются разными по смыслу токенами, даже если их значения временно совпадают
+- `Spacing` is not replaced by `Layout`.
+- `Layout` does not replace `Spacing`; it expresses usage intent.
+- `Grid/margin` and `Container/padding` are semantically different tokens, even when their values temporarily match.
 
 ## 6. Layout Collection
 
-Коллекция `Layout` использует modes:
+The `Layout` collection uses modes:
 
 - `Desktop`
 - `Tablet`
 - `Mobile`
 
-Внутри коллекции используется group-based naming, чтобы Figma показывал отдельные группы:
+Current responsive modes decision:
+
+- `Layout` and `Typography` remain separate collections.
+- Both collections use `Desktop / Tablet / Mobile` modes.
+- Designers switch the `Layout` and `Typography` modes separately on a frame/page when needed.
+- This is an accepted tradeoff at the current stage.
+
+Why we are not merging them into one `Responsive` collection yet:
+
+- Separate collections are clearer as token architecture.
+- The structure is easier to synchronize with code.
+- Developers can more easily distinguish layout decisions from the type scale.
+- Merging `Layout + Typography` into `Responsive` remains a future option only if two manual mode switches become a real team pain point.
+
+The collection uses group-based naming so Figma shows separate groups:
 
 - `Stack/*`
 - `Inline/*`
 - `Container/*`
 - `Grid/*`
 
-Текущий состав `Layout`:
+Current `Layout` tokens:
 
 - `Stack/tight`
 - `Stack/text`
@@ -129,7 +144,7 @@ Semantic spacing aliases указывают на primitive spacing:
 - `Grid/gutter`
 - `Grid/margin`
 
-Текущие рабочие значения:
+Current working values:
 
 | Token | Desktop | Tablet | Mobile |
 |------|---------|--------|--------|
@@ -146,40 +161,51 @@ Semantic spacing aliases указывают на primitive spacing:
 | `Grid/gutter` | `spacing-3xl` | `spacing-2xl` | `spacing-xl` |
 | `Grid/margin` | `Container/padding` | `Container/padding` | `Container/padding` |
 
-Это временно принятые рабочие значения.
+These values are accepted as the current working state.
 
-Дальше ожидается отдельный проход по реальным макетам, после которого mapping может быть скорректирован без изменения самой методологии.
+A separate pass over real layouts is expected later. Mapping may be adjusted without changing the methodology.
 
 ## 7. Colors / Semantic
 
-Semantic color layer называется:
+The semantic color layer is named:
 
 - `Color modes`
 
-Текущие modes:
+Current modes:
 
 - `Light`
 - `Dark`
 
-Semantic colors ссылаются на primitive colors внутри `Primitives/Colors/...`.
+Semantic colors alias primitive colors from `Primitives/Colors/...`.
 
-Текущее решение по brand surfaces:
+Current brand surface decision:
 
-- `bg/brand-solid` не должен автоматически означать белый текст сверху
-- для текста на brand solid surface используется отдельный foreground token:
+- `bg/brand-solid` must not automatically imply white text on top.
+- Text on brand solid surfaces uses a separate foreground token:
   - `text/on-brand`
-- текущее значение:
+- Current value:
   - Light: `text/on-brand -> Colors.Neutral.950`
   - Dark: `text/on-brand -> Colors.Neutral.950`
 
-Причина:
+Reason:
 
-- текущий MAXA teal достаточно яркий, поэтому белый текст на `bg/brand-solid` плохо читается
-- подход совпадает с логикой paired surface/foreground tokens в shadcn-like системах
+- The current MAXA teal is bright enough that white text on `bg/brand-solid` is low contrast.
+- The approach follows paired surface/foreground token logic from shadcn-like systems.
+
+Current important semantic values:
+
+- Light `text/primary -> Colors.Neutral.950`
+- Light `text/secondary -> Colors.Neutral.800`
+- Light `text/tertiary -> Colors.Neutral.600`
+- Light `bg/brand-solid -> Colors.Brand.500`
+- Dark `text/primary -> Colors.Neutral.100`
+- Dark `text/secondary -> Colors.Neutral.200`
+- Dark `text/tertiary -> Colors.Neutral.500`
+- Dark `bg/brand-solid -> Colors.Brand.600`
 
 ## 8. Radius
 
-Текущая шкала радиусов:
+Current radius scale:
 
 - `radius-none = 0`
 - `radius-xxs = 2`
@@ -195,7 +221,7 @@ Semantic colors ссылаются на primitive colors внутри `Primitive
 
 ## 9. Breakpoints
 
-Текущие breakpoint names:
+Current breakpoint names:
 
 - `mobile = 375`
 - `tablet = 768`
@@ -205,26 +231,26 @@ Semantic colors ссылаются на primitive colors внутри `Primitive
 - `ultra = 1680`
 - `max = 1920`
 
-Descriptions содержат legacy aliases вроде:
+Some descriptions include legacy aliases such as:
 
 - `Legacy alias: lg.`
 
 ## 10. Typography
 
-### Font family
+### Font Family
 
-Текущее решение:
+Current decision:
 
 - `Font family/body = Montserrat`
 - `Font family/mono = Bebas Neue`
 
-Важно:
+Important:
 
-- `font-family-display` сейчас **не используется**
+- `font-family-display` is intentionally not used for now.
 
-### Typography roles
+### Typography Roles
 
-Текущая agreed structure:
+Current agreed structure:
 
 - `heading-2xl`
 - `heading-xl`
@@ -238,9 +264,9 @@ Descriptions содержат legacy aliases вроде:
 - `caption-sm`
 - `caption-xs`
 
-### Typography sizes
+### Typography Sizes
 
-Текущие значения:
+Current desktop values:
 
 - `heading-2xl = 40`
 - `heading-xl = 32`
@@ -254,9 +280,9 @@ Descriptions содержат legacy aliases вроде:
 - `caption-sm = 10`
 - `caption-xs = 8`
 
-### Typography line heights
+### Typography Line Heights
 
-Текущее зафиксированное состояние:
+Current desktop values:
 
 - `heading-2xl = 48`
 - `heading-xl = 40`
@@ -270,47 +296,54 @@ Descriptions содержат legacy aliases вроде:
 - `caption-sm = 16`
 - `caption-xs = 12`
 
-### Naming decisions
+### Naming Decisions
 
-- для SaaS app решили уйти от `display`
-- `label` пока не выносится в foundation role
-- `label` считается ближе к component usage layer
+- For the SaaS app foundation, we moved away from `display`.
+- `label` is not a foundation role for now.
+- `label` is closer to the component usage layer.
 
 ## 11. Figma Import Plugin
 
-Локальный dev plugin находится в:
+The local dev plugin lives in:
 
 - `.knowledge/Figma Import plugin/`
 
-Текущее состояние плагина:
+Current plugin state:
 
-- версия: `MAXA Token Importer v5`
-- умеет загружать свежий `import-bundle.json` напрямую из GitHub Raw кнопкой `Load latest from GitHub`
-- умеет импортировать `import-bundle.json`
-- умеет принимать drag-and-drop:
+- version: `MAXA Token Importer v5`
+- can load the latest pushed `import-bundle.json` from GitHub Raw via `Load latest from GitHub`
+- can import `import-bundle.json`
+- supports drag-and-drop:
   - `import-bundle.json`
-  - или `manifest.json` + referenced token files
-- показывает import progress
-- автоскроллит лог вниз
-- удаляет stale variables при re-import
+  - or `manifest.json` + referenced token files
+- shows import progress
+- autoscrolls the log to the latest entry
+- keeps the import result area visible immediately, without needing to scroll the plugin UI
+- removes stale variables during re-import
 
-Если после изменений токенов нужно обновить Figma import:
+Fast local workflow for iterations:
 
-1. из корня репо выполнить `pnpm figma:bundle`
-2. закоммитить и запушить изменения в `main`
-3. в Figma plugin нажать `Load latest from GitHub`
-4. нажать `Import tokens + styles`
+1. Run `pnpm figma:bundle` from the repo root.
+2. In the plugin, click `Choose files` or drag `packages/tokens/figma/import-bundle.json`.
+3. Click `Import tokens + styles`.
+
+Published workflow for shared/stable imports:
+
+1. Run `pnpm figma:bundle` from the repo root.
+2. Commit and push changes to `main`.
+3. In the Figma plugin, click `Load latest from GitHub`.
+4. Click `Import tokens + styles`.
 
 Fallback:
 
-- если GitHub Raw недоступен, можно импортировать свежий `packages/tokens/figma/import-bundle.json` через drag-and-drop или paste
+- If GitHub Raw is unavailable, import the fresh `packages/tokens/figma/import-bundle.json` through drag-and-drop or paste.
 
-## 12. Что ещё не внедрено
+## 12. Not Implemented Yet
 
-На текущий момент **не внедрено**, только обсуждено или оставлено на потом:
+Currently not implemented, only discussed or intentionally deferred:
 
 - client-specific typography modes
-- более точная калибровка `Layout` значений по реальным макетам
-- возможное уточнение mapping для `Stack/tight`, `Stack/group` и `Grid/gutter`
+- more precise calibration of `Layout` values against real layouts
+- possible mapping refinements for `Stack/tight`, `Stack/group`, and `Grid/gutter`
 
-Responsive typography modes уже внедрены.
+Responsive typography modes are already implemented.

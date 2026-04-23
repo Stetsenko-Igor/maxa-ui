@@ -4,10 +4,22 @@
   <meta charset="utf-8" />
   <title>MAXA Token Importer v5</title>
   <style>
-    body { font-family: Inter, system-ui, sans-serif; margin: 0; padding: 16px; color: #111; }
+    html { height: 100%; }
+    body {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      min-height: 0;
+      font-family: Inter, system-ui, sans-serif;
+      margin: 0;
+      padding: 16px;
+      color: #111;
+    }
     h1 { font-size: 16px; margin: 0 0 8px; }
     p { font-size: 12px; line-height: 1.45; color: #555; margin: 0 0 12px; }
     .dropzone {
+      flex: 0 0 auto;
       border: 1px dashed #bbb;
       border-radius: 10px;
       padding: 12px;
@@ -20,22 +32,41 @@
       border-color: #111;
       background: #f3f3f3;
     }
+    .editor {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+    }
     textarea {
-      width: 100%; height: 470px; resize: vertical; box-sizing: border-box;
+      width: 100%; min-height: 220px; flex: 1 1 auto; resize: vertical; box-sizing: border-box;
       padding: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 12px; border: 1px solid #ddd; border-radius: 8px;
     }
-    .row { display: flex; gap: 8px; margin-top: 12px; }
+    .row { display: flex; flex: 0 0 auto; gap: 8px; margin-top: 12px; }
     button { border: 0; border-radius: 8px; padding: 10px 12px; cursor: pointer; font-size: 12px; font-weight: 600; }
     button[disabled] { opacity: 0.55; cursor: not-allowed; }
     .primary { background: #111; color: white; }
     .secondary { background: #f3f3f3; color: #111; }
-    .log { margin-top: 12px; padding: 12px; border: 1px solid #eee; border-radius: 8px; max-height: 180px; overflow: auto; background: #fafafa; font-size: 12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; white-space: pre-wrap; }
+    .log {
+      flex: 0 0 auto;
+      min-height: 220px;
+      max-height: 280px;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: auto;
+      background: #fafafa;
+      font-size: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
   <h1>MAXA Token Importer v5</h1>
-  <p>Load the latest MAXA import bundle from GitHub, paste JSON, or drag token files from `packages/tokens/figma`. This version preserves alias links and creates text styles from the current Typography collection.</p>
+  <p>Fast local workflow: choose or drag `import-bundle.json` from `packages/tokens/figma`, then import. GitHub loading is optional for the last pushed bundle.</p>
   <div class="dropzone" id="dropzone">
     Drop `import-bundle.json` here, or drop `manifest.json` together with the referenced token files.
     <div class="row">
@@ -44,12 +75,14 @@
       <input id="fileInput" type="file" accept=".json,application/json" multiple hidden />
     </div>
   </div>
-  <textarea id="jsonInput"></textarea>
-  <div class="row">
-    <button class="primary" id="importBtn">Import tokens + styles</button>
-    <button class="secondary" id="closeBtn">Close</button>
+  <div class="editor">
+    <textarea id="jsonInput"></textarea>
+    <div class="row">
+      <button class="primary" id="importBtn">Import tokens + styles</button>
+      <button class="secondary" id="closeBtn">Close</button>
+    </div>
+    <div class="log" id="log">Ready. UI loaded: v5.</div>
   </div>
-  <div class="log" id="log">Ready. UI loaded: v5.</div>
   <script>
     const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
     const importBtn = document.getElementById('importBtn');

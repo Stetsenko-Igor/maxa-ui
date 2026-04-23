@@ -1,43 +1,52 @@
 # Token System — Phase 1: Foundation Variables
 
-> **Статус:** ✅ Завершено (апрель 2026)  
-> **Репозиторий:** `AI/Design System` → `packages/tokens/`  
-> **Figma файл:** Foundation Variables (beta) — `fGGIAUszvDV6QYHh0xXI7H`
+> **Status:** Complete (April 2026)  
+> **Repository:** `AI/Design System` -> `packages/tokens/`  
+> **Figma file:** Foundation Variables (beta) — `fGGIAUszvDV6QYHh0xXI7H`
 
 ---
 
-## Что сделано
+## What Was Built
 
-### 1. `@maxa/tokens` пакет (CSS + TypeScript)
+### 1. `@maxa/tokens` Package (CSS + TypeScript)
 
-Трёхслойная архитектура CSS токенов (`@theme {}` → Tailwind v4):
+Three-layer CSS token architecture (`@theme {}` -> Tailwind v4):
 
-| Файл | Содержимое |
-|------|-----------|
-| `src/primitives.css` | Цвета-примитивы (палитра) |
-| `src/themes/maxa.css` | Brand-цвета |
-| `src/semantic.css` | Семантические цвета (surface, text, border…) |
-| `src/dimensions.css` | Spacing (1–32), border-radius, width |
-| `src/typography.css` | Font-family, font-size + line-height пары, font-weight |
-| `src/theme.css` | Главный импорт всех файлов |
+| File | Contents |
+|------|----------|
+| `src/primitives.css` | Color primitives / palette |
+| `src/themes/maxa.css` | Brand colors |
+| `src/semantic.css` | Semantic colors: surface, text, border, etc. |
+| `src/dimensions.css` | Spacing, border radius, width |
+| `src/typography.css` | Font family, font-size + line-height pairs, font weight |
+| `src/theme.css` | Main import for all token files |
 
-**Именование типографики** — стандарт Untitled UI (размерное, не HTML):
+**Typography naming** follows the Untitled UI size-based standard, not HTML tags:
+
 - `text-xs` / `text-sm` / `text-md` / `text-lg` / `text-xl`
-- `text-display-xs` → `text-display-2xl`
+- `text-display-xs` -> `text-display-2xl`
 
-**Font-weight токены:** `regular` (400) / `medium` (500) / `semibold` (600) / `bold` (700)
+**Font-weight tokens:**
 
-**Tailwind v4 double-dash синтаксис:**
+- `regular` (400)
+- `medium` (500)
+- `semibold` (600)
+- `bold` (700)
+
+**Tailwind v4 double-dash syntax:**
+
 ```css
 --text-display-2xl: 72px;
 --text-display-2xl--line-height: 90px;
 ```
 
-### 2. Figma Variables — импортировано через Microsoft Variables Import plugin
+### 2. Figma Variables
 
-**Файлы:** `packages/tokens/figma/`
+Files live in:
 
-| Коллекция | Моды | Файлы |
+- `packages/tokens/figma/`
+
+| Collection | Modes | Files |
 |-----------|------|-------|
 | Breakpoints | Value | `breakpoints.json` |
 | Primitives | Value | `primitives.json` |
@@ -47,8 +56,8 @@
 | Typography | Desktop / Tablet / Mobile | `typography.json`, `typography-tablet.json`, `typography-mobile.json` |
 | Layout | Desktop / Tablet / Mobile | `layout-desktop/tablet/mobile.json` |
 
-**Формат:** W3C DTCG — `{"$value": 72, "$type": "number"}`  
-**Manifest:** `manifest.json` — связывает коллекции/моды с файлами
+**Format:** W3C DTCG, for example `{"$value": 72, "$type": "number"}`  
+**Manifest:** `manifest.json` maps collections, modes, and files.
 
 **Breakpoints:**
 
@@ -73,7 +82,7 @@
   - `Container/*`
   - `Grid/*`
 
-**Layout токены (responsive, current agreed working state):**
+**Layout tokens (responsive, current agreed working state):**
 
 | Token | Desktop | Tablet | Mobile |
 |-------|---------|--------|--------|
@@ -92,57 +101,66 @@
 
 ---
 
-## Текущее состояние в Figma
+## Current Figma State
 
-✅ Коллекция **Breakpoints** — 1 мод, viewport references  
-✅ Коллекция **Primitives** — colors + spacing primitives  
-✅ Коллекция **Spacing** — semantic spacing aliases  
-✅ Коллекция **Radius** — radius scale  
-✅ Коллекция **Color modes** — Light / Dark semantic colors  
-✅ Коллекция **Typography** — 3 мода (Desktop/Tablet/Mobile), font-size + line-height + font-weight + font-family  
-✅ Коллекция **Layout** — 3 мода (Desktop/Tablet/Mobile), grouped designer-facing layout variables  
+- **Breakpoints**: 1 mode, viewport references
+- **Primitives**: colors + spacing primitives
+- **Spacing**: semantic spacing aliases
+- **Radius**: radius scale
+- **Color modes**: Light / Dark semantic colors
+- **Typography**: 3 modes (`Desktop / Tablet / Mobile`), font size + line height + font weight + font family
+- **Layout**: 3 modes (`Desktop / Tablet / Mobile`), grouped designer-facing layout variables
 
-✅ Связи aliases между `Primitives`, `Spacing`, `Color modes` и `Layout` настроены через import files  
+Aliases between `Primitives`, `Spacing`, `Color modes`, and `Layout` are configured through import files.
 
----
+**Responsive mode decision:** `Layout` and `Typography` remain separate collections.  
+Both use `Desktop / Tablet / Mobile` modes, but designers switch them separately on a frame/page. This is an intentional compromise: two manual actions are acceptable, while the structure stays closer to code tokens and easier for developers to understand.
 
-## Следующие шаги
-
-### Шаг 1 — Калибровка Layout на реальных макетах
-
-Текущие значения `Layout` приняты как рабочая стартовая версия.
-
-Следующий практический шаг:
-- пройтись по реальным макетам
-- проверить `Stack/tight`, `Stack/group`, `Grid/gutter`
-- при необходимости скорректировать alias mapping, не ломая саму архитектуру
-
-### Шаг 2 — Тест: применить Variables в компоненте
-Взять один компонент (кнопка или инпут) и связать со всеми переменными. Проверить что responsive modes работают.
-
-### Шаг 3 — Документация для разработчиков
-Обновить `docs/figma-token-component-reference.md` с полной картой CSS → Figma Variables.
+The idea of merging them into one `Responsive` collection is not being implemented now. It can be revisited later if the team experiences recurring pain from manually switching two collections.
 
 ---
 
-## Инструменты
+## Next Steps
 
-| Инструмент | Назначение |
-|------------|-----------|
-| **Microsoft Variables Import** (Figma plugin) | Импорт JSON в Variables с модами |
-| **MAXA Token Importer v5** | Локальный dev plugin, может загрузить свежий `import-bundle.json` из GitHub Raw |
-| **Token Studio** | ❌ Free plan не поддерживает Variables+Modes (Pro only) |
-| Tailwind v4 `@theme {}` | CSS токены становятся utilities автоматически |
+### Step 1 — Calibrate Layout Against Real Designs
+
+Current `Layout` values are accepted as the working starter version.
+
+Next practical step:
+
+- review real product layouts
+- validate `Stack/tight`, `Stack/group`, and `Grid/gutter`
+- adjust alias mapping if needed without breaking the architecture
+
+### Step 2 — Test Variables in One Component
+
+Take one component, such as Button or Input, and bind it to all relevant variables. Confirm that responsive modes work as expected.
+
+### Step 3 — Developer Documentation
+
+Update `docs/figma-token-component-reference.md` with the complete CSS -> Figma Variables map.
 
 ---
 
-## Принципы (зафиксированные в процессе)
+## Tools
 
-- **Всегда стандартизировать** — не копировать то что есть в Figma как есть, использовать лучший отраслевой стандарт
-- **Font-weight в Figma** — строки (`"Regular"`, `"SemiBold"`), в CSS — числа (400, 600)
-- **Примитивный spacing** — абсолютные значения; `Spacing` — semantic aliases; `Layout` — designer-facing usage layer
-- **Layout naming** — только через grouped path names (`Stack/*`, `Inline/*`, `Container/*`, `Grid/*`), чтобы Figma сохранял рабочие группы
-- **Grid/margin** и **Container/padding** — разные по смыслу токены, даже если временно совпадают по значению
-- **Brand surface foreground** — использовать `text/on-brand` поверх `bg/brand-solid`, не белый текст по умолчанию
-- **Figma import workflow** — после push в `main` можно обновить plugin через `Load latest from GitHub`, без copy-paste из `import-bundle.json`
-- **Типографика** — размерное именование (Untitled UI), не HTML (не h1/h2/p)
+| Tool | Purpose |
+|------|---------|
+| **MAXA Token Importer v5** | Local dev plugin for importing `import-bundle.json`; can optionally load the latest pushed bundle from GitHub Raw |
+| **Microsoft Variables Import** | Legacy/reference import approach for JSON variables with modes |
+| **Token Studio** | Free plan does not support Variables + Modes; Pro only |
+| Tailwind v4 `@theme {}` | CSS tokens become utilities automatically |
+
+---
+
+## Principles
+
+- **Always standardize**: do not copy Figma as-is when a better industry standard exists.
+- **Font weight in Figma**: strings such as `"Regular"` and `"SemiBold"`; in CSS, numeric values such as `400` and `600`.
+- **Primitive spacing**: absolute values; `Spacing` = semantic aliases; `Layout` = designer-facing usage layer.
+- **Layout naming**: grouped path names only (`Stack/*`, `Inline/*`, `Container/*`, `Grid/*`) so Figma preserves useful groups.
+- **Grid/margin** and **Container/padding**: separate semantic tokens, even if their values temporarily match.
+- **Brand surface foreground**: use `text/on-brand` over `bg/brand-solid`; do not assume white text by default.
+- **Figma import workflow**: for fast local iterations, use drag-and-drop / Choose files with `import-bundle.json`; after pushing to `main`, the plugin can optionally be updated via `Load latest from GitHub`.
+- **Typography**: size-based naming (Untitled UI), not HTML naming (not h1/h2/p).
+- **Responsive collections**: `Layout` and `Typography` are not merged into one collection at this stage, to preserve code synchronization and developer readability.
