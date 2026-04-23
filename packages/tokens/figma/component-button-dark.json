@@ -1,0 +1,115 @@
+{
+  "Button": {
+    "primary": {
+      "bg": { "$value": "{Color modes/action/primary}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/primary-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/primary-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/inverse}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/primary}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/primary-hover}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "secondary": {
+      "bg": { "$value": "{Color modes/action/neutral}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/neutral-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/neutral-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/primary}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/neutral}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/neutral-hover}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "outline": {
+      "bg": { "$value": "{Color modes/bg/secondary}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/neutral-subtle-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/neutral-subtle-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/primary}", "$type": "color" },
+      "border": { "$value": "{Color modes/border/primary}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/border/secondary}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "ghost": {
+      "bg": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/neutral-subtle-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/neutral-subtle-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/secondary}", "$type": "color" },
+      "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "link": {
+      "bg": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "bg-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "bg-active": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "text": { "$value": "{Color modes/action/primary}", "$type": "color" },
+      "text-hover": { "$value": "{Color modes/action/primary-hover}", "$type": "color" },
+      "text-active": { "$value": "{Color modes/action/primary-active}", "$type": "color" },
+      "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "success": {
+      "bg": { "$value": "{Color modes/action/positive}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/positive-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/positive-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/inverse}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/positive}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/positive-hover}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "danger": {
+      "bg": { "$value": "{Color modes/action/negative}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/negative-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/negative-active}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/inverse}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/negative}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/negative-hover}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/focus}", "$type": "color" }
+    },
+    "disabled": {
+      "opacity": { "$value": 50, "$type": "number" }
+    },
+    "size": {
+      "sm": {
+        "height": { "$value": 32, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-lg}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-md}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
+        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
+        "icon-size": { "$value": 16, "$type": "number" }
+      },
+      "md": {
+        "height": { "$value": 40, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-xl}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-md}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-md}", "$type": "number" },
+        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
+        "icon-size": { "$value": 20, "$type": "number" }
+      },
+      "lg": {
+        "height": { "$value": 48, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-2xl}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-lg}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-lg}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-lg}", "$type": "number" },
+        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
+        "icon-size": { "$value": 20, "$type": "number" }
+      }
+    },
+    "icon-only": {
+      "sm": {
+        "size": { "$value": 32, "$type": "number" }
+      },
+      "md": {
+        "size": { "$value": 40, "$type": "number" }
+      },
+      "lg": {
+        "size": { "$value": 48, "$type": "number" }
+      }
+    }
+  }
+}

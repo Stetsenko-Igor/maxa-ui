@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Token Importer v5</title>
+  <title>MAXA Token Importer v6</title>
   <style>
     html { height: 100%; }
     body {
@@ -44,6 +44,18 @@
       font-size: 12px; border: 1px solid #ddd; border-radius: 8px;
     }
     .row { display: flex; flex: 0 0 auto; gap: 8px; margin-top: 12px; }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #333;
+    }
+    .option input { margin-top: 2px; }
+    .option strong { display: block; color: #111; }
+    .option span { display: block; color: #666; }
     button { border: 0; border-radius: 8px; padding: 10px 12px; cursor: pointer; font-size: 12px; font-weight: 600; }
     button[disabled] { opacity: 0.55; cursor: not-allowed; }
     .primary { background: #111; color: white; }
@@ -65,7 +77,7 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Token Importer v5</h1>
+  <h1>MAXA Token Importer v6</h1>
   <p>Fast local workflow: choose or drag `import-bundle.json` from `packages/tokens/figma`, then import. GitHub loading is optional for the last pushed bundle.</p>
   <div class="dropzone" id="dropzone">
     Drop `import-bundle.json` here, or drop `manifest.json` together with the referenced token files.
@@ -77,11 +89,18 @@
   </div>
   <div class="editor">
     <textarea id="jsonInput"></textarea>
+    <label class="option" for="removeStaleVariables">
+      <input id="removeStaleVariables" type="checkbox" />
+      <span>
+        <strong>Remove stale variables during import</strong>
+        <span>Delete variables from imported collections when they exist in Figma but are missing from the bundle.</span>
+      </span>
+    </label>
     <div class="row">
       <button class="primary" id="importBtn">Import tokens + styles</button>
       <button class="secondary" id="closeBtn">Close</button>
     </div>
-    <div class="log" id="log">Ready. UI loaded: v5.</div>
+    <div class="log" id="log">Ready. UI loaded: v6.</div>
   </div>
   <script>
     const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
@@ -92,12 +111,14 @@
     const fileInput = document.getElementById('fileInput');
     const dropzone = document.getElementById('dropzone');
     const input = document.getElementById('jsonInput');
+    const removeStaleVariablesInput = document.getElementById('removeStaleVariables');
     const log = document.getElementById('log');
     const aliasDefaults = {
       Spacing: 'Primitives',
       'Color modes': 'Primitives',
+      Layout: 'Spacing',
     };
-    let currentLogs = ['Ready. UI loaded: v5.'];
+    let currentLogs = ['Ready. UI loaded: v6.'];
     let isImporting = false;
 
     function setLog(lines) {
@@ -120,6 +141,7 @@
       closeBtn.disabled = nextValue;
       fileInput.disabled = nextValue;
       input.disabled = nextValue;
+      removeStaleVariablesInput.disabled = nextValue;
     }
 
     async function loadLatestBundleFromGitHub() {
@@ -170,8 +192,21 @@
     importBtn.onclick = () => {
       if (isImporting) return;
       setImporting(true);
-      parent.postMessage({ pluginMessage: { type: 'import-tokens', payload: input.value } }, '*');
-      setLog(['Import started...', 'Processing collections, aliases, cleanup, and text styles...']);
+      parent.postMessage({
+        pluginMessage: {
+          type: 'import-tokens',
+          payload: input.value,
+          options: {
+            removeStaleVariables: removeStaleVariablesInput.checked,
+          },
+        },
+      }, '*');
+      setLog([
+        'Import started...',
+        removeStaleVariablesInput.checked
+          ? 'Processing collections, aliases, stale cleanup, and text styles...'
+          : 'Processing collections, aliases, and text styles. Stale cleanup is disabled...',
+      ]);
     };
 
     closeBtn.onclick = () => {
@@ -286,6 +321,10 @@
       if (!rawValue.startsWith('{') || !rawValue.endsWith('}')) return rawValue;
 
       const inner = rawValue.slice(1, -1).trim();
+
+      if (collectionName === 'Layout' && inner.startsWith('spacing-')) {
+        return `{Spacing/${inner}}`;
+      }
 
       if (collectionName === 'Containers' && !inner.includes('/') && !inner.includes('.')) {
         return `{Spacing/${inner}}`;

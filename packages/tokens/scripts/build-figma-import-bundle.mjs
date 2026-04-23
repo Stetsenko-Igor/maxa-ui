@@ -10,6 +10,7 @@ const outputPath = path.join(figmaDir, "import-bundle.json")
 const aliasDefaults = {
   Spacing: "Primitives",
   "Color modes": "Primitives",
+  Layout: "Spacing",
 }
 
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"))
@@ -63,6 +64,10 @@ function normalizeTokenValue(rawValue, collectionName) {
   if (!rawValue.startsWith("{") || !rawValue.endsWith("}")) return rawValue
 
   const inner = rawValue.slice(1, -1).trim()
+
+  if (collectionName === "Layout" && inner.startsWith("spacing-")) {
+    return `{Spacing/${inner}}`
+  }
 
   if (collectionName === "Containers" && !inner.includes("/") && !inner.includes(".")) {
     return `{Spacing/${inner}}`

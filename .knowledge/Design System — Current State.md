@@ -310,7 +310,7 @@ The local dev plugin lives in:
 
 Current plugin state:
 
-- version: `MAXA Token Importer v5`
+- version: `MAXA Token Importer v6`
 - can load the latest pushed `import-bundle.json` from GitHub Raw via `Load latest from GitHub`
 - can import `import-bundle.json`
 - supports drag-and-drop:
@@ -319,7 +319,7 @@ Current plugin state:
 - shows import progress
 - autoscrolls the log to the latest entry
 - keeps the import result area visible immediately, without needing to scroll the plugin UI
-- removes stale variables during re-import
+- can remove stale variables during re-import when `Remove stale variables during import` is enabled
 
 Fast local workflow for iterations:
 
@@ -347,3 +347,138 @@ Currently not implemented, only discussed or intentionally deferred:
 - possible mapping refinements for `Stack/tight`, `Stack/group`, and `Grid/gutter`
 
 Responsive typography modes are already implemented.
+
+## 13. Basic Tokens Components
+
+Current status: draft / not approved yet.
+
+Important:
+
+- The exact Basic Tokens component set has not been decided yet.
+- `packages/ui/src/base-tokens.tsx` currently contains a first exploratory React implementation.
+- This implementation should be treated as a proposal for discussion, not as a final API.
+- Do not build docs preview pages for Basic Tokens until the component direction is decided.
+
+Current draft exports from `@maxa/ui`:
+
+- `Box`
+- `Stack`
+- `Inline`
+- `Text`
+- `Heading`
+- `Surface`
+- `TokenSwatch`
+
+Purpose:
+
+- explore approved React primitives on top of MAXA CSS variables
+- clarify whether Basic Tokens should mean documentation components, internal React primitives, or both
+- keep spacing, radius, color, and typography usage tied to named tokens if this direction is accepted
+
+Current docs app state:
+
+- Basic Tokens docs preview is intentionally paused.
+- `apps/docs/app/page.tsx` should remain neutral until the component direction is decided.
+
+Validation:
+
+- `pnpm --filter @maxa/ui test`
+- `pnpm --filter @maxa/ui typecheck`
+- `pnpm --filter @maxa/ui lint`
+- `pnpm --filter @maxa/ui build`
+- `pnpm --filter @maxa/docs typecheck`
+- `pnpm --filter @maxa/docs lint`
+
+## 14. Component-based Tokens
+
+Current status: direction approved, implementation not started.
+
+Component-based Tokens are the next design-system layer.
+
+Layer order:
+
+1. foundation tokens
+2. `Component-based Tokens`
+3. Figma components
+4. React components
+5. documentation/catalog
+
+Important:
+
+- Component-based Tokens are not React primitives.
+- Do not treat `Box`, `Stack`, `Inline`, `Text`, `Heading`, `Surface`, or `TokenSwatch` as Component-based Tokens.
+- Do not build React components or docs preview pages until Component-based Tokens are agreed.
+- Full working notes live in `.knowledge/Component-based Tokens.md`.
+
+Phase 1 Component-based Tokens:
+
+- `Button`
+- `Input`
+- `Badge`
+- `Alert`
+
+`Card` is intentionally excluded because MAXA does not currently have an approved Card component.
+
+Naming direction:
+
+- Figma collection: `Component-based Tokens`
+- Figma paths use slash grouping, for example `Button/primary/bg-hover`.
+- Component group names use PascalCase, for example `Button`.
+- Token roles use lowercase, for example `primary`, `bg`, `text`, `border`, `size`, `md`.
+- Hyphens are used inside one segment for state or axis, for example `bg-hover`, `padding-x`.
+- Default state has no `default` suffix.
+- CSS projection uses lowercase hyphenated names, for example `--button-primary-bg-hover`.
+
+Current Button direction:
+
+- recommended variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `danger`
+- recommended sizes: `sm`, `md`, `lg`
+- recommended states: default, `hover`, `active`, `disabled`, `focus`
+- `primary` must follow `action/primary`, not `action/brand`
+- `success` should follow `action/positive`
+- `danger` should follow `action/negative`
+- Button disabled uses `Button/disabled/opacity = 50`
+- composite form controls may use explicit disabled surface/text/border tokens instead of opacity
+- focus starts with `border-focus`; effect/ring tokens are deferred until the system has an Effects layer
+- `ghost` uses transparent base/border and neutral subtle hover/active
+- `link` stays transparent and uses `action/primary` for text
+- Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
+- Button v1 source files are `component-button-light.json` and `component-button-dark.json`
+
+Deferred Button decisions:
+
+- whether filled status buttons need dedicated foreground tokens such as `text/on-primary`, `text/on-success`, `text/on-danger`
+- whether focus ring/elevation belongs in a future Effects collection
+- whether Button needs additional variants after real Figma component usage
+
+## 15. Project Narrative
+
+Short English explanation for team communication:
+
+> I started this because we need one shared language between Figma, code, and AI.
+>
+> Right now, the same things like spacing, colors, typography, and layout can be understood a bit differently by designers and developers. I want to turn these decisions into reusable tokens, so we do not solve the same problems again and again.
+>
+> This is not only about Figma. MAXA UI is planned as an installable package built around Tailwind, TypeScript, and React.
+>
+> So the same system we use in design should also be easy for developers to install and use in real projects. The React components I prepare will also be documented on a separate site and available in the repository, so developers do not need to recreate components in their own way, like they usually do. They can take the approved version and use it as we intended.
+>
+> I am also preparing instructions for AI agents, so AI can understand our system and build with our components instead of creating random patterns. This is a problem I currently run into regularly.
+>
+> This should help us work faster, keep things more consistent, and reduce the gap between design and code.
+>
+> Later, I will add examples, explanations, and visual guides, so everyone can understand how and where to use tokens, components, and patterns.
+>
+> For me this is not just a cleanup. It is the foundation for how we will design and build MAXA UI going forward.
+
+## 16. Next Conversation Starting Point
+
+Continue the next chat from **Component-based Tokens / Button**.
+
+Goal for the next stage:
+
+- validate and import Button v1 Component-based Tokens into Figma
+- do not create React components or docs/catalog until the Figma component-token layer is validated
+- keep React components and docs/catalog paused until Component-based Tokens are approved
+- keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned
+- reduce the design/code gap by giving developers approved components instead of asking them to recreate UI from interpretation

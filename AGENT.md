@@ -80,14 +80,67 @@ Docs: https://ui.maxa.com/docs
   - `48, 40, 34, 30, 26, 24, 24, 20, 18, 16, 12`
 - Figma import is handled by the local dev plugin in `.knowledge/Figma Import plugin/`.
 - Current plugin status:
-  - plugin version is `MAXA Token Importer v5`
+  - plugin version is `MAXA Token Importer v6`
   - supports loading latest `import-bundle.json` from GitHub Raw with the `Load latest from GitHub` button
   - supports paste of `import-bundle.json`
   - supports drag-and-drop of `manifest.json` plus token files
   - shows import progress with autoscroll
-  - removes stale variables from collections during re-import
+  - can remove stale variables from imported collections during re-import when the cleanup checkbox is enabled
 - The plugin cannot read local repo files directly from disk. The no-copy-paste workflow fetches:
   - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - `packages/tokens/figma/import-bundle.json` must be regenerated before import when token files change.
 - Command to regenerate bundle from repo root:
   - `pnpm figma:bundle`
+- Current next working focus for a new chat:
+  - continue from **Component-based Tokens / Button**
+  - define exact Button variants, sizes, states, and aliases before implementation
+  - keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned
+  - reduce the design/code gap by giving developers approved components instead of recreated interpretations
+- Component-based Tokens are the next approved direction.
+- Layer order is foundation tokens -> Component-based Tokens -> Figma components -> React components -> documentation/catalog.
+- Do not create React components or docs/catalog pages until Component-based Tokens are approved.
+- First Component-based Tokens scope:
+  - `Button`
+  - `Input`
+  - `Badge`
+  - `Alert`
+- `Card` is intentionally excluded because MAXA does not currently have an approved Card component.
+- Component-based Tokens naming:
+  - Figma collection: `Component-based Tokens`
+  - slash grouping in Figma, for example `Button/primary/bg-hover`
+  - PascalCase component group names, for example `Button`
+  - lowercase token roles, for example `primary`, `bg`, `text`, `border`, `size`, `md`
+  - hyphens inside one segment for state or axis, for example `bg-hover`, `padding-x`
+  - no `default` suffix for default state
+  - CSS projection uses lowercase hyphenated names, for example `--button-primary-bg-hover`
+- Current Button token direction:
+  - variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `danger`
+  - sizes: `sm`, `md`, `lg`
+  - states: default, `hover`, `active`, `disabled`, `focus`
+  - `primary` follows `action/primary`, not `action/brand`
+  - `success` follows `action/positive`
+  - `danger` follows `action/negative`
+  - Button disabled uses `Button/disabled/opacity = 50`
+  - composite form controls may use explicit disabled surface/text/border tokens instead of opacity
+  - focus starts with `border-focus`; effect/ring tokens are deferred until an Effects layer exists
+  - `ghost` uses transparent base/border and neutral subtle hover/active
+  - `link` stays transparent and uses `action/primary` for text
+  - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
+  - source files: `component-button-light.json`, `component-button-dark.json`
+- Deferred Button decisions:
+  - dedicated foreground tokens for filled status buttons, such as `text/on-primary`, `text/on-success`, `text/on-danger`
+  - future Effects collection for focus ring/elevation
+  - additional variants after real Figma component usage
+- Basic Tokens components are still draft / not approved yet.
+- `packages/ui/src/base-tokens.tsx` currently contains an exploratory React implementation.
+- Do not build or run Basic Tokens docs preview pages until the component direction is decided.
+- When the docs catalog is approved, it may closely follow the structure and visual language of references such as Untitled UI and shadcn/ui, adapted to MAXA components, tokens, and design decisions.
+- Current draft `@maxa/ui` exports:
+  - `Box`
+  - `Stack`
+  - `Inline`
+  - `Text`
+  - `Heading`
+  - `Surface`
+  - `TokenSwatch`
+- `apps/docs/app/page.tsx` imports `@maxa/ui` and acts as a temporary review surface.

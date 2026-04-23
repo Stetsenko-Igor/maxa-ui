@@ -201,6 +201,15 @@ describe("figma manifest", () => {
     expect(manifest.collections.Layout?.modes.Mobile).toEqual(["layout-mobile.json"])
   })
 
+  it("includes Component-based Tokens collection", () => {
+    expect(manifest.collections["Component-based Tokens"]?.modes.Light).toEqual([
+      "component-button-light.json",
+    ])
+    expect(manifest.collections["Component-based Tokens"]?.modes.Dark).toEqual([
+      "component-button-dark.json",
+    ])
+  })
+
   it("includes unified Primitives collection", () => {
     expect(manifest.collections.Primitives?.modes.Value).toEqual(["primitives.json"])
   })
@@ -212,6 +221,22 @@ describe("figma manifest", () => {
 
   it("does not keep deprecated Containers collection", () => {
     expect(manifest.collections.Containers).toBeUndefined()
+  })
+})
+
+describe("figma import bundle", () => {
+  const bundle = JSON.parse(
+    readFileSync(join(root, "figma/import-bundle.json"), "utf-8"),
+  ) as {
+    aliasDefaults: Record<string, string>
+    collections: Record<string, { modes: Record<string, Record<string, number | string>> }>
+  }
+
+  it("maps Layout short spacing aliases to the Spacing collection", () => {
+    expect(bundle.aliasDefaults.Layout).toBe("Spacing")
+    expect(bundle.collections.Layout?.modes.Desktop?.["Stack/tight"]).toBe("{Spacing/spacing-xs}")
+    expect(bundle.collections.Layout?.modes.Desktop?.["Container/padding"]).toBe("{Spacing/spacing-4xl}")
+    expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
   })
 })
 
@@ -464,6 +489,104 @@ describe("figma spacing primitive tokens", () => {
 
   it("adds readable spacing labels to primitive tokens", () => {
     expect(primitivesFile.Spacing["4 (16px)"]?.$description).toBe("Primitive spacing step 4 (16px).")
+  })
+})
+
+describe("figma component-based button tokens", () => {
+  type TokenLeaf = { $value: number | string; $type: string; $description?: string }
+  type ButtonTokens = {
+    Button: Record<string, Record<string, TokenLeaf | Record<string, TokenLeaf>>>
+  }
+
+  const lightFile = JSON.parse(
+    readFileSync(join(root, "figma/component-button-light.json"), "utf-8"),
+  ) as ButtonTokens
+
+  const darkFile = JSON.parse(
+    readFileSync(join(root, "figma/component-button-dark.json"), "utf-8"),
+  ) as ButtonTokens
+
+  it("keeps light and dark token names aligned", () => {
+    expect(Object.keys(lightFile.Button)).toEqual(Object.keys(darkFile.Button))
+
+    for (const key of Object.keys(lightFile.Button)) {
+      expect(Object.keys(lightFile.Button[key] ?? {})).toEqual(Object.keys(darkFile.Button[key] ?? {}))
+    }
+  })
+
+  it("defines approved Button variants", () => {
+    expect(Object.keys(lightFile.Button)).toEqual([
+      "primary",
+      "secondary",
+      "outline",
+      "ghost",
+      "link",
+      "success",
+      "danger",
+      "disabled",
+      "size",
+      "icon-only",
+    ])
+  })
+
+  it("aliases primary to action primary, not brand", () => {
+    expect(lightFile.Button.primary.bg?.$value).toBe("{Color modes/action/primary}")
+    expect(lightFile.Button.primary["bg-hover"]?.$value).toBe("{Color modes/action/primary-hover}")
+    expect(lightFile.Button.primary["bg-active"]?.$value).toBe("{Color modes/action/primary-active}")
+    expect(lightFile.Button.primary.text?.$value).toBe("{Color modes/text/inverse}")
+  })
+
+  it("defines success and danger from positive and negative actions", () => {
+    expect(lightFile.Button.success.bg?.$value).toBe("{Color modes/action/positive}")
+    expect(lightFile.Button.success["bg-hover"]?.$value).toBe("{Color modes/action/positive-hover}")
+    expect(lightFile.Button.danger.bg?.$value).toBe("{Color modes/action/negative}")
+    expect(lightFile.Button.danger["bg-hover"]?.$value).toBe("{Color modes/action/negative-hover}")
+  })
+
+  it("uses one disabled opacity token for Button", () => {
+    const lightDisabled = lightFile.Button.disabled as Record<string, TokenLeaf>
+    const darkDisabled = darkFile.Button.disabled as Record<string, TokenLeaf>
+
+    expect(lightDisabled.opacity?.$value).toBe(50)
+    expect(darkDisabled.opacity?.$value).toBe(50)
+
+    for (const variant of ["primary", "secondary", "outline", "ghost", "link", "success", "danger"]) {
+      const tokens = lightFile.Button[variant] as Record<string, TokenLeaf>
+      expect(tokens["bg-disabled"]).toBeUndefined()
+      expect(tokens["text-disabled"]).toBeUndefined()
+      expect(tokens["border-disabled"]).toBeUndefined()
+    }
+  })
+
+  it("keeps link transparent and action-colored", () => {
+    expect(lightFile.Button.link.bg?.$value).toBe("{Primitives/Colors/Base/Transparent}")
+    expect(lightFile.Button.link["bg-hover"]?.$value).toBe("{Primitives/Colors/Base/Transparent}")
+    expect(lightFile.Button.link.text?.$value).toBe("{Color modes/action/primary}")
+    expect(lightFile.Button.link["text-hover"]?.$value).toBe("{Color modes/action/primary-hover}")
+  })
+
+  it("defines size, typography, icon-size, and icon-only tokens", () => {
+    const size = lightFile.Button.size as Record<string, Record<string, TokenLeaf>>
+    const iconOnly = lightFile.Button["icon-only"] as Record<string, Record<string, TokenLeaf>>
+
+    expect(size.sm.height?.$value).toBe(32)
+    expect(size.sm["padding-x"]?.$value).toBe("{Spacing/spacing-lg}")
+    expect(size.sm.text?.$value).toBe("{Typography/Font size/text-sm}")
+    expect(size.sm["line-height"]?.$value).toBe("{Typography/Line height/text-sm}")
+    expect(size.sm.weight?.$value).toBe("{Typography/Font weight/semibold}")
+    expect(size.sm["icon-size"]?.$value).toBe(16)
+
+    expect(size.md.height?.$value).toBe(40)
+    expect(size.md["padding-x"]?.$value).toBe("{Spacing/spacing-xl}")
+    expect(size.md["icon-size"]?.$value).toBe(20)
+
+    expect(size.lg.height?.$value).toBe(48)
+    expect(size.lg.radius?.$value).toBe("{Radius/radius-lg}")
+    expect(size.lg["icon-size"]?.$value).toBe(20)
+
+    expect(iconOnly.sm.size?.$value).toBe(32)
+    expect(iconOnly.md.size?.$value).toBe(40)
+    expect(iconOnly.lg.size?.$value).toBe(48)
   })
 })
 

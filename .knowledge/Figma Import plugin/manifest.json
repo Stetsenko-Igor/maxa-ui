@@ -1,6 +1,6 @@
 {
-  "name": "MAXA Token Importer v5",
-  "id": "maxa-token-importer-v5",
+  "name": "MAXA Token Importer v6",
+  "id": "maxa-token-importer-v6",
   "api": "1.0.0",
   "main": "code.js",
   "ui": "ui.html",

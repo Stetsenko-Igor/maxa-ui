@@ -40,6 +40,12 @@
         "Tablet": ["layout-tablet.json"],
         "Mobile": ["layout-mobile.json"]
       }
+    },
+    "Component-based Tokens": {
+      "modes": {
+        "Light": ["component-button-light.json"],
+        "Dark": ["component-button-dark.json"]
+      }
     }
   }
 }

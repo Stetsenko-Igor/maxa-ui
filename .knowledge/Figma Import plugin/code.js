@@ -5,8 +5,16 @@ figma.ui.onmessage = async (msg) => {
     const logs = [];
     try {
       const bundle = parseBundle(msg.payload);
+      const options = {
+        removeStaleVariables: Boolean(msg.options && msg.options.removeStaleVariables),
+      };
       pushLog(logs, 'info', `Bundle parsed. Collections: ${Object.keys(bundle.collections).length}.`);
-      await importBundle(bundle, logs);
+      if (options.removeStaleVariables) {
+        pushLog(logs, 'warn', 'Stale variable cleanup is enabled. Variables missing from the bundle will be removed from imported collections.');
+      } else {
+        pushLog(logs, 'info', 'Stale variable cleanup is disabled. Existing variables missing from the bundle will be kept.');
+      }
+      await importBundle(bundle, logs, options);
       await createTypographyStyles(bundle, logs);
       pushLog(logs, 'success', 'Import finished successfully.');
       figma.ui.postMessage({ type: 'import-result', ok: true, logs });
@@ -34,7 +42,7 @@ function parseBundle(input) {
   return parsed;
 }
 
-async function importBundle(bundle, logs) {
+async function importBundle(bundle, logs, options = {}) {
   const allVariablesByPath = new Map();
   const desiredTokenNamesByCollection = new Map();
 
@@ -117,9 +125,13 @@ async function importBundle(bundle, logs) {
     }
   }
 
-  for (const [collectionName, desiredNames] of desiredTokenNamesByCollection.entries()) {
-    const collection = await getOrCreateCollection(collectionName, logs);
-    await removeStaleVariables(collection, desiredNames, logs);
+  if (options.removeStaleVariables) {
+    for (const [collectionName, desiredNames] of desiredTokenNamesByCollection.entries()) {
+      const collection = await getOrCreateCollection(collectionName, logs);
+      await removeStaleVariables(collection, desiredNames, logs);
+    }
+  } else {
+    pushLog(logs, 'info', 'Skipped stale variable cleanup.');
   }
 
   pushLog(logs, 'info', 'Variables import finished.');
@@ -301,6 +313,12 @@ function parseAliasPath(bundle, currentCollectionName, value) {
     const defaults = (bundle.aliasDefaults || {});
     const defaultCollection = defaults[currentCollectionName];
     if (defaultCollection) return `${defaultCollection}/${slashPath}`;
+  }
+
+  const defaults = (bundle.aliasDefaults || {});
+  const defaultCollection = defaults[currentCollectionName];
+  if (defaultCollection && !inner.includes('/') && !inner.includes('.')) {
+    return `${defaultCollection}/${inner}`;
   }
 
   return `${currentCollectionName}/${inner}`;
