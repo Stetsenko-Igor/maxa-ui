@@ -138,13 +138,26 @@ describe("semantic.css — bg + action", () => {
 
   it("defines all action tokens", () => {
     for (const t of [
-      "action-primary-normal", "action-primary-hover", "action-primary-active",
-      "action-success-normal", "action-success-hover",
-      "action-error-normal", "action-error-hover",
-      "action-outline-normal",
+      "action-primary", "action-primary-hover", "action-primary-active",
+      "action-primary-subtle", "action-primary-subtle-hover", "action-primary-subtle-active",
+      "action-neutral", "action-neutral-hover", "action-neutral-active",
+      "action-neutral-subtle", "action-neutral-subtle-hover", "action-neutral-subtle-active",
+      "action-brand", "action-brand-hover", "action-brand-active",
+      "action-brand-subtle", "action-brand-subtle-hover", "action-brand-subtle-active",
+      "action-positive", "action-positive-hover", "action-positive-active",
+      "action-positive-subtle", "action-positive-subtle-hover", "action-positive-subtle-active",
+      "action-negative", "action-negative-hover", "action-negative-active",
+      "action-negative-subtle", "action-negative-subtle-hover", "action-negative-subtle-active",
+      "action-warning", "action-warning-hover", "action-warning-active",
+      "action-warning-subtle", "action-warning-subtle-hover", "action-warning-subtle-active",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
+  })
+
+  it("maps CSS action primary to blue, not brand", () => {
+    expect(css).toContain("--color-action-primary:                 var(--color-blue-500);")
+    expect(css).not.toContain("--color-action-primary-normal:")
   })
 
   it("bg-nav uses hardcoded dark value", () => {

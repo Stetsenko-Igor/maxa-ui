@@ -79,7 +79,7 @@ describe("base token components", () => {
   it("renders Surface and TokenSwatch for documentation primitives", () => {
     render(
       <Surface data-testid="surface">
-        <TokenSwatch label="Brand" value="var(--color-action-primary-normal)" />
+        <TokenSwatch label="Primary" value="var(--color-action-primary)" />
       </Surface>,
     )
 
@@ -92,6 +92,6 @@ describe("base token components", () => {
     expect(screen.getByTestId("surface").getAttribute("style")).toContain(
       "border-radius: var(--radius-lg)",
     )
-    expect(screen.getByText("Brand")).toBeInTheDocument()
+    expect(screen.getByText("Primary")).toBeInTheDocument()
   })
 })

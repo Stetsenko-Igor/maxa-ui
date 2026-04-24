@@ -119,7 +119,9 @@ Docs: https://ui.maxa.com/docs
   - variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `danger`
   - sizes: `sm`, `md`, `lg`
   - states: default, `hover`, `active`, `disabled`, `focus`
-  - `primary` follows `action/primary`, not `action/brand`
+  - `primary` follows blue `action/primary`, not teal `action/brand`
+  - `secondary` is a filled neutral button using `action/neutral`; do not render it as a white outlined button
+  - `outline` is the bordered neutral button using `bg/secondary` and `border/primary`
   - `success` follows `action/positive`
   - `danger` follows `action/negative`
   - Button disabled uses `Button/disabled/opacity = 50`

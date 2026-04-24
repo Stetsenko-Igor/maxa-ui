@@ -108,9 +108,9 @@ The `Component-based Tokens` Figma collection uses `Light` and `Dark` modes so c
 
 Approved variants:
 
-- `primary` — main primary action, follows `action/primary`
-- `secondary` — neutral filled action
-- `outline` — bordered neutral action
+- `primary` — main blue primary action, follows `action/primary`, not `action/brand`
+- `secondary` — neutral filled action, not a white outlined button
+- `outline` — bordered neutral action using a surface fill and neutral border
 - `ghost` — transparent/subtle action
 - `link` — text-like action button
 - `success` — positive/success action
@@ -327,14 +327,14 @@ Use `Color modes` aliases as targets.
 
 | Component token | Alias target | Notes |
 |---|---|---|
-| `Button/primary/bg` | `{action/primary}` | Must follow Action / primary. |
+| `Button/primary/bg` | `{action/primary}` | Must follow blue Action / primary, not brand. |
 | `Button/primary/bg-hover` | `{action/primary-hover}` |  |
 | `Button/primary/bg-active` | `{action/primary-active}` |  |
 | `Button/primary/text` | `{text/inverse}` | Needs contrast review against blue primary. |
 | `Button/primary/border` | `{action/primary}` | Same color as fill unless product design requires otherwise. |
 | `Button/primary/border-hover` | `{action/primary-hover}` |  |
 | `Button/primary/border-focus` | `{border/focus}` | Shared focus color. |
-| `Button/secondary/bg` | `{action/neutral}` | Neutral filled action. |
+| `Button/secondary/bg` | `{action/neutral}` | Neutral filled action; do not render as an outline style. |
 | `Button/secondary/bg-hover` | `{action/neutral-hover}` |  |
 | `Button/secondary/bg-active` | `{action/neutral-active}` |  |
 | `Button/secondary/text` | `{text/primary}` |  |

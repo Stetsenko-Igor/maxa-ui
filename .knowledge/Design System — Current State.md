@@ -446,7 +446,9 @@ Current Button direction:
 - recommended variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `danger`
 - recommended sizes: `sm`, `md`, `lg`
 - recommended states: default, `hover`, `active`, `disabled`, `focus`
-- `primary` must follow `action/primary`, not `action/brand`
+- `primary` must follow blue `action/primary`, not teal `action/brand`
+- `secondary` is a filled neutral button using `action/neutral`; do not render it as a white outlined button
+- `outline` is the bordered neutral button using `bg/secondary` and `border/primary`
 - `success` should follow `action/positive`
 - `danger` should follow `action/negative`
 - Button disabled uses `Button/disabled/opacity = 50`

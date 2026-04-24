@@ -54,14 +54,42 @@
   --color-bg-warning-strong:    var(--color-orange-600);
 
   /* ── Action — interactive element backgrounds ───────────────────── */
-  --color-action-primary-normal:  var(--color-brand-800);
-  --color-action-primary-hover:   var(--color-brand-900);
-  --color-action-primary-active:  var(--color-brand-950);
-  --color-action-success-normal:  var(--color-green-700);
-  --color-action-success-hover:   var(--color-green-800);
-  --color-action-error-normal:    var(--color-red-700);
-  --color-action-error-hover:     var(--color-red-800);
-  --color-action-outline-normal:  var(--color-gray-300);
+  --color-action-primary:                 var(--color-blue-500);
+  --color-action-primary-hover:           var(--color-blue-600);
+  --color-action-primary-active:          var(--color-blue-700);
+  --color-action-primary-subtle:          var(--color-blue-50);
+  --color-action-primary-subtle-hover:    var(--color-blue-50);
+  --color-action-primary-subtle-active:   var(--color-blue-200);
+  --color-action-neutral:                 var(--color-gray-300);
+  --color-action-neutral-hover:           var(--color-gray-400);
+  --color-action-neutral-active:          var(--color-gray-500);
+  --color-action-neutral-subtle:          var(--color-gray-100);
+  --color-action-neutral-subtle-hover:    var(--color-gray-200);
+  --color-action-neutral-subtle-active:   var(--color-gray-300);
+  --color-action-brand:                   var(--color-brand-500);
+  --color-action-brand-hover:             var(--color-brand-600);
+  --color-action-brand-active:            var(--color-brand-700);
+  --color-action-brand-subtle:            var(--color-brand-50);
+  --color-action-brand-subtle-hover:      var(--color-brand-50);
+  --color-action-brand-subtle-active:     var(--color-brand-200);
+  --color-action-positive:                var(--color-green-500);
+  --color-action-positive-hover:          var(--color-green-600);
+  --color-action-positive-active:         var(--color-green-700);
+  --color-action-positive-subtle:         var(--color-green-50);
+  --color-action-positive-subtle-hover:   var(--color-green-50);
+  --color-action-positive-subtle-active:  var(--color-green-100);
+  --color-action-negative:                var(--color-red-500);
+  --color-action-negative-hover:          var(--color-red-600);
+  --color-action-negative-active:         var(--color-red-700);
+  --color-action-negative-subtle:         var(--color-red-50);
+  --color-action-negative-subtle-hover:   var(--color-red-50);
+  --color-action-negative-subtle-active:  var(--color-red-100);
+  --color-action-warning:                 var(--color-yellow-500);
+  --color-action-warning-hover:           var(--color-yellow-600);
+  --color-action-warning-active:          var(--color-yellow-700);
+  --color-action-warning-subtle:          var(--color-yellow-50);
+  --color-action-warning-subtle-hover:    var(--color-yellow-50);
+  --color-action-warning-subtle-active:   var(--color-yellow-100);
 }
 
 [data-theme="dark"] {
@@ -106,8 +134,40 @@
   --color-bg-warning-strong:    var(--color-orange-500);
 
   /* ── Action — dark ───────────────────────────────────────────────── */
-  --color-action-primary-normal:  var(--color-brand-600);
-  --color-action-primary-hover:   var(--color-brand-700);
-  --color-action-primary-active:  var(--color-brand-800);
-  --color-action-outline-normal:  var(--color-gray-700);
+  --color-action-primary:                 var(--color-blue-400);
+  --color-action-primary-hover:           var(--color-blue-300);
+  --color-action-primary-active:          var(--color-blue-200);
+  --color-action-primary-subtle:          var(--color-blue-950);
+  --color-action-primary-subtle-hover:    var(--color-blue-950);
+  --color-action-primary-subtle-active:   var(--color-blue-900);
+  --color-action-neutral:                 var(--color-gray-800);
+  --color-action-neutral-hover:           var(--color-gray-700);
+  --color-action-neutral-active:          var(--color-gray-600);
+  --color-action-neutral-subtle:          var(--color-gray-900);
+  --color-action-neutral-subtle-hover:    var(--color-gray-800);
+  --color-action-neutral-subtle-active:   var(--color-gray-700);
+  --color-action-brand:                   var(--color-brand-600);
+  --color-action-brand-hover:             var(--color-brand-500);
+  --color-action-brand-active:            var(--color-brand-400);
+  --color-action-brand-subtle:            var(--color-brand-950);
+  --color-action-brand-subtle-hover:      var(--color-brand-950);
+  --color-action-brand-subtle-active:     var(--color-brand-900);
+  --color-action-positive:                var(--color-green-400);
+  --color-action-positive-hover:          var(--color-green-300);
+  --color-action-positive-active:         var(--color-green-200);
+  --color-action-positive-subtle:         var(--color-green-950);
+  --color-action-positive-subtle-hover:   var(--color-green-950);
+  --color-action-positive-subtle-active:  var(--color-green-900);
+  --color-action-negative:                var(--color-red-400);
+  --color-action-negative-hover:          var(--color-red-300);
+  --color-action-negative-active:         var(--color-red-200);
+  --color-action-negative-subtle:         var(--color-red-950);
+  --color-action-negative-subtle-hover:   var(--color-red-950);
+  --color-action-negative-subtle-active:  var(--color-red-900);
+  --color-action-warning:                 var(--color-yellow-400);
+  --color-action-warning-hover:           var(--color-yellow-300);
+  --color-action-warning-active:          var(--color-yellow-200);
+  --color-action-warning-subtle:          var(--color-yellow-950);
+  --color-action-warning-subtle-hover:    var(--color-yellow-950);
+  --color-action-warning-subtle-active:   var(--color-yellow-900);
 }
