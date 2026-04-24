@@ -141,6 +141,97 @@ Disabled note:
 - do not extrapolate this rule to all components
 - future composite form controls may use explicit disabled `bg`, `text`, `border`, and `icon` tokens when the control surface needs tighter contrast control
 
+## Figma Button Component Taxonomy
+
+The Button token model may stay unified while the Figma component structure is intentionally split.
+
+Reason:
+
+- one giant `Button` component set becomes slow to browse and maintain
+- Figma variant combinations grow too quickly once semantic families, icon patterns, and special-purpose buttons are mixed together
+- designers need a predictable library structure more than one mathematically complete mega-component
+
+Approved direction for Figma:
+
+1. `Buttons/Button`
+2. `Buttons/Button destructive`
+3. `Buttons/Icon button`
+4. `Buttons/Button success` only if success proves to be a repeated product pattern
+5. `Buttons/Button close` only if close buttons need their own dedicated behavior and layout rules
+
+Structure guidance:
+
+- `Buttons/Button` should contain the primary day-to-day family:
+  - `primary`
+  - `secondary`
+  - `outline`
+  - `ghost`
+  - `link` only if MAXA treats it as a real button family rather than plain text styling
+- `Buttons/Button destructive` should contain destructive/error variants instead of putting them into the base `type` axis
+- `Buttons/Icon button` should contain square icon-only controls instead of mixing them into every text-button variant matrix
+- `Buttons/Button success` should be added only if product usage confirms that success actions are systemic rather than occasional
+- close buttons, dismiss buttons, and similarly specialized controls should not expand the base Button matrix unless they truly share the same API and layout behavior
+
+Do not optimize for one giant property table such as:
+
+- `type = primary | secondary | outline | ghost | link | success | danger | close | icon-only | ...`
+
+Prefer semantic component families over one oversized `type` axis.
+
+Accepted architectural rule:
+
+- token architecture can remain unified under `Component-based Tokens/Button/...`
+- Figma component sets may be split for performance, discoverability, and designer ergonomics
+- React may still expose a more compact API later if that proves useful in code
+
+### Recommended Variant Properties
+
+#### `Buttons/Button`
+
+Recommended properties:
+
+- `variant = primary | secondary | outline | ghost | link`
+- `size = sm | md | lg`
+- `state = default | hover | active | focus | disabled | loading`
+- `icon-leading = true | false`
+- `icon-trailing = true | false`
+
+Rules:
+
+- base Button always assumes a text label
+- do not add a `label = true | false` toggle
+- if there is no label, use `Buttons/Icon button`
+- do not include a `dropdown` property in the initial Button foundation
+- menu-button/dropdown behavior can be added later as a separate semantic pattern once the base Button taxonomy is stable
+
+#### `Buttons/Icon button`
+
+Recommended properties:
+
+- `variant = primary | secondary | outline | ghost`
+- `size = sm | md | lg`
+- `state = default | hover | active | focus | disabled`
+
+Rules:
+
+- icon-only buttons are square controls with one centered icon
+- do not mix icon-only controls into the base `Buttons/Button` set
+- `link` is excluded from the initial icon-button foundation
+
+#### `Buttons/Button destructive`
+
+Recommended properties:
+
+- `size = sm | md | lg`
+- `state = default | hover | active | focus | disabled | loading`
+- `icon-leading = true | false`
+- `icon-trailing = true | false`
+
+Rules:
+
+- destructive stays a separate semantic family instead of living inside the base `variant` axis
+- the property model should stay parallel to `Buttons/Button` so switching between families is easy for designers
+
 Approved token names:
 
 ```txt

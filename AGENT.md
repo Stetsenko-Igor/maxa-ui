@@ -78,7 +78,8 @@ Docs: https://ui.maxa.com/docs
   - `caption-xs = 8`
 - Current line heights are:
   - `48, 40, 34, 30, 26, 24, 24, 20, 18, 16, 12`
-- Figma import is handled by the local dev plugin in `.knowledge/Figma Import plugin/`.
+- Figma plugins live under `.knowledge/Figma Plugins/`.
+- Figma import is handled by the local dev plugin in `.knowledge/Figma Plugins/MAXA Token Importer/`.
 - Current plugin status:
   - plugin version is `MAXA Token Importer v6`
   - supports loading latest `import-bundle.json` from GitHub Raw with the `Load latest from GitHub` button
@@ -86,6 +87,7 @@ Docs: https://ui.maxa.com/docs
   - supports drag-and-drop of `manifest.json` plus token files
   - shows import progress with autoscroll
   - can remove stale variables from imported collections during re-import when the cleanup checkbox is enabled
+- Button migration work should use `.knowledge/Figma Plugins/MAXA Button Migration/`.
 - The plugin cannot read local repo files directly from disk. The no-copy-paste workflow fetches:
   - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - `packages/tokens/figma/import-bundle.json` must be regenerated before import when token files change.

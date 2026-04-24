@@ -1,0 +1,738 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>MAXA Button Migration v1</title>
+  <style>
+    html { height: 100%; }
+    body {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+      margin: 0;
+      padding: 16px;
+      font-family: Inter, system-ui, sans-serif;
+      color: #111;
+      background: #fff;
+    }
+    h1 { font-size: 16px; margin: 0 0 8px; }
+    p { margin: 0 0 12px; font-size: 12px; line-height: 1.45; color: #555; }
+    .panel {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 12px;
+      background: #fafafa;
+      margin-bottom: 12px;
+      flex: 0 0 auto;
+    }
+    .row { display: flex; gap: 8px; margin-top: 12px; }
+    .toolbar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .toolbar-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    button[disabled] { opacity: 0.55; cursor: not-allowed; }
+    .primary { background: #111; color: #fff; }
+    .secondary { background: #f3f3f3; color: #111; }
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #333;
+    }
+    .option input { margin-top: 2px; }
+    .option strong { display: block; color: #111; }
+    .option span span { display: block; color: #666; line-height: 1.4; }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 12px;
+      color: #333;
+    }
+    .field label {
+      font-weight: 600;
+      color: #111;
+    }
+    select {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      background: #fff;
+      color: #111;
+    }
+    .results {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
+      padding: 12px;
+      font-size: 12px;
+    }
+    .empty { color: #666; }
+    .card {
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      background: #fafafa;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .card-body {
+      padding: 0 10px 10px;
+      background: #fafafa;
+    }
+    .title {
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #111;
+    }
+    .meta, .warning, .legacy {
+      margin-top: 6px;
+      line-height: 1.45;
+      color: #444;
+      white-space: pre-wrap;
+    }
+    .warning { color: #8a5a00; }
+    .error {
+      color: #a40000;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+    }
+    .mapping {
+      margin-top: 8px;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .mapping-row {
+      display: grid;
+      grid-template-columns: 28px 1fr 1.1fr 1.2fr;
+      gap: 8px;
+      align-items: start;
+      padding: 8px 10px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 12px;
+    }
+    .mapping-row:first-child { border-top: 0; }
+    .mapping-head {
+      background: #f7f7f7;
+      font-weight: 700;
+      color: #222;
+    }
+    .mapping-note {
+      margin-top: 6px;
+      color: #666;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+    details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 10px;
+      background: #fafafa;
+      border-bottom: 1px solid transparent;
+    }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] > summary {
+      border-bottom-color: #ececec;
+    }
+    .summary-line {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) repeat(5, auto);
+      gap: 10px;
+      align-items: start;
+      font-size: 12px;
+      color: #333;
+    }
+    .summary-name {
+      font-weight: 700;
+      color: #111;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .summary-pill {
+      border: 1px solid #e3e3e3;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #fff;
+      color: #444;
+      white-space: nowrap;
+    }
+    .summary-caption {
+      margin-top: 6px;
+      color: #666;
+      font-size: 12px;
+    }
+    .results-summary {
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      background: #fafafa;
+      line-height: 1.45;
+      color: #444;
+    }
+    .results-summary strong {
+      color: #111;
+    }
+    .library-debug {
+      margin-top: 8px;
+      color: #666;
+      font-size: 11px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+    .visual-preview {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .preview-card {
+      border: 1px solid #e6e6e6;
+      border-radius: 10px;
+      background: #fff;
+      padding: 10px;
+    }
+    .preview-card-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+    .preview-canvas-ui {
+      min-height: 96px;
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-button-ui {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 148px;
+      padding: 0 18px;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 13px;
+      font-weight: 600;
+      box-sizing: border-box;
+    }
+    .preview-meta {
+      margin-top: 8px;
+      color: #666;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .token-status {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      color: #666;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+  <h1>MAXA Button Migration v1</h1>
+  <p>Analyze selected Button components first. You can keep detection automatic or constrain analysis to one Button family. Apply is intentionally deferred until the analysis path is validated on real samples.</p>
+
+  <div class="panel">
+    <div class="field">
+      <label for="targetFamily">Target family</label>
+      <select id="targetFamily">
+        <option value="auto-detect">Auto-detect</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+        <option value="outline">Outline</option>
+        <option value="ghost">Ghost</option>
+        <option value="link">Link</option>
+        <option value="destructive">Destructive</option>
+        <option value="icon-button">Icon button</option>
+      </select>
+    </div>
+    <label class="option" for="normalizeLayerNames">
+      <input id="normalizeLayerNames" type="checkbox" disabled />
+      <span>
+        <strong>Normalize layer names</strong>
+        <span>Planned for Apply. Disabled in v1 analyze-only build.</span>
+      </span>
+    </label>
+    <label class="option" for="normalizeProperties">
+      <input id="normalizeProperties" type="checkbox" disabled />
+      <span>
+        <strong>Normalize component properties</strong>
+        <span>Planned for Apply. Disabled in v1 analyze-only build.</span>
+      </span>
+    </label>
+    <label class="option" for="skipLowConfidence">
+      <input id="skipLowConfidence" type="checkbox" checked disabled />
+      <span>
+        <strong>Skip low-confidence items</strong>
+        <span>Will be used later during Apply.</span>
+      </span>
+    </label>
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <strong style="font-size:12px;color:#111;">Window size</strong>
+        <button class="secondary" id="resizeM" type="button">M</button>
+        <button class="secondary" id="resizeL" type="button">L</button>
+        <button class="secondary" id="resizeXL" type="button">XL</button>
+      </div>
+    </div>
+    <div class="row">
+      <button class="primary" id="analyzeBtn" type="button">Analyze selection</button>
+      <button class="secondary" id="previewBtn" type="button">Preview on canvas</button>
+      <button class="secondary" id="applyBtn" type="button">Apply mapping</button>
+      <button class="secondary" id="closeBtn" type="button">Close</button>
+    </div>
+    <div class="error" id="status"></div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="empty">Ready. Select Button components or component sets in Figma, then click Analyze selection.</div>
+  </div>
+
+  <script>
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const previewBtn = document.getElementById('previewBtn');
+    const applyBtn = document.getElementById('applyBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const results = document.getElementById('results');
+    const status = document.getElementById('status');
+    const targetFamily = document.getElementById('targetFamily');
+    const resizeM = document.getElementById('resizeM');
+    const resizeL = document.getElementById('resizeL');
+    const resizeXL = document.getElementById('resizeXL');
+    let currentSelectionMap = {};
+    let currentLibraryResolution = null;
+
+    analyzeBtn.onclick = () => {
+      status.textContent = '';
+      results.innerHTML = '<div class="empty">Analyzing current selection...</div>';
+      parent.postMessage({
+        pluginMessage: {
+          type: 'analyze-selection',
+          options: {
+            targetFamily: targetFamily.value,
+          },
+        },
+      }, '*');
+    };
+
+    applyBtn.onclick = () => {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'apply-mapping',
+          options: {
+            targetFamily: targetFamily.value,
+          },
+          selectionMap: currentSelectionMap,
+        },
+      }, '*');
+    };
+
+    previewBtn.onclick = () => {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'preview-canvas',
+          options: {
+            targetFamily: targetFamily.value,
+          },
+          selectionMap: currentSelectionMap,
+        },
+      }, '*');
+    };
+
+    closeBtn.onclick = () => {
+      parent.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
+    };
+
+    resizeM.onclick = () => resizeUi(900, 920);
+    resizeL.onclick = () => resizeUi(1080, 980);
+    resizeXL.onclick = () => resizeUi(1200, 1100);
+
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+
+      if (msg.type === 'analysis-result') {
+        if (!msg.ok) {
+          status.textContent = msg.error || 'Analysis failed.';
+          results.innerHTML = '<div class="empty">No analysis result available.</div>';
+          return;
+        }
+        renderAnalysis(msg.result);
+        return;
+      }
+
+      if (msg.type === 'apply-result') {
+        if (!msg.ok) {
+          status.textContent = msg.error || 'Apply failed.';
+          return;
+        }
+        const result = msg.result || {};
+        const missingLabel = result.missingTokens && result.missingTokens.length
+          ? ` Missing tokens: ${result.missingTokens.slice(0, 6).join(', ')}${result.missingTokens.length > 6 ? '…' : ''}.`
+          : '';
+        const errorsLabel = result.bindingErrors && result.bindingErrors.length
+          ? `\nBinding errors:\n${result.bindingErrors.join('\n')}`
+          : '';
+        status.textContent = `Applied ${result.appliedAssignments || 0} binding(s) across ${result.appliedComponents || 0} component(s). Imported library variables: ${result.importedLibraryVariables || 0}.${missingLabel}${errorsLabel}`;
+        return;
+      }
+
+      if (msg.type === 'preview-result') {
+        if (!msg.ok) {
+          status.textContent = msg.error || 'Preview failed.';
+          return;
+        }
+        const omitted = msg.result.omittedCount ? ` ${msg.result.omittedCount} additional item(s) were omitted to keep the preview manageable.` : '';
+        status.textContent = `Canvas preview created: ${msg.result.frameName}. Showing ${msg.result.itemCount} item(s).${omitted}`;
+      }
+    };
+
+    function renderAnalysis(result) {
+      currentSelectionMap = buildDefaultSelectionMap(result);
+      currentLibraryResolution = result.libraryResolution || null;
+      status.textContent = `Analyzed ${result.targetCount} target(s). Target family: ${result.targetFamily}.`;
+      if (!result.analyses || !result.analyses.length) {
+        results.innerHTML = '<div class="empty">No supported analysis targets found.</div>';
+        return;
+      }
+      results.innerHTML = renderResultsSummary(result) + result.analyses.map((item, index) => renderCard(item, index)).join('');
+    }
+
+    function renderCard(item, index) {
+      if (item.kind === 'COMPONENT_SET') {
+        const setCaption = [
+          `${item.childCount} variants`,
+          `${item.summary?.lowConfidenceCount || 0} low-confidence`,
+        ].join(' • ');
+        return `
+          <details class="card" ${index === 0 ? 'open' : ''}>
+            <summary>
+              <div class="summary-line">
+                <div class="summary-name">${escapeHtml(item.name)}</div>
+                <span class="summary-pill">set</span>
+                <span class="summary-pill">${escapeHtml(item.familyCandidate)}</span>
+                <span class="summary-pill">${escapeHtml(item.confidence)}</span>
+                <span class="summary-pill">${item.childCount} variants</span>
+                <span class="summary-pill">${item.summary?.lowConfidenceCount || 0} low</span>
+              </div>
+              <div class="summary-caption">${escapeHtml(setCaption)}</div>
+            </summary>
+            <div class="card-body">
+            <div class="meta">
+family: ${escapeHtml(item.familyCandidate)}
+confidence: ${escapeHtml(item.confidence)}
+variants: ${item.childCount}
+            </div>
+            ${item.warnings && item.warnings.length ? `<div class="warning">warnings:\n${escapeHtml(item.warnings.join('\n'))}</div>` : ''}
+            <div class="legacy">
+family votes: ${formatVoteSummary(item.summary.families)}
+variant votes: ${formatVoteSummary(item.summary.variants)}
+size votes: ${formatVoteSummary(item.summary.sizes)}
+state votes: ${formatVoteSummary(item.summary.states)}
+confidence votes: ${formatVoteSummary(item.summary.confidence)}
+            </div>
+            <div class="legacy">
+sample variants:
+${item.sampleVariants.map(renderVariantSummary).join('\n\n')}
+            </div>
+            ${item.lowConfidenceSamples && item.lowConfidenceSamples.length ? `<div class="warning">low-confidence samples:\n${escapeHtml(item.lowConfidenceSamples.map(renderLowConfidenceSummary).join('\n\n'))}</div>` : ''}
+            </div>
+          </details>
+        `;
+      }
+
+      const componentCaption = [
+        `variant ${item.variantCandidate}`,
+        `size ${item.sizeCandidate}`,
+        `state ${item.stateCandidate}`,
+      ].join(' • ');
+      return `
+        <details class="card" ${index === 0 ? 'open' : ''}>
+          <summary>
+            <div class="summary-line">
+              <div class="summary-name">${escapeHtml(item.name)}</div>
+              <span class="summary-pill">component</span>
+              <span class="summary-pill">${escapeHtml(item.variantCandidate)}</span>
+              <span class="summary-pill">${escapeHtml(item.sizeCandidate)}</span>
+              <span class="summary-pill">${escapeHtml(item.stateCandidate)}</span>
+              <span class="summary-pill">${escapeHtml(item.confidence)}</span>
+            </div>
+            <div class="summary-caption">${escapeHtml(componentCaption)}</div>
+          </summary>
+          <div class="card-body">
+          <div class="meta">
+family: ${escapeHtml(item.familyCandidate)}
+variant: ${escapeHtml(item.variantCandidate)}
+size: ${escapeHtml(item.sizeCandidate)}
+state: ${escapeHtml(item.stateCandidate)}
+confidence: ${escapeHtml(item.confidence)}
+target family: ${escapeHtml(item.targetFamily)}
+          </div>
+          ${renderParsedProperties(item.parsedProperties)}
+          <div class="legacy">
+surface: ${formatNode(item.anatomy.surfaceLayer)}
+label: ${item.anatomy.labelLayers.length ? item.anatomy.labelLayers.map(formatNode).join(', ') : 'none'}
+border: ${formatNode(item.anatomy.borderLayer)}
+leading icon: ${formatNode(item.anatomy.leadingIconLayer)}
+trailing icon: ${formatNode(item.anatomy.trailingIconLayer)}
+          </div>
+          ${renderVisualPreview(item)}
+          ${renderMappingPreview(item)}
+          <div class="legacy">
+local styles: ${item.legacyDependencies.localStyles.length ? escapeHtml(item.legacyDependencies.localStyles.join(', ')) : 'none'}
+hardcoded paints: ${item.legacyDependencies.hasHardcodedPaints ? 'yes' : 'no'}
+hardcoded strokes: ${item.legacyDependencies.hasHardcodedStrokes ? 'yes' : 'no'}
+hardcoded text color: ${item.legacyDependencies.hasHardcodedTextColor ? 'yes' : 'no'}
+          </div>
+          ${item.warnings && item.warnings.length ? `<div class="warning">warnings:\n${escapeHtml(item.warnings.join('\n'))}</div>` : ''}
+          </div>
+        </details>
+      `;
+    }
+
+    function renderResultsSummary(result) {
+      const analyses = result.analyses || [];
+      const setCount = analyses.filter((item) => item.kind === 'COMPONENT_SET').length;
+      const componentCount = analyses.filter((item) => item.kind === 'COMPONENT').length;
+      const highCount = analyses.filter((item) => item.confidence === 'high').length;
+      const mediumCount = analyses.filter((item) => item.confidence === 'medium').length;
+      const lowCount = analyses.filter((item) => item.confidence === 'low').length;
+
+      return `
+        <div class="results-summary">
+          <strong>Overview</strong><br />
+          targets: ${result.targetCount} • component sets: ${setCount} • components: ${componentCount}<br />
+          confidence: high ${highCount} • medium ${mediumCount} • low ${lowCount}<br />
+          target family: ${escapeHtml(result.targetFamily)}<br />
+          ${renderLibrarySummary(result.libraryResolution)}
+        </div>
+      `;
+    }
+
+    function renderLibrarySummary(libraryResolution) {
+      if (!libraryResolution) return 'library tokens: not checked yet';
+      if (!libraryResolution.available) {
+        return `library tokens: unavailable${libraryResolution.reason ? ` (${escapeHtml(libraryResolution.reason)})` : ''}`;
+      }
+      const collections = (libraryResolution.collections || []).map((item) => item.name).join(', ');
+      const collectionLabel = collections ? ` • collections: ${escapeHtml(collections)}` : '';
+      const debug = renderLibraryDebug(libraryResolution);
+      return `library tokens: resolved ${libraryResolution.resolvedCount} • missing ${libraryResolution.unresolvedCount}${collectionLabel}${debug}`;
+    }
+
+    function renderLibraryDebug(libraryResolution) {
+      const collections = libraryResolution.collections || [];
+      if (!collections.length) return '';
+      const lines = collections.map((collection) => {
+        const sampleNames = (collection.sampleNames || []).slice(0, 3).join(', ');
+        const sampleLabel = sampleNames ? `\n  samples: ${escapeHtml(sampleNames)}` : '';
+        const errorLabel = collection.error ? `\n  ERROR: ${escapeHtml(collection.error)}` : '';
+        return `${escapeHtml(collection.name)} (${collection.variableCount || 0})${sampleLabel}${errorLabel}`;
+      });
+      return `\n<div class="library-debug">collections debug:\n${lines.join('\n')}</div>`;
+    }
+
+    function renderVariantSummary(item) {
+      return `${item.name}
+  family: ${item.familyCandidate}
+  variant: ${item.variantCandidate}
+  size: ${item.sizeCandidate}
+  state: ${item.stateCandidate}
+  confidence: ${item.confidence}`;
+    }
+
+    function renderLowConfidenceSummary(item) {
+      return `${item.name}
+  variant: ${item.variantCandidate}
+  size: ${item.sizeCandidate}
+  state: ${item.stateCandidate}
+  warnings: ${item.warnings.join(' | ') || 'none'}`;
+    }
+
+    function renderParsedProperties(properties) {
+      const entries = Object.entries(properties || {});
+      if (!entries.length) return '';
+      return `<div class="legacy">parsed properties: ${escapeHtml(entries.map(([key, value]) => `${key}=${value}`).join(', '))}</div>`;
+    }
+
+    function renderMappingPreview(item) {
+      const preview = item.mappingPreview;
+      if (!preview) return '';
+      const rows = (preview.assignments || []).map((assignment) => {
+        const checked = isAssignmentSelected(item.id, assignment.id) ? 'checked' : '';
+        return `
+          <label class="mapping-row">
+            <input type="checkbox" data-component-id="${escapeHtml(item.id)}" data-assignment-id="${escapeHtml(assignment.id)}" ${checked} />
+            <span>${escapeHtml(assignment.role)}</span>
+            <span>${escapeHtml(formatNode(assignment.sourceNode))}</span>
+            <div>
+              <code>${escapeHtml(assignment.token)}</code>
+              ${renderTokenStatus(assignment.token)}
+            </div>
+          </label>
+        `;
+      }).join('');
+      const notes = (preview.notes || []).length ? `<div class="mapping-note">notes: ${escapeHtml((preview.notes || []).join(' | '))}</div>` : '';
+      return `
+        <div class="legacy">preview mapping:
+variant: ${escapeHtml(preview.targetVariant)}
+state: ${escapeHtml(preview.targetState)}
+size: ${escapeHtml(preview.targetSize)}</div>
+        <div class="mapping">
+          <div class="mapping-row mapping-head">
+            <span></span>
+            <span>Role</span>
+            <span>Current node</span>
+            <span>Target token</span>
+          </div>
+          ${rows}
+        </div>
+        ${notes}
+      `;
+    }
+
+    function renderTokenStatus(token) {
+      const resolution = currentLibraryResolution && currentLibraryResolution.tokenMap
+        ? currentLibraryResolution.tokenMap[token]
+        : null;
+      if (!resolution) return '<span class="token-status">library: unresolved</span>';
+      if (resolution.status === 'resolved') {
+        const matchType = resolution.matchType ? ` • ${escapeHtml(resolution.matchType)}` : '';
+        return `<span class="token-status">library: ${escapeHtml(resolution.collectionName)}${matchType}</span>`;
+      }
+      return '<span class="token-status">library: not found</span>';
+    }
+
+    function renderVisualPreview(item) {
+      if (!item.currentPreview || !item.targetPreview) return '';
+      return `
+        <div class="visual-preview">
+          ${renderPreviewCard('Before', item.currentPreview)}
+          ${renderPreviewCard('After', item.targetPreview)}
+        </div>
+      `;
+    }
+
+    function renderPreviewCard(title, preview) {
+      const buttonStyle = [
+        `background:${preview.bg}`,
+        `color:${preview.text}`,
+        `border-color:${preview.border}`,
+        `border-radius:${Math.max(0, preview.radius || 8)}px`,
+        `height:${Math.max(28, preview.height || 40)}px`,
+        `opacity:${preview.opacity === undefined ? 1 : preview.opacity}`,
+      ].join(';');
+      return `
+        <div class="preview-card">
+          <div class="preview-card-title">${escapeHtml(title)}</div>
+          <div class="preview-canvas-ui">
+            <div class="preview-button-ui" style="${buttonStyle}">
+              ${escapeHtml(preview.label || 'Button')}
+            </div>
+          </div>
+          <div class="preview-meta">
+            bg ${escapeHtml(preview.bg)}<br />
+            text ${escapeHtml(preview.text)}<br />
+            border ${escapeHtml(preview.border)}
+          </div>
+        </div>
+      `;
+    }
+
+    function formatNode(node) {
+      if (!node) return 'none';
+      return `${escapeHtml(node.name)} (${escapeHtml(node.type)})`;
+    }
+
+    function formatVoteSummary(entries) {
+      if (!entries || !entries.length) return 'none';
+      return entries.map((entry) => `${entry.key} (${entry.count})`).join(', ');
+    }
+
+    function buildDefaultSelectionMap(result) {
+      const map = {};
+      for (const item of result.analyses || []) {
+        if (item.kind !== 'COMPONENT') continue;
+        map[item.id] = {};
+        for (const assignment of item.mappingPreview?.assignments || []) {
+          map[item.id][assignment.id] = true;
+        }
+      }
+      return map;
+    }
+
+    function isAssignmentSelected(componentId, assignmentId) {
+      return Boolean(currentSelectionMap?.[componentId]?.[assignmentId]);
+    }
+
+    results.addEventListener('change', (event) => {
+      const target = event.target;
+      if (!target || target.type !== 'checkbox') return;
+      const componentId = target.getAttribute('data-component-id');
+      const assignmentId = target.getAttribute('data-assignment-id');
+      if (!componentId || !assignmentId) return;
+      currentSelectionMap[componentId] ||= {};
+      currentSelectionMap[componentId][assignmentId] = target.checked;
+    });
+
+    function resizeUi(width, height) {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'resize-ui',
+          width,
+          height,
+        },
+      }, '*');
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;');
+    }
+  </script>
+</body>
+</html>

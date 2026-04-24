@@ -11,10 +11,14 @@
     "test": "vitest run"
   },
   "peerDependencies": {
+    "@maxa/tokens": "workspace:^",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@maxa/tokens": "workspace:^",
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "typescript": "*",
     "vitest": "*",
     "react": "^19.0.0",

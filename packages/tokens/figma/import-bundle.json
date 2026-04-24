@@ -739,7 +739,8 @@
           "Button/size/lg/icon-size": 20,
           "Button/icon-only/sm/size": 32,
           "Button/icon-only/md/size": 40,
-          "Button/icon-only/lg/size": 48
+          "Button/icon-only/lg/size": 48,
+          "Button/font-family": "{Typography/Font family/body}"
         },
         "Dark": {
           "Button/primary/bg": "{Color modes/action/primary}",
@@ -820,7 +821,8 @@
           "Button/size/lg/icon-size": 20,
           "Button/icon-only/sm/size": 32,
           "Button/icon-only/md/size": 40,
-          "Button/icon-only/lg/size": 48
+          "Button/icon-only/lg/size": 48,
+          "Button/font-family": "{Typography/Font family/body}"
         }
       }
     }

@@ -146,7 +146,7 @@ Update `docs/figma-token-component-reference.md` with the complete CSS -> Figma 
 
 | Tool | Purpose |
 |------|---------|
-| **MAXA Token Importer v6** | Local dev plugin for importing `import-bundle.json`; can optionally load the latest pushed bundle from GitHub Raw and remove stale variables when cleanup is enabled |
+| **MAXA Token Importer v6** | Local dev plugin for importing `import-bundle.json`; stored under `.knowledge/Figma Plugins/MAXA Token Importer/`; can optionally load the latest pushed bundle from GitHub Raw and remove stale variables when cleanup is enabled |
 | **Microsoft Variables Import** | Legacy/reference import approach for JSON variables with modes |
 | **Token Studio** | Free plan does not support Variables + Modes; Pro only |
 | Tailwind v4 `@theme {}` | CSS tokens become utilities automatically |

@@ -110,6 +110,7 @@
       "lg": {
         "size": { "$value": 48, "$type": "number" }
       }
-    }
+    },
+    "font-family": { "$value": "{Typography/Font family/body}", "$type": "string" }
   }
 }

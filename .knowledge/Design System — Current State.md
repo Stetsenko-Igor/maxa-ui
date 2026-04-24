@@ -304,9 +304,13 @@ Current desktop values:
 
 ## 11. Figma Import Plugin
 
-The local dev plugin lives in:
+The local Figma plugin projects live in:
 
-- `.knowledge/Figma Import plugin/`
+- `.knowledge/Figma Plugins/`
+
+Current importer plugin lives in:
+
+- `.knowledge/Figma Plugins/MAXA Token Importer/`
 
 Current plugin state:
 
@@ -318,8 +322,16 @@ Current plugin state:
   - or `manifest.json` + referenced token files
 - shows import progress
 - autoscrolls the log to the latest entry
-- keeps the import result area visible immediately, without needing to scroll the plugin UI
-- can remove stale variables during re-import when `Remove stale variables during import` is enabled
+
+Current migration plugin project:
+
+- `.knowledge/Figma Plugins/MAXA Button Migration/`
+- version: `MAXA Button Migration v1`
+- current scope: analyze AND apply Component-based Token variables to legacy Button components
+- binds all 13 token roles: surface, border, label color, leading/trailing icon color, height, padding-x, gap, radius, fontSize, lineHeight, fontStyle, fontFamily
+- supports COMPONENT and COMPONENT_SET selections
+- requires MAXA Component-based Tokens published as Team Library in the target Figma file
+- full technical notes in `.knowledge/Button Migration Plugin — Phase 1.md`
 
 Fast local workflow for iterations:
 
@@ -444,6 +456,23 @@ Current Button direction:
 - `link` stays transparent and uses `action/primary` for text
 - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
 - Button v1 source files are `component-button-light.json` and `component-button-dark.json`
+- Figma component structure should be split by semantic family instead of one oversized Button set
+- current preferred Figma structure:
+  - `Buttons/Button`
+  - `Buttons/Button destructive`
+  - `Buttons/Icon button`
+  - `Buttons/Button success` only if product usage proves it is systemic
+  - `Buttons/Button close` only if it needs dedicated behavior/layout rules
+- current preferred base properties for `Buttons/Button`:
+  - `variant = primary | secondary | outline | ghost | link`
+  - `size = sm | md | lg`
+  - `state = default | hover | active | focus | disabled | loading`
+  - `icon-leading = true | false`
+  - `icon-trailing = true | false`
+- `Buttons/Button` always assumes a text label
+- no `label` toggle should exist in the base Button set
+- if there is no label, use `Buttons/Icon button`
+- `dropdown` is intentionally excluded from the initial Button foundation and can be added later as a separate semantic pattern
 
 Deferred Button decisions:
 
