@@ -526,7 +526,13 @@ describe("figma component-based button tokens", () => {
       "disabled",
       "size",
       "icon-only",
+      "font-family",
     ])
+  })
+
+  it("aliases Button font family to body typography", () => {
+    expect(lightFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
+    expect(darkFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
   })
 
   it("aliases primary to action primary, not brand", () => {
