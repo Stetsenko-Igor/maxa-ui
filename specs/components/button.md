@@ -1,0 +1,188 @@
+# Button — Component Spec
+
+## Overview
+
+The MAXA Button is a multi-variant interactive element. It uses component-level tokens that alias semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
+
+**Component package:** `@maxa/ui` → `Button`
+**Token source:** `packages/tokens/figma/component-button-light.json` + `component-button-dark.json`
+**Pattern:** `forwardRef + cva + Slot (Radix)`
+
+---
+
+## Anatomy
+
+```
+[ leading-icon? ][ label ][ trailing-icon? ]
+```
+
+- **Icon-only** button: no label, uses `Button/icon-only/<size>/size` for square dimensions
+- **Label button**: always has a text label
+- Never combine icon-only layout with a visible label — if label exists, use standard button
+
+---
+
+## Variants
+
+### `primary`
+- **Use when:** Main call-to-action. One per view/section.
+- **Background:** `--button-primary-bg` → `action/primary` (blue)
+- **Text:** `--button-primary-text` → `text/inverse` (white)
+- **DO NOT** use brand teal for primary. Primary = blue (`action/primary`).
+
+### `secondary`
+- **Use when:** Secondary action alongside a primary. Supporting action.
+- **Background:** `--button-secondary-bg` → `action/neutral` (gray, filled)
+- **Text:** `--button-secondary-text` → `text/primary`
+- **DO NOT** render secondary as an outlined/white button — it is a filled neutral button.
+
+### `outline`
+- **Use when:** Tertiary action. Low visual weight but still prominent enough for a border.
+- **Background:** `--button-outline-bg` → `bg/secondary` (very light, near-white)
+- **Border:** `--button-outline-border` → `border/primary`
+- **Text:** `--button-outline-text` → `text/primary`
+
+### `ghost`
+- **Use when:** Inline actions, toolbar buttons, icon actions in dense UI.
+- **Background:** transparent (no fill, no border at rest)
+- **Hover:** `--button-ghost-bg-hover` → `action/neutral-subtle-hover`
+- **Text:** `--button-ghost-text` → `text/secondary`
+
+### `link`
+- **Use when:** Inline text links that behave as buttons, navigation-adjacent actions.
+- **Background:** transparent, no border
+- **Text:** `--button-link-text` → `action/primary` (blue)
+- **Hover text:** `--button-link-text-hover` → `action/primary-hover`
+- No underline by default in MAXA UI — relies on color context.
+
+### `success`
+- **Use when:** Confirming a positive/completed action (e.g. "Mark as complete", "Approve").
+- **Background:** `--button-success-bg` → `action/positive` (green)
+- **Text:** `--button-success-text` → `text/inverse`
+- Use sparingly — only when the green color meaningfully communicates the action's outcome.
+
+### `danger`
+- **Use when:** Destructive, irreversible actions (delete, remove, revoke).
+- **Background:** `--button-danger-bg` → `action/negative` (red)
+- **Text:** `--button-danger-text` → `text/inverse`
+- Always pair with a confirmation dialog for truly destructive actions.
+
+---
+
+## Sizes
+
+| Size | Height | Padding X | Gap | Radius | Font size | Icon size |
+|------|--------|-----------|-----|--------|-----------|-----------|
+| `sm` | 32px | 12px | 6px | 8px (radius-md) | 12px (text-sm) | 16px |
+| `md` | 40px | 16px | 8px | 8px (radius-md) | 14px (text-md) | 20px |
+| `lg` | 48px | 20px | 8px | 10px (radius-lg) | 16px (text-lg) | 20px |
+
+Font weight for all sizes: SemiBold (600).
+
+**Icon-only square sizes:**
+- `sm` → 32×32px
+- `md` → 40×40px
+- `lg` → 48×48px
+
+---
+
+## States
+
+| State | How to apply | Token pattern |
+|-------|-------------|---------------|
+| Default | No modifier | `--button-{variant}-bg` |
+| Hover | `:hover` | `--button-{variant}-bg-hover` |
+| Active | `:active` | `--button-{variant}-bg-active` |
+| Focus | `:focus-visible` | `--button-{variant}-border-focus` → `border/focus` |
+| Disabled | `disabled` attr or `aria-disabled` | `opacity: var(--button-disabled-opacity)` = 50% |
+| Loading | custom state | replace label with spinner, keep size/variant |
+
+**Disabled rule:** Apply `--button-disabled-opacity` (50%) to the whole button element via `opacity`. Do not individually override background/text/border for disabled state.
+
+**Focus rule:** Focus ring uses `--button-{variant}-border-focus` which maps to `--color-border-focus`. A full Effects/ring token layer is deferred.
+
+---
+
+## Token Reference
+
+### Primary variant tokens
+```css
+--button-primary-bg:            var(--color-action-primary);
+--button-primary-bg-hover:      var(--color-action-primary-hover);
+--button-primary-bg-active:     var(--color-action-primary-active);
+--button-primary-text:          var(--color-text-inverse);
+--button-primary-border:        var(--color-action-primary);
+--button-primary-border-hover:  var(--color-action-primary-hover);
+--button-primary-border-focus:  var(--color-border-focus);
+```
+
+### Size md tokens
+```css
+--button-size-md-height:      40px;
+--button-size-md-padding-x:   var(--spacing-xl);      /* 16px */
+--button-size-md-gap:         var(--spacing-md);       /* 8px */
+--button-size-md-radius:      var(--radius-md);        /* 8px */
+--button-size-md-text:        var(--font-size-text-md);/* 14px */
+--button-size-md-line-height: var(--line-height-text-md);
+--button-size-md-weight:      var(--font-weight-semibold);
+--button-size-md-icon-size:   20px;
+```
+
+### Disabled + font
+```css
+--button-disabled-opacity: 0.5;
+--button-font-family:      var(--font-family-body);  /* Montserrat */
+```
+
+---
+
+## Code Example (React + CVA)
+
+```tsx
+<Button variant="primary" size="md">
+  Save changes
+</Button>
+
+<Button variant="danger" size="sm">
+  Delete
+</Button>
+
+<Button variant="ghost" size="md" aria-label="Settings">
+  <SettingsIcon />
+</Button>
+```
+
+---
+
+## What NOT to do
+
+| ❌ Wrong | ✅ Correct |
+|---------|-----------|
+| `background: #0265DC` | `background: var(--button-primary-bg)` |
+| `border-radius: 8px` | `border-radius: var(--button-size-md-radius)` |
+| Using `primary` for every action | Reserve `primary` for one CTA per view |
+| White text on `success`/`danger` via `text-inverse` | Use `--button-success-text` / `--button-danger-text` |
+| `secondary` as outlined white button | `secondary` is a filled gray button |
+| Custom disabled styles | Use `--button-disabled-opacity: 0.5` on the element |
+
+---
+
+## Figma component structure
+
+```
+Buttons/
+├── Button           — text label buttons (variant + size + state + icon-leading/trailing props)
+├── Button destructive — red danger variant
+└── Icon button      — icon-only, square
+```
+
+`Buttons/Button success` is only added if real product usage proves it is systemic.
+
+---
+
+## Source files
+
+- Token JSON: `packages/tokens/figma/component-button-light.json`
+- Token JSON: `packages/tokens/figma/component-button-dark.json`
+- Figma collection: `Component-based Tokens` → `Button/*`
+- React component: `packages/ui/src/components/button/` (reference pattern)

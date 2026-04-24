@@ -8,6 +8,48 @@ Component library: @maxa/ui (React + TypeScript + Radix UI + Tailwind v4)
 
 Docs: https://ui.maxa.com/docs
 
+---
+
+## LLM Workflow — Read Before Writing Code
+
+MAXA uses a structured spec layer to prevent token fabrication. Every design value in this system has a named token. Your job is to use the right token, not invent values.
+
+### Step-by-step before writing any UI
+
+1. **Read `specs/README.md`** — understand the directory structure
+2. **Read the relevant foundation spec** (`specs/foundations/color.md`, `specs/foundations/spacing.md`, etc.)
+3. **If building a known component** — read `specs/components/<name>.md`
+4. **For button/action decisions** — read `specs/patterns/interactive-hierarchy.md`
+5. **Look up CSS variable names** in `specs/tokens-reference.md`
+
+### Non-negotiable rules
+
+| Rule | Why |
+|------|-----|
+| No hardcoded hex colors | Every color has a semantic token |
+| No hardcoded `px` values from the scale | Every spacing/radius step has a token |
+| No primitive tokens in component code | Use semantic or component tokens only |
+| One `primary` button per view | See interactive-hierarchy spec |
+| No separate `:dark` color selectors | Dark mode is at the token level via `data-theme="dark"` |
+
+### Audit
+
+Before submitting code:
+```bash
+node scripts/audit-tokens.mjs
+```
+
+Exit code 1 = violations. Fix before committing.
+
+### Token architecture
+
+```
+Primitives  →  Semantic tokens  →  Component tokens  →  Code
+#0265DC        --color-action-primary   --button-primary-bg   background: var(--button-primary-bg)
+```
+
+---
+
 ## Current Design System Decisions
 
 - Project documentation must be written in English.
