@@ -20,7 +20,7 @@ describe("base token components", () => {
       "background-color: var(--color-bg-surface-layer1)",
     )
     expect(screen.getByTestId("box").getAttribute("style")).toContain(
-      "color: var(--color-content-primary)",
+      "color: var(--color-text-primary)",
     )
     expect(screen.getByTestId("box").getAttribute("style")).toContain("padding: var(--spacing-4)")
     expect(screen.getByTestId("box").getAttribute("style")).toContain(

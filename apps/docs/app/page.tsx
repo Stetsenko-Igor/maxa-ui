@@ -8,7 +8,7 @@ export default function Home() {
         fontFamily: "var(--font-body)",
       }}
     >
-      <h1 style={{ color: "var(--color-content-primary)", marginBottom: "var(--spacing-6)" }}>
+      <h1 style={{ color: "var(--color-text-primary)", marginBottom: "var(--spacing-6)" }}>
         MAXA UI Tokens
       </h1>
     </main>

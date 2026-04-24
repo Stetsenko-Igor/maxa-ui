@@ -50,14 +50,14 @@
 ### Avoid
 
 - Do not use `-subtle` as the only variant. That mixes Radix and Untitled UI concepts too loosely.
-- Do not use `content-` instead of `text-`; it is less intuitive for developers and AI agents.
+- Use `text-` for text and icon color roles.
 - Do not use slash notation for CSS token names such as `bg/overlay`; use hyphenated names in CSS such as `bg-overlay`.
 - Do not copy a Tailwind-first structure. shadcn does that because it is Tailwind-first; MAXA is Design System-first.
 - Do not store Tailwind colors in a separate collection; they are part of the primitive palette.
 
 ### Do
 
-- Use the `text-` prefix. It is closer to CSS `color:` and clearer for AI agents than `content-`.
+- Use the `text-` prefix. It is close to CSS `color:` and clear for AI agents.
 - Use `primary / secondary / tertiary` for neutral hierarchy levels, following the Untitled UI standard.
 - Use `-subtle` for weak tints. It is widely understood among developers through Radix/shadcn.
 - Use `-solid` for saturated filled surfaces, following Untitled UI patterns for buttons and badges.

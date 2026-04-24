@@ -4,19 +4,18 @@
 /* because consumers run @import "tailwindcss" before this file.    */
 
 :root {
-  /* ── Content — text AND icon fill ──────────────────────────────── */
-  --color-content-primary:       var(--color-gray-950);
-  --color-content-secondary:     var(--color-gray-800);
-  --color-content-tertiary:      var(--color-gray-600);
-  --color-content-placeholder:   var(--color-gray-500);
-  --color-content-disabled:      var(--color-gray-400);
-  --color-content-on-brand:      var(--color-white);
-  --color-content-brand:         var(--color-brand-800);
-  --color-content-info:          var(--color-blue-700);
-  --color-content-success:       var(--color-green-800);
-  --color-content-error:         var(--color-red-700);
-  --color-content-warning:       var(--color-orange-700);
-  --color-content-neutral:       var(--color-gray-700);
+  /* ── Text — text and icon fill roles ────────────────────────────── */
+  --color-text-primary:       var(--color-gray-950);
+  --color-text-secondary:     var(--color-gray-800);
+  --color-text-tertiary:      var(--color-gray-600);
+  --color-text-disabled:      var(--color-gray-400);
+  --color-text-inverse:       var(--color-white);
+  --color-text-on-brand:      var(--color-gray-950);
+  --color-text-brand:         var(--color-brand-600);
+  --color-text-info:          var(--color-blue-600);
+  --color-text-success:       var(--color-green-600);
+  --color-text-error:         var(--color-red-600);
+  --color-text-warning:       var(--color-yellow-600);
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-default:        var(--color-gray-300);
@@ -66,18 +65,18 @@
 }
 
 [data-theme="dark"] {
-  /* ── Content — dark ─────────────────────────────────────────────── */
-  --color-content-primary:       var(--color-gray-50);
-  --color-content-secondary:     var(--color-gray-200);
-  --color-content-tertiary:      var(--color-gray-400);
-  --color-content-placeholder:   var(--color-gray-500);
-  --color-content-disabled:      var(--color-gray-600);
-  --color-content-brand:         var(--color-brand-700);
-  --color-content-info:          var(--color-blue-400);
-  --color-content-success:       var(--color-green-400);
-  --color-content-error:         var(--color-red-400);
-  --color-content-warning:       var(--color-orange-400);
-  --color-content-neutral:       var(--color-gray-400);
+  /* ── Text — dark ────────────────────────────────────────────────── */
+  --color-text-primary:       var(--color-gray-50);
+  --color-text-secondary:     var(--color-gray-200);
+  --color-text-tertiary:      var(--color-gray-500);
+  --color-text-disabled:      var(--color-gray-700);
+  --color-text-inverse:       var(--color-gray-900);
+  --color-text-on-brand:      var(--color-gray-950);
+  --color-text-brand:         var(--color-brand-400);
+  --color-text-info:          var(--color-blue-400);
+  --color-text-success:       var(--color-green-400);
+  --color-text-error:         var(--color-red-400);
+  --color-text-warning:       var(--color-yellow-400);
 
   /* ── Border — dark ───────────────────────────────────────────────── */
   --color-border-default:        var(--color-gray-700);

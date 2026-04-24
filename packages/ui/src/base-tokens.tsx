@@ -26,19 +26,18 @@ type ElementName =
   | "section"
   | "span"
 
-export type ContentColorToken =
+export type TextColorToken =
   | "primary"
   | "secondary"
   | "tertiary"
-  | "placeholder"
   | "disabled"
+  | "inverse"
   | "on-brand"
   | "brand"
   | "info"
   | "success"
   | "error"
   | "warning"
-  | "neutral"
 
 export type BackgroundColorToken =
   | "default"
@@ -80,7 +79,7 @@ export type BoxProps = HTMLAttributes<HTMLElement> & {
   as?: ElementName
   background?: BackgroundColorToken
   borderColor?: BorderColorToken
-  color?: ContentColorToken
+  color?: TextColorToken
   p?: SpaceToken
   px?: SpaceToken
   py?: SpaceToken
@@ -105,7 +104,7 @@ type TextElement = "p" | "span" | "div" | "label"
 
 export type TextProps = Omit<BoxProps, "as" | "color"> & {
   as?: TextElement
-  color?: ContentColorToken
+  color?: TextColorToken
   size?: Extract<FontSizeToken, `text-${string}` | `caption-${string}`>
   weight?: FontWeightToken
 }
@@ -114,7 +113,7 @@ type HeadingElement = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 
 export type HeadingProps = Omit<BoxProps, "as" | "color"> & {
   as?: HeadingElement
-  color?: ContentColorToken
+  color?: TextColorToken
   size?: Extract<FontSizeToken, `heading-${string}`>
   weight?: FontWeightToken
 }
@@ -128,12 +127,12 @@ export type SurfaceProps = Omit<BoxProps, "background" | "borderColor" | "radius
 export type TokenSwatchProps = HTMLAttributes<HTMLDivElement> & {
   label: string
   value: string
-  tone?: "background" | "border" | "content"
+  tone?: "background" | "border" | "text"
 }
 
 const spaceVar = (token: SpaceToken) => `var(--spacing-${token})`
 const radiusVar = (token: RadiusToken) => `var(--radius-${token})`
-const contentColorVar = (token: ContentColorToken) => `var(--color-content-${token})`
+const textColorVar = (token: TextColorToken) => `var(--color-text-${token})`
 const backgroundColorVar = (token: BackgroundColorToken) => `var(--color-bg-${token})`
 const borderColorVar = (token: BorderColorToken) => `var(--color-border-${token})`
 const textVar = (token: FontSizeToken) => `var(--text-${token})`
@@ -145,7 +144,7 @@ function tokenBoxStyle(props: BoxProps): CSSProperties {
 
   if (props.background) tokenStyle.backgroundColor = backgroundColorVar(props.background)
   if (props.borderColor) tokenStyle.borderColor = borderColorVar(props.borderColor)
-  if (props.color) tokenStyle.color = contentColorVar(props.color)
+  if (props.color) tokenStyle.color = textColorVar(props.color)
   if (props.radius) tokenStyle.borderRadius = radiusVar(props.radius)
   if (props.p) tokenStyle.padding = spaceVar(props.p)
   if (props.px) {
@@ -230,7 +229,7 @@ export function Text(props: TextProps): ReactElement {
     ...boxProps
   } = props
   const textStyle: CSSProperties = {
-    color: contentColorVar(color),
+    color: textColorVar(color),
     fontFamily: "var(--font-body)",
     fontSize: textVar(size),
     fontWeight: weightVar(weight),
@@ -251,7 +250,7 @@ export function Heading(props: HeadingProps): ReactElement {
     ...boxProps
   } = props
   const headingStyle: CSSProperties = {
-    color: contentColorVar(color),
+    color: textColorVar(color),
     fontFamily: "var(--font-body)",
     fontSize: textVar(size),
     fontWeight: weightVar(weight),
@@ -321,7 +320,7 @@ export function TokenSwatch({
   }
 
   const labelStyle: CSSProperties = {
-    color: contentColorVar("primary"),
+    color: textColorVar("primary"),
     display: "block",
     fontFamily: "var(--font-body)",
     fontSize: textVar("text-sm"),
@@ -330,7 +329,7 @@ export function TokenSwatch({
   }
 
   const codeStyle: CSSProperties = {
-    color: contentColorVar("tertiary"),
+    color: textColorVar("tertiary"),
     display: "block",
     fontFamily: "var(--font-mono)",
     fontSize: textVar("caption-sm"),
@@ -340,12 +339,12 @@ export function TokenSwatch({
 
   if (tone === "background") chipStyle.background = value
   if (tone === "border") chipStyle.borderColor = value
-  if (tone === "content") chipStyle.color = value
+  if (tone === "text") chipStyle.color = value
 
   return (
     <div {...props} style={{ ...swatchStyle, ...style }}>
       <span aria-hidden="true" style={chipStyle}>
-        {tone === "content" ? "Aa" : null}
+        {tone === "text" ? "Aa" : null}
       </span>
       <span>
         <strong style={labelStyle}>{label}</strong>

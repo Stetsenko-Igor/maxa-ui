@@ -37,7 +37,7 @@
   "spacing-2xl": {
     "$value": "{Primitives/Spacing/5 (20px)}",
     "$type": "number",
-    "$description": "Alias: Spacing/5 (20px). Spacious gap for grouped content."
+    "$description": "Alias: Spacing/5 (20px). Spacious gap for grouped items."
   },
   "spacing-3xl": {
     "$value": "{Primitives/Spacing/6 (24px)}",

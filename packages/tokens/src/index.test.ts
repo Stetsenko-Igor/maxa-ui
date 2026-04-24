@@ -82,17 +82,17 @@ describe("primitives.css — gray", () => {
   })
 })
 
-// ── semantic.css — content + border ───────────────────────────────────────
+// ── semantic.css — text + border ──────────────────────────────────────────
 
-describe("semantic.css — content + border", () => {
+describe("semantic.css — text + border", () => {
   const css = readFileSync(join(src, "semantic.css"), "utf-8")
 
-  it("defines all 12 content tokens in :root", () => {
+  it("defines all 11 text tokens in :root", () => {
     for (const t of [
-      "content-primary", "content-secondary", "content-tertiary",
-      "content-placeholder", "content-disabled", "content-on-brand",
-      "content-brand", "content-info", "content-success",
-      "content-error", "content-warning", "content-neutral",
+      "text-primary", "text-secondary", "text-tertiary",
+      "text-disabled", "text-inverse", "text-on-brand",
+      "text-brand", "text-info", "text-success",
+      "text-error", "text-warning",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -109,10 +109,10 @@ describe("semantic.css — content + border", () => {
     }
   })
 
-  it("has dark mode section with content-primary override", () => {
+  it("has dark mode section with text-primary override", () => {
     const darkIdx = css.indexOf('[data-theme="dark"]')
     expect(darkIdx).toBeGreaterThan(-1)
-    expect(css.slice(darkIdx)).toContain("--color-content-primary:")
+    expect(css.slice(darkIdx)).toContain("--color-text-primary:")
   })
 })
 
@@ -778,15 +778,15 @@ describe("runtime — dark mode CSS variable override", () => {
     expect(dark).not.toBe(light)
   })
 
-  it("dark mode: --color-content-primary differs from light mode", () => {
+  it("dark mode: --color-text-primary differs from light mode", () => {
     document.documentElement.removeAttribute("data-theme")
     const light = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-content-primary")
+      .getPropertyValue("--color-text-primary")
       .trim()
 
     document.documentElement.setAttribute("data-theme", "dark")
     const dark = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-content-primary")
+      .getPropertyValue("--color-text-primary")
       .trim()
 
     expect(dark).not.toBe(light)
