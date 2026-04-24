@@ -132,38 +132,42 @@ That means you can keep using the old "drop files from the `figma` folder" workf
 
 ## Text Styles Workflow
 
-To get text styles like Untitled UI, use imported `Typography` variables as the source of truth and then create Figma text styles that bind to them.
+Use imported `Typography` variables as the source of truth and create Figma text styles that bind to them.
+
+MAXA currently uses an app-oriented typography scale. Do not create a separate display scale or display font family from these foundation variables.
 
 Recommended style matrix:
 
-- sizes: `display-2xl`, `display-xl`, `display-lg`, `display-md`, `display-sm`, `display-xs`, `text-xl`, `text-lg`, `text-md`, `text-sm`, `text-xs`
+- sizes: `heading-2xl`, `heading-xl`, `heading-lg`, `heading-md`, `heading-sm`, `heading-xs`, `text-lg`, `text-md`, `text-sm`, `caption-sm`, `caption-xs`
 - weights: `regular`, `medium`, `semibold`, `bold`
 
 Recommended naming:
 
-- `Display 2xl/Regular`
-- `Display 2xl/Medium`
-- `Display 2xl/Semibold`
-- `Display 2xl/Bold`
+- `Heading 2xl/Regular`
+- `Heading 2xl/Medium`
+- `Heading 2xl/Semibold`
+- `Heading 2xl/Bold`
 - `Text md/Regular`
 - `Text md/Medium`
 - `Text md/Semibold`
 - `Text md/Bold`
+- `Caption sm/Regular`
+- `Caption sm/Medium`
 
 Property binding model:
 
-- display styles -> `Font family.display`
-- text styles -> `Font family.sans`
+- heading, text, and caption styles -> `Font family/body`
+- code styles, if introduced later, may use `Font family/mono`
 - `Font weight.{weight}`
 - `Font size.{size}`
 - `Line height.{size}`
 
 Example:
 
-- `Display lg/Semibold`
-  Uses `Font family.display`, `Font weight.semibold`, `Font size.display-lg`, `Line height.display-lg`
+- `Heading lg/Semibold`
+  Uses `Font family/body`, `Font weight.semibold`, `Font size.heading-lg`, `Line height.heading-lg`
 - `Text md/Regular`
-  Uses `Font family.sans`, `Font weight.regular`, `Font size.text-md`, `Line height.text-md`
+  Uses `Font family/body`, `Font weight.regular`, `Font size.text-md`, `Line height.text-md`
 
 ## Building Text Styles In Figma
 

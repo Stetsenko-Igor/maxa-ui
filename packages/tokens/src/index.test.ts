@@ -359,10 +359,10 @@ describe("figma typography tokens", () => {
     ])
   })
 
-  it("uses Montserrat for all font family tokens", () => {
+  it("uses Montserrat for body and Roboto Mono for mono font family tokens", () => {
     for (const file of [desktopTypographyFile, tabletTypographyFile, mobileTypographyFile]) {
       expect(file["Font family"].body?.$value).toBe("Montserrat")
-      expect(file["Font family"].mono?.$value).toBe("Bebas Neue")
+      expect(file["Font family"].mono?.$value).toBe("Roboto Mono")
     }
   })
 
@@ -605,7 +605,7 @@ describe("typography.css — font families", () => {
     expect(css).toContain("--font-body:")
     expect(css).toContain("--font-mono:")
     expect(css).toContain('"Montserrat", ui-sans-serif, system-ui, sans-serif')
-    expect(css).toContain('"Bebas Neue", ui-sans-serif, sans-serif')
+    expect(css).toContain('"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace')
   })
 })
 
@@ -674,7 +674,7 @@ describe("tokens.ts — spacing", () => {
 describe("tokens.ts — fontFamily", () => {
   it("contains correct font names", () => {
     expect(fontFamily.body).toContain("Montserrat")
-    expect(fontFamily.mono).toContain("Bebas Neue")
+    expect(fontFamily.mono).toContain("Roboto Mono")
   })
 })
 

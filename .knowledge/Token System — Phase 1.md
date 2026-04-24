@@ -21,10 +21,11 @@ Three-layer CSS token architecture (`@theme {}` -> Tailwind v4):
 | `src/typography.css` | Font family, font-size + line-height pairs, font weight |
 | `src/theme.css` | Main import for all token files |
 
-**Typography naming** follows the Untitled UI size-based standard, not HTML tags:
+**Typography naming** uses the current MAXA app foundation scale, not HTML tags and not a marketing display scale:
 
-- `text-xs` / `text-sm` / `text-md` / `text-lg` / `text-xl`
-- `text-display-xs` -> `text-display-2xl`
+- `heading-xs` -> `heading-2xl`
+- `text-sm` / `text-md` / `text-lg`
+- `caption-xs` / `caption-sm`
 
 **Font-weight tokens:**
 
@@ -36,8 +37,8 @@ Three-layer CSS token architecture (`@theme {}` -> Tailwind v4):
 **Tailwind v4 double-dash syntax:**
 
 ```css
---text-display-2xl: 72px;
---text-display-2xl--line-height: 90px;
+--text-heading-2xl: 40px;
+--text-heading-2xl--line-height: 48px;
 ```
 
 ### 2. Figma Variables

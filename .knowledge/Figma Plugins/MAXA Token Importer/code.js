@@ -406,7 +406,7 @@ function pushLog(logs, level, text) {
 }
 
 function supportsFontStyleBinding(family) {
-  return family !== 'Bebas Neue';
+  return true;
 }
 
 function getSafeFontStyleForFamily(family, requestedStyle) {

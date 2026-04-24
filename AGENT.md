@@ -58,8 +58,8 @@ Docs: https://ui.maxa.com/docs
 - Typography foundation is currently app-oriented, not marketing-oriented.
 - Typography uses:
   - `Font family/body = Montserrat`
-  - `Font family/mono = Bebas Neue`
-- `font-family-display` is intentionally not used for now.
+  - `Font family/mono = Roboto Mono`
+- Display font family tokens are intentionally not used for now.
 - Current typography roles are:
   - `heading-2xl`, `heading-xl`, `heading-lg`, `heading-md`, `heading-sm`, `heading-xs`
   - `text-lg`, `text-md`, `text-sm`

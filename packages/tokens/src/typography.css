@@ -6,7 +6,7 @@
   /* ── Font families ───────────────────────────────────────────────── */
   /* Fonts must be loaded by the consumer (Google Fonts / self-hosted). */
   --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Bebas Neue", ui-sans-serif, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* ── Font sizes + line-heights ───────────────────────────────────── */
   /* Tailwind v4: --text-{name}--line-height pairs with --text-{name}  */

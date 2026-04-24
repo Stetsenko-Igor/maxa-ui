@@ -6,7 +6,7 @@
     },
     "mono": {
       "$type": "string",
-      "$value": "Bebas Neue"
+      "$value": "Roboto Mono"
     }
   },
   "Font weight": {

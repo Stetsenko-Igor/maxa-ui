@@ -242,11 +242,11 @@ Some descriptions include legacy aliases such as:
 Current decision:
 
 - `Font family/body = Montserrat`
-- `Font family/mono = Bebas Neue`
+- `Font family/mono = Roboto Mono`
 
 Important:
 
-- `font-family-display` is intentionally not used for now.
+- Display font family tokens are intentionally not used for now.
 
 ### Typography Roles
 

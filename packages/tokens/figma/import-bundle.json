@@ -510,7 +510,7 @@
       "modes": {
         "Desktop": {
           "Font family/body": "Montserrat",
-          "Font family/mono": "Bebas Neue",
+          "Font family/mono": "Roboto Mono",
           "Font weight/regular": "Regular",
           "Font weight/regular-italic": "Regular Italic",
           "Font weight/medium": "Medium",
@@ -544,7 +544,7 @@
         },
         "Tablet": {
           "Font family/body": "Montserrat",
-          "Font family/mono": "Bebas Neue",
+          "Font family/mono": "Roboto Mono",
           "Font weight/regular": "Regular",
           "Font weight/regular-italic": "Regular Italic",
           "Font weight/medium": "Medium",
@@ -578,7 +578,7 @@
         },
         "Mobile": {
           "Font family/body": "Montserrat",
-          "Font family/mono": "Bebas Neue",
+          "Font family/mono": "Roboto Mono",
           "Font weight/regular": "Regular",
           "Font weight/regular-italic": "Regular Italic",
           "Font weight/medium": "Medium",
