@@ -69,43 +69,56 @@
       "opacity": { "$value": 50, "$type": "number" }
     },
     "size": {
-      "sm": {
-        "height": { "$value": 32, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-lg}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-md}", "$type": "number" },
+      "xs": {
+        "height": { "$value": 24, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-xxs}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
         "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
+        "line-height": { "$value": 14, "$type": "number" },
+        "weight": { "$value": "{Typography/Font weight/medium}", "$type": "string" },
+        "icon-size": { "$value": 12, "$type": "number" }
+      },
+      "sm": {
+        "height": { "$value": 28, "$type": "number" },
+        "padding-x": { "$value": 10, "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
+        "line-height": { "$value": 14, "$type": "number" },
         "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
         "icon-size": { "$value": 16, "$type": "number" }
       },
       "md": {
-        "height": { "$value": 40, "$type": "number" },
+        "height": { "$value": 36, "$type": "number" },
         "padding-x": { "$value": "{Spacing/spacing-xl}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-md}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-md}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
+        "line-height": { "$value": 14, "$type": "number" },
         "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
-        "icon-size": { "$value": 20, "$type": "number" }
+        "icon-size": { "$value": 16, "$type": "number" }
       },
       "lg": {
         "height": { "$value": 48, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-2xl}", "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-3xl}", "$type": "number" },
         "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-lg}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-lg}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-lg}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-sm}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
+        "line-height": { "$value": 20, "$type": "number" },
         "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
         "icon-size": { "$value": 20, "$type": "number" }
       }
     },
     "icon-only": {
+      "xs": {
+        "size": { "$value": 24, "$type": "number" }
+      },
       "sm": {
-        "size": { "$value": 32, "$type": "number" }
+        "size": { "$value": 28, "$type": "number" }
       },
       "md": {
-        "size": { "$value": 40, "$type": "number" }
+        "size": { "$value": 36, "$type": "number" }
       },
       "lg": {
         "size": { "$value": 48, "$type": "number" }

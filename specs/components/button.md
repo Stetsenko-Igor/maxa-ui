@@ -71,17 +71,19 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 
 ## Sizes
 
-| Size | Height | Padding X | Gap | Radius | Font size | Icon size |
-|------|--------|-----------|-----|--------|-----------|-----------|
-| `sm` | 32px | 12px | 6px | 8px (radius-md) | 12px (text-sm) | 16px |
-| `md` | 40px | 16px | 8px | 8px (radius-md) | 14px (text-md) | 20px |
-| `lg` | 48px | 20px | 8px | 10px (radius-lg) | 16px (text-lg) | 20px |
+| Size | Height | Padding X | Gap | Radius | Font size | Line height | Weight | Icon size |
+|------|--------|-----------|-----|--------|-----------|-------------|--------|-----------|
+| `xs` | 24px | 6px (spacing-sm) | 2px (spacing-xxs) | 4px (radius-xs) | 12px (text-sm) | 14px | Medium 500 | 12px |
+| `sm` | 28px | 10px | 4px (spacing-xs) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
+| `md` | 36px | 16px (spacing-xl) | 6px (spacing-sm) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
+| `lg` | 48px | 24px (spacing-3xl) | 8px (spacing-md) | 6px (radius-sm) | 14px (text-md) | 20px | SemiBold 600 | 20px |
 
-Font weight for all sizes: SemiBold (600).
+Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` padding-x (10px) has no named spacing alias — stored as raw value.
 
 **Icon-only square sizes:**
-- `sm` → 32×32px
-- `md` → 40×40px
+- `xs` → 24×24px
+- `sm` → 28×28px
+- `md` → 36×36px
 - `lg` → 48×48px
 
 ---
@@ -116,16 +118,28 @@ Font weight for all sizes: SemiBold (600).
 --button-primary-border-focus:  var(--color-border-focus);
 ```
 
-### Size md tokens
+### Size tokens (md example)
 ```css
---button-size-md-height:      40px;
---button-size-md-padding-x:   var(--spacing-xl);      /* 16px */
---button-size-md-gap:         var(--spacing-md);       /* 8px */
---button-size-md-radius:      var(--radius-md);        /* 8px */
---button-size-md-text:        var(--font-size-text-md);/* 14px */
---button-size-md-line-height: var(--line-height-text-md);
+--button-size-md-height:      36px;
+--button-size-md-padding-x:   var(--spacing-xl);       /* 16px */
+--button-size-md-gap:         var(--spacing-sm);        /* 6px */
+--button-size-md-radius:      var(--radius-xs);         /* 4px */
+--button-size-md-text:        var(--font-size-text-sm); /* 12px */
+--button-size-md-line-height: 14px;
 --button-size-md-weight:      var(--font-weight-semibold);
---button-size-md-icon-size:   20px;
+--button-size-md-icon-size:   16px;
+```
+
+### Size tokens (lg example)
+```css
+--button-size-lg-height:      48px;
+--button-size-lg-padding-x:   var(--spacing-3xl);      /* 24px */
+--button-size-lg-gap:         var(--spacing-md);        /* 8px */
+--button-size-lg-radius:      var(--radius-sm);         /* 6px */
+--button-size-lg-text:        var(--font-size-text-md); /* 14px */
+--button-size-lg-line-height: 20px;
+--button-size-lg-weight:      var(--font-weight-semibold);
+--button-size-lg-icon-size:   20px;
 ```
 
 ### Disabled + font
@@ -159,7 +173,7 @@ Font weight for all sizes: SemiBold (600).
 | ❌ Wrong | ✅ Correct |
 |---------|-----------|
 | `background: #0265DC` | `background: var(--button-primary-bg)` |
-| `border-radius: 8px` | `border-radius: var(--button-size-md-radius)` |
+| `border-radius: 4px` | `border-radius: var(--button-size-md-radius)` |
 | Using `primary` for every action | Reserve `primary` for one CTA per view |
 | White text on `success`/`danger` via `text-inverse` | Use `--button-success-text` / `--button-danger-text` |
 | `secondary` as outlined white button | `secondary` is a filled gray button |
