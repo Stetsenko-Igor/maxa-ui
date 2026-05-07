@@ -16,6 +16,7 @@ LLMs fabricate design values. They generate `padding: 13px` or `color: #3b82f6` 
 4. **Before choosing a radius** — read `specs/foundations/radius.md`
 5. **Not sure which button variant?** — read `specs/patterns/interactive-hierarchy.md`
 6. **Need a CSS variable name?** — search `specs/tokens-reference.md`
+7. **Need package ownership rules?** — read `specs/architecture.md`
 
 ## Enforcement
 
@@ -32,6 +33,7 @@ This runs in CI with `exit 1` on violations. Do not hardcode values that have to
 ```
 specs/
 ├── README.md                        ← this file
+├── architecture.md                  ← package ownership rules
 ├── tokens-reference.md              ← master CSS variable index
 ├── foundations/
 │   ├── color.md                     ← semantic color tokens + usage rules

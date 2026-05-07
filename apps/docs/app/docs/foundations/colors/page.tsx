@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
+import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Colors — MAXA UI" }
-
-const pageStyle: React.CSSProperties = { maxWidth: "760px", padding: "56px 48px 96px" }
-const h1Style: React.CSSProperties = { fontSize: "var(--text-heading-lg)", lineHeight: "34px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 12px", letterSpacing: "-0.02em" }
-const leadStyle: React.CSSProperties = { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 40px" }
-const h2Style: React.CSSProperties = { fontSize: "var(--text-heading-xs)", lineHeight: "24px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", margin: "40px 0 16px", letterSpacing: "-0.01em" }
-const dividerStyle: React.CSSProperties = { border: "none", borderTop: "1px solid var(--color-border-subtle)", margin: "40px 0" }
+const TOC = [
+  { href: "#action", label: "Action" },
+  { href: "#background", label: "Background" },
+  { href: "#text", label: "Text" },
+  { href: "#border", label: "Border" },
+]
 
 const swatchGridStyle: React.CSSProperties = { display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: "12px" }
 
@@ -71,26 +72,25 @@ const BORDER_GROUPS = [
 
 export default function ColorsPage() {
   return (
-    <div style={pageStyle}>
-      <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)", margin: "0 0 8px" }}>Foundations</p>
-      <h1 style={h1Style}>Colors</h1>
-      <p style={leadStyle}>Semantic color tokens. Components reference only these — never raw primitives like <code>--color-blue-500</code>.</p>
-
-      <h2 style={h2Style}>Action</h2>
+    <DocsPageLayout
+      eyebrow="Foundations"
+      title="Colors"
+      toc={TOC}
+      lead={<>Semantic color tokens. Components reference only these, never raw primitives like <code>--color-blue-500</code>.</>}
+    >
+      <DocsPageSection id="action" title="Action">
       <div style={swatchGridStyle}>
         {ACTION_GROUPS.map(s => <Swatch key={s.token} label={s.label} token={s.token} />)}
       </div>
+      </DocsPageSection>
 
-      <hr style={dividerStyle} />
-
-      <h2 style={h2Style}>Background</h2>
+      <DocsPageSection id="background" title="Background">
       <div style={swatchGridStyle}>
         {BG_GROUPS.map(s => <Swatch key={s.token} label={s.label} token={s.token} />)}
       </div>
+      </DocsPageSection>
 
-      <hr style={dividerStyle} />
-
-      <h2 style={h2Style}>Text</h2>
+      <DocsPageSection id="text" title="Text">
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         {TEXT_GROUPS.map(({ label, token }) => (
           <div key={token} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "10px 16px", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border-subtle)" }}>
@@ -99,10 +99,9 @@ export default function ColorsPage() {
           </div>
         ))}
       </div>
+      </DocsPageSection>
 
-      <hr style={dividerStyle} />
-
-      <h2 style={h2Style}>Border</h2>
+      <DocsPageSection id="border" title="Border">
       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
         {BORDER_GROUPS.map(({ label, token }) => (
           <div key={token} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "10px 16px", borderRadius: "var(--radius-sm)", border: `2px solid var(${token})` }}>
@@ -111,6 +110,7 @@ export default function ColorsPage() {
           </div>
         ))}
       </div>
-    </div>
+      </DocsPageSection>
+    </DocsPageLayout>
   )
 }

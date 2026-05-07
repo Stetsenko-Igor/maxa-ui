@@ -1,10 +1,11 @@
 import type { Metadata } from "next"
+import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Radius — MAXA UI" }
-
-const pageStyle: React.CSSProperties = { maxWidth: "760px", padding: "56px 48px 96px" }
-const h1Style: React.CSSProperties = { fontSize: "var(--text-heading-lg)", lineHeight: "34px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 12px", letterSpacing: "-0.02em" }
-const leadStyle: React.CSSProperties = { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 40px" }
+const TOC = [
+  { href: "#visual-scale", label: "Visual scale" },
+  { href: "#reference-table", label: "Reference table" },
+]
 
 const SCALE = [
   { name: "none", token: "--radius-none", px: 0,    usage: "Flush, table cells" },
@@ -22,11 +23,13 @@ const SCALE = [
 
 export default function RadiusPage() {
   return (
-    <div style={pageStyle}>
-      <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)", margin: "0 0 8px" }}>Foundations</p>
-      <h1 style={h1Style}>Radius</h1>
-      <p style={leadStyle}>11-step border radius scale. Buttons and inputs use <code>xs</code>. Cards and modals use <code>2xl</code>.</p>
-
+    <DocsPageLayout
+      eyebrow="Foundations"
+      title="Radius"
+      toc={TOC}
+      lead={<>11-step border radius scale. Buttons and inputs use <code>xs</code>. Cards and modals use <code>2xl</code>.</>}
+    >
+      <DocsPageSection id="visual-scale" title="Visual scale">
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "12px", marginBottom: "40px" }}>
         {SCALE.filter(s => s.px <= 24).map(({ name, token, px }) => (
           <div key={name} style={{ padding: "16px", border: "1px solid var(--color-border-subtle)", background: "var(--color-bg-surface-layer1)", borderRadius: "var(--radius-md)", display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -46,8 +49,9 @@ export default function RadiusPage() {
           </div>
         </div>
       </div>
+      </DocsPageSection>
 
-      {/* table */}
+      <DocsPageSection id="reference-table" title="Reference table">
       <div style={{ border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-md)", overflow: "hidden" }}>
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
@@ -69,6 +73,7 @@ export default function RadiusPage() {
           </tbody>
         </table>
       </div>
-    </div>
+      </DocsPageSection>
+    </DocsPageLayout>
   )
 }

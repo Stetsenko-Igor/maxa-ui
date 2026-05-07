@@ -1,30 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button, DatePicker, Input, Select } from "@maxa/ui"
+import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
-
-const page: React.CSSProperties = {
-  maxWidth: "920px",
-  padding: "56px 48px 96px",
-}
-
-const h1: React.CSSProperties = {
-  fontSize: "var(--text-heading-lg)",
-  lineHeight: "34px",
-  fontWeight: "var(--font-weight-bold)",
-  color: "var(--color-text-primary)",
-  margin: "0 0 12px",
-  letterSpacing: "-0.02em",
-}
-
-const lead: React.CSSProperties = {
-  fontSize: "var(--text-md)",
-  lineHeight: "24px",
-  color: "var(--color-text-secondary)",
-  margin: "0 0 36px",
-  maxWidth: "680px",
-}
+const TOC = [{ href: "#catalog", label: "Catalog" }]
 
 const grid: React.CSSProperties = {
   display: "grid",
@@ -89,16 +69,20 @@ const footer: React.CSSProperties = {
 
 export default function ComponentsPage() {
   return (
-    <div style={page}>
-      <p style={eyebrow}>Catalog</p>
-      <h1 style={h1}>Components</h1>
-      <p style={lead}>
+    <DocsPageLayout
+      eyebrow="Catalog"
+      title="Components"
+      toc={TOC}
+      lead={
+        <>
         The current approved component set is intentionally small: Button for
         actions and Input for text entry. Both use component-level tokens,
         typed React APIs, and documentation examples.
-      </p>
-
-      <div style={grid}>
+        </>
+      }
+    >
+      <DocsPageSection id="catalog" title="Catalog" description="Approved components are documented in the same centered layout as the newest pages, with previews that stretch and stay readable across screen sizes.">
+        <div style={grid}>
         <Link href="/docs/components/button" style={card}>
           <p style={eyebrow}>Action</p>
           <h2 style={title}>Button</h2>
@@ -157,7 +141,8 @@ export default function ComponentsPage() {
           </div>
           <span style={footer}>View Date Picker</span>
         </Link>
-      </div>
-    </div>
+        </div>
+      </DocsPageSection>
+    </DocsPageLayout>
   )
 }

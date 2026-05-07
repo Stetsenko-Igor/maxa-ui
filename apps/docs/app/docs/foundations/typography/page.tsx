@@ -1,15 +1,18 @@
 import type { Metadata } from "next"
 import { Heading, Text } from "@maxa/ui"
 import { ComponentPreview } from "../../../_components/component-preview"
+import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Typography — MAXA UI" }
-
-const page: React.CSSProperties = { maxWidth: "800px", padding: "56px 48px 96px" }
-const h1s: React.CSSProperties = { fontSize: "var(--text-heading-lg)", lineHeight: "34px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 12px", letterSpacing: "-0.02em" }
-const lead: React.CSSProperties = { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 40px" }
-const h2s: React.CSSProperties = { fontSize: "var(--text-heading-xs)", lineHeight: "24px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", margin: "48px 0 8px", letterSpacing: "-0.01em" }
 const descs: React.CSSProperties = { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 16px" }
-const divider: React.CSSProperties = { border: "none", borderTop: "1px solid var(--color-border-subtle)", margin: "48px 0 0" }
+const TOC = [
+  { href: "#prose-demo", label: "Prose demo" },
+  { href: "#heading", label: "Heading" },
+  { href: "#text", label: "Text" },
+  { href: "#text-colors", label: "Text colors" },
+  { href: "#scale-reference", label: "Scale reference" },
+  { href: "#font-families", label: "Font families" },
+]
 
 const prose = {
   h1: { fontSize: "var(--text-heading-2xl)", lineHeight: "48px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 24px", letterSpacing: "-0.02em" } as React.CSSProperties,
@@ -55,15 +58,19 @@ function Tag({ children }: { children: React.ReactNode }) {
 
 export default function TypographyPage() {
   return (
-    <div style={page}>
-      <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)", margin: "0 0 8px" }}>Foundations</p>
-      <h1 style={h1s}>Typography</h1>
-      <p style={lead}>
+    <DocsPageLayout
+      eyebrow="Foundations"
+      title="Typography"
+      toc={TOC}
+      lead={
+        <>
         Two components — <code>Heading</code> and <code>Text</code> — cover the full type scale.
         Both accept a <code>size</code> prop that maps directly to token names.
-      </p>
+        </>
+      }
+    >
 
-      {/* ── Prose demo ── */}
+      <DocsPageSection id="prose-demo" title="Prose demo">
       <ComponentPreview layout="block" code={`import { Heading, Text } from "@maxa/ui"
 
 <article>
@@ -125,10 +132,9 @@ export default function TypographyPage() {
           </table>
         </article>
       </ComponentPreview>
+      </DocsPageSection>
 
-      {/* ── Heading component ── */}
-      <hr style={divider} />
-      <h2 style={{ ...h2s, marginTop: "40px" }}>Heading</h2>
+      <DocsPageSection id="heading" title="Heading">
       <p style={descs}>
         <code>size</code> accepts any <code>heading-*</code> token. <code>as</code> sets the HTML element — defaults to <code>h2</code>.
       </p>
@@ -150,10 +156,9 @@ export default function TypographyPage() {
           <Heading as={as} size={size} style={{ margin: 0 }}>{size}</Heading>
         </ComponentPreview>
       ))}
+      </DocsPageSection>
 
-      {/* ── Text component ── */}
-      <hr style={divider} />
-      <h2 style={{ ...h2s, marginTop: "40px" }}>Text</h2>
+      <DocsPageSection id="text" title="Text">
       <p style={descs}>
         <code>size</code> accepts <code>text-lg</code>, <code>text-md</code>, <code>text-sm</code>, <code>caption-sm</code>, <code>caption-xs</code>.
       </p>
@@ -173,10 +178,9 @@ export default function TypographyPage() {
           <Text size={size} style={{ margin: 0 }}>{text}</Text>
         </ComponentPreview>
       ))}
+      </DocsPageSection>
 
-      {/* ── Text colors ── */}
-      <hr style={divider} />
-      <h2 style={{ ...h2s, marginTop: "40px" }}>Text colors</h2>
+      <DocsPageSection id="text-colors" title="Text colors">
       <p style={descs}>Pass a semantic color token to the <code>color</code> prop.</p>
 
       <ComponentPreview
@@ -199,11 +203,9 @@ export default function TypographyPage() {
           ))}
         </div>
       </ComponentPreview>
+      </DocsPageSection>
 
-      {/* ── Scale reference ── */}
-      <hr style={divider} />
-      <h2 style={{ ...h2s, marginTop: "40px" }}>Scale reference</h2>
-
+      <DocsPageSection id="scale-reference" title="Scale reference">
       <div style={{ borderBottom: "1px solid var(--color-border-subtle)", display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "10px" }}>
         <span style={{ fontSize: "var(--text-caption-sm)", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Specimen</span>
         <div style={{ display: "flex", gap: "24px" }}>
@@ -225,10 +227,9 @@ export default function TypographyPage() {
           </div>
         </div>
       ))}
+      </DocsPageSection>
 
-      {/* ── Font families ── */}
-      <hr style={divider} />
-      <h2 style={{ ...h2s, marginTop: "40px" }}>Font families</h2>
+      <DocsPageSection id="font-families" title="Font families">
       <div style={{ display: "flex", gap: "12px" }}>
         {[
           { name: "Montserrat",  token: "--font-body", role: "Body & UI",   sample: "ABCDEFGHIJKLM\nNOPQRSTUVWXYZ\n0123456789" },
@@ -244,6 +245,7 @@ export default function TypographyPage() {
           </div>
         ))}
       </div>
-    </div>
+      </DocsPageSection>
+    </DocsPageLayout>
   )
 }

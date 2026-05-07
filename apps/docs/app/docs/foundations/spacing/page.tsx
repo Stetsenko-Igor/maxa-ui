@@ -1,10 +1,8 @@
 import type { Metadata } from "next"
+import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Spacing — MAXA UI" }
-
-const pageStyle: React.CSSProperties = { maxWidth: "760px", padding: "56px 48px 96px" }
-const h1Style: React.CSSProperties = { fontSize: "var(--text-heading-lg)", lineHeight: "34px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 12px", letterSpacing: "-0.02em" }
-const leadStyle: React.CSSProperties = { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 40px" }
+const TOC = [{ href: "#scale", label: "Scale" }]
 
 const SCALE = [
   { name: "none",  css: "--spacing-none",  px: 0,   tailwind: "0" },
@@ -30,12 +28,13 @@ const MAX_BAR = 160
 
 export default function SpacingPage() {
   return (
-    <div style={pageStyle}>
-      <p style={{ fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)", margin: "0 0 8px" }}>Foundations</p>
-      <h1 style={h1Style}>Spacing</h1>
-      <p style={leadStyle}>17-step scale from 0 to 160px. Use semantic token names in component code — never raw pixel values.</p>
-
-      {/* header */}
+    <DocsPageLayout
+      eyebrow="Foundations"
+      title="Spacing"
+      toc={TOC}
+      lead={<>17-step scale from 0 to 160px. Use semantic token names in component code, never raw pixel values.</>}
+    >
+      <DocsPageSection id="scale" title="Scale">
       <div style={{ display: "grid", gridTemplateColumns: "80px 160px 1fr 60px", gap: "0 16px", padding: "8px 16px", background: "var(--color-bg-surface-layer2)", borderRadius: "var(--radius-sm) var(--radius-sm) 0 0", border: "1px solid var(--color-border-subtle)", borderBottom: "none" }}>
         {["Token", "CSS var", "Visual", "px"].map(h => (
           <span key={h} style={{ fontSize: "var(--text-caption-sm)", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.04em" }}>{h}</span>
@@ -54,6 +53,7 @@ export default function SpacingPage() {
           <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)", textAlign: "right" }}>{px}px</span>
         </div>
       ))}
-    </div>
+      </DocsPageSection>
+    </DocsPageLayout>
   )
 }
