@@ -135,8 +135,15 @@ const radiusVar = (token: RadiusToken) => `var(--radius-${token})`
 const textColorVar = (token: TextColorToken) => `var(--color-text-${token})`
 const backgroundColorVar = (token: BackgroundColorToken) => `var(--color-bg-${token})`
 const borderColorVar = (token: BorderColorToken) => `var(--color-border-${token})`
-const textVar = (token: FontSizeToken) => `var(--text-${token})`
-const lineHeightVar = (token: FontSizeToken) => `var(--text-${token}--line-height)`
+// "text-md" → "--text-md", "heading-md" → "--text-heading-md", "caption-sm" → "--text-caption-sm"
+const textVar = (token: FontSizeToken) => {
+  const name = token.startsWith("text-") ? token.slice(5) : token
+  return `var(--text-${name})`
+}
+const lineHeightVar = (token: FontSizeToken) => {
+  const name = token.startsWith("text-") ? token.slice(5) : token
+  return `var(--text-${name}--line-height)`
+}
 const weightVar = (token: FontWeightToken) => `var(--font-weight-${token})`
 
 function tokenBoxStyle(props: BoxProps): CSSProperties {

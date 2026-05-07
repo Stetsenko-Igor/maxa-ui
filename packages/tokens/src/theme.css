@@ -13,3 +13,5 @@
 @import "./semantic.css";
 @import "./dimensions.css";
 @import "./typography.css";
+@import "./component-button.css";
+@import "./component-input.css";

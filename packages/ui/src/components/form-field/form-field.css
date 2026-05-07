@@ -1,0 +1,80 @@
+/* Form field shell — label + helper/error around a field primitive */
+
+.maxa-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-size-md-gap);
+  width: 100%;
+}
+
+.maxa-form-field--sm { gap: var(--input-size-sm-gap); }
+.maxa-form-field--md { gap: var(--input-size-md-gap); }
+.maxa-form-field--lg { gap: var(--input-size-lg-gap); }
+
+.maxa-form-field__label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--input-label-gap);
+  width: 100%;
+}
+
+.maxa-form-field__label {
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--input-label-text);
+  line-height: 1;
+}
+
+.maxa-form-field__required {
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+  font-weight: var(--font-weight-semibold);
+  color: var(--input-error-text);
+  line-height: 1;
+}
+
+.maxa-form-field__info {
+  display: inline-flex;
+  width: var(--input-icon-sm-size);
+  height: var(--input-icon-sm-size);
+  color: var(--input-placeholder);
+}
+
+.maxa-form-field__footer {
+  display: flex;
+  gap: var(--input-size-lg-gap);
+  align-items: center;
+  width: 100%;
+}
+
+.maxa-form-field__hint {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-sm-text);
+  color: var(--input-hint-text);
+  line-height: 1;
+}
+
+.maxa-form-field--error .maxa-form-field__hint {
+  color: var(--input-error-hint);
+}
+
+.maxa-form-field__footer-end {
+  flex-shrink: 0;
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-sm-text);
+  color: var(--input-hint-text);
+  line-height: 1;
+}
+
+.maxa-form-field--sm .maxa-form-field__label,
+.maxa-form-field--sm .maxa-form-field__required {
+  font-size: var(--input-size-sm-text);
+}
+
+.maxa-form-field--lg .maxa-form-field__label,
+.maxa-form-field--lg .maxa-form-field__required {
+  font-size: var(--input-size-lg-text);
+}

@@ -1,0 +1,81 @@
+/* Input component tokens — Layer 3 */
+/* Reference only semantic tokens (Layer 2). Never raw primitives. */
+
+:root {
+  /* ── Default state ────────────────────────────────────────────── */
+  --input-bg:               var(--color-bg-surface-layer1);
+  --input-text:             var(--color-text-primary);
+  --input-placeholder:      var(--color-text-tertiary);
+  --input-border:           var(--color-border-default);
+  --input-border-hover:     var(--color-border-secondary);
+  --input-border-focus:     var(--color-border-focus);
+  --input-focus-ring:       var(--color-action-primary);
+  --input-focus-ring-offset: 1px;
+  --input-focus-ring-width:  3px;
+  --input-filled-text:      var(--color-text-primary);
+
+  /* ── Status: error ────────────────────────────────────────────── */
+  --input-error-border:       var(--color-border-error-strong);
+  --input-error-border-focus: var(--color-border-error-strong);
+  --input-error-hint:         var(--color-text-error);
+  --input-error-text:         var(--color-text-error);
+
+  /* ── Status: success ──────────────────────────────────────────── */
+  --input-success-border:       var(--color-border-success-strong);
+  --input-success-border-focus: var(--color-border-success-strong);
+  --input-success-hint:         var(--color-text-success);
+
+  /* ── Disabled ─────────────────────────────────────────────────── */
+  --input-disabled-bg:      var(--color-bg-disabled);
+  --input-disabled-text:    var(--color-text-tertiary);
+  --input-disabled-placeholder: var(--color-text-secondary);
+  --input-disabled-opacity: 1;
+
+  /* ── Not editable ─────────────────────────────────────────────── */
+  --input-readonly-bg:      var(--color-bg-surface-layer2);
+  --input-readonly-text:    var(--color-text-secondary);
+
+  /* ── Label / hint ─────────────────────────────────────────────── */
+  --input-label-text:       var(--color-text-secondary);
+  --input-hint-text:        var(--color-text-tertiary);
+  --input-label-gap:        var(--spacing-xs);
+
+  /* ── Sizes ────────────────────────────────────────────────────── */
+
+  /* sm */
+  --input-size-sm-height:    28px;
+  --input-size-sm-padding-x: 10px;
+  --input-size-sm-text:      var(--text-sm);
+  --input-size-sm-radius:    var(--radius-xs);
+  --input-size-sm-gap:       4px;
+
+  /* md */
+  --input-size-md-height:    36px;
+  --input-size-md-padding-x: 12px;
+  --input-size-md-text:      var(--text-sm);
+  --input-size-md-radius:    var(--radius-xs);
+  --input-size-md-gap:       6px;
+
+  /* lg */
+  --input-size-lg-height:    48px;
+  --input-size-lg-padding-x: 16px;
+  --input-size-lg-text:      var(--text-md);
+  --input-size-lg-radius:    var(--radius-sm);
+  --input-size-lg-gap:       8px;
+
+  /* ── Icon sizes ───────────────────────────────────────────────── */
+  --input-icon-sm-size: 14px;
+  --input-icon-md-size: 16px;
+  --input-icon-lg-size: 20px;
+
+  /* ── Text area ────────────────────────────────────────────────── */
+  --input-textarea-sm-min-height:  88px;
+  --input-textarea-md-min-height: 108px;
+  --input-textarea-lg-min-height: 128px;
+  --input-textarea-padding-y:      10px;
+  --input-textarea-line-height:    14px;
+
+  /* ── Shared ───────────────────────────────────────────────────── */
+  --input-font-family: var(--font-body);
+  --input-font-weight: var(--font-weight-regular);
+}

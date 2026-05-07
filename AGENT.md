@@ -177,6 +177,25 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
   - dedicated foreground tokens for filled status buttons, such as `text/on-primary`, `text/on-success`, `text/on-danger`
   - future Effects collection for focus ring/elevation
   - additional variants after real Figma component usage
+- Current Input architecture:
+  - split field primitives from form-level components
+  - current React scope includes `Input` and `TextArea`
+  - `Input` kinds are `text`, `password`, `search`, and `quantity`
+  - `readonly` maps to the Figma `Not-Editable` state and is distinct from `disabled`
+  - `Input Form Universal` is a composition example, not the target public API shape
+  - future `Input Form / Dropdown` and `Input Form / Date Picker` should be separate components, not more `Input.kind` variants
+  - read `specs/components/input.md` before changing input fields or docs
+- Current Select / Dropdown architecture:
+  - Figma may use `Input Form / Dropdown` as the visual/pattern name
+  - React exports this form control as `Select`, because it selects from known options
+  - `Select` is visually an input-like field with a right chevron
+  - action menus or navigation dropdowns should become a separate menu component later
+  - read `specs/components/select.md` before changing select/dropdown fields or docs
+- Current Date Picker architecture:
+  - `DatePicker` and `DateRangePicker` are separate form-level components
+  - they reuse the label/helper/error composition model through `FormField`
+  - they are not `Input.kind` variants
+  - read `specs/components/date-picker.md` before changing date picker fields or docs
 - Basic Tokens components are still draft / not approved yet.
 - `packages/ui/src/base-tokens.tsx` currently contains an exploratory React implementation.
 - Do not build or run Basic Tokens docs preview pages until the component direction is decided.

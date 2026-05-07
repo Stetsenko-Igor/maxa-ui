@@ -19,6 +19,7 @@
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-default:        var(--color-gray-300);
+  --color-border-secondary:      var(--color-gray-400);
   --color-border-subtle:         var(--color-gray-200);
   --color-border-focus:          var(--color-brand-700);
   --color-border-brand-strong:   var(--color-brand-800);
@@ -108,6 +109,7 @@
 
   /* ── Border — dark ───────────────────────────────────────────────── */
   --color-border-default:        var(--color-gray-700);
+  --color-border-secondary:      var(--color-gray-600);
   --color-border-subtle:         var(--color-gray-800);
   --color-border-focus:          var(--color-brand-500);
   --color-border-brand-strong:   var(--color-brand-600);

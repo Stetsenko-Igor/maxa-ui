@@ -588,23 +588,23 @@ describe("figma component-based button tokens", () => {
     const size = lightFile.Button.size as Record<string, Record<string, TokenLeaf>>
     const iconOnly = lightFile.Button["icon-only"] as Record<string, Record<string, TokenLeaf>>
 
-    expect(size.sm.height?.$value).toBe(32)
-    expect(size.sm["padding-x"]?.$value).toBe("{Spacing/spacing-lg}")
+    expect(size.sm.height?.$value).toBe(28)
+    expect(size.sm["padding-x"]?.$value).toBe(10)
     expect(size.sm.text?.$value).toBe("{Typography/Font size/text-sm}")
-    expect(size.sm["line-height"]?.$value).toBe("{Typography/Line height/text-sm}")
+    expect(size.sm["line-height"]?.$value).toBe(14)
     expect(size.sm.weight?.$value).toBe("{Typography/Font weight/semibold}")
     expect(size.sm["icon-size"]?.$value).toBe(16)
 
-    expect(size.md.height?.$value).toBe(40)
+    expect(size.md.height?.$value).toBe(36)
     expect(size.md["padding-x"]?.$value).toBe("{Spacing/spacing-xl}")
-    expect(size.md["icon-size"]?.$value).toBe(20)
+    expect(size.md["icon-size"]?.$value).toBe(16)
 
     expect(size.lg.height?.$value).toBe(48)
-    expect(size.lg.radius?.$value).toBe("{Radius/radius-lg}")
+    expect(size.lg.radius?.$value).toBe("{Radius/radius-sm}")
     expect(size.lg["icon-size"]?.$value).toBe(20)
 
-    expect(iconOnly.sm.size?.$value).toBe(32)
-    expect(iconOnly.md.size?.$value).toBe(40)
+    expect(iconOnly.sm.size?.$value).toBe(28)
+    expect(iconOnly.md.size?.$value).toBe(36)
     expect(iconOnly.lg.size?.$value).toBe(48)
   })
 })

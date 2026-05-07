@@ -1,0 +1,386 @@
+/* Input component styles — references only component tokens */
+
+/* ── Wrapper (label + field + hint) ─────────────────────────── */
+
+.maxa-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-size-md-gap);
+  width: 100%;
+}
+
+.maxa-input-wrapper--sm { gap: var(--input-size-sm-gap); }
+.maxa-input-wrapper--md { gap: var(--input-size-md-gap); }
+.maxa-input-wrapper--lg { gap: var(--input-size-lg-gap); }
+
+/* ── Label ───────────────────────────────────────────────────── */
+
+.maxa-input__label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--input-label-gap);
+  width: 100%;
+}
+
+.maxa-input__label {
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+  font-weight: var(--font-weight-medium);
+  color: var(--input-label-text);
+  line-height: 1;
+}
+
+.maxa-input__required {
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+  font-weight: var(--font-weight-semibold);
+  color: var(--input-error-text);
+  line-height: 1;
+}
+
+.maxa-input__info {
+  display: inline-flex;
+  width: var(--input-icon-sm-size);
+  height: var(--input-icon-sm-size);
+  color: var(--input-placeholder);
+}
+
+.maxa-input-wrapper--sm .maxa-input__label { font-size: var(--input-size-sm-text); }
+.maxa-input-wrapper--lg .maxa-input__label { font-size: var(--input-size-lg-text); }
+
+/* ── Field row (icon + input + icon) ─────────────────────────── */
+
+.maxa-input__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--input-size-md-height);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-size-md-radius);
+  transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+}
+
+.maxa-input__field:hover,
+.maxa-input-wrapper--visual-hover .maxa-input__field {
+  border-color: var(--input-border-hover);
+}
+
+.maxa-input__field:focus-within,
+.maxa-input-wrapper--visual-focus .maxa-input__field {
+  border-color: var(--input-border-focus);
+  outline: none;
+  box-shadow:
+    0 0 0 var(--input-focus-ring-offset) var(--input-bg),
+    0 0 0 var(--input-focus-ring-width) var(--input-focus-ring);
+}
+
+/* ── Sizes ───────────────────────────────────────────────────── */
+
+.maxa-input-wrapper--sm .maxa-input__field {
+  height: var(--input-size-sm-height);
+  border-radius: var(--input-size-sm-radius);
+}
+
+.maxa-input-wrapper--lg .maxa-input__field {
+  height: var(--input-size-lg-height);
+  border-radius: var(--input-size-lg-radius);
+}
+
+/* ── Native input element ────────────────────────────────────── */
+
+.maxa-input__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding-inline: var(--input-size-md-padding-x);
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+  font-weight: var(--input-font-weight);
+  color: var(--input-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.maxa-input__field--quantity .maxa-input__input {
+  text-align: center;
+  padding-inline: var(--input-size-md-gap);
+  appearance: textfield;
+}
+
+.maxa-input__field--quantity .maxa-input__input::-webkit-outer-spin-button,
+.maxa-input__field--quantity .maxa-input__input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+.maxa-input__input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.maxa-input-wrapper--filled .maxa-input__input {
+  color: var(--input-filled-text);
+}
+
+.maxa-input-wrapper--sm .maxa-input__input {
+  padding-inline: var(--input-size-sm-padding-x);
+  font-size: var(--input-size-sm-text);
+}
+
+.maxa-input-wrapper--lg .maxa-input__input {
+  padding-inline: var(--input-size-lg-padding-x);
+  font-size: var(--input-size-lg-text);
+}
+
+/* ── Icons ───────────────────────────────────────────────────── */
+
+.maxa-input__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--input-placeholder);
+  width: var(--input-icon-md-size);
+  height: var(--input-icon-md-size);
+}
+
+.maxa-input__clear {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.maxa-input__clear:hover {
+  color: var(--input-text);
+}
+
+.maxa-input__clear:disabled {
+  cursor: default;
+  color: var(--input-disabled-text);
+}
+
+.maxa-input__icon--leading {
+  padding-inline-start: var(--input-size-md-padding-x);
+}
+
+.maxa-input__icon--trailing {
+  padding-inline-end: var(--input-size-md-padding-x);
+}
+
+.maxa-input-wrapper--sm .maxa-input__icon {
+  width: var(--input-icon-sm-size);
+  height: var(--input-icon-sm-size);
+}
+
+.maxa-input-wrapper--sm .maxa-input__icon--leading {
+  padding-inline-start: var(--input-size-sm-padding-x);
+}
+
+.maxa-input-wrapper--sm .maxa-input__icon--trailing {
+  padding-inline-end: var(--input-size-sm-padding-x);
+}
+
+.maxa-input-wrapper--lg .maxa-input__icon {
+  width: var(--input-icon-lg-size);
+  height: var(--input-icon-lg-size);
+}
+
+.maxa-input-wrapper--lg .maxa-input__icon--leading {
+  padding-inline-start: var(--input-size-lg-padding-x);
+}
+
+.maxa-input-wrapper--lg .maxa-input__icon--trailing {
+  padding-inline-end: var(--input-size-lg-padding-x);
+}
+
+/* Nudge padding when icon is present so text doesn't overlap */
+.maxa-input__field--has-leading .maxa-input__input {
+  padding-inline-start: var(--input-size-md-gap);
+}
+
+.maxa-input__field--has-trailing .maxa-input__input {
+  padding-inline-end: var(--input-size-md-gap);
+}
+
+.maxa-input-wrapper--sm .maxa-input__field--has-leading .maxa-input__input {
+  padding-inline-start: var(--input-size-sm-gap);
+}
+
+.maxa-input-wrapper--sm .maxa-input__field--has-trailing .maxa-input__input {
+  padding-inline-end: var(--input-size-sm-gap);
+}
+
+.maxa-input-wrapper--lg .maxa-input__field--has-leading .maxa-input__input {
+  padding-inline-start: var(--input-size-lg-gap);
+}
+
+.maxa-input-wrapper--lg .maxa-input__field--has-trailing .maxa-input__input {
+  padding-inline-end: var(--input-size-lg-gap);
+}
+
+/* ── Quantity controls ───────────────────────────────────────── */
+
+.maxa-input__stepper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: calc(var(--input-icon-md-size) + var(--input-size-md-padding-x));
+  height: 100%;
+  padding: 0;
+  color: var(--input-placeholder);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.maxa-input__stepper:hover {
+  color: var(--input-text);
+}
+
+.maxa-input__stepper:disabled {
+  cursor: default;
+  color: var(--input-disabled-text);
+}
+
+.maxa-input-wrapper--sm .maxa-input__stepper {
+  width: calc(var(--input-icon-sm-size) + var(--input-size-sm-padding-x));
+}
+
+.maxa-input-wrapper--lg .maxa-input__stepper {
+  width: calc(var(--input-icon-lg-size) + var(--input-size-lg-padding-x));
+}
+
+/* ── Status: error ───────────────────────────────────────────── */
+
+.maxa-input-wrapper--error .maxa-input__field {
+  border-color: var(--input-error-border);
+}
+
+.maxa-input-wrapper--error .maxa-input__field:focus-within,
+.maxa-input-wrapper--error.maxa-input-wrapper--visual-focus .maxa-input__field {
+  border-color: var(--input-error-border-focus);
+  box-shadow:
+    0 0 0 var(--input-focus-ring-offset) var(--input-bg),
+    0 0 0 var(--input-focus-ring-width) var(--input-focus-ring);
+}
+
+.maxa-input-wrapper--error .maxa-input__input {
+  color: var(--input-error-text);
+}
+
+/* ── Status: success ─────────────────────────────────────────── */
+
+.maxa-input-wrapper--success .maxa-input__field {
+  border-color: var(--input-success-border);
+}
+
+.maxa-input-wrapper--success .maxa-input__field:focus-within {
+  border-color: var(--input-success-border-focus);
+  outline-color: var(--input-success-border-focus);
+}
+
+/* ── Disabled ────────────────────────────────────────────────── */
+
+.maxa-input-wrapper--disabled .maxa-input__field {
+  background-color: var(--input-disabled-bg);
+  opacity: var(--input-disabled-opacity);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.maxa-input-wrapper--disabled .maxa-input__input {
+  color: var(--input-disabled-text);
+  cursor: not-allowed;
+  -webkit-text-fill-color: var(--input-disabled-text);
+}
+
+.maxa-input-wrapper--disabled .maxa-input__input::placeholder {
+  color: var(--input-disabled-placeholder);
+  opacity: 1;
+}
+
+/* ── Not editable ─────────────────────────────────────────────── */
+
+.maxa-input-wrapper--readonly .maxa-input__field {
+  background-color: var(--input-readonly-bg);
+  cursor: not-allowed;
+}
+
+.maxa-input-wrapper--readonly .maxa-input__field:hover,
+.maxa-input-wrapper--readonly.maxa-input-wrapper--visual-hover .maxa-input__field,
+.maxa-input-wrapper--readonly .maxa-input__field:focus-within,
+.maxa-input-wrapper--readonly.maxa-input-wrapper--visual-focus .maxa-input__field {
+  border-color: var(--input-border);
+  box-shadow: none;
+}
+
+.maxa-input-wrapper--readonly .maxa-input__input {
+  color: var(--input-readonly-text);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+/* ── Hint text ───────────────────────────────────────────────── */
+
+.maxa-input__hint {
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-sm-text);
+  color: var(--input-hint-text);
+  line-height: 1;
+}
+
+.maxa-input-wrapper--error .maxa-input__hint {
+  color: var(--input-error-hint);
+}
+
+.maxa-input-wrapper--success .maxa-input__hint {
+  color: var(--input-success-hint);
+}
+
+.maxa-input__footer {
+  display: flex;
+  gap: var(--input-size-lg-gap);
+  align-items: center;
+  width: 100%;
+}
+
+.maxa-input__footer .maxa-input__hint {
+  flex: 1;
+  min-width: 0;
+}
+
+.maxa-input__counter {
+  flex-shrink: 0;
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-sm-text);
+  color: var(--input-hint-text);
+  line-height: 1;
+}
+
+/* ── Text area ───────────────────────────────────────────────── */
+
+.maxa-input-wrapper--textarea .maxa-input__field {
+  height: auto;
+  min-height: var(--input-textarea-md-min-height);
+  align-items: stretch;
+}
+
+.maxa-input-wrapper--textarea.maxa-input-wrapper--sm .maxa-input__field {
+  min-height: var(--input-textarea-sm-min-height);
+}
+
+.maxa-input-wrapper--textarea.maxa-input-wrapper--lg .maxa-input__field {
+  min-height: var(--input-textarea-lg-min-height);
+}
+
+.maxa-input__textarea {
+  min-height: inherit;
+  padding-block: var(--input-textarea-padding-y);
+  line-height: var(--input-textarea-line-height);
+  resize: vertical;
+}

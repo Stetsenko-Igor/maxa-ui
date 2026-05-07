@@ -1,2 +1,78 @@
 @import "tailwindcss";
 @import "@maxa/tokens/theme.css";
+
+.docs-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 16.25rem;
+  height: 100vh;
+  background: var(--color-bg-surface-layer1);
+  border-right: 1px solid var(--color-border-subtle);
+  overflow-y: auto;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-main {
+  margin-left: 16.25rem;
+  min-height: 100vh;
+}
+
+.docs-component-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 13.75rem;
+  column-gap: var(--spacing-12);
+  max-width: 92.5rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-14) var(--spacing-12) var(--spacing-24);
+  box-sizing: border-box;
+}
+
+.docs-component-content {
+  min-width: 0;
+  max-width: 75rem;
+}
+
+.docs-on-this-page {
+  position: sticky;
+  top: var(--spacing-20);
+  align-self: start;
+  padding-left: var(--spacing-6);
+  border-left: 1px solid var(--color-border-subtle);
+  max-height: calc(100vh - var(--spacing-24));
+  overflow: auto;
+}
+
+@media (max-width: 73.75rem) {
+  .docs-component-page {
+    display: block;
+    max-width: 75rem;
+  }
+
+  .docs-on-this-page {
+    display: none;
+  }
+}
+
+@media (max-width: 60rem) {
+  .docs-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: 18rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .docs-main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 45rem) {
+  .docs-component-page {
+    padding: var(--spacing-10) var(--spacing-6) 4.5rem;
+  }
+}
