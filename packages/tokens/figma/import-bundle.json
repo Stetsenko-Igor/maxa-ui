@@ -643,7 +643,7 @@
           "Inline/default": "{Spacing/spacing-lg}",
           "Inline/group": "{Spacing/spacing-xl}",
           "Container/padding": "{Spacing/spacing-3xl}",
-          "Container/max-width": 1568,
+          "Container/max-width": 768,
           "Grid/gutter": "{Spacing/spacing-2xl}",
           "Grid/margin": "{Container/padding}"
         },
@@ -657,7 +657,7 @@
           "Inline/default": "{Spacing/spacing-lg}",
           "Inline/group": "{Spacing/spacing-xl}",
           "Container/padding": "{Spacing/spacing-xl}",
-          "Container/max-width": 1568,
+          "Container/max-width": 375,
           "Grid/gutter": "{Spacing/spacing-xl}",
           "Grid/margin": "{Container/padding}"
         }

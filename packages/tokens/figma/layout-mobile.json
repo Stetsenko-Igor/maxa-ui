@@ -46,8 +46,8 @@
   },
   "Container/max-width": {
     "$type": "number",
-    "$value": 1568,
-    "$description": "Maximum container width."
+    "$value": 375,
+    "$description": "Maximum container width for mobile."
   },
   "Grid/gutter": {
     "$type": "number",
