@@ -17,7 +17,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
 
   return (
     <div data-component-preview style={{
-      border: "1px solid var(--color-border-subtle)",
+      border: "1px solid var(--color-border-primary)",
       borderRadius: "var(--radius-md)",
       overflow: "visible",
       marginBottom: "24px",
@@ -25,7 +25,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
       maxWidth: "1200px",
       minWidth: 0,
       boxSizing: "border-box",
-      background: "var(--color-bg-default)",
+      background: "var(--color-bg-surface-layer1)",
     }}>
       {/* toolbar */}
       <div style={{
@@ -34,7 +34,8 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
         justifyContent: "space-between",
         padding: "0 12px",
         background: "var(--color-bg-surface-layer1)",
-        borderBottom: "1px solid var(--color-border-subtle)",
+        borderBottom: "1px solid var(--color-border-primary)",
+        borderRadius: "var(--radius-md) var(--radius-md) 0 0",
         height: "40px",
       }}>
         {/* tabs */}
@@ -87,6 +88,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
           alignItems: "center",
           justifyContent: "center",
           background: "var(--color-bg-default)",
+          borderRadius: "0 0 var(--radius-md) var(--radius-md)",
           minHeight: panelMinHeight,
           boxSizing: "border-box",
         }}>
@@ -100,6 +102,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
           margin: 0,
           padding: "20px 24px",
           background: "var(--color-bg-surface-layer2)",
+          borderRadius: "0 0 var(--radius-md) var(--radius-md)",
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-sm)",
           lineHeight: "20px",

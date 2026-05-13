@@ -46,6 +46,14 @@
     }
   },
   "bg": {
+    "page": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "white": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
     "primary": {
       "$value": "{Colors.Neutral.50}",
       "$type": "color"

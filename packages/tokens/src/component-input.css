@@ -3,10 +3,10 @@
 
 :root {
   /* ── Default state ────────────────────────────────────────────── */
-  --input-bg:               var(--color-bg-surface-layer1);
+  --input-bg:               var(--color-bg-white);
   --input-text:             var(--color-text-primary);
   --input-placeholder:      var(--color-text-tertiary);
-  --input-border:           var(--color-border-default);
+  --input-border:           var(--color-border-primary);
   --input-border-hover:     var(--color-border-secondary);
   --input-border-focus:     var(--color-border-focus);
   --input-focus-ring:       var(--color-action-primary);
@@ -15,8 +15,8 @@
   --input-filled-text:      var(--color-text-primary);
 
   /* ── Status: error ────────────────────────────────────────────── */
-  --input-error-border:       var(--color-border-error-strong);
-  --input-error-border-focus: var(--color-border-error-strong);
+  --input-error-border:       var(--color-border-error);
+  --input-error-border-focus: var(--color-border-error);
   --input-error-hint:         var(--color-text-error);
   --input-error-text:         var(--color-text-error);
 
@@ -32,7 +32,7 @@
   --input-disabled-opacity: 1;
 
   /* ── Not editable ─────────────────────────────────────────────── */
-  --input-readonly-bg:      var(--color-bg-surface-layer2);
+  --input-readonly-bg:      var(--color-bg-tertiary);
   --input-readonly-text:    var(--color-text-secondary);
 
   /* ── Label / hint ─────────────────────────────────────────────── */
@@ -79,3 +79,4 @@
   --input-font-family: var(--font-body);
   --input-font-weight: var(--font-weight-regular);
 }
+

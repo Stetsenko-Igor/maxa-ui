@@ -18,6 +18,7 @@ const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
   { href: "#field-types", label: "Field types" },
+  { href: "#with-icons", label: "With icons" },
   { href: "#sizes", label: "Sizes" },
   { href: "#states", label: "States" },
   { href: "#label-and-helper-content", label: "Label and helper content" },
@@ -137,6 +138,106 @@ export default function InputPage() {
           <ComponentPreview code={inputExample("InputQuantityExample", `<Input kind="quantity" label="Quantity" defaultValue={1} />`)}>
             <div style={fieldWidth}>
               <Input kind="quantity" label="Quantity" defaultValue={1} />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="with-icons"
+        title="With icons"
+        description={
+          <>
+            Pass any <code>ReactNode</code> to <code>leadingIcon</code> or{" "}
+            <code>trailingIcon</code>. The field automatically adds padding so
+            text never overlaps the icon.
+          </>
+        }
+      >
+        <DocsExample title="Leading icon">
+          <ComponentPreview code={inputExample("InputLeadingIconExample", `<Input
+    label="Email"
+    placeholder="you@example.com"
+    leadingIcon={
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="20" height="16" x="2" y="4" rx="2" />
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+      </svg>
+    }
+  />`)}>
+            <div style={fieldWidth}>
+              <Input
+                label="Email"
+                placeholder="you@example.com"
+                leadingIcon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                }
+              />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="Trailing icon">
+          <ComponentPreview code={inputExample("InputTrailingIconExample", `<Input
+    label="Website"
+    placeholder="https://example.com"
+    trailingIcon={
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" x2="21" y1="14" y2="3" />
+      </svg>
+    }
+  />`)}>
+            <div style={fieldWidth}>
+              <Input
+                label="Website"
+                placeholder="https://example.com"
+                trailingIcon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" x2="21" y1="14" y2="3" />
+                  </svg>
+                }
+              />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="Leading and trailing">
+          <ComponentPreview code={inputExample("InputBothIconsExample", `<Input
+    label="Amount"
+    placeholder="0.00"
+    leadingIcon={
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      </svg>
+    }
+    trailingIcon={
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
+      </svg>
+    }
+  />`)}>
+            <div style={fieldWidth}>
+              <Input
+                label="Amount"
+                placeholder="0.00"
+                leadingIcon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" x2="12" y1="2" y2="22" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                }
+                trailingIcon={
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" />
+                  </svg>
+                }
+              />
             </div>
           </ComponentPreview>
         </DocsExample>

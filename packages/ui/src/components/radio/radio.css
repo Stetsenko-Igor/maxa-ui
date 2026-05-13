@@ -1,0 +1,126 @@
+/* Radio component */
+
+.maxa-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--radio-gap);
+  cursor: pointer;
+  user-select: none;
+}
+
+.maxa-radio--disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+/* ── Control ─────────────────────────────────────────────────── */
+
+.maxa-radio__control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.maxa-radio__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.maxa-radio__circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--radio-size-md);
+  height: var(--radio-size-md);
+  border: var(--radio-border-width) solid var(--radio-border);
+  border-radius: 50%;
+  background: var(--radio-bg);
+  transition: border-color 120ms ease, background-color 120ms ease;
+  pointer-events: none;
+}
+
+/* Size: sm */
+.maxa-radio--sm .maxa-radio__circle {
+  width: var(--radio-size-sm);
+  height: var(--radio-size-sm);
+}
+
+/* ── Hover ───────────────────────────────────────────────────── */
+
+.maxa-radio:not(.maxa-radio--disabled):hover .maxa-radio__circle {
+  border-color: var(--radio-border-hover);
+}
+
+/* ── Focus ───────────────────────────────────────────────────── */
+
+.maxa-radio__input:focus-visible ~ .maxa-radio__circle {
+  outline: var(--radio-focus-ring-width) solid var(--radio-border-focus);
+  outline-offset: var(--radio-focus-ring-offset);
+}
+
+/* ── Checked ─────────────────────────────────────────────────── */
+
+.maxa-radio__input:checked ~ .maxa-radio__circle {
+  background: var(--radio-bg-checked);
+  border-color: var(--radio-border-checked);
+}
+
+/* Dot indicator */
+.maxa-radio__input:checked ~ .maxa-radio__circle::after {
+  content: "";
+  display: block;
+  width: var(--radio-dot-size-md);
+  height: var(--radio-dot-size-md);
+  border-radius: 50%;
+  background: var(--radio-dot-color);
+}
+
+.maxa-radio--sm .maxa-radio__input:checked ~ .maxa-radio__circle::after {
+  width: var(--radio-dot-size-sm);
+  height: var(--radio-dot-size-sm);
+}
+
+/* ── Error ───────────────────────────────────────────────────── */
+
+.maxa-radio--error .maxa-radio__circle {
+  border-color: var(--radio-border-error);
+}
+
+.maxa-radio--error .maxa-radio__input:checked ~ .maxa-radio__circle {
+  background: var(--radio-bg-error-checked);
+  border-color: var(--radio-border-error);
+}
+
+/* ── Content ─────────────────────────────────────────────────── */
+
+.maxa-radio__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--radio-content-gap);
+}
+
+.maxa-radio__label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--radio-label-text);
+  line-height: 1.25;
+}
+
+.maxa-radio__helper {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--radio-helper-text);
+  line-height: 1.4;
+}
+
+.maxa-radio--error .maxa-radio__helper {
+  color: var(--radio-helper-error);
+}

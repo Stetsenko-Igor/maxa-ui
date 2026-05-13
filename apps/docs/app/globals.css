@@ -1,13 +1,18 @@
 @import "tailwindcss";
 @import "@maxa/tokens/theme.css";
 
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+}
+
 .docs-sidebar {
   position: fixed;
   inset: 0 auto 0 0;
   width: 16.25rem;
   height: 100vh;
   background: var(--color-bg-surface-layer1);
-  border-right: 1px solid var(--color-border-subtle);
+  border-right: 1px solid var(--color-border-primary);
   overflow-y: auto;
   z-index: 10;
   display: flex;
@@ -43,6 +48,12 @@
   border-left: 1px solid var(--color-border-subtle);
   max-height: calc(100vh - var(--spacing-24));
   overflow: auto;
+}
+
+/* Dark mode: tighter, more subtle borders for docs chrome */
+[data-theme="dark"] .docs-sidebar,
+[data-theme="dark"] [data-component-preview] {
+  border-color: var(--color-bg-tertiary);
 }
 
 @media (max-width: 73.75rem) {

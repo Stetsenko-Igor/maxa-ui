@@ -117,6 +117,19 @@
   appearance: none;
 }
 
+.maxa-input__input[type="search"]::-webkit-search-decoration,
+.maxa-input__input[type="search"]::-webkit-search-cancel-button,
+.maxa-input__input[type="search"]::-webkit-search-results-button,
+.maxa-input__input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.maxa-input__input[type="password"]::-ms-reveal,
+.maxa-input__input[type="password"]::-ms-clear {
+  display: none;
+}
+
 .maxa-input__input::placeholder {
   color: var(--input-placeholder);
 }
@@ -164,11 +177,11 @@
 }
 
 .maxa-input__icon--leading {
-  padding-inline-start: var(--input-size-md-padding-x);
+  margin-inline-start: var(--input-size-md-padding-x);
 }
 
 .maxa-input__icon--trailing {
-  padding-inline-end: var(--input-size-md-padding-x);
+  margin-inline-end: var(--input-size-md-padding-x);
 }
 
 .maxa-input-wrapper--sm .maxa-input__icon {
@@ -177,11 +190,11 @@
 }
 
 .maxa-input-wrapper--sm .maxa-input__icon--leading {
-  padding-inline-start: var(--input-size-sm-padding-x);
+  margin-inline-start: var(--input-size-sm-padding-x);
 }
 
 .maxa-input-wrapper--sm .maxa-input__icon--trailing {
-  padding-inline-end: var(--input-size-sm-padding-x);
+  margin-inline-end: var(--input-size-sm-padding-x);
 }
 
 .maxa-input-wrapper--lg .maxa-input__icon {
@@ -190,11 +203,11 @@
 }
 
 .maxa-input-wrapper--lg .maxa-input__icon--leading {
-  padding-inline-start: var(--input-size-lg-padding-x);
+  margin-inline-start: var(--input-size-lg-padding-x);
 }
 
 .maxa-input-wrapper--lg .maxa-input__icon--trailing {
-  padding-inline-end: var(--input-size-lg-padding-x);
+  margin-inline-end: var(--input-size-lg-padding-x);
 }
 
 /* Nudge padding when icon is present so text doesn't overlap */

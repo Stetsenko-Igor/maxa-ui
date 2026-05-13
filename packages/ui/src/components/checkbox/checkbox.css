@@ -1,0 +1,154 @@
+/* Checkbox component */
+
+.maxa-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--checkbox-gap);
+  cursor: pointer;
+  user-select: none;
+}
+
+.maxa-checkbox--disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+/* ── Control (box + hidden input) ────────────────────────────── */
+
+.maxa-checkbox__control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.maxa-checkbox__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.maxa-checkbox__box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--checkbox-size-md);
+  height: var(--checkbox-size-md);
+  border: var(--checkbox-border-width) solid var(--checkbox-border);
+  border-radius: var(--checkbox-radius);
+  background: var(--checkbox-bg);
+  transition: border-color 120ms ease, background-color 120ms ease;
+  pointer-events: none;
+}
+
+/* Size: sm */
+.maxa-checkbox--sm .maxa-checkbox__box {
+  width: var(--checkbox-size-sm);
+  height: var(--checkbox-size-sm);
+}
+
+/* ── Hover ───────────────────────────────────────────────────── */
+
+.maxa-checkbox:not(.maxa-checkbox--disabled):hover .maxa-checkbox__box {
+  border-color: var(--checkbox-border-hover);
+}
+
+/* ── Focus ───────────────────────────────────────────────────── */
+
+.maxa-checkbox__input:focus-visible ~ .maxa-checkbox__box {
+  outline: var(--checkbox-focus-ring-width) solid var(--checkbox-border-focus);
+  outline-offset: var(--checkbox-focus-ring-offset);
+}
+
+/* ── Checked ─────────────────────────────────────────────────── */
+
+.maxa-checkbox__input:checked ~ .maxa-checkbox__box {
+  background: var(--checkbox-bg-checked);
+  border-color: var(--checkbox-border-checked);
+}
+
+/* Checkmark — inline SVG via content */
+.maxa-checkbox__input:checked ~ .maxa-checkbox__box::after {
+  content: "";
+  display: block;
+  width: var(--checkbox-mark-width-md);
+  height: var(--checkbox-mark-height-md);
+  background-color: var(--checkbox-mark-color);
+  mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-6' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+}
+
+.maxa-checkbox--sm .maxa-checkbox__input:checked ~ .maxa-checkbox__box::after {
+  width: var(--checkbox-mark-width-sm);
+  height: var(--checkbox-mark-height-sm);
+}
+
+/* ── Indeterminate ───────────────────────────────────────────── */
+
+.maxa-checkbox__input[aria-checked="mixed"] ~ .maxa-checkbox__box {
+  background: var(--checkbox-bg-checked);
+  border-color: var(--checkbox-border-checked);
+}
+
+.maxa-checkbox__input[aria-checked="mixed"] ~ .maxa-checkbox__box::after {
+  content: "";
+  display: block;
+  width: var(--checkbox-mark-width-md);
+  height: var(--checkbox-dash-height);
+  background: var(--checkbox-mark-color);
+  border-radius: var(--checkbox-dash-radius);
+}
+
+.maxa-checkbox--sm .maxa-checkbox__input[aria-checked="mixed"] ~ .maxa-checkbox__box::after {
+  width: var(--checkbox-mark-width-sm);
+}
+
+/* ── Error ───────────────────────────────────────────────────── */
+
+.maxa-checkbox--error .maxa-checkbox__box {
+  border-color: var(--checkbox-border-error);
+}
+
+.maxa-checkbox--error .maxa-checkbox__input:checked ~ .maxa-checkbox__box,
+.maxa-checkbox--error .maxa-checkbox__input[aria-checked="mixed"] ~ .maxa-checkbox__box {
+  background: var(--checkbox-bg-error-checked);
+  border-color: var(--checkbox-border-error);
+}
+
+/* ── Content (label + helper) ────────────────────────────────── */
+
+.maxa-checkbox__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--checkbox-content-gap);
+}
+
+.maxa-checkbox__label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--checkbox-label-text);
+  line-height: 1.25;
+}
+
+.maxa-checkbox__helper {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--checkbox-helper-text);
+  line-height: 1.4;
+}
+
+.maxa-checkbox--error .maxa-checkbox__helper {
+  color: var(--checkbox-helper-error);
+}

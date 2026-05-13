@@ -37,8 +37,8 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
   loading?: boolean
-  leadingIcon?: React.ReactNode
-  trailingIcon?: React.ReactNode
+  iconLeading?: React.ReactNode
+  iconTrailing?: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -51,8 +51,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       asChild = false,
       loading = false,
       disabled,
-      leadingIcon,
-      trailingIcon,
+      iconLeading,
+      iconTrailing,
       children,
       ...props
     },
@@ -87,16 +87,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? (
           <span className="maxa-button__spinner" aria-hidden="true" />
         ) : (
-          leadingIcon && (
+          iconLeading && (
             <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">
-              {leadingIcon}
+              {iconLeading}
             </span>
           )
         )}
         {children && <span className="maxa-button__label">{children}</span>}
-        {!loading && trailingIcon && (
+        {!loading && iconTrailing && (
           <span className="maxa-button__icon maxa-button__icon--trailing" aria-hidden="true">
-            {trailingIcon}
+            {iconTrailing}
           </span>
         )}
       </Comp>

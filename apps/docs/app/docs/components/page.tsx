@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Button, DatePicker, Input, Select } from "@maxa/ui"
+import { Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -51,6 +51,7 @@ const preview: React.CSSProperties = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  gap: "8px",
   minHeight: "112px",
   marginTop: "24px",
   padding: "16px",
@@ -67,6 +68,32 @@ const footer: React.CSSProperties = {
   fontWeight: "var(--font-weight-semibold)",
 }
 
+function PlusIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+    </svg>
+  )
+}
+
+function EditIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </svg>
+  )
+}
+
+function TrashIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+      <path d="M10 11v6M14 11v6" /><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+    </svg>
+  )
+}
+
 export default function ComponentsPage() {
   return (
     <DocsPageLayout
@@ -75,72 +102,116 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-        The current approved component set is intentionally small: Button for
-        actions and Input for text entry. Both use component-level tokens,
-        typed React APIs, and documentation examples.
+          Seven components covering actions, form controls, and selection.
+          All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
     >
-      <DocsPageSection id="catalog" title="Catalog" description="Approved components are documented in the same centered layout as the newest pages, with previews that stretch and stay readable across screen sizes.">
+      <DocsPageSection id="catalog" title="Catalog" description="Each component is fully documented with interactive previews, code examples, and an API reference.">
         <div style={grid}>
-        <Link href="/docs/components/button" style={card}>
-          <p style={eyebrow}>Action</p>
-          <h2 style={title}>Button</h2>
-          <p style={description}>
-            Seven variants, four sizes, icon support, loading state, and
-            polymorphic rendering with asChild.
-          </p>
-          <div style={preview}>
-            <Button variant="primary">Create item</Button>
-          </div>
-          <span style={footer}>View Button</span>
-        </Link>
 
-        <Link href="/docs/components/input" style={card}>
-          <p style={eyebrow}>Form</p>
-          <h2 style={title}>Input</h2>
-          <p style={description}>
-            Label, hint text, icons, validation states, disabled state, and
-            three size options.
-          </p>
-          <div style={preview}>
-            <div style={{ width: "100%", maxWidth: "280px" }}>
-              <Input label="Email" placeholder="you@example.com" />
+          <Link href="/docs/components/button" style={card}>
+            <p style={eyebrow}>Action</p>
+            <h2 style={title}>Button</h2>
+            <p style={description}>
+              Seven variants, four sizes, icon support, loading state, and polymorphic rendering.
+            </p>
+            <div style={preview}>
+              <Button variant="primary">Create</Button>
+              <Button variant="secondary">Cancel</Button>
+              <Button variant="outline">Export</Button>
             </div>
-          </div>
-          <span style={footer}>View Input</span>
-        </Link>
+            <span style={footer}>View Button →</span>
+          </Link>
 
-        <Link href="/docs/components/select" style={card}>
-          <p style={eyebrow}>Form</p>
-          <h2 style={title}>Select</h2>
-          <p style={description}>
-            Input-like field with a chevron for choosing one value from a known list.
-          </p>
-          <div style={preview}>
-            <div style={{ width: "100%", maxWidth: "280px" }}>
-              <Select label="Dropdown" defaultValue="">
-                <option value="" disabled>Placeholder</option>
-                <option>One</option>
-              </Select>
+          <Link href="/docs/components/icon-button" style={card}>
+            <p style={eyebrow}>Action</p>
+            <h2 style={title}>Icon Button</h2>
+            <p style={description}>
+              Square icon-only button with enforced aria-label for accessibility.
+            </p>
+            <div style={preview}>
+              <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
+              <IconButton icon={<EditIcon />} aria-label="Edit" variant="secondary" />
+              <IconButton icon={<TrashIcon />} aria-label="Delete" variant="ghost" />
             </div>
-          </div>
-          <span style={footer}>View Select</span>
-        </Link>
+            <span style={footer}>View Icon Button →</span>
+          </Link>
 
-        <Link href="/docs/components/date-picker" style={card}>
-          <p style={eyebrow}>Form</p>
-          <h2 style={title}>Date Picker</h2>
-          <p style={description}>
-            Single-date and range-date fields with shared form composition.
-          </p>
-          <div style={preview}>
-            <div style={{ width: "100%", maxWidth: "280px" }}>
-              <DatePicker label="Date Picker" />
+          <Link href="/docs/components/checkbox" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Checkbox</h2>
+            <p style={description}>
+              Supports checked, indeterminate, disabled, and error states with label and helper text.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+              <Checkbox label="Unchecked" />
+              <Checkbox label="Checked" defaultChecked />
+              <Checkbox label="Disabled" disabled defaultChecked />
             </div>
-          </div>
-          <span style={footer}>View Date Picker</span>
-        </Link>
+            <span style={footer}>View Checkbox →</span>
+          </Link>
+
+          <Link href="/docs/components/radio" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Radio</h2>
+            <p style={description}>
+              Native radio input with label and helper text. Group with a shared name for mutual exclusion.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+              <Radio name="plan-demo" value="free" label="Free" />
+              <Radio name="plan-demo" value="pro" label="Pro" defaultChecked />
+              <Radio name="plan-demo" value="enterprise" label="Enterprise" />
+            </div>
+            <span style={footer}>View Radio →</span>
+          </Link>
+
+          <Link href="/docs/components/input" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Input</h2>
+            <p style={description}>
+              Text, password, search, and quantity fields with icons, validation states, and sizes.
+            </p>
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "280px" }}>
+                <Input label="Email" placeholder="you@example.com" />
+              </div>
+            </div>
+            <span style={footer}>View Input →</span>
+          </Link>
+
+          <Link href="/docs/components/select" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Select</h2>
+            <p style={description}>
+              Input-like field with a chevron for choosing one value from a known list.
+            </p>
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "280px" }}>
+                <Select label="Plan" defaultValue="">
+                  <option value="" disabled>Choose a plan</option>
+                  <option>Free</option>
+                  <option>Pro</option>
+                </Select>
+              </div>
+            </div>
+            <span style={footer}>View Select →</span>
+          </Link>
+
+          <Link href="/docs/components/date-picker" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Date Picker</h2>
+            <p style={description}>
+              Single-date and range-date fields with shared form composition model.
+            </p>
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "280px" }}>
+                <DatePicker label="Date" />
+              </div>
+            </div>
+            <span style={footer}>View Date Picker →</span>
+          </Link>
+
         </div>
       </DocsPageSection>
     </DocsPageLayout>

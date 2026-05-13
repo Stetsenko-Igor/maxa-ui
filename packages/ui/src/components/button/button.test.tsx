@@ -48,8 +48,8 @@ describe("Button", () => {
   it("renders leading and trailing icons", () => {
     render(
       <Button
-        leadingIcon={<svg data-testid="lead" />}
-        trailingIcon={<svg data-testid="trail" />}
+        iconLeading={<svg data-testid="lead" />}
+        iconTrailing={<svg data-testid="trail" />}
       >
         Test
       </Button>,

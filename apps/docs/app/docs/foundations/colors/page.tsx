@@ -15,7 +15,7 @@ function Swatch({ label, token, textDark: _textDark = false }: { label: string; 
   return (
     <div style={{ borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--color-border-subtle)" }}>
       <div style={{ height: "56px", background: `var(${token})` }} />
-      <div style={{ padding: "8px 10px", background: "var(--color-bg-surface-layer1)" }}>
+      <div style={{ padding: "8px 10px", background: "var(--color-bg-primary)" }}>
         <p style={{ margin: 0, fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)", color: "var(--color-text-primary)" }}>{label}</p>
         <p style={{ margin: "2px 0 0", fontSize: "var(--text-caption-sm)", fontFamily: "var(--font-mono)", color: "var(--color-text-tertiary)" }}>{token}</p>
       </div>
@@ -39,11 +39,15 @@ const ACTION_GROUPS = [
 ]
 
 const BG_GROUPS = [
-  { label: "Default", token: "--color-bg-default" },
-  { label: "Surface Layer 1", token: "--color-bg-surface-layer1" },
-  { label: "Surface Layer 2", token: "--color-bg-surface-layer2" },
-  { label: "Neutral Subtle", token: "--color-bg-neutral-subtle" },
+  { label: "Page", token: "--color-bg-page" },
+  { label: "White", token: "--color-bg-white" },
+  { label: "Primary", token: "--color-bg-primary" },
+  { label: "Secondary", token: "--color-bg-secondary" },
+  { label: "Tertiary", token: "--color-bg-tertiary" },
+  { label: "Disabled", token: "--color-bg-disabled" },
+  { label: "Inverse", token: "--color-bg-inverse" },
   { label: "Brand Subtle", token: "--color-bg-brand-subtle" },
+  { label: "Brand", token: "--color-bg-brand" },
   { label: "Success Subtle", token: "--color-bg-success-subtle" },
   { label: "Error Subtle", token: "--color-bg-error-subtle" },
   { label: "Warning Subtle", token: "--color-bg-warning-subtle" },
@@ -63,11 +67,12 @@ const TEXT_GROUPS = [
 ]
 
 const BORDER_GROUPS = [
-  { label: "Default", token: "--color-border-default" },
-  { label: "Subtle", token: "--color-border-subtle" },
+  { label: "Primary", token: "--color-border-primary" },
   { label: "Secondary", token: "--color-border-secondary" },
+  { label: "Disabled", token: "--color-border-disabled" },
   { label: "Focus", token: "--color-border-focus" },
-  { label: "Neutral Strong", token: "--color-border-neutral-strong" },
+  { label: "Brand", token: "--color-border-brand" },
+  { label: "Error", token: "--color-border-error" },
 ]
 
 export default function ColorsPage() {

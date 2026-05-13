@@ -1,0 +1,45 @@
+/* Checkbox component tokens — Layer 3 */
+/* Reference only semantic tokens (Layer 2). Never raw primitives. */
+
+:root {
+  /* ── Sizes ────────────────────────────────────────────────────── */
+  --checkbox-size-sm:          16px;
+  --checkbox-size-md:          20px;
+  --checkbox-radius:           var(--radius-xs);
+  --checkbox-border-width:     1.5px;
+  --checkbox-focus-ring-width: 3px;
+  --checkbox-focus-ring-offset: 2px;
+  --checkbox-mark-width-md:    10px;
+  --checkbox-mark-height-md:   8px;
+  --checkbox-mark-width-sm:    8px;
+  --checkbox-mark-height-sm:   6px;
+  --checkbox-dash-height:      2px;
+  --checkbox-dash-radius:      1px;
+
+  /* ── Colors — default state ───────────────────────────────────── */
+  --checkbox-bg:               var(--color-bg-default);
+  --checkbox-border:           var(--color-border-primary);
+  --checkbox-border-hover:     var(--color-border-secondary);
+  --checkbox-border-focus:     var(--color-border-focus);
+  --checkbox-mark-color:       var(--color-base-white);
+
+  /* ── Colors — checked / indeterminate ────────────────────────── */
+  --checkbox-bg-checked:       var(--color-action-primary);
+  --checkbox-border-checked:   var(--color-action-primary);
+
+  /* ── Colors — error ───────────────────────────────────────────── */
+  --checkbox-border-error:     var(--color-border-error);
+  --checkbox-bg-error-checked: var(--color-border-error);
+
+  /* ── Colors — disabled ────────────────────────────────────────── */
+  --checkbox-bg-disabled:      var(--color-bg-disabled);
+  --checkbox-border-disabled:  var(--color-border-disabled);
+  --checkbox-mark-disabled:    var(--color-text-disabled);
+
+  /* ── Label / helper ───────────────────────────────────────────── */
+  --checkbox-label-text:       var(--color-text-primary);
+  --checkbox-helper-text:      var(--color-text-tertiary);
+  --checkbox-helper-error:     var(--color-text-error);
+  --checkbox-gap:              8px;
+  --checkbox-content-gap:      4px;
+}

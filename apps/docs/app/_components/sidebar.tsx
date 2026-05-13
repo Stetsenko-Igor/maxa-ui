@@ -23,9 +23,11 @@ const NAV = [
     items: [
       { href: "/docs/components", label: "Overview" },
       { href: "/docs/components/button", label: "Button" },
-      { href: "/docs/components/input", label: "Input" },
-      { href: "/docs/components/select", label: "Select" },
+      { href: "/docs/components/checkbox", label: "Checkbox" },
       { href: "/docs/components/date-picker", label: "Date Picker" },
+      { href: "/docs/components/input", label: "Input" },
+      { href: "/docs/components/radio", label: "Radio" },
+      { href: "/docs/components/select", label: "Select" },
     ],
   },
 ]
