@@ -35,7 +35,7 @@
   /* Figma: bg/primary, bg/secondary, bg/tertiary, bg/disabled,       */
   /*        bg/overlay, bg/inverse, bg/brand-subtle, bg/brand, ...    */
   --color-bg-page:              var(--color-base-white);  /* bg/page — page/viewport canvas */
-  --color-bg-surface:             var(--color-base-white);  /* bg/surface — component surface (inputs, cards) */
+  --color-bg-elevated:             var(--color-base-white);  /* bg/elevated — raised element surface (inputs, cards) */
   --color-bg-primary:           var(--color-gray-50);     /* bg/primary — app surface */
   /* backward-compat */
   --color-bg-default:           var(--color-bg-page);
@@ -101,8 +101,8 @@
   --color-action-warning-subtle-active:   var(--color-yellow-100);
 
   /* ── Backward-compat aliases — remove after full migration ─────── */
-  --color-bg-surface-layer1:    var(--color-bg-primary);
-  --color-bg-surface-layer2:    var(--color-bg-tertiary);
+  --color-bg-elevated-layer1:    var(--color-bg-primary);
+  --color-bg-elevated-layer2:    var(--color-bg-tertiary);
   --color-bg-brand-surface:     var(--color-bg-brand);
   --color-border-default:       var(--color-border-primary);
   --color-border-subtle:        var(--color-border-disabled);
@@ -139,7 +139,7 @@
 
   /* ── Background — dark ───────────────────────────────────────────── */
   --color-bg-page:              var(--color-gray-1000);   /* #0D0D0D — darkest page canvas */
-  --color-bg-surface:             var(--color-gray-900);    /* #2A2A2B — elevated surface */
+  --color-bg-elevated:             var(--color-gray-900);    /* #2A2A2B — elevated surface */
   --color-bg-primary:           var(--color-gray-950);    /* #1B1A1A — main dark surface */
   /* backward-compat */
   --color-bg-default:           var(--color-bg-page);
@@ -196,8 +196,8 @@
   --color-action-warning-subtle-active:   var(--color-yellow-900);
 
   /* ── Backward-compat aliases — dark ─────────────────────────────── */
-  --color-bg-surface-layer1:    var(--color-bg-primary);
-  --color-bg-surface-layer2:    var(--color-bg-tertiary);
+  --color-bg-elevated-layer1:    var(--color-bg-primary);
+  --color-bg-elevated-layer2:    var(--color-bg-tertiary);
   --color-bg-brand-surface:     var(--color-bg-brand);
   --color-border-default:       var(--color-border-primary);
   --color-border-subtle:        var(--color-border-disabled);

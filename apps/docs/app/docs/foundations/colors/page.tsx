@@ -40,7 +40,7 @@ const ACTION_GROUPS = [
 
 const BG_GROUPS = [
   { label: "Page", token: "--color-bg-page" },
-  { label: "Surface", token: "--color-bg-surface" },
+  { label: "Elevated", token: "--color-bg-elevated" },
   { label: "Primary", token: "--color-bg-primary" },
   { label: "Secondary", token: "--color-bg-secondary" },
   { label: "Tertiary", token: "--color-bg-tertiary" },
