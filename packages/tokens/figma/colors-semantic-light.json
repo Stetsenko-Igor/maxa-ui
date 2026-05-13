@@ -50,7 +50,7 @@
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
-    "white": {
+    "surface": {
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
