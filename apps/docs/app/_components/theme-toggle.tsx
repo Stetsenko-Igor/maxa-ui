@@ -35,7 +35,7 @@ export function ThemeToggle() {
         alignItems: "center",
         justifyContent: "center",
         borderRadius: "var(--radius-sm)",
-        border: "1px solid var(--color-border-subtle)",
+        border: "1px solid var(--color-border-secondary)",
         background: "transparent",
         cursor: "pointer",
         color: "var(--color-text-secondary)",

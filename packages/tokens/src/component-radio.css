@@ -12,7 +12,7 @@
   --radio-focus-ring-offset:  2px;
 
   /* ── Colors — default state ───────────────────────────────────── */
-  --radio-bg:                 var(--color-bg-default);
+  --radio-bg:                 var(--color-bg-surface);
   --radio-border:             var(--color-border-primary);
   --radio-border-hover:       var(--color-border-secondary);
   --radio-border-focus:       var(--color-border-focus);
@@ -28,7 +28,7 @@
 
   /* ── Colors — disabled ────────────────────────────────────────── */
   --radio-bg-disabled:        var(--color-bg-disabled);
-  --radio-border-disabled:    var(--color-border-disabled);
+  --radio-border-disabled:    var(--color-border-tertiary);
 
   /* ── Label / helper ───────────────────────────────────────────── */
   --radio-label-text:         var(--color-text-primary);

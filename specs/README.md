@@ -36,13 +36,20 @@ specs/
 ├── architecture.md                  ← package ownership rules
 ├── tokens-reference.md              ← master CSS variable index
 ├── foundations/
-│   ├── color.md                     ← semantic color tokens + usage rules
+│   ├── color.md                     ← semantic color tokens + surface model
 │   ├── spacing.md                   ← spacing scale + layout tokens
 │   ├── typography.md                ← type scale + font usage
 │   ├── radius.md                    ← radius scale
 │   └── breakpoints.md               ← breakpoints + responsive strategy
 ├── components/
-│   └── button.md                    ← Button variants, sizes, states, intent
+│   ├── button.md                    ← Button variants, sizes, states
+│   ├── icon-button.md               ← IconButton (Button + icon-only)
+│   ├── input.md                     ← Input primitive + form composition
+│   ├── select.md                    ← Select / dropdown
+│   ├── date-picker.md               ← DatePicker field composition
+│   ├── checkbox.md                  ← Checkbox + states
+│   ├── radio.md                     ← Radio + group composition
+│   └── form-field.md                ← FormField label + control + hint + error
 └── patterns/
     └── interactive-hierarchy.md     ← which button variant for which context
 ```

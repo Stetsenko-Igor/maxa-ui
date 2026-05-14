@@ -1,0 +1,8 @@
+/* MAXA Design Tokens — Component layer: Nav */
+/* Navigation surface is always dark (regardless of theme) — pinned to */
+/* a primitive to avoid hardcoded hex while keeping the "always dark"  */
+/* invariant.                                                          */
+
+:root {
+  --nav-bg: var(--color-neutral-950);  /* always dark — never overridden in dark mode */
+}

@@ -13,7 +13,7 @@ const cellStyle: React.CSSProperties = {
   padding: "10px 16px",
   fontSize: "var(--text-sm)",
   color: "var(--color-text-secondary)",
-  borderBottom: "1px solid var(--color-border-subtle)",
+  borderBottom: "1px solid var(--color-border-secondary)",
   verticalAlign: "top",
 }
 
@@ -22,8 +22,8 @@ const headCellStyle: React.CSSProperties = {
   fontSize: "var(--text-caption-sm)",
   fontWeight: "var(--font-weight-semibold)",
   color: "var(--color-text-tertiary)",
-  background: "var(--color-bg-surface-layer2)",
-  borderBottom: "1px solid var(--color-border-subtle)",
+  background: "var(--color-bg-muted)",
+  borderBottom: "1px solid var(--color-border-secondary)",
   textTransform: "uppercase" as const,
   letterSpacing: "0.06em",
   textAlign: "left" as const,
@@ -33,7 +33,7 @@ const headCellStyle: React.CSSProperties = {
 const codeStyle: React.CSSProperties = {
   fontFamily: "var(--font-mono)",
   fontSize: "var(--text-sm)",
-  background: "var(--color-bg-surface-layer2)",
+  background: "var(--color-bg-muted)",
   padding: "1px 6px",
   borderRadius: "var(--radius-xs)",
   color: "var(--color-text-primary)",
@@ -43,7 +43,7 @@ export function PropsTable({ props }: PropsTableProps) {
   return (
     <div
       style={{
-        border: "1px solid var(--color-border-subtle)",
+        border: "1px solid var(--color-border-secondary)",
         borderRadius: "var(--radius-md)",
         overflowX: "auto",
         overflowY: "hidden",

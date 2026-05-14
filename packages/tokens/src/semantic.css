@@ -1,15 +1,27 @@
 /* MAXA Design Tokens — Semantic layer */
 /* Aligned with Figma 🔴 Foundation library (Color modes collection). */
 /* Light mode. Dark overrides below in [data-theme="dark"].            */
+/*                                                                     */
+/* Surface model: 3 elevation tiers + overlay (School A — Polaris/Radix). */
+/*   bg/page    — gray canvas, lowest layer                            */
+/*   bg/surface — white raised surfaces (inputs, cards, modals,        */
+/*                dropdowns, sidebar, drawer, table rows, containers)  */
+/*   bg/muted   — recessed zones (code blocks, wells, table fill,      */
+/*                search-fields inside dark sidebars)                  */
+/*   bg/overlay — modal scrim                                          */
+/*                                                                     */
+/* Status/intent bg tokens (brand, success, warning, error, info,      */
+/* neutral) are orthogonal to surface elevation — keep using them      */
+/* for tags, alerts, badges, feedback states.                          */
 
 :root {
   /* ── Text — text and icon fill roles ────────────────────────────── */
-  --color-text-primary:       var(--color-gray-950);
-  --color-text-secondary:     var(--color-gray-800);
-  --color-text-tertiary:      var(--color-gray-600);
-  --color-text-disabled:      var(--color-gray-400);
+  --color-text-primary:       var(--color-neutral-950);
+  --color-text-secondary:     var(--color-neutral-800);
+  --color-text-tertiary:      var(--color-neutral-600);
+  --color-text-disabled:      var(--color-neutral-400);
   --color-text-inverse:       var(--color-base-white);
-  --color-text-on-brand:      var(--color-gray-950);
+  --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-600);
   --color-text-info:          var(--color-blue-600);
   --color-text-success:       var(--color-green-600);
@@ -17,37 +29,30 @@
   --color-text-warning:       var(--color-yellow-600);
 
   /* ── Border ─────────────────────────────────────────────────────── */
-  /* Figma: border/primary, border/secondary, border/subtle,          */
-  /*        border/focus, border/brand, border/error                  */
-  --color-border-primary:        var(--color-gray-300);
-  --color-border-secondary:      var(--color-gray-400);
-  --color-border-subtle:         var(--color-gray-200);
+  --color-border-primary:        var(--color-neutral-300);
+  --color-border-secondary:      var(--color-neutral-200);
+  --color-border-tertiary:       var(--color-neutral-100);
   --color-border-focus:          var(--color-blue-500);
   --color-border-brand:          var(--color-brand-500);
   --color-border-error:          var(--color-red-500);
   --color-border-info-strong:    var(--color-blue-700);
   --color-border-success-strong: var(--color-green-700);
   --color-border-warning-strong: var(--color-orange-600);
-  --color-border-neutral-strong: var(--color-gray-700);
-  --color-border-neutral-subtle: var(--color-gray-300);
+  --color-border-neutral-strong: var(--color-neutral-700);
+  --color-border-neutral-subtle: var(--color-neutral-300);
 
-  /* ── Background ─────────────────────────────────────────────────── */
-  /* Figma: bg/primary, bg/secondary, bg/tertiary, bg/disabled,       */
-  /*        bg/overlay, bg/inverse, bg/brand-subtle, bg/brand, ...    */
-  --color-bg-page:              var(--color-base-white);  /* bg/page — page/viewport canvas */
-  --color-bg-elevated:             var(--color-base-white);  /* bg/elevated — raised element surface (inputs, cards) */
-  --color-bg-primary:           var(--color-gray-50);     /* bg/primary — app surface */
-  /* backward-compat */
-  --color-bg-default:           var(--color-bg-page);
-  --color-bg-secondary:         var(--color-gray-25);     /* bg/secondary — card/input surface */
-  --color-bg-tertiary:          var(--color-gray-100);    /* bg/tertiary — recessed areas */
-  --color-bg-disabled:          var(--color-gray-100);
+  /* ── Background — surface elevation (3 tiers + overlay) ─────────── */
+  --color-bg-page:              var(--color-neutral-50);     /* #F5F6FA — gray canvas */
+  --color-bg-surface:           var(--color-base-white);  /* #FFFFFF — raised surfaces */
+  --color-bg-muted:             var(--color-neutral-25);     /* #F8F8F8 — recessed zones */
   --color-bg-overlay:           rgba(0, 0, 0, 0.5);
-  --color-bg-inverse:           var(--color-gray-950);
-  --color-bg-nav:               #1b1a1a;  /* always dark — NOT overridden in [data-theme="dark"] */
-  --color-bg-neutral-subtle:    var(--color-gray-100);
-  --color-bg-neutral-on-subtle: var(--color-gray-200);
-  --color-bg-neutral-strong:    var(--color-gray-800);
+  --color-bg-inverse:           var(--color-neutral-950);
+  --color-bg-disabled:          var(--color-neutral-100);
+
+  /* ── Background — status/intent (orthogonal to elevation) ──────── */
+  --color-bg-neutral-subtle:    var(--color-neutral-100);
+  --color-bg-neutral-on-subtle: var(--color-neutral-200);
+  --color-bg-neutral-strong:    var(--color-neutral-800);
   --color-bg-brand-subtle:      var(--color-brand-50);
   --color-bg-brand:             var(--color-brand-100);
   --color-bg-brand-solid:       var(--color-brand-500);
@@ -70,12 +75,12 @@
   --color-action-primary-subtle:          var(--color-blue-50);
   --color-action-primary-subtle-hover:    var(--color-blue-50);
   --color-action-primary-subtle-active:   var(--color-blue-200);
-  --color-action-neutral:                 var(--color-gray-300);
-  --color-action-neutral-hover:           var(--color-gray-400);
-  --color-action-neutral-active:          var(--color-gray-500);
-  --color-action-neutral-subtle:          var(--color-gray-100);
-  --color-action-neutral-subtle-hover:    var(--color-gray-200);
-  --color-action-neutral-subtle-active:   var(--color-gray-300);
+  --color-action-neutral:                 var(--color-neutral-300);
+  --color-action-neutral-hover:           var(--color-neutral-400);
+  --color-action-neutral-active:          var(--color-neutral-500);
+  --color-action-neutral-subtle:          var(--color-neutral-100);
+  --color-action-neutral-subtle-hover:    var(--color-neutral-200);
+  --color-action-neutral-subtle-active:   var(--color-neutral-300);
   --color-action-brand:                   var(--color-brand-500);
   --color-action-brand-hover:             var(--color-brand-600);
   --color-action-brand-active:            var(--color-brand-700);
@@ -101,55 +106,56 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-50);
   --color-action-warning-subtle-active:   var(--color-yellow-100);
 
-  /* ── Backward-compat aliases ────────────────────────────────────── */
-  --color-bg-brand-surface:     var(--color-bg-brand);
+  /* ── Deprecated aliases — remove in next release ────────────────── */
+  /* bg/elevated → bg/surface (rename to match Radix/industry naming).  */
+  /* External consumers: migrate to --color-bg-surface.                 */
+  --color-bg-elevated:          var(--color-bg-surface);
+
+  /* Border legacy aliases — kept for 1 release. */
   --color-border-default:       var(--color-border-primary);
-  --color-border-disabled:      var(--color-border-subtle);
   --color-border-brand-strong:  var(--color-border-brand);
   --color-border-error-strong:  var(--color-border-error);
 }
 
 [data-theme="dark"] {
   /* ── Text — dark ────────────────────────────────────────────────── */
-  --color-text-primary:       var(--color-gray-100);
-  --color-text-secondary:     var(--color-gray-200);
-  --color-text-tertiary:      var(--color-gray-500);
-  --color-text-disabled:      var(--color-gray-700);
-  --color-text-inverse:       var(--color-gray-900);
-  --color-text-on-brand:      var(--color-gray-950);
+  --color-text-primary:       var(--color-neutral-100);
+  --color-text-secondary:     var(--color-neutral-200);
+  --color-text-tertiary:      var(--color-neutral-500);
+  --color-text-disabled:      var(--color-neutral-700);
+  --color-text-inverse:       var(--color-neutral-900);
+  --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-400);
   --color-text-info:          var(--color-blue-400);
   --color-text-success:       var(--color-green-400);
   --color-text-error:         var(--color-red-400);
   --color-text-warning:       var(--color-yellow-400);
 
-  /* ── Border — dark ───────────────────────────────────────────────── */
-  --color-border-primary:        var(--color-gray-700);
-  --color-border-secondary:      var(--color-gray-800);
-  --color-border-subtle:         var(--color-gray-800);
+  /* ── Border — dark ──────────────────────────────────────────────── */
+  --color-border-primary:        var(--color-neutral-700);
+  --color-border-secondary:      var(--color-neutral-800);
+  --color-border-tertiary:       var(--color-neutral-900);
   --color-border-focus:          var(--color-blue-400);
   --color-border-brand:          var(--color-brand-400);
   --color-border-error:          var(--color-red-400);
   --color-border-info-strong:    var(--color-blue-500);
   --color-border-success-strong: var(--color-green-500);
   --color-border-warning-strong: var(--color-orange-500);
-  --color-border-neutral-strong: var(--color-gray-500);
-  --color-border-neutral-subtle: var(--color-gray-700);
+  --color-border-neutral-strong: var(--color-neutral-500);
+  --color-border-neutral-subtle: var(--color-neutral-700);
 
-  /* ── Background — dark ───────────────────────────────────────────── */
-  --color-bg-page:              var(--color-gray-1000);   /* #0D0D0D — darkest page canvas */
-  --color-bg-elevated:             var(--color-gray-900);    /* #2A2A2B — elevated surface */
-  --color-bg-primary:           var(--color-gray-950);    /* #1B1A1A — main dark surface */
-  /* backward-compat */
-  --color-bg-default:           var(--color-bg-page);
-  --color-bg-secondary:         var(--color-gray-900);
-  --color-bg-tertiary:          var(--color-gray-800);
-  --color-bg-disabled:          var(--color-gray-800);
+  /* ── Background — dark (surface elevation) ──────────────────────── */
+  --color-bg-page:              var(--color-neutral-1000);   /* #0D0D0D — darkest page canvas */
+  --color-bg-surface:           var(--color-neutral-900);    /* #2A2A2B — raised surface */
+  --color-bg-muted:             var(--color-neutral-975);    /* #161616 — recessed zone */
   --color-bg-overlay:           rgba(0, 0, 0, 0.7);
-  --color-bg-inverse:           var(--color-gray-950);
-  --color-bg-neutral-subtle:    var(--color-gray-800);
-  --color-bg-neutral-on-subtle: var(--color-gray-700);
-  --color-bg-neutral-strong:    var(--color-gray-400);
+  --color-bg-inverse:           var(--color-neutral-950);
+  --color-bg-disabled:          var(--color-neutral-800);
+
+  /* ── Background — status/intent (dark) ──────────────────────────── */
+  --color-bg-neutral-subtle:    var(--color-neutral-800);
+  --color-bg-neutral-on-subtle: var(--color-neutral-700);
+  --color-bg-neutral-strong:    var(--color-neutral-400);
   --color-bg-brand-subtle:      var(--color-brand-950);
   --color-bg-brand:             var(--color-brand-900);
   --color-bg-brand-solid:       var(--color-brand-600);
@@ -157,19 +163,19 @@
   --color-bg-error-strong:      var(--color-red-500);
   --color-bg-warning-strong:    var(--color-orange-500);
 
-  /* ── Action — dark ───────────────────────────────────────────────── */
+  /* ── Action — dark ──────────────────────────────────────────────── */
   --color-action-primary:                 var(--color-blue-400);
   --color-action-primary-hover:           var(--color-blue-300);
   --color-action-primary-active:          var(--color-blue-200);
   --color-action-primary-subtle:          var(--color-blue-950);
   --color-action-primary-subtle-hover:    var(--color-blue-950);
   --color-action-primary-subtle-active:   var(--color-blue-900);
-  --color-action-neutral:                 var(--color-gray-800);
-  --color-action-neutral-hover:           var(--color-gray-700);
-  --color-action-neutral-active:          var(--color-gray-600);
-  --color-action-neutral-subtle:          var(--color-gray-900);
-  --color-action-neutral-subtle-hover:    var(--color-gray-800);
-  --color-action-neutral-subtle-active:   var(--color-gray-700);
+  --color-action-neutral:                 var(--color-neutral-800);
+  --color-action-neutral-hover:           var(--color-neutral-700);
+  --color-action-neutral-active:          var(--color-neutral-600);
+  --color-action-neutral-subtle:          var(--color-neutral-900);
+  --color-action-neutral-subtle-hover:    var(--color-neutral-800);
+  --color-action-neutral-subtle-active:   var(--color-neutral-700);
   --color-action-brand:                   var(--color-brand-600);
   --color-action-brand-hover:             var(--color-brand-500);
   --color-action-brand-active:            var(--color-brand-400);
@@ -195,10 +201,9 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-950);
   --color-action-warning-subtle-active:   var(--color-yellow-900);
 
-  /* ── Backward-compat aliases — dark ────────────────────────────── */
-  --color-bg-brand-surface:     var(--color-bg-brand);
+  /* ── Deprecated aliases — dark ──────────────────────────────────── */
+  --color-bg-elevated:          var(--color-bg-surface);
   --color-border-default:       var(--color-border-primary);
-  --color-border-disabled:      var(--color-border-subtle);
   --color-border-brand-strong:  var(--color-border-brand);
   --color-border-error-strong:  var(--color-border-error);
 }

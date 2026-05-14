@@ -45,8 +45,6 @@ import "@maxa/tokens/theme.css"
 
 const GITHUB_URL = "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/icon-button"
 
-const stack: React.CSSProperties = { display: "flex", flexDirection: "column", gap: "16px" }
-
 export default function IconButtonPage() {
   return (
     <ComponentPage

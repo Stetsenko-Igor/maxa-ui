@@ -30,10 +30,10 @@ const badgeStyle: React.CSSProperties = {
   gap: "6px",
   padding: "4px 10px",
   borderRadius: "var(--radius-full)",
-  border: "1px solid var(--color-border-subtle)",
+  border: "1px solid var(--color-border-secondary)",
   fontSize: "var(--text-sm)",
   color: "var(--color-text-secondary)",
-  background: "var(--color-bg-surface-layer1)",
+  background: "var(--color-bg-surface)",
 }
 
 const featureGridStyle: React.CSSProperties = {
@@ -46,8 +46,8 @@ const featureGridStyle: React.CSSProperties = {
 const featureCardStyle: React.CSSProperties = {
   padding: "16px 20px",
   borderRadius: "var(--radius-md)",
-  border: "1px solid var(--color-border-subtle)",
-  background: "var(--color-bg-surface-layer1)",
+  border: "1px solid var(--color-border-secondary)",
+  background: "var(--color-bg-surface)",
 }
 
 const featureTitleStyle: React.CSSProperties = {

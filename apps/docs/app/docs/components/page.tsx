@@ -18,8 +18,8 @@ const card: React.CSSProperties = {
   minHeight: "260px",
   padding: "20px",
   borderRadius: "var(--radius-md)",
-  border: "1px solid var(--color-border-subtle)",
-  background: "var(--color-bg-surface-layer1)",
+  border: "1px solid var(--color-border-secondary)",
+  background: "var(--color-bg-surface)",
   textDecoration: "none",
 }
 
@@ -56,8 +56,8 @@ const preview: React.CSSProperties = {
   marginTop: "24px",
   padding: "16px",
   borderRadius: "var(--radius-sm)",
-  border: "1px solid var(--color-border-subtle)",
-  background: "var(--color-bg-surface-layer2)",
+  border: "1px solid var(--color-border-secondary)",
+  background: "var(--color-bg-muted)",
 }
 
 const footer: React.CSSProperties = {
@@ -102,7 +102,7 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Seven components covering actions, form controls, and selection.
+          Eight components covering actions, form controls, selection, and composition.
           All use component-level tokens, typed React APIs, and full documentation.
         </>
       }

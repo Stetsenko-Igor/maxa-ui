@@ -70,10 +70,10 @@ export function ComponentPage({
                     gap: "6px",
                     height: "26px",
                     padding: "0 9px",
-                    border: "1px solid var(--color-border-subtle)",
+                    border: "1px solid var(--color-border-secondary)",
                     borderRadius: "var(--radius-full)",
                     color: "var(--color-text-secondary)",
-                    background: "var(--color-bg-surface-layer1)",
+                    background: "var(--color-bg-surface)",
                     fontSize: "var(--text-sm)",
                     fontWeight: "var(--font-weight-semibold)",
                     textDecoration: "none",
@@ -121,7 +121,7 @@ export function DocsSection({ children, description, id, title }: DocsSectionPro
       <hr
         style={{
           border: "none",
-          borderTop: "1px solid var(--color-border-subtle)",
+          borderTop: "1px solid var(--color-border-secondary)",
           margin: "0 0 28px",
         }}
       />

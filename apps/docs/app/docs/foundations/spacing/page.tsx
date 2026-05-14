@@ -35,14 +35,14 @@ export default function SpacingPage() {
       lead={<>17-step scale from 0 to 160px. Use semantic token names in component code, never raw pixel values.</>}
     >
       <DocsPageSection id="scale" title="Scale">
-      <div style={{ display: "grid", gridTemplateColumns: "80px 160px 1fr 60px", gap: "0 16px", padding: "8px 16px", background: "var(--color-bg-surface-layer2)", borderRadius: "var(--radius-sm) var(--radius-sm) 0 0", border: "1px solid var(--color-border-subtle)", borderBottom: "none" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "80px 160px 1fr 60px", gap: "0 16px", padding: "8px 16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-sm) var(--radius-sm) 0 0", border: "1px solid var(--color-border-secondary)", borderBottom: "none" }}>
         {["Token", "CSS var", "Visual", "px"].map(h => (
           <span key={h} style={{ fontSize: "var(--text-caption-sm)", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.04em" }}>{h}</span>
         ))}
       </div>
 
       {SCALE.map(({ name, css, px }, i) => (
-        <div key={name} style={{ display: "grid", gridTemplateColumns: "80px 160px 1fr 60px", gap: "0 16px", alignItems: "center", padding: "10px 16px", border: "1px solid var(--color-border-subtle)", borderTop: i === 0 ? "1px solid var(--color-border-subtle)" : "none", borderRadius: i === SCALE.length - 1 ? "0 0 var(--radius-sm) var(--radius-sm)" : 0 }}>
+        <div key={name} style={{ display: "grid", gridTemplateColumns: "80px 160px 1fr 60px", gap: "0 16px", alignItems: "center", padding: "10px 16px", border: "1px solid var(--color-border-secondary)", borderTop: i === 0 ? "1px solid var(--color-border-secondary)" : "none", borderRadius: i === SCALE.length - 1 ? "0 0 var(--radius-sm) var(--radius-sm)" : 0 }}>
           <code style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-medium)" }}>{name}</code>
           <code style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-caption-sm)", color: "var(--color-text-tertiary)" }}>{css}</code>
           <div style={{ height: "16px", display: "flex", alignItems: "center" }}>

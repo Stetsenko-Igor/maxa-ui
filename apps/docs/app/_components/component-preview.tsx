@@ -17,7 +17,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
 
   return (
     <div data-component-preview style={{
-      border: "1px solid var(--color-border-primary)",
+      border: "1px solid var(--color-border-secondary)",
       borderRadius: "var(--radius-md)",
       overflow: "visible",
       marginBottom: "24px",
@@ -25,7 +25,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
       maxWidth: "1200px",
       minWidth: 0,
       boxSizing: "border-box",
-      background: "var(--color-bg-surface-layer1)",
+      background: "var(--color-bg-muted)",
     }}>
       {/* toolbar */}
       <div style={{
@@ -33,8 +33,8 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 12px",
-        background: "var(--color-bg-surface-layer1)",
-        borderBottom: "1px solid var(--color-border-primary)",
+        background: "var(--color-bg-muted)",
+        borderBottom: "1px solid var(--color-border-secondary)",
         borderRadius: "var(--radius-md) var(--radius-md) 0 0",
         height: "40px",
       }}>
@@ -52,7 +52,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
                 fontSize: "var(--text-sm)",
                 fontFamily: "var(--font-body)",
                 fontWeight: "var(--font-weight-medium)",
-                background: tab === t ? "var(--color-bg-surface-layer2)" : "transparent",
+                background: tab === t ? "var(--color-bg-muted)" : "transparent",
                 color: tab === t ? "var(--color-text-primary)" : "var(--color-text-tertiary)",
                 transition: "background 100ms, color 100ms",
               }}
@@ -79,7 +79,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
 
       {/* preview pane */}
       {tab === "preview" && (
-        <div style={{
+        <div className="component-preview-pane" style={{
           padding: layout === "block" ? "32px 40px" : "32px 24px",
           display: "flex",
           flexDirection: layout === "block" ? "column" : "row",
@@ -87,7 +87,6 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
           gap: layout === "block" ? "16px" : "12px",
           alignItems: "center",
           justifyContent: "center",
-          background: "var(--color-bg-default)",
           borderRadius: "0 0 var(--radius-md) var(--radius-md)",
           minHeight: panelMinHeight,
           boxSizing: "border-box",
@@ -101,7 +100,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
         <pre style={{
           margin: 0,
           padding: "20px 24px",
-          background: "var(--color-bg-surface-layer2)",
+          background: "var(--color-bg-muted)",
           borderRadius: "0 0 var(--radius-md) var(--radius-md)",
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-sm)",

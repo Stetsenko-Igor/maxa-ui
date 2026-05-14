@@ -2,8 +2,20 @@
 @import "@maxa/tokens/theme.css";
 
 body {
-  background: var(--color-bg-page);
+  background: var(--color-bg-surface);
   color: var(--color-text-primary);
+}
+
+[data-theme="dark"] body {
+  background: var(--color-bg-page);
+}
+
+.component-preview-pane {
+  background: var(--color-bg-surface);
+}
+
+[data-theme="dark"] .component-preview-pane {
+  background: var(--color-bg-page);
 }
 
 .docs-sidebar {
@@ -11,7 +23,7 @@ body {
   inset: 0 auto 0 0;
   width: 16.25rem;
   height: 100vh;
-  background: var(--color-bg-surface-layer1);
+  background: var(--color-bg-surface);
   border-right: 1px solid var(--color-border-primary);
   overflow-y: auto;
   z-index: 10;
@@ -45,15 +57,20 @@ body {
   top: var(--spacing-20);
   align-self: start;
   padding-left: var(--spacing-6);
-  border-left: 1px solid var(--color-border-subtle);
+  border-left: 1px solid var(--color-border-secondary);
   max-height: calc(100vh - var(--spacing-24));
   overflow: auto;
 }
 
+/* Code block theme switching */
+.code-block-dark { display: none; }
+[data-theme="dark"] .code-block-light { display: none; }
+[data-theme="dark"] .code-block-dark { display: block; }
+
 /* Dark mode: tighter, more subtle borders for docs chrome */
 [data-theme="dark"] .docs-sidebar,
 [data-theme="dark"] [data-component-preview] {
-  border-color: var(--color-bg-tertiary);
+  border-color: var(--color-bg-muted);
 }
 
 @media (max-width: 73.75rem) {
@@ -74,7 +91,7 @@ body {
     height: auto;
     max-height: 18rem;
     border-right: 0;
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-secondary);
   }
 
   .docs-main {

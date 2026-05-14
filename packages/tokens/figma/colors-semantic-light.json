@@ -47,22 +47,14 @@
   },
   "bg": {
     "page": {
-      "$value": "{Colors.Base.White}",
-      "$type": "color"
-    },
-    "elevated": {
-      "$value": "{Colors.Base.White}",
-      "$type": "color"
-    },
-    "primary": {
       "$value": "{Colors.Neutral.50}",
       "$type": "color"
     },
-    "secondary": {
-      "$value": "{Colors.Neutral.25}",
+    "surface": {
+      "$value": "{Colors.Base.White}",
       "$type": "color"
     },
-    "tertiary": {
+    "inset": {
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
@@ -129,11 +121,11 @@
       "$type": "color"
     },
     "secondary": {
-      "$value": "{Colors.Neutral.400}",
+      "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
-    "subtle": {
-      "$value": "{Colors.Neutral.200}",
+    "tertiary": {
+      "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "focus": {

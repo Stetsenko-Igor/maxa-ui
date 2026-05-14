@@ -72,12 +72,12 @@ describe("primitives.css — gray", () => {
   const css = readFileSync(join(src, "primitives.css"), "utf-8")
 
   it("defines gray-0 (white)", () => {
-    expect(css).toContain("--color-gray-0:")
+    expect(css).toContain("--color-neutral-0:")
   })
 
   it("defines all 11 standard gray steps", () => {
     for (const step of [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
-      expect(css).toContain(`--color-gray-${step}:`)
+      expect(css).toContain(`--color-neutral-${step}:`)
     }
   })
 })
@@ -100,7 +100,7 @@ describe("semantic.css — text + border", () => {
 
   it("defines all 10 border tokens", () => {
     for (const t of [
-      "border-default", "border-subtle", "border-focus",
+      "border-default", "border-tertiary", "border-focus",
       "border-brand-strong", "border-info-strong", "border-success-strong",
       "border-error-strong", "border-warning-strong",
       "border-neutral-strong", "border-neutral-subtle",
@@ -123,10 +123,10 @@ describe("semantic.css — bg + action", () => {
 
   it("defines all background tokens", () => {
     for (const t of [
-      "bg-default", "bg-surface-layer1", "bg-surface-layer2",
+      "bg-page", "bg-surface", "bg-muted",
       "bg-neutral-subtle", "bg-neutral-on-subtle", "bg-neutral-strong",
-      "bg-disabled", "bg-overlay", "bg-nav",
-      "bg-brand-subtle", "bg-brand-surface",
+      "bg-disabled", "bg-overlay", "bg-inverse",
+      "bg-brand-subtle", "bg-brand", "bg-brand-solid",
       "bg-info-subtle", "bg-info-surface",
       "bg-success-subtle", "bg-success-surface", "bg-success-strong",
       "bg-error-subtle", "bg-error-surface", "bg-error-strong",
@@ -160,9 +160,20 @@ describe("semantic.css — bg + action", () => {
     expect(css).not.toContain("--color-action-primary-normal:")
   })
 
-  it("bg-nav uses hardcoded dark value", () => {
-    expect(css).toContain("--color-bg-nav:")
-    expect(css).toContain("#1b1a1a")
+  it("does not redefine bg-nav in semantic layer (moved to component-nav.css)", () => {
+    expect(css).not.toContain("--color-bg-nav:")
+  })
+})
+
+// ── component-nav.css ─────────────────────────────────────────────────────
+
+describe("component-nav.css", () => {
+  const css = readFileSync(join(src, "component-nav.css"), "utf-8")
+
+  it("defines --nav-bg sourced from a primitive (no hardcoded hex)", () => {
+    expect(css).toContain("--nav-bg:")
+    expect(css).toContain("var(--color-neutral-950)")
+    expect(css.match(/#[0-9a-fA-F]{3,8}/)).toBeNull()
   })
 })
 
@@ -752,24 +763,37 @@ describe("runtime — dark mode CSS variable override", () => {
     document.documentElement.removeAttribute("data-theme")
   })
 
-  it("light mode: --color-bg-default is set", () => {
+  it("light mode: --color-bg-page is set", () => {
     document.documentElement.removeAttribute("data-theme")
     const val = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-bg-default")
+      .getPropertyValue("--color-bg-page")
       .trim()
     expect(val).toBeTruthy()
     expect(val).not.toBe("")
   })
 
-  it("dark mode: --color-bg-default differs from light mode", () => {
+  it("light mode: --color-bg-surface differs from --color-bg-page (gray vs white)", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const page = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-page")
+      .trim()
+    const surface = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-surface")
+      .trim()
+    expect(page).toBeTruthy()
+    expect(surface).toBeTruthy()
+    expect(page).not.toBe(surface)
+  })
+
+  it("dark mode: --color-bg-page differs from light mode", () => {
     document.documentElement.removeAttribute("data-theme")
     const light = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-bg-default")
+      .getPropertyValue("--color-bg-page")
       .trim()
 
     document.documentElement.setAttribute("data-theme", "dark")
     const dark = getComputedStyle(document.documentElement)
-      .getPropertyValue("--color-bg-default")
+      .getPropertyValue("--color-bg-page")
       .trim()
 
     expect(dark).toBeTruthy()

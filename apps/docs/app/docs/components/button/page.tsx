@@ -42,12 +42,31 @@ const ICON_BUTTON_PROPS = [
 
 const GITHUB_BUTTON_URL = "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/button"
 
+const BUTTON_MARKDOWN = `# Button
+
+Actions, navigation, and form submission. Seven variants, four sizes, icon support, and a dedicated IconButton wrapper for icon-only use cases.
+
+## Installation
+
+\`\`\`tsx
+import { Button, IconButton } from "@maxa/ui"
+import "@maxa/tokens/theme.css"
+\`\`\`
+
+## Usage
+
+\`\`\`tsx
+<Button variant="primary">Save changes</Button>
+\`\`\`
+`
+
 export default function ButtonPage() {
   return (
     <ComponentPage
       title="Button"
       toc={TOC}
       githubHref={GITHUB_BUTTON_URL}
+      markdown={BUTTON_MARKDOWN}
       next={{ href: "/docs/components/checkbox", label: "Checkbox" }}
       lead={
         <>

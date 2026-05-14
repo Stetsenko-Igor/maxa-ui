@@ -75,7 +75,7 @@ export function DocsPageSection({
       <hr
         style={{
           border: "none",
-          borderTop: "1px solid var(--color-border-subtle)",
+          borderTop: "1px solid var(--color-border-secondary)",
           margin: "0 0 28px",
         }}
       />

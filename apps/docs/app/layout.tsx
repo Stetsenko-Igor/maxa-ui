@@ -35,7 +35,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         suppressHydrationWarning
         style={{
           margin: 0,
-          background: "var(--color-bg-default)",
           fontFamily: "var(--font-body)",
           color: "var(--color-text-primary)",
           WebkitFontSmoothing: "antialiased",

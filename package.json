@@ -10,11 +10,14 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
+    "clean": "turbo run clean && rm -rf node_modules/.cache .turbo",
+    "audit:tokens": "node scripts/audit-tokens.mjs",
     "figma:bundle": "pnpm --filter @maxa/tokens figma:bundle",
     "token:stats": "node scripts/token-stats.mjs",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "verify": "pnpm audit:tokens && pnpm typecheck && pnpm test",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css,yml,yaml}\""
   },
   "devDependencies": {

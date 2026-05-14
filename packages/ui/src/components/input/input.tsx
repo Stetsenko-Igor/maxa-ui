@@ -87,7 +87,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const inputId = id ?? React.useId()
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
-    const resolvedVisualState = disabled ? "disabled" : readOnly ? "readonly" : error ? "error" : hasValue ? "filled" : visualState
+    const resolvedVisualState = disabled ? "disabled"
+      : readOnly ? "readonly"
+      : (visualState && visualState !== "default") ? visualState
+      : error ? "error"
+      : hasValue ? "filled"
+      : "default"
     const resolvedType = kind === "password" ? "password" : kind === "search" ? "search" : kind === "quantity" ? "number" : type
 
     const fieldClasses = [
@@ -256,7 +261,12 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const inputId = id ?? React.useId()
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
-    const resolvedVisualState = disabled ? "disabled" : readOnly ? "readonly" : error ? "error" : hasValue ? "filled" : visualState
+    const resolvedVisualState = disabled ? "disabled"
+      : readOnly ? "readonly"
+      : (visualState && visualState !== "default") ? visualState
+      : error ? "error"
+      : hasValue ? "filled"
+      : "default"
     const count = value != null ? String(value).length : defaultValue != null ? String(defaultValue).length : 0
 
     function handleMouseDown(event: React.MouseEvent<HTMLTextAreaElement>) {

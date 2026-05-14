@@ -40,17 +40,18 @@ export type TextColorToken =
   | "warning"
 
 export type BackgroundColorToken =
-  | "default"
-  | "surface-layer1"
-  | "surface-layer2"
+  | "page"
+  | "surface"
+  | "muted"
+  | "overlay"
+  | "inverse"
+  | "disabled"
   | "neutral-subtle"
   | "neutral-on-subtle"
   | "neutral-strong"
-  | "disabled"
-  | "overlay"
-  | "nav"
   | "brand-subtle"
-  | "brand-surface"
+  | "brand"
+  | "brand-solid"
   | "info-subtle"
   | "info-surface"
   | "success-subtle"
@@ -64,13 +65,14 @@ export type BackgroundColorToken =
   | "warning-strong"
 
 export type BorderColorToken =
-  | "default"
-  | "subtle"
+  | "primary"
+  | "secondary"
+  | "tertiary"
   | "focus"
-  | "brand-strong"
+  | "brand"
+  | "error"
   | "info-strong"
   | "success-strong"
-  | "error-strong"
   | "warning-strong"
   | "neutral-strong"
   | "neutral-subtle"
@@ -270,8 +272,8 @@ export function Heading(props: HeadingProps): ReactElement {
 
 export function Surface(props: SurfaceProps): ReactElement {
   const {
-    background = "surface-layer1",
-    borderColor = "default",
+    background = "surface",
+    borderColor = "primary",
     p = "4",
     radius = "lg",
     style,
@@ -302,8 +304,8 @@ export function TokenSwatch({
 }: TokenSwatchProps): ReactElement {
   const swatchStyle: CSSProperties = {
     alignItems: "center",
-    background: "var(--color-bg-default)",
-    border: "var(--width-1) solid var(--color-border-subtle)",
+    background: "var(--color-bg-surface)",
+    border: "var(--width-1) solid var(--color-border-tertiary)",
     borderRadius: radiusVar("md"),
     display: "flex",
     gap: spaceVar("3"),
@@ -313,7 +315,7 @@ export function TokenSwatch({
 
   const chipStyle: CSSProperties = {
     alignItems: "center",
-    border: "var(--width-1) solid var(--color-border-default)",
+    border: "var(--width-1) solid var(--color-border-primary)",
     borderRadius: radiusVar("sm"),
     display: "flex",
     flex: "0 0 auto",

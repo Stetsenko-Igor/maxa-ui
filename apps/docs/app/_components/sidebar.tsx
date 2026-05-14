@@ -52,7 +52,7 @@ export function Sidebar() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 12px 0 20px",
-          borderBottom: "1px solid var(--color-border-subtle)",
+          borderBottom: "1px solid var(--color-border-secondary)",
           flexShrink: 0,
         }}
       >

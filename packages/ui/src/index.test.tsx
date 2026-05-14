@@ -11,13 +11,13 @@ describe("ui", () => {
 describe("base token components", () => {
   it("renders Box with token-backed styles", () => {
     render(
-      <Box data-testid="box" background="surface-layer1" color="primary" p="4" radius="md">
+      <Box data-testid="box" background="surface" color="primary" p="4" radius="md">
         Box
       </Box>,
     )
 
     expect(screen.getByTestId("box").getAttribute("style")).toContain(
-      "background-color: var(--color-bg-surface-layer1)",
+      "background-color: var(--color-bg-surface)",
     )
     expect(screen.getByTestId("box").getAttribute("style")).toContain(
       "color: var(--color-text-primary)",
@@ -84,10 +84,10 @@ describe("base token components", () => {
     )
 
     expect(screen.getByTestId("surface").getAttribute("style")).toContain(
-      "background-color: var(--color-bg-surface-layer1)",
+      "background-color: var(--color-bg-surface)",
     )
     expect(screen.getByTestId("surface").getAttribute("style")).toContain(
-      "border-color: var(--color-border-default)",
+      "border-color: var(--color-border-primary)",
     )
     expect(screen.getByTestId("surface").getAttribute("style")).toContain(
       "border-radius: var(--radius-lg)",

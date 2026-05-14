@@ -33,20 +33,66 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 
 ### Background / Surface
 
+**Surface elevation model — 3 tiers + overlay (School A — gray page, white surfaces).**
+
+The visual hierarchy comes from elevation, not shadow: the page is gray, anything interactive or content-bearing floats above it as a white surface. Recessed zones (code blocks, search-fields-in-sidebars) sink below the page color.
+
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
-| `--color-bg-page` | White | Neutral/1000 | Page/viewport canvas |
-| `--color-bg-elevated` | White | Neutral/900 | Inputs, cards, raised elements |
-| `--color-bg-primary` | Neutral/50 | Neutral/950 | Main app surface |
-| `--color-bg-secondary` | Neutral/25 | Neutral/900 | Secondary surface |
-| `--color-bg-tertiary` | Neutral/100 | Neutral/800 | Recessed/inset areas |
-| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/900 | Subtle section backgrounds |
-| `--color-bg-disabled` | Neutral/100 | Neutral/800 | Disabled input backgrounds |
-| `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer backdrops |
-| `--color-bg-nav` | #1b1a1a | #1b1a1a | Navigation bar (always dark — no dark override) |
-| `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section backgrounds |
+| `--color-bg-page` | Neutral/50 (#F5F6FA) | Neutral/1000 (#0D0D0D) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. |
+| `--color-bg-surface` | Base white (#FFFFFF) | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, dropdowns, popovers, sidebar/drawer, table rows, content containers. |
+| `--color-bg-muted` | Neutral/100 (#F4F3F3) | Neutral/950 (#1B1A1A) | Recessed/sunken zones. Use for: code blocks, wells, table fill (under white rows), search-fields embedded in dark sidebars, disabled-input fill alternative. |
+| `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer scrim. |
+| `--color-bg-inverse` | Neutral/950 | Neutral/950 | Inverted surface (dark even on light theme). |
+| `--color-bg-disabled` | Neutral/100 | Neutral/800 | Disabled input/control backgrounds. |
+
+**Decision tree — choosing a surface token:**
+
+1. Is this the page/viewport background itself? → `bg/page`
+2. Is this an interactive or content-bearing surface "floating" above the page (modal, card, input, dropdown, sidebar)? → `bg/surface`
+3. Is this a recessed/inset zone (code block, well, table-fill under rows)? → `bg/muted`
+4. Is this a modal scrim? → `bg/overlay`
+5. None of the above — it's status/intent (success, error, brand, etc.)? → use the status bg tokens below, not the elevation tier.
+
+**Examples:**
+
+| Element | Token |
+|---------|-------|
+| Body of every docs/app page | `bg/page` |
+| Card on a docs page | `bg/surface` |
+| Modal panel | `bg/surface` |
+| Input field | `bg/surface` |
+| Dropdown menu | `bg/surface` |
+| Sidebar / Drawer | `bg/surface` |
+| Table row | `bg/surface` |
+| Table outer area / gaps between rows | `bg/muted` or `bg/page` (match the page) |
+| Code block (`<pre>`) inside a card | `bg/muted` |
+| Search-field embedded in a dark sidebar | `bg/muted` |
+| Modal backdrop | `bg/overlay` |
+
+**Deprecated alias (removed in next release):** `--color-bg-elevated` → migrate to `--color-bg-surface`.
+
+**Component-specific bg:** `--nav-bg` lives in the **component layer** (`component-nav.css`), not semantic. Navigation surface is always dark regardless of theme.
+
+### Status / intent backgrounds (orthogonal to elevation)
+
+These are colored fills for tags, alerts, badges, and intent feedback. They are orthogonal to the surface elevation tier above — you may layer them on a `bg/surface` or `bg/page`.
+
+| Token | Light | Dark | Use |
+|-------|-------|------|-----|
+| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/800 | Subtle section background |
+| `--color-bg-neutral-on-subtle` | Neutral/200 | Neutral/700 | Slightly stronger neutral |
+| `--color-bg-neutral-strong` | Neutral/800 | Neutral/400 | Strong neutral (inverse) |
+| `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section |
 | `--color-bg-brand` | Brand/100 | Brand/900 | Brand surface |
-| `--color-bg-brand-solid` | Brand/500 | Brand/600 | Solid brand-colored surfaces |
+| `--color-bg-brand-solid` | Brand/500 | Brand/600 | Solid brand fill |
+| `--color-bg-info-subtle` | Blue/50 | — | Info section bg |
+| `--color-bg-success-subtle` | Green/50 | — | Success section bg |
+| `--color-bg-success-strong` | Green/700 | Green/500 | Strong success fill |
+| `--color-bg-error-subtle` | Red/50 | — | Error section bg |
+| `--color-bg-error-strong` | Red/700 | Red/500 | Strong error fill |
+| `--color-bg-warning-subtle` | Orange/50 | — | Warning section bg |
+| `--color-bg-warning-strong` | Orange/600 | Orange/500 | Strong warning fill |
 
 ### Border
 
@@ -81,8 +127,11 @@ Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subt
 | `color: #1B1A1A` | `color: var(--color-text-primary)` |
 | `background: #0265DC` | `background: var(--color-action-primary)` |
 | `border-color: #E4E4E4` | `border-color: var(--color-border-primary)` |
-| `color: var(--color-gray-950)` directly in component | `color: var(--color-text-primary)` |
+| `color: var(--color-neutral-950)` directly in component | `color: var(--color-text-primary)` |
 | White text on brand solid | `color: var(--color-text-on-brand)` (dark text, not white) |
+| `background: var(--color-bg-elevated)` | `background: var(--color-bg-surface)` (deprecated alias) |
+| `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, or `bg/muted` by intent |
+| Hardcoded shadow to separate a card from page in light mode | Use the gray page (`bg/page`) + white surface (`bg/surface`) — hierarchy is built-in |
 
 ## Dark mode
 

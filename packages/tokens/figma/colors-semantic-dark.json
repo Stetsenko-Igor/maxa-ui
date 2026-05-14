@@ -50,20 +50,12 @@
       "$value": "{Colors.Neutral.1000}",
       "$type": "color"
     },
-    "elevated": {
+    "surface": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "primary": {
+    "inset": {
       "$value": "{Colors.Neutral.950}",
-      "$type": "color"
-    },
-    "secondary": {
-      "$value": "{Colors.Neutral.900}",
-      "$type": "color"
-    },
-    "tertiary": {
-      "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "disabled": {
@@ -132,8 +124,8 @@
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "subtle": {
-      "$value": "{Colors.Neutral.800}",
+    "tertiary": {
+      "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
     "focus": {

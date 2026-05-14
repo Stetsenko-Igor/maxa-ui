@@ -17,7 +17,7 @@
   --checkbox-dash-radius:      1px;
 
   /* ── Colors — default state ───────────────────────────────────── */
-  --checkbox-bg:               var(--color-bg-default);
+  --checkbox-bg:               var(--color-bg-surface);
   --checkbox-border:           var(--color-border-primary);
   --checkbox-border-hover:     var(--color-border-secondary);
   --checkbox-border-focus:     var(--color-border-focus);
@@ -33,7 +33,7 @@
 
   /* ── Colors — disabled ────────────────────────────────────────── */
   --checkbox-bg-disabled:      var(--color-bg-disabled);
-  --checkbox-border-disabled:  var(--color-border-disabled);
+  --checkbox-border-disabled:  var(--color-border-tertiary);
   --checkbox-mark-disabled:    var(--color-text-disabled);
 
   /* ── Label / helper ───────────────────────────────────────────── */

@@ -16,14 +16,14 @@ const TOC = [
 
 const prose = {
   h1: { fontSize: "var(--text-heading-2xl)", lineHeight: "48px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 24px", letterSpacing: "-0.02em" } as React.CSSProperties,
-  h2: { fontSize: "var(--text-heading-md)", lineHeight: "30px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", margin: "32px 0 16px", paddingBottom: "8px", borderBottom: "1px solid var(--color-border-subtle)" } as React.CSSProperties,
+  h2: { fontSize: "var(--text-heading-md)", lineHeight: "30px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", margin: "32px 0 16px", paddingBottom: "8px", borderBottom: "1px solid var(--color-border-secondary)" } as React.CSSProperties,
   p:  { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 16px" } as React.CSSProperties,
   blockquote: { margin: "24px 0", paddingLeft: "16px", borderLeft: "3px solid var(--color-border-default)", fontStyle: "italic" as const, color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "24px" } as React.CSSProperties,
   ul: { margin: "0 0 16px", paddingLeft: "24px", color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "24px" } as React.CSSProperties,
   table: { width: "100%", borderCollapse: "collapse" as const, margin: "16px 0", fontSize: "var(--text-md)" } as React.CSSProperties,
   th: { padding: "8px 16px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", borderBottom: "1px solid var(--color-border-default)", textAlign: "left" as const } as React.CSSProperties,
-  td: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-subtle)" } as React.CSSProperties,
-  tdr: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-subtle)", background: "var(--color-bg-surface-layer1)" } as React.CSSProperties,
+  td: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-secondary)" } as React.CSSProperties,
+  tdr: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-secondary)", background: "var(--color-bg-muted)" } as React.CSSProperties,
 }
 
 const TYPE_SCALE = [
@@ -50,7 +50,7 @@ function Meta({ label, value }: { label: string; value: string }) {
 
 function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-caption-sm)", color: "var(--color-text-secondary)", background: "var(--color-bg-surface-layer2)", border: "1px solid var(--color-border-subtle)", borderRadius: "var(--radius-xs)", padding: "2px 7px", whiteSpace: "nowrap" as const }}>
+    <span style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-caption-sm)", color: "var(--color-text-secondary)", background: "var(--color-bg-muted)", border: "1px solid var(--color-border-secondary)", borderRadius: "var(--radius-xs)", padding: "2px 7px", whiteSpace: "nowrap" as const }}>
       {children}
     </span>
   )
@@ -206,7 +206,7 @@ export default function TypographyPage() {
       </DocsPageSection>
 
       <DocsPageSection id="scale-reference" title="Scale reference">
-      <div style={{ borderBottom: "1px solid var(--color-border-subtle)", display: "flex", alignItems: "center", justifyContent: "space-between", paddingBottom: "10px" }}>
+      <div style={{ background: "var(--color-bg-muted)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 16px", borderRadius: "var(--radius-sm) var(--radius-sm) 0 0", border: "1px solid var(--color-border-secondary)", borderBottom: "1px solid var(--color-border-secondary)" }}>
         <span style={{ fontSize: "var(--text-caption-sm)", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em" }}>Specimen</span>
         <div style={{ display: "flex", gap: "24px" }}>
           {["Token", "Size", "L/H", "Weight"].map(l => (
@@ -215,8 +215,8 @@ export default function TypographyPage() {
         </div>
       </div>
       {TYPE_SCALE.map(({ token, size, lh, weight, w }) => (
-        <div key={token} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid var(--color-border-subtle)", gap: "24px" }}>
-          <span style={{ fontFamily: "var(--font-body)", fontSize: `var(--text-${token})`, lineHeight: lh + "px", fontWeight: `var(--font-weight-${w})`, color: "var(--color-text-primary)", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const }}>
+        <div key={token} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderBottom: "1px solid var(--color-border-secondary)", gap: "24px" }}>
+          <span style={{ fontFamily: "var(--font-body)", fontSize: size + "px", lineHeight: lh + "px", fontWeight: `var(--font-weight-${w})`, color: "var(--color-text-primary)", flex: 1, minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" as const }}>
             The quick brown fox
           </span>
           <div style={{ display: "flex", gap: "24px", flexShrink: 0 }}>
@@ -235,9 +235,9 @@ export default function TypographyPage() {
           { name: "Montserrat",  token: "--font-body", role: "Body & UI",   sample: "ABCDEFGHIJKLM\nNOPQRSTUVWXYZ\n0123456789" },
           { name: "Roboto Mono", token: "--font-mono", role: "Code & data", sample: "const x = 42\nfn(a, b) => a + b\n/* comment */" },
         ].map(f => (
-          <div key={f.token} style={{ flex: 1, padding: "24px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-subtle)", background: "var(--color-bg-surface-layer1)", display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div key={f.token} style={{ flex: 1, padding: "24px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-secondary)", background: "var(--color-bg-surface)", display: "flex", flexDirection: "column", gap: "16px" }}>
             <pre style={{ margin: 0, fontFamily: `var(${f.token})`, fontSize: "var(--text-heading-xs)", lineHeight: "26px", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)", letterSpacing: "0.04em" }}>{f.sample}</pre>
-            <div style={{ borderTop: "1px solid var(--color-border-subtle)", paddingTop: "12px" }}>
+            <div style={{ borderTop: "1px solid var(--color-border-secondary)", paddingTop: "12px" }}>
               <p style={{ margin: "0 0 2px", fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)" }}>{f.name}</p>
               <p style={{ margin: "0 0 8px", fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)" }}>{f.role}</p>
               <Tag>{f.token}</Tag>

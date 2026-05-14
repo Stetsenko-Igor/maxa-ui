@@ -37,9 +37,8 @@ function CodeRow({ label, value }: { label: string; value: string }) {
         alignItems: "center",
         gap: "12px",
         padding: "10px 12px",
-        border: "1px solid var(--color-border-subtle)",
         borderRadius: "var(--radius-md)",
-        background: "var(--color-bg-surface-layer1)",
+        background: "var(--color-bg-muted)",
       }}
     >
       <span

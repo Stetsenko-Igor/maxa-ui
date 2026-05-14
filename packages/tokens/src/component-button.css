@@ -23,7 +23,7 @@
   --button-secondary-border-focus: var(--color-border-focus);
 
   /* outline */
-  --button-outline-bg:           var(--color-bg-default);
+  --button-outline-bg:           var(--color-bg-surface);
   --button-outline-bg-hover:     var(--color-action-neutral-subtle-hover);
   --button-outline-bg-active:    var(--color-action-neutral-subtle-active);
   --button-outline-text:         var(--color-text-primary);

@@ -13,18 +13,19 @@
   --color-black: var(--color-base-black);
 
   /* ── Gray — Figma: Colors/Neutral/25..950 ───────────────────────── */
-  --color-gray-0:   var(--color-base-white);
-  --color-gray-25:  #FCFCFC;
-  --color-gray-50:  #F5F6FA;
-  --color-gray-100: #F4F3F3;
-  --color-gray-200: #E9EAEF;
-  --color-gray-300: #E4E4E4;
-  --color-gray-400: #D7D5D5;
-  --color-gray-500: #A1A1A4;
-  --color-gray-600: #8C8C8E;
-  --color-gray-700: #6B6B6D;
-  --color-gray-800: #444445;
-  --color-gray-900: #2A2A2B;
-  --color-gray-950: #1B1A1A;
-  --color-gray-1000: #0D0D0D;
+  --color-neutral-0:   var(--color-base-white);
+  --color-neutral-25:  #F8F8F8;
+  --color-neutral-50:  #F5F6FA;
+  --color-neutral-100: #F4F3F3;
+  --color-neutral-200: #E9EAEF;
+  --color-neutral-300: #E4E4E4;
+  --color-neutral-400: #D7D5D5;
+  --color-neutral-500: #A1A1A4;
+  --color-neutral-600: #8C8C8E;
+  --color-neutral-700: #6B6B6D;
+  --color-neutral-800: #444445;
+  --color-neutral-900: #2A2A2B;
+  --color-neutral-950: #1B1A1A;
+  --color-neutral-975: #161616;
+  --color-neutral-1000: #0D0D0D;
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Input, TextArea } from "@maxa/ui"
+import { Input, TextArea, FormField } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
@@ -23,6 +23,7 @@ const TOC = [
   { href: "#states", label: "States" },
   { href: "#label-and-helper-content", label: "Label and helper content" },
   { href: "#text-area", label: "Text area" },
+  { href: "#form-composition", label: "Form composition" },
   { href: "#api-reference", label: "API reference" },
 ]
 
@@ -378,6 +379,45 @@ export default function InputPage() {
             </div>
           </ComponentPreview>
         </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="form-composition"
+        title="Form composition"
+        description={
+          <>
+            Use <code>FormField</code> to wrap any control — Input, Checkbox, or Radio — with
+            a shared label, hint, error, and required marker. The label/hint model is built into
+            Input directly, but FormField is useful when composing mixed controls in the same form.
+          </>
+        }
+      >
+        <DocsExample title="Input with FormField">
+          <ComponentPreview code={`import { Input, FormField } from "@maxa/ui"
+
+<FormField label="Email" htmlFor="email" hint="We will never share it." required>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</FormField>`}>
+            <div style={fieldWidth}>
+              <FormField label="Email" htmlFor="email-fc" hint="We will never share it." required>
+                <Input id="email-fc" type="email" placeholder="you@example.com" />
+              </FormField>
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="FormField with error">
+          <ComponentPreview code={`<FormField label="Password" htmlFor="pwd" error="Must be at least 12 characters.">
+  <Input id="pwd" type="password" />
+</FormField>`}>
+            <div style={fieldWidth}>
+              <FormField label="Password" htmlFor="pwd-fc" error="Must be at least 12 characters.">
+                <Input id="pwd-fc" type="password" />
+              </FormField>
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
       </DocsSection>
 
       <DocsSection

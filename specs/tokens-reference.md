@@ -40,32 +40,49 @@ Quick lookup for CSS variable names. For usage rules, see the foundation and com
 
 ## Background / Surface
 
+**Surface elevation model — 3 tiers + overlay.** Use these to choose backgrounds.
+For the why/when of each tier, see `specs/foundations/color.md`.
+
 ```css
---color-bg-page               /* Page/viewport canvas */
---color-bg-elevated           /* Inputs, cards, raised elements */
---color-bg-primary            /* Main app surface */
---color-bg-secondary          /* Secondary surface */
---color-bg-tertiary           /* Recessed/inset areas */
+/* ── Surface elevation ──────────────────────────────────────────── */
+--color-bg-page               /* Gray canvas, lowest layer (page/viewport) */
+--color-bg-surface            /* White raised surfaces — inputs, cards,
+                                  modals, dropdowns, sidebar, drawer,
+                                  table rows, content containers */
+--color-bg-muted              /* Recessed zones — code blocks, wells,
+                                  table fill, search-fields inside dark sidebars */
+--color-bg-overlay            /* Modal / drawer scrim (rgba) */
+--color-bg-inverse            /* Inverted surface (dark on light theme) */
+--color-bg-disabled           /* Disabled input backgrounds */
+
+/* ── Status / intent backgrounds (orthogonal to elevation) ──────── */
 --color-bg-neutral-subtle     /* Subtle section backgrounds */
 --color-bg-neutral-on-subtle  /* Slightly stronger neutral bg */
 --color-bg-neutral-strong     /* Strong neutral background */
---color-bg-disabled           /* Disabled input backgrounds */
---color-bg-overlay            /* Modal / drawer backdrops */
---color-bg-nav                /* Navigation bar (always dark — no dark override) */
---color-bg-inverse            /* Inverted surface */
 --color-bg-brand-subtle       /* Brand-tinted section bg */
 --color-bg-brand              /* Brand surface */
 --color-bg-brand-solid        /* Solid brand-colored surface */
 --color-bg-info-subtle
+--color-bg-info-surface
 --color-bg-success-subtle
+--color-bg-success-surface
 --color-bg-success-strong
 --color-bg-error-subtle
+--color-bg-error-surface
 --color-bg-error-strong
 --color-bg-warning-subtle
+--color-bg-warning-surface
 --color-bg-warning-strong
 
-/* Backward-compat aliases (prefer canonical names above) */
---color-bg-default            /* → --color-bg-page */
+/* Deprecated alias (removed in next release) — migrate to bg-surface */
+--color-bg-elevated           /* → --color-bg-surface */
+```
+
+**Component-specific bg:**
+
+```css
+--nav-bg                      /* Navigation bar — always dark, never overridden in dark mode.
+                                  Defined in component-nav.css (component layer). */
 ```
 
 ## Action (interactive backgrounds)
@@ -285,40 +302,201 @@ Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 --button-disabled-opacity     /* 0.5 */
 
 /* Sizes */
---button-size-sm-height       /* 32px */
---button-size-sm-padding-x    /* 12px */
+--button-size-sm-height       /* 28px */
+--button-size-sm-padding-x    /* 10px */
 --button-size-sm-gap          /* 6px */
---button-size-sm-radius       /* 8px */
---button-size-sm-text         /* 12px */
+--button-size-sm-radius       /* radius-xs (4px) */
+--button-size-sm-text         /* text-sm */
 --button-size-sm-line-height
 --button-size-sm-weight       /* semibold */
 --button-size-sm-icon-size    /* 16px */
 
---button-size-md-height       /* 40px */
---button-size-md-padding-x    /* 16px */
+--button-size-md-height       /* 36px */
+--button-size-md-padding-x    /* 16px (spacing-xl) */
 --button-size-md-gap          /* 8px */
---button-size-md-radius       /* 8px */
---button-size-md-text         /* 14px */
+--button-size-md-radius       /* radius-xs (4px) */
+--button-size-md-text         /* text-sm */
 --button-size-md-line-height
 --button-size-md-weight       /* semibold */
---button-size-md-icon-size    /* 20px */
+--button-size-md-icon-size    /* 16px */
 
 --button-size-lg-height       /* 48px */
 --button-size-lg-padding-x    /* 20px */
 --button-size-lg-gap          /* 8px */
---button-size-lg-radius       /* 10px */
---button-size-lg-text         /* 16px */
+--button-size-lg-radius       /* radius-sm (6px) */
+--button-size-lg-text         /* text-md */
 --button-size-lg-line-height
 --button-size-lg-weight       /* semibold */
 --button-size-lg-icon-size    /* 20px */
 
 /* Icon-only sizes */
---button-icon-only-sm-size    /* 32px */
---button-icon-only-md-size    /* 40px */
+--button-icon-only-sm-size    /* 28px */
+--button-icon-only-md-size    /* 36px */
 --button-icon-only-lg-size    /* 48px */
 
 /* Font */
 --button-font-family          /* Montserrat */
+```
+
+## Input Component Tokens
+
+```css
+/* Default state */
+--input-bg                    /* bg-surface */
+--input-text                  /* text-primary */
+--input-placeholder           /* text-tertiary */
+--input-border                /* border-primary */
+--input-border-hover          /* border-secondary */
+--input-border-focus          /* border-focus */
+--input-focus-ring            /* action-primary */
+--input-focus-ring-offset     /* 1px */
+--input-focus-ring-width      /* 3px */
+--input-filled-text           /* text-primary */
+
+/* Status: error */
+--input-error-border
+--input-error-border-focus
+--input-error-hint
+--input-error-text
+
+/* Status: success */
+--input-success-border        /* border-success-strong */
+--input-success-border-focus
+--input-success-hint
+
+/* Disabled */
+--input-disabled-bg           /* bg-disabled */
+--input-disabled-text
+--input-disabled-placeholder
+--input-disabled-opacity      /* 1 */
+
+/* Read-only (recessed visual) */
+--input-readonly-bg           /* bg-inset */
+--input-readonly-text
+
+/* Label / hint */
+--input-label-text            /* text-secondary */
+--input-hint-text             /* text-tertiary */
+--input-label-gap             /* spacing-xs */
+
+/* Sizes */
+--input-size-sm-height        /* 28px */
+--input-size-sm-padding-x     /* 10px */
+--input-size-sm-text          /* text-sm */
+--input-size-sm-radius        /* radius-xs */
+--input-size-sm-gap           /* 4px */
+
+--input-size-md-height        /* 36px */
+--input-size-md-padding-x     /* 12px */
+--input-size-md-text          /* text-sm */
+--input-size-md-radius        /* radius-xs */
+--input-size-md-gap           /* 6px */
+
+--input-size-lg-height        /* 48px */
+--input-size-lg-padding-x     /* 16px */
+--input-size-lg-text          /* text-md */
+--input-size-lg-radius        /* radius-sm */
+--input-size-lg-gap           /* 8px */
+
+/* Icon sizes */
+--input-icon-sm-size          /* 14px */
+--input-icon-md-size          /* 16px */
+--input-icon-lg-size          /* 20px */
+
+/* Textarea */
+--input-textarea-sm-min-height  /* 88px */
+--input-textarea-md-min-height  /* 108px */
+--input-textarea-lg-min-height  /* 128px */
+--input-textarea-padding-y      /* 10px */
+--input-textarea-line-height    /* 14px */
+
+/* Shared */
+--input-font-family           /* font-body (Montserrat) */
+--input-font-weight           /* font-weight-regular */
+```
+
+## Checkbox Component Tokens
+
+```css
+/* Sizes */
+--checkbox-size-sm            /* 16px */
+--checkbox-size-md            /* 20px */
+--checkbox-radius             /* radius-xs */
+--checkbox-border-width       /* 1.5px */
+--checkbox-focus-ring-width   /* 3px */
+--checkbox-focus-ring-offset  /* 2px */
+--checkbox-mark-width-md      /* 10px */
+--checkbox-mark-height-md     /* 8px */
+--checkbox-mark-width-sm      /* 8px */
+--checkbox-mark-height-sm     /* 6px */
+--checkbox-dash-height        /* 2px (indeterminate dash) */
+--checkbox-dash-radius        /* 1px */
+
+/* Default state */
+--checkbox-bg                 /* bg-surface */
+--checkbox-border             /* border-primary */
+--checkbox-border-hover       /* border-secondary */
+--checkbox-border-focus       /* border-focus */
+--checkbox-mark-color         /* white */
+
+/* Checked / indeterminate */
+--checkbox-bg-checked         /* action-primary */
+--checkbox-border-checked
+
+/* Error */
+--checkbox-border-error
+--checkbox-bg-error-checked
+
+/* Disabled */
+--checkbox-bg-disabled
+--checkbox-border-disabled
+--checkbox-mark-disabled
+
+/* Label / helper */
+--checkbox-label-text         /* text-primary */
+--checkbox-helper-text        /* text-tertiary */
+--checkbox-helper-error       /* text-error */
+--checkbox-gap                /* 8px (between control + label) */
+--checkbox-content-gap        /* 4px (between label + helper) */
+```
+
+## Radio Component Tokens
+
+```css
+/* Sizes */
+--radio-size-sm               /* 16px */
+--radio-size-md               /* 20px */
+--radio-dot-size-sm           /* 6px */
+--radio-dot-size-md           /* 8px */
+--radio-border-width          /* 1.5px */
+--radio-focus-ring-width      /* 3px */
+--radio-focus-ring-offset     /* 2px */
+
+/* Default state */
+--radio-bg                    /* bg-surface */
+--radio-border                /* border-primary */
+--radio-border-hover
+--radio-border-focus
+
+/* Checked */
+--radio-bg-checked            /* action-primary */
+--radio-border-checked
+--radio-dot-color             /* white */
+
+/* Error */
+--radio-border-error
+--radio-bg-error-checked
+
+/* Disabled */
+--radio-bg-disabled
+--radio-border-disabled
+
+/* Label / helper */
+--radio-label-text
+--radio-helper-text
+--radio-helper-error
+--radio-gap                   /* 8px */
+--radio-content-gap           /* 4px */
 ```
 
 ## Source files
@@ -326,5 +504,10 @@ Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 - `packages/tokens/src/semantic.css` — all color semantic tokens
 - `packages/tokens/src/dimensions.css` — spacing, radius tokens
 - `packages/tokens/src/typography.css` — font tokens
+- `packages/tokens/src/component-button.css` — button component tokens
+- `packages/tokens/src/component-input.css` — input component tokens
+- `packages/tokens/src/component-checkbox.css` — checkbox component tokens
+- `packages/tokens/src/component-radio.css` — radio component tokens
+- `packages/tokens/src/component-nav.css` — nav component tokens
 - `packages/tokens/figma/component-button-light.json` — button component tokens (light)
 - `packages/tokens/figma/component-button-dark.json` — button component tokens (dark)

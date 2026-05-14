@@ -3,7 +3,7 @@
 
 :root {
   /* ── Default state ────────────────────────────────────────────── */
-  --input-bg:               var(--color-bg-elevated);
+  --input-bg:               var(--color-bg-surface);
   --input-text:             var(--color-text-primary);
   --input-placeholder:      var(--color-text-tertiary);
   --input-border:           var(--color-border-primary);
@@ -32,7 +32,7 @@
   --input-disabled-opacity: 1;
 
   /* ── Not editable ─────────────────────────────────────────────── */
-  --input-readonly-bg:      var(--color-bg-tertiary);
+  --input-readonly-bg:      var(--color-bg-muted);
   --input-readonly-text:    var(--color-text-secondary);
 
   /* ── Label / hint ─────────────────────────────────────────────── */
@@ -78,5 +78,6 @@
   /* ── Shared ───────────────────────────────────────────────────── */
   --input-font-family: var(--font-body);
   --input-font-weight: var(--font-weight-regular);
+  --input-label-font-weight: var(--font-weight-semibold);
 }
 

@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 /**
  * MAXA Token Audit Script
- * Scans CSS source files for hardcoded values that should use design tokens.
+ *
+ * Three checks:
+ *   1. Hardcoded hex / px values in CSS where tokens should be used
+ *   2. Cross-layer drift: TS token unions in base-tokens.tsx must map to
+ *      defined CSS variables in semantic.css (catches the "surface-layer1"
+ *      silent bug where the type referenced a CSS var that never existed)
+ *   3. Legacy token names: stale references after the surface redesign
+ *      (bg-default, bg-elevated, bg-primary/secondary/tertiary, bg-surface-layer*,
+ *      bg-nav — these are removed or moved; this check guards against
+ *      re-introducing them or finding lingering external uses)
+ *
  * Exits with code 1 if violations found — use in CI to block regressions.
  *
  * Usage: node scripts/audit-tokens.mjs
@@ -17,6 +27,30 @@ const SCAN_DIRS = ['packages/ui/src', 'packages/tokens/src', 'apps/docs'];
 
 const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', 'primitives.css', 'audit-tokens.mjs'];
 
+// Legacy semantic names removed in the surface redesign. Their CSS var
+// is no longer defined (except bg-elevated which is a temporary alias).
+// External consumers should migrate to the new names.
+const LEGACY_BG_NAMES = [
+  // bg-elevated is an intentional 1-release alias — exclude from the check.
+  '--color-bg-default',
+  '--color-bg-primary',
+  '--color-bg-secondary',
+  '--color-bg-tertiary',
+  '--color-bg-surface-layer1',
+  '--color-bg-surface-layer2',
+  '--color-bg-nav', // moved to --nav-bg in component-nav.css
+];
+
+const LEGACY_NAME_MIGRATION = {
+  '--color-bg-default': '--color-bg-page',
+  '--color-bg-primary': '--color-bg-page',
+  '--color-bg-secondary': '--color-bg-surface',
+  '--color-bg-tertiary': '--color-bg-inset',
+  '--color-bg-surface-layer1': '--color-bg-surface',
+  '--color-bg-surface-layer2': '--color-bg-inset',
+  '--color-bg-nav': '--nav-bg (from component-nav.css)',
+};
+
 const SPACING_TOKENS = {
   2: '--spacing-xxs', 4: '--spacing-xs', 6: '--spacing-sm',
   8: '--spacing-md', 12: '--spacing-lg', 16: '--spacing-xl',
@@ -31,23 +65,31 @@ const RADIUS_TOKENS = {
   20: '--radius-3xl', 24: '--radius-4xl', 9999: '--radius-full',
 };
 
-const ALLOWED_HEX = new Set(['#1b1a1a', '#00000000']);
+const ALLOWED_HEX = new Set(['#00000000']);
 const ALLOWED_PX = new Set([0, 1, 2]);
 
-function collectCssFiles(dir) {
+function collectFiles(dir, extensions) {
   const files = [];
   try {
     for (const entry of readdirSync(dir)) {
       const full = join(dir, entry);
       if (IGNORE_PATHS.some(p => full.includes(p))) continue;
       if (statSync(full).isDirectory()) {
-        files.push(...collectCssFiles(full));
-      } else if (extname(full) === '.css') {
+        files.push(...collectFiles(full, extensions));
+      } else if (extensions.includes(extname(full))) {
         files.push(full);
       }
     }
   } catch { /* dir may not exist */ }
   return files;
+}
+
+function collectCssFiles(dir) {
+  return collectFiles(dir, ['.css']);
+}
+
+function collectSourceFiles(dir) {
+  return collectFiles(dir, ['.css', '.tsx', '.ts']);
 }
 
 function isTokenDef(line, idx) {
@@ -101,8 +143,94 @@ function scanFile(filePath) {
   return violations;
 }
 
-const allFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
-const violations = allFiles.flatMap(f => scanFile(f));
+function scanLegacyNames(filePath) {
+  const violations = [];
+  const content = readFileSync(filePath, 'utf8');
+  const lines = content.split('\n');
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const lineNum = i + 1;
+    const trimmed = line.trim();
+    if (trimmed.startsWith('//') || trimmed.startsWith('*')) continue;
+
+    for (const legacy of LEGACY_BG_NAMES) {
+      const re = new RegExp(`${legacy.replace(/-/g, '\\-')}\\b`);
+      const m = line.match(re);
+      if (!m) continue;
+      // Skip the audit script's own migration map and any line that's defining
+      // the deprecated alias (intentional in semantic.css for one release).
+      if (filePath.endsWith('audit-tokens.mjs')) continue;
+      if (line.includes(`${legacy}:`)) continue; // token DEFINITION (not reference)
+      violations.push({
+        file: relative(ROOT, filePath),
+        line: lineNum,
+        type: 'legacy-token-name',
+        value: legacy,
+        hint: `Migrate to ${LEGACY_NAME_MIGRATION[legacy]}`,
+      });
+    }
+  }
+  return violations;
+}
+
+function extractTsUnionMembers(source, unionName) {
+  // Match e.g.  export type FooToken =\n  | "a"\n  | "b"\n
+  const re = new RegExp(`export type ${unionName}[^=]*=\\s*([\\s\\S]*?)(?=\\n(?:export|\\}|$))`, 'm');
+  const m = source.match(re);
+  if (!m) return [];
+  return [...m[1].matchAll(/"([^"]+)"/g)].map((mm) => mm[1]);
+}
+
+function scanCrossLayerDrift() {
+  const violations = [];
+
+  const baseTokensPath = join(ROOT, 'packages/ui/src/base-tokens.tsx');
+  let baseTokensSource;
+  try {
+    baseTokensSource = readFileSync(baseTokensPath, 'utf8');
+  } catch {
+    return violations; // file doesn't exist — skip
+  }
+
+  const semanticPath = join(ROOT, 'packages/tokens/src/semantic.css');
+  const semanticCss = readFileSync(semanticPath, 'utf8');
+
+  const checks = [
+    { union: 'BackgroundColorToken', prefix: '--color-bg-' },
+    { union: 'BorderColorToken', prefix: '--color-border-' },
+    { union: 'TextColorToken', prefix: '--color-text-' },
+  ];
+
+  for (const { union, prefix } of checks) {
+    const members = extractTsUnionMembers(baseTokensSource, union);
+    if (members.length === 0) continue;
+    for (const member of members) {
+      const varName = `${prefix}${member}`;
+      if (!semanticCss.includes(`${varName}:`)) {
+        violations.push({
+          file: relative(ROOT, baseTokensPath),
+          line: 0,
+          type: 'cross-layer-drift',
+          value: `${union} has "${member}" but ${varName} is not defined in semantic.css`,
+          hint: `Add ${varName} to semantic.css, or remove "${member}" from ${union}`,
+        });
+      }
+    }
+  }
+
+  return violations;
+}
+
+// ── Run all checks ──────────────────────────────────────────────────────────
+const cssFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
+const sourceFiles = SCAN_DIRS.flatMap(d => collectSourceFiles(join(ROOT, d)));
+
+const violations = [
+  ...cssFiles.flatMap(f => scanFile(f)),
+  ...sourceFiles.flatMap(f => scanLegacyNames(f)),
+  ...scanCrossLayerDrift(),
+];
 
 if (violations.length === 0) {
   console.log('✓ No token violations found.');

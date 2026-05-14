@@ -55,13 +55,13 @@ export function CopyIconButton({
         width: dimension,
         height: dimension,
         padding: 0,
-        border: copied ? "1px solid var(--color-action-brand)" : "1px solid var(--color-border-subtle)",
+        border: copied ? "1px solid var(--color-action-brand)" : "1px solid var(--color-border-secondary)",
         borderRadius: "var(--radius-xs)",
         background: copied || pressed
-          ? "var(--color-bg-surface-layer2)"
+          ? "var(--color-bg-muted)"
           : hovered || focused
             ? "var(--color-action-neutral-subtle)"
-            : "var(--color-bg-default)",
+            : "var(--color-bg-page)",
         boxShadow: copied ? "0 0 0 2px var(--color-action-brand-subtle)" : "none",
         color: copied ? "var(--color-action-brand)" : "var(--color-text-secondary)",
         cursor: "pointer",
@@ -80,7 +80,7 @@ export function CopyIconButton({
             transform: "translateX(50%)",
             padding: "6px 9px",
             borderRadius: "var(--radius-sm)",
-            background: "var(--color-bg-surface-layer2)",
+            background: "var(--color-bg-muted)",
             color: "var(--color-text-primary)",
             boxShadow: "0 8px 24px rgba(10, 10, 10, 0.16)",
             fontFamily: "var(--font-body)",
