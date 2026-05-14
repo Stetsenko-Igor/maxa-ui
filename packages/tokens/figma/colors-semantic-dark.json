@@ -132,7 +132,7 @@
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "disabled": {
+    "subtle": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },

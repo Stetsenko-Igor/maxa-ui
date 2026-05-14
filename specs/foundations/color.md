@@ -35,24 +35,29 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
-| `--color-bg-default` | Gray/0 (white) | Neutral/950 | Page background |
-| `--color-bg-surface-layer1` | Gray/50 | Neutral/900 | Cards, panels (first elevation) |
-| `--color-bg-surface-layer2` | Gray/100 | Neutral/800 | Nested surfaces (second elevation) |
-| `--color-bg-neutral-subtle` | Gray/100 | Neutral/900 | Subtle section backgrounds |
-| `--color-bg-disabled` | Gray/100 | Neutral/800 | Disabled input backgrounds |
+| `--color-bg-page` | White | Neutral/1000 | Page/viewport canvas |
+| `--color-bg-elevated` | White | Neutral/900 | Inputs, cards, raised elements |
+| `--color-bg-primary` | Neutral/50 | Neutral/950 | Main app surface |
+| `--color-bg-secondary` | Neutral/25 | Neutral/900 | Secondary surface |
+| `--color-bg-tertiary` | Neutral/100 | Neutral/800 | Recessed/inset areas |
+| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/900 | Subtle section backgrounds |
+| `--color-bg-disabled` | Neutral/100 | Neutral/800 | Disabled input backgrounds |
 | `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer backdrops |
-| `--color-bg-nav` | #1b1a1a | #1b1a1a | Navigation bar (always dark) |
+| `--color-bg-nav` | #1b1a1a | #1b1a1a | Navigation bar (always dark — no dark override) |
 | `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section backgrounds |
+| `--color-bg-brand` | Brand/100 | Brand/900 | Brand surface |
 | `--color-bg-brand-solid` | Brand/500 | Brand/600 | Solid brand-colored surfaces |
 
 ### Border
 
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
-| `--color-border-default` | Gray/300 | Neutral/700 | Default input, card borders |
-| `--color-border-subtle` | Gray/200 | Neutral/800 | Dividers, subtle separators |
-| `--color-border-focus` | Brand/700 | Brand/400 | Focus rings on interactive elements |
-| `--color-border-error-strong` | Red/700 | Red/400 | Invalid input borders |
+| `--color-border-primary` | Neutral/300 | Neutral/700 | Default input, card borders |
+| `--color-border-secondary` | Neutral/400 | Neutral/800 | Stronger borders |
+| `--color-border-subtle` | Neutral/200 | Neutral/800 | Dividers, subtle separators |
+| `--color-border-focus` | Blue/500 | Blue/400 | Focus rings on interactive elements |
+| `--color-border-brand` | Brand/500 | Brand/400 | Brand-accented borders |
+| `--color-border-error` | Red/500 | Red/400 | Invalid input borders |
 
 ### Action (interactive backgrounds)
 
@@ -75,7 +80,7 @@ Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subt
 |---------|-----------|
 | `color: #1B1A1A` | `color: var(--color-text-primary)` |
 | `background: #0265DC` | `background: var(--color-action-primary)` |
-| `border-color: #E4E4E4` | `border-color: var(--color-border-default)` |
+| `border-color: #E4E4E4` | `border-color: var(--color-border-primary)` |
 | `color: var(--color-gray-950)` directly in component | `color: var(--color-text-primary)` |
 | White text on brand solid | `color: var(--color-text-on-brand)` (dark text, not white) |
 

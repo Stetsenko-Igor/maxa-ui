@@ -21,43 +21,51 @@ Quick lookup for CSS variable names. For usage rules, see the foundation and com
 ## Border
 
 ```css
---color-border-default        /* Default input, card borders */
+--color-border-primary        /* Default input, card borders */
+--color-border-secondary      /* Stronger border variant */
 --color-border-subtle         /* Dividers, separators */
 --color-border-focus          /* Focus rings on interactive elements */
---color-border-brand-strong
+--color-border-brand          /* Brand-accented borders */
+--color-border-error          /* Invalid input borders */
 --color-border-info-strong
 --color-border-success-strong
---color-border-error-strong
 --color-border-warning-strong
 --color-border-neutral-strong
 --color-border-neutral-subtle
+
+/* Backward-compat aliases (prefer canonical names above) */
+--color-border-default        /* → --color-border-primary */
+--color-border-disabled       /* → --color-border-subtle */
 ```
 
 ## Background / Surface
 
 ```css
---color-bg-default            /* Page background */
---color-bg-surface-layer1     /* Cards, panels (first elevation) */
---color-bg-surface-layer2     /* Nested surfaces (second elevation) */
+--color-bg-page               /* Page/viewport canvas */
+--color-bg-elevated           /* Inputs, cards, raised elements */
+--color-bg-primary            /* Main app surface */
+--color-bg-secondary          /* Secondary surface */
+--color-bg-tertiary           /* Recessed/inset areas */
 --color-bg-neutral-subtle     /* Subtle section backgrounds */
 --color-bg-neutral-on-subtle  /* Slightly stronger neutral bg */
 --color-bg-neutral-strong     /* Strong neutral background */
 --color-bg-disabled           /* Disabled input backgrounds */
 --color-bg-overlay            /* Modal / drawer backdrops */
---color-bg-nav                /* Navigation bar (always dark) */
+--color-bg-nav                /* Navigation bar (always dark — no dark override) */
+--color-bg-inverse            /* Inverted surface */
 --color-bg-brand-subtle       /* Brand-tinted section bg */
---color-bg-brand-surface      /* Brand surface */
+--color-bg-brand              /* Brand surface */
+--color-bg-brand-solid        /* Solid brand-colored surface */
 --color-bg-info-subtle
---color-bg-info-surface
 --color-bg-success-subtle
---color-bg-success-surface
 --color-bg-success-strong
 --color-bg-error-subtle
---color-bg-error-surface
 --color-bg-error-strong
 --color-bg-warning-subtle
---color-bg-warning-surface
 --color-bg-warning-strong
+
+/* Backward-compat aliases (prefer canonical names above) */
+--color-bg-default            /* → --color-bg-page */
 ```
 
 ## Action (interactive backgrounds)
@@ -152,47 +160,58 @@ Quick lookup for CSS variable names. For usage rules, see the foundation and com
 
 ## Typography
 
+Tailwind v4 convention: `--text-{name}` sets font-size; `--text-{name}--line-height` sets line-height.
+
 ```css
 /* Font families */
---font-family-body   /* Montserrat */
---font-family-mono   /* Bebas Neue */
+--font-body   /* Montserrat */
+--font-mono   /* Roboto Mono */
 
-/* Font sizes */
---font-size-heading-2xl   /* 40px desktop */
---font-size-heading-xl    /* 32px desktop */
---font-size-heading-lg    /* 26px desktop */
---font-size-heading-md    /* 22px desktop */
---font-size-heading-sm    /* 18px desktop */
---font-size-heading-xs    /* 16px desktop */
---font-size-text-lg       /* 16px */
---font-size-text-md       /* 14px — default UI text */
---font-size-text-sm       /* 12px */
---font-size-caption-sm    /* 10px */
---font-size-caption-xs    /* 8px */
-
-/* Line heights */
---line-height-heading-2xl  /* 48px */
---line-height-heading-xl   /* 40px */
---line-height-heading-lg   /* 34px */
---line-height-heading-md   /* 30px */
---line-height-heading-sm   /* 26px */
---line-height-heading-xs   /* 24px */
---line-height-text-lg      /* 24px */
---line-height-text-md      /* 20px */
---line-height-text-sm      /* 18px */
---line-height-caption-sm   /* 16px */
---line-height-caption-xs   /* 12px */
+/* Font size + line-height pairs (Tailwind v4) */
+--text-heading-2xl             /* 40px */
+--text-heading-2xl--line-height  /* 48px */
+--text-heading-xl              /* 32px */
+--text-heading-xl--line-height   /* 40px */
+--text-heading-lg              /* 26px */
+--text-heading-lg--line-height   /* 34px */
+--text-heading-md              /* 22px */
+--text-heading-md--line-height   /* 30px */
+--text-heading-sm              /* 18px */
+--text-heading-sm--line-height   /* 26px */
+--text-heading-xs              /* 16px */
+--text-heading-xs--line-height   /* 24px */
+--text-lg                      /* 16px */
+--text-lg--line-height           /* 24px */
+--text-md                      /* 14px — default UI text */
+--text-md--line-height           /* 20px */
+--text-sm                      /* 12px */
+--text-sm--line-height           /* 18px */
+--text-caption-sm              /* 10px */
+--text-caption-sm--line-height   /* 16px */
+--text-caption-xs              /* 8px */
+--text-caption-xs--line-height   /* 12px */
 
 /* Font weights */
 --font-weight-regular         /* 400 */
---font-weight-regular-italic
 --font-weight-medium          /* 500 */
---font-weight-medium-italic
 --font-weight-semibold        /* 600 — button labels, UI labels */
---font-weight-semibold-italic
 --font-weight-bold            /* 700 — headings */
---font-weight-bold-italic
 ```
+
+## Breakpoints
+
+```css
+--breakpoint-mobile:  375px;
+--breakpoint-tablet:  768px;
+--breakpoint-laptop:  1024px;
+--breakpoint-desktop: 1280px;
+--breakpoint-wide:    1440px;
+--breakpoint-ultra:   1680px;
+--breakpoint-max:     1920px;
+```
+
+Note: breakpoints can't be used directly in `@media` queries as CSS custom properties.
+Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 
 ## Button Component Tokens
 

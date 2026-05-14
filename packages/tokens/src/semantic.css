@@ -17,11 +17,11 @@
   --color-text-warning:       var(--color-yellow-600);
 
   /* ── Border ─────────────────────────────────────────────────────── */
-  /* Figma: border/primary, border/secondary, border/disabled,        */
+  /* Figma: border/primary, border/secondary, border/subtle,          */
   /*        border/focus, border/brand, border/error                  */
   --color-border-primary:        var(--color-gray-300);
   --color-border-secondary:      var(--color-gray-400);
-  --color-border-disabled:       var(--color-gray-200);
+  --color-border-subtle:         var(--color-gray-200);
   --color-border-focus:          var(--color-blue-500);
   --color-border-brand:          var(--color-brand-500);
   --color-border-error:          var(--color-red-500);
@@ -44,12 +44,13 @@
   --color-bg-disabled:          var(--color-gray-100);
   --color-bg-overlay:           rgba(0, 0, 0, 0.5);
   --color-bg-inverse:           var(--color-gray-950);
-  --color-bg-nav:               #1b1a1a;
+  --color-bg-nav:               #1b1a1a;  /* always dark — NOT overridden in [data-theme="dark"] */
   --color-bg-neutral-subtle:    var(--color-gray-100);
   --color-bg-neutral-on-subtle: var(--color-gray-200);
   --color-bg-neutral-strong:    var(--color-gray-800);
   --color-bg-brand-subtle:      var(--color-brand-50);
   --color-bg-brand:             var(--color-brand-100);
+  --color-bg-brand-solid:       var(--color-brand-500);
   --color-bg-info-subtle:       var(--color-blue-50);
   --color-bg-info-surface:      var(--color-blue-50);
   --color-bg-success-subtle:    var(--color-green-50);
@@ -100,12 +101,10 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-50);
   --color-action-warning-subtle-active:   var(--color-yellow-100);
 
-  /* ── Backward-compat aliases — remove after full migration ─────── */
-  --color-bg-elevated-layer1:    var(--color-bg-primary);
-  --color-bg-elevated-layer2:    var(--color-bg-tertiary);
+  /* ── Backward-compat aliases ────────────────────────────────────── */
   --color-bg-brand-surface:     var(--color-bg-brand);
   --color-border-default:       var(--color-border-primary);
-  --color-border-subtle:        var(--color-border-disabled);
+  --color-border-disabled:      var(--color-border-subtle);
   --color-border-brand-strong:  var(--color-border-brand);
   --color-border-error-strong:  var(--color-border-error);
 }
@@ -127,7 +126,7 @@
   /* ── Border — dark ───────────────────────────────────────────────── */
   --color-border-primary:        var(--color-gray-700);
   --color-border-secondary:      var(--color-gray-800);
-  --color-border-disabled:       var(--color-gray-800);
+  --color-border-subtle:         var(--color-gray-800);
   --color-border-focus:          var(--color-blue-400);
   --color-border-brand:          var(--color-brand-400);
   --color-border-error:          var(--color-red-400);
@@ -153,6 +152,7 @@
   --color-bg-neutral-strong:    var(--color-gray-400);
   --color-bg-brand-subtle:      var(--color-brand-950);
   --color-bg-brand:             var(--color-brand-900);
+  --color-bg-brand-solid:       var(--color-brand-600);
   --color-bg-success-strong:    var(--color-green-500);
   --color-bg-error-strong:      var(--color-red-500);
   --color-bg-warning-strong:    var(--color-orange-500);
@@ -195,12 +195,10 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-950);
   --color-action-warning-subtle-active:   var(--color-yellow-900);
 
-  /* ── Backward-compat aliases — dark ─────────────────────────────── */
-  --color-bg-elevated-layer1:    var(--color-bg-primary);
-  --color-bg-elevated-layer2:    var(--color-bg-tertiary);
+  /* ── Backward-compat aliases — dark ────────────────────────────── */
   --color-bg-brand-surface:     var(--color-bg-brand);
   --color-border-default:       var(--color-border-primary);
-  --color-border-subtle:        var(--color-border-disabled);
+  --color-border-disabled:      var(--color-border-subtle);
   --color-border-brand-strong:  var(--color-border-brand);
   --color-border-error-strong:  var(--color-border-error);
 }

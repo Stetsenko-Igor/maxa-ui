@@ -4,8 +4,8 @@
 
 | Role | Family | CSS variable | When to use |
 |------|--------|-------------|-------------|
-| Body | Montserrat | `--font-family-body` | All UI text, headings, labels |
-| Mono | Bebas Neue | `--font-family-mono` | Code blocks, technical display |
+| Body | Montserrat | `--font-body` | All UI text, headings, labels |
+| Mono | Roboto Mono | `--font-mono` | Code blocks, technical display |
 
 **Note:** Display font family tokens are intentionally not included. MAXA typography is app-oriented (SaaS UI), not marketing-oriented.
 
@@ -48,8 +48,6 @@ The scale has three tiers: headings, body text, captions.
 | SemiBold | 600 | `--font-weight-semibold` | Button labels, strong UI labels |
 | Bold | 700 | `--font-weight-bold` | Primary headings |
 
-Each weight has an italic variant: `--font-weight-regular-italic`, etc.
-
 ## Usage Rules
 
 ### Heading hierarchy
@@ -66,7 +64,7 @@ Each weight has an italic variant: `--font-weight-regular-italic`, etc.
 - `caption-sm` / `caption-xs` — timestamps, metadata, badge labels, fine print
 
 ### What NOT to do
-- Do not use `font-size: 14px` — use `font-size: var(--font-size-text-md)`
+- Do not use `font-size: 14px` — use `font-size: var(--text-md)`
 - Do not mix heading roles for visual weight — use font-weight instead
 - Do not use `display` roles — they are not in this system
 - `label` is a component-level concern, not a foundation typography role
