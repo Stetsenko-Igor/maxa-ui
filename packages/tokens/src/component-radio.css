@@ -20,7 +20,7 @@
   /* ── Colors — checked ─────────────────────────────────────────── */
   --radio-bg-checked:         var(--color-action-primary);
   --radio-border-checked:     var(--color-action-primary);
-  --radio-dot-color:          var(--color-base-white);
+  --radio-dot-color:          var(--color-text-inverse);
 
   /* ── Colors — error ───────────────────────────────────────────── */
   --radio-border-error:       var(--color-border-error);
