@@ -293,7 +293,7 @@ describe("figma import bundle", () => {
   it("includes shadow effect styles for Figma", () => {
     expect(bundle.effects?.shadows?.Shadows?.Light?.xs).toBeDefined()
     expect(bundle.effects?.shadows?.Shadows?.Light?.["3xl"]).toHaveLength(2)
-    expect(bundle.effects?.shadows?.Shadows?.Dark?.xs).toBeDefined()
+    expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 })
 

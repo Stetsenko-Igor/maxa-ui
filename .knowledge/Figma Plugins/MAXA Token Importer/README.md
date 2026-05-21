@@ -5,6 +5,8 @@ This version:
 - supports dot-notation aliases through `aliasDefaults`
 - creates text styles from `Typography`
 - creates shadow effect styles from `effects.shadows`
+- removes legacy `Typography/*` text styles after migrating to top-level typography groups
+- removes legacy `Shadows dark/*` effect styles
 - binds text styles to typography variables when available
 - accepts drag-and-drop token files from `packages/tokens/figma`
 - keeps the import result log visible without scrolling
@@ -35,9 +37,9 @@ Shadow behavior:
 
 - `packages/tokens/figma/import-bundle.json` may include `effects.shadows`
 - the plugin creates/updates Figma Effect Styles:
-  - `Shadows/xs` through `Shadows/3xl` for light mode
-  - `Shadows dark/xs` through `Shadows dark/3xl` for dark mode
+  - `Shadows/xs` through `Shadows/3xl`
 - shadow effects are not Figma variables; they are effect styles because Figma variables do not represent a complete reusable shadow stack
+- dark-mode elevation should usually be handled with surfaces, borders, overlays, or opacity instead of a parallel `Shadows dark/*` style group
 
 Network access:
 

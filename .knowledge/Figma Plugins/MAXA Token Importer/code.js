@@ -149,6 +149,7 @@ async function createTypographyStyles(bundle, logs) {
   const tokens = typography.modes[modeName] || {};
   const variableMap = await getVariableMap('Typography');
   const localTextStyles = await figma.getLocalTextStylesAsync();
+  removeLegacyTypographyStyles(localTextStyles, logs);
   const sizeKeys = Object.keys(tokens)
     .filter((key) => key.startsWith('Font size/'))
     .map((key) => key.replace('Font size/', ''))
@@ -167,7 +168,7 @@ async function createTypographyStyles(bundle, logs) {
 
     for (const weightKey of weightKeys) {
       const fontStyleValue = tokens[`Font weight/${weightKey}`];
-      const styleName = `Typography/${formatTypographyGroupName(sizeKey)}/${formatTypographyWeightName(weightKey)}`;
+      const styleName = `${formatTypographyGroupName(sizeKey)}/${formatTypographyWeightName(weightKey)}`;
 
       let style = localTextStyles.find((textStyle) => textStyle.name === styleName);
       if (!style) {
@@ -208,6 +209,19 @@ async function createTypographyStyles(bundle, logs) {
   }
 }
 
+function removeLegacyTypographyStyles(localTextStyles, logs) {
+  let count = 0;
+  for (const style of localTextStyles) {
+    if (!style.name.startsWith('Typography/')) continue;
+    style.remove();
+    count += 1;
+  }
+
+  if (count > 0) {
+    pushLog(logs, 'info', `Removed ${count} legacy Typography/* text style(s).`);
+  }
+}
+
 async function createShadowEffectStyles(bundle, logs) {
   const shadows = bundle.effects && bundle.effects.shadows && bundle.effects.shadows.Shadows;
   if (!shadows) {
@@ -216,12 +230,17 @@ async function createShadowEffectStyles(bundle, logs) {
   }
 
   const localEffectStyles = await figma.getLocalEffectStylesAsync();
+  removeLegacyShadowEffectStyles(localEffectStyles, logs);
   let count = 0;
 
   for (const [modeName, tokens] of Object.entries(shadows)) {
-    const isLight = modeName.toLowerCase() === 'light';
+    if (modeName.toLowerCase() !== 'light') {
+      pushLog(logs, 'info', `Skipped shadow effect styles for ${modeName} mode.`);
+      continue;
+    }
+
     for (const [tokenName, effects] of Object.entries(tokens || {})) {
-      const styleName = isLight ? `Shadows/${tokenName}` : `Shadows ${modeName.toLowerCase()}/${tokenName}`;
+      const styleName = `Shadows/${tokenName}`;
       const normalizedEffects = normalizeShadowEffects(effects, logs, styleName);
       if (!normalizedEffects.length) continue;
 
@@ -238,6 +257,19 @@ async function createShadowEffectStyles(bundle, logs) {
   }
 
   pushLog(logs, 'info', `Shadow effect styles finished. Updated ${count} style(s).`);
+}
+
+function removeLegacyShadowEffectStyles(localEffectStyles, logs) {
+  let count = 0;
+  for (const style of localEffectStyles) {
+    if (!style.name.startsWith('Shadows dark/')) continue;
+    style.remove();
+    count += 1;
+  }
+
+  if (count > 0) {
+    pushLog(logs, 'info', `Removed ${count} legacy Shadows dark/* effect style(s).`);
+  }
 }
 
 function normalizeShadowEffects(effects, logs, styleName) {
