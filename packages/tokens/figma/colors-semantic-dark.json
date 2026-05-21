@@ -45,6 +45,52 @@
       "$type": "color"
     }
   },
+  "fg": {
+    "primary": {
+      "$value": "{Colors.Neutral.100}",
+      "$type": "color"
+    },
+    "secondary": {
+      "$value": "{Colors.Neutral.200}",
+      "$type": "color"
+    },
+    "tertiary": {
+      "$value": "{Colors.Neutral.500}",
+      "$type": "color"
+    },
+    "disabled": {
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
+    },
+    "inverse": {
+      "$value": "{Colors.Neutral.900}",
+      "$type": "color"
+    },
+    "on-brand": {
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
+    "brand": {
+      "$value": "{Colors.Brand.400}",
+      "$type": "color"
+    },
+    "positive": {
+      "$value": "{Colors.Green.400}",
+      "$type": "color"
+    },
+    "negative": {
+      "$value": "{Colors.Red.400}",
+      "$type": "color"
+    },
+    "warning": {
+      "$value": "{Colors.Yellow.400}",
+      "$type": "color"
+    },
+    "info": {
+      "$value": "{Colors.Blue.400}",
+      "$type": "color"
+    }
+  },
   "bg": {
     "page": {
       "$value": "{Colors.Neutral.1000}",
@@ -54,8 +100,8 @@
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "inset": {
-      "$value": "{Colors.Neutral.950}",
+    "muted": {
+      "$value": "{Colors.Neutral.975}",
       "$type": "color"
     },
     "disabled": {
@@ -86,7 +132,11 @@
       "$value": "{Colors.Green.950}",
       "$type": "color"
     },
-    "success-solid": {
+    "success-surface": {
+      "$value": "{Colors.Green.950}",
+      "$type": "color"
+    },
+    "success-strong": {
       "$value": "{Colors.Green.500}",
       "$type": "color"
     },
@@ -94,15 +144,23 @@
       "$value": "{Colors.Yellow.950}",
       "$type": "color"
     },
-    "warning-solid": {
-      "$value": "{Colors.Yellow.500}",
+    "warning-surface": {
+      "$value": "{Colors.Yellow.950}",
+      "$type": "color"
+    },
+    "warning-strong": {
+      "$value": "{Colors.Orange.500}",
       "$type": "color"
     },
     "error-subtle": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
     },
-    "error-solid": {
+    "error-surface": {
+      "$value": "{Colors.Red.950}",
+      "$type": "color"
+    },
+    "error-strong": {
       "$value": "{Colors.Red.500}",
       "$type": "color"
     },
@@ -110,7 +168,11 @@
       "$value": "{Colors.Blue.950}",
       "$type": "color"
     },
-    "info-solid": {
+    "info-surface": {
+      "$value": "{Colors.Blue.950}",
+      "$type": "color"
+    },
+    "info-strong": {
       "$value": "{Colors.Blue.500}",
       "$type": "color"
     }

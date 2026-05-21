@@ -39,6 +39,19 @@ export type TextColorToken =
   | "error"
   | "warning"
 
+export type ForegroundColorToken =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "disabled"
+  | "inverse"
+  | "on-brand"
+  | "brand"
+  | "info"
+  | "positive"
+  | "negative"
+  | "warning"
+
 export type BackgroundColorToken =
   | "page"
   | "surface"
@@ -54,6 +67,7 @@ export type BackgroundColorToken =
   | "brand-solid"
   | "info-subtle"
   | "info-surface"
+  | "info-strong"
   | "success-subtle"
   | "success-surface"
   | "success-strong"
@@ -82,6 +96,7 @@ export type BoxProps = HTMLAttributes<HTMLElement> & {
   background?: BackgroundColorToken
   borderColor?: BorderColorToken
   color?: TextColorToken
+  foreground?: ForegroundColorToken
   p?: SpaceToken
   px?: SpaceToken
   py?: SpaceToken
@@ -135,6 +150,7 @@ export type TokenSwatchProps = HTMLAttributes<HTMLDivElement> & {
 const spaceVar = (token: SpaceToken) => `var(--spacing-${token})`
 const radiusVar = (token: RadiusToken) => `var(--radius-${token})`
 const textColorVar = (token: TextColorToken) => `var(--color-text-${token})`
+const foregroundColorVar = (token: ForegroundColorToken) => `var(--color-fg-${token})`
 const backgroundColorVar = (token: BackgroundColorToken) => `var(--color-bg-${token})`
 const borderColorVar = (token: BorderColorToken) => `var(--color-border-${token})`
 // "text-md" → "--text-md", "heading-md" → "--text-heading-md", "caption-sm" → "--text-caption-sm"
@@ -154,6 +170,7 @@ function tokenBoxStyle(props: BoxProps): CSSProperties {
   if (props.background) tokenStyle.backgroundColor = backgroundColorVar(props.background)
   if (props.borderColor) tokenStyle.borderColor = borderColorVar(props.borderColor)
   if (props.color) tokenStyle.color = textColorVar(props.color)
+  if (props.foreground) tokenStyle.color = foregroundColorVar(props.foreground)
   if (props.radius) tokenStyle.borderRadius = radiusVar(props.radius)
   if (props.p) tokenStyle.padding = spaceVar(props.p)
   if (props.px) {
@@ -179,6 +196,7 @@ function cleanBoxProps<T extends BoxProps>(props: T) {
   delete htmlProps.background
   delete htmlProps.borderColor
   delete htmlProps.color
+  delete htmlProps.foreground
   delete htmlProps.p
   delete htmlProps.px
   delete htmlProps.py

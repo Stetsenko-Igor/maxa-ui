@@ -38,7 +38,7 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 
 ### `outline`
 - **Use when:** Tertiary action. Low visual weight but still prominent enough for a border.
-- **Background:** `--button-outline-bg` → `bg/secondary` (very light, near-white)
+- **Background:** `--button-outline-bg` → `bg/surface` (raised neutral surface)
 - **Border:** `--button-outline-border` → `border/primary`
 - **Text:** `--button-outline-text` → `text/primary`
 

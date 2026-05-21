@@ -2,7 +2,7 @@
 
 Quick lookup for CSS variable names. For usage rules, see the foundation and component specs.
 
-## Text / Foreground
+## Text
 
 ```css
 --color-text-primary          /* Main body text, headings */
@@ -16,6 +16,24 @@ Quick lookup for CSS variable names. For usage rules, see the foundation and com
 --color-text-success          /* Success messages */
 --color-text-error            /* Error messages, validation */
 --color-text-warning          /* Warning messages */
+```
+
+## Foreground
+
+Use foreground tokens for icons, SVG strokes/fills, and non-text foreground elements.
+
+```css
+--color-fg-primary            /* Highest-emphasis icons */
+--color-fg-secondary          /* Supporting icons */
+--color-fg-tertiary           /* Low-emphasis icons */
+--color-fg-disabled           /* Disabled icons */
+--color-fg-inverse            /* Icons on dark/inverted surfaces */
+--color-fg-on-brand           /* Icons on bg/brand-solid */
+--color-fg-brand              /* Brand-colored icons */
+--color-fg-info               /* Informational icons */
+--color-fg-positive           /* Success icons */
+--color-fg-negative           /* Error/destructive icons */
+--color-fg-warning            /* Warning icons */
 ```
 
 ## Border
@@ -64,6 +82,7 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --color-bg-brand-solid        /* Solid brand-colored surface */
 --color-bg-info-subtle
 --color-bg-info-surface
+--color-bg-info-strong
 --color-bg-success-subtle
 --color-bg-success-surface
 --color-bg-success-strong
@@ -174,6 +193,21 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --radius-4xl    /* 24px */
 --radius-full   /* 9999px — pills, avatars */
 ```
+
+## Shadows
+
+```css
+--shadow-xs   /* 0px 1px 2px 0px rgba(0,0,0,.05) — small cards, subtle lift */
+--shadow-sm   /* 0 1px 3px rgba(0,0,0,.10), 0 1px 2px -1px rgba(0,0,0,.10) — dropdowns, selects */
+--shadow-md   /* 0 4px 6px -1px rgba(0,0,0,.10), 0 2px 4px -2px rgba(0,0,0,.06) — tooltips, popovers */
+--shadow-lg   /* 0 12px 16px -4px rgba(0,0,0,.08), … — modals, drawers */
+--shadow-xl   /* 0 20px 24px -4px rgba(0,0,0,.08), … — full-screen overlays */
+--shadow-2xl  /* 0 24px 48px -12px rgba(0,0,0,.18), … — hero cards */
+--shadow-3xl  /* 0 32px 64px -12px rgba(0,0,0,.14), … — reserved / max elevation */
+```
+
+Dark mode overrides (2–3× opacity) defined in same file via `[data-theme="dark"]`.
+Never use directly in component CSS — define `--{component}-shadow: var(--shadow-*)` first.
 
 ## Typography
 
@@ -503,6 +537,7 @@ Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 
 - `packages/tokens/src/semantic.css` — all color semantic tokens
 - `packages/tokens/src/dimensions.css` — spacing, radius tokens
+- `packages/tokens/src/shadows.css` — shadow/elevation tokens
 - `packages/tokens/src/typography.css` — font tokens
 - `packages/tokens/src/component-button.css` — button component tokens
 - `packages/tokens/src/component-input.css` — input component tokens

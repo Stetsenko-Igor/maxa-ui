@@ -24,8 +24,10 @@ import { fileURLToPath } from 'url';
 const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 
 const SCAN_DIRS = ['packages/ui/src', 'packages/tokens/src', 'apps/docs'];
+const TOKEN_CSS_DIR = join(ROOT, 'packages/tokens/src');
+const FIGMA_DIR = join(ROOT, 'packages/tokens/figma');
 
-const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', 'primitives.css', 'audit-tokens.mjs'];
+const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', 'audit-tokens.mjs'];
 
 // Legacy semantic names removed in the surface redesign. Their CSS var
 // is no longer defined (except bg-elevated which is a temporary alias).
@@ -67,6 +69,12 @@ const RADIUS_TOKENS = {
 
 const ALLOWED_HEX = new Set(['#00000000']);
 const ALLOWED_PX = new Set([0, 1, 2]);
+
+const FIGMA_ALIAS_DEFAULTS = {
+  Spacing: 'Primitives',
+  'Color modes': 'Primitives',
+  Layout: 'Spacing',
+};
 
 function collectFiles(dir, extensions) {
   const files = [];
@@ -200,6 +208,7 @@ function scanCrossLayerDrift() {
     { union: 'BackgroundColorToken', prefix: '--color-bg-' },
     { union: 'BorderColorToken', prefix: '--color-border-' },
     { union: 'TextColorToken', prefix: '--color-text-' },
+    { union: 'ForegroundColorToken', prefix: '--color-fg-' },
   ];
 
   for (const { union, prefix } of checks) {
@@ -222,6 +231,137 @@ function scanCrossLayerDrift() {
   return violations;
 }
 
+function stripCssComments(content) {
+  return content.replace(/\/\*[\s\S]*?\*\//g, '');
+}
+
+function scanCssVarResolution() {
+  const violations = [];
+  const files = collectCssFiles(TOKEN_CSS_DIR);
+  const defined = new Set();
+
+  for (const filePath of files) {
+    const content = stripCssComments(readFileSync(filePath, 'utf8'));
+    for (const match of content.matchAll(/(--[\w-]+)\s*:/g)) {
+      defined.add(match[1]);
+    }
+  }
+
+  for (const filePath of files) {
+    const content = stripCssComments(readFileSync(filePath, 'utf8'));
+    const lines = content.split('\n');
+
+    for (let i = 0; i < lines.length; i++) {
+      for (const match of lines[i].matchAll(/var\(\s*(--[\w-]+)/g)) {
+        const varName = match[1];
+        if (!defined.has(varName)) {
+          violations.push({
+            file: relative(ROOT, filePath),
+            line: i + 1,
+            type: 'unresolved-css-var',
+            value: varName,
+            hint: `Define ${varName} in packages/tokens/src, or replace the reference with an existing token`,
+          });
+        }
+      }
+    }
+  }
+
+  return violations;
+}
+
+function flattenJsonTokens(input, pathParts = [], output = new Set()) {
+  for (const [key, value] of Object.entries(input)) {
+    const nextPath = [...pathParts, key];
+    if (value && typeof value === 'object' && !Array.isArray(value) && '$value' in value && '$type' in value) {
+      output.add(nextPath.join('/'));
+      continue;
+    }
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      flattenJsonTokens(value, nextPath, output);
+    }
+  }
+  return output;
+}
+
+function collectFigmaCollections() {
+  const manifestPath = join(FIGMA_DIR, 'manifest.json');
+  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+  const collections = {};
+
+  for (const [collectionName, collectionDef] of Object.entries(manifest.collections ?? {})) {
+    const paths = new Set();
+    for (const files of Object.values(collectionDef.modes ?? {})) {
+      for (const fileName of files) {
+        const json = JSON.parse(readFileSync(join(FIGMA_DIR, fileName), 'utf8'));
+        flattenJsonTokens(json, [], paths);
+      }
+    }
+    collections[collectionName] = paths;
+  }
+
+  return { manifest, collections };
+}
+
+function resolveFigmaAlias(inner, collectionName, collections) {
+  const normalizedInner = inner.replace(/\./g, '/');
+  const collectionNames = Object.keys(collections).sort((a, b) => b.length - a.length);
+
+  for (const candidate of collectionNames) {
+    const prefix = `${candidate}/`;
+    if (normalizedInner.startsWith(prefix)) {
+      const tokenPath = normalizedInner.slice(prefix.length);
+      return collections[candidate]?.has(tokenPath) ? null : `${candidate}/${tokenPath}`;
+    }
+  }
+
+  if (collections[collectionName]?.has(normalizedInner)) return null;
+
+  const defaultCollection = FIGMA_ALIAS_DEFAULTS[collectionName];
+  if (defaultCollection && collections[defaultCollection]?.has(normalizedInner)) return null;
+
+  return `${defaultCollection ?? collectionName}/${normalizedInner}`;
+}
+
+function scanFigmaAliasResolution() {
+  const violations = [];
+  let manifest;
+  let collections;
+
+  try {
+    ({ manifest, collections } = collectFigmaCollections());
+  } catch {
+    return violations;
+  }
+
+  for (const [collectionName, collectionDef] of Object.entries(manifest.collections ?? {})) {
+    for (const files of Object.values(collectionDef.modes ?? {})) {
+      for (const fileName of files) {
+        const filePath = join(FIGMA_DIR, fileName);
+        const content = readFileSync(filePath, 'utf8');
+        const lines = content.split('\n');
+
+        for (let i = 0; i < lines.length; i++) {
+          for (const match of lines[i].matchAll(/"\$value"\s*:\s*"\{([^}]+)\}"/g)) {
+            const missing = resolveFigmaAlias(match[1].trim(), collectionName, collections);
+            if (missing) {
+              violations.push({
+                file: relative(ROOT, filePath),
+                line: i + 1,
+                type: 'unresolved-figma-alias',
+                value: `{${match[1].trim()}}`,
+                hint: `Alias target ${missing} is not defined in the Figma token manifest`,
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return violations;
+}
+
 // ── Run all checks ──────────────────────────────────────────────────────────
 const cssFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
 const sourceFiles = SCAN_DIRS.flatMap(d => collectSourceFiles(join(ROOT, d)));
@@ -230,6 +370,8 @@ const violations = [
   ...cssFiles.flatMap(f => scanFile(f)),
   ...sourceFiles.flatMap(f => scanLegacyNames(f)),
   ...scanCrossLayerDrift(),
+  ...scanCssVarResolution(),
+  ...scanFigmaAliasResolution(),
 ];
 
 if (violations.length === 0) {

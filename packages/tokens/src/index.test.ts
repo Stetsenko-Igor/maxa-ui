@@ -30,14 +30,20 @@ describe("theme.css", () => {
     expect(css).toContain('@import "./typography.css"')
   })
 
-  it("imports in correct order: primitives → maxa → semantic → dimensions", () => {
+  it("imports shadows", () => {
+    expect(css).toContain('@import "./shadows.css"')
+  })
+
+  it("imports in correct order: primitives → maxa → semantic → dimensions → shadows", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
     const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
     const semIdx  = css.indexOf('@import "./semantic.css"')
     const dimIdx  = css.indexOf('@import "./dimensions.css"')
+    const shadowIdx  = css.indexOf('@import "./shadows.css"')
     expect(primIdx).toBeLessThan(maxaIdx)
     expect(maxaIdx).toBeLessThan(semIdx)
     expect(semIdx).toBeLessThan(dimIdx)
+    expect(dimIdx).toBeLessThan(shadowIdx)
   })
 })
 
@@ -80,6 +86,14 @@ describe("primitives.css — gray", () => {
       expect(css).toContain(`--color-neutral-${step}:`)
     }
   })
+
+  it("defines all status palette steps used by semantic tokens", () => {
+    for (const color of ["blue", "green", "red", "yellow", "orange"]) {
+      for (const step of [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
+        expect(css).toContain(`--color-${color}-${step}:`)
+      }
+    }
+  })
 })
 
 // ── semantic.css — text + border ──────────────────────────────────────────
@@ -114,6 +128,17 @@ describe("semantic.css — text + border", () => {
     expect(darkIdx).toBeGreaterThan(-1)
     expect(css.slice(darkIdx)).toContain("--color-text-primary:")
   })
+
+  it("defines foreground tokens for icons and non-text foregrounds", () => {
+    for (const t of [
+      "fg-primary", "fg-secondary", "fg-tertiary",
+      "fg-disabled", "fg-inverse", "fg-on-brand",
+      "fg-brand", "fg-info", "fg-positive",
+      "fg-negative", "fg-warning",
+    ]) {
+      expect(css).toContain(`--color-${t}:`)
+    }
+  })
 })
 
 // ── semantic.css — bg + action ─────────────────────────────────────────────
@@ -128,6 +153,7 @@ describe("semantic.css — bg + action", () => {
       "bg-disabled", "bg-overlay", "bg-inverse",
       "bg-brand-subtle", "bg-brand", "bg-brand-solid",
       "bg-info-subtle", "bg-info-surface",
+      "bg-info-strong",
       "bg-success-subtle", "bg-success-surface", "bg-success-strong",
       "bg-error-subtle", "bg-error-surface", "bg-error-strong",
       "bg-warning-subtle", "bg-warning-surface", "bg-warning-strong",
@@ -328,6 +354,7 @@ describe("figma color modes", () => {
   it("keeps light and dark semantic groups aligned", () => {
     expect(Object.keys(lightFile)).toEqual(Object.keys(darkFile))
     expect(Object.keys(lightFile.text)).toEqual(Object.keys(darkFile.text))
+    expect(Object.keys(lightFile.fg)).toEqual(Object.keys(darkFile.fg))
     expect(Object.keys(lightFile.bg)).toEqual(Object.keys(darkFile.bg))
     expect(Object.keys(lightFile.border)).toEqual(Object.keys(darkFile.border))
     expect(Object.keys(lightFile.action)).toEqual(Object.keys(darkFile.action))
@@ -338,12 +365,18 @@ describe("figma color modes", () => {
     expect(lightFile.text.secondary?.$value).toBe("{Colors.Neutral.800}")
     expect(lightFile.text.tertiary?.$value).toBe("{Colors.Neutral.600}")
     expect(lightFile.text["on-brand"]?.$value).toBe("{Colors.Neutral.950}")
+    expect(lightFile.fg.tertiary?.$value).toBe("{Colors.Neutral.600}")
+    expect(lightFile.bg.muted?.$value).toBe("{Colors.Neutral.25}")
+    expect(lightFile.bg["info-strong"]?.$value).toBe("{Colors.Blue.700}")
     expect(lightFile.text.info?.$value).toBe("{Colors.Blue.600}")
     expect(lightFile.action["primary-subtle-hover"]?.$value).toBe("{Colors.Blue.50}")
     expect(lightFile.action["brand-subtle-hover"]?.$value).toBe("{Colors.Brand.50}")
     expect(darkFile.text.secondary?.$value).toBe("{Colors.Neutral.200}")
     expect(darkFile.text["on-brand"]?.$value).toBe("{Colors.Neutral.950}")
     expect(darkFile.text.brand?.$value).toBe("{Colors.Brand.400}")
+    expect(darkFile.fg.tertiary?.$value).toBe("{Colors.Neutral.500}")
+    expect(darkFile.bg.muted?.$value).toBe("{Colors.Neutral.975}")
+    expect(darkFile.bg["info-strong"]?.$value).toBe("{Colors.Blue.500}")
     expect(darkFile.bg["brand-solid"]?.$value).toBe("{Colors.Brand.600}")
     expect(darkFile.bg.inverse?.$value).toBe("{Colors.Neutral.950}")
     expect(darkFile.border.focus?.$value).toBe("{Colors.Blue.400}")
@@ -742,13 +775,14 @@ function readThemeCSS() {
   const semantic = readFileSync(join(src, "semantic.css"), "utf-8")
   const dimensions = readFileSync(join(src, "dimensions.css"), "utf-8")
   const typography = readFileSync(join(src, "typography.css"), "utf-8")
+  const shadows = readFileSync(join(src, "shadows.css"), "utf-8")
   // Strip @import lines (already inlined above) and @theme wrappers
   // happy-dom doesn't process @theme — extract variable declarations directly
   const strip = (css: string) =>
     css
       .replace(/@import\s+["'][^"']+["'];/g, "")
       .replace(/@theme\s*\{/g, ":root {")
-  return [primitives, maxa, semantic, dimensions, typography].map(strip).join("\n")
+  return [primitives, maxa, semantic, dimensions, typography, shadows].map(strip).join("\n")
 }
 
 describe("runtime — dark mode CSS variable override", () => {

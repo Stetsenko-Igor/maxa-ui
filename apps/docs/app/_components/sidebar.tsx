@@ -16,6 +16,7 @@ const NAV = [
       { href: "/docs/foundations/typography", label: "Typography" },
       { href: "/docs/foundations/spacing", label: "Spacing" },
       { href: "/docs/foundations/radius", label: "Radius" },
+      { href: "/docs/foundations/shadows", label: "Shadows" },
     ],
   },
   {

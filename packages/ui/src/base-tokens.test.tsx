@@ -19,6 +19,7 @@ function injectThemeCSS() {
     "semantic.css",
     "dimensions.css",
     "typography.css",
+    "shadows.css",
     "component-button.css",
     "component-checkbox.css",
     "component-input.css",
@@ -51,6 +52,7 @@ const backgroundTokens = [
   "brand-solid",
   "info-subtle",
   "info-surface",
+  "info-strong",
   "success-subtle",
   "success-surface",
   "success-strong",
@@ -90,6 +92,20 @@ const textTokens = [
   "warning",
 ] as const
 
+const foregroundTokens = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "disabled",
+  "inverse",
+  "on-brand",
+  "brand",
+  "info",
+  "positive",
+  "negative",
+  "warning",
+] as const
+
 describe("base-tokens cross-layer drift", () => {
   let styleEl: HTMLStyleElement
 
@@ -122,9 +138,22 @@ describe("base-tokens cross-layer drift", () => {
     expect(value, `expected --color-text-${name} to be defined in tokens CSS`).toBeTruthy()
   })
 
+  it.each(foregroundTokens)("--color-fg-%s resolves to a non-empty value", (name) => {
+    const value = getComputedStyle(document.documentElement)
+      .getPropertyValue(`--color-fg-${name}`)
+      .trim()
+    expect(value, `expected --color-fg-${name} to be defined in tokens CSS`).toBeTruthy()
+  })
+
   it.each(backgroundTokens)("Box background=%s renders with the matching CSS var", (name) => {
     const { container } = render(<Box background={name} data-testid="box" />)
     const style = container.firstElementChild?.getAttribute("style") ?? ""
     expect(style).toContain(`background-color: var(--color-bg-${name})`)
+  })
+
+  it.each(foregroundTokens)("Box foreground=%s renders with the matching CSS var", (name) => {
+    const { container } = render(<Box foreground={name} data-testid="box" />)
+    const style = container.firstElementChild?.getAttribute("style") ?? ""
+    expect(style).toContain(`color: var(--color-fg-${name})`)
   })
 })

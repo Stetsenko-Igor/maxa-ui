@@ -13,6 +13,7 @@
 @import "./semantic.css";
 @import "./dimensions.css";
 @import "./typography.css";
+@import "./shadows.css";
 @import "./component-button.css";
 @import "./component-checkbox.css";
 @import "./component-input.css";

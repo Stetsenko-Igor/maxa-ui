@@ -15,10 +15,10 @@
 /* for tags, alerts, badges, feedback states.                          */
 
 :root {
-  /* ── Text — text and icon fill roles ────────────────────────────── */
+  /* ── Text — typography-only fill roles ──────────────────────────── */
   --color-text-primary:       var(--color-neutral-950);
   --color-text-secondary:     var(--color-neutral-800);
-  --color-text-tertiary:      var(--color-neutral-700);
+  --color-text-tertiary:      var(--color-neutral-600);
   --color-text-disabled:      var(--color-neutral-400);
   --color-text-inverse:       var(--color-base-white);
   --color-text-on-brand:      var(--color-neutral-950);
@@ -27,6 +27,19 @@
   --color-text-success:       var(--color-green-700);
   --color-text-error:         var(--color-red-700);
   --color-text-warning:       var(--color-yellow-600);
+
+  /* ── Foreground — icons and non-text foreground elements ────────── */
+  --color-fg-primary:       var(--color-neutral-950);
+  --color-fg-secondary:     var(--color-neutral-800);
+  --color-fg-tertiary:      var(--color-neutral-600);
+  --color-fg-disabled:      var(--color-neutral-400);
+  --color-fg-inverse:       var(--color-base-white);
+  --color-fg-on-brand:      var(--color-neutral-950);
+  --color-fg-brand:         var(--color-brand-600);
+  --color-fg-info:          var(--color-blue-600);
+  --color-fg-positive:      var(--color-green-700);
+  --color-fg-negative:      var(--color-red-700);
+  --color-fg-warning:       var(--color-yellow-600);
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-primary:        var(--color-neutral-300);
@@ -58,6 +71,7 @@
   --color-bg-brand-solid:       var(--color-brand-500);
   --color-bg-info-subtle:       var(--color-blue-50);
   --color-bg-info-surface:      var(--color-blue-50);
+  --color-bg-info-strong:       var(--color-blue-700);
   --color-bg-success-subtle:    var(--color-green-50);
   --color-bg-success-surface:   var(--color-green-50);
   --color-bg-success-strong:    var(--color-green-700);
@@ -131,6 +145,19 @@
   --color-text-error:         var(--color-red-400);
   --color-text-warning:       var(--color-yellow-400);
 
+  /* ── Foreground — dark ──────────────────────────────────────────── */
+  --color-fg-primary:       var(--color-neutral-100);
+  --color-fg-secondary:     var(--color-neutral-200);
+  --color-fg-tertiary:      var(--color-neutral-500);
+  --color-fg-disabled:      var(--color-neutral-700);
+  --color-fg-inverse:       var(--color-neutral-900);
+  --color-fg-on-brand:      var(--color-neutral-950);
+  --color-fg-brand:         var(--color-brand-400);
+  --color-fg-info:          var(--color-blue-400);
+  --color-fg-positive:      var(--color-green-400);
+  --color-fg-negative:      var(--color-red-400);
+  --color-fg-warning:       var(--color-yellow-400);
+
   /* ── Border — dark ──────────────────────────────────────────────── */
   --color-border-primary:        var(--color-neutral-700);
   --color-border-secondary:      var(--color-neutral-800);
@@ -159,8 +186,17 @@
   --color-bg-brand-subtle:      var(--color-brand-950);
   --color-bg-brand:             var(--color-brand-900);
   --color-bg-brand-solid:       var(--color-brand-600);
+  --color-bg-info-subtle:       var(--color-blue-950);
+  --color-bg-info-surface:      var(--color-blue-950);
+  --color-bg-info-strong:       var(--color-blue-500);
+  --color-bg-success-subtle:    var(--color-green-950);
+  --color-bg-success-surface:   var(--color-green-950);
   --color-bg-success-strong:    var(--color-green-500);
+  --color-bg-error-subtle:      var(--color-red-950);
+  --color-bg-error-surface:     var(--color-red-950);
   --color-bg-error-strong:      var(--color-red-500);
+  --color-bg-warning-subtle:    var(--color-yellow-950);
+  --color-bg-warning-surface:   var(--color-yellow-950);
   --color-bg-warning-strong:    var(--color-orange-500);
 
   /* ── Action — dark ──────────────────────────────────────────────── */

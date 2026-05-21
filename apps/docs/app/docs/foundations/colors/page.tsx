@@ -3,7 +3,9 @@ import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-
 
 export const metadata: Metadata = { title: "Colors — MAXA UI" }
 const TOC = [
+  { href: "#tokens-in-context", label: "Tokens in context" },
   { href: "#neutral-scale", label: "Neutral scale" },
+  { href: "#foreground", label: "Foreground" },
   { href: "#action", label: "Action" },
   { href: "#background", label: "Background" },
   { href: "#text", label: "Text" },
@@ -93,10 +95,24 @@ const BG_GROUPS = [
   { label: "Brand Subtle", token: "--color-bg-brand-subtle" },
   { label: "Brand", token: "--color-bg-brand" },
   { label: "Brand Solid", token: "--color-bg-brand-solid" },
+  { label: "Info Strong", token: "--color-bg-info-strong" },
   { label: "Success Subtle", token: "--color-bg-success-subtle" },
   { label: "Error Subtle", token: "--color-bg-error-subtle" },
   { label: "Warning Subtle", token: "--color-bg-warning-subtle" },
   { label: "Info Subtle", token: "--color-bg-info-subtle" },
+]
+
+const FG_GROUPS = [
+  { label: "Primary", token: "--color-fg-primary" },
+  { label: "Secondary", token: "--color-fg-secondary" },
+  { label: "Tertiary", token: "--color-fg-tertiary" },
+  { label: "Disabled", token: "--color-fg-disabled" },
+  { label: "Inverse", token: "--color-fg-inverse" },
+  { label: "Brand", token: "--color-fg-brand" },
+  { label: "Info", token: "--color-fg-info" },
+  { label: "Positive", token: "--color-fg-positive" },
+  { label: "Negative", token: "--color-fg-negative" },
+  { label: "Warning", token: "--color-fg-warning" },
 ]
 
 const TEXT_GROUPS = [
@@ -120,6 +136,78 @@ const BORDER_GROUPS = [
   { label: "Error", token: "--color-border-error" },
 ]
 
+const CONTEXT_LABELS = [
+  { name: "bg-surface", token: "--color-bg-surface", swatch: "--color-bg-surface" },
+  { name: "text-primary", token: "--color-text-primary", swatch: "--color-text-primary" },
+  { name: "text-secondary", token: "--color-text-secondary", swatch: "--color-text-secondary" },
+  { name: "fg-secondary", token: "--color-fg-secondary", swatch: "--color-fg-secondary" },
+  { name: "border-brand", token: "--color-border-brand", swatch: "--color-border-brand" },
+  { name: "bg-muted", token: "--color-bg-muted", swatch: "--color-bg-muted" },
+  { name: "radius-xl", token: "--radius-xl", swatch: "--color-border-brand" },
+  { name: "spacing-4xl", token: "--spacing-4xl", swatch: "--color-fg-brand" },
+]
+
+function TokenContextDemo() {
+  return (
+    <div className="token-context-demo" aria-label="Example component annotated with token names">
+      <div className="token-context-labels">
+        {CONTEXT_LABELS.map((item) => (
+          <div key={item.name} className="token-context-label">
+            <span className="token-context-chip" style={{ background: `var(${item.swatch})` }} />
+            <span>{item.name}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="token-context-stage">
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "15%", "--w": "42%" } as React.CSSProperties} />
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "27%", "--w": "48%" } as React.CSSProperties} />
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "35%", "--w": "47%" } as React.CSSProperties} />
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "48%", "--w": "52%" } as React.CSSProperties} />
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "58%", "--w": "56%" } as React.CSSProperties} />
+        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "78%", "--w": "50%" } as React.CSSProperties} />
+
+        <div className="token-context-card">
+          <div className="token-context-card-body">
+            <div className="token-context-icon">
+              <span style={{ width: "18px", height: "18px", border: "2px solid currentColor", borderRadius: "var(--radius-xs)" }} />
+            </div>
+            <div>
+              <h3 style={{ margin: 0, color: "var(--color-text-primary)", fontSize: "var(--text-heading-xs)", lineHeight: "var(--text-heading-xs--line-height)", fontWeight: "var(--font-weight-semibold)" }}>
+                Change your plan
+              </h3>
+              <p style={{ margin: "4px 0 0", color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "var(--text-md--line-height)" }}>
+                Flexible pricing that grows with you.
+              </p>
+            </div>
+            <div className="token-context-plan">
+              <div className="token-context-icon" style={{ width: "36px", height: "36px" }}>
+                <span style={{ width: "14px", height: "14px", border: "2px solid currentColor", borderRadius: "var(--radius-xxs)" }} />
+              </div>
+              <div>
+                <p style={{ margin: 0, color: "var(--color-text-primary)", fontSize: "var(--text-md)", lineHeight: "var(--text-md--line-height)", fontWeight: "var(--font-weight-medium)" }}>
+                  Basic plan · $10/month
+                </p>
+                <p style={{ margin: "2px 0 0", color: "var(--color-text-secondary)", fontSize: "var(--text-sm)", lineHeight: "var(--text-sm--line-height)" }}>
+                  Up to 10 users and 20GB individual data.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="token-context-card-footer">
+            <button style={{ height: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-primary)", background: "var(--color-bg-surface)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)" }}>
+              Cancel
+            </button>
+            <button style={{ height: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-action-brand)", background: "var(--color-action-brand)", color: "var(--color-text-on-brand)", fontWeight: "var(--font-weight-semibold)" }}>
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function ColorsPage() {
   return (
     <DocsPageLayout
@@ -128,6 +216,14 @@ export default function ColorsPage() {
       toc={TOC}
       lead={<>Semantic color tokens. Components reference only these, never raw primitives like <code>--color-blue-500</code>.</>}
     >
+      <DocsPageSection
+        id="tokens-in-context"
+        title="Tokens in context"
+        description="A static component illustration showing how semantic tokens map to real UI parts. The same names are used in CSS, Figma color modes, and component specs."
+      >
+        <TokenContextDemo />
+      </DocsPageSection>
+
       <DocsPageSection
         id="neutral-scale"
         title="Neutral scale"
@@ -193,6 +289,18 @@ export default function ColorsPage() {
             </div>
           ))}
         </div>
+      </DocsPageSection>
+
+      <DocsPageSection id="foreground" title="Foreground" description="Use foreground tokens for icons, SVG strokes, and non-text foreground elements. Use text tokens only for typography.">
+      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {FG_GROUPS.map(({ label, token }) => (
+          <div key={token} style={{ display: "flex", alignItems: "center", gap: "16px", padding: "10px 16px", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border-tertiary)" }}>
+            <span style={{ width: "18px", height: "18px", border: `2px solid var(${token})`, borderRadius: "var(--radius-xs)" }} />
+            <span style={{ fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)", color: "var(--color-text-primary)", width: "120px" }}>{label}</span>
+            <code style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-sm)", color: "var(--color-text-tertiary)" }}>{token}</code>
+          </div>
+        ))}
+      </div>
       </DocsPageSection>
 
       <DocsPageSection id="action" title="Action">
