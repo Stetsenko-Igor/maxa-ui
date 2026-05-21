@@ -16,6 +16,7 @@ figma.ui.onmessage = async (msg) => {
       }
       await importBundle(bundle, logs, options);
       await createTypographyStyles(bundle, logs);
+      await createShadowEffectStyles(bundle, logs);
       pushLog(logs, 'success', 'Import finished successfully.');
       figma.ui.postMessage({ type: 'import-result', ok: true, logs });
     } catch (error) {
@@ -205,6 +206,60 @@ async function createTypographyStyles(bundle, logs) {
       pushLog(logs, 'info', `Created/updated text style "${styleName}".`);
     }
   }
+}
+
+async function createShadowEffectStyles(bundle, logs) {
+  const shadows = bundle.effects && bundle.effects.shadows && bundle.effects.shadows.Shadows;
+  if (!shadows) {
+    pushLog(logs, 'info', 'Skipped shadow effect styles: effects.shadows not found.');
+    return;
+  }
+
+  const localEffectStyles = await figma.getLocalEffectStylesAsync();
+  let count = 0;
+
+  for (const [modeName, tokens] of Object.entries(shadows)) {
+    const isLight = modeName.toLowerCase() === 'light';
+    for (const [tokenName, effects] of Object.entries(tokens || {})) {
+      const styleName = isLight ? `Shadows/${tokenName}` : `Shadows ${modeName.toLowerCase()}/${tokenName}`;
+      const normalizedEffects = normalizeShadowEffects(effects, logs, styleName);
+      if (!normalizedEffects.length) continue;
+
+      let style = localEffectStyles.find((effectStyle) => effectStyle.name === styleName);
+      if (!style) {
+        style = figma.createEffectStyle();
+        style.name = styleName;
+      }
+
+      style.effects = normalizedEffects;
+      count += 1;
+      pushLog(logs, 'info', `Created/updated effect style "${styleName}".`);
+    }
+  }
+
+  pushLog(logs, 'info', `Shadow effect styles finished. Updated ${count} style(s).`);
+}
+
+function normalizeShadowEffects(effects, logs, styleName) {
+  if (!Array.isArray(effects)) {
+    pushLog(logs, 'warn', `Skipped effect style "${styleName}" because its value is not an array.`);
+    return [];
+  }
+
+  return effects
+    .filter((effect) => effect && effect.type === 'DROP_SHADOW')
+    .map((effect) => ({
+      type: 'DROP_SHADOW',
+      visible: effect.visible !== false,
+      color: hexToRgba(effect.color || '#000000'),
+      offset: {
+        x: Number(effect.x || 0),
+        y: Number(effect.y || 0),
+      },
+      radius: Number(effect.blur || 0),
+      spread: Number(effect.spread || 0),
+      blendMode: 'NORMAL',
+    }));
 }
 
 async function getOrCreateCollection(name, logs) {

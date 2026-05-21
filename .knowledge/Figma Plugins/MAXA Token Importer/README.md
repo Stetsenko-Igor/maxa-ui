@@ -4,6 +4,7 @@ This version:
 - imports collections, modes, values and aliases
 - supports dot-notation aliases through `aliasDefaults`
 - creates text styles from `Typography`
+- creates shadow effect styles from `effects.shadows`
 - binds text styles to typography variables when available
 - accepts drag-and-drop token files from `packages/tokens/figma`
 - keeps the import result log visible without scrolling
@@ -29,6 +30,14 @@ Expected input:
 - published workflow: click **Load latest from GitHub** to fetch the last pushed bundle:
   - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - cleanup workflow: enable **Remove stale variables during import** only when the bundle should become the source of truth for the imported collections
+
+Shadow behavior:
+
+- `packages/tokens/figma/import-bundle.json` may include `effects.shadows`
+- the plugin creates/updates Figma Effect Styles:
+  - `Shadows/xs` through `Shadows/3xl` for light mode
+  - `Shadows dark/xs` through `Shadows dark/3xl` for dark mode
+- shadow effects are not Figma variables; they are effect styles because Figma variables do not represent a complete reusable shadow stack
 
 Network access:
 

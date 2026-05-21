@@ -1,0 +1,66 @@
+{
+  "Shadows": {
+    "Light": {
+      "xs": [
+        { "type": "DROP_SHADOW", "color": "#0000000D", "x": 0, "y": 1, "blur": 2, "spread": 0 }
+      ],
+      "sm": [
+        { "type": "DROP_SHADOW", "color": "#0000001A", "x": 0, "y": 1, "blur": 3, "spread": 0 },
+        { "type": "DROP_SHADOW", "color": "#0000001A", "x": 0, "y": 1, "blur": 2, "spread": -1 }
+      ],
+      "md": [
+        { "type": "DROP_SHADOW", "color": "#0000001A", "x": 0, "y": 4, "blur": 6, "spread": -1 },
+        { "type": "DROP_SHADOW", "color": "#0000000F", "x": 0, "y": 2, "blur": 4, "spread": -2 }
+      ],
+      "lg": [
+        { "type": "DROP_SHADOW", "color": "#00000014", "x": 0, "y": 12, "blur": 16, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#00000008", "x": 0, "y": 4, "blur": 6, "spread": -2 },
+        { "type": "DROP_SHADOW", "color": "#0000000A", "x": 0, "y": 2, "blur": 2, "spread": -1 }
+      ],
+      "xl": [
+        { "type": "DROP_SHADOW", "color": "#00000014", "x": 0, "y": 20, "blur": 24, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#00000008", "x": 0, "y": 8, "blur": 8, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#0000000A", "x": 0, "y": 3, "blur": 3, "spread": -1.5 }
+      ],
+      "2xl": [
+        { "type": "DROP_SHADOW", "color": "#0000002E", "x": 0, "y": 24, "blur": 48, "spread": -12 },
+        { "type": "DROP_SHADOW", "color": "#0000000A", "x": 0, "y": 4, "blur": 4, "spread": -2 }
+      ],
+      "3xl": [
+        { "type": "DROP_SHADOW", "color": "#00000024", "x": 0, "y": 32, "blur": 64, "spread": -12 },
+        { "type": "DROP_SHADOW", "color": "#0000000A", "x": 0, "y": 5, "blur": 5, "spread": -2.5 }
+      ]
+    },
+    "Dark": {
+      "xs": [
+        { "type": "DROP_SHADOW", "color": "#00000033", "x": 0, "y": 1, "blur": 2, "spread": 0 }
+      ],
+      "sm": [
+        { "type": "DROP_SHADOW", "color": "#0000004D", "x": 0, "y": 1, "blur": 3, "spread": 0 },
+        { "type": "DROP_SHADOW", "color": "#0000004D", "x": 0, "y": 1, "blur": 2, "spread": -1 }
+      ],
+      "md": [
+        { "type": "DROP_SHADOW", "color": "#0000004D", "x": 0, "y": 4, "blur": 6, "spread": -1 },
+        { "type": "DROP_SHADOW", "color": "#00000033", "x": 0, "y": 2, "blur": 4, "spread": -2 }
+      ],
+      "lg": [
+        { "type": "DROP_SHADOW", "color": "#00000040", "x": 0, "y": 12, "blur": 16, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 4, "blur": 6, "spread": -2 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 2, "blur": 2, "spread": -1 }
+      ],
+      "xl": [
+        { "type": "DROP_SHADOW", "color": "#00000040", "x": 0, "y": 20, "blur": 24, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 8, "blur": 8, "spread": -4 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 3, "blur": 3, "spread": -1.5 }
+      ],
+      "2xl": [
+        { "type": "DROP_SHADOW", "color": "#00000066", "x": 0, "y": 24, "blur": 48, "spread": -12 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 4, "blur": 4, "spread": -2 }
+      ],
+      "3xl": [
+        { "type": "DROP_SHADOW", "color": "#00000059", "x": 0, "y": 32, "blur": 64, "spread": -12 },
+        { "type": "DROP_SHADOW", "color": "#00000026", "x": 0, "y": 5, "blur": 5, "spread": -2.5 }
+      ]
+    }
+  }
+}

@@ -280,6 +280,7 @@ describe("figma import bundle", () => {
   ) as {
     aliasDefaults: Record<string, string>
     collections: Record<string, { modes: Record<string, Record<string, number | string>> }>
+    effects?: { shadows?: Record<string, Record<string, Record<string, unknown[]>>> }
   }
 
   it("maps Layout short spacing aliases to the Spacing collection", () => {
@@ -287,6 +288,12 @@ describe("figma import bundle", () => {
     expect(bundle.collections.Layout?.modes.Desktop?.["Stack/tight"]).toBe("{Spacing/spacing-xs}")
     expect(bundle.collections.Layout?.modes.Desktop?.["Container/padding"]).toBe("{Spacing/spacing-4xl}")
     expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
+  })
+
+  it("includes shadow effect styles for Figma", () => {
+    expect(bundle.effects?.shadows?.Shadows?.Light?.xs).toBeDefined()
+    expect(bundle.effects?.shadows?.Shadows?.Light?.["3xl"]).toHaveLength(2)
+    expect(bundle.effects?.shadows?.Shadows?.Dark?.xs).toBeDefined()
   })
 })
 

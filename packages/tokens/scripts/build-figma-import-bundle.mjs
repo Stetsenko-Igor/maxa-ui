@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const figmaDir = path.resolve(__dirname, "../figma")
 const manifestPath = path.join(figmaDir, "manifest.json")
+const shadowEffectsPath = path.join(figmaDir, "effects-shadows.json")
 const outputPath = path.join(figmaDir, "import-bundle.json")
 
 const aliasDefaults = {
@@ -17,6 +18,7 @@ const manifest = JSON.parse(await readFile(manifestPath, "utf8"))
 const bundle = {
   aliasDefaults,
   collections: {},
+  effects: {},
 }
 
 for (const [collectionName, collectionDef] of Object.entries(manifest.collections)) {
@@ -35,6 +37,12 @@ for (const [collectionName, collectionDef] of Object.entries(manifest.collection
   }
 
   bundle.collections[collectionName] = { modes }
+}
+
+try {
+  bundle.effects.shadows = JSON.parse(await readFile(shadowEffectsPath, "utf8"))
+} catch {
+  delete bundle.effects
 }
 
 await mkdir(figmaDir, { recursive: true })
