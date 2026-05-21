@@ -148,8 +148,7 @@ async function createTypographyStyles(bundle, logs) {
   const modeName = Object.keys(typography.modes || {})[0];
   const tokens = typography.modes[modeName] || {};
   const variableMap = await getVariableMap('Typography');
-  const localTextStyles = await figma.getLocalTextStylesAsync();
-  removeLegacyTypographyStyles(localTextStyles, logs);
+  const localTextStyles = removeLegacyTypographyStyles(await figma.getLocalTextStylesAsync(), logs);
   const sizeKeys = Object.keys(tokens)
     .filter((key) => key.startsWith('Font size/'))
     .map((key) => key.replace('Font size/', ''))
@@ -170,10 +169,11 @@ async function createTypographyStyles(bundle, logs) {
       const fontStyleValue = tokens[`Font weight/${weightKey}`];
       const styleName = `${formatTypographyGroupName(sizeKey)}/${formatTypographyWeightName(weightKey)}`;
 
-      let style = localTextStyles.find((textStyle) => textStyle.name === styleName);
+      let style = findStyleByName(localTextStyles, styleName);
       if (!style) {
         style = figma.createTextStyle();
         style.name = styleName;
+        localTextStyles.push(style);
       }
 
       const family = typeof familyValue === 'string' ? familyValue : 'Montserrat';
@@ -211,15 +211,25 @@ async function createTypographyStyles(bundle, logs) {
 
 function removeLegacyTypographyStyles(localTextStyles, logs) {
   let count = 0;
+  const retainedStyles = [];
+
   for (const style of localTextStyles) {
-    if (!style.name.startsWith('Typography/')) continue;
-    style.remove();
-    count += 1;
+    const styleName = getStyleName(style, logs);
+    if (!styleName) continue;
+
+    if (styleName.startsWith('Typography/')) {
+      style.remove();
+      count += 1;
+    } else {
+      retainedStyles.push(style);
+    }
   }
 
   if (count > 0) {
     pushLog(logs, 'info', `Removed ${count} legacy Typography/* text style(s).`);
   }
+
+  return retainedStyles;
 }
 
 async function createShadowEffectStyles(bundle, logs) {
@@ -229,8 +239,7 @@ async function createShadowEffectStyles(bundle, logs) {
     return;
   }
 
-  const localEffectStyles = await figma.getLocalEffectStylesAsync();
-  removeLegacyShadowEffectStyles(localEffectStyles, logs);
+  const localEffectStyles = removeLegacyShadowEffectStyles(await figma.getLocalEffectStylesAsync(), logs);
   let count = 0;
 
   for (const [modeName, tokens] of Object.entries(shadows)) {
@@ -244,10 +253,11 @@ async function createShadowEffectStyles(bundle, logs) {
       const normalizedEffects = normalizeShadowEffects(effects, logs, styleName);
       if (!normalizedEffects.length) continue;
 
-      let style = localEffectStyles.find((effectStyle) => effectStyle.name === styleName);
+      let style = findStyleByName(localEffectStyles, styleName);
       if (!style) {
         style = figma.createEffectStyle();
         style.name = styleName;
+        localEffectStyles.push(style);
       }
 
       style.effects = normalizedEffects;
@@ -261,14 +271,43 @@ async function createShadowEffectStyles(bundle, logs) {
 
 function removeLegacyShadowEffectStyles(localEffectStyles, logs) {
   let count = 0;
+  const retainedStyles = [];
+
   for (const style of localEffectStyles) {
-    if (!style.name.startsWith('Shadows dark/')) continue;
-    style.remove();
-    count += 1;
+    const styleName = getStyleName(style, logs);
+    if (!styleName) continue;
+
+    if (styleName.startsWith('Shadows dark/')) {
+      style.remove();
+      count += 1;
+    } else {
+      retainedStyles.push(style);
+    }
   }
 
   if (count > 0) {
     pushLog(logs, 'info', `Removed ${count} legacy Shadows dark/* effect style(s).`);
+  }
+
+  return retainedStyles;
+}
+
+function findStyleByName(styles, name) {
+  return styles.find((style) => {
+    try {
+      return style.name === name;
+    } catch (_error) {
+      return false;
+    }
+  });
+}
+
+function getStyleName(style, logs) {
+  try {
+    return style.name;
+  } catch (error) {
+    pushLog(logs, 'warn', `Skipped an unavailable local style reference: ${error.message || error}`);
+    return null;
   }
 }
 
