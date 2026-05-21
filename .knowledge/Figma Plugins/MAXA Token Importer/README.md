@@ -5,6 +5,7 @@ This version:
 - supports dot-notation aliases through `aliasDefaults`
 - creates text styles from `Typography`
 - creates shadow effect styles from `effects.shadows`
+- runs built-in migration maps before import so renamed variables/styles keep their Figma IDs when possible
 - removes legacy `Typography/*` text styles after migrating to top-level typography groups
 - removes legacy `Shadows dark/*` effect styles
 - binds text styles to typography variables when available
@@ -45,6 +46,11 @@ Migration safety:
 
 - Figma links are preserved by internal style and variable IDs, not by display names.
 - Future token/style renames should use a migration map and rename existing Figma entities before creating replacements.
+- The current importer includes migration maps for known early renames:
+  - `Color modes/bg/secondary` -> `Color modes/bg/surface`
+  - `Color modes/bg/inset` -> `Color modes/bg/muted`
+  - `Color modes/bg-*-solid` -> `Color modes/bg-*-strong`
+  - `Typography/...` text styles -> top-level typography style groups
 - Value-only updates should update existing variables/styles in place.
 - Deletions should be staged through a deprecated state first, for example `_Deprecated/...`, and removed only after consumers are migrated.
 - Direct deletion is acceptable only during early setup when the affected styles are known to be unused.

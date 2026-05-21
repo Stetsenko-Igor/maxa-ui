@@ -1,5 +1,37 @@
 figma.showUI(__html__, { width: 560, height: 760 });
 
+const MIGRATIONS = {
+  variables: {
+    'Color modes/bg/secondary': 'Color modes/bg/surface',
+    'Color modes/bg/inset': 'Color modes/bg/muted',
+    'Color modes/bg-success-solid': 'Color modes/bg-success-strong',
+    'Color modes/bg-error-solid': 'Color modes/bg-error-strong',
+    'Color modes/bg-warning-solid': 'Color modes/bg-warning-strong',
+    'Color modes/bg-info-solid': 'Color modes/bg-info-strong',
+  },
+  textStyles: {},
+  effectStyles: {},
+};
+
+for (const sizeKey of [
+  'heading-2xl',
+  'heading-xl',
+  'heading-lg',
+  'heading-md',
+  'heading-sm',
+  'heading-xs',
+  'text-lg',
+  'text-md',
+  'text-sm',
+  'caption-sm',
+  'caption-xs',
+]) {
+  for (const weightKey of ['regular', 'medium', 'semibold', 'bold']) {
+    const newName = `${formatTypographyGroupName(sizeKey)}/${formatTypographyWeightName(weightKey)}`;
+    MIGRATIONS.textStyles[`Typography/${newName}`] = newName;
+  }
+}
+
 figma.ui.onmessage = async (msg) => {
   if (msg.type === 'import-tokens') {
     const logs = [];
@@ -14,6 +46,7 @@ figma.ui.onmessage = async (msg) => {
       } else {
         pushLog(logs, 'info', 'Stale variable cleanup is disabled. Existing variables missing from the bundle will be kept.');
       }
+      await applyMigrations(MIGRATIONS, logs);
       await importBundle(bundle, logs, options);
       await createTypographyStyles(bundle, logs);
       await createShadowEffectStyles(bundle, logs);
@@ -41,6 +74,85 @@ function parseBundle(input) {
     throw new Error('Invalid bundle shape. Expected: { "collections": { ... } }');
   }
   return parsed;
+}
+
+async function applyMigrations(migrations, logs) {
+  await migrateVariables(migrations.variables || {}, logs);
+  await migrateStyles('Text style', await figma.getLocalTextStylesAsync(), migrations.textStyles || {}, logs);
+  await migrateStyles('Effect style', await figma.getLocalEffectStylesAsync(), migrations.effectStyles || {}, logs);
+}
+
+async function migrateVariables(variableMigrations, logs) {
+  const entries = Object.entries(variableMigrations);
+  if (!entries.length) return;
+
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const variables = await figma.variables.getLocalVariablesAsync();
+  let count = 0;
+
+  for (const [sourcePath, targetPath] of entries) {
+    const sourceParts = parseVariablePath(sourcePath);
+    const targetParts = parseVariablePath(targetPath);
+
+    if (!sourceParts || !targetParts || sourceParts.collectionName !== targetParts.collectionName) {
+      pushLog(logs, 'warn', `Skipped variable migration "${sourcePath}" -> "${targetPath}" because cross-collection migrations are not supported.`);
+      continue;
+    }
+
+    const collection = collections.find((item) => item.name === sourceParts.collectionName);
+    if (!collection) continue;
+
+    const source = variables.find((variable) => variable.variableCollectionId === collection.id && variable.name === sourceParts.variableName);
+    if (!source) continue;
+
+    const target = variables.find((variable) => variable.variableCollectionId === collection.id && variable.name === targetParts.variableName);
+    if (target) {
+      pushLog(logs, 'warn', `Skipped variable migration "${sourcePath}" because "${targetPath}" already exists.`);
+      continue;
+    }
+
+    source.name = targetParts.variableName;
+    count += 1;
+    pushLog(logs, 'info', `Migrated variable "${sourcePath}" -> "${targetPath}".`);
+  }
+
+  if (count > 0) {
+    pushLog(logs, 'info', `Variable migrations finished. Renamed ${count} variable(s).`);
+  }
+}
+
+function parseVariablePath(path) {
+  const slashIndex = path.indexOf('/');
+  if (slashIndex === -1) return null;
+  return {
+    collectionName: path.slice(0, slashIndex),
+    variableName: path.slice(slashIndex + 1),
+  };
+}
+
+async function migrateStyles(kind, styles, styleMigrations, logs) {
+  const entries = Object.entries(styleMigrations);
+  if (!entries.length) return;
+
+  let count = 0;
+  for (const [sourceName, targetName] of entries) {
+    const source = findStyleByName(styles, sourceName);
+    if (!source) continue;
+
+    const target = findStyleByName(styles, targetName);
+    if (target) {
+      pushLog(logs, 'warn', `Skipped ${kind.toLowerCase()} migration "${sourceName}" because "${targetName}" already exists.`);
+      continue;
+    }
+
+    source.name = targetName;
+    count += 1;
+    pushLog(logs, 'info', `Migrated ${kind.toLowerCase()} "${sourceName}" -> "${targetName}".`);
+  }
+
+  if (count > 0) {
+    pushLog(logs, 'info', `${kind} migrations finished. Renamed ${count} style(s).`);
+  }
 }
 
 async function importBundle(bundle, logs, options = {}) {
