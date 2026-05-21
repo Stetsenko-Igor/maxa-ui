@@ -41,6 +41,14 @@ Shadow behavior:
 - shadow effects are not Figma variables; they are effect styles because Figma variables do not represent a complete reusable shadow stack
 - dark-mode elevation should usually be handled with surfaces, borders, overlays, or opacity instead of a parallel `Shadows dark/*` style group
 
+Migration safety:
+
+- Figma links are preserved by internal style and variable IDs, not by display names.
+- Future token/style renames should use a migration map and rename existing Figma entities before creating replacements.
+- Value-only updates should update existing variables/styles in place.
+- Deletions should be staged through a deprecated state first, for example `_Deprecated/...`, and removed only after consumers are migrated.
+- Direct deletion is acceptable only during early setup when the affected styles are known to be unused.
+
 Network access:
 
 - the plugin manifest allows only `https://raw.githubusercontent.com`
