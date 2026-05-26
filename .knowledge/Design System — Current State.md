@@ -403,7 +403,7 @@ Validation:
 
 ## 14. Component-based Tokens
 
-Current status: direction approved, implementation not started.
+Current status: Button and Input token sources are implemented for Figma import; Badge and Alert remain deferred.
 
 Component-based Tokens are the next design-system layer.
 
@@ -482,6 +482,15 @@ Deferred Button decisions:
 - whether focus ring/elevation belongs in a future Effects collection
 - whether Button needs additional variants after real Figma component usage
 
+Current Input direction:
+
+- source files are `component-input-light.json` and `component-input-dark.json`
+- Figma paths use `Input/...`, for example `Input/bg`, `Input/border-focus`, `Input/size/md/height`
+- Input has explicit disabled and readonly tokens instead of opacity-only behavior
+- Input includes label, hint, error, success, icon, focus-ring, size, textarea, and typography tokens
+- build a new Figma Input component set on top of these variables instead of migrating an older component
+- keep Select and DatePicker separate component families even if they share Input-like implementation tokens in code
+
 ## 15. Project Narrative
 
 Short English explanation for team communication:
@@ -504,11 +513,12 @@ Short English explanation for team communication:
 
 ## 16. Next Conversation Starting Point
 
-Continue the next chat from **Component-based Tokens / Button**.
+Continue the next chat from **Component-based Tokens / Input**.
 
 Goal for the next stage:
 
-- validate and import Button v1 Component-based Tokens into Figma
+- validate and import Button + Input Component-based Tokens into Figma
+- create or rebuild the Figma Input component set on top of `Input/...` variables
 - do not create React components or docs/catalog until the Figma component-token layer is validated
 - keep React components and docs/catalog paused until Component-based Tokens are approved
 - keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned

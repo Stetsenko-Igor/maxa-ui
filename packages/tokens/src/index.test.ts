@@ -254,9 +254,11 @@ describe("figma manifest", () => {
   it("includes Component-based Tokens collection", () => {
     expect(manifest.collections["Component-based Tokens"]?.modes.Light).toEqual([
       "component-button-light.json",
+      "component-input-light.json",
     ])
     expect(manifest.collections["Component-based Tokens"]?.modes.Dark).toEqual([
       "component-button-dark.json",
+      "component-input-dark.json",
     ])
   })
 
@@ -688,6 +690,154 @@ describe("figma component-based button tokens", () => {
     expect(iconOnly.sm.size?.$value).toBe(28)
     expect(iconOnly.md.size?.$value).toBe(36)
     expect(iconOnly.lg.size?.$value).toBe(48)
+  })
+})
+
+describe("figma component-based input tokens", () => {
+  type TokenLeaf = { $value: number | string; $type: string; $description?: string }
+  type TokenTree = TokenLeaf | Record<string, TokenLeaf | TokenTree>
+  type InputTokens = {
+    Input: Record<string, TokenLeaf | Record<string, TokenLeaf | TokenTree>>
+  }
+
+  const lightFile = JSON.parse(
+    readFileSync(join(root, "figma/component-input-light.json"), "utf-8"),
+  ) as InputTokens
+
+  const darkFile = JSON.parse(
+    readFileSync(join(root, "figma/component-input-dark.json"), "utf-8"),
+  ) as InputTokens
+
+  function collectTokenValues(node: TokenTree, values: string[] = []) {
+    if (!node || typeof node !== "object") return values
+    if ("$value" in node && typeof node.$value === "string") {
+      values.push(node.$value)
+      return values
+    }
+
+    for (const value of Object.values(node)) {
+      collectTokenValues(value as TokenTree, values)
+    }
+
+    return values
+  }
+
+  function collectTokenPaths(node: TokenTree, prefix = "", paths: string[] = []) {
+    if (!node || typeof node !== "object") return paths
+    if ("$value" in node) {
+      paths.push(prefix)
+      return paths
+    }
+
+    for (const [key, value] of Object.entries(node)) {
+      collectTokenPaths(value as TokenTree, prefix ? `${prefix}/${key}` : key, paths)
+    }
+
+    return paths
+  }
+
+  it("keeps light and dark token paths aligned", () => {
+    expect(collectTokenPaths(lightFile.Input as TokenTree)).toEqual(
+      collectTokenPaths(darkFile.Input as TokenTree),
+    )
+  })
+
+  it("defines the core Input anatomy for Figma components", () => {
+    expect(Object.keys(lightFile.Input)).toEqual([
+      "bg",
+      "text",
+      "filled-text",
+      "placeholder",
+      "icon",
+      "icon-hover",
+      "border",
+      "border-hover",
+      "border-focus",
+      "focus-ring",
+      "focus-ring-offset",
+      "focus-ring-width",
+      "label",
+      "hint",
+      "error",
+      "success",
+      "disabled",
+      "readonly",
+      "size",
+      "textarea",
+      "font-family",
+      "font-weight",
+    ])
+  })
+
+  it("uses current semantic color alias paths for Input variables", () => {
+    const aliases = [
+      ...collectTokenValues(lightFile as TokenTree),
+      ...collectTokenValues(darkFile as TokenTree),
+    ].filter((value) => value.startsWith("{Color modes/"))
+
+    expect(aliases.length).toBeGreaterThan(0)
+    expect(aliases).not.toContain("{Color modes/bg/surface}")
+    expect(aliases).not.toContain("{Color modes/fg/primary}")
+
+    for (const alias of aliases) {
+      expect(alias).toMatch(/^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/)
+    }
+  })
+
+  it("aliases surface, text, border, focus, status, and disabled states", () => {
+    expect(lightFile.Input.bg?.$value).toBe("{Color modes/background/bg-surface}")
+    expect(lightFile.Input.text?.$value).toBe("{Color modes/text/text-primary}")
+    expect(lightFile.Input.placeholder?.$value).toBe("{Color modes/text/text-tertiary}")
+    expect(lightFile.Input.icon?.$value).toBe("{Color modes/foreground/fg-tertiary}")
+    expect(lightFile.Input.border?.$value).toBe("{Color modes/border/border-primary}")
+    expect(lightFile.Input["border-focus"]?.$value).toBe("{Color modes/border/border-focus}")
+    expect(lightFile.Input["focus-ring"]?.$value).toBe("{Color modes/action/action-primary}")
+
+    const error = lightFile.Input.error as Record<string, TokenLeaf>
+    const success = lightFile.Input.success as Record<string, TokenLeaf>
+    const disabled = lightFile.Input.disabled as Record<string, TokenLeaf>
+    const readonly = lightFile.Input.readonly as Record<string, TokenLeaf>
+
+    expect(error.text?.$value).toBe("{Color modes/text/text-error}")
+    expect(error.border?.$value).toBe("{Color modes/border/border-error}")
+    expect(success.hint?.$value).toBe("{Color modes/text/text-success}")
+    expect(success.border?.$value).toBe("{Color modes/action/action-positive-active}")
+    expect(disabled.bg?.$value).toBe("{Color modes/background/bg-disabled}")
+    expect(disabled.opacity?.$value).toBe(100)
+    expect(readonly.bg?.$value).toBe("{Color modes/background/bg-muted}")
+  })
+
+  it("defines Input size, typography, and textarea tokens", () => {
+    const size = lightFile.Input.size as Record<string, Record<string, TokenLeaf>>
+    const textarea = lightFile.Input.textarea as Record<string, TokenLeaf | Record<string, TokenLeaf>>
+    const textareaSm = textarea.sm as Record<string, TokenLeaf>
+    const textareaMd = textarea.md as Record<string, TokenLeaf>
+    const textareaLg = textarea.lg as Record<string, TokenLeaf>
+
+    expect(size.sm.height?.$value).toBe(28)
+    expect(size.sm["padding-x"]?.$value).toBe(10)
+    expect(size.sm.text?.$value).toBe("{Typography/Font size/text-sm}")
+    expect(size.sm["line-height"]?.$value).toBe("{Typography/Line height/text-sm}")
+    expect(size.sm.radius?.$value).toBe("{Radius/radius-xs}")
+    expect(size.sm["icon-size"]?.$value).toBe(14)
+
+    expect(size.md.height?.$value).toBe(36)
+    expect(size.md["padding-x"]?.$value).toBe("{Spacing/spacing-lg}")
+    expect(size.md.gap?.$value).toBe("{Spacing/spacing-sm}")
+    expect(size.md["icon-size"]?.$value).toBe(16)
+
+    expect(size.lg.height?.$value).toBe(48)
+    expect(size.lg["padding-x"]?.$value).toBe("{Spacing/spacing-xl}")
+    expect(size.lg.text?.$value).toBe("{Typography/Font size/text-md}")
+    expect(size.lg.radius?.$value).toBe("{Radius/radius-sm}")
+    expect(size.lg["icon-size"]?.$value).toBe(20)
+
+    expect(textareaSm["min-height"]?.$value).toBe(88)
+    expect(textareaMd["min-height"]?.$value).toBe(108)
+    expect(textareaLg["min-height"]?.$value).toBe(128)
+    expect((textarea["padding-y"] as TokenLeaf).$value).toBe(10)
+    expect(lightFile.Input["font-family"]?.$value).toBe("{Typography/Font family/body}")
+    expect(lightFile.Input["font-weight"]?.$value).toBe("{Typography/Font weight/regular}")
   })
 })
 

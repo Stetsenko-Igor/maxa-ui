@@ -1,6 +1,6 @@
 # Component-based Tokens
 
-> Status: Button v1 approved and prepared in token source.
+> Status: Button v1 and Input v1 are prepared in token source and Figma import bundle.
 > Purpose: define the component token layer before building Figma components, React components, or documentation.
 
 ## Position In The System
@@ -318,6 +318,103 @@ Button/icon-only/sm/size
 Button/icon-only/md/size
 Button/icon-only/lg/size
 ```
+
+## Input Token Model
+
+Input v1 is prepared in:
+
+- `packages/tokens/figma/component-input-light.json`
+- `packages/tokens/figma/component-input-dark.json`
+
+The initial Input layer is component-token-first. It gives Figma a stable variable surface before the actual Input component set is rebuilt.
+
+Approved anatomy:
+
+- field surface
+- value text
+- filled text
+- placeholder
+- icon
+- border
+- focus ring
+- label
+- hint
+- error
+- success
+- disabled
+- readonly
+- size
+- textarea
+- typography
+
+Approved token names:
+
+```txt
+Input/bg
+Input/text
+Input/filled-text
+Input/placeholder
+Input/icon
+Input/icon-hover
+Input/border
+Input/border-hover
+Input/border-focus
+Input/focus-ring
+Input/focus-ring-offset
+Input/focus-ring-width
+Input/label/text
+Input/label/gap
+Input/label/weight
+Input/hint/text
+Input/error/text
+Input/error/hint
+Input/error/border
+Input/error/border-focus
+Input/success/hint
+Input/success/border
+Input/success/border-focus
+Input/disabled/bg
+Input/disabled/text
+Input/disabled/placeholder
+Input/disabled/opacity
+Input/readonly/bg
+Input/readonly/text
+Input/size/sm/height
+Input/size/sm/padding-x
+Input/size/sm/text
+Input/size/sm/line-height
+Input/size/sm/radius
+Input/size/sm/gap
+Input/size/sm/icon-size
+Input/size/md/height
+Input/size/md/padding-x
+Input/size/md/text
+Input/size/md/line-height
+Input/size/md/radius
+Input/size/md/gap
+Input/size/md/icon-size
+Input/size/lg/height
+Input/size/lg/padding-x
+Input/size/lg/text
+Input/size/lg/line-height
+Input/size/lg/radius
+Input/size/lg/gap
+Input/size/lg/icon-size
+Input/textarea/sm/min-height
+Input/textarea/md/min-height
+Input/textarea/lg/min-height
+Input/textarea/padding-y
+Input/textarea/line-height
+Input/font-family
+Input/font-weight
+```
+
+Figma component guidance:
+
+- build a new Input component set on top of these variables instead of migrating an old component
+- avoid one huge variant matrix; use component properties for label, helper text, leading icon, trailing action, and required marker
+- recommended variant axes: `size = sm | md | lg`, `state = default | hover | focus | error | success | disabled | readonly`
+- keep `Select` and `DatePicker` as separate component families even if they reuse Input-like tokens in code
 
 ## Button Alias Targets
 

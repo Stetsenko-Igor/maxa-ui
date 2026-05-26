@@ -1,0 +1,83 @@
+{
+  "Input": {
+    "bg": { "$value": "{Color modes/background/bg-surface}", "$type": "color" },
+    "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
+    "filled-text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
+    "placeholder": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" },
+    "icon": { "$value": "{Color modes/foreground/fg-tertiary}", "$type": "color" },
+    "icon-hover": { "$value": "{Color modes/foreground/fg-primary}", "$type": "color" },
+    "border": { "$value": "{Color modes/border/border-primary}", "$type": "color" },
+    "border-hover": { "$value": "{Color modes/border/border-secondary}", "$type": "color" },
+    "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" },
+    "focus-ring": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
+    "focus-ring-offset": { "$value": 1, "$type": "number" },
+    "focus-ring-width": { "$value": 3, "$type": "number" },
+    "label": {
+      "text": { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
+      "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
+      "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" }
+    },
+    "hint": {
+      "text": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" }
+    },
+    "error": {
+      "text": { "$value": "{Color modes/text/text-error}", "$type": "color" },
+      "hint": { "$value": "{Color modes/text/text-error}", "$type": "color" },
+      "border": { "$value": "{Color modes/border/border-error}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/border-error}", "$type": "color" }
+    },
+    "success": {
+      "hint": { "$value": "{Color modes/text/text-success}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/action-positive-active}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/action/action-positive-active}", "$type": "color" }
+    },
+    "disabled": {
+      "bg": { "$value": "{Color modes/background/bg-disabled}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" },
+      "placeholder": { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
+      "opacity": { "$value": 100, "$type": "number" }
+    },
+    "readonly": {
+      "bg": { "$value": "{Color modes/background/bg-muted}", "$type": "color" },
+      "text": { "$value": "{Color modes/text/text-secondary}", "$type": "color" }
+    },
+    "size": {
+      "sm": {
+        "height": { "$value": 28, "$type": "number" },
+        "padding-x": { "$value": 10, "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
+        "icon-size": { "$value": 14, "$type": "number" }
+      },
+      "md": {
+        "height": { "$value": 36, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-lg}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
+        "icon-size": { "$value": 16, "$type": "number" }
+      },
+      "lg": {
+        "height": { "$value": 48, "$type": "number" },
+        "padding-x": { "$value": "{Spacing/spacing-xl}", "$type": "number" },
+        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
+        "line-height": { "$value": "{Typography/Line height/text-md}", "$type": "number" },
+        "radius": { "$value": "{Radius/radius-sm}", "$type": "number" },
+        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
+        "icon-size": { "$value": 20, "$type": "number" }
+      }
+    },
+    "textarea": {
+      "sm": { "min-height": { "$value": 88, "$type": "number" } },
+      "md": { "min-height": { "$value": 108, "$type": "number" } },
+      "lg": { "min-height": { "$value": 128, "$type": "number" } },
+      "padding-y": { "$value": 10, "$type": "number" },
+      "line-height": { "$value": 14, "$type": "number" }
+    },
+    "font-family": { "$value": "{Typography/Font family/body}", "$type": "string" },
+    "font-weight": { "$value": "{Typography/Font weight/regular}", "$type": "string" }
+  }
+}
