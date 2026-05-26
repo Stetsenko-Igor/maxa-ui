@@ -2,7 +2,7 @@
 /**
  * MAXA Token Audit Script
  *
- * Three checks:
+ * Checks:
  *   1. Hardcoded hex / px values in CSS where tokens should be used
  *   2. Cross-layer drift: TS token unions in base-tokens.tsx must map to
  *      defined CSS variables in semantic.css (catches the "surface-layer1"
@@ -11,6 +11,8 @@
  *      (bg-default, bg-elevated, bg-primary/secondary/tertiary, bg-surface-layer*,
  *      bg-nav — these are removed or moved; this check guards against
  *      re-introducing them or finding lingering external uses)
+ *   4. Figma semantic color naming consistency: group names, leaf prefixes,
+ *      and background intent suffixes must stay aligned.
  *
  * Exits with code 1 if violations found — use in CI to block regressions.
  *
@@ -75,6 +77,18 @@ const FIGMA_ALIAS_DEFAULTS = {
   'Color modes': 'Primitives',
   Layout: 'Spacing',
 };
+
+const FIGMA_COLOR_GROUP_PREFIXES = {
+  text: 'text-',
+  foreground: 'fg-',
+  background: 'bg-',
+  border: 'border-',
+  action: 'action-',
+};
+
+const FIGMA_BACKGROUND_INTENTS = ['brand', 'info', 'success', 'warning', 'error'];
+const FIGMA_BACKGROUND_INTENT_SUFFIXES = ['subtle', 'surface', 'strong'];
+const FIGMA_LEGACY_COLOR_GROUPS = new Set(['fg', 'bg']);
 
 function collectFiles(dir, extensions) {
   const files = [];
@@ -362,6 +376,125 @@ function scanFigmaAliasResolution() {
   return violations;
 }
 
+function lineOf(content, needle) {
+  const index = content.indexOf(needle);
+  if (index === -1) return 0;
+  return content.slice(0, index).split('\n').length;
+}
+
+function scanFigmaSemanticColorNaming() {
+  const violations = [];
+  const files = [
+    join(FIGMA_DIR, 'colors-semantic-light.json'),
+    join(FIGMA_DIR, 'colors-semantic-dark.json'),
+  ];
+
+  for (const filePath of files) {
+    let json;
+    let content;
+    try {
+      content = readFileSync(filePath, 'utf8');
+      json = JSON.parse(content);
+    } catch {
+      continue;
+    }
+
+    for (const legacyGroup of FIGMA_LEGACY_COLOR_GROUPS) {
+      if (json[legacyGroup]) {
+        violations.push({
+          file: relative(ROOT, filePath),
+          line: lineOf(content, `"${legacyGroup}"`),
+          type: 'figma-semantic-color-group',
+          value: legacyGroup,
+          hint: legacyGroup === 'fg'
+            ? 'Rename the Figma color group to "foreground"; keep leaf names as fg-*'
+            : 'Rename the Figma color group to "background"; keep leaf names as bg-*',
+        });
+      }
+    }
+
+    for (const [groupName, prefix] of Object.entries(FIGMA_COLOR_GROUP_PREFIXES)) {
+      const group = json[groupName];
+      if (!group || typeof group !== 'object' || Array.isArray(group)) {
+        violations.push({
+          file: relative(ROOT, filePath),
+          line: 0,
+          type: 'figma-semantic-color-group',
+          value: groupName,
+          hint: `Define the "${groupName}" color group in colors-semantic files`,
+        });
+        continue;
+      }
+
+      for (const tokenName of Object.keys(group)) {
+        if (!tokenName.startsWith(prefix)) {
+          violations.push({
+            file: relative(ROOT, filePath),
+            line: lineOf(content, `"${tokenName}"`),
+            type: 'figma-semantic-color-prefix',
+            value: `${groupName}/${tokenName}`,
+            hint: `Leaf token names in "${groupName}" must start with "${prefix}"`,
+          });
+        }
+      }
+    }
+
+    const background = json.background || {};
+    for (const intent of FIGMA_BACKGROUND_INTENTS) {
+      const expected = new Set(
+        FIGMA_BACKGROUND_INTENT_SUFFIXES.map((suffix) => `bg-${intent}-${suffix}`),
+      );
+      const actual = Object.keys(background).filter((tokenName) => {
+        return tokenName === `bg-${intent}` || tokenName.startsWith(`bg-${intent}-`);
+      });
+
+      for (const tokenName of actual) {
+        if (!expected.has(tokenName)) {
+          violations.push({
+            file: relative(ROOT, filePath),
+            line: lineOf(content, `"${tokenName}"`),
+            type: 'figma-background-intent-name',
+            value: `background/${tokenName}`,
+            hint: `Use only bg-${intent}-subtle, bg-${intent}-surface, and bg-${intent}-strong`,
+          });
+        }
+      }
+
+      for (const tokenName of expected) {
+        if (!background[tokenName]) {
+          violations.push({
+            file: relative(ROOT, filePath),
+            line: 0,
+            type: 'figma-background-intent-missing',
+            value: `background/${tokenName}`,
+            hint: `Background intent "${intent}" must include subtle, surface, and strong tokens`,
+          });
+        }
+      }
+    }
+  }
+
+  const figmaFiles = collectFiles(FIGMA_DIR, ['.json']);
+  for (const filePath of figmaFiles) {
+    const content = readFileSync(filePath, 'utf8');
+    const legacyAliasRe = /\{Color modes\/(fg|bg)\//g;
+    let match;
+    while ((match = legacyAliasRe.exec(content)) !== null) {
+      violations.push({
+        file: relative(ROOT, filePath),
+        line: lineOf(content, match[0]),
+        type: 'figma-legacy-color-alias',
+        value: match[0],
+        hint: match[1] === 'fg'
+          ? 'Use {Color modes/foreground/fg-*}'
+          : 'Use {Color modes/background/bg-*}',
+      });
+    }
+  }
+
+  return violations;
+}
+
 // ── Run all checks ──────────────────────────────────────────────────────────
 const cssFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
 const sourceFiles = SCAN_DIRS.flatMap(d => collectSourceFiles(join(ROOT, d)));
@@ -372,6 +505,7 @@ const violations = [
   ...scanCrossLayerDrift(),
   ...scanCssVarResolution(),
   ...scanFigmaAliasResolution(),
+  ...scanFigmaSemanticColorNaming(),
 ];
 
 if (violations.length === 0) {
