@@ -19,7 +19,7 @@
       "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
     },
     "outline": {
-      "bg": { "$value": "{Color modes/bg/bg-surface}", "$type": "color" },
+      "bg": { "$value": "{Color modes/background/bg-surface}", "$type": "color" },
       "bg-hover": { "$value": "{Color modes/action/action-neutral-subtle-hover}", "$type": "color" },
       "bg-active": { "$value": "{Color modes/action/action-neutral-subtle-active}", "$type": "color" },
       "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },

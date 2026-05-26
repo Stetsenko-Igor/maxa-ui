@@ -48,12 +48,12 @@ Migration safety:
 - Future token/style renames should use a migration map and rename existing Figma entities before creating replacements.
 - The current importer includes migration maps for known early renames:
   - `Color modes/text/primary` -> `Color modes/text/text-primary`
-  - `Color modes/fg/primary` -> `Color modes/fg/fg-primary`
-  - `Color modes/bg/surface` -> `Color modes/bg/bg-surface`
+  - `Color modes/fg/primary` -> `Color modes/foreground/fg-primary`
+  - `Color modes/bg/surface` -> `Color modes/background/bg-surface`
   - `Color modes/border/primary` -> `Color modes/border/border-primary`
   - `Color modes/action/primary` -> `Color modes/action/action-primary`
-  - legacy `Color modes/bg/secondary` and `Color modes/bg/inset` -> prefixed `bg-*` targets
-  - legacy `Color modes/bg/*-solid` -> prefixed `bg-*-strong` targets
+  - legacy `Color modes/bg/secondary` and `Color modes/bg/inset` -> prefixed `background/bg-*` targets
+  - legacy `Color modes/bg/*-solid` -> prefixed `background/bg-*-strong` targets
   - `Typography/...` text styles -> top-level typography style groups
 - Value-only updates should update existing variables/styles in place.
 - Deletions should be staged through a deprecated state first, for example `_Deprecated/...`, and removed only after consumers are migrated.

@@ -45,138 +45,6 @@
       "$type": "color"
     }
   },
-  "fg": {
-    "fg-primary": {
-      "$value": "{Colors.Neutral.950}",
-      "$type": "color"
-    },
-    "fg-secondary": {
-      "$value": "{Colors.Neutral.800}",
-      "$type": "color"
-    },
-    "fg-tertiary": {
-      "$value": "{Colors.Neutral.600}",
-      "$type": "color"
-    },
-    "fg-disabled": {
-      "$value": "{Colors.Neutral.400}",
-      "$type": "color"
-    },
-    "fg-inverse": {
-      "$value": "{Colors.Base.White}",
-      "$type": "color"
-    },
-    "fg-on-brand": {
-      "$value": "{Colors.Neutral.950}",
-      "$type": "color"
-    },
-    "fg-brand": {
-      "$value": "{Colors.Brand.600}",
-      "$type": "color"
-    },
-    "fg-positive": {
-      "$value": "{Colors.Green.700}",
-      "$type": "color"
-    },
-    "fg-negative": {
-      "$value": "{Colors.Red.700}",
-      "$type": "color"
-    },
-    "fg-warning": {
-      "$value": "{Colors.Yellow.600}",
-      "$type": "color"
-    },
-    "fg-info": {
-      "$value": "{Colors.Blue.600}",
-      "$type": "color"
-    }
-  },
-  "bg": {
-    "bg-page": {
-      "$value": "{Colors.Neutral.50}",
-      "$type": "color"
-    },
-    "bg-surface": {
-      "$value": "{Colors.Base.White}",
-      "$type": "color"
-    },
-    "bg-muted": {
-      "$value": "{Colors.Neutral.25}",
-      "$type": "color"
-    },
-    "bg-disabled": {
-      "$value": "{Colors.Neutral.100}",
-      "$type": "color"
-    },
-    "bg-overlay": {
-      "$value": "{Colors.Neutral (alpha).Black.50}",
-      "$type": "color"
-    },
-    "bg-inverse": {
-      "$value": "{Colors.Neutral.950}",
-      "$type": "color"
-    },
-    "bg-brand-subtle": {
-      "$value": "{Colors.Brand.50}",
-      "$type": "color"
-    },
-    "bg-brand": {
-      "$value": "{Colors.Brand.100}",
-      "$type": "color"
-    },
-    "bg-brand-solid": {
-      "$value": "{Colors.Brand.500}",
-      "$type": "color"
-    },
-    "bg-success-subtle": {
-      "$value": "{Colors.Green.50}",
-      "$type": "color"
-    },
-    "bg-success-surface": {
-      "$value": "{Colors.Green.50}",
-      "$type": "color"
-    },
-    "bg-success-strong": {
-      "$value": "{Colors.Green.700}",
-      "$type": "color"
-    },
-    "bg-warning-subtle": {
-      "$value": "{Colors.Orange.50}",
-      "$type": "color"
-    },
-    "bg-warning-surface": {
-      "$value": "{Colors.Orange.50}",
-      "$type": "color"
-    },
-    "bg-warning-strong": {
-      "$value": "{Colors.Orange.600}",
-      "$type": "color"
-    },
-    "bg-error-subtle": {
-      "$value": "{Colors.Red.50}",
-      "$type": "color"
-    },
-    "bg-error-surface": {
-      "$value": "{Colors.Red.50}",
-      "$type": "color"
-    },
-    "bg-error-strong": {
-      "$value": "{Colors.Red.700}",
-      "$type": "color"
-    },
-    "bg-info-subtle": {
-      "$value": "{Colors.Blue.50}",
-      "$type": "color"
-    },
-    "bg-info-surface": {
-      "$value": "{Colors.Blue.50}",
-      "$type": "color"
-    },
-    "bg-info-strong": {
-      "$value": "{Colors.Blue.700}",
-      "$type": "color"
-    }
-  },
   "border": {
     "border-primary": {
       "$value": "{Colors.Neutral.300}",
@@ -346,6 +214,138 @@
     },
     "action-warning-subtle-active": {
       "$value": "{Colors.Yellow.100}",
+      "$type": "color"
+    }
+  },
+  "foreground": {
+    "fg-primary": {
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
+    "fg-secondary": {
+      "$value": "{Colors.Neutral.800}",
+      "$type": "color"
+    },
+    "fg-tertiary": {
+      "$value": "{Colors.Neutral.600}",
+      "$type": "color"
+    },
+    "fg-disabled": {
+      "$value": "{Colors.Neutral.400}",
+      "$type": "color"
+    },
+    "fg-inverse": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "fg-on-brand": {
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
+    "fg-brand": {
+      "$value": "{Colors.Brand.600}",
+      "$type": "color"
+    },
+    "fg-positive": {
+      "$value": "{Colors.Green.700}",
+      "$type": "color"
+    },
+    "fg-negative": {
+      "$value": "{Colors.Red.700}",
+      "$type": "color"
+    },
+    "fg-warning": {
+      "$value": "{Colors.Yellow.600}",
+      "$type": "color"
+    },
+    "fg-info": {
+      "$value": "{Colors.Blue.600}",
+      "$type": "color"
+    }
+  },
+  "background": {
+    "bg-page": {
+      "$value": "{Colors.Neutral.50}",
+      "$type": "color"
+    },
+    "bg-surface": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "bg-muted": {
+      "$value": "{Colors.Neutral.25}",
+      "$type": "color"
+    },
+    "bg-disabled": {
+      "$value": "{Colors.Neutral.100}",
+      "$type": "color"
+    },
+    "bg-overlay": {
+      "$value": "{Colors.Neutral (alpha).Black.50}",
+      "$type": "color"
+    },
+    "bg-inverse": {
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
+    "bg-brand-subtle": {
+      "$value": "{Colors.Brand.50}",
+      "$type": "color"
+    },
+    "bg-brand": {
+      "$value": "{Colors.Brand.100}",
+      "$type": "color"
+    },
+    "bg-brand-solid": {
+      "$value": "{Colors.Brand.500}",
+      "$type": "color"
+    },
+    "bg-success-subtle": {
+      "$value": "{Colors.Green.50}",
+      "$type": "color"
+    },
+    "bg-success-surface": {
+      "$value": "{Colors.Green.50}",
+      "$type": "color"
+    },
+    "bg-success-strong": {
+      "$value": "{Colors.Green.700}",
+      "$type": "color"
+    },
+    "bg-warning-subtle": {
+      "$value": "{Colors.Orange.50}",
+      "$type": "color"
+    },
+    "bg-warning-surface": {
+      "$value": "{Colors.Orange.50}",
+      "$type": "color"
+    },
+    "bg-warning-strong": {
+      "$value": "{Colors.Orange.600}",
+      "$type": "color"
+    },
+    "bg-error-subtle": {
+      "$value": "{Colors.Red.50}",
+      "$type": "color"
+    },
+    "bg-error-surface": {
+      "$value": "{Colors.Red.50}",
+      "$type": "color"
+    },
+    "bg-error-strong": {
+      "$value": "{Colors.Red.700}",
+      "$type": "color"
+    },
+    "bg-info-subtle": {
+      "$value": "{Colors.Blue.50}",
+      "$type": "color"
+    },
+    "bg-info-surface": {
+      "$value": "{Colors.Blue.50}",
+      "$type": "color"
+    },
+    "bg-info-strong": {
+      "$value": "{Colors.Blue.700}",
       "$type": "color"
     }
   }
