@@ -561,6 +561,7 @@ describe("figma component-based button tokens", () => {
   type ButtonTokens = {
     Button: Record<string, Record<string, TokenLeaf | Record<string, TokenLeaf>>>
   }
+  type TokenTree = TokenLeaf | Record<string, TokenLeaf | TokenTree>
 
   const lightFile = JSON.parse(
     readFileSync(join(root, "figma/component-button-light.json"), "utf-8"),
@@ -569,6 +570,20 @@ describe("figma component-based button tokens", () => {
   const darkFile = JSON.parse(
     readFileSync(join(root, "figma/component-button-dark.json"), "utf-8"),
   ) as ButtonTokens
+
+  function collectTokenValues(node: TokenTree, values: string[] = []) {
+    if (!node || typeof node !== "object") return values
+    if ("$value" in node && typeof node.$value === "string") {
+      values.push(node.$value)
+      return values
+    }
+
+    for (const value of Object.values(node)) {
+      collectTokenValues(value as TokenTree, values)
+    }
+
+    return values
+  }
 
   it("keeps light and dark token names aligned", () => {
     expect(Object.keys(lightFile.Button)).toEqual(Object.keys(darkFile.Button))
@@ -597,6 +612,22 @@ describe("figma component-based button tokens", () => {
   it("aliases Button font family to body typography", () => {
     expect(lightFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
     expect(darkFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
+  })
+
+  it("uses current semantic color alias paths for Button variables", () => {
+    const aliases = [
+      ...collectTokenValues(lightFile),
+      ...collectTokenValues(darkFile),
+    ].filter((value) => value.startsWith("{Color modes/"))
+
+    expect(aliases.length).toBeGreaterThan(0)
+    expect(aliases).not.toContain("{Color modes/action/primary}")
+    expect(aliases).not.toContain("{Color modes/bg/surface}")
+    expect(aliases).not.toContain("{Color modes/fg/primary}")
+
+    for (const alias of aliases) {
+      expect(alias).toMatch(/^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/)
+    }
   })
 
   it("aliases primary to action primary, not brand", () => {
