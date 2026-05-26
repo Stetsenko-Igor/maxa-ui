@@ -110,9 +110,9 @@ Examples:
 
 - `spacing-xl` -> `Primitives/Spacing/4 (16px)`
 - `container-padding-desktop` -> `spacing-4xl`
-- `text-primary` in `Color modes / Light` -> `Primitives/Colors/Neutral/950`
-- `text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
-- `Button/primary/bg` -> `Color modes/action/primary`
+- `text/text-primary` in `Color modes / Light` -> `Primitives/Colors/Neutral/950`
+- `text/text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
+- `Button/primary/bg` -> `Color modes/action/action-primary`
 - `Button/link/bg` -> `Primitives/Colors/Base/Transparent`
 - `Button/size/md/padding-x` -> `Spacing/spacing-xl`
 

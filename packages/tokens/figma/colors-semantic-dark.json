@@ -1,350 +1,350 @@
 {
   "text": {
-    "primary": {
+    "text-primary": {
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
-    "secondary": {
+    "text-secondary": {
       "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
-    "tertiary": {
+    "text-tertiary": {
       "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
-    "disabled": {
+    "text-disabled": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
-    "inverse": {
+    "text-inverse": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "on-brand": {
+    "text-on-brand": {
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
-    "brand": {
+    "text-brand": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"
     },
-    "success": {
+    "text-success": {
       "$value": "{Colors.Green.400}",
       "$type": "color"
     },
-    "warning": {
+    "text-warning": {
       "$value": "{Colors.Yellow.400}",
       "$type": "color"
     },
-    "error": {
+    "text-error": {
       "$value": "{Colors.Red.400}",
       "$type": "color"
     },
-    "info": {
+    "text-info": {
       "$value": "{Colors.Blue.400}",
       "$type": "color"
     }
   },
   "fg": {
-    "primary": {
+    "fg-primary": {
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
-    "secondary": {
+    "fg-secondary": {
       "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
-    "tertiary": {
+    "fg-tertiary": {
       "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
-    "disabled": {
+    "fg-disabled": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
-    "inverse": {
+    "fg-inverse": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "on-brand": {
+    "fg-on-brand": {
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
-    "brand": {
+    "fg-brand": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"
     },
-    "positive": {
+    "fg-positive": {
       "$value": "{Colors.Green.400}",
       "$type": "color"
     },
-    "negative": {
+    "fg-negative": {
       "$value": "{Colors.Red.400}",
       "$type": "color"
     },
-    "warning": {
+    "fg-warning": {
       "$value": "{Colors.Yellow.400}",
       "$type": "color"
     },
-    "info": {
+    "fg-info": {
       "$value": "{Colors.Blue.400}",
       "$type": "color"
     }
   },
   "bg": {
-    "page": {
+    "bg-page": {
       "$value": "{Colors.Neutral.1000}",
       "$type": "color"
     },
-    "surface": {
+    "bg-surface": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "muted": {
+    "bg-muted": {
       "$value": "{Colors.Neutral.975}",
       "$type": "color"
     },
-    "disabled": {
+    "bg-disabled": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "overlay": {
+    "bg-overlay": {
       "$value": "{Colors.Neutral (alpha).Black.70}",
       "$type": "color"
     },
-    "inverse": {
+    "bg-inverse": {
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
-    "brand-subtle": {
+    "bg-brand-subtle": {
       "$value": "{Colors.Brand.950}",
       "$type": "color"
     },
-    "brand": {
+    "bg-brand": {
       "$value": "{Colors.Brand.900}",
       "$type": "color"
     },
-    "brand-solid": {
+    "bg-brand-solid": {
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
-    "success-subtle": {
+    "bg-success-subtle": {
       "$value": "{Colors.Green.950}",
       "$type": "color"
     },
-    "success-surface": {
+    "bg-success-surface": {
       "$value": "{Colors.Green.950}",
       "$type": "color"
     },
-    "success-strong": {
+    "bg-success-strong": {
       "$value": "{Colors.Green.500}",
       "$type": "color"
     },
-    "warning-subtle": {
+    "bg-warning-subtle": {
       "$value": "{Colors.Yellow.950}",
       "$type": "color"
     },
-    "warning-surface": {
+    "bg-warning-surface": {
       "$value": "{Colors.Yellow.950}",
       "$type": "color"
     },
-    "warning-strong": {
+    "bg-warning-strong": {
       "$value": "{Colors.Orange.500}",
       "$type": "color"
     },
-    "error-subtle": {
+    "bg-error-subtle": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
     },
-    "error-surface": {
+    "bg-error-surface": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
     },
-    "error-strong": {
+    "bg-error-strong": {
       "$value": "{Colors.Red.500}",
       "$type": "color"
     },
-    "info-subtle": {
+    "bg-info-subtle": {
       "$value": "{Colors.Blue.950}",
       "$type": "color"
     },
-    "info-surface": {
+    "bg-info-surface": {
       "$value": "{Colors.Blue.950}",
       "$type": "color"
     },
-    "info-strong": {
+    "bg-info-strong": {
       "$value": "{Colors.Blue.500}",
       "$type": "color"
     }
   },
   "border": {
-    "primary": {
+    "border-primary": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
-    "secondary": {
+    "border-secondary": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "tertiary": {
+    "border-tertiary": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "focus": {
+    "border-focus": {
       "$value": "{Colors.Blue.400}",
       "$type": "color"
     },
-    "brand": {
+    "border-brand": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"
     },
-    "error": {
+    "border-error": {
       "$value": "{Colors.Red.400}",
       "$type": "color"
     }
   },
   "action": {
-    "primary": {
+    "action-primary": {
       "$value": "{Colors.Blue.400}",
       "$type": "color"
     },
-    "primary-hover": {
+    "action-primary-hover": {
       "$value": "{Colors.Blue.300}",
       "$type": "color"
     },
-    "primary-active": {
+    "action-primary-active": {
       "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
-    "primary-subtle": {
+    "action-primary-subtle": {
       "$value": "{Colors.Blue.950}",
       "$type": "color"
     },
-    "primary-subtle-hover": {
+    "action-primary-subtle-hover": {
       "$value": "{Colors.Blue.950}",
       "$type": "color"
     },
-    "primary-subtle-active": {
+    "action-primary-subtle-active": {
       "$value": "{Colors.Blue.900}",
       "$type": "color"
     },
-    "neutral": {
+    "action-neutral": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "neutral-hover": {
+    "action-neutral-hover": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
-    "neutral-active": {
+    "action-neutral-active": {
       "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
-    "neutral-subtle": {
+    "action-neutral-subtle": {
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
-    "neutral-subtle-hover": {
+    "action-neutral-subtle-hover": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "neutral-subtle-active": {
+    "action-neutral-subtle-active": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
-    "brand": {
+    "action-brand": {
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
-    "brand-hover": {
+    "action-brand-hover": {
       "$value": "{Colors.Brand.500}",
       "$type": "color"
     },
-    "brand-active": {
+    "action-brand-active": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"
     },
-    "brand-subtle": {
+    "action-brand-subtle": {
       "$value": "{Colors.Brand.950}",
       "$type": "color"
     },
-    "brand-subtle-hover": {
+    "action-brand-subtle-hover": {
       "$value": "{Colors.Brand.950}",
       "$type": "color"
     },
-    "brand-subtle-active": {
+    "action-brand-subtle-active": {
       "$value": "{Colors.Brand.900}",
       "$type": "color"
     },
-    "positive": {
+    "action-positive": {
       "$value": "{Colors.Green.400}",
       "$type": "color"
     },
-    "positive-hover": {
+    "action-positive-hover": {
       "$value": "{Colors.Green.300}",
       "$type": "color"
     },
-    "positive-active": {
+    "action-positive-active": {
       "$value": "{Colors.Green.200}",
       "$type": "color"
     },
-    "positive-subtle": {
+    "action-positive-subtle": {
       "$value": "{Colors.Green.950}",
       "$type": "color"
     },
-    "positive-subtle-hover": {
+    "action-positive-subtle-hover": {
       "$value": "{Colors.Green.950}",
       "$type": "color"
     },
-    "positive-subtle-active": {
+    "action-positive-subtle-active": {
       "$value": "{Colors.Green.900}",
       "$type": "color"
     },
-    "negative": {
+    "action-negative": {
       "$value": "{Colors.Red.400}",
       "$type": "color"
     },
-    "negative-hover": {
+    "action-negative-hover": {
       "$value": "{Colors.Red.300}",
       "$type": "color"
     },
-    "negative-active": {
+    "action-negative-active": {
       "$value": "{Colors.Red.200}",
       "$type": "color"
     },
-    "negative-subtle": {
+    "action-negative-subtle": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
     },
-    "negative-subtle-hover": {
+    "action-negative-subtle-hover": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
     },
-    "negative-subtle-active": {
+    "action-negative-subtle-active": {
       "$value": "{Colors.Red.900}",
       "$type": "color"
     },
-    "warning": {
+    "action-warning": {
       "$value": "{Colors.Yellow.400}",
       "$type": "color"
     },
-    "warning-hover": {
+    "action-warning-hover": {
       "$value": "{Colors.Yellow.300}",
       "$type": "color"
     },
-    "warning-active": {
+    "action-warning-active": {
       "$value": "{Colors.Yellow.200}",
       "$type": "color"
     },
-    "warning-subtle": {
+    "action-warning-subtle": {
       "$value": "{Colors.Yellow.950}",
       "$type": "color"
     },
-    "warning-subtle-hover": {
+    "action-warning-subtle-hover": {
       "$value": "{Colors.Yellow.950}",
       "$type": "color"
     },
-    "warning-subtle-active": {
+    "action-warning-subtle-active": {
       "$value": "{Colors.Yellow.900}",
       "$type": "color"
     }
