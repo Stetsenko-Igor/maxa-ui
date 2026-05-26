@@ -136,74 +136,212 @@ const BORDER_GROUPS = [
   { label: "Error", token: "--color-border-error" },
 ]
 
-const CONTEXT_LABELS = [
-  { name: "bg-surface", token: "--color-bg-surface", swatch: "--color-bg-surface" },
-  { name: "text-primary", token: "--color-text-primary", swatch: "--color-text-primary" },
-  { name: "text-secondary", token: "--color-text-secondary", swatch: "--color-text-secondary" },
-  { name: "fg-secondary", token: "--color-fg-secondary", swatch: "--color-fg-secondary" },
-  { name: "border-brand", token: "--color-border-brand", swatch: "--color-border-brand" },
-  { name: "bg-muted", token: "--color-bg-muted", swatch: "--color-bg-muted" },
-  { name: "radius-xl", token: "--radius-xl", swatch: "--color-border-brand" },
-  { name: "spacing-4xl", token: "--spacing-4xl", swatch: "--color-fg-brand" },
+/* ─── Annotation diagram data ─── */
+type AnnotationLabel = {
+  name: string
+  labelY: number   // pill top y
+  targetY: number  // dot y on card edge
+  chip: "text-primary" | "text-secondary" | "fg-secondary" | "border-brand" | "border-primary" | "bg-surface" | "radius" | "shadow"
+}
+
+const ANNOTATION_LABELS: AnnotationLabel[] = [
+  { name: "fg-secondary",   labelY: 28,  targetY: 62,  chip: "fg-secondary" },
+  { name: "text-primary",   labelY: 78,  targetY: 108, chip: "text-primary" },
+  { name: "text-secondary", labelY: 128, targetY: 130, chip: "text-secondary" },
+  { name: "border-brand",   labelY: 178, targetY: 181, chip: "border-brand" },
+  { name: "border-primary", labelY: 228, targetY: 259, chip: "border-primary" },
+  { name: "bg-surface",     labelY: 278, targetY: 292, chip: "bg-surface" },
+  { name: "radius-xl",      labelY: 328, targetY: 406, chip: "radius" },
+  { name: "shadow-lg",      labelY: 378, targetY: 424, chip: "shadow" },
 ]
+
+function TokenAnnotationDiagram() {
+  /* Layout constants */
+  const PILL_W = 162
+  const PILL_H = 28
+  const LX = 8          /* pill left x */
+  const CX = 248        /* card left x */
+  const CY = 18         /* card top y */
+  const CW = 428        /* card width */
+  const CH = 396        /* card height */
+
+  return (
+    <svg
+      viewBox="0 0 700 448"
+      style={{ width: "100%", height: "auto", display: "block", overflow: "visible" }}
+      aria-label="Semantic design tokens annotated on a 'Change your plan' modal dialog"
+    >
+      {/* ── Card shadow (decorative) ── */}
+      <rect x={CX + 2} y={CY + 4} width={CW} height={CH} rx="18"
+        style={{ fill: "rgba(0,0,0,0.06)" }}
+      />
+
+      {/* ── Card ── */}
+      <rect x={CX} y={CY} width={CW} height={CH} rx="18"
+        style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-primary)", strokeWidth: "1" }}
+      />
+
+      {/* Icon box */}
+      <rect x={CX + 24} y={CY + 24} width="40" height="40" rx="8"
+        style={{ fill: "var(--color-bg-muted)", stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+      />
+      {/* Icon: simple card outline */}
+      <rect x={CX + 32} y={CY + 36} width="24" height="16" rx="2"
+        style={{ fill: "none", stroke: "var(--color-fg-secondary)", strokeWidth: "1.5" }}
+      />
+      <line x1={CX + 32} y1={CY + 44} x2={CX + 56} y2={CY + 44}
+        style={{ stroke: "var(--color-fg-secondary)", strokeWidth: "2" }}
+      />
+
+      {/* Title */}
+      <text x={CX + 24} y={CY + 90}
+        style={{ fill: "var(--color-text-primary)", fontSize: "15px", fontWeight: "600", fontFamily: "var(--font-body)" }}
+      >Change your plan</text>
+
+      {/* Subtitle */}
+      <text x={CX + 24} y={CY + 112}
+        style={{ fill: "var(--color-text-secondary)", fontSize: "13px", fontFamily: "var(--font-body)" }}
+      >Flexible pricing that grows with you.</text>
+
+      {/* ── Selected plan (border-brand) ── */}
+      <rect x={CX + 24} y={CY + 130} width={CW - 48} height="66" rx="8"
+        style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-brand)", strokeWidth: "1.5" }}
+      />
+      <rect x={CX + 38} y={CY + 147} width="32" height="32" rx="6"
+        style={{ fill: "var(--color-bg-muted)", stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+      />
+      <text x={CX + 82} y={CY + 163}
+        style={{ fill: "var(--color-text-primary)", fontSize: "13px", fontWeight: "500", fontFamily: "var(--font-body)" }}
+      >Basic plan · $10/month</text>
+      <text x={CX + 82} y={CY + 181}
+        style={{ fill: "var(--color-text-secondary)", fontSize: "12px", fontFamily: "var(--font-body)" }}
+      >Up to 10 users and 20GB data.</text>
+
+      {/* ── Unselected plan (border-primary) ── */}
+      <rect x={CX + 24} y={CY + 208} width={CW - 48} height="66" rx="8"
+        style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-primary)", strokeWidth: "1" }}
+      />
+      <rect x={CX + 38} y={CY + 225} width="32" height="32" rx="6"
+        style={{ fill: "var(--color-bg-muted)", stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+      />
+      <text x={CX + 82} y={CY + 241}
+        style={{ fill: "var(--color-text-primary)", fontSize: "13px", fontWeight: "500", fontFamily: "var(--font-body)" }}
+      >Business plan · $20/month</text>
+      <text x={CX + 82} y={CY + 259}
+        style={{ fill: "var(--color-text-secondary)", fontSize: "12px", fontFamily: "var(--font-body)" }}
+      >Up to 20 users and 40GB data.</text>
+
+      {/* ── Footer ── */}
+      <line x1={CX} y1={CY + 290} x2={CX + CW} y2={CY + 290}
+        style={{ stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+      />
+      {/* Cancel */}
+      <rect x={CX + 24} y={CY + 306} width="184" height="40" rx="8"
+        style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-primary)", strokeWidth: "1" }}
+      />
+      <text x={CX + 116} y={CY + 331} textAnchor="middle"
+        style={{ fill: "var(--color-text-primary)", fontSize: "13px", fontWeight: "600", fontFamily: "var(--font-body)" }}
+      >Cancel</text>
+      {/* Confirm */}
+      <rect x={CX + 216} y={CY + 306} width="188" height="40" rx="8"
+        style={{ fill: "var(--color-action-brand)" }}
+      />
+      <text x={CX + 310} y={CY + 331} textAnchor="middle"
+        style={{ fill: "var(--color-text-on-brand)", fontSize: "13px", fontWeight: "600", fontFamily: "var(--font-body)" }}
+      >Confirm</text>
+
+      {/* ── Labels + bezier connection lines ── */}
+      {ANNOTATION_LABELS.map(({ name, labelY, targetY, chip }) => {
+        const cy = labelY + PILL_H / 2
+        const x1 = LX + PILL_W
+        const cp1x = x1 + 28
+        const cp2x = CX - 28
+
+        return (
+          <g key={name}>
+            {/* Dashed bezier */}
+            <path
+              d={`M ${x1} ${cy} C ${cp1x} ${cy} ${cp2x} ${targetY} ${CX} ${targetY}`}
+              style={{ fill: "none", stroke: "var(--color-border-secondary)", strokeWidth: "1", strokeDasharray: "4 3" }}
+            />
+            {/* Target dot */}
+            <circle cx={CX} cy={targetY} r="3"
+              style={{ fill: "var(--color-border-secondary)" }}
+            />
+
+            {/* Pill background */}
+            <rect x={LX} y={labelY} width={PILL_W} height={PILL_H} rx={PILL_H / 2}
+              style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+            />
+
+            {/* Color chip */}
+            {chip === "text-primary" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "var(--color-text-primary)" }}
+              />
+            )}
+            {chip === "text-secondary" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "var(--color-text-secondary)" }}
+              />
+            )}
+            {chip === "fg-secondary" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "none", stroke: "var(--color-fg-secondary)", strokeWidth: "2" }}
+              />
+            )}
+            {chip === "border-brand" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "none", stroke: "var(--color-border-brand)", strokeWidth: "2.5" }}
+              />
+            )}
+            {chip === "border-primary" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "none", stroke: "var(--color-border-primary)", strokeWidth: "2" }}
+              />
+            )}
+            {chip === "bg-surface" && (
+              <rect x={LX + 12} y={labelY + 8} width="12" height="12" rx="3"
+                style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-secondary)", strokeWidth: "1" }}
+              />
+            )}
+            {chip === "radius" && (
+              <path d={`M ${LX + 24},${labelY + 20} L ${LX + 24},${labelY + 11} Q ${LX + 24},${labelY + 8} ${LX + 27},${labelY + 8} L ${LX + 36},${labelY + 8}`}
+                style={{ fill: "none", stroke: "var(--color-text-tertiary)", strokeWidth: "1.5" }}
+              />
+            )}
+            {chip === "shadow" && (
+              <>
+                <rect x={LX + 14} y={labelY + 11} width="10" height="9" rx="2"
+                  style={{ fill: "rgba(0,0,0,0.12)" }}
+                />
+                <rect x={LX + 12} y={labelY + 8} width="10" height="9" rx="2"
+                  style={{ fill: "var(--color-bg-surface)", stroke: "var(--color-border-tertiary)", strokeWidth: "0.5" }}
+                />
+              </>
+            )}
+
+            {/* Label text */}
+            <text x={LX + 30} y={labelY + PILL_H / 2 + 5}
+              style={{ fill: "var(--color-text-primary)", fontSize: "12px", fontFamily: "var(--font-mono)", fontWeight: "600" }}
+            >{name}</text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
 
 function TokenContextDemo() {
   return (
-    <div className="token-context-demo" aria-label="Example component annotated with token names">
-      <div className="token-context-labels">
-        {CONTEXT_LABELS.map((item) => (
-          <div key={item.name} className="token-context-label">
-            <span className="token-context-chip" style={{ background: `var(${item.swatch})` }} />
-            <span>{item.name}</span>
-          </div>
-        ))}
-      </div>
-
-      <div className="token-context-stage">
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "15%", "--w": "42%" } as React.CSSProperties} />
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "27%", "--w": "48%" } as React.CSSProperties} />
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "35%", "--w": "47%" } as React.CSSProperties} />
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "48%", "--w": "52%" } as React.CSSProperties} />
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "58%", "--w": "56%" } as React.CSSProperties} />
-        <span className="token-context-line" style={{ "--x1": "6%", "--y1": "78%", "--w": "50%" } as React.CSSProperties} />
-
-        <div className="token-context-card">
-          <div className="token-context-card-body">
-            <div className="token-context-icon">
-              <span style={{ width: "18px", height: "18px", border: "2px solid currentColor", borderRadius: "var(--radius-xs)" }} />
-            </div>
-            <div>
-              <h3 style={{ margin: 0, color: "var(--color-text-primary)", fontSize: "var(--text-heading-xs)", lineHeight: "var(--text-heading-xs--line-height)", fontWeight: "var(--font-weight-semibold)" }}>
-                Change your plan
-              </h3>
-              <p style={{ margin: "4px 0 0", color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "var(--text-md--line-height)" }}>
-                Flexible pricing that grows with you.
-              </p>
-            </div>
-            <div className="token-context-plan">
-              <div className="token-context-icon" style={{ width: "36px", height: "36px" }}>
-                <span style={{ width: "14px", height: "14px", border: "2px solid currentColor", borderRadius: "var(--radius-xxs)" }} />
-              </div>
-              <div>
-                <p style={{ margin: 0, color: "var(--color-text-primary)", fontSize: "var(--text-md)", lineHeight: "var(--text-md--line-height)", fontWeight: "var(--font-weight-medium)" }}>
-                  Basic plan · $10/month
-                </p>
-                <p style={{ margin: "2px 0 0", color: "var(--color-text-secondary)", fontSize: "var(--text-sm)", lineHeight: "var(--text-sm--line-height)" }}>
-                  Up to 10 users and 20GB individual data.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="token-context-card-footer">
-            <button style={{ height: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-primary)", background: "var(--color-bg-surface)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)" }}>
-              Cancel
-            </button>
-            <button style={{ height: "40px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-action-brand)", background: "var(--color-action-brand)", color: "var(--color-text-on-brand)", fontWeight: "var(--font-weight-semibold)" }}>
-              Confirm
-            </button>
-          </div>
-        </div>
-      </div>
+    <div style={{
+      padding: "var(--spacing-8)",
+      borderRadius: "var(--radius-md)",
+      border: "1px solid var(--color-border-secondary)",
+      background: "var(--color-bg-muted)",
+      overflow: "hidden",
+    }}>
+      <TokenAnnotationDiagram />
     </div>
   )
 }
