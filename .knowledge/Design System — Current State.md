@@ -180,7 +180,7 @@ Semantic colors alias primitive colors from `Primitives/Colors/...`.
 
 Current brand surface decision:
 
-- `bg/brand-solid` must not automatically imply white text on top.
+- `bg-brand-strong` must not automatically imply white text on top.
 - Text on brand solid surfaces uses a separate foreground token:
   - `text/on-brand`
 - Current value:
@@ -189,7 +189,7 @@ Current brand surface decision:
 
 Reason:
 
-- The current MAXA teal is bright enough that white text on `bg/brand-solid` is low contrast.
+- The current MAXA teal is bright enough that white text on `bg-brand-strong` is low contrast.
 - The approach follows paired surface/foreground token logic from shadcn-like systems.
 
 Current important semantic values:
@@ -197,11 +197,11 @@ Current important semantic values:
 - Light `text/primary -> Colors.Neutral.950`
 - Light `text/secondary -> Colors.Neutral.800`
 - Light `text/tertiary -> Colors.Neutral.600`
-- Light `bg/brand-solid -> Colors.Brand.500`
+- Light `bg-brand-strong -> Colors.Brand.500`
 - Dark `text/primary -> Colors.Neutral.100`
 - Dark `text/secondary -> Colors.Neutral.200`
 - Dark `text/tertiary -> Colors.Neutral.500`
-- Dark `bg/brand-solid -> Colors.Brand.600`
+- Dark `bg-brand-strong -> Colors.Brand.600`
 
 ## 8. Radius
 

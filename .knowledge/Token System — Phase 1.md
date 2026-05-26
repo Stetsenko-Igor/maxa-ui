@@ -161,7 +161,7 @@ Update `docs/figma-token-component-reference.md` with the complete CSS -> Figma 
 - **Primitive spacing**: absolute values; `Spacing` = semantic aliases; `Layout` = designer-facing usage layer.
 - **Layout naming**: grouped path names only (`Stack/*`, `Inline/*`, `Container/*`, `Grid/*`) so Figma preserves useful groups.
 - **Grid/margin** and **Container/padding**: separate semantic tokens, even if their values temporarily match.
-- **Brand surface foreground**: use `text/on-brand` over `bg/brand-solid`; do not assume white text by default.
+- **Brand surface foreground**: use `text/on-brand` over `bg-brand-strong`; do not assume white text by default.
 - **Figma import workflow**: for fast local iterations, use drag-and-drop / Choose files with `import-bundle.json`; after pushing to `main`, the plugin can optionally be updated via `Load latest from GitHub`.
 - **Typography**: size-based naming (Untitled UI), not HTML naming (not h1/h2/p).
 - **Responsive collections**: `Layout` and `Typography` are not merged into one collection at this stage, to preserve code synchronization and developer readability.

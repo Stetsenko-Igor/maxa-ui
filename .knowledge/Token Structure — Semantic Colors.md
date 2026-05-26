@@ -33,7 +33,7 @@ Current Figma names use slash grouping, for example `text/primary`. CSS names ma
 | `text/tertiary` | neutral-600 `#8C8C8E` | neutral-500 | Placeholder, hints, low emphasis |
 | `text/disabled` | neutral-400 `#D7D5D5` | neutral-700 | Disabled text |
 | `text/inverse` | white | neutral-900 | Text on dark/inverse backgrounds |
-| `text/on-brand` | neutral-950 | neutral-950 | Foreground on `bg/brand-solid` |
+| `text/on-brand` | neutral-950 | neutral-950 | Foreground on `bg-brand-strong` |
 | `text/brand` | brand-600 | brand-400 | Brand accents |
 | `text/success` | green-600 | green-400 | Success messages |
 | `text/warning` | yellow-600 | yellow-400 | Warning messages |
@@ -50,9 +50,9 @@ Current Figma names use slash grouping, for example `text/primary`. CSS names ma
 | `bg/disabled` | neutral-100 | neutral-800 | Disabled fields |
 | `bg/overlay` | alpha-black-50 | alpha-black-70 | Modal overlay |
 | `bg/inverse` | neutral-950 `#1B1A1A` | neutral-950 | Inverse sections such as navbar-like surfaces |
-| `bg/brand-subtle` | brand-50 | brand-950 | Light brand tint |
-| `bg/brand` | brand-100 | brand-900 | Brand section/card background |
-| `bg/brand-solid` | brand-500 `#31e5c2` | brand-600 | Filled brand badges/buttons/surfaces |
+| `bg-brand-surface-subtle` | brand-50 | brand-950 | Light brand tint |
+| `bg-brand-surface` | brand-100 | brand-900 | Brand section/card background |
+| `bg-brand-strong` | brand-500 `#31e5c2` | brand-600 | Filled brand badges/buttons/surfaces |
 | `bg/success-subtle` | green-50 | green-950 | Success banner background |
 | `bg/success-solid` | green-500 | green-500 | Success badge |
 | `bg/warning-subtle` | yellow-50 | yellow-950 | Warning banner background |
@@ -177,11 +177,11 @@ Colors/
 
 | Stop | Hex | System Usage |
 |------|-----|--------------|
-| 50 | `#f0fdfb` | `bg/brand-subtle`, `action/brand-subtle` |
-| 100 | `#ccfbf4` | `bg/brand` |
-| 500 | `#31e5c2` | `bg/brand-solid` light, `action/brand` light |
-| 600 | `#15cba8` | `bg/brand-solid` dark, `action/brand` dark, `text/brand` light |
-| 950 | `#053d35` | `bg/brand-subtle` dark |
+| 50 | `#f0fdfb` | `bg-brand-surface-subtle`, `action/brand-subtle` |
+| 100 | `#ccfbf4` | `bg-brand-surface` |
+| 500 | `#31e5c2` | `bg-brand-strong` light, `action/brand` light |
+| 600 | `#15cba8` | `bg-brand-strong` dark, `action/brand` dark, `text/brand` light |
+| 950 | `#053d35` | `bg-brand-surface-subtle` dark |
 
 ---
 

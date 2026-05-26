@@ -66,9 +66,9 @@
   --color-bg-neutral-subtle:    var(--color-neutral-100);
   --color-bg-neutral-on-subtle: var(--color-neutral-200);
   --color-bg-neutral-strong:    var(--color-neutral-800);
-  --color-bg-brand-subtle:      var(--color-brand-50);
-  --color-bg-brand:             var(--color-brand-100);
-  --color-bg-brand-solid:       var(--color-brand-500);
+  --color-bg-brand-subtle:     var(--color-brand-50);
+  --color-bg-brand-surface:    var(--color-brand-100);
+  --color-bg-brand-strong:     var(--color-brand-500);
   --color-bg-info-subtle:       var(--color-blue-50);
   --color-bg-info-surface:      var(--color-blue-50);
   --color-bg-info-strong:       var(--color-blue-700);
@@ -183,9 +183,9 @@
   --color-bg-neutral-subtle:    var(--color-neutral-800);
   --color-bg-neutral-on-subtle: var(--color-neutral-700);
   --color-bg-neutral-strong:    var(--color-neutral-400);
-  --color-bg-brand-subtle:      var(--color-brand-950);
-  --color-bg-brand:             var(--color-brand-900);
-  --color-bg-brand-solid:       var(--color-brand-600);
+  --color-bg-brand-subtle:     var(--color-brand-950);
+  --color-bg-brand-surface:    var(--color-brand-900);
+  --color-bg-brand-strong:     var(--color-brand-600);
   --color-bg-info-subtle:       var(--color-blue-950);
   --color-bg-info-surface:      var(--color-blue-950);
   --color-bg-info-strong:       var(--color-blue-500);

@@ -50,7 +50,7 @@ Border width is `1.5px` for both. Focus ring is 3px offset 2px.
 | Disabled | `disabled={true}` | `bg/disabled` fill, `border/disabled`, `text/disabled` mark |
 
 **Critical rules:**
-- A checked checkbox uses `action/primary` (blue), NOT `bg/brand-solid` (teal). Checkboxes follow MAXA's "primary = blue" rule.
+- A checked checkbox uses `action/primary` (blue), NOT `bg-brand-strong` (teal). Checkboxes follow MAXA's "primary = blue" rule.
 - Error + checked state overrides the action color with the error border color.
 
 ---

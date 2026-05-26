@@ -22,14 +22,14 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 | `--color-text-tertiary` | Neutral/600 | Neutral/500 | Captions, metadata, placeholder |
 | `--color-text-disabled` | Neutral/400 | Neutral/700 | Disabled form labels |
 | `--color-text-inverse` | White | Neutral/900 | Text on dark/colored surfaces |
-| `--color-text-on-brand` | Neutral/950 | Neutral/950 | Text on `bg/brand-solid` (teal is bright → use dark text) |
+| `--color-text-on-brand` | Neutral/950 | Neutral/950 | Text on `bg-brand-strong` (teal is bright → use dark text) |
 | `--color-text-brand` | Brand/600 | Brand/400 | Brand-colored labels, links |
 | `--color-text-info` | Blue/600 | Blue/400 | Informational copy |
 | `--color-text-success` | Green/600 | Green/400 | Success messages |
 | `--color-text-error` | Red/600 | Red/400 | Error messages, validation |
 | `--color-text-warning` | Yellow/600 | Yellow/400 | Warning messages |
 
-**Critical:** `--color-text-inverse` is for text on dark backgrounds. `--color-text-on-brand` is specifically for text on `bg/brand-solid` — do NOT use `text-inverse` there because MAXA teal is bright and requires dark text for contrast.
+**Critical:** `--color-text-inverse` is for text on dark backgrounds. `--color-text-on-brand` is specifically for text on `bg-brand-strong` — do NOT use `text-inverse` there because MAXA teal is bright and requires dark text for contrast.
 
 ### Foreground
 
@@ -42,7 +42,7 @@ Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other 
 | `--color-fg-tertiary` | Neutral/600 | Neutral/500 | Low-emphasis icons, placeholders, subtle controls |
 | `--color-fg-disabled` | Neutral/400 | Neutral/700 | Disabled icons |
 | `--color-fg-inverse` | White | Neutral/900 | Icons on dark/inverted surfaces |
-| `--color-fg-on-brand` | Neutral/950 | Neutral/950 | Icons on `bg/brand-solid` |
+| `--color-fg-on-brand` | Neutral/950 | Neutral/950 | Icons on `bg-brand-strong` |
 | `--color-fg-brand` | Brand/600 | Brand/400 | Brand-colored icons |
 | `--color-fg-info` | Blue/600 | Blue/400 | Informational icons |
 | `--color-fg-positive` | Green/700 | Green/400 | Success icons |
@@ -102,8 +102,8 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | `--color-bg-neutral-on-subtle` | Neutral/200 | Neutral/700 | Slightly stronger neutral |
 | `--color-bg-neutral-strong` | Neutral/800 | Neutral/400 | Strong neutral (inverse) |
 | `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section |
-| `--color-bg-brand` | Brand/100 | Brand/900 | Brand surface |
-| `--color-bg-brand-solid` | Brand/500 | Brand/600 | Solid brand fill |
+| `--color-bg-brand-surface` | Brand/100 | Brand/900 | Brand surface |
+| `--color-bg-brand-strong` | Brand/500 | Brand/600 | Strong brand fill |
 | `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info section bg |
 | `--color-bg-info-surface` | Blue/50 | Blue/950 | Info surface fill |
 | `--color-bg-info-strong` | Blue/700 | Blue/500 | Strong info fill |

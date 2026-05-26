@@ -10,7 +10,7 @@ Quick lookup for CSS variable names. For usage rules, see the foundation and com
 --color-text-tertiary         /* Captions, metadata, placeholder */
 --color-text-disabled         /* Disabled form labels */
 --color-text-inverse          /* Text on dark/colored surfaces */
---color-text-on-brand         /* Text on bg/brand-solid (dark text — teal is bright) */
+--color-text-on-brand         /* Text on bg-brand-strong (dark text — teal is bright) */
 --color-text-brand            /* Brand-colored labels */
 --color-text-info             /* Informational copy */
 --color-text-success          /* Success messages */
@@ -28,7 +28,7 @@ Use foreground tokens for icons, SVG strokes/fills, and non-text foreground elem
 --color-fg-tertiary           /* Low-emphasis icons */
 --color-fg-disabled           /* Disabled icons */
 --color-fg-inverse            /* Icons on dark/inverted surfaces */
---color-fg-on-brand           /* Icons on bg/brand-solid */
+--color-fg-on-brand           /* Icons on bg-brand-strong */
 --color-fg-brand              /* Brand-colored icons */
 --color-fg-info               /* Informational icons */
 --color-fg-positive           /* Success icons */
@@ -78,8 +78,8 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --color-bg-neutral-on-subtle  /* Slightly stronger neutral bg */
 --color-bg-neutral-strong     /* Strong neutral background */
 --color-bg-brand-subtle       /* Brand-tinted section bg */
---color-bg-brand              /* Brand surface */
---color-bg-brand-solid        /* Solid brand-colored surface */
+--color-bg-brand-surface              /* Brand surface */
+--color-bg-brand-strong        /* Strong brand-colored surface */
 --color-bg-info-subtle
 --color-bg-info-surface
 --color-bg-info-strong

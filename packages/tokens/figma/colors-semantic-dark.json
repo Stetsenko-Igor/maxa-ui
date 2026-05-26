@@ -292,11 +292,11 @@
       "$value": "{Colors.Brand.950}",
       "$type": "color"
     },
-    "bg-brand": {
+    "bg-brand-surface": {
       "$value": "{Colors.Brand.900}",
       "$type": "color"
     },
-    "bg-brand-solid": {
+    "bg-brand-strong": {
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },

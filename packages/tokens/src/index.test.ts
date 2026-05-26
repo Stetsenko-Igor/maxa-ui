@@ -151,7 +151,7 @@ describe("semantic.css — bg + action", () => {
       "bg-page", "bg-surface", "bg-muted",
       "bg-neutral-subtle", "bg-neutral-on-subtle", "bg-neutral-strong",
       "bg-disabled", "bg-overlay", "bg-inverse",
-      "bg-brand-subtle", "bg-brand", "bg-brand-solid",
+      "bg-brand-subtle", "bg-brand-surface", "bg-brand-strong",
       "bg-info-subtle", "bg-info-surface",
       "bg-info-strong",
       "bg-success-subtle", "bg-success-surface", "bg-success-strong",
@@ -384,7 +384,7 @@ describe("figma color modes", () => {
     expect(darkFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.500}")
     expect(darkFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.975}")
     expect(darkFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.500}")
-    expect(darkFile.background["bg-brand-solid"]?.$value).toBe("{Colors.Brand.600}")
+    expect(darkFile.background["bg-brand-strong"]?.$value).toBe("{Colors.Brand.600}")
     expect(darkFile.background["bg-inverse"]?.$value).toBe("{Colors.Neutral.950}")
     expect(darkFile.border["border-focus"]?.$value).toBe("{Colors.Blue.400}")
     expect(darkFile.action["action-primary"]?.$value).toBe("{Colors.Blue.400}")
