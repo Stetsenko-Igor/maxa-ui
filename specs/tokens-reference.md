@@ -58,15 +58,17 @@ Use foreground tokens for icons, SVG strokes/fills, and non-text foreground elem
 
 ## Background / Surface
 
-**Surface elevation model — 3 tiers + overlay.** Use these to choose backgrounds.
+**Surface elevation model — page + surface + float + muted + overlay.** Use these to choose backgrounds.
 For the why/when of each tier, see `specs/foundations/color.md`.
 
 ```css
 /* ── Surface elevation ──────────────────────────────────────────── */
 --color-bg-page               /* Gray canvas, lowest layer (page/viewport) */
 --color-bg-surface            /* White raised surfaces — inputs, cards,
-                                  modals, dropdowns, sidebar, drawer,
+                                  modals, sidebar, drawer,
                                   table rows, content containers */
+--color-bg-float              /* Floating surfaces — dropdowns,
+                                  popovers, tooltips, command palettes */
 --color-bg-muted              /* Recessed zones — code blocks, wells,
                                   table fill, search-fields inside dark sidebars */
 --color-bg-overlay            /* Modal / drawer scrim (rgba) */

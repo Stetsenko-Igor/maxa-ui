@@ -51,14 +51,15 @@ Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other 
 
 ### Background / Surface
 
-**Surface elevation model — 3 tiers + overlay (School A — gray page, white surfaces).**
+**Surface elevation model — page + surface + float + muted + overlay.**
 
-The visual hierarchy comes from elevation, not shadow: the page is gray, anything interactive or content-bearing floats above it as a white surface. Recessed zones (code blocks, search-fields-in-sidebars) sink below the page color.
+The visual hierarchy comes from elevation, not shadow: the page is gray, content-bearing surfaces sit above it, floating UI can have its own surface token, and recessed zones (code blocks, search-fields-in-sidebars) sink below the page color.
 
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
 | `--color-bg-page` | Neutral/50 (#F5F6FA) | Neutral/1000 (#0D0D0D) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. |
-| `--color-bg-surface` | Base white (#FFFFFF) | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, dropdowns, popovers, sidebar/drawer, table rows, content containers. |
+| `--color-bg-surface` | Base white (#FFFFFF) | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, sidebar/drawer, table rows, content containers. |
+| `--color-bg-float` | Base white (#FFFFFF) | Neutral/800 (#444445) | Floating surfaces that sit above regular surfaces: dropdown menus, popovers, tooltips, floating command palettes. |
 | `--color-bg-muted` | Neutral/25 (#F8F8F8) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, table fill (under white rows), search-fields embedded in dark sidebars, disabled-input fill alternative. |
 | `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer scrim. |
 | `--color-bg-inverse` | Neutral/950 | Neutral/950 | Inverted surface (dark even on light theme). |
@@ -67,10 +68,11 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, anythin
 **Decision tree — choosing a surface token:**
 
 1. Is this the page/viewport background itself? → `bg/page`
-2. Is this an interactive or content-bearing surface "floating" above the page (modal, card, input, dropdown, sidebar)? → `bg/surface`
-3. Is this a recessed/inset zone (code block, well, table-fill under rows)? → `bg/muted`
-4. Is this a modal scrim? → `bg/overlay`
-5. None of the above — it's status/intent (success, error, brand, etc.)? → use the status bg tokens below, not the elevation tier.
+2. Is this a regular interactive or content-bearing surface above the page (card, input, modal, sidebar)? → `bg/surface`
+3. Is this a floating layer above other surfaces (dropdown, popover, tooltip, floating command palette)? → `bg/float`
+4. Is this a recessed/inset zone (code block, well, table-fill under rows)? → `bg/muted`
+5. Is this a modal scrim? → `bg/overlay`
+6. None of the above — it's status/intent (success, error, brand, etc.)? → use the status bg tokens below, not the elevation tier.
 
 **Examples:**
 
@@ -80,7 +82,8 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, anythin
 | Card on a docs page | `bg/surface` |
 | Modal panel | `bg/surface` |
 | Input field | `bg/surface` |
-| Dropdown menu | `bg/surface` |
+| Dropdown menu | `bg/float` |
+| Tooltip / Popover panel | `bg/float` |
 | Sidebar / Drawer | `bg/surface` |
 | Table row | `bg/surface` |
 | Table outer area / gaps between rows | `bg/muted` or `bg/page` (match the page) |
@@ -95,6 +98,8 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, anythin
 ### Status / intent backgrounds (orthogonal to elevation)
 
 These are colored fills for tags, alerts, badges, and intent feedback. They are orthogonal to the surface elevation tier above — you may layer them on a `bg/surface` or `bg/page`.
+
+`{intent}` in the naming pattern means one of the supported semantic intents: `neutral`, `brand`, `info`, `success`, `warning`, or `error`. For example, `--color-bg-{intent}-subtle` becomes `--color-bg-success-subtle` or `--color-bg-error-subtle`.
 
 | Token | Light | Dark | Use |
 |-------|-------|------|-----|
@@ -154,7 +159,7 @@ Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subt
 | Icon uses `var(--color-text-secondary)` by default | Use `var(--color-fg-secondary)` unless it intentionally inherits text |
 | White text on brand solid | `color: var(--color-text-on-brand)` (dark text, not white) |
 | `background: var(--color-bg-elevated)` | `background: var(--color-bg-surface)` (deprecated alias) |
-| `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, or `bg/muted` by intent |
+| `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, `bg/float`, or `bg/muted` by intent |
 | Hardcoded shadow to separate a card from page in light mode | Use the gray page (`bg/page`) + white surface (`bg/surface`) — hierarchy is built-in |
 
 ## Dark mode

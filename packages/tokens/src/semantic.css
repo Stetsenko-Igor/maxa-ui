@@ -2,11 +2,12 @@
 /* Aligned with Figma 🔴 Foundation library (Color modes collection). */
 /* Light mode. Dark overrides below in [data-theme="dark"].            */
 /*                                                                     */
-/* Surface model: 3 elevation tiers + overlay (School A — Polaris/Radix). */
+/* Surface model: page + surface + float + muted + overlay.           */
 /*   bg/page    — gray canvas, lowest layer                            */
 /*   bg/surface — white raised surfaces (inputs, cards, modals,        */
-/*                dropdowns, sidebar, drawer, table rows, containers)  */
-/*   bg/muted   — recessed zones (code blocks, wells, table fill,      */
+/*                sidebar, drawer, table rows, content containers)     */
+/*   bg/float   — floating surfaces (dropdowns, popovers, tooltips)    */
+/*   bg/muted   — quiet/recessed zones (code blocks, wells, table fill,*/
 /*                search-fields inside dark sidebars)                  */
 /*   bg/overlay — modal scrim                                          */
 /*                                                                     */
@@ -54,9 +55,10 @@
   --color-border-neutral-strong: var(--color-neutral-700);
   --color-border-neutral-subtle: var(--color-neutral-300);
 
-  /* ── Background — surface elevation (3 tiers + overlay) ─────────── */
+  /* ── Background — surface elevation ─────────────────────────────── */
   --color-bg-page:              var(--color-neutral-50);     /* #F5F6FA — gray canvas */
   --color-bg-surface:           var(--color-base-white);  /* #FFFFFF — raised surfaces */
+  --color-bg-float:             var(--color-base-white);  /* #FFFFFF — floating surfaces */
   --color-bg-muted:             var(--color-neutral-25);     /* #F8F8F8 — recessed zones */
   --color-bg-overlay:           rgba(0, 0, 0, 0.5);
   --color-bg-inverse:           var(--color-neutral-950);
@@ -174,6 +176,7 @@
   /* ── Background — dark (surface elevation) ──────────────────────── */
   --color-bg-page:              var(--color-neutral-1000);   /* #0D0D0D — darkest page canvas */
   --color-bg-surface:           var(--color-neutral-900);    /* #2A2A2B — raised surface */
+  --color-bg-float:             var(--color-neutral-800);    /* #444445 — floating surface */
   --color-bg-muted:             var(--color-neutral-975);    /* #161616 — recessed zone */
   --color-bg-overlay:           rgba(0, 0, 0, 0.7);
   --color-bg-inverse:           var(--color-neutral-950);

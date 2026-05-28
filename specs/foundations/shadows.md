@@ -4,7 +4,7 @@
 
 Shadow tokens define the elevation system for MAXA UI. Use shadows to communicate depth and layering — primarily on overlay surfaces (dropdowns, modals, drawers, tooltips) and interactive cards.
 
-The visual hierarchy is two-dimensional: background color tiers (`bg/page → bg/surface → bg-muted`) handle surfaces, and shadow tokens add depth to floating elements.
+The visual hierarchy is two-dimensional: background color tiers (`bg/page → bg/surface → bg/float → bg/muted`) handle surfaces, and shadow tokens add depth to floating elements.
 
 ## Token reference
 

@@ -148,7 +148,7 @@ describe("semantic.css — bg + action", () => {
 
   it("defines all background tokens", () => {
     for (const t of [
-      "bg-page", "bg-surface", "bg-muted",
+      "bg-page", "bg-surface", "bg-float", "bg-muted",
       "bg-neutral-subtle", "bg-neutral-on-subtle", "bg-neutral-strong",
       "bg-disabled", "bg-overlay", "bg-inverse",
       "bg-brand-subtle", "bg-brand-surface", "bg-brand-strong",
@@ -376,6 +376,7 @@ describe("figma color modes", () => {
     expect(lightFile.text["text-on-brand"]?.$value).toBe("{Colors.Neutral.950}")
     expect(lightFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.600}")
     expect(lightFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.25}")
+    expect(lightFile.background["bg-float"]?.$value).toBe("{Colors.Base.White}")
     expect(lightFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.700}")
     expect(lightFile.text["text-info"]?.$value).toBe("{Colors.Blue.600}")
     expect(lightFile.action["action-primary-subtle-hover"]?.$value).toBe("{Colors.Blue.50}")
@@ -385,6 +386,7 @@ describe("figma color modes", () => {
     expect(darkFile.text["text-brand"]?.$value).toBe("{Colors.Brand.400}")
     expect(darkFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.500}")
     expect(darkFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.975}")
+    expect(darkFile.background["bg-float"]?.$value).toBe("{Colors.Neutral.800}")
     expect(darkFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.500}")
     expect(darkFile.background["bg-brand-strong"]?.$value).toBe("{Colors.Brand.600}")
     expect(darkFile.background["bg-inverse"]?.$value).toBe("{Colors.Neutral.950}")
@@ -1005,6 +1007,19 @@ describe("runtime — dark mode CSS variable override", () => {
     expect(page).toBeTruthy()
     expect(surface).toBeTruthy()
     expect(page).not.toBe(surface)
+  })
+
+  it("dark mode: --color-bg-float differs from --color-bg-surface", () => {
+    document.documentElement.setAttribute("data-theme", "dark")
+    const surface = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-surface")
+      .trim()
+    const float = getComputedStyle(document.documentElement)
+      .getPropertyValue("--color-bg-float")
+      .trim()
+    expect(surface).toBeTruthy()
+    expect(float).toBeTruthy()
+    expect(float).not.toBe(surface)
   })
 
   it("dark mode: --color-bg-page differs from light mode", () => {

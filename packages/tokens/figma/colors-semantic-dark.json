@@ -272,6 +272,10 @@
       "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
+    "bg-float": {
+      "$value": "{Colors.Neutral.800}",
+      "$type": "color"
+    },
     "bg-muted": {
       "$value": "{Colors.Neutral.975}",
       "$type": "color"

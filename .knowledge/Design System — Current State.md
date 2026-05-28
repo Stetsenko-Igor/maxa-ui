@@ -403,7 +403,7 @@ Validation:
 
 ## 14. Component-based Tokens
 
-Current status: Button and Input token sources are implemented for Figma import; Badge and Alert remain deferred.
+Current status: Button and Input token sources are implemented for Figma import; the Figma Input component set has been created manually by Igor using the imported `Input/...` variables. Badge, Alert, and the next small component families remain deferred.
 
 Component-based Tokens are the next design-system layer.
 
@@ -488,8 +488,29 @@ Current Input direction:
 - Figma paths use `Input/...`, for example `Input/bg`, `Input/border-focus`, `Input/size/md/height`
 - Input has explicit disabled and readonly tokens instead of opacity-only behavior
 - Input includes label, hint, error, success, icon, focus-ring, size, textarea, and typography tokens
-- build a new Figma Input component set on top of these variables instead of migrating an older component
+- Figma Input component set has been manually created by Igor on top of these variables
+- future Figma component work should follow Igor's demonstrated manual component-building method, not the earlier automated component creation attempt
 - keep Select and DatePicker separate component families even if they share Input-like implementation tokens in code
+
+Next planned foundation component families:
+
+- `Avatar`
+- `Badge`
+- `Filter`
+- `Tag`
+- `Pill`
+- `Tabs`
+- `Toggle`
+- `Tooltip`
+
+Taxonomy note:
+
+- Badge, Tag, Pill, and Filter may share visual primitives such as height, radius, gap, icon size, and color intensity.
+- They should still be separated by purpose and behavior:
+  - Badge = status/count/metadata indicator
+  - Tag = data label/category, often removable
+  - Pill = generic rounded compact container or selected value chip; use carefully to avoid becoming a vague catch-all
+  - Filter = interactive query/control chip that changes a result set
 
 ## 15. Project Narrative
 
@@ -513,12 +534,13 @@ Short English explanation for team communication:
 
 ## 16. Next Conversation Starting Point
 
-Continue the next chat from **Component-based Tokens / Input**.
+Continue the next chat from **Component-based Tokens / small component taxonomy**.
 
 Goal for the next stage:
 
-- validate and import Button + Input Component-based Tokens into Figma
-- create or rebuild the Figma Input component set on top of `Input/...` variables
+- define Badge/Tag/Pill/Filter boundaries
+- decide which next component token family to implement first
+- keep Input marked as done unless Igor explicitly asks for refinements
 - do not create React components or docs/catalog until the Figma component-token layer is validated
 - keep React components and docs/catalog paused until Component-based Tokens are approved
 - keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned
