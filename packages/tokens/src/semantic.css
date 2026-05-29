@@ -151,9 +151,9 @@
   --color-text-inverse:       var(--color-neutral-900);
   --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-400);
-  --color-text-info:          var(--color-blue-400);
+  --color-text-info:          var(--color-blue-300);
   --color-text-success:       var(--color-green-400);
-  --color-text-error:         var(--color-red-400);
+  --color-text-error:         var(--color-red-300);
   --color-text-warning:       var(--color-yellow-400);
 
   /* ── Foreground — dark ──────────────────────────────────────────── */
@@ -164,9 +164,9 @@
   --color-fg-inverse:       var(--color-neutral-900);
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-400);
-  --color-fg-info:          var(--color-blue-400);
+  --color-fg-info:          var(--color-blue-300);
   --color-fg-positive:      var(--color-green-400);
-  --color-fg-negative:      var(--color-red-400);
+  --color-fg-negative:      var(--color-red-300);
   --color-fg-warning:       var(--color-yellow-400);
 
   /* ── Border — dark ──────────────────────────────────────────────── */
