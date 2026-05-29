@@ -305,7 +305,7 @@
   --badge-icon: var(--color-neutral-300);
 }
 [data-theme="dark"] .maxa-badge[data-appearance="grey"][data-emphasis="high"] {
-  --badge-bg:   var(--color-neutral-500);
+  --badge-bg:   var(--color-neutral-700);
   --badge-fg:   var(--color-base-white);
   --badge-icon: var(--color-base-white);
 }
