@@ -18,12 +18,17 @@ const badgeVariants = cva("maxa-badge", {
 export type BadgeIntent = "neutral" | "info" | "success" | "warning" | "error"
 export type BadgeEmphasis = "low" | "medium" | "high"
 export type BadgeSize = "sm" | "md"
+export type BadgeAppearance =
+  | "grey" | "blue" | "green" | "red" | "orange"
+  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
+  | "cyan" | "teal" | "aquamarine" | "emerald"
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLSpanElement>,
     VariantProps<typeof badgeVariants> {
   intent?: BadgeIntent
   emphasis?: BadgeEmphasis
+  appearance?: BadgeAppearance
   asChild?: boolean
   icon?: React.ReactNode
   trailingIcon?: React.ReactNode
@@ -36,6 +41,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       size,
       intent = "neutral",
       emphasis = "low",
+      appearance,
       asChild = false,
       icon,
       trailingIcon,
@@ -46,14 +52,19 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   ) => {
     const Comp = asChild ? Slot : "span"
 
+    const dataProps = {
+      "data-intent": appearance ? undefined : intent,
+      "data-emphasis": emphasis,
+      ...(appearance ? { "data-appearance": appearance } : {}),
+    }
+
     // When asChild, Slot merges props onto the single child — pass children as-is.
     if (asChild) {
       return (
         <Comp
           ref={ref}
           className={badgeVariants({ size, className })}
-          data-intent={intent}
-          data-emphasis={emphasis}
+          {...dataProps}
           {...props}
         >
           {children}
@@ -65,8 +76,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       <Comp
         ref={ref}
         className={badgeVariants({ size, className })}
-        data-intent={intent}
-        data-emphasis={emphasis}
+        {...dataProps}
         {...props}
       >
         {icon && (

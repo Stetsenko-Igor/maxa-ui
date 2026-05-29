@@ -14,6 +14,7 @@ const TOC = [
   { href: "#emphasis", label: "Emphasis" },
   { href: "#sizes", label: "Sizes" },
   { href: "#with-icon", label: "With icon" },
+  { href: "#color-palette", label: "Color palette" },
   { href: "#api-reference", label: "API reference" },
 ]
 
@@ -23,6 +24,7 @@ const BADGE_PROPS = [
   { name: "size", type: "'sm' | 'md'", default: "'md'", description: "Height 20px (sm) or 24px (md)." },
   { name: "icon", type: "ReactNode", default: undefined, description: "Leading icon. Rendered aria-hidden." },
   { name: "trailingIcon", type: "ReactNode", default: undefined, description: "Trailing icon. Rendered aria-hidden." },
+  { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: undefined, description: "Decorative user-chosen color. Overrides intent coloring. Use with emphasis='low' (default) or emphasis='high'." },
   { name: "asChild", type: "boolean", default: "false", description: "Merge props onto a custom child element via Radix Slot." },
 ]
 
@@ -178,6 +180,45 @@ export default function BadgePage() {
                 >
                   {intent.charAt(0).toUpperCase() + intent.slice(1)}
                 </Badge>
+              ))}
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="color-palette"
+        title="Color palette"
+        description="14 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low (subtle) and high (solid) emphasis."
+      >
+        <DocsExample title="Low emphasis (default)">
+          <ComponentPreview code={`<Badge appearance="grey">Grey</Badge>
+<Badge appearance="blue">Blue</Badge>
+<Badge appearance="green">Green</Badge>
+<Badge appearance="raspberry">Raspberry</Badge>
+<Badge appearance="magenta">Magenta</Badge>
+<Badge appearance="purple">Purple</Badge>
+<Badge appearance="grape">Grape</Badge>
+<Badge appearance="violet">Violet</Badge>
+<Badge appearance="cyan">Cyan</Badge>
+<Badge appearance="teal">Teal</Badge>
+<Badge appearance="aquamarine">Aquamarine</Badge>
+<Badge appearance="emerald">Emerald</Badge>
+<Badge appearance="red">Red</Badge>
+<Badge appearance="orange">Orange</Badge>`}>
+            <div style={row}>
+              {(["grey","blue","green","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald","red","orange"] as const).map(a => (
+                <Badge key={a} appearance={a}>{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
+              ))}
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+        <DocsExample title="High emphasis (solid)">
+          <ComponentPreview code={`<Badge appearance="violet" emphasis="high">Violet</Badge>
+<Badge appearance="raspberry" emphasis="high">Raspberry</Badge>`}>
+            <div style={row}>
+              {(["grey","blue","green","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald","red","orange"] as const).map(a => (
+                <Badge key={a} appearance={a} emphasis="high">{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
           </ComponentPreview>

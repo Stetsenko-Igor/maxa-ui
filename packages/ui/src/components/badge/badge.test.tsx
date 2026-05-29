@@ -55,6 +55,18 @@ describe("Badge", () => {
     expect(document.querySelector(".maxa-badge")).toHaveClass("extra")
   })
 
+  it("sets data-appearance when appearance prop provided", () => {
+    render(<Badge appearance="violet">List</Badge>)
+    const el = document.querySelector(".maxa-badge")
+    expect(el).toHaveAttribute("data-appearance", "violet")
+    expect(el).not.toHaveAttribute("data-intent")
+  })
+
+  it("does not set data-appearance when prop absent", () => {
+    render(<Badge>Label</Badge>)
+    expect(document.querySelector(".maxa-badge")).not.toHaveAttribute("data-appearance")
+  })
+
   it("renders as child element when asChild is set", () => {
     render(
       <Badge asChild intent="info">
