@@ -1,6 +1,7 @@
 /* Badge component tokens — Layer 3 */
 /* Reference only semantic tokens (Layer 2). Never raw primitives.       */
-/* Light/dark is handled by the semantic layer — no theme selectors here. */
+/* Exception: appearance palette uses primitives directly and requires   */
+/* explicit [data-theme="dark"] overrides at the bottom of this file.   */
 
 :root {
   /* ── Defaults (neutral / low emphasis) ──────────────────────────── */
@@ -289,6 +290,165 @@
 }
 .maxa-badge[data-appearance="emerald"][data-emphasis="high"] {
   --badge-bg:   var(--color-emerald-700);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+/* ── Appearance palette — dark mode overrides ────────────────────── */
+/* Light: hue-50 bg + hue-700 text.                                   */
+/* Dark:  hue-950 bg + hue-300 text  (low)                            */
+/*        hue-600 bg + text-inverse  (high — stays solid, brighter)   */
+
+[data-theme="dark"] .maxa-badge[data-appearance="grey"][data-emphasis="low"] {
+  --badge-bg:   var(--color-neutral-800);
+  --badge-fg:   var(--color-neutral-300);
+  --badge-icon: var(--color-neutral-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="grey"][data-emphasis="high"] {
+  --badge-bg:   var(--color-neutral-500);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="blue"][data-emphasis="low"] {
+  --badge-bg:   var(--color-blue-950);
+  --badge-fg:   var(--color-blue-300);
+  --badge-icon: var(--color-blue-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="blue"][data-emphasis="high"] {
+  --badge-bg:   var(--color-blue-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="green"][data-emphasis="low"] {
+  --badge-bg:   var(--color-green-950);
+  --badge-fg:   var(--color-green-300);
+  --badge-icon: var(--color-green-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="green"][data-emphasis="high"] {
+  --badge-bg:   var(--color-green-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="red"][data-emphasis="low"] {
+  --badge-bg:   var(--color-red-950);
+  --badge-fg:   var(--color-red-300);
+  --badge-icon: var(--color-red-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="red"][data-emphasis="high"] {
+  --badge-bg:   var(--color-red-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="orange"][data-emphasis="low"] {
+  --badge-bg:   var(--color-orange-950);
+  --badge-fg:   var(--color-orange-300);
+  --badge-icon: var(--color-orange-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="orange"][data-emphasis="high"] {
+  --badge-bg:   var(--color-orange-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="raspberry"][data-emphasis="low"] {
+  --badge-bg:   var(--color-rose-950);
+  --badge-fg:   var(--color-rose-300);
+  --badge-icon: var(--color-rose-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="raspberry"][data-emphasis="high"] {
+  --badge-bg:   var(--color-rose-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="magenta"][data-emphasis="low"] {
+  --badge-bg:   var(--color-pink-950);
+  --badge-fg:   var(--color-pink-300);
+  --badge-icon: var(--color-pink-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="magenta"][data-emphasis="high"] {
+  --badge-bg:   var(--color-pink-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="purple"][data-emphasis="low"] {
+  --badge-bg:   var(--color-purple-950);
+  --badge-fg:   var(--color-purple-300);
+  --badge-icon: var(--color-purple-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="purple"][data-emphasis="high"] {
+  --badge-bg:   var(--color-purple-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="grape"][data-emphasis="low"] {
+  --badge-bg:   var(--color-fuchsia-950);
+  --badge-fg:   var(--color-fuchsia-300);
+  --badge-icon: var(--color-fuchsia-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="grape"][data-emphasis="high"] {
+  --badge-bg:   var(--color-fuchsia-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="violet"][data-emphasis="low"] {
+  --badge-bg:   var(--color-violet-950);
+  --badge-fg:   var(--color-violet-300);
+  --badge-icon: var(--color-violet-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="violet"][data-emphasis="high"] {
+  --badge-bg:   var(--color-violet-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="cyan"][data-emphasis="low"] {
+  --badge-bg:   var(--color-cyan-950);
+  --badge-fg:   var(--color-cyan-300);
+  --badge-icon: var(--color-cyan-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="cyan"][data-emphasis="high"] {
+  --badge-bg:   var(--color-cyan-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="teal"][data-emphasis="low"] {
+  --badge-bg:   var(--color-teal-950);
+  --badge-fg:   var(--color-teal-300);
+  --badge-icon: var(--color-teal-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="teal"][data-emphasis="high"] {
+  --badge-bg:   var(--color-teal-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="aquamarine"][data-emphasis="low"] {
+  --badge-bg:   var(--color-teal-900);
+  --badge-fg:   var(--color-teal-200);
+  --badge-icon: var(--color-teal-200);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="aquamarine"][data-emphasis="high"] {
+  --badge-bg:   var(--color-teal-600);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+[data-theme="dark"] .maxa-badge[data-appearance="emerald"][data-emphasis="low"] {
+  --badge-bg:   var(--color-emerald-950);
+  --badge-fg:   var(--color-emerald-300);
+  --badge-icon: var(--color-emerald-300);
+}
+[data-theme="dark"] .maxa-badge[data-appearance="emerald"][data-emphasis="high"] {
+  --badge-bg:   var(--color-emerald-600);
   --badge-fg:   var(--color-text-inverse);
   --badge-icon: var(--color-text-inverse);
 }

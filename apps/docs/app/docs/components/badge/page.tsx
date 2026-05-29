@@ -207,7 +207,7 @@ export default function BadgePage() {
 <Badge appearance="red">Red</Badge>
 <Badge appearance="orange">Orange</Badge>`}>
             <div style={row}>
-              {(["grey","blue","green","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald","red","orange"] as const).map(a => (
+              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
                 <Badge key={a} appearance={a}>{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
@@ -217,7 +217,7 @@ export default function BadgePage() {
           <ComponentPreview code={`<Badge appearance="violet" emphasis="high">Violet</Badge>
 <Badge appearance="raspberry" emphasis="high">Raspberry</Badge>`}>
             <div style={row}>
-              {(["grey","blue","green","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald","red","orange"] as const).map(a => (
+              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
                 <Badge key={a} appearance={a} emphasis="high">{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
