@@ -95,6 +95,13 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --color-bg-warning-surface
 --color-bg-warning-strong
 
+/* Muted tier — medium emphasis between subtle and strong (badge/tag) */
+--color-bg-neutral-muted
+--color-bg-info-muted
+--color-bg-success-muted
+--color-bg-warning-muted
+--color-bg-error-muted
+
 /* Deprecated alias (removed in next release) — migrate to bg-surface */
 --color-bg-elevated           /* → --color-bg-surface */
 ```
@@ -535,6 +542,36 @@ Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 --radio-content-gap           /* 4px */
 ```
 
+## Badge Component Tokens
+
+Mapped per `[data-intent][data-emphasis]` (intent: neutral/info/success/warning/error;
+emphasis: low/medium/high). Light/dark handled by the semantic layer.
+
+```css
+/* Resolved per variant */
+--badge-bg                    /* bg-{intent}-{subtle|muted|strong} */
+--badge-fg                    /* text-{intent} (low/medium) | text-inverse (high) */
+--badge-icon
+--badge-border                /* transparent (v1) */
+
+/* Shared */
+--badge-radius                /* radius-full (pill) */
+--badge-font-family           /* Montserrat */
+--badge-font-weight           /* 500 */
+
+/* Sizes */
+--badge-size-sm-height        /* 20px */
+--badge-size-sm-padding-x     /* 6px */
+--badge-size-sm-gap           /* 4px */
+--badge-size-sm-font          /* text-sm 12px */
+--badge-size-sm-icon          /* 12px */
+--badge-size-md-height        /* 24px */
+--badge-size-md-padding-x     /* 8px */
+--badge-size-md-gap           /* 4px */
+--badge-size-md-font          /* text-sm 12px */
+--badge-size-md-icon          /* 14px */
+```
+
 ## Source files
 
 - `packages/tokens/src/semantic.css` — all color semantic tokens
@@ -545,6 +582,7 @@ Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 - `packages/tokens/src/component-input.css` — input component tokens
 - `packages/tokens/src/component-checkbox.css` — checkbox component tokens
 - `packages/tokens/src/component-radio.css` — radio component tokens
+- `packages/tokens/src/component-badge.css` — badge component tokens
 - `packages/tokens/src/component-nav.css` — nav component tokens
 - `packages/tokens/figma/component-button-light.json` — button component tokens (light)
 - `packages/tokens/figma/component-button-dark.json` — button component tokens (dark)

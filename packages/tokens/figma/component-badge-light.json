@@ -1,0 +1,89 @@
+{
+  "Badge": {
+    "neutral": {
+      "low": {
+        "bg":   { "$value": "{Color modes/background/bg-neutral-subtle}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-secondary}", "$type": "color" }
+      },
+      "medium": {
+        "bg":   { "$value": "{Color modes/background/bg-neutral-muted}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-primary}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-primary}", "$type": "color" }
+      },
+      "high": {
+        "bg":   { "$value": "{Color modes/background/bg-neutral-strong}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+      }
+    },
+    "info": {
+      "low": {
+        "bg":   { "$value": "{Color modes/background/bg-info-subtle}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-info}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-info}", "$type": "color" }
+      },
+      "medium": {
+        "bg":   { "$value": "{Color modes/background/bg-info-muted}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-info}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-info}", "$type": "color" }
+      },
+      "high": {
+        "bg":   { "$value": "{Color modes/background/bg-info-strong}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+      }
+    },
+    "success": {
+      "low": {
+        "bg":   { "$value": "{Color modes/background/bg-success-subtle}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-success}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-success}", "$type": "color" }
+      },
+      "medium": {
+        "bg":   { "$value": "{Color modes/background/bg-success-muted}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-success}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-success}", "$type": "color" }
+      },
+      "high": {
+        "bg":   { "$value": "{Color modes/background/bg-success-strong}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+      }
+    },
+    "warning": {
+      "low": {
+        "bg":   { "$value": "{Color modes/background/bg-warning-subtle}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-warning}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-warning}", "$type": "color" }
+      },
+      "medium": {
+        "bg":   { "$value": "{Color modes/background/bg-warning-muted}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-warning}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-warning}", "$type": "color" }
+      },
+      "high": {
+        "bg":   { "$value": "{Color modes/background/bg-warning-strong}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+      }
+    },
+    "error": {
+      "low": {
+        "bg":   { "$value": "{Color modes/background/bg-error-subtle}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-error}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-error}", "$type": "color" }
+      },
+      "medium": {
+        "bg":   { "$value": "{Color modes/background/bg-error-muted}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-error}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-error}", "$type": "color" }
+      },
+      "high": {
+        "bg":   { "$value": "{Color modes/background/bg-error-strong}", "$type": "color" },
+        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
+        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+      }
+    }
+  }
+}

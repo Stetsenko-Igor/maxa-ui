@@ -1,0 +1,68 @@
+import { describe, it, expect } from "vitest"
+import { render, screen } from "@testing-library/react"
+import { Badge } from "./badge"
+
+describe("Badge", () => {
+  it("renders its children", () => {
+    render(<Badge>Active</Badge>)
+    expect(screen.getByText("Active")).toBeInTheDocument()
+  })
+
+  it("applies default intent=neutral, emphasis=low, size=md", () => {
+    render(<Badge>Default</Badge>)
+    const el = document.querySelector(".maxa-badge")
+    expect(el).toHaveClass("maxa-badge--md")
+    expect(el).toHaveAttribute("data-intent", "neutral")
+    expect(el).toHaveAttribute("data-emphasis", "low")
+  })
+
+  it("sets data-intent and data-emphasis attributes", () => {
+    render(
+      <Badge intent="success" emphasis="high">
+        Verified
+      </Badge>,
+    )
+    const el = document.querySelector(".maxa-badge")
+    expect(el).toHaveAttribute("data-intent", "success")
+    expect(el).toHaveAttribute("data-emphasis", "high")
+  })
+
+  it("applies size class sm", () => {
+    render(<Badge size="sm">Small</Badge>)
+    expect(document.querySelector(".maxa-badge")).toHaveClass("maxa-badge--sm")
+  })
+
+  it("renders leading icon, hidden from a11y tree", () => {
+    render(
+      <Badge icon={<svg data-testid="lead" />}>Label</Badge>,
+    )
+    const icon = screen.getByTestId("lead").parentElement
+    expect(icon).toHaveClass("maxa-badge__icon--leading")
+    expect(icon).toHaveAttribute("aria-hidden", "true")
+  })
+
+  it("renders trailing icon, hidden from a11y tree", () => {
+    render(
+      <Badge trailingIcon={<svg data-testid="trail" />}>Label</Badge>,
+    )
+    const icon = screen.getByTestId("trail").parentElement
+    expect(icon).toHaveClass("maxa-badge__icon--trailing")
+    expect(icon).toHaveAttribute("aria-hidden", "true")
+  })
+
+  it("merges custom className", () => {
+    render(<Badge className="extra">X</Badge>)
+    expect(document.querySelector(".maxa-badge")).toHaveClass("extra")
+  })
+
+  it("renders as child element when asChild is set", () => {
+    render(
+      <Badge asChild intent="info">
+        <a href="/x">Link badge</a>
+      </Badge>,
+    )
+    const link = screen.getByRole("link", { name: "Link badge" })
+    expect(link).toHaveClass("maxa-badge")
+    expect(link).toHaveAttribute("data-intent", "info")
+  })
+})

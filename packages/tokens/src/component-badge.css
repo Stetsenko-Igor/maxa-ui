@@ -1,0 +1,120 @@
+/* Badge component tokens — Layer 3 */
+/* Reference only semantic tokens (Layer 2). Never raw primitives.       */
+/* Light/dark is handled by the semantic layer — no theme selectors here. */
+
+:root {
+  /* ── Defaults (neutral / low emphasis) ──────────────────────────── */
+  --badge-bg:     var(--color-bg-neutral-subtle);
+  --badge-fg:     var(--color-text-secondary);
+  --badge-icon:   var(--color-text-secondary);
+  --badge-border: transparent;
+
+  /* ── Shared ─────────────────────────────────────────────────────── */
+  --badge-radius:      var(--radius-full);
+  --badge-font-family: var(--font-body);
+  --badge-font-weight: var(--font-weight-medium);
+
+  /* ── Sizes ──────────────────────────────────────────────────────── */
+  /* sm */
+  --badge-size-sm-height:    20px;
+  --badge-size-sm-padding-x: var(--spacing-sm);   /* 6px */
+  --badge-size-sm-gap:       var(--spacing-xs);    /* 4px */
+  --badge-size-sm-font:      var(--text-sm);       /* 12px */
+  --badge-size-sm-icon:      12px;
+
+  /* md */
+  --badge-size-md-height:    24px;
+  --badge-size-md-padding-x: var(--spacing-md);   /* 8px */
+  --badge-size-md-gap:       var(--spacing-xs);    /* 4px */
+  --badge-size-md-font:      var(--text-sm);       /* 12px */
+  --badge-size-md-icon:      14px;
+}
+
+/* ── Intent × emphasis mapping ────────────────────────────────────── */
+/* low: subtle bg + intent text. medium: muted bg + intent text.        */
+/* high: strong bg + inverse text.                                      */
+
+/* neutral */
+.maxa-badge[data-intent="neutral"][data-emphasis="low"] {
+  --badge-bg:   var(--color-bg-neutral-subtle);
+  --badge-fg:   var(--color-text-secondary);
+  --badge-icon: var(--color-text-secondary);
+}
+.maxa-badge[data-intent="neutral"][data-emphasis="medium"] {
+  --badge-bg:   var(--color-bg-neutral-muted);
+  --badge-fg:   var(--color-text-primary);
+  --badge-icon: var(--color-text-primary);
+}
+.maxa-badge[data-intent="neutral"][data-emphasis="high"] {
+  --badge-bg:   var(--color-bg-neutral-strong);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+/* info */
+.maxa-badge[data-intent="info"][data-emphasis="low"] {
+  --badge-bg:   var(--color-bg-info-subtle);
+  --badge-fg:   var(--color-text-info);
+  --badge-icon: var(--color-text-info);
+}
+.maxa-badge[data-intent="info"][data-emphasis="medium"] {
+  --badge-bg:   var(--color-bg-info-muted);
+  --badge-fg:   var(--color-text-info);
+  --badge-icon: var(--color-text-info);
+}
+.maxa-badge[data-intent="info"][data-emphasis="high"] {
+  --badge-bg:   var(--color-bg-info-strong);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+/* success */
+.maxa-badge[data-intent="success"][data-emphasis="low"] {
+  --badge-bg:   var(--color-bg-success-subtle);
+  --badge-fg:   var(--color-text-success);
+  --badge-icon: var(--color-text-success);
+}
+.maxa-badge[data-intent="success"][data-emphasis="medium"] {
+  --badge-bg:   var(--color-bg-success-muted);
+  --badge-fg:   var(--color-text-success);
+  --badge-icon: var(--color-text-success);
+}
+.maxa-badge[data-intent="success"][data-emphasis="high"] {
+  --badge-bg:   var(--color-bg-success-strong);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+/* warning */
+.maxa-badge[data-intent="warning"][data-emphasis="low"] {
+  --badge-bg:   var(--color-bg-warning-subtle);
+  --badge-fg:   var(--color-text-warning);
+  --badge-icon: var(--color-text-warning);
+}
+.maxa-badge[data-intent="warning"][data-emphasis="medium"] {
+  --badge-bg:   var(--color-bg-warning-muted);
+  --badge-fg:   var(--color-text-warning);
+  --badge-icon: var(--color-text-warning);
+}
+.maxa-badge[data-intent="warning"][data-emphasis="high"] {
+  --badge-bg:   var(--color-bg-warning-strong);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}
+
+/* error */
+.maxa-badge[data-intent="error"][data-emphasis="low"] {
+  --badge-bg:   var(--color-bg-error-subtle);
+  --badge-fg:   var(--color-text-error);
+  --badge-icon: var(--color-text-error);
+}
+.maxa-badge[data-intent="error"][data-emphasis="medium"] {
+  --badge-bg:   var(--color-bg-error-muted);
+  --badge-fg:   var(--color-text-error);
+  --badge-icon: var(--color-text-error);
+}
+.maxa-badge[data-intent="error"][data-emphasis="high"] {
+  --badge-bg:   var(--color-bg-error-strong);
+  --badge-fg:   var(--color-text-inverse);
+  --badge-icon: var(--color-text-inverse);
+}

@@ -1,0 +1,50 @@
+/* Badge component styles — references only component tokens */
+
+.maxa-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--badge-radius);
+  border: 1px solid var(--badge-border);
+  background-color: var(--badge-bg);
+  color: var(--badge-fg);
+  font-family: var(--badge-font-family);
+  font-weight: var(--badge-font-weight);
+  white-space: nowrap;
+  width: fit-content;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────── */
+
+.maxa-badge--sm {
+  height: var(--badge-size-sm-height);
+  padding-inline: var(--badge-size-sm-padding-x);
+  gap: var(--badge-size-sm-gap);
+  font-size: var(--badge-size-sm-font);
+}
+
+.maxa-badge--md {
+  height: var(--badge-size-md-height);
+  padding-inline: var(--badge-size-md-padding-x);
+  gap: var(--badge-size-md-gap);
+  font-size: var(--badge-size-md-font);
+}
+
+/* ── Icon sizing ─────────────────────────────────────────────── */
+
+.maxa-badge__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--badge-icon);
+}
+
+.maxa-badge--sm .maxa-badge__icon {
+  width: var(--badge-size-sm-icon);
+  height: var(--badge-size-sm-icon);
+}
+.maxa-badge--md .maxa-badge__icon {
+  width: var(--badge-size-md-icon);
+  height: var(--badge-size-md-icon);
+}

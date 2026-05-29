@@ -86,8 +86,8 @@ const FIGMA_COLOR_GROUP_PREFIXES = {
   action: 'action-',
 };
 
-const FIGMA_BACKGROUND_INTENTS = ['brand', 'info', 'success', 'warning', 'error'];
-const FIGMA_BACKGROUND_INTENT_SUFFIXES = ['subtle', 'surface', 'strong'];
+const FIGMA_BACKGROUND_INTENTS = ['brand', 'neutral', 'info', 'success', 'warning', 'error'];
+const FIGMA_BACKGROUND_INTENT_SUFFIXES = ['subtle', 'surface', 'strong', 'muted'];
 const FIGMA_LEGACY_COLOR_GROUPS = new Set(['fg', 'bg']);
 
 function collectFiles(dir, extensions) {
