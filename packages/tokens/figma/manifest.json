@@ -43,8 +43,8 @@
     },
     "Component-based Tokens": {
       "modes": {
-        "Light": ["component-button-light.json", "component-input-light.json"],
-        "Dark": ["component-button-dark.json", "component-input-dark.json"]
+        "Light": ["component-button-light.json", "component-input-light.json", "component-badge-light.json"],
+        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-badge-dark.json"]
       }
     }
   }

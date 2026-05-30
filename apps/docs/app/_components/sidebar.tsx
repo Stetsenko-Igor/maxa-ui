@@ -23,6 +23,7 @@ const NAV = [
     group: "Components",
     items: [
       { href: "/docs/components", label: "Overview" },
+      { href: "/docs/components/badge", label: "Badge" },
       { href: "/docs/components/button", label: "Button" },
       { href: "/docs/components/checkbox", label: "Checkbox" },
       { href: "/docs/components/date-picker", label: "Date Picker" },

@@ -351,6 +351,38 @@
     "bg-info-strong": {
       "$value": "{Colors.Blue.500}",
       "$type": "color"
+    },
+    "bg-neutral-subtle": {
+      "$value": "{Colors.Neutral.800}",
+      "$type": "color"
+    },
+    "bg-neutral-surface": {
+      "$value": "{Colors.Neutral.800}",
+      "$type": "color"
+    },
+    "bg-neutral-strong": {
+      "$value": "{Colors.Neutral.400}",
+      "$type": "color"
+    },
+    "bg-neutral-muted": {
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
+    },
+    "bg-info-muted": {
+      "$value": "{Colors.Blue.900}",
+      "$type": "color"
+    },
+    "bg-success-muted": {
+      "$value": "{Colors.Green.900}",
+      "$type": "color"
+    },
+    "bg-warning-muted": {
+      "$value": "{Colors.Orange.900}",
+      "$type": "color"
+    },
+    "bg-error-muted": {
+      "$value": "{Colors.Red.900}",
+      "$type": "color"
     }
   }
 }

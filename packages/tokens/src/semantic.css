@@ -25,9 +25,9 @@
   --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-600);
   --color-text-info:          var(--color-blue-600);
-  --color-text-success:       var(--color-green-700);
+  --color-text-success:       var(--color-green-800);
   --color-text-error:         var(--color-red-700);
-  --color-text-warning:       var(--color-yellow-600);
+  --color-text-warning:       var(--color-orange-700);
 
   /* ── Foreground — icons and non-text foreground elements ────────── */
   --color-fg-primary:       var(--color-neutral-950);
@@ -38,9 +38,9 @@
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-600);
   --color-fg-info:          var(--color-blue-600);
-  --color-fg-positive:      var(--color-green-700);
+  --color-fg-positive:      var(--color-green-800);
   --color-fg-negative:      var(--color-red-700);
-  --color-fg-warning:       var(--color-yellow-600);
+  --color-fg-warning:       var(--color-orange-700);
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-primary:        var(--color-neutral-300);
@@ -83,6 +83,15 @@
   --color-bg-warning-subtle:    var(--color-orange-50);
   --color-bg-warning-surface:   var(--color-orange-50);
   --color-bg-warning-strong:    var(--color-orange-600);
+
+  /* ── Background — status/intent muted (medium emphasis: badge/tag) ─ */
+  /* Sits between *-subtle (low) and *-strong (high). Reuses existing    */
+  /* primitives — no new color values.                                   */
+  --color-bg-neutral-muted:     var(--color-neutral-200);
+  --color-bg-info-muted:        var(--color-blue-100);
+  --color-bg-success-muted:     var(--color-green-100);
+  --color-bg-warning-muted:     var(--color-orange-100);
+  --color-bg-error-muted:       var(--color-red-100);
 
   /* ── Action — interactive element backgrounds ───────────────────── */
   --color-action-primary:                 var(--color-blue-500);
@@ -142,9 +151,9 @@
   --color-text-inverse:       var(--color-neutral-900);
   --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-400);
-  --color-text-info:          var(--color-blue-400);
+  --color-text-info:          var(--color-blue-300);
   --color-text-success:       var(--color-green-400);
-  --color-text-error:         var(--color-red-400);
+  --color-text-error:         var(--color-red-300);
   --color-text-warning:       var(--color-yellow-400);
 
   /* ── Foreground — dark ──────────────────────────────────────────── */
@@ -155,9 +164,9 @@
   --color-fg-inverse:       var(--color-neutral-900);
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-400);
-  --color-fg-info:          var(--color-blue-400);
+  --color-fg-info:          var(--color-blue-300);
   --color-fg-positive:      var(--color-green-400);
-  --color-fg-negative:      var(--color-red-400);
+  --color-fg-negative:      var(--color-red-300);
   --color-fg-warning:       var(--color-yellow-400);
 
   /* ── Border — dark ──────────────────────────────────────────────── */
@@ -201,6 +210,13 @@
   --color-bg-warning-subtle:    var(--color-yellow-950);
   --color-bg-warning-surface:   var(--color-yellow-950);
   --color-bg-warning-strong:    var(--color-orange-500);
+
+  /* ── Background — status/intent muted (medium emphasis: badge/tag) ─ */
+  --color-bg-neutral-muted:     var(--color-neutral-700);
+  --color-bg-info-muted:        var(--color-blue-900);
+  --color-bg-success-muted:     var(--color-green-900);
+  --color-bg-warning-muted:     var(--color-orange-900);
+  --color-bg-error-muted:       var(--color-red-900);
 
   /* ── Action — dark ──────────────────────────────────────────────── */
   --color-action-primary:                 var(--color-blue-300);
