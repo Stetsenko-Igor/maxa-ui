@@ -2,6 +2,7 @@ export const version = "0.0.0"
 
 export * from "./base-tokens"
 export * from "./components/badge"
+export * from "./components/tag"
 export * from "./components/button"
 export * from "./components/checkbox"
 export * from "./components/icon-button"

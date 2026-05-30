@@ -32,6 +32,11 @@ describe("Badge", () => {
     expect(document.querySelector(".maxa-badge")).toHaveClass("maxa-badge--sm")
   })
 
+  it("applies size class lg", () => {
+    render(<Badge size="lg">Large</Badge>)
+    expect(document.querySelector(".maxa-badge")).toHaveClass("maxa-badge--lg")
+  })
+
   it("renders leading icon, hidden from a11y tree", () => {
     render(
       <Badge icon={<svg data-testid="lead" />}>Label</Badge>,

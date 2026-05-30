@@ -1,15 +1,18 @@
 # Badge, Tag, and Pill Architecture
 
-Status: draft handoff  
+Status: superseded handoff  
 Source reference: Direct Mail Audience Figma file, Badge node `6020:18341`  
 Related components: Badge, Tag, FilterChip/Pill, DecorativeLabel
 
 > **Badge is now implemented.** The canonical Badge spec is `specs/components/badge.md`.
+> The canonical Tag spec is `specs/components/tag.md`.
+> The current accepted Badge/Tag plan is `.knowledge/Badge and Tag Component Plan.md`.
+> Older guidance in this file that gives Tag an `intent` prop is superseded.
 > Decision: the Figma reference colors here come from a foreign design system
 > (`nonSemantic-*` variables) and were **intentionally not adopted** — Badge uses
 > MAXA's existing semantic palette. The `--color-intent-*` token shape proposed
 > below was **not** used; instead a single `--color-bg-{intent}-muted` tier was
-> added over existing primitives. Tag and FilterChip remain unbuilt.
+> added over existing primitives.
 
 ## Context
 
@@ -29,14 +32,14 @@ The important takeaway is that `neutral` is valid, but it should be owned by Bad
 
 ### Badge
 
-Badges are compact status or metadata markers. They are not primarily user-editable controls.
+Badges are compact status or metadata markers. They are not user-editable controls and must not be removable.
 
 Recommended props:
 
 ```ts
 type BadgeIntent = "neutral" | "info" | "success" | "warning" | "error"
 type BadgeEmphasis = "low" | "medium" | "high"
-type BadgeSize = "sm" | "md"
+type BadgeSize = "sm" | "md" | "lg"
 
 type BadgeProps = {
   intent?: BadgeIntent
@@ -59,18 +62,21 @@ Recommended examples:
 
 ### Tag
 
-Tags represent applied labels or selected values. They may be removable. The current tag concept is incomplete if it cannot show a remove affordance.
+Tags represent applied labels, categories, or selected values. They may be removable. Tag intentionally has no semantic `intent`; use `appearance` for color buckets and `Badge` for status.
 
 Recommended props:
 
 ```ts
-type TagIntent = "neutral" | "info" | "success" | "warning" | "error" | "pending" | "update"
-type TagVariant = "subtle" | "solid"
-type TagSize = "sm" | "md"
+type TagAppearance =
+  | "grey" | "blue" | "green" | "red" | "orange"
+  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
+  | "cyan" | "teal" | "aquamarine" | "emerald"
+type TagEmphasis = "low" | "medium" | "high"
+type TagSize = "sm" | "md" | "lg"
 
 type TagProps = {
-  intent?: TagIntent
-  variant?: TagVariant
+  appearance?: TagAppearance
+  emphasis?: TagEmphasis
   size?: TagSize
   removable?: boolean
   onRemove?: () => void
@@ -82,9 +88,9 @@ type TagProps = {
 Recommended examples:
 
 ```tsx
-<Tag intent="neutral">Segment</Tag>
-<Tag intent="info" removable onRemove={handleRemove}>Audience</Tag>
-<Tag intent="success" variant="solid">Verified</Tag>
+<Tag appearance="grey">Segment</Tag>
+<Tag appearance="blue" removable onRemove={handleRemove}>Audience</Tag>
+<Tag appearance="violet" emphasis="high">VIP client</Tag>
 ```
 
 ### FilterChip / Pill
@@ -210,7 +216,7 @@ Removable Tag behavior:
 ## Recommended Implementation Order
 
 1. Create a real Badge spec and component.
-2. Add intent tokens for Badge/Tag/Pill, starting with neutral/info/success/warning/error.
+2. Add intent tokens for Badge, starting with neutral/info/success/warning/error.
 3. Create real Tag component with `removable`.
 4. Create FilterChip/Pill separately for interactive selection.
 5. Move current docs-only badges away from "Badge" terminology.
@@ -220,7 +226,7 @@ Removable Tag behavior:
 
 - Whether to use `info/success/error/warning` or `informative/positive/negative/warning` in public component props.
 - Whether `pending` and `update` are true intents or product-specific appearances.
-- Whether large tags are needed now. Start with `sm` and `md` unless usage proves otherwise.
+- Large size is accepted now. Badge and Tag both use `sm | md | lg`.
 - Whether the expanded decorative palette should become `accent/*` tokens or stay component-local.
 
 ## Current Recommendation
@@ -228,7 +234,6 @@ Removable Tag behavior:
 Keep `neutral`, but make it intentional:
 
 - yes: `Badge intent="neutral"`
-- yes: `Tag intent="neutral"`
+- no: `Tag intent="neutral"`; Tag uses `appearance`, not `intent`
 - yes: `FilterChip` neutral selected/unselected states
 - no: vague global `bg-neutral-*` tokens without component ownership
-

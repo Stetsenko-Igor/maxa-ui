@@ -8,6 +8,7 @@ const badgeVariants = cva("maxa-badge", {
     size: {
       sm: "maxa-badge--sm",
       md: "maxa-badge--md",
+      lg: "maxa-badge--lg",
     },
   },
   defaultVariants: {
@@ -17,7 +18,7 @@ const badgeVariants = cva("maxa-badge", {
 
 export type BadgeIntent = "neutral" | "info" | "success" | "warning" | "error"
 export type BadgeEmphasis = "low" | "medium" | "high"
-export type BadgeSize = "sm" | "md"
+export type BadgeSize = "sm" | "md" | "lg"
 export type BadgeAppearance =
   | "grey" | "blue" | "green" | "red" | "orange"
   | "raspberry" | "magenta" | "purple" | "grape" | "violet"

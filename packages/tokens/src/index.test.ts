@@ -255,10 +255,14 @@ describe("figma manifest", () => {
     expect(manifest.collections["Component-based Tokens"]?.modes.Light).toEqual([
       "component-button-light.json",
       "component-input-light.json",
+      "component-badge-light.json",
+      "component-tag-light.json",
     ])
     expect(manifest.collections["Component-based Tokens"]?.modes.Dark).toEqual([
       "component-button-dark.json",
       "component-input-dark.json",
+      "component-badge-dark.json",
+      "component-tag-dark.json",
     ])
   })
 
@@ -296,6 +300,16 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Light?.xs).toBeDefined()
     expect(bundle.effects?.shadows?.Shadows?.Light?.["3xl"]).toHaveLength(2)
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
+  })
+
+  it("includes Badge and Tag component tokens", () => {
+    const light = bundle.collections["Component-based Tokens"]?.modes.Light
+
+    expect(light?.["Badge/appearance/violet/medium/bg"]).toBe("{Primitives/Colors/Violet/100}")
+    expect(light?.["Badge/size/lg/height"]).toBe(28)
+    expect(light?.["Tag/appearance/violet/medium/bg"]).toBe("{Primitives/Colors/Violet/100}")
+    expect(light?.["Tag/size/lg/height"]).toBe(28)
+    expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
   })
 })
 

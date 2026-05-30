@@ -56,6 +56,12 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - This includes `AGENT.md`, `.knowledge/*`, package READMEs, docs pages, and design-system memory notes.
 - Conversation with the user may be in Russian, but persisted documentation and repo knowledge should stay in English.
 - MAXA is design-system-first, not Tailwind-first.
+- Cross-design-system research lives outside this repo in the Obsidian corpus documented at `.knowledge/Design System Research Corpus.md`.
+- Before making Badge, Tag, Chip, Pill, Filter, component-token, or taxonomy decisions, consult that corpus first rather than relying only on MAXA UI implementation details.
+- Current Badge/Tag direction is documented in `.knowledge/Badge and Tag Component Plan.md`.
+- Do not follow the older Claude plan that merges Tag into Badge. Badge and Tag remain separate components.
+- Badge is a non-removable status/count/metadata indicator with `intent`, `appearance`, `emphasis`, and sizes `sm | md | lg`.
+- Tag is a data/category/removable label with `appearance`, `emphasis`, and sizes `sm | md | lg`; Tag must not expose `intent`.
 - Figma token source of truth lives in `packages/tokens/figma/`.
 - Figma collections currently use:
   - `Primitives`

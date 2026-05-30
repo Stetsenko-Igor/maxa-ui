@@ -40,6 +40,7 @@ function injectThemeCSS() {
 const backgroundTokens = [
   "page",
   "surface",
+  "float",
   "muted",
   "overlay",
   "inverse",
