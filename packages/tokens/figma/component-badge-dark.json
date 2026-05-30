@@ -2,146 +2,933 @@
   "Badge": {
     "neutral": {
       "low": {
-        "bg":   { "$value": "{Color modes/background/bg-neutral-subtle}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-secondary}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-neutral-subtle}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-secondary}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-secondary}",
+          "$type": "color"
+        }
       },
       "medium": {
-        "bg":   { "$value": "{Color modes/background/bg-neutral-muted}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-primary}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-neutral-muted}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-primary}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-primary}",
+          "$type": "color"
+        }
       },
       "high": {
-        "bg":   { "$value": "{Color modes/background/bg-neutral-strong}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-neutral-strong}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        }
       }
     },
     "info": {
       "low": {
-        "bg":   { "$value": "{Color modes/background/bg-info-subtle}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-info}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-info}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-info-subtle}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-info}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-info}",
+          "$type": "color"
+        }
       },
       "medium": {
-        "bg":   { "$value": "{Color modes/background/bg-info-muted}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-info}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-info}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-info-muted}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-info}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-info}",
+          "$type": "color"
+        }
       },
       "high": {
-        "bg":   { "$value": "{Color modes/background/bg-info-strong}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-info-strong}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        }
       }
     },
     "success": {
       "low": {
-        "bg":   { "$value": "{Color modes/background/bg-success-subtle}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-success}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-success}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-success-subtle}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-success}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-success}",
+          "$type": "color"
+        }
       },
       "medium": {
-        "bg":   { "$value": "{Color modes/background/bg-success-muted}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-success}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-success}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-success-muted}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-success}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-success}",
+          "$type": "color"
+        }
       },
       "high": {
-        "bg":   { "$value": "{Color modes/background/bg-success-strong}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-success-strong}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        }
       }
     },
     "warning": {
       "low": {
-        "bg":   { "$value": "{Color modes/background/bg-warning-subtle}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-warning}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-warning}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-warning-subtle}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-warning}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-warning}",
+          "$type": "color"
+        }
       },
       "medium": {
-        "bg":   { "$value": "{Color modes/background/bg-warning-muted}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-warning}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-warning}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-warning-muted}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-warning}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-warning}",
+          "$type": "color"
+        }
       },
       "high": {
-        "bg":   { "$value": "{Color modes/background/bg-warning-strong}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-warning-strong}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        }
       }
     },
     "error": {
       "low": {
-        "bg":   { "$value": "{Color modes/background/bg-error-subtle}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-error}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-error}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-error-subtle}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-error}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-error}",
+          "$type": "color"
+        }
       },
       "medium": {
-        "bg":   { "$value": "{Color modes/background/bg-error-muted}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-error}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-error}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-error-muted}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-error}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-error}",
+          "$type": "color"
+        }
       },
       "high": {
-        "bg":   { "$value": "{Color modes/background/bg-error-strong}", "$type": "color" },
-        "fg":   { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-        "icon": { "$value": "{Color modes/text/text-inverse}", "$type": "color" }
+        "bg": {
+          "$value": "{Color modes/background/bg-error-strong}",
+          "$type": "color"
+        },
+        "fg": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{Color modes/text/text-inverse}",
+          "$type": "color"
+        }
       }
     },
     "appearance": {
       "grey": {
-        "low":  { "bg": { "$value": "{Colors.Neutral.100}", "$type": "color" }, "fg": { "$value": "{Colors.Neutral.700}", "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Neutral.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Neutral/800}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Neutral/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Neutral/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Neutral/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Neutral/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Neutral/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Neutral/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "blue": {
-        "low":  { "bg": { "$value": "{Colors.Blue.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Blue.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Blue.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Blue/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Blue/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Blue/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Blue/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Blue/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Blue/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Blue/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "green": {
-        "low":  { "bg": { "$value": "{Colors.Green.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Green.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Green.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Green/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Green/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Green/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Green/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Green/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Green/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Green/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "red": {
-        "low":  { "bg": { "$value": "{Colors.Red.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Red.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Red.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Red/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Red/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Red/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Red/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Red/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Red/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Red/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "orange": {
-        "low":  { "bg": { "$value": "{Colors.Orange.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Orange.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Orange.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Orange/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Orange/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Orange/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Orange/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Orange/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Orange/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Orange/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "raspberry": {
-        "low":  { "bg": { "$value": "{Colors.Rose.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Rose.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Rose.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Rose/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Rose/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Rose/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Rose/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Rose/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Rose/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Rose/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "magenta": {
-        "low":  { "bg": { "$value": "{Colors.Pink.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Pink.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Pink.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Pink/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Pink/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Pink/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Pink/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Pink/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Pink/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Pink/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "purple": {
-        "low":  { "bg": { "$value": "{Colors.Purple.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Purple.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Purple.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Purple/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Purple/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Purple/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Purple/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Purple/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Purple/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Purple/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "grape": {
-        "low":  { "bg": { "$value": "{Colors.Fuchsia.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Fuchsia.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Fuchsia.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Fuchsia/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Fuchsia/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Fuchsia/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Fuchsia/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Fuchsia/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Fuchsia/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Fuchsia/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "violet": {
-        "low":  { "bg": { "$value": "{Colors.Violet.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Violet.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Violet.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Violet/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Violet/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Violet/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Violet/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Violet/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Violet/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Violet/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "cyan": {
-        "low":  { "bg": { "$value": "{Colors.Cyan.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Cyan.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Cyan.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Cyan/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Cyan/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Cyan/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Cyan/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Cyan/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Cyan/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Cyan/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "teal": {
-        "low":  { "bg": { "$value": "{Colors.Teal.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Teal.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Teal.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Teal/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Teal/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Teal/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Teal/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Teal/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Teal/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Teal/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       },
       "aquamarine": {
-        "low":  { "bg": { "$value": "{Colors.Teal.100}", "$type": "color" }, "fg": { "$value": "{Colors.Teal.800}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Teal.800}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Colors.Teal.950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Colors.Teal.300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Colors.Teal.300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Colors.Teal.900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Colors.Teal.200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Colors.Teal.200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Colors.Teal.700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Colors.Base.White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Colors.Base.White}",
+            "$type": "color"
+          }
+        }
       },
       "emerald": {
-        "low":  { "bg": { "$value": "{Colors.Emerald.50}",  "$type": "color" }, "fg": { "$value": "{Colors.Emerald.700}",  "$type": "color" } },
-        "high": { "bg": { "$value": "{Colors.Emerald.700}", "$type": "color" }, "fg": { "$value": "{Colors.Base.White}", "$type": "color" } }
+        "low": {
+          "bg": {
+            "$value": "{Primitives/Colors/Emerald/950}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Emerald/300}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Emerald/300}",
+            "$type": "color"
+          }
+        },
+        "medium": {
+          "bg": {
+            "$value": "{Primitives/Colors/Emerald/900}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Emerald/200}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Emerald/200}",
+            "$type": "color"
+          }
+        },
+        "high": {
+          "bg": {
+            "$value": "{Primitives/Colors/Emerald/700}",
+            "$type": "color"
+          },
+          "fg": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          },
+          "icon": {
+            "$value": "{Primitives/Colors/Base/White}",
+            "$type": "color"
+          }
+        }
       }
+    },
+    "size": {
+      "sm": {
+        "height": {
+          "$value": 20,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$value": 6,
+          "$type": "number"
+        },
+        "gap": {
+          "$value": 4,
+          "$type": "number"
+        },
+        "radius": {
+          "$value": "{Radius/radius-full}",
+          "$type": "number"
+        },
+        "text": {
+          "$value": 12,
+          "$type": "number"
+        },
+        "icon-size": {
+          "$value": 12,
+          "$type": "number"
+        }
+      },
+      "md": {
+        "height": {
+          "$value": 24,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$value": 8,
+          "$type": "number"
+        },
+        "gap": {
+          "$value": 4,
+          "$type": "number"
+        },
+        "radius": {
+          "$value": "{Radius/radius-full}",
+          "$type": "number"
+        },
+        "text": {
+          "$value": 12,
+          "$type": "number"
+        },
+        "icon-size": {
+          "$value": 14,
+          "$type": "number"
+        }
+      },
+      "lg": {
+        "height": {
+          "$value": 28,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$value": 10,
+          "$type": "number"
+        },
+        "gap": {
+          "$value": 6,
+          "$type": "number"
+        },
+        "radius": {
+          "$value": "{Radius/radius-full}",
+          "$type": "number"
+        },
+        "text": {
+          "$value": 14,
+          "$type": "number"
+        },
+        "icon-size": {
+          "$value": 16,
+          "$type": "number"
+        }
+      }
+    },
+    "radius": {
+      "$value": "{Radius/radius-full}",
+      "$type": "number"
+    },
+    "font-family": {
+      "$value": "{Typography/Font family/body}",
+      "$type": "string"
+    },
+    "font-weight": {
+      "$value": "{Typography/Font weight/medium}",
+      "$type": "string"
     }
   }
 }
