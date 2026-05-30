@@ -8,11 +8,11 @@ describe("Tag", () => {
     expect(screen.getByText("Segment")).toBeInTheDocument()
   })
 
-  it("applies default appearance=grey, emphasis=low, size=md", () => {
+  it("applies default appearance=gray, emphasis=low, size=md", () => {
     render(<Tag>Default</Tag>)
     const el = document.querySelector(".maxa-tag")
     expect(el).toHaveClass("maxa-tag--md")
-    expect(el).toHaveAttribute("data-appearance", "grey")
+    expect(el).toHaveAttribute("data-appearance", "gray")
     expect(el).toHaveAttribute("data-emphasis", "low")
   })
 

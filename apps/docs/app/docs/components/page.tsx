@@ -136,7 +136,7 @@ export default function ComponentsPage() {
               <Tag appearance="blue" removable>Audience</Tag>
               <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
               <Tag appearance="teal">Prague</Tag>
-              <Tag appearance="raspberry" removable>Luxury</Tag>
+              <Tag appearance="rose" removable>Luxury</Tag>
             </div>
             <span style={footer}>View Tag →</span>
           </Link>

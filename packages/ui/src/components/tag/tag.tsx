@@ -18,9 +18,9 @@ const tagVariants = cva("maxa-tag", {
 })
 
 export type TagAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 export type TagEmphasis = "low" | "medium" | "high"
 export type TagSize = "sm" | "md" | "lg"
@@ -51,7 +51,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
     {
       className,
       size,
-      appearance = "grey",
+      appearance = "gray",
       emphasis = "low",
       removable = false,
       onRemove,
