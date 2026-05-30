@@ -24,7 +24,7 @@ const BADGE_PROPS = [
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Height 20px (sm), 24px (md), or 28px (lg)." },
   { name: "icon", type: "ReactNode", default: undefined, description: "Leading icon. Rendered aria-hidden." },
   { name: "trailingIcon", type: "ReactNode", default: undefined, description: "Trailing icon. Rendered aria-hidden." },
-  { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: undefined, description: "Decorative user-chosen color. Overrides intent coloring. Use with low, medium, or high emphasis." },
+  { name: "appearance", type: "'gray' | 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose'", default: undefined, description: "Decorative user-chosen color. Overrides intent coloring. Use with low, medium, or high emphasis." },
   { name: "asChild", type: "boolean", default: "false", description: "Merge props onto a custom child element via Radix Slot." },
 ]
 
@@ -194,22 +194,22 @@ export default function BadgePage() {
         description="14 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low, medium, and high emphasis."
       >
         <DocsExample title="Low emphasis (default)">
-          <ComponentPreview code={`<Badge appearance="grey">Grey</Badge>
+          <ComponentPreview code={`<Badge appearance="gray">Gray</Badge>
 <Badge appearance="blue">Blue</Badge>
 <Badge appearance="green">Green</Badge>
-<Badge appearance="raspberry">Raspberry</Badge>
-<Badge appearance="magenta">Magenta</Badge>
+<Badge appearance="rose">Rose</Badge>
+<Badge appearance="pink">Pink</Badge>
 <Badge appearance="purple">Purple</Badge>
-<Badge appearance="grape">Grape</Badge>
+<Badge appearance="fuchsia">Fuchsia</Badge>
 <Badge appearance="violet">Violet</Badge>
 <Badge appearance="cyan">Cyan</Badge>
 <Badge appearance="teal">Teal</Badge>
-<Badge appearance="aquamarine">Aquamarine</Badge>
+<Badge appearance="teal">Teal</Badge>
 <Badge appearance="emerald">Emerald</Badge>
 <Badge appearance="red">Red</Badge>
 <Badge appearance="orange">Orange</Badge>`}>
             <div style={row}>
-              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Badge key={a} appearance={a}>{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
@@ -217,9 +217,9 @@ export default function BadgePage() {
         </DocsExample>
         <DocsExample title="Medium emphasis">
           <ComponentPreview code={`<Badge appearance="violet" emphasis="medium">Violet</Badge>
-<Badge appearance="raspberry" emphasis="medium">Raspberry</Badge>`}>
+<Badge appearance="rose" emphasis="medium">Rose</Badge>`}>
             <div style={row}>
-              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Badge key={a} appearance={a} emphasis="medium">{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
@@ -227,9 +227,9 @@ export default function BadgePage() {
         </DocsExample>
         <DocsExample title="High emphasis (solid)">
           <ComponentPreview code={`<Badge appearance="violet" emphasis="high">Violet</Badge>
-<Badge appearance="raspberry" emphasis="high">Raspberry</Badge>`}>
+<Badge appearance="rose" emphasis="high">Rose</Badge>`}>
             <div style={row}>
-              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Badge key={a} appearance={a} emphasis="high">{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>

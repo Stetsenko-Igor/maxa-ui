@@ -20,9 +20,9 @@ export type BadgeIntent = "neutral" | "info" | "success" | "warning" | "error"
 export type BadgeEmphasis = "low" | "medium" | "high"
 export type BadgeSize = "sm" | "md" | "lg"
 export type BadgeAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLSpanElement>,

@@ -19,7 +19,7 @@ const TOC = [
 ]
 
 const TAG_PROPS = [
-  { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: "'grey'", description: "Decorative color. 14 options matching the Badge appearance palette." },
+  { name: "appearance", type: "'gray' | 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose'", default: "'gray'", description: "Decorative color. 14 options matching the Badge appearance palette." },
   { name: "emphasis", type: "'low' | 'medium' | 'high'", default: "'low'", description: "Visual weight. Low = subtle tint; medium = stronger tint; high = solid background with inverse text." },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Height 20px (sm), 24px (md), 28px (lg)." },
   { name: "removable", type: "boolean", default: "false", description: "Shows a × remove button. Use with onRemove." },
@@ -28,7 +28,7 @@ const TAG_PROPS = [
   { name: "asChild", type: "boolean", default: "false", description: "Merge props onto a custom child element via Radix Slot. Not compatible with removable." },
 ]
 
-const APPEARANCES = ["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const
+const APPEARANCES = (["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)
 
 const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }
 const col: React.CSSProperties = { display: "flex", flexDirection: "column", gap: "12px" }
@@ -53,11 +53,11 @@ export default function TagPage() {
         <DocsExample title="Default">
           <ComponentPreview code={`import { Tag } from "@maxa/ui"\n\n<Tag appearance="violet" removable onRemove={() => {}}>Customers</Tag>`}>
             <div style={row}>
-              <Tag appearance="grey">Segment</Tag>
+              <Tag appearance="gray">Segment</Tag>
               <Tag appearance="blue" removable>Audience</Tag>
               <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
               <Tag appearance="teal">Prague</Tag>
-              <Tag appearance="raspberry" removable>Luxury</Tag>
+              <Tag appearance="rose" removable>Luxury</Tag>
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -129,7 +129,7 @@ export default function TagPage() {
   Customers
 </Tag>`}>
             <div style={row}>
-              {(["grey","blue","violet","teal","raspberry"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Tag key={a} appearance={a} removable>{a.charAt(0).toUpperCase() + a.slice(1)}</Tag>
               ))}
             </div>
@@ -138,7 +138,7 @@ export default function TagPage() {
         <DocsExample title="High emphasis + removable">
           <ComponentPreview code={`<Tag appearance="violet" emphasis="high" removable onRemove={() => {}}>VIP</Tag>`}>
             <div style={row}>
-              {(["blue","violet","teal","raspberry","purple"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Tag key={a} appearance={a} emphasis="high" removable>{a.charAt(0).toUpperCase() + a.slice(1)}</Tag>
               ))}
             </div>
@@ -172,7 +172,7 @@ export default function TagPage() {
   Customers
 </Tag>`}>
             <div style={row}>
-              {(["grey","blue","green","violet","teal","raspberry"] as const).map(a => (
+              {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Tag
                   key={a}
                   appearance={a}
