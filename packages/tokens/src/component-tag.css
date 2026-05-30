@@ -1,0 +1,433 @@
+/* Tag component tokens — Layer 3 */
+/* Tag: removable data label. Appearance-only (no semantic intent).      */
+/* Emphasis: low (subtle tint) or high (solid). No medium tier.          */
+/* Dark mode requires explicit overrides — appearance uses primitives     */
+/* directly, which are mode-independent.                                  */
+
+:root {
+  /* ── Defaults (grey / low) ──────────────────────────────────────── */
+  --tag-bg:     var(--color-neutral-100);
+  --tag-fg:     var(--color-neutral-900);
+  --tag-icon:   var(--color-neutral-900);
+  --tag-border: transparent;
+
+  /* ── Remove button ──────────────────────────────────────────────── */
+  --tag-remove-fg:       var(--color-neutral-900);
+  --tag-remove-opacity:  0.65;
+
+  /* ── Shared ─────────────────────────────────────────────────────── */
+  --tag-radius:      var(--radius-full);
+  --tag-font-family: var(--font-body);
+  --tag-font-weight: var(--font-weight-medium);
+
+  /* ── Sizes ──────────────────────────────────────────────────────── */
+  /* sm */
+  --tag-size-sm-height:    20px;
+  --tag-size-sm-padding-x: var(--spacing-sm);   /* 6px */
+  --tag-size-sm-gap:       var(--spacing-xs);    /* 4px */
+  --tag-size-sm-font:      var(--text-sm);       /* 12px */
+  --tag-size-sm-icon:      12px;
+  --tag-size-sm-remove:    12px;
+
+  /* md */
+  --tag-size-md-height:    24px;
+  --tag-size-md-padding-x: var(--spacing-md);   /* 8px */
+  --tag-size-md-gap:       var(--spacing-xs);    /* 4px */
+  --tag-size-md-font:      var(--text-sm);       /* 12px */
+  --tag-size-md-icon:      14px;
+  --tag-size-md-remove:    14px;
+
+  /* lg */
+  --tag-size-lg-height:    28px;
+  --tag-size-lg-padding-x: 10px;
+  --tag-size-lg-gap:       var(--spacing-sm);   /* 6px */
+  --tag-size-lg-font:      var(--text-md);      /* 14px */
+  --tag-size-lg-icon:      16px;
+  --tag-size-lg-remove:    16px;
+}
+
+/* ── Appearance palette — light mode ────────────────────────────────── */
+/* Low:  hue-50 bg  + hue-900 text                                       */
+/* High: hue-700 bg + white text                                         */
+
+/* grey */
+.maxa-tag[data-appearance="grey"][data-emphasis="low"] {
+  --tag-bg:        var(--color-neutral-100);
+  --tag-fg:        var(--color-neutral-900);
+  --tag-icon:      var(--color-neutral-900);
+  --tag-remove-fg: var(--color-neutral-900);
+}
+.maxa-tag[data-appearance="grey"][data-emphasis="high"] {
+  --tag-bg:        var(--color-neutral-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* blue */
+.maxa-tag[data-appearance="blue"][data-emphasis="low"] {
+  --tag-bg:        var(--color-blue-50);
+  --tag-fg:        var(--color-blue-900);
+  --tag-icon:      var(--color-blue-900);
+  --tag-remove-fg: var(--color-blue-900);
+}
+.maxa-tag[data-appearance="blue"][data-emphasis="high"] {
+  --tag-bg:        var(--color-blue-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* green */
+.maxa-tag[data-appearance="green"][data-emphasis="low"] {
+  --tag-bg:        var(--color-green-50);
+  --tag-fg:        var(--color-green-900);
+  --tag-icon:      var(--color-green-900);
+  --tag-remove-fg: var(--color-green-900);
+}
+.maxa-tag[data-appearance="green"][data-emphasis="high"] {
+  --tag-bg:        var(--color-green-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* red */
+.maxa-tag[data-appearance="red"][data-emphasis="low"] {
+  --tag-bg:        var(--color-red-50);
+  --tag-fg:        var(--color-red-900);
+  --tag-icon:      var(--color-red-900);
+  --tag-remove-fg: var(--color-red-900);
+}
+.maxa-tag[data-appearance="red"][data-emphasis="high"] {
+  --tag-bg:        var(--color-red-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* orange */
+.maxa-tag[data-appearance="orange"][data-emphasis="low"] {
+  --tag-bg:        var(--color-orange-50);
+  --tag-fg:        var(--color-orange-900);
+  --tag-icon:      var(--color-orange-900);
+  --tag-remove-fg: var(--color-orange-900);
+}
+.maxa-tag[data-appearance="orange"][data-emphasis="high"] {
+  --tag-bg:        var(--color-orange-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* raspberry → rose */
+.maxa-tag[data-appearance="raspberry"][data-emphasis="low"] {
+  --tag-bg:        var(--color-rose-50);
+  --tag-fg:        var(--color-rose-900);
+  --tag-icon:      var(--color-rose-900);
+  --tag-remove-fg: var(--color-rose-900);
+}
+.maxa-tag[data-appearance="raspberry"][data-emphasis="high"] {
+  --tag-bg:        var(--color-rose-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* magenta → pink */
+.maxa-tag[data-appearance="magenta"][data-emphasis="low"] {
+  --tag-bg:        var(--color-pink-50);
+  --tag-fg:        var(--color-pink-900);
+  --tag-icon:      var(--color-pink-900);
+  --tag-remove-fg: var(--color-pink-900);
+}
+.maxa-tag[data-appearance="magenta"][data-emphasis="high"] {
+  --tag-bg:        var(--color-pink-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* purple */
+.maxa-tag[data-appearance="purple"][data-emphasis="low"] {
+  --tag-bg:        var(--color-purple-50);
+  --tag-fg:        var(--color-purple-900);
+  --tag-icon:      var(--color-purple-900);
+  --tag-remove-fg: var(--color-purple-900);
+}
+.maxa-tag[data-appearance="purple"][data-emphasis="high"] {
+  --tag-bg:        var(--color-purple-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* grape → fuchsia */
+.maxa-tag[data-appearance="grape"][data-emphasis="low"] {
+  --tag-bg:        var(--color-fuchsia-50);
+  --tag-fg:        var(--color-fuchsia-900);
+  --tag-icon:      var(--color-fuchsia-900);
+  --tag-remove-fg: var(--color-fuchsia-900);
+}
+.maxa-tag[data-appearance="grape"][data-emphasis="high"] {
+  --tag-bg:        var(--color-fuchsia-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* violet */
+.maxa-tag[data-appearance="violet"][data-emphasis="low"] {
+  --tag-bg:        var(--color-violet-50);
+  --tag-fg:        var(--color-violet-900);
+  --tag-icon:      var(--color-violet-900);
+  --tag-remove-fg: var(--color-violet-900);
+}
+.maxa-tag[data-appearance="violet"][data-emphasis="high"] {
+  --tag-bg:        var(--color-violet-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* cyan */
+.maxa-tag[data-appearance="cyan"][data-emphasis="low"] {
+  --tag-bg:        var(--color-cyan-50);
+  --tag-fg:        var(--color-cyan-900);
+  --tag-icon:      var(--color-cyan-900);
+  --tag-remove-fg: var(--color-cyan-900);
+}
+.maxa-tag[data-appearance="cyan"][data-emphasis="high"] {
+  --tag-bg:        var(--color-cyan-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* teal */
+.maxa-tag[data-appearance="teal"][data-emphasis="low"] {
+  --tag-bg:        var(--color-teal-50);
+  --tag-fg:        var(--color-teal-900);
+  --tag-icon:      var(--color-teal-900);
+  --tag-remove-fg: var(--color-teal-900);
+}
+.maxa-tag[data-appearance="teal"][data-emphasis="high"] {
+  --tag-bg:        var(--color-teal-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* aquamarine → teal (slightly darker base) */
+.maxa-tag[data-appearance="aquamarine"][data-emphasis="low"] {
+  --tag-bg:        var(--color-teal-100);
+  --tag-fg:        var(--color-teal-900);
+  --tag-icon:      var(--color-teal-900);
+  --tag-remove-fg: var(--color-teal-900);
+}
+.maxa-tag[data-appearance="aquamarine"][data-emphasis="high"] {
+  --tag-bg:        var(--color-teal-800);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* emerald */
+.maxa-tag[data-appearance="emerald"][data-emphasis="low"] {
+  --tag-bg:        var(--color-emerald-50);
+  --tag-fg:        var(--color-emerald-900);
+  --tag-icon:      var(--color-emerald-900);
+  --tag-remove-fg: var(--color-emerald-900);
+}
+.maxa-tag[data-appearance="emerald"][data-emphasis="high"] {
+  --tag-bg:        var(--color-emerald-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+/* ── Dark mode overrides ─────────────────────────────────────────────── */
+/* Low:  hue-950 bg + hue-300 fg                                         */
+/* High: hue-700 bg + base-white fg  (same as light — solid stays solid) */
+
+[data-theme="dark"] .maxa-tag[data-appearance="grey"][data-emphasis="low"] {
+  --tag-bg:        var(--color-neutral-800);
+  --tag-fg:        var(--color-neutral-300);
+  --tag-icon:      var(--color-neutral-300);
+  --tag-remove-fg: var(--color-neutral-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="grey"][data-emphasis="high"] {
+  --tag-bg:        var(--color-neutral-600);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="blue"][data-emphasis="low"] {
+  --tag-bg:        var(--color-blue-950);
+  --tag-fg:        var(--color-blue-300);
+  --tag-icon:      var(--color-blue-300);
+  --tag-remove-fg: var(--color-blue-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="blue"][data-emphasis="high"] {
+  --tag-bg:        var(--color-blue-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="green"][data-emphasis="low"] {
+  --tag-bg:        var(--color-green-950);
+  --tag-fg:        var(--color-green-300);
+  --tag-icon:      var(--color-green-300);
+  --tag-remove-fg: var(--color-green-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="green"][data-emphasis="high"] {
+  --tag-bg:        var(--color-green-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="red"][data-emphasis="low"] {
+  --tag-bg:        var(--color-red-950);
+  --tag-fg:        var(--color-red-300);
+  --tag-icon:      var(--color-red-300);
+  --tag-remove-fg: var(--color-red-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="red"][data-emphasis="high"] {
+  --tag-bg:        var(--color-red-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="orange"][data-emphasis="low"] {
+  --tag-bg:        var(--color-orange-950);
+  --tag-fg:        var(--color-orange-300);
+  --tag-icon:      var(--color-orange-300);
+  --tag-remove-fg: var(--color-orange-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="orange"][data-emphasis="high"] {
+  --tag-bg:        var(--color-orange-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="raspberry"][data-emphasis="low"] {
+  --tag-bg:        var(--color-rose-950);
+  --tag-fg:        var(--color-rose-300);
+  --tag-icon:      var(--color-rose-300);
+  --tag-remove-fg: var(--color-rose-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="raspberry"][data-emphasis="high"] {
+  --tag-bg:        var(--color-rose-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="magenta"][data-emphasis="low"] {
+  --tag-bg:        var(--color-pink-950);
+  --tag-fg:        var(--color-pink-300);
+  --tag-icon:      var(--color-pink-300);
+  --tag-remove-fg: var(--color-pink-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="magenta"][data-emphasis="high"] {
+  --tag-bg:        var(--color-pink-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="purple"][data-emphasis="low"] {
+  --tag-bg:        var(--color-purple-950);
+  --tag-fg:        var(--color-purple-300);
+  --tag-icon:      var(--color-purple-300);
+  --tag-remove-fg: var(--color-purple-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="purple"][data-emphasis="high"] {
+  --tag-bg:        var(--color-purple-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="grape"][data-emphasis="low"] {
+  --tag-bg:        var(--color-fuchsia-950);
+  --tag-fg:        var(--color-fuchsia-300);
+  --tag-icon:      var(--color-fuchsia-300);
+  --tag-remove-fg: var(--color-fuchsia-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="grape"][data-emphasis="high"] {
+  --tag-bg:        var(--color-fuchsia-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="violet"][data-emphasis="low"] {
+  --tag-bg:        var(--color-violet-950);
+  --tag-fg:        var(--color-violet-300);
+  --tag-icon:      var(--color-violet-300);
+  --tag-remove-fg: var(--color-violet-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="violet"][data-emphasis="high"] {
+  --tag-bg:        var(--color-violet-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="cyan"][data-emphasis="low"] {
+  --tag-bg:        var(--color-cyan-950);
+  --tag-fg:        var(--color-cyan-300);
+  --tag-icon:      var(--color-cyan-300);
+  --tag-remove-fg: var(--color-cyan-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="cyan"][data-emphasis="high"] {
+  --tag-bg:        var(--color-cyan-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="teal"][data-emphasis="low"] {
+  --tag-bg:        var(--color-teal-950);
+  --tag-fg:        var(--color-teal-300);
+  --tag-icon:      var(--color-teal-300);
+  --tag-remove-fg: var(--color-teal-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="teal"][data-emphasis="high"] {
+  --tag-bg:        var(--color-teal-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="aquamarine"][data-emphasis="low"] {
+  --tag-bg:        var(--color-teal-900);
+  --tag-fg:        var(--color-teal-200);
+  --tag-icon:      var(--color-teal-200);
+  --tag-remove-fg: var(--color-teal-200);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="aquamarine"][data-emphasis="high"] {
+  --tag-bg:        var(--color-teal-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}
+
+[data-theme="dark"] .maxa-tag[data-appearance="emerald"][data-emphasis="low"] {
+  --tag-bg:        var(--color-emerald-950);
+  --tag-fg:        var(--color-emerald-300);
+  --tag-icon:      var(--color-emerald-300);
+  --tag-remove-fg: var(--color-emerald-300);
+}
+[data-theme="dark"] .maxa-tag[data-appearance="emerald"][data-emphasis="high"] {
+  --tag-bg:        var(--color-emerald-700);
+  --tag-fg:        var(--color-base-white);
+  --tag-icon:      var(--color-base-white);
+  --tag-remove-fg: var(--color-base-white);
+}

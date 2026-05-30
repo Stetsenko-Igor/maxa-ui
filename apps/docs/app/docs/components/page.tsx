@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Badge, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
+import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -102,7 +102,7 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Nine components covering status indicators, actions, form controls, selection, and composition.
+          Ten components covering status indicators, data labels, actions, form controls, selection, and composition.
           All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
@@ -124,6 +124,21 @@ export default function ComponentsPage() {
               <Badge intent="error" emphasis="high">Failed</Badge>
             </div>
             <span style={footer}>View Badge →</span>
+          </Link>
+
+          <Link href="/docs/components/tag" style={card}>
+            <p style={eyebrow}>Data</p>
+            <h2 style={title}>Tag</h2>
+            <p style={description}>
+              Removable data label for user-defined categories. 14 colors, two emphasis levels.
+            </p>
+            <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
+              <Tag appearance="blue" removable>Audience</Tag>
+              <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
+              <Tag appearance="teal">Prague</Tag>
+              <Tag appearance="raspberry" removable>Luxury</Tag>
+            </div>
+            <span style={footer}>View Tag →</span>
           </Link>
 
           <Link href="/docs/components/button" style={card}>

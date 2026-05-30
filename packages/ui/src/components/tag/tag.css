@@ -1,0 +1,108 @@
+/* Tag component styles — references only component tokens */
+
+.maxa-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--tag-radius);
+  border: 1px solid var(--tag-border);
+  background-color: var(--tag-bg);
+  color: var(--tag-fg);
+  font-family: var(--tag-font-family);
+  font-weight: var(--tag-font-weight);
+  white-space: nowrap;
+  width: fit-content;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Sizes ──────────────────────────────────────────────────── */
+
+.maxa-tag--sm {
+  height: var(--tag-size-sm-height);
+  padding-inline: var(--tag-size-sm-padding-x);
+  gap: var(--tag-size-sm-gap);
+  font-size: var(--tag-size-sm-font);
+}
+
+.maxa-tag--md {
+  height: var(--tag-size-md-height);
+  padding-inline: var(--tag-size-md-padding-x);
+  gap: var(--tag-size-md-gap);
+  font-size: var(--tag-size-md-font);
+}
+
+.maxa-tag--lg {
+  height: var(--tag-size-lg-height);
+  padding-inline: var(--tag-size-lg-padding-x);
+  gap: var(--tag-size-lg-gap);
+  font-size: var(--tag-size-lg-font);
+}
+
+/* ── Leading icon ────────────────────────────────────────────── */
+
+.maxa-tag__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--tag-icon);
+}
+
+.maxa-tag--sm .maxa-tag__icon {
+  width: var(--tag-size-sm-icon);
+  height: var(--tag-size-sm-icon);
+}
+.maxa-tag--md .maxa-tag__icon {
+  width: var(--tag-size-md-icon);
+  height: var(--tag-size-md-icon);
+}
+.maxa-tag--lg .maxa-tag__icon {
+  width: var(--tag-size-lg-icon);
+  height: var(--tag-size-lg-icon);
+}
+
+/* ── Remove button ───────────────────────────────────────────── */
+
+.maxa-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 1px;
+  margin-inline-end: -2px;
+  color: var(--tag-remove-fg);
+  opacity: var(--tag-remove-opacity);
+  cursor: pointer;
+  line-height: 0;
+  transition: opacity 100ms ease, background-color 100ms ease;
+}
+
+.maxa-tag__remove:hover {
+  opacity: 1;
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.maxa-tag__remove:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+.maxa-tag--sm .maxa-tag__remove {
+  width: var(--tag-size-sm-remove);
+  height: var(--tag-size-sm-remove);
+}
+.maxa-tag--md .maxa-tag__remove {
+  width: var(--tag-size-md-remove);
+  height: var(--tag-size-md-remove);
+}
+.maxa-tag--lg .maxa-tag__remove {
+  width: var(--tag-size-lg-remove);
+  height: var(--tag-size-lg-remove);
+}
+
+.maxa-tag__remove svg {
+  width: 75%;
+  height: 75%;
+}
