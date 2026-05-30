@@ -25,9 +25,9 @@
   --color-text-on-brand:      var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-600);
   --color-text-info:          var(--color-blue-600);
-  --color-text-success:       var(--color-green-700);
+  --color-text-success:       var(--color-green-800);
   --color-text-error:         var(--color-red-700);
-  --color-text-warning:       var(--color-yellow-600);
+  --color-text-warning:       var(--color-orange-700);
 
   /* ── Foreground — icons and non-text foreground elements ────────── */
   --color-fg-primary:       var(--color-neutral-950);
@@ -38,9 +38,9 @@
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-600);
   --color-fg-info:          var(--color-blue-600);
-  --color-fg-positive:      var(--color-green-700);
+  --color-fg-positive:      var(--color-green-800);
   --color-fg-negative:      var(--color-red-700);
-  --color-fg-warning:       var(--color-yellow-600);
+  --color-fg-warning:       var(--color-orange-700);
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-primary:        var(--color-neutral-300);
