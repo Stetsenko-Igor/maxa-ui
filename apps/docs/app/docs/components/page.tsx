@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
+import { Badge, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -102,13 +102,29 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Eight components covering actions, form controls, selection, and composition.
+          Nine components covering status indicators, actions, form controls, selection, and composition.
           All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
     >
       <DocsPageSection id="catalog" title="Catalog" description="Each component is fully documented with interactive previews, code examples, and an API reference.">
         <div style={grid}>
+
+          <Link href="/docs/components/badge" style={card}>
+            <p style={eyebrow}>Status</p>
+            <h2 style={title}>Badge</h2>
+            <p style={description}>
+              Compact status and metadata indicator. Five intents, three emphasis levels, 14 decorative colors.
+            </p>
+            <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
+              <Badge intent="neutral" emphasis="low">Draft</Badge>
+              <Badge intent="info" emphasis="low">In review</Badge>
+              <Badge intent="success" emphasis="high">Active</Badge>
+              <Badge intent="warning" emphasis="low">Pending</Badge>
+              <Badge intent="error" emphasis="high">Failed</Badge>
+            </div>
+            <span style={footer}>View Badge →</span>
+          </Link>
 
           <Link href="/docs/components/button" style={card}>
             <p style={eyebrow}>Action</p>
