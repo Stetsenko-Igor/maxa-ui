@@ -81,6 +81,7 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --color-bg-neutral-strong     /* Strong neutral background */
 --color-bg-brand-subtle       /* Brand-tinted section bg */
 --color-bg-brand-surface              /* Brand surface */
+--color-bg-brand-muted        /* Stronger brand-tinted background */
 --color-bg-brand-strong        /* Strong brand-colored surface */
 --color-bg-info-subtle
 --color-bg-info-surface
@@ -570,6 +571,51 @@ emphasis: low/medium/high). Light/dark handled by the semantic layer.
 --badge-size-md-gap           /* 4px */
 --badge-size-md-font          /* text-sm 12px */
 --badge-size-md-icon          /* 14px */
+--badge-size-lg-height        /* 28px */
+--badge-size-lg-padding-x     /* 10px */
+--badge-size-lg-gap           /* 6px */
+--badge-size-lg-font          /* text-md 14px */
+--badge-size-lg-icon          /* 16px */
+```
+
+## Tag Component Tokens
+
+Mapped per `[data-appearance][data-emphasis]` (appearance palette;
+emphasis: low/medium/high). Tag intentionally has no semantic intent.
+
+```css
+/* Resolved per variant */
+--tag-bg
+--tag-fg
+--tag-icon
+--tag-border                 /* transparent (v1) */
+--tag-remove-fg
+--tag-remove-opacity
+
+/* Shared */
+--tag-radius                 /* radius-sm (6px) */
+--tag-font-family            /* Montserrat */
+--tag-font-weight            /* 500 */
+
+/* Sizes */
+--tag-size-sm-height         /* 20px */
+--tag-size-sm-padding-x      /* 6px */
+--tag-size-sm-gap            /* 4px */
+--tag-size-sm-font           /* text-sm 12px */
+--tag-size-sm-icon           /* 12px */
+--tag-size-sm-remove         /* 12px */
+--tag-size-md-height         /* 24px */
+--tag-size-md-padding-x      /* 8px */
+--tag-size-md-gap            /* 4px */
+--tag-size-md-font           /* text-sm 12px */
+--tag-size-md-icon           /* 14px */
+--tag-size-md-remove         /* 14px */
+--tag-size-lg-height         /* 28px */
+--tag-size-lg-padding-x      /* 10px */
+--tag-size-lg-gap            /* 6px */
+--tag-size-lg-font           /* text-md 14px */
+--tag-size-lg-icon           /* 16px */
+--tag-size-lg-remove         /* 16px */
 ```
 
 ## Source files
@@ -583,6 +629,7 @@ emphasis: low/medium/high). Light/dark handled by the semantic layer.
 - `packages/tokens/src/component-checkbox.css` — checkbox component tokens
 - `packages/tokens/src/component-radio.css` — radio component tokens
 - `packages/tokens/src/component-badge.css` — badge component tokens
+- `packages/tokens/src/component-tag.css` — tag component tokens
 - `packages/tokens/src/component-nav.css` — nav component tokens
 - `packages/tokens/figma/component-button-light.json` — button component tokens (light)
 - `packages/tokens/figma/component-button-dark.json` — button component tokens (dark)

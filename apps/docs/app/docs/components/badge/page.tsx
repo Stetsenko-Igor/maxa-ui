@@ -21,10 +21,10 @@ const TOC = [
 const BADGE_PROPS = [
   { name: "intent", type: "'neutral' | 'info' | 'success' | 'warning' | 'error'", default: "'neutral'", description: "Semantic intent. Maps to the status color scale." },
   { name: "emphasis", type: "'low' | 'medium' | 'high'", default: "'low'", description: "Visual weight. Low = subtle bg; medium = muted bg; high = solid bg + inverse text." },
-  { name: "size", type: "'sm' | 'md'", default: "'md'", description: "Height 20px (sm) or 24px (md)." },
+  { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Height 20px (sm), 24px (md), or 28px (lg)." },
   { name: "icon", type: "ReactNode", default: undefined, description: "Leading icon. Rendered aria-hidden." },
   { name: "trailingIcon", type: "ReactNode", default: undefined, description: "Trailing icon. Rendered aria-hidden." },
-  { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: undefined, description: "Decorative user-chosen color. Overrides intent coloring. Use with emphasis='low' (default) or emphasis='high'." },
+  { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: undefined, description: "Decorative user-chosen color. Overrides intent coloring. Use with low, medium, or high emphasis." },
   { name: "asChild", type: "boolean", default: "false", description: "Merge props onto a custom child element via Radix Slot." },
 ]
 
@@ -45,7 +45,7 @@ export default function BadgePage() {
       lead={
         <>
           A compact, non-interactive indicator for status, count, or metadata.
-          Supports five intents, three emphasis levels, and two sizes.
+          Supports five intents, three emphasis levels, and three sizes.
         </>
       }
     >
@@ -139,14 +139,16 @@ export default function BadgePage() {
       <DocsSection
         id="sizes"
         title="Sizes"
-        description={<>Two sizes: <code>sm</code> (20px) and <code>md</code> (24px, default).</>}
+        description={<>Three sizes: <code>sm</code> (20px), <code>md</code> (24px, default), and <code>lg</code> (28px).</>}
       >
-        <DocsExample title="sm and md">
+        <DocsExample title="sm, md, lg">
           <ComponentPreview code={`<Badge size="sm" intent="success">Active</Badge>
-<Badge size="md" intent="success">Active</Badge>`}>
+<Badge size="md" intent="success">Active</Badge>
+<Badge size="lg" intent="success">Active</Badge>`}>
             <div style={row}>
               <Badge size="sm" intent="success">Active</Badge>
               <Badge size="md" intent="success">Active</Badge>
+              <Badge size="lg" intent="success">Active</Badge>
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -189,7 +191,7 @@ export default function BadgePage() {
       <DocsSection
         id="color-palette"
         title="Color palette"
-        description="14 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low (subtle) and high (solid) emphasis."
+        description="14 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low, medium, and high emphasis."
       >
         <DocsExample title="Low emphasis (default)">
           <ComponentPreview code={`<Badge appearance="grey">Grey</Badge>
@@ -209,6 +211,16 @@ export default function BadgePage() {
             <div style={row}>
               {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
                 <Badge key={a} appearance={a}>{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
+              ))}
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+        <DocsExample title="Medium emphasis">
+          <ComponentPreview code={`<Badge appearance="violet" emphasis="medium">Violet</Badge>
+<Badge appearance="raspberry" emphasis="medium">Raspberry</Badge>`}>
+            <div style={row}>
+              {(["grey","blue","green","red","orange","raspberry","magenta","purple","grape","violet","cyan","teal","aquamarine","emerald"] as const).map(a => (
+                <Badge key={a} appearance={a} emphasis="medium">{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>
               ))}
             </div>
           </ComponentPreview>

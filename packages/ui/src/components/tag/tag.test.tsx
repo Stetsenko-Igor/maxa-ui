@@ -17,10 +17,10 @@ describe("Tag", () => {
   })
 
   it("sets data-appearance and data-emphasis", () => {
-    render(<Tag appearance="violet" emphasis="high">List</Tag>)
+    render(<Tag appearance="violet" emphasis="medium">List</Tag>)
     const el = document.querySelector(".maxa-tag")
     expect(el).toHaveAttribute("data-appearance", "violet")
-    expect(el).toHaveAttribute("data-emphasis", "high")
+    expect(el).toHaveAttribute("data-emphasis", "medium")
   })
 
   it("applies size classes", () => {

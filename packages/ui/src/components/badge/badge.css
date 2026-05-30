@@ -31,6 +31,13 @@
   font-size: var(--badge-size-md-font);
 }
 
+.maxa-badge--lg {
+  height: var(--badge-size-lg-height);
+  padding-inline: var(--badge-size-lg-padding-x);
+  gap: var(--badge-size-lg-gap);
+  font-size: var(--badge-size-lg-font);
+}
+
 /* ── Icon sizing ─────────────────────────────────────────────── */
 
 .maxa-badge__icon {
@@ -47,4 +54,8 @@
 .maxa-badge--md .maxa-badge__icon {
   width: var(--badge-size-md-icon);
   height: var(--badge-size-md-icon);
+}
+.maxa-badge--lg .maxa-badge__icon {
+  width: var(--badge-size-lg-icon);
+  height: var(--badge-size-lg-icon);
 }

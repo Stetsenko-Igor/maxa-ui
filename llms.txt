@@ -14,6 +14,8 @@ Status: Under development
 
 ## Current DS Snapshot
 - MAXA is design-system-first.
+- External 89-profile design-system research corpus: `.knowledge/Design System Research Corpus.md`
+- Current Badge/Tag plan: `.knowledge/Badge and Tag Component Plan.md`
 - Figma source of truth: `packages/tokens/figma/`
 - Figma collections:
   - `Primitives`

@@ -507,10 +507,12 @@ Taxonomy note:
 
 - Badge, Tag, Pill, and Filter may share visual primitives such as height, radius, gap, icon size, and color intensity.
 - They should still be separated by purpose and behavior:
-  - Badge = status/count/metadata indicator
-  - Tag = data label/category, often removable
+  - Badge = status/count/quality/metadata indicator; non-removable; `radius-full`; supports `intent`, `appearance`, `emphasis`, and `size = sm | md | lg`
+  - Tag = data label/category/selected value; removable-capable; `radius-sm`; supports `appearance`, `emphasis`, and `size = sm | md | lg`; no `intent`
   - Pill = generic rounded compact container or selected value chip; use carefully to avoid becoming a vague catch-all
   - Filter = interactive query/control chip that changes a result set
+- Current accepted Badge/Tag plan lives in `.knowledge/Badge and Tag Component Plan.md`.
+- Do not follow the older Claude plan `vault-users-igorstetsenko-library-mobil-tranquil-locket.md`, which merged Tag into Badge. That plan is obsolete.
 
 ## 15. Project Narrative
 
@@ -539,6 +541,7 @@ Continue the next chat from **Component-based Tokens / small component taxonomy*
 Goal for the next stage:
 
 - define Badge/Tag/Pill/Filter boundaries
+- implement the accepted Badge/Tag plan: Badge and Tag remain separate, both support `lg`, Badge keeps `intent`, Tag has no `intent`
 - decide which next component token family to implement first
 - keep Input marked as done unless Igor explicitly asks for refinements
 - do not create React components or docs/catalog until the Figma component-token layer is validated

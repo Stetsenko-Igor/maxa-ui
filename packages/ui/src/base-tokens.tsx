@@ -55,6 +55,7 @@ export type ForegroundColorToken =
 export type BackgroundColorToken =
   | "page"
   | "surface"
+  | "float"
   | "muted"
   | "overlay"
   | "inverse"

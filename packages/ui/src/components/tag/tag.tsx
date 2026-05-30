@@ -22,7 +22,7 @@ export type TagAppearance =
   | "raspberry" | "magenta" | "purple" | "grape" | "violet"
   | "cyan" | "teal" | "aquamarine" | "emerald"
 
-export type TagEmphasis = "low" | "high"
+export type TagEmphasis = "low" | "medium" | "high"
 export type TagSize = "sm" | "md" | "lg"
 
 export interface TagProps

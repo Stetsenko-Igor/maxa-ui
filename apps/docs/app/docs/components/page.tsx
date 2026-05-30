@@ -130,7 +130,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Data</p>
             <h2 style={title}>Tag</h2>
             <p style={description}>
-              Removable data label for user-defined categories. 14 colors, two emphasis levels.
+              Removable data label for user-defined categories. 14 colors, three emphasis levels.
             </p>
             <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
               <Tag appearance="blue" removable>Audience</Tag>

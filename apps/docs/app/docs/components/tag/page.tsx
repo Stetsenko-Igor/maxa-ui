@@ -20,7 +20,7 @@ const TOC = [
 
 const TAG_PROPS = [
   { name: "appearance", type: "'grey' | 'blue' | 'green' | 'red' | 'orange' | 'raspberry' | 'magenta' | 'purple' | 'grape' | 'violet' | 'cyan' | 'teal' | 'aquamarine' | 'emerald'", default: "'grey'", description: "Decorative color. 14 options matching the Badge appearance palette." },
-  { name: "emphasis", type: "'low' | 'high'", default: "'low'", description: "Visual weight. Low = subtle tint; high = solid background with inverse text." },
+  { name: "emphasis", type: "'low' | 'medium' | 'high'", default: "'low'", description: "Visual weight. Low = subtle tint; medium = stronger tint; high = solid background with inverse text." },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Height 20px (sm), 24px (md), 28px (lg)." },
   { name: "removable", type: "boolean", default: "false", description: "Shows a × remove button. Use with onRemove." },
   { name: "onRemove", type: "() => void", default: undefined, description: "Called when the remove button is clicked or activated via keyboard." },
@@ -44,8 +44,8 @@ export default function TagPage() {
       next={{ href: "/docs/components/button", label: "Button" }}
       lead={
         <>
-          A compact removable data label for user-defined categories and applied filters.
-          14 decorative colors, two emphasis levels, three sizes.
+          A compact removable data label for user-defined categories and applied values.
+          14 decorative colors, three emphasis levels, three sizes, and no semantic intent.
         </>
       }
     >
@@ -94,14 +94,19 @@ export default function TagPage() {
       <DocsSection
         id="emphasis"
         title="Emphasis"
-        description="Low (default) uses a subtle tinted background. High uses a solid background with white text."
+        description="Low (default) uses a subtle tinted background. Medium is a stronger tint. High uses a solid background with white text."
       >
-        <DocsExample title="Low and high">
-          <ComponentPreview code={`<Tag appearance="violet" emphasis="low">Low</Tag>\n<Tag appearance="violet" emphasis="high">High</Tag>`}>
+        <DocsExample title="Low, medium, high">
+          <ComponentPreview code={`<Tag appearance="violet" emphasis="low">Low</Tag>\n<Tag appearance="violet" emphasis="medium">Medium</Tag>\n<Tag appearance="violet" emphasis="high">High</Tag>`}>
             <div style={col}>
               <div style={row}>
                 {APPEARANCES.map(a => (
                   <Tag key={a} appearance={a} emphasis="low">{a.charAt(0).toUpperCase() + a.slice(1)}</Tag>
+                ))}
+              </div>
+              <div style={row}>
+                {APPEARANCES.map(a => (
+                  <Tag key={a} appearance={a} emphasis="medium">{a.charAt(0).toUpperCase() + a.slice(1)}</Tag>
                 ))}
               </div>
               <div style={row}>

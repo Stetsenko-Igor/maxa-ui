@@ -300,6 +300,10 @@
       "$value": "{Colors.Brand.900}",
       "$type": "color"
     },
+    "bg-brand-muted": {
+      "$value": "{Colors.Brand.800}",
+      "$type": "color"
+    },
     "bg-brand-strong": {
       "$value": "{Colors.Brand.600}",
       "$type": "color"

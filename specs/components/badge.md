@@ -5,7 +5,7 @@ Canonical spec for the MAXA `Badge` component. Supersedes the Badge section of `
 
 ## Purpose
 
-Badge is a compact, **non-interactive** indicator for status, count, or metadata. It is not a control. For removable labels use `Tag`; for interactive filters use `FilterChip` (both planned, not yet built).
+Badge is a compact, **non-interactive** indicator for status, count, quality, or metadata. It is not a control. For removable data labels use `Tag`; for interactive filters use `FilterChip`.
 
 ## Anatomy
 
@@ -13,17 +13,23 @@ Badge is a compact, **non-interactive** indicator for status, count, or metadata
 
 - Pill shape (`--radius-full`).
 - Optional leading and/or trailing icon (decorative, `aria-hidden`).
-- Label text (Montserrat Medium, 12px).
+- Label text.
+- Badge must not render a remove button.
 
 ## Props
 
 ```ts
 type BadgeIntent   = "neutral" | "info" | "success" | "warning" | "error"
 type BadgeEmphasis = "low" | "medium" | "high"
-type BadgeSize     = "sm" | "md"
+type BadgeSize     = "sm" | "md" | "lg"
+type BadgeAppearance =
+  | "grey" | "blue" | "green" | "red" | "orange"
+  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
+  | "cyan" | "teal" | "aquamarine" | "emerald"
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   intent?: BadgeIntent      // default "neutral"
+  appearance?: BadgeAppearance
   emphasis?: BadgeEmphasis  // default "low"
   size?: BadgeSize          // default "md"
   asChild?: boolean         // render as a custom element via Radix Slot
@@ -35,6 +41,11 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 ### Intent
 `neutral` (default) · `info` · `success` · `warning` · `error`. Naming matches existing semantic tokens (`--color-text-{info,success,warning,error}`).
 
+### Appearance
+`grey` · `blue` · `green` · `red` · `orange` · `raspberry` · `magenta` · `purple` · `grape` · `violet` · `cyan` · `teal` · `aquamarine` · `emerald`.
+
+Use `intent` for semantic state and `appearance` for decorative/product taxonomy color. If both are provided, implementation must define clear precedence; current recommendation is that `appearance` controls visual color.
+
 ### Emphasis
 - `low` (default) — subtle tinted background, intent-colored text.
 - `medium` — muted background (one step stronger), intent-colored text.
@@ -43,6 +54,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 ### Size
 - `sm` — height 20px, padding-x 6px, icon 12px.
 - `md` (default) — height 24px, padding-x 8px, gap 4px, icon 14px.
+- `lg` — large badge size. Exact height, padding, gap, text, and icon values must be represented by component tokens before Figma handoff.
 
 ## Examples
 
@@ -52,6 +64,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 <Badge intent="error" emphasis="high">Failed</Badge>
 <Badge intent="info" icon={<DotIcon />}>New</Badge>
 <Badge size="sm" intent="warning">Pending</Badge>
+<Badge size="lg" appearance="violet">Premium</Badge>
 ```
 
 ## Color strategy
@@ -73,7 +86,7 @@ Defined in `packages/tokens/src/component-badge.css`, mapped per `[data-intent][
 ```
 --badge-bg, --badge-fg, --badge-icon, --badge-border,
 --badge-radius, --badge-font-family, --badge-font-weight,
---badge-size-{sm,md}-{height,padding-x,gap,font,icon}
+--badge-size-{sm,md,lg}-{height,padding-x,gap,font,icon}
 ```
 
 Mapping rule per intent:
@@ -95,6 +108,7 @@ Mapping rule per intent:
 - Do keep labels short (1–2 words).
 - Don't attach click handlers or use Badge as a button — use `Button`/`FilterChip`.
 - Don't make Badge removable — that is `Tag`.
+- Don't merge Badge and Tag. They share anatomy but have different semantics.
 - Don't introduce the foreign Figma palette; stay on MAXA semantic tokens.
 
 ## Deferred

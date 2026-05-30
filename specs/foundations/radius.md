@@ -38,7 +38,7 @@
 ### Badges / pills
 - Status badge → `radius-full` (9999px)
 - Count badge → `radius-full` (9999px)
-- Tag (removable) → `radius-xs` (4px)
+- Tag (removable/data label) → `radius-sm` (6px)
 
 ## Common Mistakes to Avoid
 
