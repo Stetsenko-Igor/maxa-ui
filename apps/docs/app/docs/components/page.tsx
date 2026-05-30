@@ -114,7 +114,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Status</p>
             <h2 style={title}>Badge</h2>
             <p style={description}>
-              Compact status and metadata indicator. Five intents, three emphasis levels, 14 decorative colors.
+              Compact status and metadata indicator. Five intents and three emphasis levels.
             </p>
             <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
               <Badge intent="neutral" emphasis="low">Draft</Badge>
@@ -172,7 +172,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Radio</h2>
             <p style={description}>
-              Native radio input with label and helper text. Group with a shared name for mutual exclusion.
+              Radio input with label and helper text. Group with a shared name for mutual exclusion.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
               <Radio name="plan-demo" value="free" label="Free" />
