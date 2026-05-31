@@ -84,7 +84,7 @@ Dark mode is automatic: Badge consumes semantic tokens that already carry `[data
 Defined in `packages/tokens/src/component-badge.css`, mapped per `[data-intent][data-emphasis]`:
 
 ```
---badge-bg, --badge-fg, --badge-icon, --badge-border,
+--badge-bg, --badge-text, --badge-icon, --badge-border,
 --badge-radius, --badge-font-family, --badge-font-weight,
 --badge-size-{sm,md,lg}-{height,padding-x,gap,font,icon}
 ```

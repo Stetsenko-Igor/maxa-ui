@@ -7,7 +7,7 @@
   border-radius: var(--badge-radius);
   border: 1px solid var(--badge-border);
   background-color: var(--badge-bg);
-  color: var(--badge-fg);
+  color: var(--badge-text);
   font-family: var(--badge-font-family);
   font-weight: var(--badge-font-weight);
   white-space: nowrap;

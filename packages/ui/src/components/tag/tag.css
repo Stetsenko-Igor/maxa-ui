@@ -6,7 +6,7 @@
   border-radius: var(--tag-radius);
   border: 1px solid var(--tag-border);
   background-color: var(--tag-bg);
-  color: var(--tag-fg);
+  color: var(--tag-text);
   font-family: var(--tag-font-family);
   font-weight: var(--tag-font-weight);
   white-space: nowrap;

@@ -121,7 +121,7 @@ Tag should use its own component-token namespace:
 
 ```css
 --tag-bg
---tag-fg
+--tag-text
 --tag-icon
 --tag-remove-fg
 --tag-border

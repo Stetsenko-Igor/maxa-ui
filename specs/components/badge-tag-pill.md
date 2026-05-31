@@ -167,7 +167,7 @@ Badge should consume component tokens rather than hardcoding semantic intent tok
 
 ```css
 --badge-bg
---badge-fg
+--badge-text
 --badge-icon
 --badge-border
 --badge-height
@@ -181,13 +181,13 @@ Variant mapping example:
 ```css
 [data-intent="neutral"][data-emphasis="low"] {
   --badge-bg: var(--color-intent-neutral-bg-low);
-  --badge-fg: var(--color-intent-neutral-fg);
+  --badge-text: var(--color-intent-neutral-fg);
   --badge-icon: var(--color-intent-neutral-fg);
 }
 
 [data-intent="neutral"][data-emphasis="high"] {
   --badge-bg: var(--color-intent-neutral-bg-high);
-  --badge-fg: var(--color-intent-neutral-fg-inverse);
+  --badge-text: var(--color-intent-neutral-fg-inverse);
   --badge-icon: var(--color-intent-neutral-fg-inverse);
 }
 ```
@@ -196,7 +196,7 @@ Tag should have its own component tokens:
 
 ```css
 --tag-bg
---tag-fg
+--tag-text
 --tag-icon
 --tag-remove-fg
 --tag-border

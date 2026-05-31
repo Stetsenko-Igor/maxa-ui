@@ -551,7 +551,7 @@ emphasis: low/medium/high). Light/dark handled by the semantic layer.
 ```css
 /* Resolved per variant */
 --badge-bg                    /* bg-{intent}-{subtle|muted|strong} */
---badge-fg                    /* text-{intent} (low/medium) | text-inverse (high) */
+--badge-text                    /* text-{intent} (low/medium) | text-inverse (high) */
 --badge-icon
 --badge-border                /* transparent (v1) */
 
@@ -586,7 +586,7 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 ```css
 /* Resolved per variant */
 --tag-bg
---tag-fg
+--tag-text
 --tag-icon
 --tag-border                 /* transparent (v1) */
 --tag-remove-fg
