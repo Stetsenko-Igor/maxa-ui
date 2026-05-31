@@ -1,5 +1,101 @@
 {
   "Badge": {
+    "fg-neutral": {
+      "$value": "{Utility/text-gray}",
+      "$type": "color"
+    },
+    "fg-info": {
+      "$value": "{Utility/text-blue}",
+      "$type": "color"
+    },
+    "fg-success": {
+      "$value": "{Utility/text-green}",
+      "$type": "color"
+    },
+    "fg-warning": {
+      "$value": "{Utility/text-yellow}",
+      "$type": "color"
+    },
+    "fg-error": {
+      "$value": "{Utility/text-red}",
+      "$type": "color"
+    },
+    "fg-inverse": {
+      "$value": "{Color modes/text/text-inverse}",
+      "$type": "color"
+    },
+    "fg-gray": {
+      "$value": "{Utility/text-gray}",
+      "$type": "color"
+    },
+    "fg-red": {
+      "$value": "{Utility/text-red}",
+      "$type": "color"
+    },
+    "fg-orange": {
+      "$value": "{Utility/text-orange}",
+      "$type": "color"
+    },
+    "fg-amber": {
+      "$value": "{Utility/text-amber}",
+      "$type": "color"
+    },
+    "fg-yellow": {
+      "$value": "{Utility/text-yellow}",
+      "$type": "color"
+    },
+    "fg-lime": {
+      "$value": "{Utility/text-lime}",
+      "$type": "color"
+    },
+    "fg-green": {
+      "$value": "{Utility/text-green}",
+      "$type": "color"
+    },
+    "fg-emerald": {
+      "$value": "{Utility/text-emerald}",
+      "$type": "color"
+    },
+    "fg-teal": {
+      "$value": "{Utility/text-teal}",
+      "$type": "color"
+    },
+    "fg-cyan": {
+      "$value": "{Utility/text-cyan}",
+      "$type": "color"
+    },
+    "fg-sky": {
+      "$value": "{Utility/text-sky}",
+      "$type": "color"
+    },
+    "fg-blue": {
+      "$value": "{Utility/text-blue}",
+      "$type": "color"
+    },
+    "fg-indigo": {
+      "$value": "{Utility/text-indigo}",
+      "$type": "color"
+    },
+    "fg-violet": {
+      "$value": "{Utility/text-violet}",
+      "$type": "color"
+    },
+    "fg-purple": {
+      "$value": "{Utility/text-purple}",
+      "$type": "color"
+    },
+    "fg-fuchsia": {
+      "$value": "{Utility/text-fuchsia}",
+      "$type": "color"
+    },
+    "fg-pink": {
+      "$value": "{Utility/text-pink}",
+      "$type": "color"
+    },
+    "fg-rose": {
+      "$value": "{Utility/text-rose}",
+      "$type": "color"
+    },
     "size": {
       "sm": {
         "height": {
