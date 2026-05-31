@@ -308,9 +308,9 @@ describe("figma import bundle", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
 
     expect(light?.["Badge/size/lg/height"]).toBe(28)
-    expect(light?.["Tag/appearance/violet/medium/bg"]).toBe("{Primitives/Colors/Violet/100}")
     expect(light?.["Tag/size/lg/height"]).toBe(28)
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
+    expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()
     expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")
   })
