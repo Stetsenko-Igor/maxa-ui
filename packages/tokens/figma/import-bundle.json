@@ -910,12 +910,10 @@
           "Utility/bg-gray-muted": "{Colors.Gray.100}",
           "Utility/bg-gray-strong": "{Colors.Gray.700}",
           "Utility/text-gray": "{Colors.Gray.900}",
-          "Utility/fg-neutral": "{Utility/text-gray}",
           "Utility/bg-red-subtle": "{Colors.Red.50}",
           "Utility/bg-red-muted": "{Colors.Red.100}",
           "Utility/bg-red-strong": "{Colors.Red.700}",
           "Utility/text-red": "{Colors.Red.900}",
-          "Utility/fg-error": "{Utility/text-red}",
           "Utility/fg-red": "{Utility/text-red}",
           "Utility/bg-orange-subtle": "{Colors.Orange.50}",
           "Utility/bg-orange-muted": "{Colors.Orange.100}",
@@ -931,7 +929,6 @@
           "Utility/bg-yellow-muted": "{Colors.Yellow.100}",
           "Utility/bg-yellow-strong": "{Colors.Yellow.700}",
           "Utility/text-yellow": "{Colors.Yellow.900}",
-          "Utility/fg-warning": "{Utility/text-yellow}",
           "Utility/fg-yellow": "{Utility/text-yellow}",
           "Utility/bg-lime-subtle": "{Colors.Lime.50}",
           "Utility/bg-lime-muted": "{Colors.Lime.100}",
@@ -942,7 +939,6 @@
           "Utility/bg-green-muted": "{Colors.Green.100}",
           "Utility/bg-green-strong": "{Colors.Green.700}",
           "Utility/text-green": "{Colors.Green.900}",
-          "Utility/fg-success": "{Utility/text-green}",
           "Utility/fg-green": "{Utility/text-green}",
           "Utility/bg-emerald-subtle": "{Colors.Emerald.50}",
           "Utility/bg-emerald-muted": "{Colors.Emerald.100}",
@@ -968,7 +964,6 @@
           "Utility/bg-blue-muted": "{Colors.Blue.100}",
           "Utility/bg-blue-strong": "{Colors.Blue.700}",
           "Utility/text-blue": "{Colors.Blue.900}",
-          "Utility/fg-info": "{Utility/text-blue}",
           "Utility/fg-blue": "{Utility/text-blue}",
           "Utility/bg-indigo-subtle": "{Colors.Indigo.50}",
           "Utility/bg-indigo-muted": "{Colors.Indigo.100}",
@@ -999,8 +994,7 @@
           "Utility/bg-rose-muted": "{Colors.Rose.100}",
           "Utility/bg-rose-strong": "{Colors.Rose.700}",
           "Utility/text-rose": "{Colors.Rose.900}",
-          "Utility/fg-rose": "{Utility/text-rose}",
-          "Utility/fg-inverse": "{Color modes/text/text-inverse}"
+          "Utility/fg-rose": "{Utility/text-rose}"
         },
         "Dark": {
           "Button/primary/bg": "{Color modes/action/action-primary}",
@@ -1198,11 +1192,9 @@
           "Utility/bg-gray-subtle": "{Colors.Gray.950}",
           "Utility/bg-gray-muted": "{Colors.Gray.900}",
           "Utility/text-gray": "{Colors.Gray.300}",
-          "Utility/fg-neutral": "{Utility/text-gray}",
           "Utility/bg-red-subtle": "{Colors.Red.950}",
           "Utility/bg-red-muted": "{Colors.Red.900}",
           "Utility/text-red": "{Colors.Red.300}",
-          "Utility/fg-error": "{Utility/text-red}",
           "Utility/fg-red": "{Utility/text-red}",
           "Utility/bg-orange-subtle": "{Colors.Orange.950}",
           "Utility/bg-orange-muted": "{Colors.Orange.900}",
@@ -1215,7 +1207,6 @@
           "Utility/bg-yellow-subtle": "{Colors.Yellow.950}",
           "Utility/bg-yellow-muted": "{Colors.Yellow.900}",
           "Utility/text-yellow": "{Colors.Yellow.300}",
-          "Utility/fg-warning": "{Utility/text-yellow}",
           "Utility/fg-yellow": "{Utility/text-yellow}",
           "Utility/bg-lime-subtle": "{Colors.Lime.950}",
           "Utility/bg-lime-muted": "{Colors.Lime.900}",
@@ -1224,7 +1215,6 @@
           "Utility/bg-green-subtle": "{Colors.Green.950}",
           "Utility/bg-green-muted": "{Colors.Green.900}",
           "Utility/text-green": "{Colors.Green.300}",
-          "Utility/fg-success": "{Utility/text-green}",
           "Utility/fg-green": "{Utility/text-green}",
           "Utility/bg-emerald-subtle": "{Colors.Emerald.950}",
           "Utility/bg-emerald-muted": "{Colors.Emerald.900}",
@@ -1245,7 +1235,6 @@
           "Utility/bg-blue-subtle": "{Colors.Blue.950}",
           "Utility/bg-blue-muted": "{Colors.Blue.900}",
           "Utility/text-blue": "{Colors.Blue.300}",
-          "Utility/fg-info": "{Utility/text-blue}",
           "Utility/fg-blue": "{Utility/text-blue}",
           "Utility/bg-indigo-subtle": "{Colors.Indigo.950}",
           "Utility/bg-indigo-muted": "{Colors.Indigo.900}",
@@ -1270,8 +1259,7 @@
           "Utility/bg-rose-subtle": "{Colors.Rose.950}",
           "Utility/bg-rose-muted": "{Colors.Rose.900}",
           "Utility/text-rose": "{Colors.Rose.300}",
-          "Utility/fg-rose": "{Utility/text-rose}",
-          "Utility/fg-inverse": "{Color modes/text/text-inverse}"
+          "Utility/fg-rose": "{Utility/text-rose}"
         }
       }
     }

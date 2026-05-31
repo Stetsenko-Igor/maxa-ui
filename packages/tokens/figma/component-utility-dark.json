@@ -12,10 +12,6 @@
       "$value": "{Colors.Gray.300}",
       "$type": "color"
     },
-    "fg-neutral": {
-      "$value": "{Utility/text-gray}",
-      "$type": "color"
-    },
     "bg-red-subtle": {
       "$value": "{Colors.Red.950}",
       "$type": "color"
@@ -26,10 +22,6 @@
     },
     "text-red": {
       "$value": "{Colors.Red.300}",
-      "$type": "color"
-    },
-    "fg-error": {
-      "$value": "{Utility/text-red}",
       "$type": "color"
     },
     "fg-red": {
@@ -80,10 +72,6 @@
       "$value": "{Colors.Yellow.300}",
       "$type": "color"
     },
-    "fg-warning": {
-      "$value": "{Utility/text-yellow}",
-      "$type": "color"
-    },
     "fg-yellow": {
       "$value": "{Utility/text-yellow}",
       "$type": "color"
@@ -114,10 +102,6 @@
     },
     "text-green": {
       "$value": "{Colors.Green.300}",
-      "$type": "color"
-    },
-    "fg-success": {
-      "$value": "{Utility/text-green}",
       "$type": "color"
     },
     "fg-green": {
@@ -198,10 +182,6 @@
     },
     "text-blue": {
       "$value": "{Colors.Blue.300}",
-      "$type": "color"
-    },
-    "fg-info": {
-      "$value": "{Utility/text-blue}",
       "$type": "color"
     },
     "fg-blue": {
@@ -302,10 +282,6 @@
     },
     "fg-rose": {
       "$value": "{Utility/text-rose}",
-      "$type": "color"
-    },
-    "fg-inverse": {
-      "$value": "{Color modes/text/text-inverse}",
       "$type": "color"
     }
   }
