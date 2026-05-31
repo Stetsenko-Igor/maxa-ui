@@ -308,6 +308,10 @@ describe("figma import bundle", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
 
     expect(light?.["Badge/size/lg/height"]).toBe(28)
+    expect(light?.["Badge/size/sm/text"]).toBe("{Typography/Font size/text-sm}")
+    expect(light?.["Badge/size/sm/line-height"]).toBe("{Typography/Line height/text-sm}")
+    expect(light?.["Badge/size/lg/text"]).toBe("{Typography/Font size/text-md}")
+    expect(light?.["Badge/size/lg/line-height"]).toBe("{Typography/Line height/text-md}")
     expect(light?.["Tag/size/lg/height"]).toBe(28)
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
     expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()

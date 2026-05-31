@@ -19,7 +19,11 @@
           "$type": "number"
         },
         "text": {
-          "$value": 12,
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$value": "{Typography/Line height/text-sm}",
           "$type": "number"
         },
         "icon-size": {
@@ -45,7 +49,11 @@
           "$type": "number"
         },
         "text": {
-          "$value": 12,
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$value": "{Typography/Line height/text-sm}",
           "$type": "number"
         },
         "icon-size": {
@@ -71,7 +79,11 @@
           "$type": "number"
         },
         "text": {
-          "$value": 14,
+          "$value": "{Typography/Font size/text-md}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$value": "{Typography/Line height/text-md}",
           "$type": "number"
         },
         "icon-size": {
