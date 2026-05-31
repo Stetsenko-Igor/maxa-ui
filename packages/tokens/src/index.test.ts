@@ -251,18 +251,20 @@ describe("figma manifest", () => {
     expect(manifest.collections.Layout?.modes.Mobile).toEqual(["layout-mobile.json"])
   })
 
-  it("includes Component-based Tokens collection", () => {
-    expect(manifest.collections["Component-based Tokens"]?.modes.Light).toEqual([
+  it("includes Component-based collection", () => {
+    expect(manifest.collections["Component-based"]?.modes.Light).toEqual([
       "component-button-light.json",
       "component-input-light.json",
       "component-badge-light.json",
       "component-tag-light.json",
+      "component-utility-light.json",
     ])
-    expect(manifest.collections["Component-based Tokens"]?.modes.Dark).toEqual([
+    expect(manifest.collections["Component-based"]?.modes.Dark).toEqual([
       "component-button-dark.json",
       "component-input-dark.json",
       "component-badge-dark.json",
       "component-tag-dark.json",
+      "component-utility-dark.json",
     ])
   })
 
@@ -302,14 +304,15 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Badge and Tag component tokens", () => {
-    const light = bundle.collections["Component-based Tokens"]?.modes.Light
+  it("includes Badge, Tag, and Utility component tokens", () => {
+    const light = bundle.collections["Component-based"]?.modes.Light
 
-    expect(light?.["Badge/appearance/violet/medium/bg"]).toBe("{Primitives/Colors/Violet/100}")
     expect(light?.["Badge/size/lg/height"]).toBe(28)
     expect(light?.["Tag/appearance/violet/medium/bg"]).toBe("{Primitives/Colors/Violet/100}")
     expect(light?.["Tag/size/lg/height"]).toBe(28)
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
+    expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
+    expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")
   })
 })
 
@@ -392,7 +395,7 @@ describe("figma color modes", () => {
     expect(lightFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.25}")
     expect(lightFile.background["bg-float"]?.$value).toBe("{Colors.Base.White}")
     expect(lightFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.700}")
-    expect(lightFile.text["text-info"]?.$value).toBe("{Colors.Blue.600}")
+    expect(lightFile.text["text-info"]?.$value).toBe("{Colors.Blue.900}")
     expect(lightFile.action["action-primary-subtle-hover"]?.$value).toBe("{Colors.Blue.50}")
     expect(lightFile.action["action-brand-subtle-hover"]?.$value).toBe("{Colors.Brand.50}")
     expect(darkFile.text["text-secondary"]?.$value).toBe("{Colors.Neutral.200}")

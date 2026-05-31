@@ -41,10 +41,10 @@
         "Mobile": ["layout-mobile.json"]
       }
     },
-    "Component-based Tokens": {
+    "Component-based": {
       "modes": {
-        "Light": ["component-button-light.json", "component-input-light.json", "component-badge-light.json", "component-tag-light.json"],
-        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-badge-dark.json", "component-tag-dark.json"]
+        "Light": ["component-button-light.json", "component-input-light.json", "component-badge-light.json", "component-tag-light.json", "component-utility-light.json"],
+        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-badge-dark.json", "component-tag-dark.json", "component-utility-dark.json"]
       }
     }
   }

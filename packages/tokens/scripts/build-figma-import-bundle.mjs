@@ -11,6 +11,7 @@ const outputPath = path.join(figmaDir, "import-bundle.json")
 const aliasDefaults = {
   Spacing: "Primitives",
   "Color modes": "Primitives",
+  "Component-based": "Primitives",
   Layout: "Spacing",
 }
 

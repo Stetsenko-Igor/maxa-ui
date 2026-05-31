@@ -75,6 +75,7 @@ const ALLOWED_PX = new Set([0, 1, 2]);
 const FIGMA_ALIAS_DEFAULTS = {
   Spacing: 'Primitives',
   'Color modes': 'Primitives',
+  'Component-based': 'Primitives',
   Layout: 'Spacing',
 };
 
