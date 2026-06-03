@@ -1,0 +1,74 @@
+{
+  "Switch": {
+    "size": {
+      "sm": {
+        "track-width": {
+          "$value": 28,
+          "$type": "number"
+        },
+        "track-height": {
+          "$value": 16,
+          "$type": "number"
+        },
+        "thumb-size": {
+          "$value": 12,
+          "$type": "number"
+        }
+      },
+      "md": {
+        "track-width": {
+          "$value": 36,
+          "$type": "number"
+        },
+        "track-height": {
+          "$value": 20,
+          "$type": "number"
+        },
+        "thumb-size": {
+          "$value": 16,
+          "$type": "number"
+        }
+      },
+      "lg": {
+        "track-width": {
+          "$value": 44,
+          "$type": "number"
+        },
+        "track-height": {
+          "$value": 24,
+          "$type": "number"
+        },
+        "thumb-size": {
+          "$value": 20,
+          "$type": "number"
+        }
+      }
+    },
+    "track-radius": {
+      "$value": "{Radius/radius-full}",
+      "$type": "number"
+    },
+    "thumb-radius": {
+      "$value": "{Radius/radius-full}",
+      "$type": "number"
+    },
+    "thumb-inset": {
+      "$value": 2,
+      "$type": "number"
+    },
+    "focus-ring": {
+      "width": {
+        "$value": 3,
+        "$type": "number"
+      },
+      "offset": {
+        "$value": 2,
+        "$type": "number"
+      }
+    },
+    "disabled-opacity": {
+      "$value": 50,
+      "$type": "number"
+    }
+  }
+}

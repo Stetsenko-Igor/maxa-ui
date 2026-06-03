@@ -1,0 +1,40 @@
+{
+  "Tooltip": {
+    "layout": {
+      "radius": {
+        "$value": "{Radius/radius-sm}",
+        "$type": "number"
+      },
+      "max-width": {
+        "$value": 240,
+        "$type": "number"
+      },
+      "padding-x": {
+        "$value": 8,
+        "$type": "number"
+      },
+      "padding-y": {
+        "$value": 4,
+        "$type": "number"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "font-size": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "font-weight": {
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "string"
+      },
+      "line-height": {
+        "$value": 16,
+        "$type": "number"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "Divider": {
+    "size": {
+      "$value": 1,
+      "$type": "number"
+    }
+  }
+}

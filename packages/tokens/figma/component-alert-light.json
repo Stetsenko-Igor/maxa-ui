@@ -1,0 +1,66 @@
+{
+  "Alert": {
+    "layout": {
+      "radius": {
+        "$value": "{Radius/radius-md}",
+        "$type": "number"
+      },
+      "padding-x": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "padding-y": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "gap": {
+        "$value": 8,
+        "$type": "number"
+      },
+      "content-gap": {
+        "$value": 4,
+        "$type": "number"
+      },
+      "action-gap": {
+        "$value": 8,
+        "$type": "number"
+      }
+    },
+    "strip": {
+      "width": {
+        "$value": 3,
+        "$type": "number"
+      }
+    },
+    "icon": {
+      "size": {
+        "$value": 16,
+        "$type": "number"
+      }
+    },
+    "dismiss": {
+      "size": {
+        "$value": 20,
+        "$type": "number"
+      },
+      "opacity": {
+        "$value": 65,
+        "$type": "number"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "font-size": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "title-weight": {
+        "$value": "{Typography/Font weight/semibold}",
+        "$type": "string"
+      }
+    }
+  }
+}
