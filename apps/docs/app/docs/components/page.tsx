@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select } from "@maxa/ui"
+import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select, Switch, Divider, Alert, AlertAction, Tooltip, TooltipProvider } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -68,6 +68,29 @@ const footer: React.CSSProperties = {
   fontWeight: "var(--font-weight-semibold)",
 }
 
+function NewBadge() {
+  return (
+    <span style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "4px",
+      fontSize: "10px",
+      fontWeight: "var(--font-weight-semibold)",
+      color: "var(--color-text-success)",
+      lineHeight: 1,
+      verticalAlign: "middle",
+      marginLeft: "8px",
+      position: "relative",
+      top: "-1px",
+    }}>
+      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true">
+        <circle cx="3" cy="3" r="3" fill="currentColor" />
+      </svg>
+      New
+    </span>
+  )
+}
+
 function PlusIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -102,14 +125,29 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Ten components covering status indicators, data labels, actions, form controls, selection, and composition.
-          All use component-level tokens, typed React APIs, and full documentation.
+          Fourteen components covering status indicators, data labels, actions, form controls, selection,
+          layout, feedback, and overlays. All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
     >
       <DocsPageSection id="catalog" title="Catalog" description="Each component is fully documented with interactive previews, code examples, and an API reference.">
         <div style={grid}>
 
+          {/* A */}
+          <Link href="/docs/components/alert" style={card}>
+            <p style={eyebrow}>Feedback</p>
+            <h2 style={title}>Alert<NewBadge /></h2>
+            <p style={description}>
+              Callout box for info, success, warning, and danger messages. Optional dismiss.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", alignItems: "stretch", gap: "8px" }}>
+              <Alert intent="success">Changes saved successfully.</Alert>
+              <Alert intent="warning" action={<AlertAction>Undo</AlertAction>}>File deleted.</Alert>
+            </div>
+            <span style={footer}>View Alert →</span>
+          </Link>
+
+          {/* B */}
           <Link href="/docs/components/badge" style={card}>
             <p style={eyebrow}>Status</p>
             <h2 style={title}>Badge</h2>
@@ -126,21 +164,7 @@ export default function ComponentsPage() {
             <span style={footer}>View Badge →</span>
           </Link>
 
-          <Link href="/docs/components/tag" style={card}>
-            <p style={eyebrow}>Data</p>
-            <h2 style={title}>Tag</h2>
-            <p style={description}>
-              Removable data label for user-defined categories. 14 colors, three emphasis levels.
-            </p>
-            <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
-              <Tag appearance="blue" removable>Audience</Tag>
-              <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
-              <Tag appearance="teal">Prague</Tag>
-              <Tag appearance="rose" removable>Luxury</Tag>
-            </div>
-            <span style={footer}>View Tag →</span>
-          </Link>
-
+          {/* B */}
           <Link href="/docs/components/button" style={card}>
             <p style={eyebrow}>Action</p>
             <h2 style={title}>Button</h2>
@@ -155,20 +179,7 @@ export default function ComponentsPage() {
             <span style={footer}>View Button →</span>
           </Link>
 
-          <Link href="/docs/components/icon-button" style={card}>
-            <p style={eyebrow}>Action</p>
-            <h2 style={title}>Icon Button</h2>
-            <p style={description}>
-              Square icon-only button with enforced aria-label for accessibility.
-            </p>
-            <div style={preview}>
-              <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
-              <IconButton icon={<EditIcon />} aria-label="Edit" variant="secondary" />
-              <IconButton icon={<TrashIcon />} aria-label="Delete" variant="ghost" />
-            </div>
-            <span style={footer}>View Icon Button →</span>
-          </Link>
-
+          {/* C */}
           <Link href="/docs/components/checkbox" style={card}>
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Checkbox</h2>
@@ -183,20 +194,52 @@ export default function ComponentsPage() {
             <span style={footer}>View Checkbox →</span>
           </Link>
 
-          <Link href="/docs/components/radio" style={card}>
+          {/* D */}
+          <Link href="/docs/components/date-picker" style={card}>
             <p style={eyebrow}>Form</p>
-            <h2 style={title}>Radio</h2>
+            <h2 style={title}>Date Picker</h2>
             <p style={description}>
-              Radio input with label and helper text. Group with a shared name for mutual exclusion.
+              Single-date and range-date fields with shared form composition model.
             </p>
-            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-              <Radio name="plan-demo" value="free" label="Free" />
-              <Radio name="plan-demo" value="pro" label="Pro" defaultChecked />
-              <Radio name="plan-demo" value="enterprise" label="Enterprise" />
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "280px" }}>
+                <DatePicker label="Date" />
+              </div>
             </div>
-            <span style={footer}>View Radio →</span>
+            <span style={footer}>View Date Picker →</span>
           </Link>
 
+          {/* Di */}
+          <Link href="/docs/components/divider" style={card}>
+            <p style={eyebrow}>Layout</p>
+            <h2 style={title}>Divider<NewBadge /></h2>
+            <p style={description}>
+              Thin rule for visually separating content. Horizontal or vertical orientation.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", gap: "12px" }}>
+              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Section A</span>
+              <Divider />
+              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Section B</span>
+            </div>
+            <span style={footer}>View Divider →</span>
+          </Link>
+
+          {/* I */}
+          <Link href="/docs/components/icon-button" style={card}>
+            <p style={eyebrow}>Action</p>
+            <h2 style={title}>Icon Button</h2>
+            <p style={description}>
+              Square icon-only button with enforced aria-label for accessibility.
+            </p>
+            <div style={preview}>
+              <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
+              <IconButton icon={<EditIcon />} aria-label="Edit" variant="secondary" />
+              <IconButton icon={<TrashIcon />} aria-label="Delete" variant="ghost" />
+            </div>
+            <span style={footer}>View Icon Button →</span>
+          </Link>
+
+          {/* I */}
           <Link href="/docs/components/input" style={card}>
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Input</h2>
@@ -211,6 +254,22 @@ export default function ComponentsPage() {
             <span style={footer}>View Input →</span>
           </Link>
 
+          {/* R */}
+          <Link href="/docs/components/radio" style={card}>
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>Radio</h2>
+            <p style={description}>
+              Radio input with label and helper text. Group with a shared name for mutual exclusion.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+              <Radio name="plan-demo" value="free" label="Free" />
+              <Radio name="plan-demo" value="pro" label="Pro" defaultChecked />
+              <Radio name="plan-demo" value="enterprise" label="Enterprise" />
+            </div>
+            <span style={footer}>View Radio →</span>
+          </Link>
+
+          {/* Se */}
           <Link href="/docs/components/select" style={card}>
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Select</h2>
@@ -229,18 +288,52 @@ export default function ComponentsPage() {
             <span style={footer}>View Select →</span>
           </Link>
 
-          <Link href="/docs/components/date-picker" style={card}>
+          {/* Sw */}
+          <Link href="/docs/components/switch" style={card}>
             <p style={eyebrow}>Form</p>
-            <h2 style={title}>Date Picker</h2>
+            <h2 style={title}>Switch<NewBadge /></h2>
             <p style={description}>
-              Single-date and range-date fields with shared form composition model.
+              Binary on/off toggle with three sizes, disabled and error states. Built on Radix.
+            </p>
+            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+              <Switch aria-label="Off" />
+              <Switch aria-label="On" defaultChecked />
+              <Switch aria-label="Disabled" disabled defaultChecked />
+            </div>
+            <span style={footer}>View Switch →</span>
+          </Link>
+
+          {/* T */}
+          <Link href="/docs/components/tag" style={card}>
+            <p style={eyebrow}>Data</p>
+            <h2 style={title}>Tag</h2>
+            <p style={description}>
+              Removable data label for user-defined categories. 18 colors, three emphasis levels.
+            </p>
+            <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
+              <Tag appearance="blue" removable>Audience</Tag>
+              <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
+              <Tag appearance="teal">Prague</Tag>
+              <Tag appearance="rose" removable>Luxury</Tag>
+            </div>
+            <span style={footer}>View Tag →</span>
+          </Link>
+
+          {/* To */}
+          <Link href="/docs/components/tooltip" style={card}>
+            <p style={eyebrow}>Overlay</p>
+            <h2 style={title}>Tooltip<NewBadge /></h2>
+            <p style={description}>
+              Contextual label on hover or focus. Positioned with Radix, four sides.
             </p>
             <div style={preview}>
-              <div style={{ width: "100%", maxWidth: "280px" }}>
-                <DatePicker label="Date" />
-              </div>
+              <TooltipProvider>
+                <Tooltip content="Hello from a tooltip">
+                  <Button variant="secondary">Hover me</Button>
+                </Tooltip>
+              </TooltipProvider>
             </div>
-            <span style={footer}>View Date Picker →</span>
+            <span style={footer}>View Tooltip →</span>
           </Link>
 
         </div>

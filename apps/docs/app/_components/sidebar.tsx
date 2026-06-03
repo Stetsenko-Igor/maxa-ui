@@ -23,14 +23,19 @@ const NAV = [
     group: "Components",
     items: [
       { href: "/docs/components", label: "Overview" },
+      { href: "/docs/components/alert", label: "Alert", isNew: true },
       { href: "/docs/components/badge", label: "Badge" },
-      { href: "/docs/components/tag", label: "Tag" },
       { href: "/docs/components/button", label: "Button" },
       { href: "/docs/components/checkbox", label: "Checkbox" },
       { href: "/docs/components/date-picker", label: "Date Picker" },
+      { href: "/docs/components/divider", label: "Divider", isNew: true },
+      { href: "/docs/components/icon-button", label: "Icon Button" },
       { href: "/docs/components/input", label: "Input" },
       { href: "/docs/components/radio", label: "Radio" },
       { href: "/docs/components/select", label: "Select" },
+      { href: "/docs/components/switch", label: "Switch", isNew: true },
+      { href: "/docs/components/tag", label: "Tag" },
+      { href: "/docs/components/tooltip", label: "Tooltip", isNew: true },
     ],
   },
 ]
@@ -89,7 +94,7 @@ export function Sidebar() {
           <div key={section.group} style={{ marginBottom: "20px" }}>
             <p style={groupLabelStyle}>{section.group}</p>
             {section.items.map((item) => (
-              <NavItem key={item.href} href={item.href} label={item.label} />
+              <NavItem key={item.href} href={item.href} label={item.label} isNew={"isNew" in item ? item.isNew : false} />
             ))}
           </div>
         ))}

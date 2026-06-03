@@ -7,9 +7,10 @@ import { useState } from "react"
 interface NavItemProps {
   href: string
   label: string
+  isNew?: boolean
 }
 
-export function NavItem({ href, label }: NavItemProps) {
+export function NavItem({ href, label, isNew }: NavItemProps) {
   const pathname = usePathname()
   const isActive = pathname === href
   const [hovered, setHovered] = useState(false)
@@ -20,7 +21,9 @@ export function NavItem({ href, label }: NavItemProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        display: "block",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
         padding: "8px 12px",
         borderRadius: "var(--radius-sm)",
         fontSize: "var(--text-sm)",
@@ -33,6 +36,22 @@ export function NavItem({ href, label }: NavItemProps) {
       }}
     >
       {label}
+      {isNew && (
+        <span style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: "4px",
+          fontSize: "10px",
+          fontWeight: "var(--font-weight-semibold)",
+          color: "var(--color-text-success)",
+          lineHeight: 1,
+        }}>
+          <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true">
+            <circle cx="3" cy="3" r="3" fill="currentColor" />
+          </svg>
+          New
+        </span>
+      )}
     </Link>
   )
 }
