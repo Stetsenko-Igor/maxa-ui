@@ -54,6 +54,7 @@ specs/
 │   ├── separator.md                 ← Separator (divider rule)
 │   ├── alert.md                     ← Alert (callout) + intents
 │   ├── tooltip.md                   ← Tooltip (floating hint)
+│   ├── popover.md                   ← Popover (interactive floating panel)
 │   └── form-field.md                ← FormField label + control + hint + error
 └── patterns/
     └── interactive-hierarchy.md     ← which button variant for which context

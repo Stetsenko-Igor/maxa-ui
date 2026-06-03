@@ -31,6 +31,7 @@ const NAV = [
       { href: "/docs/components/divider", label: "Divider", isNew: true },
       { href: "/docs/components/icon-button", label: "Icon Button" },
       { href: "/docs/components/input", label: "Input" },
+      { href: "/docs/components/popover", label: "Popover", isNew: true },
       { href: "/docs/components/radio", label: "Radio" },
       { href: "/docs/components/select", label: "Select" },
       { href: "/docs/components/switch", label: "Switch", isNew: true },

@@ -1,0 +1,44 @@
+{
+  "Popover": {
+    "layout": {
+      "radius": {
+        "$value": "{Radius/radius-lg}",
+        "$type": "number"
+      },
+      "width": {
+        "$value": 320,
+        "$type": "number"
+      },
+      "max-width": {
+        "$value": 320,
+        "$type": "number"
+      },
+      "padding-x": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "padding-y": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "gap": {
+        "$value": 8,
+        "$type": "number"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "font-size": {
+        "$value": 12,
+        "$type": "number"
+      },
+      "line-height": {
+        "$value": 20,
+        "$type": "number"
+      }
+    }
+  }
+}

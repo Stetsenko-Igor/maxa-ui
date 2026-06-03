@@ -5,22 +5,22 @@
 See: `.planning/PROJECT.md` (updated 2026-06-03)
 
 **Core value:** LLM-generated UI code always conforms to the design system — no hardcoded design values.
-**Current focus:** Phase 2: Component surface extension (partially shipped; remaining Popover, Tabs, Accordion/Disclosure)
+**Current focus:** Phase 2: Component surface extension (partially shipped; remaining Tabs and Accordion/Disclosure)
 
 ## Current Position
 
 Phase: 2 of 5 (Component surface extension)
 Plan: Partial shipment completed outside formal GSD phase plans
-Status: Phase 2 in progress; CI gate alignment is the immediate closeout task before more component work.
-Last activity: 2026-06-03 — Added CI token audit gate, shipped Badge, Tag, Alert, Divider, Switch, Tooltip, and added related Figma component token files.
+Status: Phase 2 in progress; Popover is shipped and verified locally.
+Last activity: 2026-06-03 — Added Popover with spec, Radix-backed UI, component tokens, docs, tests, and Figma bundle entries.
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
 - Total formal plans completed: 2 (GSD tracking started 2026-05-18; prior v0.x work predates this)
-- Phase 2 shipped component families since last state update: 6
+- Phase 2 shipped component families since last state update: 7
 - Average duration: —
 - Total execution time: —
 
@@ -35,7 +35,7 @@ Progress: [████░░░░░░] 40%
 | 5. Tailwind v4 adapter | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Switch, Tooltip, Figma component token bundle, CI token audit gate.
+- Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Switch, Tooltip, Popover, Figma component token bundle, CI token audit gate.
 - Trend: Component surface and token enforcement are moving together; planning docs must be kept synchronized with shipped code.
 
 ## Accumulated Context
@@ -48,8 +48,8 @@ Recent decisions affecting current work:
 - 2026-06-03: GitHub Actions CI gate is canonical: `typecheck → lint → audit:tokens → test → build`.
 - 2026-06-03: `pnpm verify` mirrors the full CI gate locally; `pnpm ci` aliases `pnpm verify`.
 - 2026-06-03: Token audit is mandatory in CI and blocks hardcoded hex values or direct primitive-token usage in components.
-- 2026-06-03: Badge, Tag, Alert, Divider, Switch, and Tooltip are treated as shipped public component additions.
-- 2026-06-03: Remaining Phase 2 component scope is Popover, Tabs, and Accordion/Disclosure.
+- 2026-06-03: Badge, Tag, Alert, Divider, Switch, Tooltip, and Popover are treated as shipped public component additions.
+- 2026-06-03: Remaining Phase 2 component scope is Tabs and Accordion/Disclosure.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
 - v0.x: Surface model = `bg/surface` + `bg/elevated` (no shadow tokens unless overlay work requires them).
 - v0.x: `forwardRef + cva + Slot` pattern locked across components where applicable; Radix primitives are preferred for accessible behavior.
@@ -71,7 +71,7 @@ None yet.
 - Token audit: ✓ green (`pnpm audit:tokens`)
 - TypeScript: ✓ green (`pnpm typecheck`)
 - Lint: ✓ green (`pnpm lint`)
-- Tests/build: re-run full `pnpm verify` after the Figma manifest test expectation update
+- Tests/build: run full `pnpm verify` after Popover implementation
 - Git status before current closeout: clean after CI commit
 
 ## Session Continuity

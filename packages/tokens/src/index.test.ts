@@ -34,6 +34,10 @@ describe("theme.css", () => {
     expect(css).toContain('@import "./shadows.css"')
   })
 
+  it("imports popover component tokens", () => {
+    expect(css).toContain('@import "./component-popover.css"')
+  })
+
   it("imports in correct order: primitives → maxa → semantic → dimensions → shadows", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
     const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
@@ -260,6 +264,7 @@ describe("figma manifest", () => {
       "component-alert-light.json",
       "component-switch-light.json",
       "component-tooltip-light.json",
+      "component-popover-light.json",
       "component-divider-light.json",
       "component-utility-light.json",
     ])
@@ -271,6 +276,7 @@ describe("figma manifest", () => {
       "component-alert-dark.json",
       "component-switch-dark.json",
       "component-tooltip-dark.json",
+      "component-popover-dark.json",
       "component-divider-dark.json",
       "component-utility-dark.json",
     ])
@@ -312,7 +318,7 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Badge, Tag, Alert, Switch, Tooltip, Divider, and Utility component tokens", () => {
+  it("includes Badge, Tag, Alert, Switch, Tooltip, Popover, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
     const dark = bundle.collections["Component-based"]?.modes.Dark
 
@@ -335,10 +341,15 @@ describe("figma import bundle", () => {
     expect(light?.["Switch/track-radius"]).toBe("{Radius/radius-full}")
     expect(light?.["Tooltip/layout/max-width"]).toBe(240)
     expect(light?.["Tooltip/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
+    expect(light?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
+    expect(light?.["Popover/layout/width"]).toBe(320)
+    expect(light?.["Popover/typography/font-family"]).toBe("{Typography/Font family/body}")
     expect(light?.["Divider/size"]).toBe(1)
     expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
     expect(dark?.["Switch/size/md/track-width"]).toBe(36)
     expect(dark?.["Tooltip/layout/max-width"]).toBe(240)
+    expect(dark?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
+    expect(dark?.["Popover/layout/width"]).toBe(320)
     expect(dark?.["Divider/size"]).toBe(1)
     expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")

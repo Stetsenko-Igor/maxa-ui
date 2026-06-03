@@ -793,6 +793,34 @@ Floating hint on an inverse (dark) surface. Dark mode handled by the inverse sem
 --tooltip-line-height   /* 16px */
 ```
 
+## Popover Component Tokens
+
+Interactive floating surface anchored to a trigger. Use for rich content, filters, compact forms, and contextual actions.
+
+```css
+/* Surface */
+--popover-bg            /* bg-float */
+--popover-text          /* text-primary */
+--popover-border        /* border-primary */
+--popover-shadow        /* shadow-md */
+--popover-z             /* z-popover */
+
+/* Shape */
+--popover-radius        /* radius-lg (10px) */
+--popover-width         /* 320px */
+--popover-max-width     /* viewport-safe max width */
+
+/* Spacing */
+--popover-padding-x     /* spacing-lg (12px) */
+--popover-padding-y     /* spacing-lg (12px) */
+--popover-gap           /* spacing-md (8px) */
+
+/* Typography */
+--popover-font-family   /* font-body */
+--popover-font-size     /* text-sm (12px) */
+--popover-line-height   /* text-sm line-height */
+```
+
 ## Source files
 
 - `packages/tokens/src/semantic.css` — all color semantic tokens
@@ -809,6 +837,7 @@ Floating hint on an inverse (dark) surface. Dark mode handled by the inverse sem
 - `packages/tokens/src/component-separator.css` — separator component tokens
 - `packages/tokens/src/component-alert.css` — alert component tokens
 - `packages/tokens/src/component-tooltip.css` — tooltip component tokens
+- `packages/tokens/src/component-popover.css` — popover component tokens
 - `packages/tokens/src/component-nav.css` — nav component tokens
 - `packages/tokens/src/dimensions.css` — motion, z-index, opacity, blur (and spacing/radius) tokens
 - `packages/tokens/src/motion.css` — `prefers-reduced-motion` global guard

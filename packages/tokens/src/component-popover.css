@@ -1,0 +1,27 @@
+/* Popover component tokens — Layer 3 */
+/* Popover: interactive floating surface anchored to a trigger.          */
+/* Surface, text, border, shadow, z-index, and motion are token-backed. */
+
+:root {
+  /* ── Surface ────────────────────────────────────────────────────── */
+  --popover-bg:     var(--color-bg-float);
+  --popover-text:   var(--color-text-primary);
+  --popover-border: var(--color-border-primary);
+  --popover-shadow: var(--shadow-md);
+  --popover-z:      var(--z-popover);
+
+  /* ── Shape ──────────────────────────────────────────────────────── */
+  --popover-radius:    var(--radius-lg);
+  --popover-width:     320px;
+  --popover-max-width: calc(100vw - 32px);
+
+  /* ── Spacing ────────────────────────────────────────────────────── */
+  --popover-padding-x: var(--spacing-lg);
+  --popover-padding-y: var(--spacing-lg);
+  --popover-gap:       var(--spacing-md);
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --popover-font-family: var(--font-body);
+  --popover-font-size:   var(--text-sm);
+  --popover-line-height: var(--text-sm--line-height);
+}

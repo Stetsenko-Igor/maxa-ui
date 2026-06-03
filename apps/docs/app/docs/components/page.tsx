@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Radio, Select, Switch, Divider, Alert, AlertAction, Tooltip, TooltipProvider } from "@maxa/ui"
+import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Popover, PopoverContent, PopoverTrigger, Radio, Select, Switch, Divider, Alert, AlertAction, Tooltip, TooltipProvider } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -125,7 +125,7 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Fourteen components covering status indicators, data labels, actions, form controls, selection,
+          Fifteen components covering status indicators, data labels, actions, form controls, selection,
           layout, feedback, and overlays. All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
@@ -252,6 +252,29 @@ export default function ComponentsPage() {
               </div>
             </div>
             <span style={footer}>View Input →</span>
+          </Link>
+
+          {/* P */}
+          <Link href="/docs/components/popover" style={card}>
+            <p style={eyebrow}>Overlay</p>
+            <h2 style={title}>Popover<NewBadge /></h2>
+            <p style={description}>
+              Floating interactive panel anchored to a trigger. Built on Radix Popover.
+            </p>
+            <div style={preview}>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline">Open</Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <div style={{ display: "grid", gap: "8px" }}>
+                    <strong style={{ fontSize: "var(--text-sm)" }}>Filters</strong>
+                    <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Segment options</span>
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+            <span style={footer}>View Popover →</span>
           </Link>
 
           {/* R */}

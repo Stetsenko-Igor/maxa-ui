@@ -15,7 +15,7 @@ Requirements for v1.0 (current scope). Each maps to a phase in `ROADMAP.md`.
 ### Components (COMP)
 
 - [x] **COMP-01**: Tooltip component shipped — spec + implementation + docs page + Figma component tokens
-- [ ] **COMP-02**: Popover component shipped — spec + implementation + docs page
+- [x] **COMP-02**: Popover component shipped — spec + implementation + docs page + Figma component tokens
 - [ ] **COMP-03**: Tabs component shipped — spec + implementation + docs page
 - [ ] **COMP-04**: Disclosure / Accordion component shipped — spec + implementation + docs page
 - [x] **COMP-05**: Badge component shipped — spec + implementation + docs page + Figma component tokens
@@ -66,7 +66,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUAL-01 | Phase 1 | Complete |
 | QUAL-02 | Phase 1 | Complete |
 | COMP-01 | Phase 2 | Complete |
-| COMP-02 | Phase 2 | Pending |
+| COMP-02 | Phase 2 | Complete |
 | COMP-03 | Phase 2 | Pending |
 | COMP-04 | Phase 2 | Pending |
 | COMP-05 | Phase 2 | Complete |
@@ -87,4 +87,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-18*
-*Last updated: 2026-06-03 after Phase 2 partial component shipment*
+*Last updated: 2026-06-03 after Popover shipment*
