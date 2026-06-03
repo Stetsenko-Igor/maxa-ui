@@ -1,0 +1,211 @@
+/* Alert component styles — references only component tokens */
+
+.maxa-alert {
+  display: flex;
+  border-radius: var(--alert-radius);
+  border: var(--width-1) solid var(--alert-border);
+  background-color: var(--alert-bg);
+  font-family: var(--alert-font-family);
+  font-size: var(--alert-font-size);
+  line-height: var(--alert-line-height);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Left accent strip ────────────────────────────────────────── */
+
+.maxa-alert__strip {
+  display: block;
+  flex-shrink: 0;
+  width: var(--alert-strip-width);
+  align-self: stretch;
+  background-color: var(--alert-strip);
+}
+
+/* ── Inner row ────────────────────────────────────────────────── */
+
+.maxa-alert__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--alert-gap);
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--alert-padding-y) var(--alert-padding-x);
+}
+
+/* ── Icon ─────────────────────────────────────────────────────── */
+
+.maxa-alert__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: var(--alert-icon-size);
+  height: var(--alert-icon-size);
+  margin-top: var(--alert-icon-offset);
+  color: var(--alert-icon);
+}
+
+.maxa-alert__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Content ──────────────────────────────────────────────────── */
+
+.maxa-alert__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--alert-content-gap);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.maxa-alert__title {
+  font-weight: var(--alert-title-weight);
+  color: var(--alert-title-text);
+}
+
+.maxa-alert__body {
+  color: var(--alert-text);
+}
+
+/* ── Action row (stacked layout — below text) ─────────────────── */
+
+.maxa-alert__action-row {
+  display: flex;
+  align-items: center;
+  gap: var(--alert-gap);
+  padding-top: var(--alert-action-gap);
+}
+
+/* ── Right slot (inline layout — icon+text | [action] [dismiss]) */
+
+.maxa-alert__right {
+  display: flex;
+  align-items: center;
+  gap: var(--alert-gap);
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.maxa-alert__action-slot {
+  display: flex;
+  align-items: center;
+}
+
+/* ── Dismiss button ───────────────────────────────────────────── */
+
+.maxa-alert__dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--alert-dismiss-size);
+  height: var(--alert-dismiss-size);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--alert-icon);
+  opacity: var(--alert-dismiss-opacity);
+  cursor: pointer;
+  line-height: 0;
+  transition:
+    opacity var(--duration-base) var(--easing-standard),
+    background-color var(--duration-base) var(--easing-standard);
+}
+
+.maxa-alert__dismiss:hover {
+  opacity: 1;
+  background-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.maxa-alert__dismiss:focus-visible {
+  outline: var(--width-2) solid var(--color-border-focus);
+  outline-offset: 1px;
+  opacity: 1;
+}
+
+.maxa-alert__dismiss svg {
+  width: 75%;
+  height: 75%;
+}
+
+/* ── Inline layout — center-align inner content ───────────────── */
+
+.maxa-alert[data-layout="inline"] .maxa-alert__inner {
+  align-items: center;
+}
+
+/* ── AlertAction — intent-colored Button override ─────────────── */
+/* Inline layout: outline style in intent color, transparent bg   */
+
+.maxa-alert[data-layout="inline"] .maxa-alert__action.maxa-button--outline {
+  --button-outline-bg:           transparent;
+  --button-outline-bg-hover:     color-mix(in srgb, var(--alert-action-color) 10%, transparent);
+  --button-outline-bg-active:    color-mix(in srgb, var(--alert-action-color) 16%, transparent);
+  --button-outline-border:       var(--alert-action-color);
+  --button-outline-border-hover: var(--alert-action-color);
+  --button-outline-text:         var(--alert-action-color);
+}
+
+/* Stacked layout: filled style in intent color                   */
+
+.maxa-alert[data-layout="stacked"] .maxa-alert__action.maxa-button--outline {
+  --button-outline-border:       var(--alert-action-color);
+  --button-outline-border-hover: var(--alert-action-color);
+  --button-outline-text:         var(--alert-action-color);
+}
+
+.maxa-alert[data-layout="stacked"] .maxa-alert__action.maxa-button--primary {
+  --button-primary-bg:           var(--alert-action-color);
+  --button-primary-bg-hover:     var(--alert-action-color-hover);
+  --button-primary-bg-active:    var(--alert-action-color-hover);
+  --button-primary-border:       var(--alert-action-color);
+  --button-primary-border-hover: var(--alert-action-color-hover);
+}
+
+/* ── Intents ──────────────────────────────────────────────────── */
+
+.maxa-alert--info {
+  --alert-bg:               var(--alert-info-bg);
+  --alert-border:           var(--alert-info-border);
+  --alert-text:             var(--alert-info-text);
+  --alert-title-text:       var(--alert-info-title);
+  --alert-icon:             var(--alert-info-icon);
+  --alert-strip:            var(--alert-info-strip);
+  --alert-action-color:     var(--alert-info-action);
+  --alert-action-color-hover: var(--alert-info-action-hover);
+}
+
+.maxa-alert--success {
+  --alert-bg:               var(--alert-success-bg);
+  --alert-border:           var(--alert-success-border);
+  --alert-text:             var(--alert-success-text);
+  --alert-title-text:       var(--alert-success-title);
+  --alert-icon:             var(--alert-success-icon);
+  --alert-strip:            var(--alert-success-strip);
+  --alert-action-color:     var(--alert-success-action);
+  --alert-action-color-hover: var(--alert-success-action-hover);
+}
+
+.maxa-alert--warning {
+  --alert-bg:               var(--alert-warning-bg);
+  --alert-border:           var(--alert-warning-border);
+  --alert-text:             var(--alert-warning-text);
+  --alert-title-text:       var(--alert-warning-title);
+  --alert-icon:             var(--alert-warning-icon);
+  --alert-strip:            var(--alert-warning-strip);
+  --alert-action-color:     var(--alert-warning-action);
+  --alert-action-color-hover: var(--alert-warning-action-hover);
+}
+
+.maxa-alert--danger {
+  --alert-bg:               var(--alert-danger-bg);
+  --alert-border:           var(--alert-danger-border);
+  --alert-text:             var(--alert-danger-text);
+  --alert-title-text:       var(--alert-danger-title);
+  --alert-icon:             var(--alert-danger-icon);
+  --alert-strip:            var(--alert-danger-strip);
+  --alert-action-color:     var(--alert-danger-action);
+  --alert-action-color-hover: var(--alert-danger-action-hover);
+}
