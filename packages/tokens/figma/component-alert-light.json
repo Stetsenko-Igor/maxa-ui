@@ -81,109 +81,109 @@
     "color": {
       "info": {
         "bg": {
-          "$value": "#003877",
+          "$value": "{Color modes/background/bg-info-subtle}",
           "$type": "color"
         },
         "border": {
-          "$value": "#0059C2",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#54A3F6",
+          "$value": "{Color modes/foreground/fg-info}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "success": {
         "bg": {
-          "$value": "#044329",
+          "$value": "{Color modes/background/bg-success-subtle}",
           "$type": "color"
         },
         "border": {
-          "$value": "#006D0F",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#2BB47D",
+          "$value": "{Color modes/foreground/fg-positive}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "warning": {
         "bg": {
-          "$value": "#521D00",
+          "$value": "{Color modes/background/bg-warning-subtle}",
           "$type": "color"
         },
         "border": {
-          "$value": "#B44E00",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#E16D00",
+          "$value": "{Color modes/foreground/fg-warning}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "danger": {
         "bg": {
-          "$value": "#7B0000",
+          "$value": "{Color modes/background/bg-error-subtle}",
           "$type": "color"
         },
         "border": {
-          "$value": "#D71913",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#FF755E",
+          "$value": "{Color modes/foreground/fg-negative}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "neutral": {
         "bg": {
-          "$value": "#2D2D2E",
+          "$value": "{Color modes/background/bg-neutral-subtle}",
           "$type": "color"
         },
         "border": {
-          "$value": "#545454",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#B7B7B7",
+          "$value": "{Color modes/foreground/fg-secondary}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "emphasize": {
         "bg": {
-          "$value": "#292929",
+          "$value": "{Color modes/background/bg-neutral-strong}",
           "$type": "color"
         },
         "border": {
-          "$value": "#545454",
+          "$value": "{Color modes/border/border-primary}",
           "$type": "color"
         },
         "accent": {
-          "$value": "#B7B7B7",
+          "$value": "{Color modes/foreground/fg-inverse}",
           "$type": "color"
         },
         "text": {
-          "$value": "#F4F3F3",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       }

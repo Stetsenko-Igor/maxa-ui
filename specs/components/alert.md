@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. It uses component-level tokens that mirror the Figma reusable Alert surface: muted dark panels, restrained intent borders, a left accent strip, and calm intent icons.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. It uses component-level tokens with light and dark theme values: light mode follows semantic intent surfaces, while dark mode mirrors the Figma reusable Alert surface with muted dark panels, restrained intent borders, a left accent strip, and calm intent icons.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -26,34 +26,30 @@ The MAXA Alert (callout) is a contextual feedback box that communicates a status
 
 ## Intents
 
-Each intent maps to the component token values from the Figma Alert component.
+Each intent maps to theme-aware component token values.
 
 ### `info`
 - **Use when:** Neutral, helpful context or tips.
-- **Background:** `--alert-info-bg` → `#003877`
-- **Border:** `--alert-info-border` → `#0059C2`
-- **Text/icon:** `#F4F3F3`, `#54A3F6`
+- **Light:** `bg/info-subtle`, `border/info-subtle`, `text/primary`, `fg/info`
+- **Dark:** `#003877`, `#0059C2`, `#F4F3F3`, `#54A3F6`
 - **Role:** `status` (polite)
 
 ### `success`
 - **Use when:** Confirming a positive, completed action.
-- **Background:** `--alert-success-bg` → `#044329`
-- **Border:** `--alert-success-border` → `#006D0F`
-- **Text/icon:** `#F4F3F3`, `#2BB47D`
+- **Light:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/positive`
+- **Dark:** `#044329`, `#006D0F`, `#F4F3F3`, `#2BB47D`
 - **Role:** `status` (polite)
 
 ### `warning`
 - **Use when:** Cautioning the user about a potential issue or required attention.
-- **Background:** `--alert-warning-bg` → `#521D00`
-- **Border:** `--alert-warning-border` → `#B44E00`
-- **Text/icon:** `#F4F3F3`, `#E16D00`
+- **Light:** `bg/warning-subtle`, `border/warning-subtle`, `text/primary`, `fg/warning`
+- **Dark:** `#521D00`, `#B44E00`, `#F4F3F3`, `#E16D00`
 - **Role:** `alert` (assertive)
 
 ### `danger`
 - **Use when:** Reporting an error, failure, or destructive consequence.
-- **Background:** `--alert-danger-bg` → `#7B0000`
-- **Border:** `--alert-danger-border` → `#D71913`
-- **Text/icon:** `#F4F3F3`, `#FF755E`
+- **Light:** `bg/error-subtle`, `border/danger-subtle`, `text/primary`, `fg/negative`
+- **Dark:** `#7B0000`, `#D71913`, `#F4F3F3`, `#FF755E`
 - **Role:** `alert` (assertive)
 
 ---
@@ -98,16 +94,16 @@ All other native `div` attributes are forwarded.
 --alert-title-weight: var(--font-weight-bold);
 ```
 
-### Info intent (example)
+### Info intent (example, light mode)
 ```css
---alert-info-bg:     #003877;
---alert-info-border: #0059C2;
---alert-info-text:   #F4F3F3;
---alert-info-title:  #F4F3F3;
---alert-info-icon:   #54A3F6;
+--alert-info-bg:     var(--color-bg-info-subtle);
+--alert-info-border: var(--color-border-info-subtle);
+--alert-info-text:   var(--color-text-primary);
+--alert-info-title:  var(--color-text-primary);
+--alert-info-icon:   var(--color-fg-info);
 ```
 
-The current Alert surface is dark by design in both token modes. Add a separate light design before introducing light-mode overrides.
+Dark mode overrides these component tokens under `[data-theme="dark"]` with the Figma dark Alert values.
 
 ---
 

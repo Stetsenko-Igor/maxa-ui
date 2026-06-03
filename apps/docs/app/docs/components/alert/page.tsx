@@ -40,10 +40,8 @@ const col: React.CSSProperties = {
   gap: "var(--spacing-6)",
   width: "100%",
   maxWidth: "657px",
-  padding: "var(--spacing-8) var(--spacing-6)",
+  padding: "var(--spacing-4) 0",
   boxSizing: "border-box",
-  borderRadius: "var(--radius-md)",
-  background: "var(--color-bg-inverse)",
 }
 
 export default function AlertPage() {

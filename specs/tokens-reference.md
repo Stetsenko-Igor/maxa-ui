@@ -721,7 +721,8 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 
 ## Alert Component Tokens
 
-Four public intents (info / success / warning / danger) use the Figma Alert component surface:
+Four public intents (info / success / warning / danger) are theme-aware.
+Light mode aliases semantic intent surfaces; dark mode uses the Figma Alert component surface:
 muted dark panels, restrained borders, a left accent strip, and calm intent icons.
 Neutral and emphasize color tokens are exported for Figma parity but are not public React intents yet.
 
@@ -744,32 +745,32 @@ Neutral and emphasize color tokens are exported for Figma parity but are not pub
 --alert-title-weight    /* font-weight-bold */
 
 /* Info */
---alert-info-bg               /* #003877 */
---alert-info-border           /* #0059C2 */
---alert-info-text             /* #F4F3F3 */
---alert-info-title            /* #F4F3F3 */
---alert-info-icon             /* #54A3F6 */
+--alert-info-bg               /* light: bg-info-subtle; dark: #003877 */
+--alert-info-border           /* light: border-info-subtle; dark: #0059C2 */
+--alert-info-text             /* light: text-primary; dark: #F4F3F3 */
+--alert-info-title            /* light: text-primary; dark: #F4F3F3 */
+--alert-info-icon             /* light: fg-info; dark: #54A3F6 */
 
 /* Success */
---alert-success-bg            /* #044329 */
---alert-success-border        /* #006D0F */
---alert-success-text          /* #F4F3F3 */
---alert-success-title         /* #F4F3F3 */
---alert-success-icon          /* #2BB47D */
+--alert-success-bg            /* light: bg-success-subtle; dark: #044329 */
+--alert-success-border        /* light: border-success-subtle; dark: #006D0F */
+--alert-success-text          /* light: text-primary; dark: #F4F3F3 */
+--alert-success-title         /* light: text-primary; dark: #F4F3F3 */
+--alert-success-icon          /* light: fg-positive; dark: #2BB47D */
 
 /* Warning */
---alert-warning-bg            /* #521D00 */
---alert-warning-border        /* #B44E00 */
---alert-warning-text          /* #F4F3F3 */
---alert-warning-title         /* #F4F3F3 */
---alert-warning-icon          /* #E16D00 */
+--alert-warning-bg            /* light: bg-warning-subtle; dark: #521D00 */
+--alert-warning-border        /* light: border-warning-subtle; dark: #B44E00 */
+--alert-warning-text          /* light: text-primary; dark: #F4F3F3 */
+--alert-warning-title         /* light: text-primary; dark: #F4F3F3 */
+--alert-warning-icon          /* light: fg-warning; dark: #E16D00 */
 
 /* Danger */
---alert-danger-bg             /* #7B0000 */
---alert-danger-border         /* #D71913 */
---alert-danger-text           /* #F4F3F3 */
---alert-danger-title          /* #F4F3F3 */
---alert-danger-icon           /* #FF755E */
+--alert-danger-bg             /* light: bg-error-subtle; dark: #7B0000 */
+--alert-danger-border         /* light: border-danger-subtle; dark: #D71913 */
+--alert-danger-text           /* light: text-primary; dark: #F4F3F3 */
+--alert-danger-title          /* light: text-primary; dark: #F4F3F3 */
+--alert-danger-icon           /* light: fg-negative; dark: #FF755E */
 ```
 
 ## Tooltip Component Tokens
