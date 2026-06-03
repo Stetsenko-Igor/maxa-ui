@@ -1,0 +1,37 @@
+/* Toggle component tokens — Layer 3 */
+/* Reference only semantic tokens (Layer 2). Never raw primitives. */
+/* Toggle has one public size: md. */
+
+:root {
+  /* ── Track ─────────────────────────────────────────────────────── */
+  --toggle-track-width:      36px;
+  --toggle-track-height:     20px;
+  --toggle-track-radius:     var(--radius-full);
+
+  /* ── Thumb ─────────────────────────────────────────────────────── */
+  --toggle-thumb-size:       16px;
+  --toggle-thumb-inset:      2px;
+  --toggle-thumb-radius:     var(--radius-full);
+
+  /* ── Focus ring ───────────────────────────────────────────────── */
+  --toggle-focus-ring-width:  3px;
+  --toggle-focus-ring-offset: 2px;
+  --toggle-focus-ring-color:  var(--color-border-focus);
+
+  /* ── Colors — track ───────────────────────────────────────────── */
+  --toggle-track-bg-off:        var(--color-action-neutral);
+  --toggle-track-bg-off-hover:  var(--color-border-secondary);
+  --toggle-track-bg-on:         var(--color-action-primary);
+  --toggle-track-bg-on-hover:   var(--color-action-primary-hover);
+
+  /* ── Colors — thumb ───────────────────────────────────────────── */
+  --toggle-thumb-bg:            var(--color-bg-surface);
+  --toggle-thumb-bg-disabled:   var(--color-bg-surface);
+
+  /* ── Colors — error ───────────────────────────────────────────── */
+  --toggle-track-border-error:  var(--color-border-error);
+  --toggle-error-border-width:  1.5px;
+
+  /* ── Disabled ─────────────────────────────────────────────────── */
+  --toggle-disabled-opacity:    0.5;
+}

@@ -262,7 +262,7 @@ describe("figma manifest", () => {
       "component-badge-light.json",
       "component-tag-light.json",
       "component-alert-light.json",
-      "component-switch-light.json",
+      "component-toggle-light.json",
       "component-tooltip-light.json",
       "component-popover-light.json",
       "component-divider-light.json",
@@ -274,7 +274,7 @@ describe("figma manifest", () => {
       "component-badge-dark.json",
       "component-tag-dark.json",
       "component-alert-dark.json",
-      "component-switch-dark.json",
+      "component-toggle-dark.json",
       "component-tooltip-dark.json",
       "component-popover-dark.json",
       "component-divider-dark.json",
@@ -318,7 +318,7 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Badge, Tag, Alert, Switch, Tooltip, Popover, Divider, and Utility component tokens", () => {
+  it("includes Badge, Tag, Alert, Toggle, Tooltip, Popover, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
     const dark = bundle.collections["Component-based"]?.modes.Dark
 
@@ -346,8 +346,10 @@ describe("figma import bundle", () => {
     expect(light?.["Alert/color/info/accent"]).toBe("{Color modes/foreground/fg-info}")
     expect(light?.["Alert/color/warning/bg"]).toBe("{Color modes/background/bg-warning-subtle}")
     expect(light?.["Alert/color/danger/accent"]).toBe("{Color modes/foreground/fg-negative}")
-    expect(light?.["Switch/size/md/track-width"]).toBe(36)
-    expect(light?.["Switch/track-radius"]).toBe("{Radius/radius-full}")
+    expect(light?.["Toggle/size/md/track-width"]).toBe(36)
+    expect(light?.["Toggle/track-radius"]).toBe("{Radius/radius-full}")
+    expect(light?.["Toggle/size/sm/track-width"]).toBeUndefined()
+    expect(light?.["Toggle/size/lg/track-width"]).toBeUndefined()
     expect(light?.["Tooltip/layout/max-width"]).toBe(240)
     expect(light?.["Tooltip/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
     expect(light?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
@@ -360,7 +362,8 @@ describe("figma import bundle", () => {
     expect(dark?.["Alert/color/success/bg"]).toBe("#044329")
     expect(dark?.["Alert/color/danger/accent"]).toBe("#FF755E")
     expect(dark?.["Alert/color/emphasize/border"]).toBe("#545454")
-    expect(dark?.["Switch/size/md/track-width"]).toBe(36)
+    expect(dark?.["Toggle/size/md/track-width"]).toBe(36)
+    expect(dark?.["Toggle/size/sm/track-width"]).toBeUndefined()
     expect(dark?.["Tooltip/layout/max-width"]).toBe(240)
     expect(dark?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
     expect(dark?.["Popover/layout/width"]).toBe(320)

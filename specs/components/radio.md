@@ -145,7 +145,7 @@ Radio has no color/variant axis like Button. Its only configuration axis is `siz
 | Managing exclusivity in React state when uncontrolled | Let the browser handle it via `name` |
 | Custom disabled colors | Use `opacity: 0.5` on `.maxa-radio` |
 | Overriding checked color with brand teal | Checked = `action/primary` (blue) |
-| A single radio used as on/off | Use Checkbox or Switch |
+| A single radio used as on/off | Use Checkbox or Toggle |
 | Radio for "select one of 5+ items" | Use `Select` |
 
 ---

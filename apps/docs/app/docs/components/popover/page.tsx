@@ -70,7 +70,7 @@ export default function PopoverPage() {
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/popover"
       markdown=""
       previous={{ href: "/docs/components/select", label: "Select" }}
-      next={{ href: "/docs/components/switch", label: "Switch" }}
+      next={{ href: "/docs/components/toggle", label: "Toggle" }}
       lead={
         <>
           A floating, dismissible layer for interactive content anchored to a trigger.

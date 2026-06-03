@@ -35,7 +35,7 @@ Progress: [█████░░░░░] 50%
 | 5. Tailwind v4 adapter | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Switch, Tooltip, Popover, Figma component token bundle, CI token audit gate.
+- Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Toggle, Tooltip, Popover, Figma component token bundle, CI token audit gate.
 - Trend: Component surface and token enforcement are moving together; planning docs must be kept synchronized with shipped code.
 
 ## Accumulated Context
@@ -48,7 +48,7 @@ Recent decisions affecting current work:
 - 2026-06-03: GitHub Actions CI gate is canonical: `typecheck → lint → audit:tokens → test → build`.
 - 2026-06-03: `pnpm verify` mirrors the full CI gate locally; `pnpm ci` aliases `pnpm verify`.
 - 2026-06-03: Token audit is mandatory in CI and blocks hardcoded hex values or direct primitive-token usage in components.
-- 2026-06-03: Badge, Tag, Alert, Divider, Switch, Tooltip, and Popover are treated as shipped public component additions.
+- 2026-06-03: Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are treated as shipped public component additions.
 - 2026-06-03: Remaining Phase 2 component scope is Tabs and Accordion/Disclosure.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
 - v0.x: Surface model = `bg/surface` + `bg/elevated` (no shadow tokens unless overlay work requires them).

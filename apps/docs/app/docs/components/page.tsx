@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Popover, PopoverContent, PopoverTrigger, Radio, Select, Switch, Divider, Alert, AlertAction, Tooltip, TooltipProvider } from "@maxa/ui"
+import { Badge, Tag, Button, Checkbox, DatePicker, IconButton, Input, Popover, PopoverContent, PopoverTrigger, Radio, Select, Toggle, Divider, Alert, AlertAction, Tooltip, TooltipProvider } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../_components/docs-page-layout"
 
 export const metadata: Metadata = { title: "Components — MAXA UI" }
@@ -311,19 +311,19 @@ export default function ComponentsPage() {
             <span style={footer}>View Select →</span>
           </Link>
 
-          {/* Sw */}
-          <Link href="/docs/components/switch" style={card}>
+          {/* To */}
+          <Link href="/docs/components/toggle" style={card}>
             <p style={eyebrow}>Form</p>
-            <h2 style={title}>Switch<NewBadge /></h2>
+            <h2 style={title}>Toggle<NewBadge /></h2>
             <p style={description}>
-              Binary on/off toggle with three sizes, disabled and error states. Built on Radix.
+              Binary on/off control with one md size, disabled and error states. Built on Radix.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-              <Switch aria-label="Off" />
-              <Switch aria-label="On" defaultChecked />
-              <Switch aria-label="Disabled" disabled defaultChecked />
+              <Toggle aria-label="Off" />
+              <Toggle aria-label="On" defaultChecked />
+              <Toggle aria-label="Disabled" disabled defaultChecked />
             </div>
-            <span style={footer}>View Switch →</span>
+            <span style={footer}>View Toggle →</span>
           </Link>
 
           {/* T */}

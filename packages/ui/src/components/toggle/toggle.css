@@ -1,0 +1,63 @@
+/* Toggle component */
+
+.maxa-toggle {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: var(--toggle-track-width);
+  height: var(--toggle-track-height);
+  padding: 0;
+  border: 0;
+  border-radius: var(--toggle-track-radius);
+  background: var(--toggle-track-bg-off);
+  cursor: pointer;
+  transition: background-color var(--duration-base) var(--easing-standard);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.maxa-toggle__thumb {
+  display: block;
+  width: var(--toggle-thumb-size);
+  height: var(--toggle-thumb-size);
+  border-radius: var(--toggle-thumb-radius);
+  background: var(--toggle-thumb-bg);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+  transition: transform var(--duration-base) var(--easing-standard);
+  transform: translateX(var(--toggle-thumb-inset));
+  will-change: transform;
+  pointer-events: none;
+}
+
+.maxa-toggle[data-state="checked"] {
+  background: var(--toggle-track-bg-on);
+}
+
+.maxa-toggle[data-state="checked"] .maxa-toggle__thumb {
+  transform: translateX(
+    calc(var(--toggle-track-width) - var(--toggle-thumb-size) - var(--toggle-thumb-inset))
+  );
+}
+
+.maxa-toggle:not([disabled]):hover {
+  background: var(--toggle-track-bg-off-hover);
+}
+
+.maxa-toggle:not([disabled])[data-state="checked"]:hover {
+  background: var(--toggle-track-bg-on-hover);
+}
+
+.maxa-toggle:focus-visible {
+  outline: var(--toggle-focus-ring-width) solid var(--toggle-focus-ring-color);
+  outline-offset: var(--toggle-focus-ring-offset);
+}
+
+.maxa-toggle[data-error] {
+  outline: var(--toggle-error-border-width) solid var(--toggle-track-border-error);
+  outline-offset: 0;
+}
+
+.maxa-toggle[disabled] {
+  cursor: not-allowed;
+  opacity: var(--toggle-disabled-opacity);
+}

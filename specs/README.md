@@ -50,7 +50,7 @@ specs/
 │   ├── date-picker.md               ← DatePicker field composition
 │   ├── checkbox.md                  ← Checkbox + states
 │   ├── radio.md                     ← Radio + group composition
-│   ├── switch.md                    ← Switch (toggle) + states
+│   ├── toggle.md                    ← Toggle + states
 │   ├── separator.md                 ← Separator (divider rule)
 │   ├── alert.md                     ← Alert (callout) + intents
 │   ├── tooltip.md                   ← Tooltip (floating hint)

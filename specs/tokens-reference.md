@@ -668,48 +668,42 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 --tag-size-lg-remove         /* 16px */
 ```
 
-## Switch Component Tokens
+## Toggle Component Tokens
 
 ```css
-/* Track sizes */
---switch-track-width-sm       /* 28px */
---switch-track-height-sm      /* 16px */
---switch-track-width-md       /* 36px */
---switch-track-height-md      /* 20px */
---switch-track-width-lg       /* 44px */
---switch-track-height-lg      /* 24px */
+/* Track size: md only */
+--toggle-track-width          /* 36px */
+--toggle-track-height         /* 20px */
 
-/* Thumb sizes */
---switch-thumb-size-sm        /* 12px */
---switch-thumb-size-md        /* 16px */
---switch-thumb-size-lg        /* 20px */
---switch-thumb-inset          /* 2px — track edge to thumb, drives travel */
+/* Thumb */
+--toggle-thumb-size           /* 16px */
+--toggle-thumb-inset          /* 2px — track edge to thumb, drives travel */
 
 /* Radius */
---switch-track-radius         /* radius-full */
---switch-thumb-radius         /* radius-full */
+--toggle-track-radius         /* radius-full */
+--toggle-thumb-radius         /* radius-full */
 
 /* Focus ring */
---switch-focus-ring-width     /* 3px */
---switch-focus-ring-offset    /* 2px */
---switch-focus-ring-color     /* border-focus */
+--toggle-focus-ring-width     /* 3px */
+--toggle-focus-ring-offset    /* 2px */
+--toggle-focus-ring-color     /* border-focus */
 
 /* Colors — track */
---switch-track-bg-off         /* action-neutral */
---switch-track-bg-off-hover   /* border-secondary */
---switch-track-bg-on          /* action-brand */
---switch-track-bg-on-hover    /* action-brand-hover */
+--toggle-track-bg-off         /* action-neutral */
+--toggle-track-bg-off-hover   /* border-secondary */
+--toggle-track-bg-on          /* action-primary */
+--toggle-track-bg-on-hover    /* action-primary-hover */
 
 /* Colors — thumb */
---switch-thumb-bg             /* bg-surface */
---switch-thumb-bg-disabled    /* bg-surface */
+--toggle-thumb-bg             /* bg-surface */
+--toggle-thumb-bg-disabled    /* bg-surface */
 
 /* Colors — error */
---switch-track-border-error   /* border-error */
---switch-error-border-width   /* 1.5px */
+--toggle-track-border-error   /* border-error */
+--toggle-error-border-width   /* 1.5px */
 
 /* Disabled */
---switch-disabled-opacity     /* 0.5 */
+--toggle-disabled-opacity     /* 0.5 */
 ```
 
 ## Separator Component Tokens
@@ -837,7 +831,7 @@ Interactive floating surface anchored to a trigger. Use for rich content, filter
 - `packages/tokens/src/component-radio.css` — radio component tokens
 - `packages/tokens/src/component-badge.css` — badge component tokens
 - `packages/tokens/src/component-tag.css` — tag component tokens
-- `packages/tokens/src/component-switch.css` — switch component tokens
+- `packages/tokens/src/component-toggle.css` — toggle component tokens
 - `packages/tokens/src/component-separator.css` — separator component tokens
 - `packages/tokens/src/component-alert.css` — alert component tokens
 - `packages/tokens/src/component-tooltip.css` — tooltip component tokens

@@ -22,7 +22,7 @@ Requirements for v1.0 (current scope). Each maps to a phase in `ROADMAP.md`.
 - [x] **COMP-06**: Tag component shipped — spec + implementation + docs page + Figma component tokens
 - [x] **COMP-07**: Alert component shipped — spec + implementation + docs page + Figma component tokens
 - [x] **COMP-08**: Divider component shipped — spec + implementation + docs page + Figma component tokens
-- [x] **COMP-09**: Switch component shipped — spec + implementation + docs page + Figma component tokens
+- [x] **COMP-09**: Toggle component shipped — spec + implementation + docs page + Figma component tokens
 
 ### Design Handoff (HAND)
 

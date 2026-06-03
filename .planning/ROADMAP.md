@@ -80,11 +80,11 @@ Plans:
   5. Component tokens are included in `packages/tokens/src/` and the Figma import bundle when visual decisions are component-specific
   6. `pnpm verify` mirrors CI and is green (`typecheck && lint && audit:tokens && test && build`)
   7. Changeset added for each public package affected
-**Status**: In progress. Badge, Tag, Alert, Divider, Switch, Tooltip, and Popover are shipped. Remaining planned v1 components: Tabs and Accordion/Disclosure.
+**Status**: In progress. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are shipped. Remaining planned v1 components: Tabs and Accordion/Disclosure.
 **Plans**: TBD
 
 Plans:
-- [x] 02-shipped: Badge, Tag, Alert, Divider, Switch, Tooltip — shipped outside formal GSD plan files
+- [x] 02-shipped: Badge, Tag, Alert, Divider, Toggle, Tooltip — shipped outside formal GSD plan files
 - [x] 02-01: Popover
 - [ ] 02-02: Tabs
 - [ ] 02-03: Accordion/Disclosure

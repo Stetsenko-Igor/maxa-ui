@@ -1,20 +1,6 @@
 {
-  "Switch": {
+  "Toggle": {
     "size": {
-      "sm": {
-        "track-width": {
-          "$value": 28,
-          "$type": "number"
-        },
-        "track-height": {
-          "$value": 16,
-          "$type": "number"
-        },
-        "thumb-size": {
-          "$value": 12,
-          "$type": "number"
-        }
-      },
       "md": {
         "track-width": {
           "$value": 36,
@@ -26,20 +12,6 @@
         },
         "thumb-size": {
           "$value": 16,
-          "$type": "number"
-        }
-      },
-      "lg": {
-        "track-width": {
-          "$value": 44,
-          "$type": "number"
-        },
-        "track-height": {
-          "$value": 24,
-          "$type": "number"
-        },
-        "thumb-size": {
-          "$value": 20,
           "$type": "number"
         }
       }

@@ -34,9 +34,9 @@ const NAV = [
       { href: "/docs/components/popover", label: "Popover", isNew: true },
       { href: "/docs/components/radio", label: "Radio" },
       { href: "/docs/components/select", label: "Select" },
-      { href: "/docs/components/switch", label: "Switch", isNew: true },
       { href: "/docs/components/tag", label: "Tag" },
       { href: "/docs/components/tooltip", label: "Tooltip", isNew: true },
+      { href: "/docs/components/toggle", label: "Toggle", isNew: true },
     ],
   },
 ]

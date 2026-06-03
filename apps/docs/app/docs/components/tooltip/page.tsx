@@ -35,7 +35,7 @@ export default function TooltipPage() {
       toc={TOC}
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/tooltip"
       markdown=""
-      previous={{ href: "/docs/components/switch", label: "Switch" }}
+      previous={{ href: "/docs/components/toggle", label: "Toggle" }}
       next={{ href: "/docs/components/button", label: "Button" }}
       lead={
         <>

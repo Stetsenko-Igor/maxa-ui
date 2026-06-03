@@ -26,7 +26,7 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-- **Phase 2: Component surface extension** — partially shipped. Badge, Tag, Alert, Divider, Switch, Tooltip, and Popover are in code/docs/tokens/Figma bundle. Remaining v1 component work: Tabs and Accordion/Disclosure.
+- **Phase 2: Component surface extension** — partially shipped. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are in code/docs/tokens/Figma bundle. Remaining v1 component work: Tabs and Accordion/Disclosure.
 - **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → test → build`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code.
 
 ### Out of Scope
