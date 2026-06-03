@@ -28,6 +28,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Token audit
+        run: pnpm audit:tokens
+
       - name: Test
         run: pnpm test
 
