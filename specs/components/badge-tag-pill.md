@@ -13,6 +13,10 @@ Related components: Badge, Tag, FilterChip/Pill, DecorativeLabel
 > MAXA's existing semantic palette. The `--color-intent-*` token shape proposed
 > below was **not** used; instead a single `--color-bg-{intent}-muted` tier was
 > added over existing primitives.
+> Canonical `appearance` values now follow Tailwind-like hue names:
+> `gray`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`,
+> `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`,
+> `pink`, `rose`.
 
 ## Context
 
@@ -22,7 +26,7 @@ The reviewed Figma reference separates a useful model:
 
 - `intent`: Neutral, Informative, Positive, Negative, Warning
 - `emphasis`: Low, Medium, High
-- `appearance`: Grey, Blue, Green, Red, Orange, Raspberry, Magenta, Purple, Grape, Violet, Cyan, Teal, Aquamarine, Emerald, Outline
+- `appearance`: historical Figma values were not adopted as canonical; use the Tailwind-like appearance values listed above
 - optional leading/trailing icon
 - optional label
 
@@ -68,9 +72,9 @@ Recommended props:
 
 ```ts
 type TagAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 type TagEmphasis = "low" | "medium" | "high"
 type TagSize = "sm" | "md" | "lg"
 
@@ -88,7 +92,7 @@ type TagProps = {
 Recommended examples:
 
 ```tsx
-<Tag appearance="grey">Segment</Tag>
+<Tag appearance="gray">Segment</Tag>
 <Tag appearance="blue" removable onRemove={handleRemove}>Audience</Tag>
 <Tag appearance="violet" emphasis="high">VIP client</Tag>
 ```

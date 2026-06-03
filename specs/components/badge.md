@@ -23,9 +23,9 @@ type BadgeIntent   = "neutral" | "info" | "success" | "warning" | "error"
 type BadgeEmphasis = "low" | "medium" | "high"
 type BadgeSize     = "sm" | "md" | "lg"
 type BadgeAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   intent?: BadgeIntent      // default "neutral"
@@ -42,7 +42,7 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 `neutral` (default) · `info` · `success` · `warning` · `error`. Naming matches existing semantic tokens (`--color-text-{info,success,warning,error}`).
 
 ### Appearance
-`grey` · `blue` · `green` · `red` · `orange` · `raspberry` · `magenta` · `purple` · `grape` · `violet` · `cyan` · `teal` · `aquamarine` · `emerald`.
+`gray` · `red` · `orange` · `amber` · `yellow` · `lime` · `green` · `emerald` · `teal` · `cyan` · `sky` · `blue` · `indigo` · `violet` · `purple` · `fuchsia` · `pink` · `rose`.
 
 Use `intent` for semantic state and `appearance` for decorative/product taxonomy color. If both are provided, implementation must define clear precedence; current recommendation is that `appearance` controls visual color.
 
@@ -52,9 +52,9 @@ Use `intent` for semantic state and `appearance` for decorative/product taxonomy
 - `high` — strong solid background, inverse (white) text.
 
 ### Size
-- `sm` — height 20px, padding-x 6px, icon 12px.
-- `md` (default) — height 24px, padding-x 8px, gap 4px, icon 14px.
-- `lg` — large badge size. Exact height, padding, gap, text, and icon values must be represented by component tokens before Figma handoff.
+- `sm` — height 20px, padding-x 6px, gap 4px, text 12px, icon 12px.
+- `md` (default) — height 24px, padding-x 8px, gap 4px, text 12px, icon 14px.
+- `lg` — height 28px, padding-x 10px, gap 6px, text 14px (`--text-md`), icon 16px.
 
 ## Examples
 
@@ -69,19 +69,18 @@ Use `intent` for semantic state and `appearance` for decorative/product taxonomy
 
 ## Color strategy
 
-Badge uses **MAXA's existing semantic palette** — the same Tailwind-derived intent colors used across the project (consistent with UntitledUI-OSS, which also uses Tailwind for status). The palette in the source Figma reference (`6020:18341`) came from a foreign design system (`nonSemantic-*` variables) and was **intentionally not adopted**.
+Badge has two color axes:
 
-The only token added is a `muted` (medium-emphasis) tier, aliasing existing primitives — no new color values:
+- **`intent`** — maps to MAXA's semantic state palette (`--color-bg-{intent}-{subtle,muted,strong}`, `--color-text-{intent-hue}`). Used for status: neutral, info, success, warning, error.
+- **`appearance`** — maps to the non-semantic "semantic" hue palette in `semantic.css` (`--color-bg-{hue}-{subtle,muted,strong}` and `--color-text-{hue}`) for decorative/product taxonomy color across 18 hues. Shared with `Tag`.
 
-```
---color-bg-{intent}-muted   /* {hue}-100 light / {hue}-900 dark */
-```
+If `appearance` is set, the component omits `data-intent` and emits `data-appearance` instead, so appearance controls the visual color. If only `intent` is set, `data-intent` is emitted.
 
-Dark mode is automatic: Badge consumes semantic tokens that already carry `[data-theme="dark"]` overrides.
+Dark mode is automatic for low/medium emphasis: Badge consumes semantic tokens that carry `[data-theme="dark"]` overrides, plus explicit per-intent text overrides in `component-badge.css`. High-emphasis (solid) badges force `--color-base-white` text/icon in both themes so the inverse text never resolves to dark.
 
 ## Component tokens (Layer 3)
 
-Defined in `packages/tokens/src/component-badge.css`, mapped per `[data-intent][data-emphasis]`:
+Defined in `packages/tokens/src/component-badge.css`. The element-level tokens (`--badge-bg`, `--badge-text`, `--badge-icon`, `--badge-border`) are remapped per `[data-intent][data-emphasis]` and per `[data-appearance][data-emphasis]` selectors:
 
 ```
 --badge-bg, --badge-text, --badge-icon, --badge-border,
@@ -89,12 +88,26 @@ Defined in `packages/tokens/src/component-badge.css`, mapped per `[data-intent][
 --badge-size-{sm,md,lg}-{height,padding-x,gap,font,icon}
 ```
 
-Mapping rule per intent:
-- low    → bg `--color-bg-{intent}-subtle`, fg `--color-text-{intent}`
-- medium → bg `--color-bg-{intent}-muted`,  fg `--color-text-{intent}`
-- high   → bg `--color-bg-{intent}-strong`,  fg `--color-text-inverse`
+> Note: the foreground token is `--badge-text` (text) and `--badge-icon` (icon). There is no `--badge-fg` token — `text`/`icon` are set identically per variant but kept as two tokens.
 
-(`neutral` low/medium use `--color-text-secondary` / `--color-text-primary`.)
+Mapping rule per intent:
+- low    → bg `--color-bg-{intent}-subtle`, text/icon `--color-{hue}-900` (e.g. `--color-blue-900` for info)
+- medium → bg `--color-bg-{intent}-muted`,  text/icon `--color-{hue}-900`
+- high   → bg `--color-bg-{intent}-strong`,  text/icon `--color-base-white`
+
+(`neutral` uses `--color-bg-neutral-{subtle,muted,strong}` for bg, `--color-gray-900` text/icon for low/medium, `--color-base-white` for high.)
+
+Mapping rule per appearance (18 hues × 3 emphasis):
+- low    → bg `--color-bg-{hue}-subtle`, text/icon `--color-text-{hue}`
+- medium → bg `--color-bg-{hue}-muted`,  text/icon `--color-text-{hue}`
+- high   → bg `--color-bg-{hue}-strong`, text/icon `--color-base-white`
+
+### Shared tokens
+```css
+--badge-radius:      var(--radius-full);
+--badge-font-family: var(--font-body);
+--badge-font-weight: var(--font-weight-medium);
+```
 
 ## Accessibility
 

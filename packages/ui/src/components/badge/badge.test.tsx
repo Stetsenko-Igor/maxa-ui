@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Badge } from "./badge"
 
 describe("Badge", () => {
@@ -81,5 +82,19 @@ describe("Badge", () => {
     const link = screen.getByRole("link", { name: "Link badge" })
     expect(link).toHaveClass("maxa-badge")
     expect(link).toHaveAttribute("data-intent", "info")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Badge intent="success">Verified</Badge>)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("has no a11y violations in dark mode", async () => {
+    const { container } = render(
+      <div data-theme="dark">
+        <Badge intent="success">Verified</Badge>
+      </div>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

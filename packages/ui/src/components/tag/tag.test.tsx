@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest"
 import { render, screen, fireEvent } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Tag } from "./tag"
 
 describe("Tag", () => {
@@ -82,5 +83,10 @@ describe("Tag", () => {
   it("merges custom className", () => {
     render(<Tag className="custom">X</Tag>)
     expect(document.querySelector(".maxa-tag")).toHaveClass("custom")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Tag removable>Audience</Tag>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

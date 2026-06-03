@@ -41,9 +41,9 @@ Badge must not be removable. If something can be removed from an entity, use `Ta
 
 ```ts
 type BadgeAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 type BadgeIntent = "neutral" | "info" | "success" | "warning" | "error"
 type BadgeEmphasis = "low" | "medium" | "high"
@@ -110,9 +110,9 @@ Tag may be static, selected, or removable. Tag is not a status indicator and sho
 
 ```ts
 type TagAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 type TagEmphasis = "low" | "medium" | "high"
 type TagSize = "sm" | "md" | "lg"
@@ -201,7 +201,7 @@ Badge-specific:
 
 Recommended Badge Figma properties:
 
-- `Appearance`: grey, blue, green, red, orange, raspberry, magenta, purple, grape, violet, cyan, teal, aquamarine, emerald
+- `Appearance`: gray, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
 - `Intent`: neutral, informative/info, positive/success, negative/error, warning, none
 - `Emphasis`: high, medium, low
 - `Size`: sm, md, lg
@@ -214,7 +214,7 @@ Recommended Badge Figma properties:
 
 Recommended Tag Figma properties:
 
-- `Appearance`: grey, blue, green, red, orange, raspberry, magenta, purple, grape, violet, cyan, teal, aquamarine, emerald
+- `Appearance`: gray, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose
 - `Emphasis`: high, medium, low
 - `Size`: sm, md, lg
 - `hasLabel`: yes/no

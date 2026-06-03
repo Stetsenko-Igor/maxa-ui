@@ -19,7 +19,7 @@ const TOC = [
 ]
 
 const TAG_PROPS = [
-  { name: "appearance", type: "'gray' | 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose'", default: "'gray'", description: "Decorative color. 14 options matching the Badge appearance palette." },
+  { name: "appearance", type: "'gray' | 'red' | 'orange' | 'amber' | 'yellow' | 'lime' | 'green' | 'emerald' | 'teal' | 'cyan' | 'sky' | 'blue' | 'indigo' | 'violet' | 'purple' | 'fuchsia' | 'pink' | 'rose'", default: "'gray'", description: "Decorative color. 18 options matching the Badge appearance palette." },
   { name: "emphasis", type: "'low' | 'medium' | 'high'", default: "'low'", description: "Visual weight. Low = subtle tint; medium = stronger tint; high = solid background with inverse text." },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Height 20px (sm), 24px (md), 28px (lg)." },
   { name: "removable", type: "boolean", default: "false", description: "Shows a × remove button. Use with onRemove." },
@@ -45,7 +45,7 @@ export default function TagPage() {
       lead={
         <>
           A compact removable data label for user-defined categories and applied values.
-          14 decorative colors, three emphasis levels, three sizes, and no semantic intent.
+          18 decorative colors, three emphasis levels, three sizes, and no semantic intent.
         </>
       }
     >
@@ -78,7 +78,7 @@ export default function TagPage() {
       <DocsSection
         id="appearance"
         title="Appearance"
-        description="14 decorative colors for user-defined labels. Same palette as Badge."
+        description="18 decorative colors for user-defined labels. Same palette as Badge."
       >
         <DocsExample title="All appearances (low emphasis)">
           <ComponentPreview code={`<Tag appearance="violet">Customers</Tag>`}>

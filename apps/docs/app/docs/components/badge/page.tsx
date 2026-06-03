@@ -191,23 +191,27 @@ export default function BadgePage() {
       <DocsSection
         id="color-palette"
         title="Color palette"
-        description="14 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low, medium, and high emphasis."
+        description="18 decorative colors for user-defined labels (e.g. mail list names). Use appearance instead of intent when the color is chosen by the user, not derived from semantic status. Supports low, medium, and high emphasis."
       >
         <DocsExample title="Low emphasis (default)">
           <ComponentPreview code={`<Badge appearance="gray">Gray</Badge>
-<Badge appearance="blue">Blue</Badge>
+<Badge appearance="red">Red</Badge>
+<Badge appearance="orange">Orange</Badge>
+<Badge appearance="amber">Amber</Badge>
+<Badge appearance="yellow">Yellow</Badge>
+<Badge appearance="lime">Lime</Badge>
 <Badge appearance="green">Green</Badge>
-<Badge appearance="rose">Rose</Badge>
-<Badge appearance="pink">Pink</Badge>
+<Badge appearance="emerald">Emerald</Badge>
+<Badge appearance="teal">Teal</Badge>
+<Badge appearance="cyan">Cyan</Badge>
+<Badge appearance="sky">Sky</Badge>
+<Badge appearance="blue">Blue</Badge>
+<Badge appearance="indigo">Indigo</Badge>
+<Badge appearance="violet">Violet</Badge>
 <Badge appearance="purple">Purple</Badge>
 <Badge appearance="fuchsia">Fuchsia</Badge>
-<Badge appearance="violet">Violet</Badge>
-<Badge appearance="cyan">Cyan</Badge>
-<Badge appearance="teal">Teal</Badge>
-<Badge appearance="teal">Teal</Badge>
-<Badge appearance="emerald">Emerald</Badge>
-<Badge appearance="red">Red</Badge>
-<Badge appearance="orange">Orange</Badge>`}>
+<Badge appearance="pink">Pink</Badge>
+<Badge appearance="rose">Rose</Badge>`}>
             <div style={row}>
               {((["gray","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose"] as const)).map(a => (
                 <Badge key={a} appearance={a}>{a.charAt(0).toUpperCase() + a.slice(1)}</Badge>

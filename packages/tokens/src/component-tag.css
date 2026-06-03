@@ -5,14 +5,13 @@
 /* --color-text-{hue}). Dark mode handled in semantic.css.               */
 
 :root {
-  /* ── Defaults (grey / low) ──────────────────────────────────────── */
+  /* ── Defaults (gray / low) ──────────────────────────────────────── */
   --tag-bg:     var(--color-neutral-100);
   --tag-text:     var(--color-neutral-900);
   --tag-icon:   var(--color-neutral-900);
   --tag-border: transparent;
 
   /* ── Remove button ──────────────────────────────────────────────── */
-  --tag-remove-fg:       var(--color-neutral-900);
   --tag-remove-opacity:  0.65;
 
   /* ── Shared ─────────────────────────────────────────────────────── */

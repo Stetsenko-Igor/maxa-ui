@@ -1,6 +1,6 @@
 # Tag
 
-Status: planned / partially implemented  
+Status: implemented  
 Canonical spec for the MAXA `Tag` component.
 
 ## Purpose
@@ -21,17 +21,17 @@ Do not use Tag for system status. Use `Badge` for status, count, quality, or met
 `[ leading icon? ] [ label ] [ remove button? ]` inside a rounded rectangle container.
 
 - Radius: `radius-sm` / `6px`.
-- Optional leading icon.
-- Optional remove button.
+- Optional leading icon (`.maxa-tag__icon`, colored `--tag-icon`).
+- Optional remove button (`.maxa-tag__remove`): a real `<button type="button">` containing an inline X (`<svg>`) that inherits its color from `color: var(--tag-icon)` set on the button — there is no separate remove-color token. At rest the button is dimmed via `--tag-remove-opacity` (0.65); on hover/focus opacity goes to 1 with a subtle `currentColor` background.
 - No generic trailing icon in v1. The trailing position is reserved for removable behavior.
 
 ## Props
 
 ```ts
 type TagAppearance =
-  | "grey" | "blue" | "green" | "red" | "orange"
-  | "raspberry" | "magenta" | "purple" | "grape" | "violet"
-  | "cyan" | "teal" | "aquamarine" | "emerald"
+  | "gray" | "red" | "orange" | "amber" | "yellow" | "lime"
+  | "green" | "emerald" | "teal" | "cyan" | "sky"
+  | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose"
 
 type TagEmphasis = "low" | "medium" | "high"
 type TagSize = "sm" | "md" | "lg"
@@ -54,20 +54,24 @@ interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {
 
 Supported appearances:
 
-- `grey`
-- `blue`
-- `green`
+- `gray`
 - `red`
 - `orange`
-- `raspberry`
-- `magenta`
-- `purple`
-- `grape`
+- `amber`
+- `yellow`
+- `lime`
+- `green`
+- `emerald`
+- `teal`
 - `violet`
 - `cyan`
-- `teal`
-- `aquamarine`
-- `emerald`
+- `sky`
+- `blue`
+- `indigo`
+- `purple`
+- `fuchsia`
+- `pink`
+- `rose`
 
 ## Emphasis
 
@@ -96,9 +100,9 @@ Removable Tag behavior:
 - `removable=false`: no remove button.
 - `removable=true`: trailing remove button appears.
 - `onRemove` fires when the remove button is clicked.
-- Remove button must stop event propagation.
-- Remove button must be keyboard accessible.
-- Remove button must have an accessible label such as `Remove Luxury`.
+- The remove button stops event propagation (`e.stopPropagation()`) so clicking X does not trigger the Tag's own click handler.
+- The remove button is keyboard accessible (real `<button>`, `tabIndex={0}`, focus-visible ring `2px var(--color-border-focus)` offset 1px).
+- The accessible label is `Remove {children}` when `children` is a string (e.g. `Remove Luxury`); otherwise it falls back to `"Remove"`.
 
 `asChild` and `removable` are mutually exclusive for v1 because Radix Slot expects one child and removable adds a second interactive child.
 
@@ -107,7 +111,7 @@ Removable Tag behavior:
 ```tsx
 <Tag appearance="violet">VIP client</Tag>
 <Tag appearance="teal" emphasis="medium">Prague</Tag>
-<Tag appearance="raspberry" emphasis="high" removable onRemove={handleRemove}>
+<Tag appearance="rose" emphasis="high" removable onRemove={handleRemove}>
   Luxury
 </Tag>
 <Tag size="lg" appearance="blue" removable>
@@ -117,19 +121,37 @@ Removable Tag behavior:
 
 ## Component Tokens
 
-Tag should use its own component-token namespace:
+Tag uses its own component-token namespace, defined in `packages/tokens/src/component-tag.css` and remapped per `[data-appearance][data-emphasis]`:
 
 ```css
 --tag-bg
 --tag-text
---tag-icon
---tag-remove-fg
+--tag-icon            /* leading icon AND remove button share this color */
 --tag-border
+--tag-remove-opacity  /* rest opacity of the remove button (0.65) */
 --tag-radius
+--tag-font-family
+--tag-font-weight
 --tag-size-{sm,md,lg}-{height,padding-x,gap,font,icon,remove}
 ```
 
-Tag may reference the same appearance palette as Badge, but it must keep separate `--tag-*` tokens because radius, remove behavior, and future editable states are different.
+> There is no `--tag-remove-fg` token. It was removed — the remove button's X icon uses `color: var(--tag-icon)` directly in `tag.css`, so the remove glyph always matches the leading-icon color (including white on high-emphasis solid variants). Its rest dimming is controlled by `--tag-remove-opacity`.
+
+Appearance/emphasis mapping (18 hues × 3 emphasis):
+- low    → bg `--color-bg-{hue}-subtle`, text/icon `--color-text-{hue}`
+- medium → bg `--color-bg-{hue}-muted`,  text/icon `--color-text-{hue}`
+- high   → bg `--color-bg-{hue}-strong`, text/icon `--color-base-white`
+
+(Default when no `appearance`/`emphasis` props: `gray` / `low`.)
+
+Tag references the same appearance palette as Badge, but keeps separate `--tag-*` tokens because radius (`radius-sm`, not pill), remove behavior, and future editable states differ.
+
+### Sizes
+| Size | Height | Padding-x | Gap | Font | Icon | Remove |
+|------|--------|-----------|-----|------|------|--------|
+| `sm` | 20px | 6px | 4px | 12px | 12px | 12px |
+| `md` (default) | 24px | 8px | 4px | 12px | 14px | 14px |
+| `lg` | 28px | 10px | 6px | 14px | 16px | 16px |
 
 ## Do / Don't
 
