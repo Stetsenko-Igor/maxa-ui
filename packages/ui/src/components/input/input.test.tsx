@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Input, TextArea } from "./input"
 
 describe("Input", () => {
@@ -144,5 +145,21 @@ describe("Input", () => {
     const ref = { current: null } as React.RefObject<HTMLInputElement | null>
     render(<Input ref={ref} />)
     expect(ref.current).toBeInstanceOf(HTMLInputElement)
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Input label="Email address" hint="We never share it" />,
+    )
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("has no a11y violations in dark mode", async () => {
+    const { container } = render(
+      <div data-theme="dark">
+        <Input label="Email address" hint="We never share it" />
+      </div>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest"
 import { render, screen, fireEvent } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Radio } from "./radio"
 
 describe("Radio", () => {
@@ -61,5 +62,10 @@ describe("Radio", () => {
   it("links label to input via htmlFor", () => {
     render(<Radio id="opt-a" name="test" label="Option A" />)
     expect(document.querySelector("label.maxa-radio")).toHaveAttribute("for", "opt-a")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Radio name="test" label="Option A" />)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

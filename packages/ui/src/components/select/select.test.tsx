@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Select } from "./select"
 
 describe("Select", () => {
@@ -40,5 +41,15 @@ describe("Select", () => {
     expect(document.querySelector(".maxa-select__field")).toHaveClass(
       "maxa-select__field--disabled",
     )
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Select label="Dropdown" defaultValue="one">
+        <option value="one">One</option>
+        <option value="two">Two</option>
+      </Select>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

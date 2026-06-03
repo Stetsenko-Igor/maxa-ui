@@ -42,7 +42,7 @@
   border: var(--radio-border-width) solid var(--radio-border);
   border-radius: 50%;
   background: var(--radio-bg);
-  transition: border-color 120ms ease, background-color 120ms ease;
+  transition: border-color var(--duration-base) var(--easing-standard), background-color var(--duration-base) var(--easing-standard);
   pointer-events: none;
 }
 

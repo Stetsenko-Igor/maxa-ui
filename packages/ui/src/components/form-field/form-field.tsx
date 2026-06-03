@@ -64,7 +64,13 @@ export function FormField({
 
       {(hint || error || footerEnd) && (
         <div className="maxa-form-field__footer">
-          <span id={hintId} className="maxa-form-field__hint">{error ?? hint}</span>
+          <span
+            id={hintId}
+            className="maxa-form-field__hint"
+            role={error ? "alert" : undefined}
+          >
+            {error ?? hint}
+          </span>
           {footerEnd && <span className="maxa-form-field__footer-end">{footerEnd}</span>}
         </div>
       )}

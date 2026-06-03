@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Button } from "./button"
 
 describe("Button", () => {
@@ -66,5 +67,19 @@ describe("Button", () => {
     )
     const link = screen.getByRole("link", { name: "Link button" })
     expect(link).toHaveClass("maxa-button--primary")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Button>Submit</Button>)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("has no a11y violations in dark mode", async () => {
+    const { container } = render(
+      <div data-theme="dark">
+        <Button>Submit</Button>
+      </div>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

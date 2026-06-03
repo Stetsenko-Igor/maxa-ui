@@ -208,7 +208,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {(hint || error) && (
-          <span id={`${inputId}-hint`} className="maxa-input__hint">
+          <span
+            id={`${inputId}-hint`}
+            className="maxa-input__hint"
+            role={error ? "alert" : undefined}
+          >
             {error ?? hint}
           </span>
         )}
@@ -327,7 +331,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
         {(hint || error || characterCounter) && (
           <div id={`${inputId}-hint`} className="maxa-input__footer">
-            <span className="maxa-input__hint">{error ?? hint}</span>
+            <span className="maxa-input__hint" role={error ? "alert" : undefined}>
+              {error ?? hint}
+            </span>
             {characterCounter && maxLength && (
               <span className="maxa-input__counter">
                 {count}/{maxLength}

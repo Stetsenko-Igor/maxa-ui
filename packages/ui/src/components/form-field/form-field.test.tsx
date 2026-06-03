@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { FormField } from "./form-field"
 
 describe("FormField", () => {
@@ -105,5 +106,14 @@ describe("FormField", () => {
   it("applies custom className to wrapper", () => {
     render(<FormField className="custom-class"><input /></FormField>)
     expect(document.querySelector(".maxa-form-field")).toHaveClass("custom-class")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <FormField label="Email" htmlFor="email-input" hint="We never share it">
+        <input id="email-input" type="email" />
+      </FormField>,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

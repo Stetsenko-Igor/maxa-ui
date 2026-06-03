@@ -16,7 +16,7 @@
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition: background-color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard);
   -webkit-font-smoothing: antialiased;
 }
 

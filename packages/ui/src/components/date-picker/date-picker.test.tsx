@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { DatePicker, DateRangePicker } from "./date-picker"
 
 describe("DatePicker", () => {
@@ -22,5 +23,10 @@ describe("DatePicker", () => {
     render(<DatePicker error="Select a valid date" />)
     expect(screen.getByRole("textbox")).toHaveAttribute("aria-invalid", "true")
     expect(screen.getByText("Select a valid date")).toBeInTheDocument()
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<DatePicker label="Date Picker" />)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

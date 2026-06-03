@@ -9,7 +9,7 @@
   background-color: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: var(--input-size-md-radius);
-  transition: border-color 120ms ease, background-color 120ms ease, box-shadow 120ms ease;
+  transition: border-color var(--duration-base) var(--easing-standard), background-color var(--duration-base) var(--easing-standard), box-shadow var(--duration-base) var(--easing-standard);
 }
 
 .maxa-select__field:hover,

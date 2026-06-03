@@ -42,7 +42,7 @@
   border: var(--checkbox-border-width) solid var(--checkbox-border);
   border-radius: var(--checkbox-radius);
   background: var(--checkbox-bg);
-  transition: border-color 120ms ease, background-color 120ms ease;
+  transition: border-color var(--duration-base) var(--easing-standard), background-color var(--duration-base) var(--easing-standard);
   pointer-events: none;
 }
 

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest"
 import { render, screen, fireEvent } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Checkbox } from "./checkbox"
 
 describe("Checkbox", () => {
@@ -72,5 +73,10 @@ describe("Checkbox", () => {
     render(<Checkbox id="tos" label="Terms of service" />)
     const label = document.querySelector("label.maxa-checkbox")
     expect(label).toHaveAttribute("for", "tos")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Checkbox label="Accept terms" />)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
