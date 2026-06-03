@@ -6,11 +6,11 @@
         "$type": "number"
       },
       "padding-x": {
-        "$value": 12,
+        "$value": 16,
         "$type": "number"
       },
       "padding-y": {
-        "$value": 12,
+        "$value": 16,
         "$type": "number"
       },
       "gap": {
@@ -28,19 +28,19 @@
     },
     "strip": {
       "width": {
-        "$value": 3,
+        "$value": 4,
         "$type": "number"
       }
     },
     "icon": {
       "size": {
-        "$value": 16,
+        "$value": 20,
         "$type": "number"
       }
     },
     "dismiss": {
       "size": {
-        "$value": 20,
+        "$value": 32,
         "$type": "number"
       },
       "opacity": {
@@ -54,12 +54,138 @@
         "$type": "string"
       },
       "font-size": {
-        "$value": 12,
-        "$type": "number"
+        "$value": "{Typography/Font size/text-md}",
+        "$type": "string"
+      },
+      "line-height": {
+        "$value": "{Typography/Line height/text-md}",
+        "$type": "string"
+      },
+      "font-weight": {
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "string"
+      },
+      "title-size": {
+        "$value": "{Typography/Font size/text-lg}",
+        "$type": "string"
+      },
+      "title-line-height": {
+        "$value": "{Typography/Line height/text-lg}",
+        "$type": "string"
       },
       "title-weight": {
-        "$value": "{Typography/Font weight/semibold}",
+        "$value": "{Typography/Font weight/bold}",
         "$type": "string"
+      }
+    },
+    "color": {
+      "info": {
+        "bg": {
+          "$value": "#003877",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#0059C2",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#54A3F6",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "bg": {
+          "$value": "#044329",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#006D0F",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#2BB47D",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "#521D00",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#B44E00",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#E16D00",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "#7B0000",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#D71913",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#FF755E",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "#2D2D2E",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#545454",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#B7B7B7",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
+      },
+      "emphasize": {
+        "bg": {
+          "$value": "#292929",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "#545454",
+          "$type": "color"
+        },
+        "accent": {
+          "$value": "#B7B7B7",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "#F4F3F3",
+          "$type": "color"
+        }
       }
     }
   }

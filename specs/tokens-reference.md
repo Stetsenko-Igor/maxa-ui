@@ -721,52 +721,55 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 
 ## Alert Component Tokens
 
-Four intents (info / success / warning / danger) map to status/intent semantic tokens.
-Dark mode is handled by the semantic layer.
+Four public intents (info / success / warning / danger) use the Figma Alert component surface:
+muted dark panels, restrained borders, a left accent strip, and calm intent icons.
+Neutral and emphasize color tokens are exported for Figma parity but are not public React intents yet.
 
 ```css
 /* Shared layout */
 --alert-radius          /* radius-md */
---alert-padding-x       /* spacing-lg (12px) */
---alert-padding-y       /* spacing-lg (12px) */
+--alert-padding-x       /* spacing-xl (16px) */
+--alert-padding-y       /* spacing-xl (16px) */
 --alert-gap             /* spacing-md (8px) */
 --alert-content-gap     /* spacing-1 (4px) */
---alert-icon-size       /* 16px */
---alert-icon-offset     /* 1px */
---alert-dismiss-size    /* 20px */
+--alert-icon-size       /* spacing-5 (20px) */
+--alert-icon-offset     /* 0px */
+--alert-dismiss-size    /* spacing-8 (32px) */
 --alert-dismiss-opacity /* 0.65 */
 --alert-font-family     /* font-body */
---alert-font-size       /* text-sm (12px) */
---alert-line-height     /* text-sm--line-height (18px) */
---alert-title-weight    /* font-weight-semibold */
+--alert-font-size       /* text-md (14px) */
+--alert-line-height     /* text-md--line-height (20px) */
+--alert-font-weight     /* font-weight-medium */
+--alert-title-size      /* text-lg (16px) */
+--alert-title-weight    /* font-weight-bold */
 
 /* Info */
---alert-info-bg               /* bg-info-subtle */
---alert-info-border           /* border-info-strong */
---alert-info-text             /* text-info */
---alert-info-title            /* text-info */
---alert-info-icon             /* fg-info */
+--alert-info-bg               /* #003877 */
+--alert-info-border           /* #0059C2 */
+--alert-info-text             /* #F4F3F3 */
+--alert-info-title            /* #F4F3F3 */
+--alert-info-icon             /* #54A3F6 */
 
 /* Success */
---alert-success-bg            /* bg-success-subtle */
---alert-success-border        /* border-success-strong */
---alert-success-text          /* text-success */
---alert-success-title         /* text-success */
---alert-success-icon          /* fg-positive */
+--alert-success-bg            /* #044329 */
+--alert-success-border        /* #006D0F */
+--alert-success-text          /* #F4F3F3 */
+--alert-success-title         /* #F4F3F3 */
+--alert-success-icon          /* #2BB47D */
 
 /* Warning */
---alert-warning-bg            /* bg-warning-subtle */
---alert-warning-border        /* border-warning-strong */
---alert-warning-text          /* text-warning */
---alert-warning-title         /* text-warning */
---alert-warning-icon          /* fg-warning */
+--alert-warning-bg            /* #521D00 */
+--alert-warning-border        /* #B44E00 */
+--alert-warning-text          /* #F4F3F3 */
+--alert-warning-title         /* #F4F3F3 */
+--alert-warning-icon          /* #E16D00 */
 
 /* Danger */
---alert-danger-bg             /* bg-error-subtle */
---alert-danger-border         /* border-error */
---alert-danger-text           /* text-error */
---alert-danger-title          /* text-error */
---alert-danger-icon           /* fg-negative */
+--alert-danger-bg             /* #7B0000 */
+--alert-danger-border         /* #D71913 */
+--alert-danger-text           /* #F4F3F3 */
+--alert-danger-title          /* #F4F3F3 */
+--alert-danger-icon           /* #FF755E */
 ```
 
 ## Tooltip Component Tokens

@@ -1,67 +1,69 @@
 /* Alert component tokens — Layer 3 */
 /* Alert (callout): contextual feedback box with left accent strip.       */
 /* Four intents: info/success/warning/danger. Two layouts:                */
-/* inline (no title — horizontal) and stacked (with title — vertical).   */
-/* Text and title use --color-text-primary (near-black) for readability.  */
-/* Intent color is conveyed via bg, border, strip, and icon only.         */
-/* Dark mode handled via referenced semantic tokens in semantic.css.      */
+/* inline (no title — horizontal) and stacked (with title — vertical).    */
+/* Values mirror the Figma component surface: muted dark panels with      */
+/* restrained intent borders, accent strip, and icons.                    */
 
 :root {
   /* ── Shared layout ─────────────────────────────────────────────── */
   --alert-radius:           var(--radius-md);
-  --alert-strip-width:      3px;
-  --alert-padding-x:        var(--spacing-lg);   /* 12px */
-  --alert-padding-y:        var(--spacing-lg);   /* 12px */
+  --alert-strip-width:      var(--width-4);
+  --alert-padding-x:        var(--spacing-xl);   /* 16px */
+  --alert-padding-y:        var(--spacing-xl);   /* 16px */
   --alert-gap:              var(--spacing-md);   /* 8px */
   --alert-content-gap:      var(--spacing-1);    /* 4px */
   --alert-action-gap:       var(--spacing-md);   /* 8px — space above action in stacked */
-  --alert-icon-size:        16px;
-  --alert-icon-offset:      1px;
-  --alert-dismiss-size:     20px;
+  --alert-icon-size:        var(--spacing-5);    /* 20px */
+  --alert-icon-offset:      0px;
+  --alert-dismiss-size:     var(--spacing-8);    /* 32px */
   --alert-dismiss-opacity:  0.65;
 
   --alert-font-family:      var(--font-body);
-  --alert-font-size:        var(--text-sm);
-  --alert-line-height:      var(--text-sm--line-height);
-  --alert-title-weight:     var(--font-weight-semibold);
+  --alert-font-size:        var(--text-md);
+  --alert-line-height:      var(--text-md--line-height);
+  --alert-font-weight:      var(--font-weight-medium);
+  --alert-title-size:       var(--text-lg);
+  --alert-title-line-height: var(--text-lg--line-height);
+  --alert-title-weight:     var(--font-weight-bold);
 
   /* ── Info ──────────────────────────────────────────────────────── */
-  --alert-info-bg:           var(--color-bg-info-subtle);
-  --alert-info-border:       var(--color-border-info-subtle);
-  --alert-info-text:         var(--color-text-primary);
-  --alert-info-title:        var(--color-text-primary);
-  --alert-info-icon:         var(--color-fg-info);
-  --alert-info-strip:        var(--color-fg-info);
-  --alert-info-action:       var(--color-action-primary);
-  --alert-info-action-hover: var(--color-action-primary-hover);
+  --alert-info-bg:           #003877;
+  --alert-info-border:       #0059c2;
+  --alert-info-text:         #f4f3f3;
+  --alert-info-title:        #f4f3f3;
+  --alert-info-icon:         #54a3f6;
+  --alert-info-strip:        #54a3f6;
+  --alert-info-action:       #54a3f6;
+  --alert-info-action-hover: #8bc4ff;
 
   /* ── Success ───────────────────────────────────────────────────── */
-  --alert-success-bg:           var(--color-bg-success-subtle);
-  --alert-success-border:       var(--color-border-success-subtle);
-  --alert-success-text:         var(--color-text-primary);
-  --alert-success-title:        var(--color-text-primary);
-  --alert-success-icon:         var(--color-fg-positive);
-  --alert-success-strip:        var(--color-fg-positive);
-  --alert-success-action:       var(--color-fg-positive);
-  --alert-success-action-hover: var(--color-text-success);
+  --alert-success-bg:           #044329;
+  --alert-success-border:       #006d0f;
+  --alert-success-text:         #f4f3f3;
+  --alert-success-title:        #f4f3f3;
+  --alert-success-icon:         #2bb47d;
+  --alert-success-strip:        #2bb47d;
+  --alert-success-action:       #2bb47d;
+  --alert-success-action-hover: #62d6a2;
 
   /* ── Warning ───────────────────────────────────────────────────── */
-  --alert-warning-bg:           var(--color-bg-warning-subtle);
-  --alert-warning-border:       var(--color-border-warning-subtle);
-  --alert-warning-text:         var(--color-text-primary);
-  --alert-warning-title:        var(--color-text-primary);
-  --alert-warning-icon:         var(--color-fg-warning);
-  --alert-warning-strip:        var(--color-fg-warning);
-  --alert-warning-action:       var(--color-fg-warning);
-  --alert-warning-action-hover: var(--color-text-warning);
+  --alert-warning-bg:           #521d00;
+  --alert-warning-border:       #b44e00;
+  --alert-warning-text:         #f4f3f3;
+  --alert-warning-title:        #f4f3f3;
+  --alert-warning-icon:         #e16d00;
+  --alert-warning-strip:        #e16d00;
+  --alert-warning-action:       #e16d00;
+  --alert-warning-action-hover: #ff9a3c;
 
   /* ── Danger ────────────────────────────────────────────────────── */
-  --alert-danger-bg:           var(--color-bg-error-subtle);
-  --alert-danger-border:       var(--color-border-danger-subtle);
-  --alert-danger-text:         var(--color-text-primary);
-  --alert-danger-title:        var(--color-text-primary);
-  --alert-danger-icon:         var(--color-fg-negative);
-  --alert-danger-strip:        var(--color-fg-negative);
-  --alert-danger-action:       var(--color-fg-negative);
-  --alert-danger-action-hover: var(--color-text-error);
+  --alert-danger-bg:           #7b0000;
+  --alert-danger-border:       #d71913;
+  --alert-danger-text:         #f4f3f3;
+  --alert-danger-title:        #f4f3f3;
+  --alert-danger-icon:         #ff755e;
+  --alert-danger-strip:        #ff755e;
+  --alert-danger-action:       #ff755e;
+  --alert-danger-action-hover: #ffa193;
 }

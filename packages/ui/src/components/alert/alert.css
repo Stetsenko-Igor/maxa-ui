@@ -7,6 +7,7 @@
   background-color: var(--alert-bg);
   font-family: var(--alert-font-family);
   font-size: var(--alert-font-size);
+  font-weight: var(--alert-font-weight);
   line-height: var(--alert-line-height);
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
@@ -61,7 +62,9 @@
 }
 
 .maxa-alert__title {
+  font-size: var(--alert-title-size);
   font-weight: var(--alert-title-weight);
+  line-height: var(--alert-title-line-height);
   color: var(--alert-title-text);
 }
 

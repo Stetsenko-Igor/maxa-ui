@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. It uses component-level tokens that alias the status/intent semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. It uses component-level tokens that mirror the Figma reusable Alert surface: muted dark panels, restrained intent borders, a left accent strip, and calm intent icons.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -26,34 +26,34 @@ The MAXA Alert (callout) is a contextual feedback box that communicates a status
 
 ## Intents
 
-Each intent maps to the status/intent semantic token family.
+Each intent maps to the component token values from the Figma Alert component.
 
 ### `info`
 - **Use when:** Neutral, helpful context or tips.
-- **Background:** `--alert-info-bg` → `bg/info-subtle`
-- **Border:** `--alert-info-border` → `border/info-strong`
-- **Text/icon:** `text/info`, `fg/info` (blue)
+- **Background:** `--alert-info-bg` → `#003877`
+- **Border:** `--alert-info-border` → `#0059C2`
+- **Text/icon:** `#F4F3F3`, `#54A3F6`
 - **Role:** `status` (polite)
 
 ### `success`
 - **Use when:** Confirming a positive, completed action.
-- **Background:** `--alert-success-bg` → `bg/success-subtle`
-- **Border:** `--alert-success-border` → `border/success-strong`
-- **Text/icon:** `text/success`, `fg/positive` (green)
+- **Background:** `--alert-success-bg` → `#044329`
+- **Border:** `--alert-success-border` → `#006D0F`
+- **Text/icon:** `#F4F3F3`, `#2BB47D`
 - **Role:** `status` (polite)
 
 ### `warning`
 - **Use when:** Cautioning the user about a potential issue or required attention.
-- **Background:** `--alert-warning-bg` → `bg/warning-subtle`
-- **Border:** `--alert-warning-border` → `border/warning-strong`
-- **Text/icon:** `text/warning`, `fg/warning` (orange)
+- **Background:** `--alert-warning-bg` → `#521D00`
+- **Border:** `--alert-warning-border` → `#B44E00`
+- **Text/icon:** `#F4F3F3`, `#E16D00`
 - **Role:** `alert` (assertive)
 
 ### `danger`
 - **Use when:** Reporting an error, failure, or destructive consequence.
-- **Background:** `--alert-danger-bg` → `bg/error-subtle`
-- **Border:** `--alert-danger-border` → `border/error`
-- **Text/icon:** `text/error`, `fg/negative` (red)
+- **Background:** `--alert-danger-bg` → `#7B0000`
+- **Border:** `--alert-danger-border` → `#D71913`
+- **Text/icon:** `#F4F3F3`, `#FF755E`
 - **Role:** `alert` (assertive)
 
 ---
@@ -88,24 +88,26 @@ All other native `div` attributes are forwarded.
 ### Shared layout
 ```css
 --alert-radius:       var(--radius-md);   /* 8px */
---alert-padding-x:    var(--spacing-lg);  /* 12px */
---alert-padding-y:    var(--spacing-lg);  /* 12px */
+--alert-padding-x:    var(--spacing-xl);  /* 16px */
+--alert-padding-y:    var(--spacing-xl);  /* 16px */
 --alert-gap:          var(--spacing-md);  /* 8px */
---alert-icon-size:    16px;
---alert-font-size:    var(--text-sm);     /* 12px */
---alert-title-weight: var(--font-weight-semibold);
+--alert-icon-size:    var(--spacing-5);   /* 20px */
+--alert-font-size:    var(--text-md);     /* 14px */
+--alert-font-weight:  var(--font-weight-medium);
+--alert-title-size:   var(--text-lg);     /* 16px */
+--alert-title-weight: var(--font-weight-bold);
 ```
 
 ### Info intent (example)
 ```css
---alert-info-bg:     var(--color-bg-info-subtle);
---alert-info-border: var(--color-border-info-strong);
---alert-info-text:   var(--color-text-info);
---alert-info-title:  var(--color-text-info);
---alert-info-icon:   var(--color-fg-info);
+--alert-info-bg:     #003877;
+--alert-info-border: #0059C2;
+--alert-info-text:   #F4F3F3;
+--alert-info-title:  #F4F3F3;
+--alert-info-icon:   #54A3F6;
 ```
 
-Dark mode is inherited — the referenced semantic tokens already resolve to dark values under `[data-theme="dark"]`.
+The current Alert surface is dark by design in both token modes. Add a separate light design before introducing light-mode overrides.
 
 ---
 
