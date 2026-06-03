@@ -1,0 +1,8 @@
+/* Divider component tokens — Layer 3 */
+/* Divider: a thin rule dividing content groups. Color and thickness  */
+/* alias semantic tokens; dark mode is handled in semantic.css.       */
+
+:root {
+  --divider-color: var(--color-border-primary);
+  --divider-size:  var(--width-1);
+}

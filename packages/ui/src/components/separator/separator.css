@@ -1,0 +1,20 @@
+/* Separator component styles — references only component tokens */
+
+.maxa-separator {
+  flex-shrink: 0;
+  background-color: var(--separator-color);
+  border: none;
+}
+
+/* ── Orientation ─────────────────────────────────────────────── */
+
+.maxa-separator[data-orientation="horizontal"] {
+  width: 100%;
+  height: var(--separator-size);
+}
+
+.maxa-separator[data-orientation="vertical"] {
+  width: var(--separator-size);
+  height: 100%;
+  align-self: stretch;
+}

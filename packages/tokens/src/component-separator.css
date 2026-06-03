@@ -1,0 +1,8 @@
+/* Separator component tokens — Layer 3 */
+/* Separator: a thin rule dividing content groups. Color and thickness  */
+/* alias semantic tokens; dark mode is handled in semantic.css.         */
+
+:root {
+  --separator-color: var(--color-border-primary);
+  --separator-size:  var(--width-1);
+}

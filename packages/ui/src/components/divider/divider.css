@@ -1,0 +1,20 @@
+/* Divider component styles — references only component tokens */
+
+.maxa-divider {
+  flex-shrink: 0;
+  background-color: var(--divider-color);
+  border: none;
+}
+
+/* ── Orientation ─────────────────────────────────────────────── */
+
+.maxa-divider[data-orientation="horizontal"] {
+  width: 100%;
+  height: var(--divider-size);
+}
+
+.maxa-divider[data-orientation="vertical"] {
+  width: var(--divider-size);
+  height: 100%;
+  align-self: stretch;
+}
