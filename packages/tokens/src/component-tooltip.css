@@ -1,0 +1,23 @@
+/* Tooltip component tokens — Layer 3 */
+/* Tooltip: floating hint on an inverse (dark) surface.                   */
+/* Background/text use inverse semantic tokens; dark mode handled there.  */
+
+:root {
+  /* ── Surface ────────────────────────────────────────────────────── */
+  --tooltip-bg:   var(--color-bg-inverse);
+  --tooltip-text: var(--color-text-inverse);
+
+  /* ── Shape ──────────────────────────────────────────────────────── */
+  --tooltip-radius:    var(--radius-sm);   /* 6px */
+  --tooltip-max-width: 240px;
+
+  /* ── Spacing ────────────────────────────────────────────────────── */
+  --tooltip-padding-x: var(--spacing-md);  /* 8px */
+  --tooltip-padding-y: var(--spacing-xs);  /* 4px */
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --tooltip-font-family: var(--font-body);
+  --tooltip-font-size:   var(--text-sm);   /* 12px */
+  --tooltip-font-weight: var(--font-weight-medium);
+  --tooltip-line-height: 16px;
+}

@@ -1,0 +1,62 @@
+/* Tooltip component styles — references only component / semantic tokens */
+
+.maxa-tooltip {
+  z-index: var(--z-tooltip);
+  max-width: var(--tooltip-max-width);
+  padding-block: var(--tooltip-padding-y);
+  padding-inline: var(--tooltip-padding-x);
+  border-radius: var(--tooltip-radius);
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  font-family: var(--tooltip-font-family);
+  font-size: var(--tooltip-font-size);
+  font-weight: var(--tooltip-font-weight);
+  line-height: var(--tooltip-line-height);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  /* Entrance/exit motion */
+  transform-origin: var(--radix-tooltip-content-transform-origin);
+  animation-duration: var(--duration-fast);
+  animation-timing-function: var(--easing-standard);
+}
+
+.maxa-tooltip[data-state="delayed-open"] {
+  animation-name: maxa-tooltip-in;
+}
+
+.maxa-tooltip[data-state="closed"] {
+  animation-name: maxa-tooltip-out;
+}
+
+.maxa-tooltip__arrow {
+  fill: var(--tooltip-bg);
+}
+
+@keyframes maxa-tooltip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes maxa-tooltip-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maxa-tooltip[data-state="delayed-open"],
+  .maxa-tooltip[data-state="closed"] {
+    animation: none;
+  }
+}
