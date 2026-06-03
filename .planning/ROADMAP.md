@@ -69,23 +69,26 @@ Plans:
 - [x] 01-dark-mode-and-accessibility-audit-02-PLAN.md — Apply token fixes and publish final passing audit report
 
 #### Phase 2: Component surface extension
-**Goal**: Ship Tooltip, Popover, Tabs, and Disclosure/Accordion via the existing spec-first workflow.
+**Goal**: Ship the v1 application component surface via the existing spec-first workflow.
 **Depends on**: Phase 1 (audit complete so new components inherit verified tokens)
-**Requirements**: COMP-01, COMP-02, COMP-03, COMP-04
+**Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, COMP-05, COMP-06, COMP-07, COMP-08, COMP-09
 **Success Criteria** (what must be TRUE):
   1. Each new component has a spec in `specs/components/`
   2. Each implemented in `packages/ui/src/components/` following `forwardRef + cva + Slot`
   3. Each exported from `@maxa/ui`
   4. Each has a docs page in `apps/docs`
-  5. `pnpm verify` (audit + typecheck + tests) is green
-  6. Changeset added for each
+  5. Component tokens are included in `packages/tokens/src/` and the Figma import bundle when visual decisions are component-specific
+  6. `pnpm verify` mirrors CI and is green (`typecheck && lint && audit:tokens && test && build`)
+  7. Changeset added for each public package affected
+**Status**: In progress. Badge, Tag, Alert, Divider, Switch, and Tooltip are shipped. Remaining planned v1 components: Popover, Tabs, Accordion/Disclosure.
 **Plans**: TBD
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
-- [ ] 02-04: TBD
+- [x] 02-shipped: Badge, Tag, Alert, Divider, Switch, Tooltip — shipped outside formal GSD plan files
+- [ ] 02-01: Popover
+- [ ] 02-02: Tabs
+- [ ] 02-03: Accordion/Disclosure
+- [ ] 02-closeout: Phase 2 verification summary and planning-state cleanup
 
 #### Phase 3: Figma Code Connect
 **Goal**: Every shipped component in Figma points to its source file in code via Code Connect.
@@ -146,7 +149,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 0b. Eight core components | v0.x | n/a | Complete | 2026-05-13 |
 | 0c. Token polish | v0.x | n/a | Complete | 2026-05-15 |
 | 1. Dark mode + a11y audit | v1.0 | 2/2 | Complete | 2026-05-18 |
-| 2. Component surface extension | v1.0 | 0/TBD | Not started | — |
+| 2. Component surface extension | v1.0 | partial/TBD | In progress | — |
 | 3. Figma Code Connect | v1.0 | 0/TBD | Not started | — |
 | 4. v1.0 release prep | v1.0 | 0/TBD | Not started | — |
 | 5. Tailwind v4 adapter | v1.1 | 0/TBD | Not started | — |

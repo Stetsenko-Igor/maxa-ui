@@ -14,10 +14,15 @@ Requirements for v1.0 (current scope). Each maps to a phase in `ROADMAP.md`.
 
 ### Components (COMP)
 
-- [ ] **COMP-01**: Tooltip component shipped — spec + implementation + docs page
+- [x] **COMP-01**: Tooltip component shipped — spec + implementation + docs page + Figma component tokens
 - [ ] **COMP-02**: Popover component shipped — spec + implementation + docs page
 - [ ] **COMP-03**: Tabs component shipped — spec + implementation + docs page
 - [ ] **COMP-04**: Disclosure / Accordion component shipped — spec + implementation + docs page
+- [x] **COMP-05**: Badge component shipped — spec + implementation + docs page + Figma component tokens
+- [x] **COMP-06**: Tag component shipped — spec + implementation + docs page + Figma component tokens
+- [x] **COMP-07**: Alert component shipped — spec + implementation + docs page + Figma component tokens
+- [x] **COMP-08**: Divider component shipped — spec + implementation + docs page + Figma component tokens
+- [x] **COMP-09**: Switch component shipped — spec + implementation + docs page + Figma component tokens
 
 ### Design Handoff (HAND)
 
@@ -60,10 +65,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | QUAL-01 | Phase 1 | Complete |
 | QUAL-02 | Phase 1 | Complete |
-| COMP-01 | Phase 2 | Pending |
+| COMP-01 | Phase 2 | Complete |
 | COMP-02 | Phase 2 | Pending |
 | COMP-03 | Phase 2 | Pending |
 | COMP-04 | Phase 2 | Pending |
+| COMP-05 | Phase 2 | Complete |
+| COMP-06 | Phase 2 | Complete |
+| COMP-07 | Phase 2 | Complete |
+| COMP-08 | Phase 2 | Complete |
+| COMP-09 | Phase 2 | Complete |
 | HAND-01 | Phase 3 | Pending |
 | REL-01  | Phase 4 | Pending |
 | REL-02  | Phase 4 | Pending |
@@ -71,10 +81,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXT-01  | Phase 5 | Pending |
 
 **Coverage:**
-- v1 requirements: 11 total
-- Mapped to phases: 11
+- v1 requirements: 16 total
+- Mapped to phases: 16
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-05-18*
-*Last updated: 2026-05-18 after initial definition*
+*Last updated: 2026-06-03 after Phase 2 partial component shipment*

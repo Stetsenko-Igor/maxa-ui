@@ -257,6 +257,10 @@ describe("figma manifest", () => {
       "component-input-light.json",
       "component-badge-light.json",
       "component-tag-light.json",
+      "component-alert-light.json",
+      "component-switch-light.json",
+      "component-tooltip-light.json",
+      "component-divider-light.json",
       "component-utility-light.json",
     ])
     expect(manifest.collections["Component-based"]?.modes.Dark).toEqual([
@@ -264,6 +268,10 @@ describe("figma manifest", () => {
       "component-input-dark.json",
       "component-badge-dark.json",
       "component-tag-dark.json",
+      "component-alert-dark.json",
+      "component-switch-dark.json",
+      "component-tooltip-dark.json",
+      "component-divider-dark.json",
       "component-utility-dark.json",
     ])
   })
@@ -304,8 +312,9 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Badge, Tag, and Utility component tokens", () => {
+  it("includes Badge, Tag, Alert, Switch, Tooltip, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
+    const dark = bundle.collections["Component-based"]?.modes.Dark
 
     expect(light?.["Badge/size/lg/height"]).toBe(28)
     expect(light?.["Badge/size/sm/text"]).toBe("{Typography/Font size/text-sm}")
@@ -320,6 +329,17 @@ describe("figma import bundle", () => {
     expect(light?.["Tag/size/lg/height"]).toBe(28)
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
     expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()
+    expect(light?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
+    expect(light?.["Alert/icon/size"]).toBe(16)
+    expect(light?.["Switch/size/md/track-width"]).toBe(36)
+    expect(light?.["Switch/track-radius"]).toBe("{Radius/radius-full}")
+    expect(light?.["Tooltip/layout/max-width"]).toBe(240)
+    expect(light?.["Tooltip/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
+    expect(light?.["Divider/size"]).toBe(1)
+    expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
+    expect(dark?.["Switch/size/md/track-width"]).toBe(36)
+    expect(dark?.["Tooltip/layout/max-width"]).toBe(240)
+    expect(dark?.["Divider/size"]).toBe(1)
     expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")
   })

@@ -26,7 +26,8 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-(None active yet — see `ROADMAP.md` for the planned Phase 1..5 and `REQUIREMENTS.md` for the requirement list.)
+- **Phase 2: Component surface extension** — partially shipped. Badge, Tag, Alert, Divider, Switch, and Tooltip are in code/docs/tokens/Figma bundle. Remaining v1 component work: Popover, Tabs, and Accordion/Disclosure.
+- **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → test → build`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code.
 
 ### Out of Scope
 
@@ -69,8 +70,8 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 | `forwardRef + cva + Slot` pattern across all components | Single shape simplifies review, audit, and authoring | ✓ Good |
 | CSS custom properties as runtime contract (no CSS-in-JS) | Universal consumer support; trivial theme switching | ✓ Good |
 | Surface model: `bg/surface` (white) + `bg/elevated` (one step up) — no shadows | School A aesthetic; testable without elevation tokens | ✓ Good |
-| `pnpm verify` = `audit:tokens && typecheck && test` as the single quality gate | One command answers "is this releasable?" | ✓ Good |
+| `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && test && build`) | One local command answers "will this pass GitHub Actions?" | ✓ Good |
 | Brownfield GSD initialization (templates filled manually from existing reality, not `/gsd:new-project` interview) | Existing code and specs already encode requirements; the interview would re-derive what's already known | — Pending evaluation |
 
 ---
-*Last updated: 2026-05-18 after `.planning/` GSD-compatibility bootstrap*
+*Last updated: 2026-06-03 after Phase 2 partial component shipment and CI gate alignment*

@@ -2,24 +2,25 @@
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-05-18)
+See: `.planning/PROJECT.md` (updated 2026-06-03)
 
 **Core value:** LLM-generated UI code always conforms to the design system — no hardcoded design values.
-**Current focus:** Phase 2: Component surface extension (ready to plan)
+**Current focus:** Phase 2: Component surface extension (partially shipped; remaining Popover, Tabs, Accordion/Disclosure)
 
 ## Current Position
 
 Phase: 2 of 5 (Component surface extension)
-Plan: 0 of TBD in current phase
-Status: Phase 1 complete; ready to plan Phase 2
-Last activity: 2026-05-18 — Completed Phase 1 dark mode + accessibility audit with measured contrast reports.
+Plan: Partial shipment completed outside formal GSD phase plans
+Status: Phase 2 in progress; CI gate alignment is the immediate closeout task before more component work.
+Last activity: 2026-06-03 — Added CI token audit gate, shipped Badge, Tag, Alert, Divider, Switch, Tooltip, and added related Figma component token files.
 
-Progress: [██░░░░░░░░] 20%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2 (GSD tracking started 2026-05-18; prior v0.x work predates this)
+- Total formal plans completed: 2 (GSD tracking started 2026-05-18; prior v0.x work predates this)
+- Phase 2 shipped component families since last state update: 6
 - Average duration: —
 - Total execution time: —
 
@@ -28,16 +29,14 @@ Progress: [██░░░░░░░░] 20%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Dark mode + a11y audit | 2/2 | ~45min | ~22min |
-| 2. Component surface extension | 0/TBD | — | — |
+| 2. Component surface extension | partial/TBD | — | — |
 | 3. Figma Code Connect | 0/TBD | — | — |
 | 4. v1.0 release prep | 0/TBD | — | — |
 | 5. Tailwind v4 adapter | 0/TBD | — | — |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 contrast harness + baseline; 01-02 token fixes + final report
-- Trend: Started with quality hardening; first GSD phase completed.
-
-*Updated after each plan completion*
+- Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Switch, Tooltip, Figma component token bundle, CI token audit gate.
+- Trend: Component surface and token enforcement are moving together; planning docs must be kept synchronized with shipped code.
 
 ## Accumulated Context
 
@@ -46,10 +45,14 @@ Progress: [██░░░░░░░░] 20%
 Decisions are logged in `PROJECT.md` Key Decisions table.
 Recent decisions affecting current work:
 
-- 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview)
-- 2026-05-18: Phase 1 contrast fixes required semantic/component token updates, not only brand theme overrides, because failures were in neutral/status/action aliases.
-- v0.x: Surface model = `bg/surface` + `bg/elevated` (no shadow tokens)
-- v0.x: `forwardRef + cva + Slot` pattern locked across all components
+- 2026-06-03: GitHub Actions CI gate is canonical: `typecheck → lint → audit:tokens → test → build`.
+- 2026-06-03: `pnpm verify` mirrors the full CI gate locally; `pnpm ci` aliases `pnpm verify`.
+- 2026-06-03: Token audit is mandatory in CI and blocks hardcoded hex values or direct primitive-token usage in components.
+- 2026-06-03: Badge, Tag, Alert, Divider, Switch, and Tooltip are treated as shipped public component additions.
+- 2026-06-03: Remaining Phase 2 component scope is Popover, Tabs, and Accordion/Disclosure.
+- 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
+- v0.x: Surface model = `bg/surface` + `bg/elevated` (no shadow tokens unless overlay work requires them).
+- v0.x: `forwardRef + cva + Slot` pattern locked across components where applicable; Radix primitives are preferred for accessible behavior.
 
 ### Pending Todos
 
@@ -59,20 +62,20 @@ None yet.
 
 ### Blockers / Concerns
 
-None yet.
+- CI-local parity depends on `packages/tokens/src/index.test.ts` staying aligned with `packages/tokens/figma/manifest.json` when component token files are added.
+- Phase 2 was partially shipped outside formal GSD plan files; future work should restore plan/summary tracking before starting Popover.
 
 ### Verification status
 
-- Contrast audit: ✓ green (`node scripts/audit-contrast.mjs --format json --out /tmp/maxa-contrast-final.json`)
-- Token audit: ✓ green (`node scripts/audit-tokens.mjs`)
+- CI workflow: ✓ includes Typecheck, Lint, Token audit, Test, Build
+- Token audit: ✓ green (`pnpm audit:tokens`)
 - TypeScript: ✓ green (`pnpm typecheck`)
-- Tests: ✓ green (`pnpm test`)
-- No `TODO|FIXME|XXX` in source code (last grep at session start)
-- No pending changesets in `.changeset/`
-- Git status: `.planning/`, contrast audit script, and token updates are currently uncommitted, ready for review/commit.
+- Lint: ✓ green (`pnpm lint`)
+- Tests/build: re-run full `pnpm verify` after the Figma manifest test expectation update
+- Git status before current closeout: clean after CI commit
 
 ## Session Continuity
 
-Last session: 2026-05-18 ~08:10 GMT+2
-Stopped at: Completed Phase 1 execution; ready to plan Phase 2 component surface extension
+Last session: 2026-06-03
+Stopped at: Implementing CI parity and planning-state synchronization after Phase 2 partial shipment
 Resume file: None
