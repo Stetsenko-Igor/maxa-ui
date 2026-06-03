@@ -14,6 +14,7 @@
 @import "./dimensions.css";
 @import "./typography.css";
 @import "./shadows.css";
+@import "./motion.css";
 @import "./component-button.css";
 @import "./component-checkbox.css";
 @import "./component-input.css";
@@ -21,3 +22,7 @@
 @import "./component-tag.css";
 @import "./component-nav.css";
 @import "./component-radio.css";
+@import "./component-switch.css";
+@import "./component-divider.css";
+@import "./component-alert.css";
+@import "./component-tooltip.css";

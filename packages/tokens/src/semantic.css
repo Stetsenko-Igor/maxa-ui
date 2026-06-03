@@ -50,8 +50,12 @@
   --color-border-brand:          var(--color-brand-500);
   --color-border-error:          var(--color-red-500);
   --color-border-info-strong:    var(--color-blue-700);
+  --color-border-info-subtle:    var(--color-blue-200);
   --color-border-success-strong: var(--color-green-700);
+  --color-border-success-subtle: var(--color-green-300);
   --color-border-warning-strong: var(--color-orange-600);
+  --color-border-warning-subtle: var(--color-orange-200);
+  --color-border-danger-subtle:  var(--color-red-200);
   --color-border-neutral-strong: var(--color-neutral-700);
   --color-border-neutral-subtle: var(--color-neutral-300);
 

@@ -274,6 +274,56 @@ Tailwind v4 convention: `--text-{name}` sets font-size; `--text-{name}--line-hei
 Note: breakpoints can't be used directly in `@media` queries as CSS custom properties.
 Use the raw values from `specs/foundations/breakpoints.md` in media queries.
 
+## Motion
+
+Duration + easing tokens for transitions and animations. See `specs/foundations/motion.md`
+for usage guidance and the global `prefers-reduced-motion` guard.
+
+```css
+/* Durations */
+--duration-instant   /* 50ms  — near-immediate feedback */
+--duration-fast      /* 100ms — micro hover/state changes */
+--duration-base      /* 150ms — standard interactive transitions */
+--duration-slow      /* 250ms — overlays, larger movement */
+--duration-slower    /* 400ms — large/expressive movement */
+
+/* Easings */
+--easing-standard    /* cubic-bezier(0.2, 0, 0, 1)  — default for most transitions */
+--easing-emphasized  /* cubic-bezier(0.3, 0, 0, 1)  — emphasized/expressive motion */
+--easing-decelerate  /* cubic-bezier(0, 0, 0, 1)    — entering elements (decelerate to rest) */
+```
+
+## Z-index
+
+Stacking order for overlays. Always reference the token, never a raw integer.
+
+```css
+--z-base       /* 0 */
+--z-dropdown   /* 1000 */
+--z-sticky     /* 1100 */
+--z-overlay    /* 1300 */
+--z-modal      /* 1400 */
+--z-popover    /* 1500 */
+--z-tooltip    /* 1600 */
+--z-toast      /* 1700 */
+```
+
+## Opacity
+
+```css
+--opacity-disabled   /* 0.5  — disabled controls */
+--opacity-muted      /* 0.65 — de-emphasized/secondary elements */
+--opacity-backdrop   /* 0.4  — scrim/backdrop opacity */
+```
+
+## Blur
+
+```css
+--blur-sm   /* 4px */
+--blur-md   /* 8px */
+--blur-lg   /* 16px */
+```
+
 ## Button Component Tokens
 
 ```css
@@ -618,6 +668,131 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 --tag-size-lg-remove         /* 16px */
 ```
 
+## Switch Component Tokens
+
+```css
+/* Track sizes */
+--switch-track-width-sm       /* 28px */
+--switch-track-height-sm      /* 16px */
+--switch-track-width-md       /* 36px */
+--switch-track-height-md      /* 20px */
+--switch-track-width-lg       /* 44px */
+--switch-track-height-lg      /* 24px */
+
+/* Thumb sizes */
+--switch-thumb-size-sm        /* 12px */
+--switch-thumb-size-md        /* 16px */
+--switch-thumb-size-lg        /* 20px */
+--switch-thumb-inset          /* 2px — track edge to thumb, drives travel */
+
+/* Radius */
+--switch-track-radius         /* radius-full */
+--switch-thumb-radius         /* radius-full */
+
+/* Focus ring */
+--switch-focus-ring-width     /* 3px */
+--switch-focus-ring-offset    /* 2px */
+--switch-focus-ring-color     /* border-focus */
+
+/* Colors — track */
+--switch-track-bg-off         /* action-neutral */
+--switch-track-bg-off-hover   /* border-secondary */
+--switch-track-bg-on          /* action-brand */
+--switch-track-bg-on-hover    /* action-brand-hover */
+
+/* Colors — thumb */
+--switch-thumb-bg             /* bg-surface */
+--switch-thumb-bg-disabled    /* bg-surface */
+
+/* Colors — error */
+--switch-track-border-error   /* border-error */
+--switch-error-border-width   /* 1.5px */
+
+/* Disabled */
+--switch-disabled-opacity     /* 0.5 */
+```
+
+## Separator Component Tokens
+
+```css
+--separator-color   /* border-primary */
+--separator-size    /* width-1 (1px) */
+```
+
+## Alert Component Tokens
+
+Four intents (info / success / warning / danger) map to status/intent semantic tokens.
+Dark mode is handled by the semantic layer.
+
+```css
+/* Shared layout */
+--alert-radius          /* radius-md */
+--alert-padding-x       /* spacing-lg (12px) */
+--alert-padding-y       /* spacing-lg (12px) */
+--alert-gap             /* spacing-md (8px) */
+--alert-content-gap     /* spacing-1 (4px) */
+--alert-icon-size       /* 16px */
+--alert-icon-offset     /* 1px */
+--alert-dismiss-size    /* 20px */
+--alert-dismiss-opacity /* 0.65 */
+--alert-font-family     /* font-body */
+--alert-font-size       /* text-sm (12px) */
+--alert-line-height     /* text-sm--line-height (18px) */
+--alert-title-weight    /* font-weight-semibold */
+
+/* Info */
+--alert-info-bg               /* bg-info-subtle */
+--alert-info-border           /* border-info-strong */
+--alert-info-text             /* text-info */
+--alert-info-title            /* text-info */
+--alert-info-icon             /* fg-info */
+
+/* Success */
+--alert-success-bg            /* bg-success-subtle */
+--alert-success-border        /* border-success-strong */
+--alert-success-text          /* text-success */
+--alert-success-title         /* text-success */
+--alert-success-icon          /* fg-positive */
+
+/* Warning */
+--alert-warning-bg            /* bg-warning-subtle */
+--alert-warning-border        /* border-warning-strong */
+--alert-warning-text          /* text-warning */
+--alert-warning-title         /* text-warning */
+--alert-warning-icon          /* fg-warning */
+
+/* Danger */
+--alert-danger-bg             /* bg-error-subtle */
+--alert-danger-border         /* border-error */
+--alert-danger-text           /* text-error */
+--alert-danger-title          /* text-error */
+--alert-danger-icon           /* fg-negative */
+```
+
+## Tooltip Component Tokens
+
+Floating hint on an inverse (dark) surface. Dark mode handled by the inverse semantic tokens.
+
+```css
+/* Surface */
+--tooltip-bg            /* bg-inverse */
+--tooltip-text          /* text-inverse */
+
+/* Shape */
+--tooltip-radius        /* radius-sm (6px) */
+--tooltip-max-width     /* 240px */
+
+/* Spacing */
+--tooltip-padding-x     /* spacing-md (8px) */
+--tooltip-padding-y     /* spacing-xs (4px) */
+
+/* Typography */
+--tooltip-font-family   /* font-body */
+--tooltip-font-size     /* text-sm (12px) */
+--tooltip-font-weight   /* font-weight-medium */
+--tooltip-line-height   /* 16px */
+```
+
 ## Source files
 
 - `packages/tokens/src/semantic.css` — all color semantic tokens
@@ -630,6 +805,12 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 - `packages/tokens/src/component-radio.css` — radio component tokens
 - `packages/tokens/src/component-badge.css` — badge component tokens
 - `packages/tokens/src/component-tag.css` — tag component tokens
+- `packages/tokens/src/component-switch.css` — switch component tokens
+- `packages/tokens/src/component-separator.css` — separator component tokens
+- `packages/tokens/src/component-alert.css` — alert component tokens
+- `packages/tokens/src/component-tooltip.css` — tooltip component tokens
 - `packages/tokens/src/component-nav.css` — nav component tokens
+- `packages/tokens/src/dimensions.css` — motion, z-index, opacity, blur (and spacing/radius) tokens
+- `packages/tokens/src/motion.css` — `prefers-reduced-motion` global guard
 - `packages/tokens/figma/component-button-light.json` — button component tokens (light)
 - `packages/tokens/figma/component-button-dark.json` — button component tokens (dark)

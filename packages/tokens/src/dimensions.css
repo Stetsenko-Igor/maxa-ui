@@ -67,4 +67,34 @@
   --width-1: 1px;
   --width-2: 2px;
   --width-4: 4px;
+
+  /* ── Motion — durations + easings ────────────────────────────────── */
+  --duration-instant:  50ms;
+  --duration-fast:     100ms;
+  --duration-base:     150ms;
+  --duration-slow:     250ms;
+  --duration-slower:   400ms;
+  --easing-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --easing-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0, 1);
+
+  /* ── Z-index scale — stacking order for overlays ─────────────────── */
+  --z-base:     0;
+  --z-dropdown: 1000;
+  --z-sticky:   1100;
+  --z-overlay:  1300;
+  --z-modal:    1400;
+  --z-popover:  1500;
+  --z-tooltip:  1600;
+  --z-toast:    1700;
+
+  /* ── Opacity scale ───────────────────────────────────────────────── */
+  --opacity-disabled: 0.5;
+  --opacity-muted:    0.65;
+  --opacity-backdrop: 0.4;
+
+  /* ── Blur ────────────────────────────────────────────────────────── */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 16px;
 }

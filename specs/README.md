@@ -40,6 +40,7 @@ specs/
 │   ├── spacing.md                   ← spacing scale + layout tokens
 │   ├── typography.md                ← type scale + font usage
 │   ├── radius.md                    ← radius scale
+│   ├── motion.md                    ← duration + easing scale, reduced-motion guard
 │   └── breakpoints.md               ← breakpoints + responsive strategy
 ├── components/
 │   ├── button.md                    ← Button variants, sizes, states
@@ -49,6 +50,10 @@ specs/
 │   ├── date-picker.md               ← DatePicker field composition
 │   ├── checkbox.md                  ← Checkbox + states
 │   ├── radio.md                     ← Radio + group composition
+│   ├── switch.md                    ← Switch (toggle) + states
+│   ├── separator.md                 ← Separator (divider rule)
+│   ├── alert.md                     ← Alert (callout) + intents
+│   ├── tooltip.md                   ← Tooltip (floating hint)
 │   └── form-field.md                ← FormField label + control + hint + error
 └── patterns/
     └── interactive-hierarchy.md     ← which button variant for which context
@@ -67,3 +72,18 @@ Component code (reads only component tokens or semantic tokens)
 ```
 
 **Rule:** Components reference semantic or component-level tokens only. Never raw primitives or hardcoded values.
+
+## Multi-client / white-label readiness
+
+Tokens are brand-agnostic. Two paths exist for serving a second client brand:
+
+- **Path A — re-theme (works today, zero component changes).** A new client brand is created by
+  copying `packages/tokens/src/themes/maxa.css` and replacing the `--color-brand-*` hex values.
+  Because every component reads only semantic/component tokens, swapping the brand palette
+  re-skins the entire system with no component edits.
+- **Path B — divergent components (blocked).** For clients that need structurally *different*
+  components (not just colors), the blocker is the hardcoded `.maxa-*` CSS class prefix used in
+  ~437 places (CSS selectors + cva base classes). Forking component packages would first require
+  extracting that prefix into a shared constant/factory.
+
+**Status: DEFERRED.** No action taken. Revisit when a second client's component scope is known.
