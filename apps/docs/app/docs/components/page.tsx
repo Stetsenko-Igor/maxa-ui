@@ -15,6 +15,7 @@ const grid: React.CSSProperties = {
 const card: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
+  position: "relative",
   minHeight: "260px",
   padding: "20px",
   borderRadius: "var(--radius-md)",
@@ -70,24 +71,14 @@ const footer: React.CSSProperties = {
 
 function NewBadge() {
   return (
-    <span style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: "4px",
-      fontSize: "10px",
-      fontWeight: "var(--font-weight-semibold)",
-      color: "var(--color-text-success)",
-      lineHeight: 1,
-      verticalAlign: "middle",
-      marginLeft: "8px",
-      position: "relative",
-      top: "-1px",
-    }}>
-      <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true">
-        <circle cx="3" cy="3" r="3" fill="currentColor" />
-      </svg>
+    <Badge
+      appearance="green"
+      emphasis="low"
+      size="sm"
+      style={{ position: "absolute", top: "20px", right: "20px" }}
+    >
       New
-    </span>
+    </Badge>
   )
 }
 
@@ -135,8 +126,9 @@ export default function ComponentsPage() {
 
           {/* A */}
           <Link href="/docs/components/alert" style={card}>
+            <NewBadge />
             <p style={eyebrow}>Feedback</p>
-            <h2 style={title}>Alert<NewBadge /></h2>
+            <h2 style={title}>Alert</h2>
             <p style={description}>
               Callout box for info, success, warning, and danger messages. Optional dismiss.
             </p>
@@ -211,8 +203,9 @@ export default function ComponentsPage() {
 
           {/* Di */}
           <Link href="/docs/components/divider" style={card}>
+            <NewBadge />
             <p style={eyebrow}>Layout</p>
-            <h2 style={title}>Divider<NewBadge /></h2>
+            <h2 style={title}>Divider</h2>
             <p style={description}>
               Thin rule for visually separating content. Horizontal or vertical orientation.
             </p>
@@ -256,8 +249,9 @@ export default function ComponentsPage() {
 
           {/* P */}
           <Link href="/docs/components/popover" style={card}>
+            <NewBadge />
             <p style={eyebrow}>Overlay</p>
-            <h2 style={title}>Popover<NewBadge /></h2>
+            <h2 style={title}>Popover</h2>
             <p style={description}>
               Floating interactive panel anchored to a trigger. Built on Radix Popover.
             </p>
@@ -313,8 +307,9 @@ export default function ComponentsPage() {
 
           {/* To */}
           <Link href="/docs/components/toggle" style={card}>
+            <NewBadge />
             <p style={eyebrow}>Form</p>
-            <h2 style={title}>Toggle<NewBadge /></h2>
+            <h2 style={title}>Toggle</h2>
             <p style={description}>
               Binary on/off control with top label, side label, helper text, and one md size.
             </p>
@@ -344,8 +339,9 @@ export default function ComponentsPage() {
 
           {/* To */}
           <Link href="/docs/components/tooltip" style={card}>
+            <NewBadge />
             <p style={eyebrow}>Overlay</p>
-            <h2 style={title}>Tooltip<NewBadge /></h2>
+            <h2 style={title}>Tooltip</h2>
             <p style={description}>
               Contextual label on hover or focus. Positioned with Radix, four sides.
             </p>

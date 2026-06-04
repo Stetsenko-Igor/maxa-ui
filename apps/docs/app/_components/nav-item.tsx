@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
+import { Badge } from "@maxa/ui"
 
 interface NavItemProps {
   href: string
@@ -37,20 +38,9 @@ export function NavItem({ href, label, isNew }: NavItemProps) {
     >
       {label}
       {isNew && (
-        <span style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "4px",
-          fontSize: "10px",
-          fontWeight: "var(--font-weight-semibold)",
-          color: "var(--color-text-success)",
-          lineHeight: 1,
-        }}>
-          <svg width="6" height="6" viewBox="0 0 6 6" aria-hidden="true">
-            <circle cx="3" cy="3" r="3" fill="currentColor" />
-          </svg>
+        <Badge appearance="green" emphasis="low" size="sm">
           New
-        </span>
+        </Badge>
       )}
     </Link>
   )
