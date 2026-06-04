@@ -53,7 +53,7 @@ function CodeRow({ label, value }: { label: string; value: string }) {
       <code
         style={{
           minWidth: 0,
-          display: "table",
+          display: "block",
           overflowX: "auto",
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-sm)",

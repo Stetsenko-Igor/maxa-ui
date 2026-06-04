@@ -1,5 +1,66 @@
 /* Toggle component */
 
+.maxa-toggle-field {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--toggle-label-gap);
+  width: fit-content;
+  max-width: var(--toggle-field-max-width);
+  color: var(--toggle-text-color);
+  font-family: var(--toggle-font-family);
+}
+
+.maxa-toggle-field__label-row {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--toggle-label-icon-gap);
+}
+
+.maxa-toggle-field__label {
+  color: var(--toggle-label-color);
+  font-size: var(--toggle-label-font-size);
+  font-weight: var(--toggle-label-font-weight);
+  line-height: var(--toggle-label-line-height);
+}
+
+.maxa-toggle-field__row {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--toggle-content-gap);
+}
+
+.maxa-toggle-field__content {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--toggle-description-gap);
+  min-width: 0;
+  max-width: var(--toggle-content-max-width);
+  padding-block: var(--toggle-content-padding-y);
+}
+
+.maxa-toggle-field__side-label {
+  color: var(--toggle-text-color);
+  font-size: var(--toggle-side-label-font-size);
+  font-weight: var(--toggle-side-label-font-weight);
+  line-height: var(--toggle-side-label-line-height);
+}
+
+.maxa-toggle-field__description {
+  color: var(--toggle-description-color);
+  font-size: var(--toggle-description-font-size);
+  font-weight: var(--toggle-description-font-weight);
+  line-height: var(--toggle-description-line-height);
+}
+
+.maxa-toggle-field[data-disabled] .maxa-toggle-field__label {
+  color: var(--toggle-label-color-disabled);
+}
+
+.maxa-toggle-field[data-disabled] .maxa-toggle-field__side-label,
+.maxa-toggle-field[data-disabled] .maxa-toggle-field__description {
+  color: var(--toggle-text-color-disabled);
+}
+
 .maxa-toggle {
   position: relative;
   display: inline-flex;
@@ -47,9 +108,19 @@
   background: var(--toggle-track-bg-on-hover);
 }
 
+.maxa-toggle:not([disabled]):active {
+  background: var(--toggle-track-bg-off-hover);
+}
+
+.maxa-toggle:not([disabled])[data-state="checked"]:active {
+  background: var(--toggle-track-bg-on-hover);
+}
+
 .maxa-toggle:focus-visible {
-  outline: var(--toggle-focus-ring-width) solid var(--toggle-focus-ring-color);
-  outline-offset: var(--toggle-focus-ring-offset);
+  outline: 0;
+  box-shadow:
+    0 0 0 var(--toggle-focus-ring-inner-width) var(--toggle-focus-ring-inner-color),
+    0 0 0 var(--toggle-focus-ring-width) var(--toggle-focus-ring-color);
 }
 
 .maxa-toggle[data-error] {
@@ -58,6 +129,10 @@
 }
 
 .maxa-toggle[disabled] {
+  background: var(--toggle-track-bg-disabled);
   cursor: not-allowed;
-  opacity: var(--toggle-disabled-opacity);
+}
+
+.maxa-toggle[disabled] .maxa-toggle__thumb {
+  background: var(--toggle-thumb-bg-disabled);
 }

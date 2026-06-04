@@ -671,6 +671,14 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 ## Toggle Component Tokens
 
 ```css
+/* Field layout */
+--toggle-field-max-width       /* 160px */
+--toggle-content-max-width     /* 117px */
+--toggle-content-gap           /* 8px */
+--toggle-label-gap             /* 8px */
+--toggle-description-gap       /* 2px */
+--toggle-content-padding-y     /* 3px */
+
 /* Track size: md only */
 --toggle-track-width          /* 36px */
 --toggle-track-height         /* 20px */
@@ -689,21 +697,36 @@ emphasis: low/medium/high). Tag intentionally has no semantic intent.
 --toggle-focus-ring-color     /* border-focus */
 
 /* Colors — track */
---toggle-track-bg-off         /* action-neutral */
---toggle-track-bg-off-hover   /* border-secondary */
---toggle-track-bg-on          /* action-primary */
---toggle-track-bg-on-hover    /* action-primary-hover */
+--toggle-track-bg-off         /* #c9c9c9 */
+--toggle-track-bg-off-hover   /* #a1a1a4 */
+--toggle-track-bg-on          /* #0576da */
+--toggle-track-bg-on-hover    /* #04549b */
+--toggle-track-bg-disabled    /* disabled track */
 
 /* Colors — thumb */
 --toggle-thumb-bg             /* bg-surface */
---toggle-thumb-bg-disabled    /* bg-surface */
+--toggle-thumb-bg-disabled    /* disabled thumb */
+
+/* Text */
+--toggle-font-family
+--toggle-label-font-size
+--toggle-label-line-height
+--toggle-label-font-weight
+--toggle-side-label-font-size
+--toggle-side-label-line-height
+--toggle-side-label-font-weight
+--toggle-description-font-size
+--toggle-description-line-height
+--toggle-description-font-weight
+--toggle-label-color
+--toggle-text-color
+--toggle-description-color
+--toggle-label-color-disabled
+--toggle-text-color-disabled
 
 /* Colors — error */
 --toggle-track-border-error   /* border-error */
 --toggle-error-border-width   /* 1.5px */
-
-/* Disabled */
---toggle-disabled-opacity     /* 0.5 */
 ```
 
 ## Separator Component Tokens

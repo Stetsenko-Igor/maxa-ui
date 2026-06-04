@@ -1,8 +1,17 @@
 /* Toggle component tokens — Layer 3 */
-/* Reference only semantic tokens (Layer 2). Never raw primitives. */
+/* Component values mirror the Figma ToggleLabelLightMode pattern. */
 /* Toggle has one public size: md. */
 
 :root {
+  /* ── Field layout ─────────────────────────────────────────────── */
+  --toggle-field-max-width:          160px;
+  --toggle-content-max-width:        117px;
+  --toggle-content-gap:              8px;
+  --toggle-label-gap:                8px;
+  --toggle-label-icon-gap:           4px;
+  --toggle-description-gap:          2px;
+  --toggle-content-padding-y:        3px;
+
   /* ── Track ─────────────────────────────────────────────────────── */
   --toggle-track-width:      36px;
   --toggle-track-height:     20px;
@@ -14,24 +23,41 @@
   --toggle-thumb-radius:     var(--radius-full);
 
   /* ── Focus ring ───────────────────────────────────────────────── */
-  --toggle-focus-ring-width:  3px;
-  --toggle-focus-ring-offset: 2px;
-  --toggle-focus-ring-color:  var(--color-border-focus);
+  --toggle-focus-ring-width:       3px;
+  --toggle-focus-ring-inner-width: 1px;
+  --toggle-focus-ring-offset:      0;
+  --toggle-focus-ring-color:       var(--color-border-focus);
+  --toggle-focus-ring-inner-color: var(--color-bg-surface);
 
   /* ── Colors — track ───────────────────────────────────────────── */
-  --toggle-track-bg-off:        var(--color-action-neutral);
-  --toggle-track-bg-off-hover:  var(--color-border-secondary);
-  --toggle-track-bg-on:         var(--color-action-primary);
-  --toggle-track-bg-on-hover:   var(--color-action-primary-hover);
+  --toggle-track-bg-off:        #c9c9c9;
+  --toggle-track-bg-off-hover:  #a1a1a4;
+  --toggle-track-bg-on:         #0576da;
+  --toggle-track-bg-on-hover:   #04549b;
+  --toggle-track-bg-disabled:   #e4e4e4;
 
   /* ── Colors — thumb ───────────────────────────────────────────── */
   --toggle-thumb-bg:            var(--color-bg-surface);
-  --toggle-thumb-bg-disabled:   var(--color-bg-surface);
+  --toggle-thumb-bg-disabled:   #c9c9c9;
+
+  /* ── Text ─────────────────────────────────────────────────────── */
+  --toggle-font-family:               var(--font-body);
+  --toggle-label-font-size:           var(--text-sm);
+  --toggle-label-line-height:         14px;
+  --toggle-label-font-weight:         var(--font-weight-semibold);
+  --toggle-side-label-font-size:      var(--text-sm);
+  --toggle-side-label-line-height:    14px;
+  --toggle-side-label-font-weight:    var(--font-weight-medium);
+  --toggle-description-font-size:     var(--text-caption-sm);
+  --toggle-description-line-height:   16px;
+  --toggle-description-font-weight:   var(--font-weight-medium);
+  --toggle-label-color:               #444445;
+  --toggle-text-color:                #444445;
+  --toggle-description-color:         #575758;
+  --toggle-label-color-disabled:      #8c8c8e;
+  --toggle-text-color-disabled:       #c2c2c2;
 
   /* ── Colors — error ───────────────────────────────────────────── */
   --toggle-track-border-error:  var(--color-border-error);
   --toggle-error-border-width:  1.5px;
-
-  /* ── Disabled ─────────────────────────────────────────────────── */
-  --toggle-disabled-opacity:    0.5;
 }

@@ -40,6 +40,34 @@ describe("Toggle", () => {
     expect(screen.getByRole("switch")).not.toHaveClass("maxa-toggle--lg")
   })
 
+  it("renders built-in top label, side label, and description", () => {
+    render(
+      <Toggle
+        label="Notifications"
+        sideLabel="Email updates"
+        description="Receive product and billing messages."
+      />,
+    )
+
+    const toggle = screen.getByRole("switch", { name: "Notifications Email updates" })
+    expect(toggle).toHaveAccessibleDescription("Receive product and billing messages.")
+    expect(screen.getByText("Notifications")).toHaveClass("maxa-toggle-field__label")
+    expect(screen.getByText("Email updates")).toHaveClass("maxa-toggle-field__side-label")
+    expect(screen.getByText("Receive product and billing messages.")).toHaveClass(
+      "maxa-toggle-field__description",
+    )
+  })
+
+  it("uses children as the side label", () => {
+    render(<Toggle label="Privacy">Show online status</Toggle>)
+    expect(screen.getByRole("switch", { name: "Privacy Show online status" })).toBeInTheDocument()
+  })
+
+  it("preserves explicit aria-label over generated visible labels", () => {
+    render(<Toggle aria-label="Custom name" label="Visible label" sideLabel="Visible side label" />)
+    expect(screen.getByRole("switch", { name: "Custom name" })).toBeInTheDocument()
+  })
+
   it("is disabled when disabled prop is set", () => {
     const handler = vi.fn()
     render(<Toggle aria-label="Notifications" disabled onCheckedChange={handler} />)
@@ -63,7 +91,9 @@ describe("Toggle", () => {
   })
 
   it("has no a11y violations", async () => {
-    const { container } = render(<Toggle aria-label="x" />)
+    const { container } = render(
+      <Toggle label="Notifications" sideLabel="Email updates" description="Optional notices." />,
+    )
     expect(await axe(container)).toHaveNoViolations()
   })
 })

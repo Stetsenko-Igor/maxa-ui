@@ -316,12 +316,12 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Toggle<NewBadge /></h2>
             <p style={description}>
-              Binary on/off control with one md size, disabled and error states. Built on Radix.
+              Binary on/off control with top label, side label, helper text, and one md size.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-              <Toggle aria-label="Off" />
-              <Toggle aria-label="On" defaultChecked />
-              <Toggle aria-label="Disabled" disabled defaultChecked />
+              <Toggle sideLabel="Email updates" defaultChecked />
+              <Toggle sideLabel="Auto-save" />
+              <Toggle sideLabel="Locked setting" disabled />
             </div>
             <span style={footer}>View Toggle →</span>
           </Link>

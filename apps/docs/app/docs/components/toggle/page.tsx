@@ -20,13 +20,18 @@ const TOGGLE_PROPS = [
   { name: "checked", type: "boolean", default: undefined, description: "Controlled on/off state. Pair with onCheckedChange." },
   { name: "defaultChecked", type: "boolean", default: "false", description: "Initial state for an uncontrolled toggle." },
   { name: "onCheckedChange", type: "(checked: boolean) => void", default: undefined, description: "Called when the toggle changes." },
+  { name: "label", type: "ReactNode", default: undefined, description: "Optional label rendered above the toggle row." },
+  { name: "sideLabel", type: "ReactNode", default: undefined, description: "Optional label rendered to the right of the toggle." },
+  { name: "children", type: "ReactNode", default: undefined, description: "Alternative side label content." },
+  { name: "description", type: "ReactNode", default: undefined, description: "Optional helper text rendered below the side label." },
+  { name: "containerClassName", type: "string", default: undefined, description: "Class name for the label/content wrapper." },
   { name: "error", type: "boolean", default: "false", description: "Renders an error outline and sets aria-invalid." },
-  { name: "disabled", type: "boolean", default: "false", description: "Disables interaction and dims the toggle to 50% opacity." },
-  { name: "aria-label", type: "string", default: undefined, description: "Accessible name. Required when there is no associated <label>." },
+  { name: "disabled", type: "boolean", default: "false", description: "Disables interaction and applies the Figma disabled colors." },
+  { name: "aria-label", type: "string", default: undefined, description: "Accessible name. Use when the toggle has no visible label." },
 ]
 
-const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: "16px", alignItems: "center" }
-const labelRow: React.CSSProperties = { display: "flex", alignItems: "center", gap: "8px" }
+const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "flex-start" }
+const stack: React.CSSProperties = { display: "grid", gap: "16px", alignItems: "start" }
 
 export default function TogglePage() {
   return (
@@ -40,16 +45,25 @@ export default function TogglePage() {
       lead={
         <>
           A binary on/off control for immediate, self-contained state changes.
-          Built on Radix for full keyboard and screen-reader support. Toggle has one visual size: md.
+          Built on Radix with built-in top label, side label, and helper text. Toggle has one visual size: md.
         </>
       }
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Toggle } from "@maxa/ui"\n\n<Toggle aria-label="Enable notifications" defaultChecked />`}>
+          <ComponentPreview code={`import { Toggle } from "@maxa/ui"\n\n<Toggle\n  label="Notifications"\n  sideLabel="Email updates"\n  description="Receive product and billing messages."\n  defaultChecked\n/>`}>
             <div style={row}>
-              <Toggle aria-label="Off example" />
-              <Toggle aria-label="On example" defaultChecked />
+              <Toggle
+                label="Notifications"
+                sideLabel="Email updates"
+                description="Receive product and billing messages."
+                defaultChecked
+              />
+              <Toggle
+                label="Privacy"
+                sideLabel="Show online status"
+                description="Visible to teammates in the workspace."
+              />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -63,22 +77,27 @@ export default function TogglePage() {
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
           imports={`import { Toggle } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
-          usage={`<Toggle aria-label="Enable notifications" defaultChecked />`}
+          usage={`<Toggle
+  label="Notifications"
+  sideLabel="Email updates"
+  description="Optional notices."
+  defaultChecked
+/>`}
         />
       </DocsSection>
 
       <DocsSection
         id="states"
         title="States"
-        description="Off, on, and disabled. Disabled dims the toggle to 50% opacity and blocks interaction."
+        description="Off, on, and disabled states use the same labeled anatomy as the Figma component."
       >
         <DocsExample title="Off, on, disabled">
-          <ComponentPreview code={`<Toggle aria-label="Off" />\n<Toggle aria-label="On" defaultChecked />\n<Toggle aria-label="Disabled off" disabled />\n<Toggle aria-label="Disabled on" disabled defaultChecked />`}>
-            <div style={row}>
-              <Toggle aria-label="Off" />
-              <Toggle aria-label="On" defaultChecked />
-              <Toggle aria-label="Disabled off" disabled />
-              <Toggle aria-label="Disabled on" disabled defaultChecked />
+          <ComponentPreview code={`<Toggle sideLabel="Auto-save" />\n<Toggle sideLabel="Push alerts" defaultChecked />\n<Toggle sideLabel="Locked setting" description="Managed by your organization." disabled />\n<Toggle sideLabel="Required setting" disabled defaultChecked />`}>
+            <div style={stack}>
+              <Toggle sideLabel="Auto-save" />
+              <Toggle sideLabel="Push alerts" defaultChecked />
+              <Toggle sideLabel="Locked setting" description="Managed by your organization." disabled />
+              <Toggle sideLabel="Required setting" disabled defaultChecked />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -90,10 +109,15 @@ export default function TogglePage() {
         description="Set error to render an error-colored outline and aria-invalid. Use for validation failures on an immediate setting."
       >
         <DocsExample title="Error outline">
-          <ComponentPreview code={`<Toggle aria-label="Invalid setting" error />\n<Toggle aria-label="Invalid setting on" error defaultChecked />`}>
-            <div style={row}>
-              <Toggle aria-label="Invalid setting" error />
-              <Toggle aria-label="Invalid setting on" error defaultChecked />
+          <ComponentPreview code={`<Toggle label="Security" sideLabel="Public sharing" description="Review this setting before enabling." error />\n<Toggle sideLabel="External access" error defaultChecked />`}>
+            <div style={stack}>
+              <Toggle
+                label="Security"
+                sideLabel="Public sharing"
+                description="Review this setting before enabling."
+                error
+              />
+              <Toggle sideLabel="External access" error defaultChecked />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -102,13 +126,18 @@ export default function TogglePage() {
       <DocsSection
         id="with-label"
         title="With label"
-        description="The Toggle has no built-in label. Associate a <label> via htmlFor/id, or pass aria-label."
+        description="Use label for the top label, sideLabel or children for the right-side label, and description for additional helper text."
       >
-        <DocsExample title="Labeled toggle">
-          <ComponentPreview code={`<label htmlFor="notifications">Email notifications</label>\n<Toggle id="notifications" defaultChecked />`}>
-            <div style={labelRow}>
-              <Toggle id="notifications" defaultChecked />
-              <label htmlFor="notifications">Email notifications</label>
+        <DocsExample title="Label anatomy">
+          <ComponentPreview code={`<Toggle label="Workspace" sideLabel="Weekly summary" description="Send activity highlights every Friday." defaultChecked />\n<Toggle label="Display">Compact mode</Toggle>`}>
+            <div style={stack}>
+              <Toggle
+                label="Workspace"
+                sideLabel="Weekly summary"
+                description="Send activity highlights every Friday."
+                defaultChecked
+              />
+              <Toggle label="Display">Compact mode</Toggle>
             </div>
           </ComponentPreview>
         </DocsExample>

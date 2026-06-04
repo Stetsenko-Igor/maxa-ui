@@ -5,24 +5,85 @@ import * as TogglePrimitive from "@radix-ui/react-switch"
 import "./toggle.css"
 
 export interface ToggleProps
-  extends React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> {
+  extends Omit<React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root>, "children"> {
+  children?: React.ReactNode
+  containerClassName?: string
+  description?: React.ReactNode
   error?: boolean
+  label?: React.ReactNode
+  sideLabel?: React.ReactNode
 }
 
 const Toggle = React.forwardRef<
   React.ElementRef<typeof TogglePrimitive.Root>,
   ToggleProps
->(({ className, error = false, ...props }, ref) => {
+>(({
+  "aria-describedby": ariaDescribedBy,
+  "aria-label": ariaLabel,
+  "aria-labelledby": ariaLabelledBy,
+  children,
+  className,
+  containerClassName,
+  description,
+  disabled,
+  error = false,
+  label,
+  sideLabel,
+  ...props
+}, ref) => {
+  const reactId = React.useId()
+  const topLabelId = label ? `${reactId}-label` : undefined
+  const sideLabelId = sideLabel || children ? `${reactId}-side-label` : undefined
+  const descriptionId = description ? `${reactId}-description` : undefined
+  const labelledBy = ariaLabel || ariaLabelledBy
+    ? ariaLabelledBy
+    : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
+  const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
+  const sideLabelContent = sideLabel ?? children
+  const hasFieldContent = Boolean(label || sideLabelContent || description)
+
   return (
-    <TogglePrimitive.Root
-      ref={ref}
-      className={`maxa-toggle${className ? ` ${className}` : ""}`}
-      data-error={error || undefined}
-      aria-invalid={error || undefined}
-      {...props}
+    <div
+      className={`maxa-toggle-field${containerClassName ? ` ${containerClassName}` : ""}`}
+      data-disabled={disabled || undefined}
     >
-      <TogglePrimitive.Thumb className="maxa-toggle__thumb" />
-    </TogglePrimitive.Root>
+      {label ? (
+        <div className="maxa-toggle-field__label-row">
+          <span className="maxa-toggle-field__label" id={topLabelId}>
+            {label}
+          </span>
+        </div>
+      ) : null}
+      <div className="maxa-toggle-field__row">
+        <TogglePrimitive.Root
+          ref={ref}
+          className={`maxa-toggle${className ? ` ${className}` : ""}`}
+          data-error={error || undefined}
+          aria-describedby={describedBy}
+          aria-invalid={error || undefined}
+          aria-label={ariaLabel}
+          aria-labelledby={labelledBy}
+          disabled={disabled}
+          {...props}
+        >
+          <TogglePrimitive.Thumb className="maxa-toggle__thumb" />
+        </TogglePrimitive.Root>
+        {hasFieldContent && (sideLabelContent || description) ? (
+          <div className="maxa-toggle-field__content">
+            {sideLabelContent ? (
+              <span className="maxa-toggle-field__side-label" id={sideLabelId}>
+                {sideLabelContent}
+              </span>
+            ) : null}
+            {description ? (
+              <span className="maxa-toggle-field__description" id={descriptionId}>
+                {description}
+              </span>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+    </div>
   )
 })
 
