@@ -512,30 +512,37 @@ Stacking order for overlays. Always reference the token, never a raw integer.
 ## Checkbox Component Tokens
 
 ```css
-/* Sizes */
---checkbox-size-sm            /* 16px */
+/* Field layout */
+--checkbox-label-gap
+--checkbox-content-gap
+--checkbox-row-gap
+--checkbox-text-padding-y
+
+/* Size: md only */
 --checkbox-size-md            /* 20px */
 --checkbox-radius             /* radius-xs */
---checkbox-border-width       /* 1.5px */
---checkbox-focus-ring-width   /* 3px */
---checkbox-focus-ring-offset  /* 2px */
+--checkbox-border-width       /* 1px */
+--checkbox-focus-ring-width
+--checkbox-focus-ring-inner-width
+--checkbox-focus-ring-offset
 --checkbox-mark-width-md      /* 10px */
 --checkbox-mark-height-md     /* 8px */
---checkbox-mark-width-sm      /* 8px */
---checkbox-mark-height-sm     /* 6px */
---checkbox-dash-height        /* 2px (indeterminate dash) */
+--checkbox-dash-height        /* 1.75px */
 --checkbox-dash-radius        /* 1px */
 
 /* Default state */
---checkbox-bg                 /* bg-surface */
---checkbox-border             /* border-primary */
---checkbox-border-hover       /* border-secondary */
---checkbox-border-focus       /* border-focus */
---checkbox-mark-color         /* white */
+--checkbox-bg                 /* white */
+--checkbox-border             /* #a1a1a4 */
+--checkbox-border-hover       /* #c9c9c9 */
+--checkbox-border-focus       /* #0b73cb */
+--checkbox-focus-ring-inner-color
+--checkbox-mark-color         /* #ffffff */
 
 /* Checked / indeterminate */
---checkbox-bg-checked         /* action-primary */
+--checkbox-bg-checked         /* #2d2d2e */
+--checkbox-bg-checked-hover   /* #5e5e5f */
 --checkbox-border-checked
+--checkbox-border-checked-hover
 
 /* Error */
 --checkbox-border-error
@@ -543,39 +550,57 @@ Stacking order for overlays. Always reference the token, never a raw integer.
 
 /* Disabled */
 --checkbox-bg-disabled
+--checkbox-bg-disabled-checked
 --checkbox-border-disabled
 --checkbox-mark-disabled
 
 /* Label / helper */
---checkbox-label-text         /* text-primary */
---checkbox-helper-text        /* text-tertiary */
---checkbox-helper-error       /* text-error */
---checkbox-gap                /* 8px (between control + label) */
---checkbox-content-gap        /* 4px (between label + helper) */
+--checkbox-font-family
+--checkbox-top-label-text
+--checkbox-top-label-disabled
+--checkbox-side-label-text
+--checkbox-description-text
+--checkbox-text-disabled
+--checkbox-helper-error
+--checkbox-label-font-size
+--checkbox-label-line-height
+--checkbox-label-font-weight
+--checkbox-top-label-font-weight
+--checkbox-description-font-size
+--checkbox-description-line-height
+--checkbox-description-font-weight
 ```
 
 ## Radio Component Tokens
 
 ```css
-/* Sizes */
---radio-size-sm               /* 16px */
+/* Field layout */
+--radio-label-gap
+--radio-content-gap
+--radio-row-gap
+--radio-text-padding-y
+
+/* Size: md only */
 --radio-size-md               /* 20px */
---radio-dot-size-sm           /* 6px */
 --radio-dot-size-md           /* 8px */
---radio-border-width          /* 1.5px */
---radio-focus-ring-width      /* 3px */
---radio-focus-ring-offset     /* 2px */
+--radio-border-width          /* 1px */
+--radio-focus-ring-width
+--radio-focus-ring-inner-width
+--radio-focus-ring-offset
 
 /* Default state */
---radio-bg                    /* bg-surface */
---radio-border                /* border-primary */
---radio-border-hover
---radio-border-focus
+--radio-bg                    /* white */
+--radio-border                /* #a1a1a4 */
+--radio-border-hover          /* #c9c9c9 */
+--radio-border-focus          /* #0b73cb */
+--radio-focus-ring-inner-color
 
 /* Checked */
---radio-bg-checked            /* action-primary */
---radio-border-checked
---radio-dot-color             /* white */
+--radio-bg-checked            /* transparent */
+--radio-border-checked        /* #0576da */
+--radio-border-checked-hover  /* #04549b */
+--radio-dot-color             /* #0576da */
+--radio-dot-color-hover       /* #04549b */
 
 /* Error */
 --radio-border-error
@@ -584,13 +609,23 @@ Stacking order for overlays. Always reference the token, never a raw integer.
 /* Disabled */
 --radio-bg-disabled
 --radio-border-disabled
+--radio-dot-disabled
 
 /* Label / helper */
---radio-label-text
---radio-helper-text
+--radio-font-family
+--radio-top-label-text
+--radio-top-label-disabled
+--radio-side-label-text
+--radio-description-text
+--radio-text-disabled
 --radio-helper-error
---radio-gap                   /* 8px */
---radio-content-gap           /* 4px */
+--radio-label-font-size
+--radio-label-line-height
+--radio-label-font-weight
+--radio-top-label-font-weight
+--radio-description-font-size
+--radio-description-line-height
+--radio-description-font-weight
 ```
 
 ## Badge Component Tokens

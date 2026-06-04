@@ -19,14 +19,11 @@ describe("Checkbox", () => {
     expect(screen.getByRole("checkbox")).toBeChecked()
   })
 
-  it("applies size class md by default", () => {
+  it("uses the single md visual size", () => {
     render(<Checkbox />)
-    expect(document.querySelector(".maxa-checkbox")).toHaveClass("maxa-checkbox--md")
-  })
-
-  it("applies size class sm", () => {
-    render(<Checkbox size="sm" />)
-    expect(document.querySelector(".maxa-checkbox")).toHaveClass("maxa-checkbox--sm")
+    expect(document.querySelector(".maxa-checkbox")).toHaveClass("maxa-checkbox")
+    expect(document.querySelector(".maxa-checkbox")).not.toHaveClass("maxa-checkbox--sm")
+    expect(document.querySelector(".maxa-checkbox")).not.toHaveClass("maxa-checkbox--lg")
   })
 
   it("applies error class and aria-invalid", () => {
@@ -41,13 +38,27 @@ describe("Checkbox", () => {
     expect(document.querySelector(".maxa-checkbox")).toHaveClass("maxa-checkbox--disabled")
   })
 
-  it("renders label text", () => {
-    render(<Checkbox label="Accept terms" />)
-    expect(screen.getByText("Accept terms")).toBeInTheDocument()
+  it("renders built-in top label, side label, and description", () => {
+    render(
+      <Checkbox
+        label="Permissions"
+        sideLabel="Accept terms"
+        description="Required to continue."
+      />,
+    )
+
+    const checkbox = screen.getByRole("checkbox", { name: "Permissions Accept terms" })
+    expect(checkbox).toHaveAccessibleDescription("Required to continue.")
+    expect(screen.getByText("Permissions")).toHaveClass("maxa-checkbox__top-label")
+    expect(screen.getByText("Accept terms")).toHaveClass("maxa-checkbox__side-label")
+    expect(screen.getByText("Required to continue.")).toHaveClass("maxa-checkbox__description")
   })
 
-  it("renders helper text", () => {
-    render(<Checkbox helperText="Required to continue" />)
+  it("uses children as the side label and keeps helperText as a description alias", () => {
+    render(<Checkbox label="Permissions" helperText="Required to continue">Accept terms</Checkbox>)
+    expect(screen.getByRole("checkbox", { name: "Permissions Accept terms" })).toHaveAccessibleDescription(
+      "Required to continue",
+    )
     expect(screen.getByText("Required to continue")).toBeInTheDocument()
   })
 
@@ -70,13 +81,15 @@ describe("Checkbox", () => {
   })
 
   it("links label to input via htmlFor", () => {
-    render(<Checkbox id="tos" label="Terms of service" />)
+    render(<Checkbox id="tos" sideLabel="Terms of service" />)
     const label = document.querySelector("label.maxa-checkbox")
     expect(label).toHaveAttribute("for", "tos")
   })
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<Checkbox label="Accept terms" />)
+    const { container } = render(
+      <Checkbox label="Permissions" sideLabel="Accept terms" description="Required to continue." />,
+    )
     expect(await axe(container)).toHaveNoViolations()
   })
 })

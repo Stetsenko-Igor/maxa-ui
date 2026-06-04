@@ -121,8 +121,8 @@ Pass `htmlFor=""` (no specific control to associate) — the label becomes a gro
 ```tsx
 <FormField label="Notifications">
   <Stack gap="2">
-    <Checkbox label="Email me about new features" />
-    <Checkbox label="Email me about security" />
+    <Checkbox sideLabel="Email me about new features" />
+    <Checkbox sideLabel="Email me about security" />
   </Stack>
 </FormField>
 ```

@@ -3,33 +3,41 @@
 import * as React from "react"
 import "./checkbox.css"
 
-export type CheckboxSize = "sm" | "md"
 export type CheckedState = boolean | "indeterminate"
 
 export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "checked" | "onChange"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "children" | "size" | "checked" | "onChange"> {
   checked?: CheckedState
+  children?: React.ReactNode
+  containerClassName?: string
   defaultChecked?: boolean
-  onCheckedChange?: (checked: CheckedState) => void
-  size?: CheckboxSize
+  description?: React.ReactNode
   error?: boolean
+  helperText?: React.ReactNode
+  onCheckedChange?: (checked: CheckedState) => void
   label?: React.ReactNode
-  helperText?: string
+  sideLabel?: React.ReactNode
 }
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       checked,
+      children,
+      containerClassName,
       defaultChecked,
+      description,
       onCheckedChange,
-      size = "md",
       error = false,
       disabled = false,
       label,
+      sideLabel,
       helperText,
       id,
       className,
+      "aria-describedby": ariaDescribedBy,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledBy,
       ...props
     },
     ref,
@@ -48,9 +56,19 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [isIndeterminate])
 
+    const reactId = React.useId()
+    const sideLabelContent = sideLabel ?? children
+    const descriptionContent = description ?? helperText
+    const topLabelId = label ? `${reactId}-label` : undefined
+    const sideLabelId = sideLabelContent ? `${reactId}-side-label` : undefined
+    const descriptionId = descriptionContent ? `${reactId}-description` : undefined
+    const labelledBy = ariaLabel || ariaLabelledBy
+      ? ariaLabelledBy
+      : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
+    const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
+
     const wrapperClasses = [
       "maxa-checkbox",
-      `maxa-checkbox--${size}`,
       error && "maxa-checkbox--error",
       disabled && "maxa-checkbox--disabled",
     ]
@@ -62,32 +80,45 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     }
 
     return (
-      <label className={[wrapperClasses, className].filter(Boolean).join(" ")} htmlFor={id}>
-        <span className="maxa-checkbox__control">
-          <input
-            ref={inputRef}
-            id={id}
-            type="checkbox"
-            className="maxa-checkbox__input"
-            {...(isControlled
-              ? { checked: isIndeterminate ? false : isChecked }
-              : { defaultChecked })}
-            disabled={disabled}
-            aria-checked={isIndeterminate ? "mixed" : undefined}
-            aria-invalid={error || undefined}
-            onChange={handleChange}
-            {...props}
-          />
-          <span className="maxa-checkbox__box" aria-hidden="true" />
-        </span>
-        {(label || helperText) && (
-          <span className="maxa-checkbox__content">
-            {label && <span className="maxa-checkbox__label">{label}</span>}
-            {helperText && (
-              <span className="maxa-checkbox__helper">{helperText}</span>
-            )}
+      <label
+        className={[wrapperClasses, className, containerClassName].filter(Boolean).join(" ")}
+        htmlFor={id}
+      >
+        {label ? <span className="maxa-checkbox__top-label" id={topLabelId}>{label}</span> : null}
+        <span className="maxa-checkbox__row">
+          <span className="maxa-checkbox__control">
+            <input
+              ref={inputRef}
+              id={id}
+              type="checkbox"
+              className="maxa-checkbox__input"
+              {...(isControlled
+                ? { checked: isIndeterminate ? false : isChecked }
+                : { defaultChecked })}
+              disabled={disabled}
+              aria-checked={isIndeterminate ? "mixed" : undefined}
+              aria-describedby={describedBy}
+              aria-invalid={error || undefined}
+              aria-label={ariaLabel}
+              aria-labelledby={labelledBy}
+              onChange={handleChange}
+              {...props}
+            />
+            <span className="maxa-checkbox__box" aria-hidden="true" />
           </span>
-        )}
+          {(sideLabelContent || descriptionContent) && (
+            <span className="maxa-checkbox__content">
+              {sideLabelContent && (
+                <span className="maxa-checkbox__side-label" id={sideLabelId}>{sideLabelContent}</span>
+              )}
+              {descriptionContent && (
+                <span className="maxa-checkbox__description" id={descriptionId}>
+                  {descriptionContent}
+                </span>
+              )}
+            </span>
+          )}
+        </span>
       </label>
     )
   },

@@ -12,7 +12,7 @@ const TOC = [
   { href: "#installation", label: "Installation" },
   { href: "#states", label: "States" },
   { href: "#group", label: "Group" },
-  { href: "#sizes", label: "Sizes" },
+  { href: "#with-label", label: "With label" },
   { href: "#api-reference", label: "API reference" },
 ]
 
@@ -20,11 +20,14 @@ const RADIO_PROPS = [
   { name: "checked", type: "boolean", default: undefined, description: "Controlled checked state." },
   { name: "defaultChecked", type: "boolean", default: undefined, description: "Initial checked state for uncontrolled usage." },
   { name: "onChange", type: "React.ChangeEventHandler<HTMLInputElement>", default: undefined, description: "Native change event handler." },
-  { name: "size", type: "'sm' | 'md'", default: "'md'", description: "Controls the radio size." },
-  { name: "error", type: "boolean", default: "false", description: "Error state. Red border." },
-  { name: "disabled", type: "boolean", default: "false", description: "Disables the radio. Applies 50% opacity to the whole element." },
-  { name: "label", type: "ReactNode", default: undefined, description: "Label text rendered beside the radio." },
-  { name: "helperText", type: "string", default: undefined, description: "Helper or error text rendered below the label." },
+  { name: "label", type: "ReactNode", default: undefined, description: "Optional label rendered above the radio row." },
+  { name: "sideLabel", type: "ReactNode", default: undefined, description: "Optional label rendered to the right of the radio." },
+  { name: "children", type: "ReactNode", default: undefined, description: "Alternative side label content." },
+  { name: "description", type: "ReactNode", default: undefined, description: "Optional helper text rendered below the side label." },
+  { name: "helperText", type: "ReactNode", default: undefined, description: "Alias for description." },
+  { name: "containerClassName", type: "string", default: undefined, description: "Class name for the outer label wrapper." },
+  { name: "error", type: "boolean", default: "false", description: "Error state. Red border and error-colored description." },
+  { name: "disabled", type: "boolean", default: "false", description: "Disables the radio and applies Figma disabled colors." },
   { name: "name", type: "string", default: undefined, description: "Groups radios for mutual exclusion." },
   { name: "value", type: "string", default: undefined, description: "The value submitted with the form." },
 ]
@@ -43,9 +46,9 @@ import "@maxa/tokens/theme.css"
 ## Usage
 
 \`\`\`tsx
-<Radio name="plan" value="free" label="Free" />
-<Radio name="plan" value="pro" label="Pro" />
-<Radio name="plan" value="enterprise" label="Enterprise" />
+<Radio name="plan" value="free" sideLabel="Free" />
+<Radio name="plan" value="pro" sideLabel="Pro" defaultChecked />
+<Radio name="plan" value="enterprise" sideLabel="Enterprise" />
 \`\`\`
 `
 
@@ -66,17 +69,29 @@ export default function RadioPage() {
         <>
           A native radio input with optional label and helper text. Group
           multiple radios with a shared <code>name</code> attribute to enforce
-          mutual exclusion in the browser.
+          mutual exclusion in the browser. Radio has one visual size: md.
         </>
       }
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Radio } from "@maxa/ui"\n\n<Radio name="plan" value="free" label="Free" />\n<Radio name="plan" value="pro" label="Pro" defaultChecked />\n<Radio name="plan" value="enterprise" label="Enterprise" />`}>
+          <ComponentPreview code={`import { Radio } from "@maxa/ui"\n\n<Radio\n  name="plan"\n  value="pro"\n  label="Plan"\n  sideLabel="Pro"\n  description="Best for growing teams."\n  defaultChecked\n/>`}>
             <div style={stack}>
-              <Radio name="plan-preview" value="free" label="Free" />
-              <Radio name="plan-preview" value="pro" label="Pro" defaultChecked />
-              <Radio name="plan-preview" value="enterprise" label="Enterprise" />
+              <Radio
+                name="plan-preview"
+                value="pro"
+                label="Plan"
+                sideLabel="Pro"
+                description="Best for growing teams."
+                defaultChecked
+              />
+              <Radio
+                name="plan-preview"
+                value="enterprise"
+                label="Plan"
+                sideLabel="Enterprise"
+                description="Advanced controls and support."
+              />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -90,25 +105,31 @@ export default function RadioPage() {
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
           imports={`import { Radio } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
-          usage={`<Radio name="plan" value="free" label="Free" />`}
+          usage={`<Radio
+  name="plan"
+  value="pro"
+  label="Plan"
+  sideLabel="Pro"
+  description="Best for growing teams."
+/>`}
         />
       </DocsSection>
 
       <DocsSection
         id="states"
         title="States"
-        description="Radio supports default, checked, disabled, and error states."
+        description="Radio supports unchecked, checked, disabled, focused, and error states using the Figma anatomy."
       >
         <DocsExample title="All states">
-          <ComponentPreview code={`<Radio name="states" value="default" label="Default" />
-<Radio name="states" value="checked" label="Checked" defaultChecked />
-<Radio name="states" value="disabled" label="Disabled" disabled />
-<Radio name="states" value="error" label="Error" error helperText="Please select an option." />`}>
+          <ComponentPreview code={`<Radio name="states" value="default" sideLabel="Default" />
+<Radio name="states" value="checked" sideLabel="Checked" defaultChecked />
+<Radio name="states-disabled" value="disabled" sideLabel="Disabled" disabled />
+<Radio name="states-error" value="error" sideLabel="Error" error description="Please select an option." />`}>
             <div style={stack}>
-              <Radio name="states-demo" value="default" label="Default" />
-              <Radio name="states-demo" value="checked" label="Checked" defaultChecked />
-              <Radio name="states-disabled" value="disabled" label="Disabled" disabled />
-              <Radio name="states-error" value="error" label="Error" error helperText="Please select an option." />
+              <Radio name="states-demo" value="default" sideLabel="Default" />
+              <Radio name="states-demo" value="checked" sideLabel="Checked" defaultChecked />
+              <Radio name="states-disabled" value="disabled" sideLabel="Disabled" disabled />
+              <Radio name="states-error" value="error" sideLabel="Error" error description="Please select an option." />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -125,32 +146,28 @@ export default function RadioPage() {
         }
       >
         <DocsExample title="Mutual exclusion via name">
-          <ComponentPreview code={`<Radio name="tier" value="starter" label="Starter" />
-<Radio name="tier" value="growth" label="Growth" defaultChecked />
-<Radio name="tier" value="enterprise" label="Enterprise" />`}>
+          <ComponentPreview code={`<Radio name="tier" value="starter" sideLabel="Starter" />
+<Radio name="tier" value="growth" sideLabel="Growth" defaultChecked />
+<Radio name="tier" value="enterprise" sideLabel="Enterprise" />`}>
             <div style={stack}>
-              <Radio name="tier-demo" value="starter" label="Starter" />
-              <Radio name="tier-demo" value="growth" label="Growth" defaultChecked />
-              <Radio name="tier-demo" value="enterprise" label="Enterprise" />
+              <Radio name="tier-demo" value="starter" sideLabel="Starter" />
+              <Radio name="tier-demo" value="growth" sideLabel="Growth" defaultChecked />
+              <Radio name="tier-demo" value="enterprise" sideLabel="Enterprise" />
             </div>
           </ComponentPreview>
         </DocsExample>
       </DocsSection>
 
       <DocsSection
-        id="sizes"
-        title="Sizes"
-        description={
-          <>
-            Two sizes: <code>sm</code> and <code>md</code> (default).
-          </>
-        }
+        id="with-label"
+        title="With label"
+        description="Use label for the top label, sideLabel or children for the right-side label, and description for additional helper text."
       >
-        <DocsExample title="sm and md">
-          <ComponentPreview code={`<Radio name="size-sm" value="sm" label="Small" size="sm" />
-<Radio name="size-md" value="md" label="Medium" size="md" />`}>
-            <Radio name="size-sm-demo" value="sm" label="Small" size="sm" />
-            <Radio name="size-md-demo" value="md" label="Medium" size="md" />
+        <DocsExample title="Label anatomy">
+          <ComponentPreview code={`<Radio name="display" value="compact" label="Display" description="Use a denser layout.">Compact mode</Radio>`}>
+            <Radio name="display-demo" value="compact" label="Display" description="Use a denser layout.">
+              Compact mode
+            </Radio>
           </ComponentPreview>
         </DocsExample>
       </DocsSection>

@@ -14,14 +14,11 @@ describe("Radio", () => {
     expect(screen.getByRole("radio")).toBeChecked()
   })
 
-  it("applies size class md by default", () => {
+  it("uses the single md visual size", () => {
     render(<Radio name="test" />)
-    expect(document.querySelector(".maxa-radio")).toHaveClass("maxa-radio--md")
-  })
-
-  it("applies size class sm", () => {
-    render(<Radio name="test" size="sm" />)
-    expect(document.querySelector(".maxa-radio")).toHaveClass("maxa-radio--sm")
+    expect(document.querySelector(".maxa-radio")).toHaveClass("maxa-radio")
+    expect(document.querySelector(".maxa-radio")).not.toHaveClass("maxa-radio--sm")
+    expect(document.querySelector(".maxa-radio")).not.toHaveClass("maxa-radio--lg")
   })
 
   it("applies error class and aria-invalid", () => {
@@ -36,13 +33,28 @@ describe("Radio", () => {
     expect(document.querySelector(".maxa-radio")).toHaveClass("maxa-radio--disabled")
   })
 
-  it("renders label text", () => {
-    render(<Radio name="test" label="Option A" />)
-    expect(screen.getByText("Option A")).toBeInTheDocument()
+  it("renders built-in top label, side label, and description", () => {
+    render(
+      <Radio
+        name="test"
+        label="Plan"
+        sideLabel="Pro"
+        description="Best for growing teams."
+      />,
+    )
+
+    const radio = screen.getByRole("radio", { name: "Plan Pro" })
+    expect(radio).toHaveAccessibleDescription("Best for growing teams.")
+    expect(screen.getByText("Plan")).toHaveClass("maxa-radio__top-label")
+    expect(screen.getByText("Pro")).toHaveClass("maxa-radio__side-label")
+    expect(screen.getByText("Best for growing teams.")).toHaveClass("maxa-radio__description")
   })
 
-  it("renders helper text", () => {
-    render(<Radio name="test" helperText="Select one option" />)
+  it("uses children as the side label and keeps helperText as a description alias", () => {
+    render(<Radio name="test" label="Plan" helperText="Select one option">Option A</Radio>)
+    expect(screen.getByRole("radio", { name: "Plan Option A" })).toHaveAccessibleDescription(
+      "Select one option",
+    )
     expect(screen.getByText("Select one option")).toBeInTheDocument()
   })
 
@@ -60,12 +72,14 @@ describe("Radio", () => {
   })
 
   it("links label to input via htmlFor", () => {
-    render(<Radio id="opt-a" name="test" label="Option A" />)
+    render(<Radio id="opt-a" name="test" sideLabel="Option A" />)
     expect(document.querySelector("label.maxa-radio")).toHaveAttribute("for", "opt-a")
   })
 
   it("has no accessibility violations", async () => {
-    const { container } = render(<Radio name="test" label="Option A" />)
+    const { container } = render(
+      <Radio name="test" label="Plan" sideLabel="Option A" description="Select one option." />,
+    )
     expect(await axe(container)).toHaveNoViolations()
   })
 })

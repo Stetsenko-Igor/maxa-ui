@@ -43,8 +43,8 @@
     },
     "Component-based": {
       "modes": {
-        "Light": ["component-button-light.json", "component-input-light.json", "component-badge-light.json", "component-tag-light.json", "component-alert-light.json", "component-toggle-light.json", "component-tooltip-light.json", "component-popover-light.json", "component-divider-light.json", "component-utility-light.json"],
-        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-badge-dark.json", "component-tag-dark.json", "component-alert-dark.json", "component-toggle-dark.json", "component-tooltip-dark.json", "component-popover-dark.json", "component-divider-dark.json", "component-utility-dark.json"]
+        "Light": ["component-button-light.json", "component-input-light.json", "component-checkbox-light.json", "component-radio-light.json", "component-badge-light.json", "component-tag-light.json", "component-alert-light.json", "component-toggle-light.json", "component-tooltip-light.json", "component-popover-light.json", "component-divider-light.json", "component-utility-light.json"],
+        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-checkbox-dark.json", "component-radio-dark.json", "component-badge-dark.json", "component-tag-dark.json", "component-alert-dark.json", "component-toggle-dark.json", "component-tooltip-dark.json", "component-popover-dark.json", "component-divider-dark.json", "component-utility-dark.json"]
       }
     }
   }

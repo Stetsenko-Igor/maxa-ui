@@ -184,12 +184,12 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Checkbox</h2>
             <p style={description}>
-              Supports checked, indeterminate, disabled, and error states with label and helper text.
+              Native checkbox with top label, side label, helper text, indeterminate, disabled, and error states.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-              <Checkbox label="Unchecked" />
-              <Checkbox label="Checked" defaultChecked />
-              <Checkbox label="Disabled" disabled defaultChecked />
+              <Checkbox sideLabel="Unchecked" />
+              <Checkbox sideLabel="Checked" defaultChecked />
+              <Checkbox sideLabel="Disabled" disabled defaultChecked />
             </div>
             <span style={footer}>View Checkbox →</span>
           </Link>
@@ -282,12 +282,12 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Radio</h2>
             <p style={description}>
-              Radio input with label and helper text. Group with a shared name for mutual exclusion.
+              Radio input with top label, side label, helper text, and one md size.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-              <Radio name="plan-demo" value="free" label="Free" />
-              <Radio name="plan-demo" value="pro" label="Pro" defaultChecked />
-              <Radio name="plan-demo" value="enterprise" label="Enterprise" />
+              <Radio name="plan-demo" value="free" sideLabel="Free" />
+              <Radio name="plan-demo" value="pro" sideLabel="Pro" defaultChecked />
+              <Radio name="plan-demo" value="enterprise" sideLabel="Enterprise" />
             </div>
             <span style={footer}>View Radio →</span>
           </Link>

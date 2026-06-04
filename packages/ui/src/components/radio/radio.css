@@ -2,15 +2,29 @@
 
 .maxa-radio {
   display: inline-flex;
-  align-items: center;
-  gap: var(--radio-gap);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--radio-label-gap);
   cursor: pointer;
   user-select: none;
+  font-family: var(--radio-font-family);
 }
 
 .maxa-radio--disabled {
   cursor: default;
-  opacity: 0.5;
+}
+
+.maxa-radio__top-label {
+  color: var(--radio-top-label-text);
+  font-size: var(--radio-label-font-size);
+  font-weight: var(--radio-top-label-font-weight);
+  line-height: var(--radio-label-line-height);
+}
+
+.maxa-radio__row {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--radio-row-gap);
 }
 
 /* ── Control ─────────────────────────────────────────────────── */
@@ -46,12 +60,6 @@
   pointer-events: none;
 }
 
-/* Size: sm */
-.maxa-radio--sm .maxa-radio__circle {
-  width: var(--radio-size-sm);
-  height: var(--radio-size-sm);
-}
-
 /* ── Hover ───────────────────────────────────────────────────── */
 
 .maxa-radio:not(.maxa-radio--disabled):hover .maxa-radio__circle {
@@ -61,8 +69,10 @@
 /* ── Focus ───────────────────────────────────────────────────── */
 
 .maxa-radio__input:focus-visible ~ .maxa-radio__circle {
-  outline: var(--radio-focus-ring-width) solid var(--radio-border-focus);
-  outline-offset: var(--radio-focus-ring-offset);
+  outline: 0;
+  box-shadow:
+    0 0 0 var(--radio-focus-ring-inner-width) var(--radio-focus-ring-inner-color),
+    0 0 0 var(--radio-focus-ring-width) var(--radio-border-focus);
 }
 
 /* ── Checked ─────────────────────────────────────────────────── */
@@ -70,6 +80,10 @@
 .maxa-radio__input:checked ~ .maxa-radio__circle {
   background: var(--radio-bg-checked);
   border-color: var(--radio-border-checked);
+}
+
+.maxa-radio:not(.maxa-radio--disabled):hover .maxa-radio__input:checked ~ .maxa-radio__circle {
+  border-color: var(--radio-border-checked-hover);
 }
 
 /* Dot indicator */
@@ -82,9 +96,8 @@
   background: var(--radio-dot-color);
 }
 
-.maxa-radio--sm .maxa-radio__input:checked ~ .maxa-radio__circle::after {
-  width: var(--radio-dot-size-sm);
-  height: var(--radio-dot-size-sm);
+.maxa-radio:not(.maxa-radio--disabled):hover .maxa-radio__input:checked ~ .maxa-radio__circle::after {
+  background: var(--radio-dot-color-hover);
 }
 
 /* ── Error ───────────────────────────────────────────────────── */
@@ -98,29 +111,47 @@
   border-color: var(--radio-border-error);
 }
 
+.maxa-radio--disabled .maxa-radio__circle {
+  background: var(--radio-bg-disabled);
+  border-color: var(--radio-border-disabled);
+}
+
+.maxa-radio--disabled .maxa-radio__input:checked ~ .maxa-radio__circle::after {
+  background: var(--radio-dot-disabled);
+}
+
 /* ── Content ─────────────────────────────────────────────────── */
 
 .maxa-radio__content {
   display: flex;
   flex-direction: column;
   gap: var(--radio-content-gap);
+  padding-block: var(--radio-text-padding-y);
 }
 
-.maxa-radio__label {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--radio-label-text);
-  line-height: 1.25;
+.maxa-radio__side-label {
+  color: var(--radio-side-label-text);
+  font-size: var(--radio-label-font-size);
+  font-weight: var(--radio-label-font-weight);
+  line-height: var(--radio-label-line-height);
 }
 
-.maxa-radio__helper {
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  color: var(--radio-helper-text);
-  line-height: 1.4;
+.maxa-radio__description {
+  color: var(--radio-description-text);
+  font-size: var(--radio-description-font-size);
+  font-weight: var(--radio-description-font-weight);
+  line-height: var(--radio-description-line-height);
 }
 
-.maxa-radio--error .maxa-radio__helper {
+.maxa-radio--error .maxa-radio__description {
   color: var(--radio-helper-error);
+}
+
+.maxa-radio--disabled .maxa-radio__top-label {
+  color: var(--radio-top-label-disabled);
+}
+
+.maxa-radio--disabled .maxa-radio__side-label,
+.maxa-radio--disabled .maxa-radio__description {
+  color: var(--radio-text-disabled);
 }

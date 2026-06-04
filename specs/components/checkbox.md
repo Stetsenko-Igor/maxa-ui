@@ -2,189 +2,117 @@
 
 ## Overview
 
-The MAXA Checkbox is a binary (or tri-state) form control. It renders a visually hidden native `<input type="checkbox">` for accessibility and behavior, with a styled box overlay driven entirely by component-level tokens that alias semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
+The MAXA Checkbox is a binary or indeterminate selection control. It renders a native `<input type="checkbox">` for accessibility and behavior, with a styled box overlay driven by component-level tokens.
+
+Use Checkbox for selecting one or more options. Use Radio for mutually exclusive choices and Toggle for immediate on/off settings.
 
 **Component package:** `@maxa/ui` → `Checkbox`
 **Token source:** `packages/tokens/src/component-checkbox.css`
-**Pattern:** `forwardRef` over a native `<input type="checkbox">` + BEM-style class composition. No `cva`, no Radix wrapper — the native input drives accessibility; sizing/state are plain modifier classes (`maxa-checkbox--<modifier>`).
-
-Supports controlled (`checked` + `onCheckedChange`) and uncontrolled (`defaultChecked`) usage. `checked` accepts `boolean | "indeterminate"`.
+**Pattern:** `forwardRef` over a native checkbox input + built-in label shell
 
 ---
 
 ## Anatomy
 
-```
-<label class="maxa-checkbox">
-  [ control: hidden input + styled box ] [ content: label + helper? ]
-</label>
+```text
+[ top label ]
+[ box ] [ side label ]
+        [ description ]
 ```
 
-- **Control** (`.maxa-checkbox__control`): wraps the visually hidden native input (`.maxa-checkbox__input`, `opacity: 0`, fills the control box) and the styled `.maxa-checkbox__box`. The box renders the check / dash mark via `::after`.
-- **Content** (`.maxa-checkbox__content`): rendered only when `label` or `helperText` is provided. Contains `.maxa-checkbox__label` and optional `.maxa-checkbox__helper`.
-- The whole component is a `<label>`; clicking the label text toggles the input. If `id` is supplied it is also applied to `<label htmlFor>` for explicit association.
-- The styled box is `aria-hidden` and `pointer-events: none` — all interaction lives on the real input.
-- Gap between control and content: `--checkbox-gap` (8px). Gap between label and helper: `--checkbox-content-gap` (4px).
+- **Control** — native input plus visual box.
+- **Top label** — optional label rendered above the row.
+- **Side label** — optional label rendered to the right of the checkbox. `children` may be used as shorthand.
+- **Description** — optional helper or validation text below the side label. `helperText` is kept as an alias.
+
+Visible labels are wired with `aria-labelledby`. Description is wired with `aria-describedby`.
 
 ---
 
-## Variants
+## Size
 
-Checkbox has no color/variant axis like Button. Its only configuration axis is `size` (`sm` / `md`); appearance is determined by **state** (checked, indeterminate, error, disabled). There is a single visual treatment: an outlined box that fills with `action/primary` when checked.
+Checkbox has one public visual size: `md`.
 
----
+```css
+--checkbox-size-md:        20px;
+--checkbox-mark-width-md:  10px;
+--checkbox-mark-height-md: 8px;
+--checkbox-row-gap:        8px;
+```
 
-## Sizes
-
-| Size | Box | Border width | Check mark (w×h) | Indeterminate dash (w×h) | Radius |
-|------|-----|--------------|------------------|--------------------------|--------|
-| `sm` | 16×16px (`--checkbox-size-sm`) | 1.5px | 8×6px | 8×2px | `radius-xs` (4px) |
-| `md` (default) | 20×20px (`--checkbox-size-md`) | 1.5px | 10×8px | 10×2px | `radius-xs` (4px) |
-
-- Label/helper typography does not scale with `size` — both sizes use `--text-sm` for label and helper.
-- Focus ring is 3px wide, offset 2px, for both sizes.
+Do not expose `sm` or `lg` size props.
 
 ---
 
 ## States
 
-| State | How to apply | Behavior / token pattern |
-|-------|-------------|---------------------------|
-| Unchecked | default | box `--checkbox-bg` + `--checkbox-border` |
-| Hover | `:hover` (when not disabled) | border → `--checkbox-border-hover` |
-| Focus | input `:focus-visible` | outline `--checkbox-focus-ring-width` (3px) solid `--checkbox-border-focus`, offset `--checkbox-focus-ring-offset` (2px) on the box |
-| Checked | `checked={true}` / `defaultChecked` | box bg `--checkbox-bg-checked`, border `--checkbox-border-checked`; check mark via masked SVG colored `--checkbox-mark-color` |
-| Indeterminate | `checked="indeterminate"` | input gets `aria-checked="mixed"`; box uses checked bg/border; `::after` renders a dash (`--checkbox-dash-height`, `--checkbox-dash-radius`) |
-| Error | `error` prop | adds `maxa-checkbox--error`, sets `aria-invalid="true"`; unchecked border → `--checkbox-border-error`; checked/indeterminate bg → `--checkbox-bg-error-checked`; helper → `--checkbox-helper-error` |
-| Disabled | `disabled` prop | adds `maxa-checkbox--disabled`, native input disabled; whole element `opacity: 0.5`, `cursor: default` |
+| State | Trigger | Token |
+|-------|---------|-------|
+| Unchecked | default | `--checkbox-bg` + `--checkbox-border` |
+| Checked | `checked` / `defaultChecked` | `--checkbox-bg-checked` |
+| Indeterminate | `checked="indeterminate"` | `--checkbox-bg-checked` + dash mark |
+| Hover unchecked | `:hover` | `--checkbox-border-hover` |
+| Hover checked | `:hover` + checked | `--checkbox-bg-checked-hover` |
+| Focus | `:focus-visible` | `--checkbox-border-focus` |
+| Error | `error` prop | `--checkbox-border-error`; description uses `--checkbox-helper-error` |
+| Disabled | `disabled` attr | disabled box and text tokens |
 
-**Indeterminate handling:** the native input cannot represent "indeterminate" via the `checked` attribute, so the component sets `inputRef.indeterminate = true` imperatively (in `useEffect`) and exposes `aria-checked="mixed"` to assistive tech. When `checked === "indeterminate"`, the DOM `checked` attribute is forced to `false`. CSS targets the indeterminate visual via `[aria-checked="mixed"]`.
-
-**Checked color rule:** a checked checkbox uses `action/primary` (blue), NOT brand teal. Checkboxes follow MAXA's "primary = blue" rule.
-
-**Error + checked:** the error border color overrides the action color for both the checked and indeterminate fills.
-
-**Disabled rule:** apply `opacity: 0.5` to the whole `.maxa-checkbox`. Do not individually re-color box/label for disabled. (`--checkbox-bg-disabled`, `--checkbox-border-disabled`, `--checkbox-mark-disabled` are defined for future use; current CSS relies on opacity.)
+Checkbox matches Figma: checked and indeterminate states use a dark neutral fill (`#2d2d2e`) with a white mark. They are not blue.
 
 ---
 
-## Token Reference
+## Props
 
-### Sizes & geometry
-```css
---checkbox-size-sm:           16px;
---checkbox-size-md:           20px;
---checkbox-radius:            var(--radius-xs);
---checkbox-border-width:      1.5px;
---checkbox-focus-ring-width:  3px;
---checkbox-focus-ring-offset: 2px;
---checkbox-mark-width-md:     10px;
---checkbox-mark-height-md:    8px;
---checkbox-mark-width-sm:     8px;
---checkbox-mark-height-sm:    6px;
---checkbox-dash-height:       2px;
---checkbox-dash-radius:       1px;
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean | "indeterminate"` | — | Controlled checked state. |
+| `defaultChecked` | `boolean` | `false` | Initial uncontrolled checked state. |
+| `onCheckedChange` | `(checked: CheckedState) => void` | — | Called when the value changes. |
+| `label` | `ReactNode` | — | Optional top label. |
+| `sideLabel` | `ReactNode` | — | Optional right-side label. |
+| `children` | `ReactNode` | — | Shorthand for right-side label content. |
+| `description` | `ReactNode` | — | Optional helper text below the right-side label. |
+| `helperText` | `ReactNode` | — | Alias for `description`. |
+| `containerClassName` | `string` | — | Class name for the outer label wrapper. |
+| `error` | `boolean` | `false` | Adds error border and `aria-invalid`. |
+| `disabled` | `boolean` | `false` | Disables interaction and applies disabled colors. |
 
-### Colors — default state
-```css
---checkbox-bg:           var(--color-bg-surface);
---checkbox-border:       var(--color-border-primary);
---checkbox-border-hover: var(--color-border-secondary);
---checkbox-border-focus: var(--color-border-focus);
---checkbox-mark-color:   var(--color-text-inverse);
-```
-
-### Colors — checked / indeterminate
-```css
---checkbox-bg-checked:     var(--color-action-primary);
---checkbox-border-checked: var(--color-action-primary);
-```
-
-### Colors — error
-```css
---checkbox-border-error:     var(--color-border-error);
---checkbox-bg-error-checked: var(--color-border-error);
-```
-
-### Colors — disabled (reserved; current CSS uses opacity 0.5)
-```css
---checkbox-bg-disabled:     var(--color-bg-disabled);
---checkbox-border-disabled: var(--color-border-tertiary);
---checkbox-mark-disabled:   var(--color-text-disabled);
-```
-
-### Label / helper / spacing
-```css
---checkbox-label-text:   var(--color-text-primary);
---checkbox-helper-text:  var(--color-text-tertiary);
---checkbox-helper-error: var(--color-text-error);
---checkbox-gap:          8px;
---checkbox-content-gap:  4px;
-```
+No `size` prop is supported.
 
 ---
 
-## Code Example (React + CVA)
-
-> Note: Checkbox does not use `cva`. Sizing/state are applied via `maxa-checkbox--<modifier>` classes inside the component. Consumers configure it through props.
+## Code Example
 
 ```tsx
-// Uncontrolled
-<Checkbox label="Accept terms" defaultChecked />
+import { Checkbox } from "@maxa/ui"
 
-// Controlled tri-state
+<Checkbox sideLabel="Accept terms" defaultChecked />
+
 <Checkbox
-  checked={state}                 // true | false | "indeterminate"
-  onCheckedChange={setState}
-  label="Select all"
+  label="Permissions"
+  sideLabel="Accept terms"
+  description="Required to continue."
 />
 
-// Error + helper
-<Checkbox
-  error
-  label="Required"
-  helperText="You must agree to continue"
-/>
-
-// Small, with explicit id for label association
-<Checkbox id="tos" size="sm" label="Terms of service" />
+<Checkbox checked="indeterminate" sideLabel="Select all" />
 ```
-
-**Props summary:** `checked?: boolean | "indeterminate"`, `defaultChecked?: boolean`, `onCheckedChange?: (checked) => void`, `size?: "sm" | "md"` (default `md`), `error?: boolean`, `disabled?: boolean`, `label?: ReactNode`, `helperText?: string`, `id?: string`. All native `<input>` props pass through.
 
 ---
 
-## What NOT to do
+## Do / Don't
 
-| ❌ Wrong | ✅ Correct |
-|---------|-----------|
-| `background: #0265DC` for checked | `var(--checkbox-bg-checked)` |
-| `border-radius: 4px` | `var(--checkbox-radius)` |
-| Styling a custom `<div role="checkbox">` with no hidden input | Keep the native `<input type="checkbox">` for a11y |
-| Passing `checked={undefined}` and expecting indeterminate | Pass `checked="indeterminate"` |
-| Custom disabled colors | Use `opacity: 0.5` on `.maxa-checkbox` |
-| Relying on the `:indeterminate` pseudo-class | Style via `[aria-checked="mixed"]` (the component sets it) |
-| Overriding checked color with brand teal | Checked = `action/primary` (blue) |
-| Using a checkbox to fire an immediate action | Checkboxes select; a Button commits |
+| Don't | Do |
+|-------|----|
+| `<Checkbox size="sm" />` | Use the single md Checkbox size. |
+| Use `label` for the right-side text | Use `sideLabel` or `children`; reserve `label` for the top label. |
+| Use a blue checked fill | Use the Figma dark checked fill and white mark. |
+| Use opacity for disabled | Use disabled component tokens for box and text colors. |
 
 ---
 
-## Figma component structure
+## Files
 
-```
-Forms/
-└── Checkbox  — size (sm/md) × state (unchecked, checked, indeterminate, error, disabled)
-               props: label?, helper?
-```
-
-The check mark and indeterminate dash are vector marks inside the box, recolored by `--checkbox-mark-color`.
-
----
-
-## Source files
-
+- Token CSS: `packages/tokens/src/component-checkbox.css`
 - React component: `packages/ui/src/components/checkbox/checkbox.tsx`
 - Styles: `packages/ui/src/components/checkbox/checkbox.css`
-- Component tokens: `packages/tokens/src/component-checkbox.css`
 - Tests: `packages/ui/src/components/checkbox/checkbox.test.tsx`

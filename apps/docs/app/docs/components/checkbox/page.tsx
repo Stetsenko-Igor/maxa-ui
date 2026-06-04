@@ -11,7 +11,6 @@ const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
   { href: "#states", label: "States" },
-  { href: "#sizes", label: "Sizes" },
   { href: "#with-label-and-helper", label: "With label and helper" },
   { href: "#api-reference", label: "API reference" },
 ]
@@ -20,11 +19,14 @@ const CHECKBOX_PROPS = [
   { name: "checked", type: "boolean | 'indeterminate'", default: undefined, description: "Controlled checked state." },
   { name: "defaultChecked", type: "boolean", default: "false", description: "Initial checked state for uncontrolled usage." },
   { name: "onCheckedChange", type: "(checked: boolean | 'indeterminate') => void", default: undefined, description: "Called when state changes." },
-  { name: "size", type: "'sm' | 'md'", default: "'md'", description: "Controls the checkbox size." },
-  { name: "error", type: "boolean", default: "false", description: "Error state. Red border." },
-  { name: "disabled", type: "boolean", default: "false", description: "Disables the checkbox. Applies 50% opacity to the whole element." },
-  { name: "label", type: "ReactNode", default: undefined, description: "Label text rendered beside the checkbox." },
-  { name: "helperText", type: "string", default: undefined, description: "Helper or error text rendered below the label." },
+  { name: "label", type: "ReactNode", default: undefined, description: "Optional label rendered above the checkbox row." },
+  { name: "sideLabel", type: "ReactNode", default: undefined, description: "Optional label rendered to the right of the checkbox." },
+  { name: "children", type: "ReactNode", default: undefined, description: "Alternative side label content." },
+  { name: "description", type: "ReactNode", default: undefined, description: "Optional helper text rendered below the side label." },
+  { name: "helperText", type: "ReactNode", default: undefined, description: "Alias for description." },
+  { name: "containerClassName", type: "string", default: undefined, description: "Class name for the outer label wrapper." },
+  { name: "error", type: "boolean", default: "false", description: "Error state. Red border and error-colored description." },
+  { name: "disabled", type: "boolean", default: "false", description: "Disables the checkbox and applies Figma disabled colors." },
 ]
 
 const CHECKBOX_MARKDOWN = `# Checkbox
@@ -41,7 +43,7 @@ import "@maxa/tokens/theme.css"
 ## Usage
 
 \`\`\`tsx
-<Checkbox label="Accept terms and conditions" />
+<Checkbox sideLabel="Accept terms and conditions" />
 \`\`\`
 `
 
@@ -61,15 +63,20 @@ export default function CheckboxPage() {
       lead={
         <>
           A binary selection control. Supports controlled and uncontrolled
-          usage, an indeterminate state for partial selections, two sizes, error
-          state, and optional label and helper text.
+          usage, an indeterminate state for partial selections, error state,
+          and optional top label, side label, and helper text. Checkbox has one visual size: md.
         </>
       }
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Checkbox } from "@maxa/ui"\n\n<Checkbox label="Accept terms and conditions" defaultChecked />`}>
-            <Checkbox label="Accept terms and conditions" defaultChecked />
+          <ComponentPreview code={`import { Checkbox } from "@maxa/ui"\n\n<Checkbox\n  label="Permissions"\n  sideLabel="Accept terms"\n  description="Required to continue."\n  defaultChecked\n/>`}>
+            <Checkbox
+              label="Permissions"
+              sideLabel="Accept terms"
+              description="Required to continue."
+              defaultChecked
+            />
           </ComponentPreview>
         </DocsExample>
       </section>
@@ -82,7 +89,11 @@ export default function CheckboxPage() {
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
           imports={`import { Checkbox } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
-          usage={`<Checkbox label="Accept terms and conditions" />`}
+          usage={`<Checkbox
+  label="Permissions"
+  sideLabel="Accept terms"
+  description="Required to continue."
+/>`}
         />
       </DocsSection>
 
@@ -98,36 +109,18 @@ export default function CheckboxPage() {
         }
       >
         <DocsExample title="All states">
-          <ComponentPreview code={`<Checkbox label="Unchecked" />
-<Checkbox label="Checked" defaultChecked />
-<Checkbox label="Indeterminate" checked="indeterminate" />
-<Checkbox label="Disabled" disabled />
-<Checkbox label="Error" error helperText="This field is required." />`}>
+          <ComponentPreview code={`<Checkbox sideLabel="Unchecked" />
+<Checkbox sideLabel="Checked" defaultChecked />
+<Checkbox sideLabel="Indeterminate" checked="indeterminate" />
+<Checkbox sideLabel="Disabled" disabled />
+<Checkbox sideLabel="Error" error description="This field is required." />`}>
             <div style={stack}>
-              <Checkbox label="Unchecked" />
-              <Checkbox label="Checked" defaultChecked />
-              <Checkbox label="Indeterminate" checked="indeterminate" />
-              <Checkbox label="Disabled" disabled />
-              <Checkbox label="Error" error helperText="This field is required." />
+              <Checkbox sideLabel="Unchecked" />
+              <Checkbox sideLabel="Checked" defaultChecked />
+              <Checkbox sideLabel="Indeterminate" checked="indeterminate" />
+              <Checkbox sideLabel="Disabled" disabled />
+              <Checkbox sideLabel="Error" error description="This field is required." />
             </div>
-          </ComponentPreview>
-        </DocsExample>
-      </DocsSection>
-
-      <DocsSection
-        id="sizes"
-        title="Sizes"
-        description={
-          <>
-            Two sizes: <code>sm</code> and <code>md</code> (default).
-          </>
-        }
-      >
-        <DocsExample title="sm and md">
-          <ComponentPreview code={`<Checkbox label="Small" size="sm" />
-<Checkbox label="Medium" size="md" />`}>
-            <Checkbox label="Small" size="sm" />
-            <Checkbox label="Medium" size="md" />
           </ComponentPreview>
         </DocsExample>
       </DocsSection>
@@ -135,15 +128,17 @@ export default function CheckboxPage() {
       <DocsSection
         id="with-label-and-helper"
         title="With label and helper"
-        description="Provide contextual guidance or validation feedback below the checkbox."
+        description="Use label for the top label, sideLabel or children for the right-side label, and description for additional helper text."
       >
         <ComponentPreview code={`<Checkbox
-  label="Subscribe to newsletter"
-  helperText="You can unsubscribe at any time."
+  label="Workspace"
+  sideLabel="Subscribe to newsletter"
+  description="You can unsubscribe at any time."
 />`}>
           <Checkbox
-            label="Subscribe to newsletter"
-            helperText="You can unsubscribe at any time."
+            label="Workspace"
+            sideLabel="Subscribe to newsletter"
+            description="You can unsubscribe at any time."
           />
         </ComponentPreview>
       </DocsSection>

@@ -214,16 +214,16 @@ export default function FormFieldPage() {
         description="The label becomes a group label — let FormField own the labeling, not the Checkbox."
       >
         <ComponentPreview code={`<FormField label="Notifications" hint="We will email you only essentials.">
-  <Checkbox label="Product updates" defaultChecked />
-  <Checkbox label="Security alerts" defaultChecked />
-  <Checkbox label="Newsletter" />
+  <Checkbox sideLabel="Product updates" defaultChecked />
+  <Checkbox sideLabel="Security alerts" defaultChecked />
+  <Checkbox sideLabel="Newsletter" />
 </FormField>`}>
           <div style={stack}>
             <FormField label="Notifications" hint="We will email you only essentials.">
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                <Checkbox label="Product updates" defaultChecked />
-                <Checkbox label="Security alerts" defaultChecked />
-                <Checkbox label="Newsletter" />
+                <Checkbox sideLabel="Product updates" defaultChecked />
+                <Checkbox sideLabel="Security alerts" defaultChecked />
+                <Checkbox sideLabel="Newsletter" />
               </div>
             </FormField>
           </div>
@@ -236,16 +236,16 @@ export default function FormFieldPage() {
         description="Use FormField as the fieldset label. All radios share a `name`."
       >
         <ComponentPreview code={`<FormField label="Plan" hint="You can upgrade or downgrade at any time.">
-  <Radio name="plan" value="free" label="Free" defaultChecked />
-  <Radio name="plan" value="pro" label="Pro" />
-  <Radio name="plan" value="team" label="Team" />
+  <Radio name="plan" value="free" sideLabel="Free" defaultChecked />
+  <Radio name="plan" value="pro" sideLabel="Pro" />
+  <Radio name="plan" value="team" sideLabel="Team" />
 </FormField>`}>
           <div style={stack}>
             <FormField label="Plan" hint="You can upgrade or downgrade at any time.">
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                <Radio name="plan" value="free" label="Free" defaultChecked />
-                <Radio name="plan" value="pro" label="Pro" />
-                <Radio name="plan" value="team" label="Team" />
+                <Radio name="plan" value="free" sideLabel="Free" defaultChecked />
+                <Radio name="plan" value="pro" sideLabel="Pro" />
+                <Radio name="plan" value="team" sideLabel="Team" />
               </div>
             </FormField>
           </div>

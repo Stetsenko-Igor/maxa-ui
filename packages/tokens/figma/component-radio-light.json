@@ -1,0 +1,146 @@
+{
+  "Radio": {
+    "size": {
+      "md": {
+        "control": {
+          "$value": 20,
+          "$type": "number"
+        },
+        "dot": {
+          "$value": 8,
+          "$type": "number"
+        },
+        "row-gap": {
+          "$value": 8,
+          "$type": "number"
+        },
+        "label-gap": {
+          "$value": 8,
+          "$type": "number"
+        },
+        "content-gap": {
+          "$value": 4,
+          "$type": "number"
+        },
+        "text-padding-y": {
+          "$value": 3,
+          "$type": "number"
+        }
+      }
+    },
+    "border-width": {
+      "$value": 1,
+      "$type": "number"
+    },
+    "focus-ring": {
+      "width": {
+        "$value": 3.75,
+        "$type": "number"
+      },
+      "inner-width": {
+        "$value": 1.25,
+        "$type": "number"
+      }
+    },
+    "color": {
+      "bg": {
+        "$value": "#FFFFFF",
+        "$type": "color"
+      },
+      "border": {
+        "$value": "#A1A1A4",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$value": "#C9C9C9",
+        "$type": "color"
+      },
+      "border-checked": {
+        "$value": "#0576DA",
+        "$type": "color"
+      },
+      "border-checked-hover": {
+        "$value": "#04549B",
+        "$type": "color"
+      },
+      "dot": {
+        "$value": "#0576DA",
+        "$type": "color"
+      },
+      "dot-hover": {
+        "$value": "#04549B",
+        "$type": "color"
+      },
+      "border-error": {
+        "$value": "#D31510",
+        "$type": "color"
+      },
+      "border-disabled": {
+        "$value": "#C9C9C9",
+        "$type": "color"
+      },
+      "dot-disabled": {
+        "$value": "#C9C9C9",
+        "$type": "color"
+      },
+      "top-label": {
+        "$value": "#444445",
+        "$type": "color"
+      },
+      "side-label": {
+        "$value": "#444445",
+        "$type": "color"
+      },
+      "description": {
+        "$value": "#575758",
+        "$type": "color"
+      },
+      "top-label-disabled": {
+        "$value": "#8C8C8E",
+        "$type": "color"
+      },
+      "text-disabled": {
+        "$value": "#C2C2C2",
+        "$type": "color"
+      },
+      "error": {
+        "$value": "#D31510",
+        "$type": "color"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "label-font-size": {
+        "$value": "{Typography/Font size/text-sm}",
+        "$type": "number"
+      },
+      "label-line-height": {
+        "$value": 14,
+        "$type": "number"
+      },
+      "label-font-weight": {
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "number"
+      },
+      "top-label-font-weight": {
+        "$value": "{Typography/Font weight/semibold}",
+        "$type": "number"
+      },
+      "description-font-size": {
+        "$value": "{Typography/Font size/caption-sm}",
+        "$type": "number"
+      },
+      "description-line-height": {
+        "$value": 16,
+        "$type": "number"
+      },
+      "description-font-weight": {
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "number"
+      }
+    }
+  }
+}

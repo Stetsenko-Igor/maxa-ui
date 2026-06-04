@@ -2,168 +2,119 @@
 
 ## Overview
 
-The MAXA Radio is a single-choice form control: one option from a mutually exclusive group sharing a `name`. It renders a visually hidden native `<input type="radio">` for accessibility and grouping, with a styled circle overlay driven entirely by component-level tokens that alias semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
+The MAXA Radio is a single-choice form control: one option from a mutually exclusive group sharing a `name`. It renders a native `<input type="radio">` for accessibility and browser grouping, with a styled circle overlay driven by component-level tokens.
+
+Use Radio when one option must be selected from a set. Use Checkbox for independent selections and Toggle for immediate on/off settings.
 
 **Component package:** `@maxa/ui` → `Radio`
 **Token source:** `packages/tokens/src/component-radio.css`
-**Pattern:** `forwardRef` over a native `<input type="radio">` + BEM-style class composition. No `cva`, no Radix wrapper — the native input drives grouping and keyboard navigation; sizing/state are plain modifier classes (`maxa-radio--<modifier>`).
+**Pattern:** `forwardRef` over a native radio input + built-in label shell
 
 ---
 
 ## Anatomy
 
-```
-<label class="maxa-radio">
-  [ control: hidden input + styled circle ] [ content: label + helper? ]
-</label>
+```text
+[ top label ]
+[ radio ] [ side label ]
+          [ description ]
 ```
 
-- **Control** (`.maxa-radio__control`): wraps the visually hidden native input (`.maxa-radio__input`, `opacity: 0`, fills the control box) and the styled `.maxa-radio__circle`. The selected dot is rendered via `::after`.
-- **Content** (`.maxa-radio__content`): rendered only when `label` or `helperText` is provided. Contains `.maxa-radio__label` and optional `.maxa-radio__helper`.
-- The whole component is a `<label>`; clicking the label text selects the input. If `id` is supplied it is also applied to `<label htmlFor>` for explicit association.
-- The styled circle is `aria-hidden` and `pointer-events: none` — all interaction lives on the real input.
-- Gap between control and content: `--radio-gap` (8px). Gap between label and helper: `--radio-content-gap` (4px).
+- **Control** — native input plus visual circle.
+- **Top label** — optional label rendered above the row.
+- **Side label** — optional label rendered to the right of the radio. `children` may be used as shorthand.
+- **Description** — optional helper or validation text below the side label. `helperText` is kept as an alias.
+
+Visible labels are wired with `aria-labelledby`. Description is wired with `aria-describedby`.
 
 ---
 
-## Variants
+## Size
 
-Radio has no color/variant axis like Button. Its only configuration axis is `size` (`sm` / `md`); appearance is determined by **state** (checked, error, disabled). There is a single visual treatment: an outlined circle that fills with `action/primary` and shows an inverse dot when selected.
+Radio has one public visual size: `md`.
 
----
+```css
+--radio-size-md:     20px;
+--radio-dot-size-md: 8px;
+--radio-row-gap:     8px;
+```
 
-## Sizes
-
-| Size | Outer circle | Border width | Inner dot | Radius |
-|------|--------------|--------------|-----------|--------|
-| `sm` | 16×16px (`--radio-size-sm`) | 1.5px | 6×6px (`--radio-dot-size-sm`) | 50% (circle) |
-| `md` (default) | 20×20px (`--radio-size-md`) | 1.5px | 8×8px (`--radio-dot-size-md`) | 50% (circle) |
-
-- Label/helper typography does not scale with `size` — both sizes use `--text-sm` for label and helper.
-- Focus ring is 3px wide, offset 2px, for both sizes.
+Do not expose `sm` or `lg` size props.
 
 ---
 
 ## States
 
-| State | How to apply | Behavior / token pattern |
-|-------|-------------|---------------------------|
-| Unchecked | default | circle `--radio-bg` + `--radio-border`, no dot |
-| Hover | `:hover` (when not disabled) | border → `--radio-border-hover` |
-| Focus | input `:focus-visible` | outline `--radio-focus-ring-width` (3px) solid `--radio-border-focus`, offset `--radio-focus-ring-offset` (2px) on the circle |
-| Checked | `checked` / `defaultChecked` | circle bg `--radio-bg-checked`, border `--radio-border-checked`; dot via `::after` colored `--radio-dot-color` |
-| Error | `error` prop | adds `maxa-radio--error`, sets `aria-invalid="true"`; unchecked border → `--radio-border-error`; checked bg → `--radio-bg-error-checked` (border stays `--radio-border-error`); helper → `--radio-helper-error` |
-| Disabled | `disabled` prop | adds `maxa-radio--disabled`, native input disabled; whole element `opacity: 0.5`, `cursor: default` |
+| State | Trigger | Token |
+|-------|---------|-------|
+| Unchecked | default | `--radio-bg` + `--radio-border` |
+| Checked | `checked` / `defaultChecked` | `--radio-border-checked` + `--radio-dot-color` |
+| Hover unchecked | `:hover` | `--radio-border-hover` |
+| Hover checked | `:hover` + checked | `--radio-border-checked-hover` + `--radio-dot-color-hover` |
+| Focus | `:focus-visible` | `--radio-border-focus` |
+| Error | `error` prop | `--radio-border-error` |
+| Disabled | `disabled` attr | disabled border, dot, and text tokens |
 
-**Grouping rule:** Radio is mutually exclusive within a shared `name`. Checking one auto-unchecks siblings via browser default — do not manage exclusivity in React state unless using controlled mode.
-
-**Checked color rule:** a selected radio uses `action/primary` (blue), NOT brand teal — same "primary = blue" rule as Checkbox.
-
-**Disabled rule:** apply `opacity: 0.5` to the whole `.maxa-radio`. Do not individually re-color circle/label for disabled. (`--radio-bg-disabled`, `--radio-border-disabled` are defined for future use; current CSS relies on opacity.)
+Radio matches Figma: selected state is a white/transparent circle with blue border and blue dot. It is not a solid blue fill with a white dot.
 
 ---
 
-## Token Reference
+## Props
 
-### Sizes & geometry
-```css
---radio-size-sm:           16px;
---radio-size-md:           20px;
---radio-dot-size-sm:       6px;
---radio-dot-size-md:       8px;
---radio-border-width:      1.5px;
---radio-focus-ring-width:  3px;
---radio-focus-ring-offset: 2px;
-```
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | — | Groups radios for mutual exclusion. |
+| `value` | `string` | — | Submitted form value. |
+| `checked` | `boolean` | — | Controlled checked state. |
+| `defaultChecked` | `boolean` | — | Initial uncontrolled checked state. |
+| `onChange` | `ChangeEventHandler<HTMLInputElement>` | — | Native input change handler. |
+| `label` | `ReactNode` | — | Optional top label. |
+| `sideLabel` | `ReactNode` | — | Optional right-side label. |
+| `children` | `ReactNode` | — | Shorthand for right-side label content. |
+| `description` | `ReactNode` | — | Optional helper text below the right-side label. |
+| `helperText` | `ReactNode` | — | Alias for `description`. |
+| `containerClassName` | `string` | — | Class name for the outer label wrapper. |
+| `error` | `boolean` | `false` | Adds error border and `aria-invalid`. |
+| `disabled` | `boolean` | `false` | Disables interaction and applies disabled colors. |
 
-### Colors — default state
-```css
---radio-bg:           var(--color-bg-surface);
---radio-border:       var(--color-border-primary);
---radio-border-hover: var(--color-border-secondary);
---radio-border-focus: var(--color-border-focus);
-```
-
-### Colors — checked
-```css
---radio-bg-checked:     var(--color-action-primary);
---radio-border-checked: var(--color-action-primary);
---radio-dot-color:      var(--color-text-inverse);
-```
-
-### Colors — error
-```css
---radio-border-error:     var(--color-border-error);
---radio-bg-error-checked: var(--color-border-error);
-```
-
-### Colors — disabled (reserved; current CSS uses opacity 0.5)
-```css
---radio-bg-disabled:     var(--color-bg-disabled);
---radio-border-disabled: var(--color-border-tertiary);
-```
-
-### Label / helper / spacing
-```css
---radio-label-text:   var(--color-text-primary);
---radio-helper-text:  var(--color-text-tertiary);
---radio-helper-error: var(--color-text-error);
---radio-gap:          8px;
---radio-content-gap:  4px;
-```
+No `size` prop is supported.
 
 ---
 
-## Code Example (React + CVA)
-
-> Note: Radio does not use `cva`. Sizing/state are applied via `maxa-radio--<modifier>` classes inside the component. Consumers configure it through props. There is no `RadioGroup` primitive — group with native `<fieldset>` + `<legend>` and a shared `name`.
+## Code Example
 
 ```tsx
-<fieldset>
-  <legend>Notification frequency</legend>
-  <Radio name="freq" value="daily" label="Daily" defaultChecked />
-  <Radio name="freq" value="weekly" label="Weekly" />
-  <Radio name="freq" value="never" label="Never" helperText="No emails at all" />
-</fieldset>
+import { Radio } from "@maxa/ui"
 
-// Error + small
-<Radio name="plan" value="pro" size="sm" error label="Pro" />
+<Radio name="plan" value="free" sideLabel="Free" />
+<Radio name="plan" value="pro" sideLabel="Pro" defaultChecked />
+
+<Radio
+  name="display"
+  value="compact"
+  label="Display"
+  description="Use a denser layout."
+>
+  Compact mode
+</Radio>
 ```
-
-**Props summary:** `name?: string` (required for grouping), `value?: string`, `checked?: boolean`, `defaultChecked?: boolean`, `onChange?` (native), `size?: "sm" | "md"` (default `md`), `error?: boolean`, `disabled?: boolean`, `label?: ReactNode`, `helperText?: string`, `id?: string`. All native `<input type="radio">` props pass through.
 
 ---
 
-## What NOT to do
+## Do / Don't
 
-| ❌ Wrong | ✅ Correct |
-|---------|-----------|
-| `background: #0265DC` for checked | `var(--radio-bg-checked)` |
-| `border-radius: 16px` | `border-radius: 50%` (circle) |
-| Styling a custom `<div role="radio">` with no hidden input | Keep the native `<input type="radio">` for a11y |
-| Omitting `name` on radios in a group | Share one `name` so they are mutually exclusive |
-| Managing exclusivity in React state when uncontrolled | Let the browser handle it via `name` |
-| Custom disabled colors | Use `opacity: 0.5` on `.maxa-radio` |
-| Overriding checked color with brand teal | Checked = `action/primary` (blue) |
-| A single radio used as on/off | Use Checkbox or Toggle |
-| Radio for "select one of 5+ items" | Use `Select` |
+| Don't | Do |
+|-------|----|
+| `<Radio size="sm" />` | Use the single md Radio size. |
+| Use `label` for the right-side text | Use `sideLabel` or `children`; reserve `label` for the top label. |
+| Fill the selected radio blue | Use the Figma selected treatment: blue border and blue dot. |
+| Manage radio exclusivity manually | Use a shared `name` and let the browser handle grouping. |
 
 ---
 
-## Figma component structure
+## Files
 
-```
-Forms/
-└── Radio  — size (sm/md) × state (unchecked, checked, error, disabled)
-            props: label?, helper?
-```
-
-The selected dot is a vector mark inside the circle, recolored by `--radio-dot-color`.
-
----
-
-## Source files
-
+- Token CSS: `packages/tokens/src/component-radio.css`
 - React component: `packages/ui/src/components/radio/radio.tsx`
 - Styles: `packages/ui/src/components/radio/radio.css`
-- Component tokens: `packages/tokens/src/component-radio.css`
+- Tests: `packages/ui/src/components/radio/radio.test.tsx`

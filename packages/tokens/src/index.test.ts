@@ -259,6 +259,8 @@ describe("figma manifest", () => {
     expect(manifest.collections["Component-based"]?.modes.Light).toEqual([
       "component-button-light.json",
       "component-input-light.json",
+      "component-checkbox-light.json",
+      "component-radio-light.json",
       "component-badge-light.json",
       "component-tag-light.json",
       "component-alert-light.json",
@@ -271,6 +273,8 @@ describe("figma manifest", () => {
     expect(manifest.collections["Component-based"]?.modes.Dark).toEqual([
       "component-button-dark.json",
       "component-input-dark.json",
+      "component-checkbox-dark.json",
+      "component-radio-dark.json",
       "component-badge-dark.json",
       "component-tag-dark.json",
       "component-alert-dark.json",
@@ -318,7 +322,7 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Badge, Tag, Alert, Toggle, Tooltip, Popover, Divider, and Utility component tokens", () => {
+  it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
     const dark = bundle.collections["Component-based"]?.modes.Dark
 
@@ -332,6 +336,17 @@ describe("figma import bundle", () => {
     expect(light?.["Utility/fg-info"]).toBeUndefined()
     expect(light?.["Utility/fg-inverse"]).toBeUndefined()
     expect(light?.["Utility/fg-violet"]).toBe("{Utility/text-violet}")
+    expect(light?.["Checkbox/size/md/control"]).toBe(20)
+    expect(light?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
+    expect(light?.["Checkbox/color/border-error"]).toBe("#D31510")
+    expect(light?.["Checkbox/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
+    expect(light?.["Checkbox/size/sm/control"]).toBeUndefined()
+    expect(light?.["Radio/size/md/control"]).toBe(20)
+    expect(light?.["Radio/color/border-checked"]).toBe("#0576DA")
+    expect(light?.["Radio/color/dot"]).toBe("#0576DA")
+    expect(light?.["Radio/color/border-error"]).toBe("#D31510")
+    expect(light?.["Radio/typography/top-label-font-weight"]).toBe("{Typography/Font weight/semibold}")
+    expect(light?.["Radio/size/sm/control"]).toBeUndefined()
     expect(light?.["Tag/size/lg/height"]).toBe(28)
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
     expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()
@@ -372,6 +387,10 @@ describe("figma import bundle", () => {
     expect(dark?.["Alert/color/success/bg"]).toBe("#044329")
     expect(dark?.["Alert/color/danger/accent"]).toBe("#FF755E")
     expect(dark?.["Alert/color/emphasize/border"]).toBe("#545454")
+    expect(dark?.["Checkbox/size/md/control"]).toBe(20)
+    expect(dark?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
+    expect(dark?.["Radio/size/md/dot"]).toBe(8)
+    expect(dark?.["Radio/color/dot-hover"]).toBe("#04549B")
     expect(dark?.["Toggle/size/md/track-width"]).toBe(36)
     expect(dark?.["Toggle/size/md/field-max-width"]).toBe(160)
     expect(dark?.["Toggle/color/track-on"]).toBe("#0576DA")
