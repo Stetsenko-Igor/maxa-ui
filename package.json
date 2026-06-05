@@ -17,6 +17,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
+    "test:coverage": "pnpm --filter @maxa/ui test:coverage",
     "verify": "pnpm typecheck && pnpm lint && pnpm audit:tokens && pnpm test && pnpm build",
     "ci": "pnpm verify",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css,yml,yaml}\""

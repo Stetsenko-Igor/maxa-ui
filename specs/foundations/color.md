@@ -91,8 +91,6 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 | Search-field embedded in a dark sidebar | `bg/muted` |
 | Modal backdrop | `bg/overlay` |
 
-**Deprecated alias (removed in next release):** `--color-bg-elevated` → migrate to `--color-bg-surface`.
-
 **Component-specific bg:** `--nav-bg` lives in the **component layer** (`component-nav.css`), not semantic. Navigation surface is always dark regardless of theme.
 
 ### Status / intent backgrounds (orthogonal to elevation)
@@ -158,7 +156,6 @@ Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subt
 | `color: var(--color-neutral-950)` directly in component | `color: var(--color-text-primary)` |
 | Icon uses `var(--color-text-secondary)` by default | Use `var(--color-fg-secondary)` unless it intentionally inherits text |
 | White text on brand solid | `color: var(--color-text-on-brand)` (dark text, not white) |
-| `background: var(--color-bg-elevated)` | `background: var(--color-bg-surface)` (deprecated alias) |
 | `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, `bg/float`, or `bg/muted` by intent |
 | Hardcoded shadow to separate a card from page in light mode | Use the gray page (`bg/page`) + white surface (`bg/surface`) — hierarchy is built-in |
 

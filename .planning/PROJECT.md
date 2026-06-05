@@ -2,11 +2,11 @@
 
 ## What This Is
 
-An agent-readable design system for MAXA: design tokens, React components, and LLM-readable specs that together prevent agents and humans from fabricating design values. Distributed as a private monorepo with public packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`).
+An agent-readable design-system platform for MAXA: design tokens, React components, LLM-readable specs, docs/catalog pages, Figma handoff, and production-grounded MAXA product patterns that together prevent agents and humans from fabricating design values or generic UI surfaces. Distributed as a private monorepo with public packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`).
 
 ## Core Value
 
-LLM-generated UI code always conforms to the design system — no `padding: 13px`, no `#3b82f6`, no off-scale radius. Every design value resolves to a documented token.
+LLM-generated UI code always conforms to the design system and the real MAXA product surface — no `padding: 13px`, no `#3b82f6`, no off-scale radius, no generic dashboard shells when a MAXA pattern exists. Every design value resolves to a documented token, and every reusable layout should resolve to an approved component or product pattern.
 
 ## Requirements
 
@@ -26,7 +26,8 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-- **Phase 2: Component surface extension** — partially shipped. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are in code/docs/tokens/Figma bundle. Remaining v1 component work: Tabs and Accordion/Disclosure.
+- **Phase 2: Base/action component tranche** — partially shipped. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are in code/docs/tokens/Figma bundle. Remaining immediate work: Tabs and Accordion/Disclosure.
+- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. After the current tranche, the roadmap extends into application UI components, MAXA product patterns, Figma Code Connect, and release stabilization. The Tailwind adapter is post-core adoption work, not the next main objective.
 - **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → test → build`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code.
 
 ### Out of Scope
@@ -45,6 +46,7 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 - **Packages:** `@maxa/ui` (React components), `@maxa/tokens` (CSS variables + TS constants), `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`.
 - **Apps:** `apps/docs` — Next.js 15 + Tailwind v4, live previews for foundations and all 8 components.
 - **Design contracts:** live in `specs/` (foundations, components, patterns). `specs/` says **what**; `.planning/` says **when / in what order**.
+- **Product reference:** MAXA product UI inventory and screenshots are mandatory context before creating app-level components or product patterns. The design system must model the real product, not generic SaaS placeholders.
 - **Figma:** token source lives in `packages/tokens/figma/`. The MAXA Token Importer plugin (`.knowledge/Figma Plugins/MAXA Token Importer/`) fetches `import-bundle.json` from GitHub Raw — push first, then import.
 - **Release flow:** Changesets (`@changesets/cli`). Currently no pending entries.
 - **Parallel agents:** Both Claude Code and Codex operate on this repo. Both read `.planning/` and `specs/` at session start.
@@ -72,6 +74,8 @@ LLM-generated UI code always conforms to the design system — no `padding: 13px
 | Surface model: `bg/surface` (white) + `bg/elevated` (one step up) — no shadows | School A aesthetic; testable without elevation tokens | ✓ Good |
 | `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && test && build`) | One local command answers "will this pass GitHub Actions?" | ✓ Good |
 | Brownfield GSD initialization (templates filled manually from existing reality, not `/gsd:new-project` interview) | Existing code and specs already encode requirements; the interview would re-derive what's already known | — Pending evaluation |
+| MAXA UI targets a full design-system platform, not a minimal component package | Igor accepted the Untitled UI / shadcn-level ambition on 2026-06-04; MAXA needs base components, app components, product patterns, docs/catalog, and Figma handoff | Accepted |
+| Tailwind adapter is post-core adoption work | It helps external consumers use MAXA tokens in Tailwind, but it does not replace the core component/pattern catalog | Accepted |
 
 ---
-*Last updated: 2026-06-03 after Phase 2 partial component shipment and CI gate alignment*
+*Last updated: 2026-06-04 after expanding the roadmap toward a full MAXA UI platform*

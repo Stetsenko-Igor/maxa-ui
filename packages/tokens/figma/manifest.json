@@ -3,48 +3,142 @@
   "collections": {
     "Breakpoints": {
       "modes": {
-        "Value": ["breakpoints.json"]
+        "Value": [
+          "breakpoints.json"
+        ]
       }
     },
     "Spacing": {
       "modes": {
-        "Value": ["spacing.json"]
+        "Value": [
+          "spacing.json"
+        ]
       }
     },
     "Radius": {
       "modes": {
-        "Value": ["radius.json"]
+        "Value": [
+          "radius.json"
+        ]
       }
     },
     "Primitives": {
       "modes": {
-        "Value": ["primitives.json"]
+        "Value": [
+          "primitives.json"
+        ]
       }
     },
     "Color modes": {
       "modes": {
-        "Light": ["colors-semantic-light.json"],
-        "Dark":  ["colors-semantic-dark.json"]
+        "Light": [
+          "colors-semantic-light.json"
+        ],
+        "Dark": [
+          "colors-semantic-dark.json"
+        ]
       }
     },
     "Typography": {
       "modes": {
-        "Desktop": ["typography.json"],
-        "Tablet": ["typography-tablet.json"],
-        "Mobile": ["typography-mobile.json"]
+        "Desktop": [
+          "typography.json"
+        ],
+        "Tablet": [
+          "typography-tablet.json"
+        ],
+        "Mobile": [
+          "typography-mobile.json"
+        ]
       }
     },
     "Layout": {
       "modes": {
-        "Desktop": ["layout-desktop.json"],
-        "Tablet": ["layout-tablet.json"],
-        "Mobile": ["layout-mobile.json"]
+        "Desktop": [
+          "layout-desktop.json"
+        ],
+        "Tablet": [
+          "layout-tablet.json"
+        ],
+        "Mobile": [
+          "layout-mobile.json"
+        ]
       }
     },
     "Component-based": {
       "modes": {
-        "Light": ["component-button-light.json", "component-input-light.json", "component-checkbox-light.json", "component-radio-light.json", "component-badge-light.json", "component-tag-light.json", "component-alert-light.json", "component-toggle-light.json", "component-tooltip-light.json", "component-popover-light.json", "component-divider-light.json", "component-utility-light.json"],
-        "Dark": ["component-button-dark.json", "component-input-dark.json", "component-checkbox-dark.json", "component-radio-dark.json", "component-badge-dark.json", "component-tag-dark.json", "component-alert-dark.json", "component-toggle-dark.json", "component-tooltip-dark.json", "component-popover-dark.json", "component-divider-dark.json", "component-utility-dark.json"]
+        "Light": [
+          "component-alert-light.json",
+          "component-avatar-light.json",
+          "component-badge-light.json",
+          "component-breadcrumb-light.json",
+          "component-button-light.json",
+          "component-calendar-light.json",
+          "component-checkbox-light.json",
+          "component-context-menu-light.json",
+          "component-date-picker-light.json",
+          "component-dialog-light.json",
+          "component-divider-light.json",
+          "component-dropdown-menu-light.json",
+          "component-empty-light.json",
+          "component-input-light.json",
+          "component-multi-select-light.json",
+          "component-nav-light.json",
+          "component-pagination-light.json",
+          "component-popover-light.json",
+          "component-progress-light.json",
+          "component-radio-light.json",
+          "component-segmented-control-light.json",
+          "component-select-light.json",
+          "component-separator-light.json",
+          "component-skeleton-light.json",
+          "component-slider-light.json",
+          "component-social-button-light.json",
+          "component-spinner-light.json",
+          "component-table-light.json",
+          "component-tabs-light.json",
+          "component-tag-light.json",
+          "component-toggle-light.json",
+          "component-tooltip-light.json",
+          "component-utility-button-light.json",
+          "component-utility-light.json"
+        ],
+        "Dark": [
+          "component-alert-dark.json",
+          "component-avatar-dark.json",
+          "component-badge-dark.json",
+          "component-breadcrumb-dark.json",
+          "component-button-dark.json",
+          "component-calendar-dark.json",
+          "component-checkbox-dark.json",
+          "component-context-menu-dark.json",
+          "component-date-picker-dark.json",
+          "component-dialog-dark.json",
+          "component-divider-dark.json",
+          "component-dropdown-menu-dark.json",
+          "component-empty-dark.json",
+          "component-input-dark.json",
+          "component-multi-select-dark.json",
+          "component-nav-dark.json",
+          "component-pagination-dark.json",
+          "component-popover-dark.json",
+          "component-progress-dark.json",
+          "component-radio-dark.json",
+          "component-segmented-control-dark.json",
+          "component-select-dark.json",
+          "component-separator-dark.json",
+          "component-skeleton-dark.json",
+          "component-slider-dark.json",
+          "component-social-button-dark.json",
+          "component-spinner-dark.json",
+          "component-table-dark.json",
+          "component-tabs-dark.json",
+          "component-tag-dark.json",
+          "component-toggle-dark.json",
+          "component-tooltip-dark.json",
+          "component-utility-button-dark.json",
+          "component-utility-dark.json"
+        ]
       }
     }
   }

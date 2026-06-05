@@ -1,5 +1,9 @@
 {
   "Divider": {
+    "color": {
+      "$value": "var(--color-border-primary)",
+      "$type": "string"
+    },
     "size": {
       "$value": 1,
       "$type": "number"

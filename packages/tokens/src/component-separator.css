@@ -1,8 +1,9 @@
 /* Separator component tokens — Layer 3 */
-/* Separator: a thin rule dividing content groups. Color and thickness  */
-/* alias semantic tokens; dark mode is handled in semantic.css.         */
+/* Separator is a Radix/shadcn compatibility alias for Divider. Its       */
+/* tokens reference the Divider tokens so there is a single source of     */
+/* truth; the two primitives must stay visually identical.                */
 
 :root {
-  --separator-color: var(--color-border-primary);
-  --separator-size:  var(--width-1);
+  --separator-color: var(--divider-color);
+  --separator-size:  var(--divider-size);
 }

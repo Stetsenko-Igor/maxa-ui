@@ -2,13 +2,17 @@
 
 ## Overview
 
-From a stable Component + Token Parity baseline (May 2026) to a v1.0 release. The path is: harden quality (dark/a11y audit), extend the surface area with the most-requested overlay components, close the design↔code handoff via Figma Code Connect, declare v1.0 with API guarantees, and finally open the door for external consumers via a Tailwind adapter. Phase order is non-binding — `/gsd:insert-phase`, `/gsd:add-phase`, and `/gsd:remove-phase` (Codex: `$gsd-insert-phase`, etc.) let Igor reorder once execution starts.
+From a stable Component + Token Parity baseline (May 2026) to a full MAXA UI platform: an agent-readable design system with tokens, React components, Figma handoff, docs/catalog pages, and production-grounded MAXA product patterns.
+
+The benchmark is not a small component package. The target is closer in ambition to Untitled UI and shadcn/ui, but filtered through MAXA's real product surface. MAXA UI should cover base components, overlay/action components, application UI patterns, and reusable MAXA product patterns such as dashboard cards, sidebars, editor toolbars, request/support menus, package detail screens, and template grids.
+
+The near-term path is: finish the remaining v1 base/action gaps, extend into the application UI layer, close design↔code handoff via Figma Code Connect, stabilize a v1 API, and only then open the door for external consumers via a Tailwind adapter. Phase order is non-binding — `/gsd:insert-phase`, `/gsd:add-phase`, and `/gsd:remove-phase` (Codex: `$gsd-insert-phase`, etc.) let Igor reorder once execution starts.
 
 ## Milestones
 
 - ✅ **v0.x — Component + Token Parity** (shipped 2026-05-18)
-- 📋 **v1.0 Release** — Phases 1-4 (planned)
-- 📋 **v1.1 External Adoption** — Phase 5 (planned)
+- 📋 **v1.0 Core Platform** — Phases 1-6 (planned)
+- 📋 **v1.1 External Adoption** — Phase 7 (planned)
 
 ## Phases
 
@@ -49,9 +53,9 @@ Outcomes:
 
 </details>
 
-### 📋 v1.0 Release (Phases 1-4, planned)
+### 📋 v1.0 Core Platform (Phases 1-6, planned)
 
-**Milestone Goal:** Lock a high-quality, accessibility-audited public API with a complete component surface for typical app needs.
+**Milestone Goal:** Lock a high-quality, accessibility-audited design-system platform with a complete enough surface for MAXA app work: base components, overlay/action components, application UI components, MAXA product patterns, docs/catalog, and Figma handoff.
 
 #### Phase 1: Dark mode + accessibility audit
 **Goal**: Every shipped component renders correctly in dark mode and passes WCAG AA contrast in both themes.
@@ -68,8 +72,8 @@ Plans:
 - [x] 01-dark-mode-and-accessibility-audit-01-PLAN.md — Add automated contrast audit script and baseline measured report
 - [x] 01-dark-mode-and-accessibility-audit-02-PLAN.md — Apply token fixes and publish final passing audit report
 
-#### Phase 2: Component surface extension
-**Goal**: Ship the v1 application component surface via the existing spec-first workflow.
+#### Phase 2: Base/action component tranche
+**Goal**: Ship the next base/action components via the existing spec-first workflow.
 **Depends on**: Phase 1 (audit complete so new components inherit verified tokens)
 **Requirements**: COMP-01, COMP-02, COMP-03, COMP-04, COMP-05, COMP-06, COMP-07, COMP-08, COMP-09
 **Success Criteria** (what must be TRUE):
@@ -80,33 +84,105 @@ Plans:
   5. Component tokens are included in `packages/tokens/src/` and the Figma import bundle when visual decisions are component-specific
   6. `pnpm verify` mirrors CI and is green (`typecheck && lint && audit:tokens && test && build`)
   7. Changeset added for each public package affected
-**Status**: In progress. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are shipped. Remaining planned v1 components: Tabs and Accordion/Disclosure.
+**Status**: In progress. Badge, Tag, Alert, Divider, Toggle, Tooltip, Popover, DropdownMenu, and Tabs are shipped. Accordion/Disclosure is deferred until real MAXA evidence appears. This phase is now closeout and verification of the first expanded component tranche.
 **Plans**: TBD
 
 Plans:
 - [x] 02-shipped: Badge, Tag, Alert, Divider, Toggle, Tooltip — shipped outside formal GSD plan files
 - [x] 02-01: Popover
-- [ ] 02-02: Tabs
-- [ ] 02-03: Accordion/Disclosure
+- [x] 02-02: DropdownMenu
+- [x] 02-03: Tabs
 - [ ] 02-closeout: Phase 2 verification summary and planning-state cleanup
 
-#### Phase 3: Figma Code Connect
-**Goal**: Every shipped component in Figma points to its source file in code via Code Connect.
-**Depends on**: Phase 2 (so handoff covers the full v1.0 surface, not just the original eight)
+#### Phase 3: Application UI component layer
+**Goal**: Add the reusable application components needed to build production-like MAXA screens without one-off local UI.
+**Depends on**: Phase 2
+**Requirements**: APP-01, APP-02, APP-03, APP-04, APP-05, APP-06, APP-07, APP-08
+**Success Criteria** (what must be TRUE):
+  1. Specs exist before implementation for each selected application component
+  2. Components follow the existing `@maxa/ui` architecture and token hygiene
+  3. Docs pages show realistic product-density examples, not generic marketing samples
+  4. `pnpm verify` is green after every shipped tranche
+  5. Selection is grounded in MAXA product inventory and benchmarked against Untitled UI / shadcn coverage
+**Initial candidate scope**:
+  - Avatar — shipped 2026-06-04
+  - Select v2 / custom listbox — shipped 2026-06-05
+  - Multi-select — shipped 2026-06-05; internal listbox architecture polish remains
+  - Skeleton / loading indicators — shipped 2026-06-04
+  - Spinner — shipped 2026-06-04
+  - Progress — shipped 2026-06-04
+  - Breadcrumbs — shipped 2026-06-04
+  - Pagination — shipped 2026-06-04
+  - Tabs — shipped 2026-06-04
+  - Segment Control — shipped 2026-06-04
+  - Slider — shipped 2026-06-04
+  - Empty — shipped 2026-06-04
+  - Table — shipped 2026-06-05
+  - DataTable
+  - EmptyState
+  - PageHeader
+  - FilterBar
+  - Sidebar / Navigation primitives
+  - FileUpload
+  - Dialog / Modal — shipped 2026-06-05
+  - AlertDialog — shipped 2026-06-05
+  - DropdownMenu — shipped 2026-06-04
+  - ContextMenu — shipped 2026-06-05
+  - CommandMenu
+  - Sheet / Slideout
+  - Toast / Notification
+  - Social Button — shipped 2026-06-05
+  - Utility Button — shipped 2026-06-05
+**Plans**: TBD
+
+Plans:
+- [x] 03-01: Component coverage matrix vs MAXA product inventory, Untitled UI, and shadcn/ui — `.planning/component-coverage-matrix.md`
+- [x] 03-02: Avatar
+- [x] 03-03: Select v2 / custom listbox
+- [x] 03-04: Multi-select
+- [x] 03-05: Progress + Skeleton + Spinner
+- [x] 03-06: Dialog + AlertDialog + ContextMenu
+- [x] 03-07: Social Button + Utility Button
+- [x] 03-08: Table primitive
+- [~] 03-stabilization (bridge — `.claude/plans/adaptive-shimmying-pine.md`):
+  - [x] Divider/Separator resolved (Divider canonical; Separator token-aliased compat alias; both have spec + tests)
+  - [x] Planning truth sync to 35-component reality + deprecated `--color-bg-elevated` removed
+  - [x] Figma token parity (34 component families synced; stub JSON filled; bundle rebuilt)
+  - [ ] Coverage measurement (vitest v8) + CI step
+  - [ ] Visual QA sweep (light/dark/page-background; open-state for menus/listboxes)
+
+#### Phase 4: MAXA product patterns
+**Goal**: Capture reusable patterns from the real MAXA app so agents and developers build actual MAXA surfaces, not generic task-shell prototypes.
+**Depends on**: Phase 3 can run in parallel where component dependencies are satisfied
+**Requirements**: PAT-01, PAT-02, PAT-03, PAT-04
+**Success Criteria** (what must be TRUE):
+  1. Pattern specs reference the live MAXA product inventory and screenshots
+  2. Pattern docs include production-like examples for dashboard grid, template cards, sidebars, editor toolbar, request/support menus, package detail screens, and related flows
+  3. Patterns use only approved MAXA tokens and components
+  4. Agents are instructed to prefer these patterns before inventing new layout shells
+**Plans**: TBD
+
+Plans:
+- [ ] 04-01: Product pattern inventory and priority map
+- [ ] 04-02: First pattern implementation tranche
+
+#### Phase 5: Figma Code Connect
+**Goal**: Every shipped component and approved product pattern in Figma points to its source file in code via Code Connect.
+**Depends on**: Phase 2 for base components; Phase 3/4 mappings can be added incrementally
 **Requirements**: HAND-01
 **Success Criteria** (what must be TRUE):
-  1. Code Connect JSON mappings registered for every component shipped through Phase 2
+  1. Code Connect mappings registered for every component shipped through Phase 2
   2. Props in Figma map 1:1 to component props
   3. Selecting a component in Figma produces the correct code snippet (verified manually)
   4. Workflow documented in `.knowledge/Figma Plugins/` or `specs/`
 **Plans**: TBD
 
 Plans:
-- [ ] 03-01: TBD
+- [ ] 05-01: TBD
 
-#### Phase 4: v1.0 release prep
+#### Phase 6: v1.0 release prep
 **Goal**: Stable public API, migration guide, clean changelog, validated release flow.
-**Depends on**: Phase 3
+**Depends on**: Phase 5
 **Requirements**: REL-01, REL-02, REL-03
 **Success Criteria** (what must be TRUE):
   1. Public exports of every package audited and locked
@@ -117,16 +193,16 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 06-01: TBD
+- [ ] 06-02: TBD
 
-### 📋 v1.1 External Adoption (Phase 5, planned)
+### 📋 v1.1 External Adoption (Phase 7, planned)
 
 **Milestone Goal:** Make the design system consumable by external teams using Tailwind v4 without losing token fidelity.
 
-#### Phase 5: Tailwind v4 adapter
+#### Phase 7: Tailwind v4 adapter
 **Goal**: Ship `@maxa/tailwind` so external consumers using Tailwind get our tokens as utilities.
-**Depends on**: Phase 4 (token surface is stable post-v1.0)
+**Depends on**: Phase 6 (token surface is stable post-v1.0)
 **Requirements**: EXT-01
 **Success Criteria** (what must be TRUE):
   1. New `packages/tailwind/` workspace with `package.json`, build, and tests
@@ -136,12 +212,12 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 05-01: TBD
+- [ ] 07-01: TBD
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
+Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 7. Phase 4 product patterns may run in parallel with Phase 3 once its dependent components exist.
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
@@ -149,7 +225,9 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 0b. Eight core components | v0.x | n/a | Complete | 2026-05-13 |
 | 0c. Token polish | v0.x | n/a | Complete | 2026-05-15 |
 | 1. Dark mode + a11y audit | v1.0 | 2/2 | Complete | 2026-05-18 |
-| 2. Component surface extension | v1.0 | partial/TBD | In progress | — |
-| 3. Figma Code Connect | v1.0 | 0/TBD | Not started | — |
-| 4. v1.0 release prep | v1.0 | 0/TBD | Not started | — |
-| 5. Tailwind v4 adapter | v1.1 | 0/TBD | Not started | — |
+| 2. Base/action component tranche | v1.0 | partial/TBD | In progress | — |
+| 3. Application UI component layer | v1.0 | 0/TBD | Not started | — |
+| 4. MAXA product patterns | v1.0 | 0/TBD | Not started | — |
+| 5. Figma Code Connect | v1.0 | 0/TBD | Not started | — |
+| 6. v1.0 release prep | v1.0 | 0/TBD | Not started | — |
+| 7. Tailwind v4 adapter | v1.1 | 0/TBD | Not started | — |

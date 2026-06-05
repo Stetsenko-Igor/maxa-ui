@@ -4,6 +4,8 @@
 
 The MAXA Separator is a thin rule that visually or semantically divides groups of content. It wraps Radix `@radix-ui/react-separator` and uses component-level tokens that alias semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
 
+> **Compatibility alias.** `Separator` exists for Radix/shadcn naming parity. The canonical MAXA primitive is **[Divider](./divider.md)**; `Separator` is built on the same primitive and its tokens (`--separator-*`) reference the Divider tokens (`--divider-*`) so the two stay visually identical. Prefer `Divider` in MAXA product code.
+
 **Component package:** `@maxa/ui` → `Separator`
 **Token source:** `packages/tokens/src/component-separator.css`
 **Pattern:** `forwardRef + Radix Separator.Root`
@@ -49,11 +51,11 @@ The Separator has no interactive states. It is a static presentational element.
 ## Token Reference
 
 ```css
---separator-color: var(--color-border-primary);  /* rule color */
---separator-size:  var(--width-1);                /* 1px thickness */
+--separator-color: var(--divider-color);  /* aliases the Divider rule color */
+--separator-size:  var(--divider-size);    /* aliases the Divider thickness */
 ```
 
-Dark mode is inherited automatically — `--color-border-primary` already resolves to the dark border value under `[data-theme="dark"]`.
+These resolve through `--divider-*` to `--color-border-primary` / `--width-1`. Dark mode is inherited automatically — `--color-border-primary` already resolves to the dark border value under `[data-theme="dark"]`.
 
 ---
 

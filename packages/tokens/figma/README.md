@@ -192,3 +192,16 @@ Use this split:
 - text styles in Figma = reusable style presets bound to typography variables
 
 That gives the same result as Untitled UI, but keeps the system maintainable when typography values change.
+
+## Figma-only token groups (no CSS counterpart)
+
+The `utility` group (`component-utility-light.json` / `component-utility-dark.json`)
+is an **intentional Figma-only token group**. It has **no** matching
+`packages/tokens/src/component-utility.css` file and is not a UI component.
+
+Because it exists only on the Figma side, the CSS↔JSON parity / drift check
+(`node scripts/audit-tokens.mjs`) should **not** flag the missing
+`component-utility.css` as drift — the absence of a CSS counterpart is by design.
+
+Note: `utility-button` is a separate, real component (`component-utility-button.css`)
+and is unrelated to the Figma-only `utility` group above.

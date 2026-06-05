@@ -22,10 +22,11 @@ FormField
 
 ## Current React scope
 
-The first implementation provides the field shell, calendar affordance, label,
-hint, error, disabled state, and separate single/range components. Calendar
-popover behavior can be layered in later without changing the form composition
-model.
+The implementation provides the field shell, calendar affordance, label, hint,
+error, disabled state, and separate single/range components. `DatePicker` opens
+the shared `Calendar` primitive for single-date selection. `DateRangePicker`
+opens the two-month range dropdown from the layout reference: presets on the
+left, two months, footer inputs, and Cancel/Apply actions.
 
 ## Boundaries
 

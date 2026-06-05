@@ -102,9 +102,6 @@ For the why/when of each tier, see `specs/foundations/color.md`.
 --color-bg-success-muted
 --color-bg-warning-muted
 --color-bg-error-muted
-
-/* Deprecated alias (removed in next release) — migrate to bg-surface */
---color-bg-elevated           /* → --color-bg-surface */
 ```
 
 **Component-specific bg:**

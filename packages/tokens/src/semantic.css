@@ -136,11 +136,6 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-50);
   --color-action-warning-subtle-active:   var(--color-yellow-100);
 
-  /* ── Deprecated aliases — remove in next release ────────────────── */
-  /* bg/elevated → bg/surface (rename to match Radix/industry naming).  */
-  /* External consumers: migrate to --color-bg-surface.                 */
-  --color-bg-elevated:          var(--color-bg-surface);
-
   /* Border legacy aliases — kept for 1 release. */
   --color-border-default:       var(--color-border-primary);
   --color-border-brand-strong:  var(--color-border-brand);
@@ -341,7 +336,6 @@
   --color-action-warning-subtle-active:   var(--color-yellow-900);
 
   /* ── Deprecated aliases — dark ──────────────────────────────────── */
-  --color-bg-elevated:          var(--color-bg-surface);
   --color-border-default:       var(--color-border-primary);
   --color-border-brand-strong:  var(--color-border-brand);
   --color-border-error-strong:  var(--color-border-error);
