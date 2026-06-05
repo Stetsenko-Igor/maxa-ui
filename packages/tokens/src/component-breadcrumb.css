@@ -1,0 +1,15 @@
+/* Breadcrumb component tokens */
+
+:root {
+  --breadcrumb-gap: var(--spacing-2);
+  --breadcrumb-text: var(--color-text-secondary);
+  --breadcrumb-text-hover: var(--color-text-primary);
+  --breadcrumb-current-text: var(--color-text-primary);
+  --breadcrumb-separator: var(--color-fg-tertiary);
+  --breadcrumb-ellipsis-bg-hover: var(--color-action-neutral-subtle-hover);
+  --breadcrumb-ellipsis-bg-active: var(--color-action-neutral-subtle-active);
+  --breadcrumb-ellipsis-radius: var(--radius-xs);
+  --breadcrumb-ellipsis-size: 28px;
+  --breadcrumb-font-size: var(--text-sm);
+  --breadcrumb-font-weight: var(--font-weight-medium);
+}

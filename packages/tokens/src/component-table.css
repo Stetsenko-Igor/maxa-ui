@@ -1,0 +1,53 @@
+/* Table component tokens */
+
+:root {
+  --table-bg: var(--color-bg-surface);
+  --table-border: var(--color-border-secondary);
+  --table-radius: var(--radius-md);
+  --table-min-width: 720px;
+  --table-text: var(--color-text-primary);
+  --table-font-family: var(--font-body);
+  --table-font-size: var(--text-sm);
+  --table-line-height: var(--text-sm--line-height);
+
+  --table-header-bg: var(--color-bg-muted);
+  --table-header-text: var(--color-text-tertiary);
+  --table-header-font-size: var(--text-caption-sm);
+  --table-header-line-height: var(--text-caption-sm--line-height);
+  --table-header-font-weight: var(--font-weight-semibold);
+  --table-head-gap: var(--spacing-1);
+  --table-sort-icon: var(--color-fg-tertiary);
+  --table-sort-icon-size: 14px;
+  --table-sort-icon-font-size: var(--text-caption-sm);
+
+  --table-row-height-sm: 40px;
+  --table-row-height: 48px;
+  --table-row-height-lg: 64px;
+  --table-row-bg-hover: var(--color-action-neutral-subtle-hover);
+  --table-row-bg-selected: var(--color-action-primary-subtle);
+  --table-row-bg-selected-hover: var(--color-action-primary-subtle-hover);
+  --table-row-bg-subdued: var(--color-bg-muted);
+
+  --table-cell-bg: var(--color-bg-surface);
+  --table-cell-text: var(--color-text-primary);
+  --table-cell-font-weight: var(--font-weight-medium);
+  --table-cell-padding-x: var(--spacing-4);
+  --table-cell-padding-y-sm: var(--spacing-2);
+  --table-cell-padding-y: var(--spacing-3);
+  --table-cell-padding-y-lg: var(--spacing-4);
+
+  --table-footer-bg: var(--color-bg-muted);
+  --table-footer-text: var(--color-text-primary);
+  --table-footer-font-weight: var(--font-weight-semibold);
+
+  --table-caption-text: var(--color-text-secondary);
+  --table-caption-padding-y: var(--spacing-3);
+}
+
+[data-theme="dark"] {
+  --table-header-bg: var(--color-bg-muted);
+  --table-row-bg-subdued: var(--color-bg-muted);
+  --table-row-bg-selected: var(--color-action-primary-subtle);
+  --table-row-bg-selected-hover: var(--color-action-primary-subtle-hover);
+}
+

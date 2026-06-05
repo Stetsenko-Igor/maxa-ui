@@ -1,0 +1,24 @@
+/* Spinner component tokens */
+
+:root {
+  --spinner-color: var(--spinner-primary-color);
+  --spinner-track-color: var(--color-border-secondary);
+  --spinner-white-color: var(--color-neutral-0);
+  --spinner-white-track-color: color-mix(in srgb, var(--color-neutral-0) 45%, transparent);
+  --spinner-primary-color: var(--color-action-primary);
+  --spinner-greyscale-color: var(--color-fg-secondary);
+  --spinner-inverted-color: var(--color-text-primary);
+  --spinner-inverted-track-color: var(--color-border-secondary);
+  --spinner-stroke-width: 2px;
+  --spinner-duration: 0.7s;
+  --spinner-size-sm: 16px;
+  --spinner-size-md: 20px;
+  --spinner-size-lg: 28px;
+}
+
+[data-theme="dark"] {
+  --spinner-color: var(--spinner-primary-color);
+  --spinner-track-color: var(--color-border-secondary);
+  --spinner-primary-color: var(--color-action-primary);
+  --spinner-greyscale-color: var(--color-fg-secondary);
+}

@@ -1,0 +1,36 @@
+/* Calendar component tokens */
+
+:root {
+  --calendar-bg: var(--color-bg-surface);
+  --calendar-border: var(--color-border-secondary);
+  --calendar-radius: var(--radius-md);
+  --calendar-padding: var(--spacing-4);
+  --calendar-gap: var(--spacing-3);
+  --calendar-header-gap: var(--spacing-2);
+  --calendar-shadow: var(--shadow-sm);
+  --calendar-title-color: var(--color-text-primary);
+  --calendar-title-font-size: var(--text-sm);
+  --calendar-title-font-weight: var(--font-weight-semibold);
+  --calendar-weekday-color: var(--color-text-tertiary);
+  --calendar-weekday-font-size: var(--text-caption-sm);
+  --calendar-weekday-height: var(--spacing-6);
+  --calendar-cell-gap: var(--spacing-1);
+  --calendar-nav-size: var(--spacing-8);
+  --calendar-day-size: 32px;
+  --calendar-day-radius: var(--radius-xs);
+  --calendar-day-text: var(--color-text-secondary);
+  --calendar-day-bg-hover: var(--color-action-neutral-subtle-hover);
+  --calendar-day-bg-selected: var(--color-action-primary);
+  --calendar-day-text-selected: var(--color-neutral-0);
+  --calendar-day-text-outside: var(--color-text-disabled);
+  --calendar-day-text-disabled: var(--color-text-disabled);
+  --calendar-day-disabled-opacity: var(--opacity-disabled);
+  --calendar-day-bg-current: var(--color-bg-surface);
+  --calendar-day-border-current: var(--color-action-primary);
+  --calendar-day-text-current: var(--color-action-primary);
+  --calendar-day-bg-range: var(--color-bg-muted);
+  --calendar-presets-width: 176px;
+  --calendar-range-width: 640px;
+  --calendar-range-footer-bg: var(--color-bg-muted);
+  --calendar-range-divider: var(--color-border-secondary);
+}

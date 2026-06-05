@@ -1,0 +1,18 @@
+/* UtilityButton component tokens */
+
+:root {
+  --utility-button-size-sm: 28px;
+  --utility-button-size-md: 36px;
+  --utility-button-size-lg: 44px;
+  --utility-button-radius: var(--radius-xs);
+  --utility-button-bg: transparent;
+  --utility-button-bg-hover: var(--color-action-neutral-subtle-hover);
+  --utility-button-bg-active: var(--color-action-neutral-subtle-active);
+  --utility-button-border: transparent;
+  --utility-button-border-active: var(--color-border-secondary);
+  --utility-button-text: var(--color-fg-secondary);
+  --utility-button-text-hover: var(--color-fg-primary);
+  --utility-button-icon-sm: 14px;
+  --utility-button-icon-md: 16px;
+  --utility-button-icon-lg: 20px;
+}

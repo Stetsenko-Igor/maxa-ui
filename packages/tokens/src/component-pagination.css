@@ -1,0 +1,17 @@
+/* Pagination component tokens */
+
+:root {
+  --pagination-gap: var(--spacing-1);
+  --pagination-item-size: 32px;
+  --pagination-item-padding-x: var(--spacing-3);
+  --pagination-item-radius: var(--radius-sm);
+  --pagination-item-bg: transparent;
+  --pagination-item-bg-hover: var(--color-action-neutral-subtle-hover);
+  --pagination-item-bg-active: var(--color-action-primary-subtle);
+  --pagination-item-text: var(--color-text-secondary);
+  --pagination-item-text-active: var(--color-action-primary);
+  --pagination-item-border: transparent;
+  --pagination-item-border-active: var(--color-border-focus);
+  --pagination-font-size: var(--text-sm);
+  --pagination-font-weight: var(--font-weight-medium);
+}

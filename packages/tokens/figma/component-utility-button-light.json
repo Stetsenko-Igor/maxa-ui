@@ -1,0 +1,60 @@
+{
+  "Utility Button": {
+    "size-sm": {
+      "$value": 28,
+      "$type": "number"
+    },
+    "size-md": {
+      "$value": 36,
+      "$type": "number"
+    },
+    "size-lg": {
+      "$value": 44,
+      "$type": "number"
+    },
+    "radius": {
+      "$value": "var(--radius-xs)",
+      "$type": "number"
+    },
+    "bg": {
+      "$value": "transparent",
+      "$type": "color"
+    },
+    "bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "bg-active": {
+      "$value": "var(--color-action-neutral-subtle-active)",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "transparent",
+      "$type": "color"
+    },
+    "border-active": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "var(--color-fg-secondary)",
+      "$type": "color"
+    },
+    "text-hover": {
+      "$value": "var(--color-fg-primary)",
+      "$type": "color"
+    },
+    "icon-sm": {
+      "$value": 14,
+      "$type": "color"
+    },
+    "icon-md": {
+      "$value": 16,
+      "$type": "color"
+    },
+    "icon-lg": {
+      "$value": 20,
+      "$type": "color"
+    }
+  }
+}

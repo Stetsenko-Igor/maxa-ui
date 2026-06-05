@@ -1,0 +1,23 @@
+/* DatePicker and DateRangePicker component tokens */
+
+:root {
+  --date-picker-popover-top: var(--spacing-2);
+  --date-picker-popover-z: var(--z-popover);
+  --date-picker-range-bg: var(--color-bg-float);
+  --date-picker-range-border: var(--color-border-secondary);
+  --date-picker-range-radius: var(--radius-md);
+  --date-picker-range-shadow: var(--shadow-sm);
+  --date-picker-range-divider: var(--color-border-secondary);
+  --date-picker-range-presets-width: 176px;
+  --date-picker-range-content-padding: var(--spacing-4);
+  --date-picker-range-footer-bg: var(--color-bg-muted);
+  --date-picker-range-footer-padding: var(--spacing-4);
+  --date-picker-range-footer-gap: var(--spacing-3);
+  --date-picker-range-input-width: 128px;
+  --date-picker-preset-height: var(--spacing-8);
+  --date-picker-preset-padding-x: var(--spacing-4);
+  --date-picker-preset-text: var(--color-text-secondary);
+  --date-picker-preset-bg-hover: var(--color-action-neutral-subtle-hover);
+  --date-picker-preset-font-size: var(--text-sm);
+  --date-picker-field-separator-color: var(--color-text-tertiary);
+}

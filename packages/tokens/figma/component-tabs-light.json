@@ -1,0 +1,76 @@
+{
+  "Tabs": {
+    "list-bg": {
+      "$value": "var(--color-bg-surface)",
+      "$type": "color"
+    },
+    "list-border": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "list-radius": {
+      "$value": "var(--radius-sm)",
+      "$type": "number"
+    },
+    "trigger-bg": {
+      "$value": "var(--color-action-neutral-subtle)",
+      "$type": "color"
+    },
+    "trigger-bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "trigger-bg-active": {
+      "$value": "var(--color-bg-neutral-strong)",
+      "$type": "color"
+    },
+    "trigger-text": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "color"
+    },
+    "trigger-text-hover": {
+      "$value": "var(--color-text-primary)",
+      "$type": "color"
+    },
+    "trigger-text-active": {
+      "$value": "var(--color-text-inverse)",
+      "$type": "color"
+    },
+    "trigger-border": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "trigger-border-width": {
+      "$value": 1,
+      "$type": "color"
+    },
+    "trigger-border-active": {
+      "$value": "var(--color-bg-neutral-strong)",
+      "$type": "color"
+    },
+    "trigger-radius": {
+      "$value": "var(--radius-sm)",
+      "$type": "number"
+    },
+    "trigger-height": {
+      "$value": 38,
+      "$type": "number"
+    },
+    "trigger-padding-x": {
+      "$value": "var(--spacing-5)",
+      "$type": "number"
+    },
+    "trigger-gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "trigger-font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "trigger-font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    }
+  }
+}

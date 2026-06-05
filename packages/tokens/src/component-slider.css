@@ -1,0 +1,28 @@
+/* Slider component tokens */
+
+:root {
+  --slider-width: 100%;
+  --slider-track-height: 6px;
+  --slider-track-radius: var(--radius-full);
+  --slider-track-bg: var(--color-bg-neutral-subtle);
+  --slider-range-bg: var(--color-action-primary);
+  --slider-thumb-size: 20px;
+  --slider-thumb-bg: var(--color-bg-surface);
+  --slider-thumb-border: var(--color-action-primary);
+  --slider-thumb-border-width: 2px;
+  --slider-thumb-shadow: var(--shadow-sm);
+  --slider-thumb-shadow-hover: var(--shadow-md);
+  --slider-disabled-opacity: 0.5;
+  --slider-label-color: var(--color-text-primary);
+  --slider-value-color: var(--color-text-secondary);
+  --slider-mark-color: var(--color-text-tertiary);
+  --slider-mark-font-size: var(--text-caption-sm);
+  --slider-meta-font-size: var(--text-sm);
+  --slider-meta-font-weight: var(--font-weight-medium);
+}
+
+[data-theme="dark"] {
+  --slider-track-bg: var(--color-bg-neutral-subtle);
+  --slider-thumb-bg: var(--color-bg-page);
+  --slider-thumb-border: var(--color-action-primary);
+}

@@ -1,0 +1,38 @@
+/* MultiSelect component tokens */
+
+:root {
+  --multi-select-width: 320px;
+  --multi-select-trigger-min-height-sm: 36px;
+  --multi-select-trigger-min-height: 54px;
+  --multi-select-trigger-min-height-lg: 60px;
+  --multi-select-trigger-padding-x: var(--spacing-3);
+  --multi-select-trigger-padding-y: var(--spacing-2);
+  --multi-select-trigger-gap: var(--spacing-2);
+  --multi-select-trigger-radius: var(--input-size-md-radius);
+  --multi-select-trigger-border: var(--input-border);
+  --multi-select-trigger-border-hover: var(--input-border-hover);
+  --multi-select-trigger-border-focus: var(--input-focus-ring);
+  --multi-select-trigger-focus-ring-offset: var(--input-focus-ring-offset);
+  --multi-select-trigger-focus-ring-width: var(--input-focus-ring-width);
+  --multi-select-trigger-bg: var(--input-bg);
+  --multi-select-trigger-text: var(--input-text);
+  --multi-select-trigger-font-family: var(--input-font-family);
+  --multi-select-trigger-font-size: var(--input-size-md-text);
+  --multi-select-trigger-font-weight: var(--input-font-weight);
+  --multi-select-trigger-line-height: var(--text-sm--line-height);
+  --multi-select-placeholder: var(--input-placeholder);
+  --multi-select-chip-bg: var(--color-bg-gray-muted);
+  --multi-select-chip-text: var(--color-text-primary);
+  --multi-select-chip-radius: var(--radius-full);
+  --multi-select-chip-gap: var(--spacing-1);
+  --multi-select-chip-height: 32px;
+  --multi-select-chip-padding-x: 12px;
+  --multi-select-chip-font-size: var(--text-sm);
+  --multi-select-chip-font-weight: var(--font-weight-semibold);
+  --multi-select-chip-line-height: 14px;
+  --multi-select-chip-remove-size: 16px;
+  --multi-select-chip-remove-icon-size: 10px;
+  --multi-select-chip-remove-bg-hover: var(--color-action-neutral-subtle-hover);
+  --multi-select-chevron-size: 16px;
+  --multi-select-menu-max-height: 240px;
+}

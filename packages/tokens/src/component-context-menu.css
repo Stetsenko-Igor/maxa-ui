@@ -1,0 +1,27 @@
+/* ContextMenu component tokens */
+
+:root {
+  --context-menu-bg: var(--dropdown-menu-bg);
+  --context-menu-border: var(--dropdown-menu-border);
+  --context-menu-radius: var(--dropdown-menu-radius);
+  --context-menu-shadow: var(--dropdown-menu-shadow);
+  --context-menu-min-width: 200px;
+  --context-menu-max-width: calc(100vw - 32px);
+  --context-menu-padding-y: var(--dropdown-menu-padding-y);
+  --context-menu-item-height: var(--dropdown-menu-item-height);
+  --context-menu-item-padding-x: var(--dropdown-menu-item-padding-x);
+  --context-menu-item-gap: var(--dropdown-menu-item-gap);
+  --context-menu-item-text: var(--dropdown-menu-item-text);
+  --context-menu-item-text-hover: var(--dropdown-menu-item-text-hover);
+  --context-menu-item-text-disabled: var(--dropdown-menu-item-text-disabled);
+  --context-menu-item-text-destructive: var(--dropdown-menu-item-text-destructive);
+  --context-menu-item-bg-hover: var(--dropdown-menu-item-bg-hover);
+  --context-menu-item-bg-active: var(--dropdown-menu-item-bg-active);
+  --context-menu-separator: var(--dropdown-menu-separator);
+  --context-menu-label-text: var(--dropdown-menu-label-text);
+  --context-menu-shortcut-text: var(--dropdown-menu-shortcut-text);
+  --context-menu-font-family: var(--dropdown-menu-font-family);
+  --context-menu-font-size: var(--dropdown-menu-font-size);
+  --context-menu-line-height: var(--dropdown-menu-line-height);
+  --context-menu-z: var(--z-dropdown);
+}

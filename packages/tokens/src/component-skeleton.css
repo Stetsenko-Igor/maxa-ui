@@ -1,0 +1,14 @@
+/* Skeleton component tokens */
+
+:root {
+  --skeleton-bg: var(--color-bg-neutral-subtle);
+  --skeleton-highlight: var(--color-bg-surface);
+  --skeleton-radius: var(--radius-sm);
+  --skeleton-text-height: 14px;
+  --skeleton-duration: 1.4s;
+}
+
+[data-theme="dark"] {
+  --skeleton-bg: var(--color-bg-neutral-subtle);
+  --skeleton-highlight: var(--color-bg-muted);
+}

@@ -1,0 +1,66 @@
+/* Avatar component tokens — Layer 3 */
+
+:root {
+  /* ── Defaults ───────────────────────────────────────────────────── */
+  --avatar-size: var(--avatar-size-md);
+  --avatar-bg: var(--color-bg-blue-strong);
+  --avatar-text: var(--color-neutral-0);
+  --avatar-border: color-mix(in srgb, var(--avatar-bg) 80%, var(--color-bg-surface));
+  --avatar-border-width: 0;
+  --avatar-radius: var(--radius-full);
+  --avatar-radius-square: var(--radius-md);
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --avatar-font-family: var(--font-body);
+  --avatar-font-weight: var(--font-weight-semibold);
+  --avatar-font-size: var(--avatar-font-size-md);
+  --avatar-line-height: var(--avatar-line-height-md);
+
+  /* ── Sizes ──────────────────────────────────────────────────────── */
+  --avatar-size-xs: 24px;
+  --avatar-size-sm: 32px;
+  --avatar-size-md: 40px;
+  --avatar-size-lg: 48px;
+  --avatar-size-xl: 64px;
+
+  --avatar-font-size-xs: var(--text-caption-sm);
+  --avatar-font-size-sm: var(--text-sm);
+  --avatar-font-size-md: var(--text-md);
+  --avatar-font-size-lg: var(--text-lg);
+  --avatar-font-size-xl: var(--text-heading-xs);
+
+  --avatar-line-height-xs: var(--text-caption-sm--line-height);
+  --avatar-line-height-sm: var(--text-sm--line-height);
+  --avatar-line-height-md: var(--text-md--line-height);
+  --avatar-line-height-lg: var(--text-lg--line-height);
+  --avatar-line-height-xl: var(--text-heading-xs--line-height);
+
+  /* ── Status ─────────────────────────────────────────────────────── */
+  --avatar-status-size: var(--avatar-status-size-md);
+  --avatar-status-size-xs: 6px;
+  --avatar-status-size-sm: 8px;
+  --avatar-status-size-md: 10px;
+  --avatar-status-size-lg: 12px;
+  --avatar-status-size-xl: 14px;
+  --avatar-status-offset: 0px;
+  --avatar-status-border: var(--color-bg-surface);
+  --avatar-status-border-width: 2px;
+  --avatar-status-bg: var(--avatar-status-offline);
+  --avatar-status-online: var(--color-bg-success-strong);
+  --avatar-status-offline: var(--color-bg-neutral-strong);
+  --avatar-status-busy: var(--color-bg-error-strong);
+  --avatar-status-away: var(--color-bg-warning-strong);
+
+  /* ── Group ──────────────────────────────────────────────────────── */
+  --avatar-group-overlap: 10px;
+  --avatar-group-ring: var(--color-bg-surface);
+  --avatar-group-ring-width: 2px;
+}
+
+[data-theme="dark"] {
+  --avatar-bg: var(--color-bg-blue-strong);
+  --avatar-text: var(--color-neutral-0);
+  --avatar-border: color-mix(in srgb, var(--avatar-bg) 80%, var(--color-bg-page));
+  --avatar-status-border: var(--color-bg-page);
+  --avatar-group-ring: var(--color-bg-page);
+}

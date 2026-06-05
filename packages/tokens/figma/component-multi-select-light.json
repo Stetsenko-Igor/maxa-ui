@@ -1,0 +1,140 @@
+{
+  "Multi Select": {
+    "width": {
+      "$value": 320,
+      "$type": "number"
+    },
+    "trigger-min-height-sm": {
+      "$value": 36,
+      "$type": "number"
+    },
+    "trigger-min-height": {
+      "$value": 54,
+      "$type": "number"
+    },
+    "trigger-min-height-lg": {
+      "$value": 60,
+      "$type": "number"
+    },
+    "trigger-padding-x": {
+      "$value": "var(--spacing-3)",
+      "$type": "number"
+    },
+    "trigger-padding-y": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "trigger-gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "trigger-radius": {
+      "$value": "var(--input-size-md-radius)",
+      "$type": "number"
+    },
+    "trigger-border": {
+      "$value": "var(--input-border)",
+      "$type": "color"
+    },
+    "trigger-border-hover": {
+      "$value": "var(--input-border-hover)",
+      "$type": "color"
+    },
+    "trigger-border-focus": {
+      "$value": "var(--input-focus-ring)",
+      "$type": "color"
+    },
+    "trigger-focus-ring-offset": {
+      "$value": "var(--input-focus-ring-offset)",
+      "$type": "color"
+    },
+    "trigger-focus-ring-width": {
+      "$value": "var(--input-focus-ring-width)",
+      "$type": "color"
+    },
+    "trigger-bg": {
+      "$value": "var(--input-bg)",
+      "$type": "color"
+    },
+    "trigger-text": {
+      "$value": "var(--input-text)",
+      "$type": "color"
+    },
+    "trigger-font-family": {
+      "$value": "var(--input-font-family)",
+      "$type": "string"
+    },
+    "trigger-font-size": {
+      "$value": "var(--input-size-md-text)",
+      "$type": "number"
+    },
+    "trigger-font-weight": {
+      "$value": "var(--input-font-weight)",
+      "$type": "string"
+    },
+    "trigger-line-height": {
+      "$value": "var(--text-sm--line-height)",
+      "$type": "number"
+    },
+    "placeholder": {
+      "$value": "var(--input-placeholder)",
+      "$type": "color"
+    },
+    "chip-bg": {
+      "$value": "var(--color-bg-gray-muted)",
+      "$type": "color"
+    },
+    "chip-text": {
+      "$value": "var(--color-text-primary)",
+      "$type": "color"
+    },
+    "chip-radius": {
+      "$value": "var(--radius-full)",
+      "$type": "number"
+    },
+    "chip-gap": {
+      "$value": "var(--spacing-1)",
+      "$type": "number"
+    },
+    "chip-height": {
+      "$value": 32,
+      "$type": "number"
+    },
+    "chip-padding-x": {
+      "$value": 12,
+      "$type": "number"
+    },
+    "chip-font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "chip-font-weight": {
+      "$value": "var(--font-weight-semibold)",
+      "$type": "string"
+    },
+    "chip-line-height": {
+      "$value": 14,
+      "$type": "number"
+    },
+    "chip-remove-size": {
+      "$value": 16,
+      "$type": "number"
+    },
+    "chip-remove-icon-size": {
+      "$value": 10,
+      "$type": "color"
+    },
+    "chip-remove-bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "chevron-size": {
+      "$value": 16,
+      "$type": "number"
+    },
+    "menu-max-height": {
+      "$value": 240,
+      "$type": "number"
+    }
+  }
+}

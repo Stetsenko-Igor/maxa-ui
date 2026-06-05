@@ -1,0 +1,67 @@
+/* DropdownMenu component tokens — Layer 3 */
+/* Action/navigation menu opened from a trigger. */
+
+:root {
+  /* ── Surface ────────────────────────────────────────────────────── */
+  --dropdown-menu-bg: var(--color-bg-float);
+  --dropdown-menu-border: var(--color-border-primary);
+  --dropdown-menu-shadow: var(--shadow-sm);
+  --dropdown-menu-z: var(--z-dropdown);
+
+  /* ── Shape ──────────────────────────────────────────────────────── */
+  --dropdown-menu-radius: var(--radius-md);
+  --dropdown-menu-min-width: 180px;
+  --dropdown-menu-max-width: calc(100vw - 32px);
+
+  /* ── Spacing ────────────────────────────────────────────────────── */
+  --dropdown-menu-padding-y: var(--spacing-1);
+  --dropdown-menu-item-height: 32px;
+  --dropdown-menu-item-padding-x: var(--spacing-3);
+  --dropdown-menu-item-gap: var(--spacing-2);
+  --dropdown-menu-item-content-gap: 2px;
+  --dropdown-menu-indicator-size: var(--checkbox-size-md);
+  --dropdown-menu-indicator-mark-width: var(--checkbox-mark-width-md);
+  --dropdown-menu-indicator-mark-height: var(--checkbox-mark-height-md);
+  --dropdown-menu-indicator-border-width: 1px;
+  --dropdown-menu-indicator-radius: var(--checkbox-radius);
+  --dropdown-menu-separator-margin-y: var(--spacing-1);
+  --dropdown-menu-avatar-size: 24px;
+
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --dropdown-menu-font-family: var(--font-body);
+  --dropdown-menu-font-size: var(--text-sm);
+  --dropdown-menu-line-height: var(--text-sm--line-height);
+  --dropdown-menu-label-font-size: var(--text-caption-sm);
+  --dropdown-menu-label-line-height: var(--text-caption-sm--line-height);
+  --dropdown-menu-label-font-weight: var(--font-weight-semibold);
+
+  /* ── Item color ─────────────────────────────────────────────────── */
+  --dropdown-menu-item-text: var(--color-text-primary);
+  --dropdown-menu-item-text-hover: var(--color-text-primary);
+  --dropdown-menu-item-text-active: var(--color-text-primary);
+  --dropdown-menu-item-icon: var(--color-fg-secondary);
+  --dropdown-menu-item-bg-hover: var(--color-action-neutral-subtle-hover);
+  --dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);
+  --dropdown-menu-item-meta-text: var(--color-text-tertiary);
+  --dropdown-menu-item-text-disabled: var(--color-text-disabled);
+  --dropdown-menu-item-text-destructive: var(--color-text-error);
+  --dropdown-menu-item-bg-destructive-hover: var(--color-bg-error-surface);
+  --dropdown-menu-indicator-bg: var(--color-bg-surface);
+  --dropdown-menu-indicator-bg-checked: var(--checkbox-bg-checked);
+  --dropdown-menu-indicator-border: var(--color-border-secondary);
+  --dropdown-menu-indicator-border-checked: var(--checkbox-border-checked);
+  --dropdown-menu-indicator-mark: var(--checkbox-mark-color);
+  --dropdown-menu-avatar-bg: var(--color-bg-error-surface);
+  --dropdown-menu-avatar-text: var(--color-text-error);
+
+  /* ── Support color ──────────────────────────────────────────────── */
+  --dropdown-menu-label-text: var(--color-text-tertiary);
+  --dropdown-menu-shortcut-text: var(--color-text-tertiary);
+  --dropdown-menu-separator: var(--color-border-secondary);
+  --dropdown-menu-focus-ring: var(--color-border-focus);
+}
+
+[data-theme="dark"] {
+  --dropdown-menu-item-bg-hover: var(--color-action-neutral-hover);
+  --dropdown-menu-item-bg-active: var(--color-action-neutral-active);
+}

@@ -1,0 +1,24 @@
+{
+  "Skeleton": {
+    "bg": {
+      "$value": "var(--color-bg-neutral-subtle)",
+      "$type": "color"
+    },
+    "highlight": {
+      "$value": "var(--color-bg-muted)",
+      "$type": "string"
+    },
+    "radius": {
+      "$value": "var(--radius-sm)",
+      "$type": "number"
+    },
+    "text-height": {
+      "$value": 14,
+      "$type": "color"
+    },
+    "duration": {
+      "$value": "1.4s",
+      "$type": "string"
+    }
+  }
+}

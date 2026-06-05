@@ -1,0 +1,56 @@
+{
+  "Pagination": {
+    "gap": {
+      "$value": "var(--spacing-1)",
+      "$type": "number"
+    },
+    "item-size": {
+      "$value": 32,
+      "$type": "number"
+    },
+    "item-padding-x": {
+      "$value": "var(--spacing-3)",
+      "$type": "number"
+    },
+    "item-radius": {
+      "$value": "var(--radius-sm)",
+      "$type": "number"
+    },
+    "item-bg": {
+      "$value": "transparent",
+      "$type": "color"
+    },
+    "item-bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "item-bg-active": {
+      "$value": "var(--color-action-primary-subtle)",
+      "$type": "color"
+    },
+    "item-text": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "color"
+    },
+    "item-text-active": {
+      "$value": "var(--color-action-primary)",
+      "$type": "color"
+    },
+    "item-border": {
+      "$value": "transparent",
+      "$type": "color"
+    },
+    "item-border-active": {
+      "$value": "var(--color-border-focus)",
+      "$type": "color"
+    },
+    "font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    }
+  }
+}

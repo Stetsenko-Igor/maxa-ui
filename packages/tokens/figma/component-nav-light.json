@@ -1,0 +1,8 @@
+{
+  "Nav": {
+    "bg": {
+      "$value": "var(--color-neutral-950)",
+      "$type": "color"
+    }
+  }
+}

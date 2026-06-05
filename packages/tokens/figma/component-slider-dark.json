@@ -1,0 +1,76 @@
+{
+  "Slider": {
+    "width": {
+      "$value": "100%",
+      "$type": "string"
+    },
+    "track-height": {
+      "$value": 6,
+      "$type": "color"
+    },
+    "track-radius": {
+      "$value": "var(--radius-full)",
+      "$type": "color"
+    },
+    "track-bg": {
+      "$value": "var(--color-bg-neutral-subtle)",
+      "$type": "color"
+    },
+    "range-bg": {
+      "$value": "var(--color-action-primary)",
+      "$type": "color"
+    },
+    "thumb-size": {
+      "$value": 20,
+      "$type": "color"
+    },
+    "thumb-bg": {
+      "$value": "var(--color-bg-page)",
+      "$type": "color"
+    },
+    "thumb-border": {
+      "$value": "var(--color-action-primary)",
+      "$type": "color"
+    },
+    "thumb-border-width": {
+      "$value": 2,
+      "$type": "color"
+    },
+    "thumb-shadow": {
+      "$value": "var(--shadow-sm)",
+      "$type": "color"
+    },
+    "thumb-shadow-hover": {
+      "$value": "var(--shadow-md)",
+      "$type": "color"
+    },
+    "disabled-opacity": {
+      "$value": 0.5,
+      "$type": "color"
+    },
+    "label-color": {
+      "$value": "var(--color-text-primary)",
+      "$type": "string"
+    },
+    "value-color": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "string"
+    },
+    "mark-color": {
+      "$value": "var(--color-text-tertiary)",
+      "$type": "string"
+    },
+    "mark-font-size": {
+      "$value": "var(--text-caption-sm)",
+      "$type": "number"
+    },
+    "meta-font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "meta-font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    }
+  }
+}

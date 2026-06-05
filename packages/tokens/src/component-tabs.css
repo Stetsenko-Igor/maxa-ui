@@ -1,0 +1,31 @@
+/* Tabs component tokens */
+
+:root {
+  --tabs-list-bg: var(--color-bg-surface);
+  --tabs-list-border: var(--color-border-secondary);
+  --tabs-list-radius: var(--radius-sm);
+  --tabs-trigger-bg: var(--color-action-neutral-subtle);
+  --tabs-trigger-bg-hover: var(--color-action-neutral-subtle-hover);
+  --tabs-trigger-bg-active: var(--color-bg-neutral-strong);
+  --tabs-trigger-text: var(--color-text-secondary);
+  --tabs-trigger-text-hover: var(--color-text-primary);
+  --tabs-trigger-text-active: var(--color-text-inverse);
+  --tabs-trigger-border: var(--color-border-secondary);
+  --tabs-trigger-border-width: 1px;
+  --tabs-trigger-border-active: var(--color-bg-neutral-strong);
+  --tabs-trigger-radius: var(--radius-sm);
+  --tabs-trigger-height: 38px;
+  --tabs-trigger-padding-x: var(--spacing-5);
+  --tabs-trigger-gap: var(--spacing-2);
+  --tabs-trigger-font-size: var(--text-sm);
+  --tabs-trigger-font-weight: var(--font-weight-medium);
+}
+
+[data-theme="dark"] {
+  --tabs-trigger-bg: var(--color-action-neutral-subtle);
+  --tabs-trigger-bg-hover: var(--color-action-neutral-subtle-hover);
+  --tabs-trigger-bg-active: var(--color-bg-neutral-strong);
+  --tabs-trigger-text-hover: var(--color-text-primary);
+  --tabs-trigger-text-active: var(--color-text-inverse);
+  --tabs-trigger-border-active: var(--color-bg-neutral-strong);
+}

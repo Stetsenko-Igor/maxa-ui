@@ -1,0 +1,25 @@
+/* Segmented Control component tokens */
+
+:root {
+  --segmented-control-bg: var(--color-bg-muted);
+  --segmented-control-border: var(--color-border-secondary);
+  --segmented-control-radius: var(--radius-md);
+  --segmented-control-padding: var(--spacing-1);
+  --segmented-control-gap: var(--spacing-1);
+  --segmented-control-item-bg: transparent;
+  --segmented-control-item-bg-hover: var(--color-action-neutral-subtle-hover);
+  --segmented-control-item-bg-active: var(--color-bg-neutral-strong);
+  --segmented-control-item-text: var(--color-text-secondary);
+  --segmented-control-item-text-active: var(--color-text-inverse);
+  --segmented-control-item-radius: var(--radius-sm);
+  --segmented-control-item-height: var(--spacing-9);
+  --segmented-control-item-padding-x: var(--spacing-4);
+  --segmented-control-item-font-size: var(--text-sm);
+  --segmented-control-item-font-weight: var(--font-weight-medium);
+}
+
+[data-theme="dark"] {
+  --segmented-control-bg: var(--color-bg-muted);
+  --segmented-control-item-bg-active: var(--color-bg-neutral-strong);
+  --segmented-control-item-text-active: var(--color-text-inverse);
+}

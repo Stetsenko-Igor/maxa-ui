@@ -1,0 +1,70 @@
+/* Select component tokens — custom listbox form selector */
+
+:root {
+  --select-bg: var(--input-bg);
+  --select-border: var(--input-border);
+  --select-border-hover: var(--input-border-hover);
+  --select-border-focus: var(--input-border-focus);
+  --select-error-border: var(--input-error-border);
+  --select-focus-ring: var(--input-focus-ring);
+  --select-focus-ring-offset: var(--input-focus-ring-offset);
+  --select-focus-ring-width: var(--input-focus-ring-width);
+  --select-text: var(--input-text);
+  --select-placeholder: var(--input-placeholder);
+  --select-icon: var(--color-fg-secondary);
+  --select-disabled-bg: var(--input-disabled-bg);
+  --select-disabled-text: var(--input-disabled-text);
+  --select-disabled-opacity: var(--input-disabled-opacity);
+  --select-font-family: var(--input-font-family);
+  --select-font-weight: var(--input-font-weight);
+
+  --select-size-sm-height: var(--input-size-sm-height);
+  --select-size-sm-padding-x: var(--input-size-sm-padding-x);
+  --select-size-sm-gap: var(--input-size-sm-gap);
+  --select-size-sm-radius: var(--input-size-sm-radius);
+  --select-size-sm-text: var(--input-size-sm-text);
+  --select-size-sm-line-height: var(--text-sm--line-height);
+  --select-icon-sm-size: var(--input-icon-sm-size);
+
+  --select-size-md-height: var(--input-size-md-height);
+  --select-size-md-padding-x: var(--input-size-md-padding-x);
+  --select-size-md-gap: var(--input-size-md-gap);
+  --select-size-md-radius: var(--input-size-md-radius);
+  --select-size-md-text: var(--input-size-md-text);
+  --select-size-md-line-height: var(--text-sm--line-height);
+  --select-icon-md-size: var(--input-icon-md-size);
+
+  --select-size-lg-height: var(--input-size-lg-height);
+  --select-size-lg-padding-x: var(--input-size-lg-padding-x);
+  --select-size-lg-gap: var(--input-size-lg-gap);
+  --select-size-lg-radius: var(--input-size-lg-radius);
+  --select-size-lg-text: var(--input-size-lg-text);
+  --select-size-lg-line-height: var(--text-md--line-height);
+  --select-icon-lg-size: var(--input-icon-lg-size);
+
+  --select-listbox-bg: var(--dropdown-menu-bg);
+  --select-listbox-border: var(--dropdown-menu-border);
+  --select-listbox-radius: var(--dropdown-menu-radius);
+  --select-listbox-shadow: var(--dropdown-menu-shadow);
+  --select-listbox-offset: 4px;
+  --select-listbox-padding-y: var(--dropdown-menu-padding-y);
+  --select-listbox-min-width: var(--dropdown-menu-min-width);
+  --select-listbox-max-height: 240px;
+  --select-listbox-z: var(--z-popover);
+
+  --select-option-height: var(--dropdown-menu-item-height);
+  --select-option-padding-x: var(--dropdown-menu-item-padding-x);
+  --select-option-gap: var(--dropdown-menu-item-gap);
+  --select-option-font-size: var(--dropdown-menu-font-size);
+  --select-option-font-weight: var(--font-weight-medium);
+  --select-option-line-height: var(--dropdown-menu-line-height);
+  --select-option-text: var(--dropdown-menu-item-text);
+  --select-option-text-hover: var(--dropdown-menu-item-text-hover);
+  --select-option-text-selected: var(--dropdown-menu-item-text-active);
+  --select-option-text-disabled: var(--dropdown-menu-item-text-disabled);
+  --select-option-bg-hover: var(--dropdown-menu-item-bg-hover);
+  --select-option-bg-selected: var(--dropdown-menu-item-bg-active);
+  --select-option-bg-selected-hover: var(--dropdown-menu-item-bg-active);
+  --select-option-check: var(--color-fg-primary);
+  --select-option-check-size: 16px;
+}

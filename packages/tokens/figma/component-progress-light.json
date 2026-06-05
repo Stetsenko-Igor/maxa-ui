@@ -1,0 +1,52 @@
+{
+  "Progress": {
+    "bg": {
+      "$value": "var(--color-bg-neutral-subtle)",
+      "$type": "color"
+    },
+    "radius": {
+      "$value": "var(--radius-full)",
+      "$type": "number"
+    },
+    "height-sm": {
+      "$value": 6,
+      "$type": "number"
+    },
+    "height-md": {
+      "$value": 8,
+      "$type": "number"
+    },
+    "fill-brand": {
+      "$value": "var(--color-action-primary)",
+      "$type": "color"
+    },
+    "fill-success": {
+      "$value": "var(--color-action-positive)",
+      "$type": "color"
+    },
+    "fill-warning": {
+      "$value": "var(--color-action-warning)",
+      "$type": "color"
+    },
+    "fill-error": {
+      "$value": "var(--color-action-negative)",
+      "$type": "color"
+    },
+    "label-color": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "string"
+    },
+    "value-color": {
+      "$value": "var(--color-text-primary)",
+      "$type": "string"
+    },
+    "font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    }
+  }
+}

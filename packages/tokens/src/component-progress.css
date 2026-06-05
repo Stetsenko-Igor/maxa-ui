@@ -1,0 +1,20 @@
+/* Progress component tokens */
+
+:root {
+  --progress-bg: var(--color-bg-muted);
+  --progress-radius: var(--radius-full);
+  --progress-height-sm: 6px;
+  --progress-height-md: 8px;
+  --progress-fill-brand: var(--color-action-primary);
+  --progress-fill-success: var(--color-action-positive);
+  --progress-fill-warning: var(--color-action-warning);
+  --progress-fill-error: var(--color-action-negative);
+  --progress-label-color: var(--color-text-secondary);
+  --progress-value-color: var(--color-text-primary);
+  --progress-font-size: var(--text-sm);
+  --progress-font-weight: var(--font-weight-medium);
+}
+
+[data-theme="dark"] {
+  --progress-bg: var(--color-bg-neutral-subtle);
+}

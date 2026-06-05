@@ -1,0 +1,44 @@
+/* Dialog and AlertDialog component tokens */
+
+:root {
+  --dialog-overlay-bg: rgba(27, 26, 26, 0.5);
+  --dialog-content-bg: var(--color-bg-float);
+  --dialog-content-border: var(--color-border-primary);
+  --dialog-content-radius: var(--radius-md);
+  --dialog-content-shadow: 4px 4px 8px rgba(106, 106, 106, 0.1);
+  --dialog-content-width-sm: 360px;
+  --dialog-content-width-md: 500px;
+  --dialog-content-width-lg: 604px;
+  --dialog-header-padding-x: var(--spacing-6);
+  --dialog-header-padding-top: var(--spacing-6);
+  --dialog-header-padding-bottom: var(--spacing-6);
+  --dialog-header-gap: var(--spacing-2);
+  --dialog-header-border: var(--color-border-primary);
+  --dialog-body-padding-x: var(--spacing-6);
+  --dialog-body-padding-y: var(--spacing-6);
+  --dialog-body-font-size: var(--text-md);
+  --dialog-body-line-height: var(--text-md--line-height);
+  --dialog-body-font-weight: var(--font-weight-regular);
+  --dialog-body-color: var(--color-text-primary);
+  --dialog-footer-padding-x: var(--spacing-6);
+  --dialog-footer-padding-top: var(--spacing-3);
+  --dialog-footer-padding-bottom: var(--spacing-4);
+  --dialog-title-color: var(--color-text-primary);
+  --dialog-title-font-size: var(--text-heading-xs);
+  --dialog-title-line-height: 20px;
+  --dialog-title-font-weight: var(--font-weight-bold);
+  --dialog-description-color: var(--color-text-secondary);
+  --dialog-description-font-size: var(--text-sm);
+  --dialog-description-line-height: var(--text-sm--line-height);
+  --dialog-description-font-weight: var(--font-weight-medium);
+  --dialog-close-size: 48px;
+  --dialog-close-icon-size: 20px;
+  --dialog-close-bg-hover: var(--color-action-neutral-subtle-hover);
+  --dialog-close-color: var(--color-fg-secondary);
+  --dialog-footer-gap: var(--spacing-2);
+  --dialog-z: var(--z-modal);
+}
+
+[data-theme="dark"] {
+  --dialog-overlay-bg: rgba(0, 0, 0, 0.72);
+}

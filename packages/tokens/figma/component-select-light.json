@@ -1,0 +1,248 @@
+{
+  "Select": {
+    "bg": {
+      "$value": "var(--input-bg)",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "var(--input-border)",
+      "$type": "color"
+    },
+    "border-hover": {
+      "$value": "var(--input-border-hover)",
+      "$type": "color"
+    },
+    "border-focus": {
+      "$value": "var(--input-border-focus)",
+      "$type": "color"
+    },
+    "error-border": {
+      "$value": "var(--input-error-border)",
+      "$type": "color"
+    },
+    "focus-ring": {
+      "$value": "var(--input-focus-ring)",
+      "$type": "color"
+    },
+    "focus-ring-offset": {
+      "$value": "var(--input-focus-ring-offset)",
+      "$type": "color"
+    },
+    "focus-ring-width": {
+      "$value": "var(--input-focus-ring-width)",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "var(--input-text)",
+      "$type": "color"
+    },
+    "placeholder": {
+      "$value": "var(--input-placeholder)",
+      "$type": "color"
+    },
+    "icon": {
+      "$value": "var(--color-fg-secondary)",
+      "$type": "color"
+    },
+    "disabled-bg": {
+      "$value": "var(--input-disabled-bg)",
+      "$type": "color"
+    },
+    "disabled-text": {
+      "$value": "var(--input-disabled-text)",
+      "$type": "color"
+    },
+    "disabled-opacity": {
+      "$value": "var(--input-disabled-opacity)",
+      "$type": "color"
+    },
+    "font-family": {
+      "$value": "var(--input-font-family)",
+      "$type": "string"
+    },
+    "font-weight": {
+      "$value": "var(--input-font-weight)",
+      "$type": "string"
+    },
+    "size-sm-height": {
+      "$value": "var(--input-size-sm-height)",
+      "$type": "number"
+    },
+    "size-sm-padding-x": {
+      "$value": "var(--input-size-sm-padding-x)",
+      "$type": "number"
+    },
+    "size-sm-gap": {
+      "$value": "var(--input-size-sm-gap)",
+      "$type": "number"
+    },
+    "size-sm-radius": {
+      "$value": "var(--input-size-sm-radius)",
+      "$type": "number"
+    },
+    "size-sm-text": {
+      "$value": "var(--input-size-sm-text)",
+      "$type": "color"
+    },
+    "size-sm-line-height": {
+      "$value": "var(--text-sm--line-height)",
+      "$type": "number"
+    },
+    "icon-sm-size": {
+      "$value": "var(--input-icon-sm-size)",
+      "$type": "color"
+    },
+    "size-md-height": {
+      "$value": "var(--input-size-md-height)",
+      "$type": "number"
+    },
+    "size-md-padding-x": {
+      "$value": "var(--input-size-md-padding-x)",
+      "$type": "number"
+    },
+    "size-md-gap": {
+      "$value": "var(--input-size-md-gap)",
+      "$type": "number"
+    },
+    "size-md-radius": {
+      "$value": "var(--input-size-md-radius)",
+      "$type": "number"
+    },
+    "size-md-text": {
+      "$value": "var(--input-size-md-text)",
+      "$type": "color"
+    },
+    "size-md-line-height": {
+      "$value": "var(--text-sm--line-height)",
+      "$type": "number"
+    },
+    "icon-md-size": {
+      "$value": "var(--input-icon-md-size)",
+      "$type": "color"
+    },
+    "size-lg-height": {
+      "$value": "var(--input-size-lg-height)",
+      "$type": "number"
+    },
+    "size-lg-padding-x": {
+      "$value": "var(--input-size-lg-padding-x)",
+      "$type": "number"
+    },
+    "size-lg-gap": {
+      "$value": "var(--input-size-lg-gap)",
+      "$type": "number"
+    },
+    "size-lg-radius": {
+      "$value": "var(--input-size-lg-radius)",
+      "$type": "number"
+    },
+    "size-lg-text": {
+      "$value": "var(--input-size-lg-text)",
+      "$type": "color"
+    },
+    "size-lg-line-height": {
+      "$value": "var(--text-md--line-height)",
+      "$type": "number"
+    },
+    "icon-lg-size": {
+      "$value": "var(--input-icon-lg-size)",
+      "$type": "color"
+    },
+    "listbox-bg": {
+      "$value": "var(--dropdown-menu-bg)",
+      "$type": "color"
+    },
+    "listbox-border": {
+      "$value": "var(--dropdown-menu-border)",
+      "$type": "color"
+    },
+    "listbox-radius": {
+      "$value": "var(--dropdown-menu-radius)",
+      "$type": "string"
+    },
+    "listbox-shadow": {
+      "$value": "var(--dropdown-menu-shadow)",
+      "$type": "color"
+    },
+    "listbox-offset": {
+      "$value": 4,
+      "$type": "number"
+    },
+    "listbox-padding-y": {
+      "$value": "var(--dropdown-menu-padding-y)",
+      "$type": "string"
+    },
+    "listbox-min-width": {
+      "$value": "var(--dropdown-menu-min-width)",
+      "$type": "string"
+    },
+    "listbox-max-height": {
+      "$value": 240,
+      "$type": "number"
+    },
+    "listbox-z": {
+      "$value": "var(--z-popover)",
+      "$type": "string"
+    },
+    "option-height": {
+      "$value": "var(--dropdown-menu-item-height)",
+      "$type": "string"
+    },
+    "option-padding-x": {
+      "$value": "var(--dropdown-menu-item-padding-x)",
+      "$type": "string"
+    },
+    "option-gap": {
+      "$value": "var(--dropdown-menu-item-gap)",
+      "$type": "string"
+    },
+    "option-font-size": {
+      "$value": "var(--dropdown-menu-font-size)",
+      "$type": "string"
+    },
+    "option-font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    },
+    "option-line-height": {
+      "$value": "var(--dropdown-menu-line-height)",
+      "$type": "string"
+    },
+    "option-text": {
+      "$value": "var(--dropdown-menu-item-text)",
+      "$type": "color"
+    },
+    "option-text-hover": {
+      "$value": "var(--dropdown-menu-item-text-hover)",
+      "$type": "color"
+    },
+    "option-text-selected": {
+      "$value": "var(--dropdown-menu-item-text-active)",
+      "$type": "color"
+    },
+    "option-text-disabled": {
+      "$value": "var(--dropdown-menu-item-text-disabled)",
+      "$type": "color"
+    },
+    "option-bg-hover": {
+      "$value": "var(--dropdown-menu-item-bg-hover)",
+      "$type": "color"
+    },
+    "option-bg-selected": {
+      "$value": "var(--dropdown-menu-item-bg-active)",
+      "$type": "color"
+    },
+    "option-bg-selected-hover": {
+      "$value": "var(--dropdown-menu-item-bg-active)",
+      "$type": "color"
+    },
+    "option-check": {
+      "$value": "var(--color-fg-primary)",
+      "$type": "string"
+    },
+    "option-check-size": {
+      "$value": 16,
+      "$type": "number"
+    }
+  }
+}

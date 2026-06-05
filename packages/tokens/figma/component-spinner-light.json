@@ -1,0 +1,56 @@
+{
+  "Spinner": {
+    "color": {
+      "$value": "var(--spinner-primary-color)",
+      "$type": "string"
+    },
+    "track-color": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "white-color": {
+      "$value": "var(--color-neutral-0)",
+      "$type": "string"
+    },
+    "white-track-color": {
+      "$value": "color-mix(in srgb, var(--color-neutral-0) 45%, transparent)",
+      "$type": "color"
+    },
+    "primary-color": {
+      "$value": "var(--color-action-primary)",
+      "$type": "string"
+    },
+    "greyscale-color": {
+      "$value": "var(--color-fg-secondary)",
+      "$type": "string"
+    },
+    "inverted-color": {
+      "$value": "var(--color-text-primary)",
+      "$type": "string"
+    },
+    "inverted-track-color": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "stroke-width": {
+      "$value": 2,
+      "$type": "number"
+    },
+    "duration": {
+      "$value": "0.7s",
+      "$type": "string"
+    },
+    "size-sm": {
+      "$value": 16,
+      "$type": "number"
+    },
+    "size-md": {
+      "$value": 20,
+      "$type": "number"
+    },
+    "size-lg": {
+      "$value": 28,
+      "$type": "number"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+/* Empty component tokens */
+
+:root {
+  --empty-gap: var(--spacing-3);
+  --empty-padding-sm: var(--spacing-4);
+  --empty-padding-md: var(--spacing-6);
+  --empty-padding-lg: var(--spacing-8);
+  --empty-icon-size-sm: 32px;
+  --empty-icon-size-md: 40px;
+  --empty-icon-size-lg: 48px;
+  --empty-icon-bg: var(--color-bg-muted);
+  --empty-icon-color: var(--color-fg-tertiary);
+  --empty-title-color: var(--color-text-primary);
+  --empty-description-color: var(--color-text-secondary);
+  --empty-title-font-size: var(--text-md);
+  --empty-title-font-weight: var(--font-weight-semibold);
+  --empty-description-font-size: var(--text-sm);
+}
+
+[data-theme="dark"] {
+  --empty-icon-bg: var(--color-bg-neutral-subtle);
+}

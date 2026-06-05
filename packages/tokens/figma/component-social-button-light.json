@@ -1,0 +1,120 @@
+{
+  "Social Button": {
+    "min-width": {
+      "$value": 220,
+      "$type": "number"
+    },
+    "height-sm": {
+      "$value": "var(--button-size-sm-height)",
+      "$type": "number"
+    },
+    "height": {
+      "$value": "var(--button-size-md-height)",
+      "$type": "number"
+    },
+    "height-lg": {
+      "$value": "var(--button-size-lg-height)",
+      "$type": "number"
+    },
+    "padding-x-sm": {
+      "$value": "var(--button-size-sm-padding-x)",
+      "$type": "number"
+    },
+    "padding-x": {
+      "$value": "var(--button-size-md-padding-x)",
+      "$type": "number"
+    },
+    "padding-x-lg": {
+      "$value": "var(--button-size-lg-padding-x)",
+      "$type": "number"
+    },
+    "gap-sm": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "gap-lg": {
+      "$value": "var(--spacing-3)",
+      "$type": "number"
+    },
+    "radius": {
+      "$value": "var(--button-size-md-radius)",
+      "$type": "number"
+    },
+    "border": {
+      "$value": "var(--color-border-primary)",
+      "$type": "color"
+    },
+    "border-hover": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "border-active": {
+      "$value": "var(--color-border-secondary)",
+      "$type": "color"
+    },
+    "bg": {
+      "$value": "var(--color-bg-surface)",
+      "$type": "color"
+    },
+    "bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "bg-active": {
+      "$value": "var(--color-action-neutral-subtle-active)",
+      "$type": "color"
+    },
+    "text": {
+      "$value": "var(--color-text-primary)",
+      "$type": "color"
+    },
+    "font-size-sm": {
+      "$value": "var(--button-size-sm-text)",
+      "$type": "number"
+    },
+    "font-size": {
+      "$value": "var(--button-size-md-text)",
+      "$type": "number"
+    },
+    "font-size-lg": {
+      "$value": "var(--button-size-lg-text)",
+      "$type": "number"
+    },
+    "line-height-sm": {
+      "$value": "var(--button-size-sm-line-height)",
+      "$type": "number"
+    },
+    "line-height": {
+      "$value": "var(--button-size-md-line-height)",
+      "$type": "number"
+    },
+    "line-height-lg": {
+      "$value": "var(--button-size-lg-line-height)",
+      "$type": "number"
+    },
+    "font-weight": {
+      "$value": "var(--button-size-md-weight)",
+      "$type": "string"
+    },
+    "icon-size-sm": {
+      "$value": 16,
+      "$type": "color"
+    },
+    "icon-size": {
+      "$value": 18,
+      "$type": "color"
+    },
+    "icon-size-lg": {
+      "$value": 20,
+      "$type": "color"
+    },
+    "disabled-opacity": {
+      "$value": "var(--opacity-disabled)",
+      "$type": "color"
+    }
+  }
+}
