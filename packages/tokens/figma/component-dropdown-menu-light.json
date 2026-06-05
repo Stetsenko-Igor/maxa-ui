@@ -1,0 +1,110 @@
+{
+  "Dropdown Menu": {
+    "surface": {
+      "bg": {
+        "$value": "{Color modes/background/bg-float}",
+        "$type": "color"
+      },
+      "border": {
+        "$value": "{Color modes/border/border-primary}",
+        "$type": "color"
+      }
+    },
+    "layout": {
+      "radius": {
+        "$value": "{Radius/radius-md}",
+        "$type": "number"
+      },
+      "min-width": {
+        "$value": 180,
+        "$type": "number"
+      },
+      "padding-y": {
+        "$value": "{Spacing/spacing-xs}",
+        "$type": "number"
+      },
+      "item-height": {
+        "$value": 32,
+        "$type": "number"
+      },
+      "item-padding-x": {
+        "$value": "{Spacing/spacing-md}",
+        "$type": "number"
+      },
+      "item-gap": {
+        "$value": "{Spacing/spacing-md}",
+        "$type": "number"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "font-size": {
+        "$value": "{Typography/Font size/text-sm}",
+        "$type": "number"
+      },
+      "line-height": {
+        "$value": "{Typography/Line height/text-sm}",
+        "$type": "number"
+      },
+      "label-font-size": {
+        "$value": "{Typography/Font size/caption-sm}",
+        "$type": "number"
+      },
+      "label-line-height": {
+        "$value": "{Typography/Line height/caption-sm}",
+        "$type": "number"
+      },
+      "label-font-weight": {
+        "$value": "{Typography/Font weight/semibold}",
+        "$type": "number"
+      }
+    },
+    "item": {
+      "text": {
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "icon": {
+        "$value": "{Color modes/foreground/fg-secondary}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$value": "{Color modes/action/action-neutral-subtle-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$value": "{Color modes/action/action-neutral-subtle-active}",
+        "$type": "color"
+      },
+      "text-disabled": {
+        "$value": "{Color modes/text/text-disabled}",
+        "$type": "color"
+      },
+      "text-destructive": {
+        "$value": "{Color modes/text/text-error}",
+        "$type": "color"
+      },
+      "bg-destructive-hover": {
+        "$value": "{Color modes/background/bg-error-surface}",
+        "$type": "color"
+      }
+    },
+    "support": {
+      "label-text": {
+        "$value": "{Color modes/text/text-tertiary}",
+        "$type": "color"
+      },
+      "shortcut-text": {
+        "$value": "{Color modes/text/text-tertiary}",
+        "$type": "color"
+      },
+      "separator": {
+        "$value": "{Color modes/border/border-secondary}",
+        "$type": "color"
+      }
+    }
+  }
+}

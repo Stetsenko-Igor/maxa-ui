@@ -1,5 +1,9 @@
 /* Date picker field primitives + form components */
 
+.maxa-date-picker {
+  position: relative;
+}
+
 .maxa-date-picker__field {
   position: relative;
   display: flex;
@@ -85,7 +89,20 @@
   width: var(--input-icon-md-size);
   height: var(--input-icon-md-size);
   color: var(--input-text);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.maxa-date-picker__icon:disabled {
+  cursor: default;
   pointer-events: none;
+}
+
+.maxa-date-picker__icon:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .maxa-date-picker__field--sm .maxa-date-picker__icon {
@@ -98,4 +115,104 @@
   right: var(--input-size-lg-padding-x);
   width: var(--input-icon-lg-size);
   height: var(--input-icon-lg-size);
+}
+
+.maxa-date-picker__popover {
+  position: absolute;
+  z-index: var(--date-picker-popover-z);
+  top: calc(100% + var(--date-picker-popover-top));
+  left: 0;
+}
+
+.maxa-date-picker__range-popover {
+  position: absolute;
+  z-index: var(--date-picker-popover-z);
+  top: calc(100% + var(--date-picker-popover-top));
+  left: 0;
+  display: grid;
+  grid-template-columns: var(--date-picker-range-presets-width) auto;
+  overflow: hidden;
+  border: 1px solid var(--date-picker-range-border);
+  border-radius: var(--date-picker-range-radius);
+  background: var(--date-picker-range-bg);
+  box-shadow: var(--date-picker-range-shadow);
+}
+
+.maxa-date-picker__presets {
+  display: grid;
+  align-content: start;
+  padding-block: var(--date-picker-range-content-padding);
+  border-inline-end: 1px solid var(--date-picker-range-divider);
+}
+
+.maxa-date-picker__preset {
+  display: flex;
+  height: var(--date-picker-preset-height);
+  align-items: center;
+  padding-inline: var(--date-picker-preset-padding-x);
+  border: 0;
+  background: transparent;
+  color: var(--date-picker-preset-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--date-picker-preset-font-size);
+  text-align: start;
+}
+
+.maxa-date-picker__preset:hover,
+.maxa-date-picker__preset:focus-visible {
+  background: var(--date-picker-preset-bg-hover);
+  outline: none;
+}
+
+.maxa-date-picker__range-body {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.maxa-date-picker__range-body .maxa-calendar {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.maxa-date-picker__range-body .maxa-calendar + .maxa-calendar {
+  border-inline-start: 1px solid var(--date-picker-range-divider);
+}
+
+.maxa-date-picker__range-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--date-picker-range-footer-gap);
+  padding: var(--date-picker-range-footer-padding);
+  border-block-start: 1px solid var(--date-picker-range-divider);
+  background: var(--date-picker-range-footer-bg);
+}
+
+.maxa-date-picker__range-input {
+  width: var(--date-picker-range-input-width);
+  height: var(--input-size-md-height);
+  padding-inline: var(--input-size-md-padding-x);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-size-md-radius);
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-family: var(--input-font-family);
+  font-size: var(--input-size-md-text);
+}
+
+.maxa-date-picker__range-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+.maxa-date-picker__range-separator {
+  color: var(--date-picker-field-separator-color);
+  font-size: var(--text-sm);
+}
+
+.maxa-date-picker__range-actions {
+  display: flex;
+  gap: var(--spacing-2);
+  margin-inline-start: auto;
 }

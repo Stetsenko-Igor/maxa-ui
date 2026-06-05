@@ -3,6 +3,7 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants"
 
 const config: NextConfig = {
   reactStrictMode: true,
+  devIndicators: false,
 }
 
 export default function nextConfig(phase: string): NextConfig {

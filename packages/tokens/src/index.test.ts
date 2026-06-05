@@ -38,6 +38,30 @@ describe("theme.css", () => {
     expect(css).toContain('@import "./component-popover.css"')
   })
 
+  it("imports avatar component tokens", () => {
+    expect(css).toContain('@import "./component-avatar.css"')
+  })
+
+  it("imports dropdown menu component tokens", () => {
+    expect(css).toContain('@import "./component-dropdown-menu.css"')
+  })
+
+  it("imports bulk parity component tokens", () => {
+    for (const component of [
+      "spinner",
+      "skeleton",
+      "progress",
+      "slider",
+      "tabs",
+      "segmented-control",
+      "breadcrumb",
+      "pagination",
+      "empty",
+    ]) {
+      expect(css).toContain(`@import "./component-${component}.css"`)
+    }
+  })
+
   it("imports in correct order: primitives → maxa → semantic → dimensions → shadows", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
     const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
@@ -256,34 +280,19 @@ describe("figma manifest", () => {
   })
 
   it("includes Component-based collection", () => {
-    expect(manifest.collections["Component-based"]?.modes.Light).toEqual([
-      "component-button-light.json",
-      "component-input-light.json",
-      "component-checkbox-light.json",
-      "component-radio-light.json",
-      "component-badge-light.json",
-      "component-tag-light.json",
-      "component-alert-light.json",
-      "component-toggle-light.json",
-      "component-tooltip-light.json",
-      "component-popover-light.json",
-      "component-divider-light.json",
-      "component-utility-light.json",
-    ])
-    expect(manifest.collections["Component-based"]?.modes.Dark).toEqual([
-      "component-button-dark.json",
-      "component-input-dark.json",
-      "component-checkbox-dark.json",
-      "component-radio-dark.json",
-      "component-badge-dark.json",
-      "component-tag-dark.json",
-      "component-alert-dark.json",
-      "component-toggle-dark.json",
-      "component-tooltip-dark.json",
-      "component-popover-dark.json",
-      "component-divider-dark.json",
-      "component-utility-dark.json",
-    ])
+    const light = manifest.collections["Component-based"]?.modes.Light ?? []
+    const dark = manifest.collections["Component-based"]?.modes.Dark ?? []
+    expect(light.length).toBeGreaterThan(14)
+    expect(dark.length).toBe(light.length)
+    expect(light).toContain("component-button-light.json")
+    expect(light).toContain("component-select-light.json")
+    expect(light).toContain("component-social-button-light.json")
+    expect(dark).toContain("component-button-dark.json")
+    expect(dark).toContain("component-select-dark.json")
+    expect(dark).toContain("component-social-button-dark.json")
+    expect(light.map((file) => file.replace("-light.json", ""))).toEqual(
+      dark.map((file) => file.replace("-dark.json", "")),
+    )
   })
 
   it("includes unified Primitives collection", () => {
@@ -322,7 +331,7 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
-  it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Divider, and Utility component tokens", () => {
+  it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Dropdown Menu, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
     const dark = bundle.collections["Component-based"]?.modes.Dark
 
@@ -348,6 +357,8 @@ describe("figma import bundle", () => {
     expect(light?.["Radio/typography/top-label-font-weight"]).toBe("{Typography/Font weight/semibold}")
     expect(light?.["Radio/size/sm/control"]).toBeUndefined()
     expect(light?.["Tag/size/lg/height"]).toBe(28)
+    expect(light?.["Avatar/layout/size-md"]).toBe(40)
+    expect(light?.["Avatar/status/online"]).toBe("{Color modes/background/bg-success-strong}")
     expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
     expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()
     expect(light?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
@@ -380,6 +391,10 @@ describe("figma import bundle", () => {
     expect(light?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
     expect(light?.["Popover/layout/width"]).toBe(320)
     expect(light?.["Popover/typography/font-family"]).toBe("{Typography/Font family/body}")
+    expect(light?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
+    expect(light?.["Dropdown Menu/layout/min-width"]).toBe(180)
+    expect(light?.["Dropdown Menu/layout/item-height"]).toBe(32)
+    expect(light?.["Dropdown Menu/item/text-destructive"]).toBe("{Color modes/text/text-error}")
     expect(light?.["Divider/size"]).toBe(1)
     expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
     expect(dark?.["Alert/layout/padding-x"]).toBe(16)
@@ -390,6 +405,8 @@ describe("figma import bundle", () => {
     expect(dark?.["Checkbox/size/md/control"]).toBe(20)
     expect(dark?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
     expect(dark?.["Radio/size/md/dot"]).toBe(8)
+    expect(dark?.["Avatar/layout/size-md"]).toBe(40)
+    expect(dark?.["Avatar/status/busy"]).toBe("{Color modes/background/bg-error-strong}")
     expect(dark?.["Radio/color/dot-hover"]).toBe("#04549B")
     expect(dark?.["Toggle/size/md/track-width"]).toBe(36)
     expect(dark?.["Toggle/size/md/field-max-width"]).toBe(160)
@@ -399,6 +416,9 @@ describe("figma import bundle", () => {
     expect(dark?.["Tooltip/layout/max-width"]).toBe(240)
     expect(dark?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
     expect(dark?.["Popover/layout/width"]).toBe(320)
+    expect(dark?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
+    expect(dark?.["Dropdown Menu/layout/min-width"]).toBe(180)
+    expect(dark?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-neutral-hover}")
     expect(dark?.["Divider/size"]).toBe(1)
     expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")

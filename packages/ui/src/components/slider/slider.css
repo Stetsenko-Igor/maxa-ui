@@ -1,0 +1,87 @@
+.maxa-slider__root {
+  display: grid;
+  gap: var(--spacing-3);
+  width: var(--slider-width);
+}
+
+.maxa-slider__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  font-size: var(--slider-meta-font-size);
+  line-height: var(--text-md--line-height);
+  font-weight: var(--slider-meta-font-weight);
+}
+
+.maxa-slider__label {
+  color: var(--slider-label-color);
+}
+
+.maxa-slider__value {
+  color: var(--slider-value-color);
+}
+
+.maxa-slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: var(--slider-thumb-size);
+  align-items: center;
+  touch-action: none;
+  user-select: none;
+}
+
+.maxa-slider__track {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  height: var(--slider-track-height);
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-track-bg);
+}
+
+.maxa-slider__range {
+  position: absolute;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--slider-range-bg);
+}
+
+.maxa-slider__thumb {
+  display: block;
+  width: var(--slider-thumb-size);
+  height: var(--slider-thumb-size);
+  border: var(--slider-thumb-border-width) solid var(--slider-thumb-border);
+  border-radius: var(--radius-full);
+  background: var(--slider-thumb-bg);
+  box-shadow: var(--slider-thumb-shadow);
+  transition:
+    box-shadow var(--duration-base) var(--easing-standard),
+    transform var(--duration-base) var(--easing-standard);
+}
+
+.maxa-slider__thumb:hover {
+  box-shadow: var(--slider-thumb-shadow-hover);
+}
+
+.maxa-slider__thumb:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.maxa-slider[data-disabled] {
+  opacity: var(--slider-disabled-opacity);
+}
+
+.maxa-slider[data-disabled] .maxa-slider__thumb {
+  cursor: not-allowed;
+}
+
+.maxa-slider__marks {
+  display: flex;
+  justify-content: space-between;
+  color: var(--slider-mark-color);
+  font-size: var(--slider-mark-font-size);
+  line-height: var(--text-caption-sm--line-height);
+}

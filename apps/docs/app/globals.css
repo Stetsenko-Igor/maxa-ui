@@ -69,6 +69,39 @@ body {
 [data-theme="dark"] .code-block-light { display: none; }
 [data-theme="dark"] .code-block-dark { display: block; }
 
+.code-block-light,
+.code-block-dark,
+[data-component-preview] pre,
+.docs-inline-code-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-neutral-subtle) transparent;
+}
+
+.code-block-light::-webkit-scrollbar,
+.code-block-dark::-webkit-scrollbar,
+[data-component-preview] pre::-webkit-scrollbar,
+.docs-inline-code-scroll::-webkit-scrollbar {
+  width: var(--spacing-2);
+  height: var(--spacing-2);
+}
+
+.code-block-light::-webkit-scrollbar-track,
+.code-block-dark::-webkit-scrollbar-track,
+[data-component-preview] pre::-webkit-scrollbar-track,
+.docs-inline-code-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.code-block-light::-webkit-scrollbar-thumb,
+.code-block-dark::-webkit-scrollbar-thumb,
+[data-component-preview] pre::-webkit-scrollbar-thumb,
+.docs-inline-code-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  background-clip: content-box;
+  background-color: var(--color-border-neutral-subtle);
+}
+
 /* Dark mode: tighter, more subtle borders for docs chrome */
 [data-theme="dark"] .docs-sidebar,
 [data-theme="dark"] [data-component-preview] {

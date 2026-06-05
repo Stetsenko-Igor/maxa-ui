@@ -43,19 +43,19 @@
   /* ── Text ─────────────────────────────────────────────────────── */
   --toggle-font-family:               var(--font-body);
   --toggle-label-font-size:           var(--text-sm);
-  --toggle-label-line-height:         14px;
+  --toggle-label-line-height:         var(--text-sm--line-height);
   --toggle-label-font-weight:         var(--font-weight-semibold);
   --toggle-side-label-font-size:      var(--text-sm);
-  --toggle-side-label-line-height:    14px;
+  --toggle-side-label-line-height:    var(--text-sm--line-height);
   --toggle-side-label-font-weight:    var(--font-weight-medium);
   --toggle-description-font-size:     var(--text-caption-sm);
-  --toggle-description-line-height:   16px;
+  --toggle-description-line-height:   var(--text-caption-sm--line-height);
   --toggle-description-font-weight:   var(--font-weight-medium);
-  --toggle-label-color:               #444445;
-  --toggle-text-color:                #444445;
-  --toggle-description-color:         #575758;
-  --toggle-label-color-disabled:      #8c8c8e;
-  --toggle-text-color-disabled:       #c2c2c2;
+  --toggle-label-color:               var(--color-text-primary);
+  --toggle-text-color:                var(--color-text-primary);
+  --toggle-description-color:         var(--color-text-secondary);
+  --toggle-label-color-disabled:      var(--color-text-disabled);
+  --toggle-text-color-disabled:       var(--color-text-disabled);
 
   /* ── Colors — error ───────────────────────────────────────────── */
   --toggle-track-border-error:  var(--color-border-error);

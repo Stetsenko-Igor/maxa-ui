@@ -1,0 +1,96 @@
+{
+  "Context Menu": {
+    "bg": {
+      "$value": "var(--dropdown-menu-bg)",
+      "$type": "color"
+    },
+    "border": {
+      "$value": "var(--dropdown-menu-border)",
+      "$type": "color"
+    },
+    "radius": {
+      "$value": "var(--dropdown-menu-radius)",
+      "$type": "string"
+    },
+    "shadow": {
+      "$value": "var(--dropdown-menu-shadow)",
+      "$type": "color"
+    },
+    "min-width": {
+      "$value": 200,
+      "$type": "number"
+    },
+    "max-width": {
+      "$value": "calc(100vw - 32px)",
+      "$type": "string"
+    },
+    "padding-y": {
+      "$value": "var(--dropdown-menu-padding-y)",
+      "$type": "string"
+    },
+    "item-height": {
+      "$value": "var(--dropdown-menu-item-height)",
+      "$type": "string"
+    },
+    "item-padding-x": {
+      "$value": "var(--dropdown-menu-item-padding-x)",
+      "$type": "string"
+    },
+    "item-gap": {
+      "$value": "var(--dropdown-menu-item-gap)",
+      "$type": "string"
+    },
+    "item-text": {
+      "$value": "var(--dropdown-menu-item-text)",
+      "$type": "color"
+    },
+    "item-text-hover": {
+      "$value": "var(--dropdown-menu-item-text-hover)",
+      "$type": "color"
+    },
+    "item-text-disabled": {
+      "$value": "var(--dropdown-menu-item-text-disabled)",
+      "$type": "color"
+    },
+    "item-text-destructive": {
+      "$value": "var(--dropdown-menu-item-text-destructive)",
+      "$type": "color"
+    },
+    "item-bg-hover": {
+      "$value": "var(--dropdown-menu-item-bg-hover)",
+      "$type": "color"
+    },
+    "item-bg-active": {
+      "$value": "var(--dropdown-menu-item-bg-active)",
+      "$type": "color"
+    },
+    "separator": {
+      "$value": "var(--dropdown-menu-separator)",
+      "$type": "color"
+    },
+    "label-text": {
+      "$value": "var(--dropdown-menu-label-text)",
+      "$type": "color"
+    },
+    "shortcut-text": {
+      "$value": "var(--dropdown-menu-shortcut-text)",
+      "$type": "color"
+    },
+    "font-family": {
+      "$value": "var(--dropdown-menu-font-family)",
+      "$type": "string"
+    },
+    "font-size": {
+      "$value": "var(--dropdown-menu-font-size)",
+      "$type": "string"
+    },
+    "line-height": {
+      "$value": "var(--dropdown-menu-line-height)",
+      "$type": "string"
+    },
+    "z": {
+      "$value": "var(--z-dropdown)",
+      "$type": "string"
+    }
+  }
+}

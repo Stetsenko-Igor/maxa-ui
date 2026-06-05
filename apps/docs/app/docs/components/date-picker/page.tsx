@@ -24,11 +24,15 @@ const DATE_PICKER_PROPS = [
   { name: "required", type: "boolean", default: "false", description: "Shows the required marker next to the label." },
   { name: "visualState", type: "'default' | 'hover' | 'focus' | 'error' | 'disabled'", default: "'default'", description: "Controlled visual state for docs and examples." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the date field." },
+  { name: "selectedDate", type: "Date", default: undefined, description: "Selected date passed to the calendar popover." },
+  { name: "onDateSelect", type: "(date: Date) => void", default: undefined, description: "Called when a date is selected from the calendar." },
+  { name: "startDate / endDate", type: "Date", default: undefined, description: "Selected range dates for DateRangePicker." },
+  { name: "onRangeApply", type: "(range) => void", default: undefined, description: "Called when the range dropdown Apply button is pressed." },
 ]
 
 const DATE_PICKER_MARKDOWN = `# Date Picker
 
-Separate date form components for single-date and range-date entry.
+Separate date form components for single-date and range-date entry. DatePicker includes a single-month calendar popover; DateRangePicker includes a two-month range popover with presets and footer actions.
 
 ## Installation
 
@@ -58,11 +62,11 @@ export default function DatePickerPage() {
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Single date and range">
           <ComponentPreview
-            code={`import { DatePicker, DateRangePicker } from "@maxa/ui"\n\n<DatePicker label="Date Picker" />\n<DateRangePicker label="Date Picker" />`}
+            code={`import { DatePicker, DateRangePicker } from "@maxa/ui"\n\n<DatePicker label="Date Picker" defaultValue="5/9/2025" />\n<DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />`}
           >
             <div style={stack}>
-              <DatePicker label="Date Picker" />
-              <DateRangePicker label="Date Picker" />
+              <DatePicker label="Date Picker" defaultValue="5/9/2025" />
+              <DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -80,19 +84,15 @@ export default function DatePickerPage() {
         />
       </DocsSection>
 
-      <DocsSection
-        id="states"
-        title="States"
-        description="The current implementation establishes the field shell. Calendar popover behavior can be layered in later."
-      >
+      <DocsSection id="states" title="States" description="Single-date fields open the shared Calendar primitive. Range fields open the two-month range dropdown from the layout reference.">
         <DocsExample title="Validation and disabled states">
           <ComponentPreview code={`<DatePicker label="Default" />
-<DatePicker label="Focus" visualState="focus" defaultValue="05/06/2026" />
+<DatePicker label="Focus" visualState="focus" defaultValue="5/9/2025" />
 <DatePicker label="Error" error="Select a valid date" defaultValue="13/40/2026" />
 <DatePicker label="Disabled" disabled />`}>
             <div style={stack}>
               <DatePicker label="Default" />
-              <DatePicker label="Focus" visualState="focus" defaultValue="05/06/2026" />
+              <DatePicker label="Focus" visualState="focus" defaultValue="5/9/2025" />
               <DatePicker label="Error" error="Select a valid date" defaultValue="13/40/2026" />
               <DatePicker label="Disabled" disabled />
             </div>

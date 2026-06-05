@@ -1,0 +1,53 @@
+.maxa-utility-button {
+  display: inline-flex;
+  width: var(--utility-button-size-md);
+  height: var(--utility-button-size-md);
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--utility-button-border);
+  border-radius: var(--utility-button-radius);
+  background: var(--utility-button-bg);
+  color: var(--utility-button-text);
+  cursor: pointer;
+}
+
+.maxa-utility-button:hover {
+  background: var(--utility-button-bg-hover);
+  color: var(--utility-button-text-hover);
+}
+
+.maxa-utility-button:active,
+.maxa-utility-button[data-selected="true"] {
+  border-color: var(--utility-button-border-active);
+  background: var(--utility-button-bg-active);
+}
+
+.maxa-utility-button--sm {
+  width: var(--utility-button-size-sm);
+  height: var(--utility-button-size-sm);
+}
+
+.maxa-utility-button--lg {
+  width: var(--utility-button-size-lg);
+  height: var(--utility-button-size-lg);
+}
+
+.maxa-utility-button svg {
+  width: var(--utility-button-icon-md);
+  height: var(--utility-button-icon-md);
+}
+
+.maxa-utility-button--sm svg {
+  width: var(--utility-button-icon-sm);
+  height: var(--utility-button-icon-sm);
+}
+
+.maxa-utility-button--lg svg {
+  width: var(--utility-button-icon-lg);
+  height: var(--utility-button-icon-lg);
+}
+
+.maxa-utility-button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

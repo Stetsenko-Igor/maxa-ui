@@ -99,14 +99,15 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
       {tab === "code" && (
         <pre style={{
           margin: 0,
-          padding: "20px 24px",
+          padding: "24px 28px 28px",
           background: "var(--color-bg-muted)",
           borderRadius: "0 0 var(--radius-md) var(--radius-md)",
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-sm)",
-          lineHeight: "20px",
+          lineHeight: "var(--text-md--line-height)",
           color: "var(--color-text-primary)",
           overflow: "auto",
+          scrollbarGutter: "stable",
           minHeight: panelMinHeight,
           maxHeight: "360px",
           boxSizing: "border-box",

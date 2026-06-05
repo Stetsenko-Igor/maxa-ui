@@ -1,0 +1,149 @@
+.maxa-dialog__portal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--dialog-z);
+  display: grid;
+  place-items: center;
+  padding: var(--spacing-4);
+}
+
+.maxa-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--dialog-overlay-bg);
+}
+
+.maxa-dialog__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: min(100%, var(--dialog-content-width-md));
+  border: 1px solid var(--dialog-content-border);
+  border-radius: var(--dialog-content-radius);
+  background: var(--dialog-content-bg);
+  box-shadow: var(--dialog-content-shadow);
+  color: var(--color-text-primary);
+}
+
+.maxa-dialog__content--sm { width: min(100%, var(--dialog-content-width-sm)); }
+.maxa-dialog__content--lg { width: min(100%, var(--dialog-content-width-lg)); }
+
+.maxa-dialog__header {
+  display: grid;
+  gap: var(--dialog-header-gap);
+  padding: var(--dialog-header-padding-top) calc(var(--dialog-header-padding-x) + var(--dialog-close-size) / 2) var(--dialog-header-padding-bottom) var(--dialog-header-padding-x);
+  border-bottom: 1px solid var(--dialog-header-border);
+}
+
+.maxa-dialog__title {
+  margin: 0;
+  color: var(--dialog-title-color);
+  font-size: var(--dialog-title-font-size);
+  line-height: var(--dialog-title-line-height);
+  font-weight: var(--dialog-title-font-weight);
+}
+
+.maxa-dialog__description {
+  margin: 0;
+  color: var(--dialog-description-color);
+  font-size: var(--dialog-description-font-size);
+  line-height: var(--dialog-description-line-height);
+  font-weight: var(--dialog-description-font-weight);
+}
+
+.maxa-dialog__body {
+  padding: var(--dialog-body-padding-y) var(--dialog-body-padding-x);
+  color: var(--dialog-body-color);
+  font-size: var(--dialog-body-font-size);
+  line-height: var(--dialog-body-line-height);
+  font-weight: var(--dialog-body-font-weight);
+}
+
+.maxa-dialog__body > :first-child {
+  margin-top: 0;
+}
+
+.maxa-dialog__body > :last-child {
+  margin-bottom: 0;
+}
+
+.maxa-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--dialog-footer-gap);
+  padding: var(--dialog-footer-padding-top) var(--dialog-footer-padding-x) var(--dialog-footer-padding-bottom);
+}
+
+.maxa-dialog__close {
+  position: absolute;
+  top: calc(var(--dialog-close-size) / -4);
+  right: calc(var(--dialog-close-size) / -4);
+  display: inline-flex;
+  width: var(--dialog-close-size);
+  height: var(--dialog-close-size);
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--dialog-close-color);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--dialog-close-icon-size);
+  line-height: 1;
+}
+
+.maxa-dialog__close:hover {
+  background: var(--dialog-close-bg-hover);
+}
+
+.maxa-dialog__close[data-inline="true"] {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button {
+  font-family: var(--button-font-family);
+  font-size: var(--button-size-md-text);
+  line-height: var(--button-size-md-line-height);
+  font-weight: var(--button-size-md-weight);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button--secondary {
+  border-color: var(--button-secondary-border);
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button--primary {
+  border-color: var(--button-primary-border);
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button--danger {
+  border-color: var(--button-danger-border);
+  background-color: var(--button-danger-bg);
+  color: var(--button-danger-text);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button:hover {
+  background-color: var(--button-secondary-bg-hover);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button--primary:hover {
+  background-color: var(--button-primary-bg-hover);
+}
+
+.maxa-dialog__close[data-inline="true"].maxa-button--danger:hover {
+  background-color: var(--button-danger-bg-hover);
+}
+
+.maxa-dialog__close:focus-visible,
+.maxa-dialog__content:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

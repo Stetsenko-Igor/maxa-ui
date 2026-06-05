@@ -1,0 +1,47 @@
+.maxa-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--segmented-control-gap);
+  padding: var(--segmented-control-padding);
+  border: 1px solid var(--segmented-control-border);
+  border-radius: var(--segmented-control-radius);
+  background: var(--segmented-control-bg);
+}
+
+.maxa-segmented-control__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--segmented-control-item-height);
+  padding-inline: var(--segmented-control-item-padding-x);
+  border: 0;
+  border-radius: var(--segmented-control-item-radius);
+  background: var(--segmented-control-item-bg);
+  color: var(--segmented-control-item-text);
+  font-family: var(--font-body);
+  font-size: var(--segmented-control-item-font-size);
+  line-height: var(--text-md--line-height);
+  font-weight: var(--segmented-control-item-font-weight);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard);
+}
+
+.maxa-segmented-control__item:hover {
+  background: var(--segmented-control-item-bg-hover);
+}
+
+.maxa-segmented-control__item[data-state="active"] {
+  background: var(--segmented-control-item-bg-active);
+  color: var(--segmented-control-item-text-active);
+}
+
+.maxa-segmented-control__item:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.maxa-segmented-control__item:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

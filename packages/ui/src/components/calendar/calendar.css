@@ -1,0 +1,103 @@
+.maxa-calendar {
+  display: grid;
+  gap: var(--calendar-gap);
+  width: max-content;
+  padding: var(--calendar-padding);
+  border: 1px solid var(--calendar-border);
+  border-radius: var(--calendar-radius);
+  background: var(--calendar-bg);
+  box-shadow: var(--calendar-shadow);
+}
+
+.maxa-calendar__header {
+  display: grid;
+  grid-template-columns: var(--calendar-nav-size) 1fr var(--calendar-nav-size);
+  align-items: center;
+  gap: var(--calendar-header-gap);
+}
+
+.maxa-calendar__title {
+  margin: 0;
+  text-align: center;
+  color: var(--calendar-title-color);
+  font-size: var(--calendar-title-font-size);
+  font-weight: var(--calendar-title-font-weight);
+}
+
+.maxa-calendar__nav,
+.maxa-calendar__day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.maxa-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, var(--calendar-day-size));
+  gap: var(--calendar-cell-gap);
+}
+
+.maxa-calendar__weekday {
+  display: flex;
+  height: var(--calendar-weekday-height);
+  align-items: center;
+  justify-content: center;
+  color: var(--calendar-weekday-color);
+  font-size: var(--calendar-weekday-font-size);
+  font-weight: var(--font-weight-semibold);
+}
+
+.maxa-calendar__day {
+  width: var(--calendar-day-size);
+  height: var(--calendar-day-size);
+  border: 1px solid transparent;
+  border-radius: var(--calendar-day-radius);
+  color: var(--calendar-day-text);
+}
+
+.maxa-calendar__day:hover,
+.maxa-calendar__nav:hover {
+  background: var(--calendar-day-bg-hover);
+}
+
+.maxa-calendar__day[data-outside="true"] {
+  color: var(--calendar-day-text-outside);
+}
+
+.maxa-calendar__day:disabled {
+  color: var(--calendar-day-text-disabled);
+  cursor: not-allowed;
+  opacity: var(--calendar-day-disabled-opacity);
+}
+
+.maxa-calendar__day:disabled:hover {
+  background: transparent;
+}
+
+.maxa-calendar__day[data-current="true"] {
+  background: var(--calendar-day-bg-current);
+  border-color: var(--calendar-day-border-current);
+  color: var(--calendar-day-text-current);
+}
+
+.maxa-calendar__day[data-in-range="true"] {
+  background: var(--calendar-day-bg-range);
+  border-radius: 0;
+}
+
+.maxa-calendar__day[data-selected="true"] {
+  background: var(--calendar-day-bg-selected);
+  border-color: var(--calendar-day-bg-selected);
+  color: var(--calendar-day-text-selected);
+}
+
+.maxa-calendar__day:focus-visible,
+.maxa-calendar__nav:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

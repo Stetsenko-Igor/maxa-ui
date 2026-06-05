@@ -1,0 +1,58 @@
+.maxa-spinner {
+  display: inline-block;
+  width: var(--spinner-size-md);
+  height: var(--spinner-size-md);
+  border: var(--spinner-stroke-width) solid var(--spinner-track-color);
+  border-top-color: var(--spinner-color);
+  border-radius: var(--radius-full);
+  animation: maxa-spinner-rotate var(--spinner-duration) linear infinite;
+  flex-shrink: 0;
+}
+
+.maxa-spinner--sm {
+  width: var(--spinner-size-sm);
+  height: var(--spinner-size-sm);
+}
+
+.maxa-spinner--md {
+  width: var(--spinner-size-md);
+  height: var(--spinner-size-md);
+}
+
+.maxa-spinner--lg {
+  width: var(--spinner-size-lg);
+  height: var(--spinner-size-lg);
+}
+
+.maxa-spinner--white {
+  border-color: var(--spinner-white-track-color);
+  border-top-color: var(--spinner-white-color);
+  border-right-color: var(--spinner-white-color);
+}
+
+.maxa-spinner--primary {
+  border-color: var(--spinner-track-color);
+  border-top-color: var(--spinner-primary-color);
+}
+
+.maxa-spinner--greyscale {
+  border-color: var(--spinner-track-color);
+  border-top-color: var(--spinner-greyscale-color);
+}
+
+.maxa-spinner--inverted {
+  border-color: var(--spinner-inverted-track-color);
+  border-top-color: var(--spinner-inverted-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maxa-spinner {
+    animation-duration: 1.4s;
+  }
+}
+
+@keyframes maxa-spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

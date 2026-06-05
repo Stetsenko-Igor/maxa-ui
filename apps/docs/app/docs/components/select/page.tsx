@@ -12,23 +12,30 @@ const stack: React.CSSProperties = { display: "flex", flexDirection: "column", g
 const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
+  { href: "#open-listbox", label: "Open listbox" },
   { href: "#states", label: "States" },
   { href: "#api-reference", label: "API reference" },
 ]
 
 const SELECT_PROPS = [
+  { name: "value", type: "string", default: undefined, description: "Controlled selected value." },
+  { name: "defaultValue", type: "string", default: undefined, description: "Initial uncontrolled selected value." },
+  { name: "onValueChange", type: "(value: string) => void", default: undefined, description: "Called when a custom listbox option is selected." },
+  { name: "onChange", type: "ChangeEvent<HTMLSelectElement>", default: undefined, description: "Receives the hidden native select for form compatibility." },
+  { name: "defaultOpen", type: "boolean", default: "false", description: "Initial open state for demos and controlled examples." },
+  { name: "options", type: "{ label: string; value: string; disabled?: boolean }[]", default: undefined, description: "Optional data API. Native option children are also supported." },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Controls height, padding, and font size." },
   { name: "label", type: "string", default: undefined, description: "Accessible label rendered above the select." },
   { name: "hint", type: "string", default: undefined, description: "Helper text rendered below the select." },
   { name: "error", type: "string", default: undefined, description: "Error message. Sets error status and aria-invalid." },
   { name: "required", type: "boolean", default: "false", description: "Shows the required marker next to the label." },
-  { name: "visualState", type: "'default' | 'hover' | 'focus' | 'error' | 'disabled'", default: "'default'", description: "Controlled visual state for docs and examples." },
+  { name: "visualState", type: "'default' | 'hover' | 'focus' | 'error' | 'disabled' | 'open'", default: "'default'", description: "Controlled visual state for docs and examples." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the select." },
 ]
 
 const SELECT_MARKDOWN = `# Select
 
-A form control for choosing one value from a known list.
+A custom listbox form control for choosing one value from a known list.
 
 ## Installation
 
@@ -51,22 +58,22 @@ export default function SelectPage() {
       next={{ href: "/docs/components/date-picker", label: "Date Picker" }}
       lead={
         <>
-          A form control for choosing one value from a known list. In Figma this
-          can be named Dropdown; in code it is Select because of its semantic
-          role.
+          A custom listbox form control for choosing one value from a known
+          list. In Figma this can be named Dropdown; in code it is Select
+          because it stores a form value.
         </>
       }
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
           <ComponentPreview
-            code={`import { Select } from "@maxa/ui"\n\n<Select label="Dropdown" defaultValue="">\n  <option value="" disabled>Placeholder</option>\n  <option value="starter">Starter</option>\n</Select>`}
+            code={`import { Select } from "@maxa/ui"\n\n<Select label="Sort by" defaultValue="newest">\n  <option value="newest">Newest</option>\n  <option value="oldest">Oldest</option>\n  <option value="name">Name</option>\n</Select>`}
           >
             <div style={{ width: "320px" }}>
-              <Select label="Dropdown" defaultValue="">
-                <option value="" disabled>Placeholder</option>
-                <option value="starter">Starter</option>
-                <option value="pro">Pro</option>
+              <Select label="Sort by" defaultValue="newest">
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="name">Name</option>
               </Select>
             </div>
           </ComponentPreview>
@@ -81,8 +88,27 @@ export default function SelectPage() {
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
           imports={`import { Select } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
-          usage={`<Select label="Plan"><option>Starter</option></Select>`}
+          usage={`<Select label="Plan" defaultValue="starter">\n  <option value="starter">Starter</option>\n  <option value="pro">Pro</option>\n</Select>`}
         />
+      </DocsSection>
+
+      <DocsSection
+        id="open-listbox"
+        title="Open listbox"
+        description="Select opens a custom listbox surface with selected, highlighted, and disabled option states. Use DropdownMenu instead for actions or navigation."
+      >
+        <DocsExample title="Selected, highlighted, disabled">
+          <ComponentPreview code={`<Select label="Template type" defaultValue="postcard" defaultOpen>\n  <option value="postcard">Postcard</option>\n  <option value="flyer">Flyer</option>\n  <option value="social">Social media</option>\n  <option value="archived" disabled>Archived</option>\n</Select>`}>
+            <div style={{ width: "320px", minHeight: "260px" }}>
+              <Select label="Template type" defaultValue="postcard" defaultOpen>
+                <option value="postcard">Postcard</option>
+                <option value="flyer">Flyer</option>
+                <option value="social">Social media</option>
+                <option value="archived" disabled>Archived</option>
+              </Select>
+            </div>
+          </ComponentPreview>
+        </DocsExample>
       </DocsSection>
 
       <DocsSection
@@ -91,15 +117,15 @@ export default function SelectPage() {
         description="Select shares the same form wrapper model as Input: label, helper text, errors, and size."
       >
         <DocsExample title="Validation and disabled states">
-          <ComponentPreview code={`<Select label="Default" defaultValue=""><option value="" disabled>Placeholder</option></Select>
-<Select label="Focus" visualState="focus" defaultValue=""><option value="" disabled>Placeholder</option></Select>
+          <ComponentPreview code={`<Select label="Default" defaultValue="one"><option value="one">One</option></Select>
+<Select label="Focus" visualState="focus" defaultValue="one"><option value="one">One</option></Select>
 <Select label="Error" error="Choose an option" defaultValue=""><option value="" disabled>Placeholder</option></Select>
-<Select label="Disabled" disabled defaultValue=""><option value="" disabled>Placeholder</option></Select>`}>
+<Select label="Disabled" disabled defaultValue="one"><option value="one">One</option></Select>`}>
             <div style={stack}>
-              <Select label="Default" defaultValue=""><option value="" disabled>Placeholder</option><option>One</option></Select>
-              <Select label="Focus" visualState="focus" defaultValue=""><option value="" disabled>Placeholder</option><option>One</option></Select>
-              <Select label="Error" error="Choose an option" defaultValue=""><option value="" disabled>Placeholder</option><option>One</option></Select>
-              <Select label="Disabled" disabled defaultValue=""><option value="" disabled>Placeholder</option><option>One</option></Select>
+              <Select label="Default" defaultValue="one"><option value="one">One</option><option value="two">Two</option></Select>
+              <Select label="Focus" visualState="focus" defaultValue="one"><option value="one">One</option><option value="two">Two</option></Select>
+              <Select label="Error" error="Choose an option" defaultValue=""><option value="" disabled>Placeholder</option><option value="one">One</option></Select>
+              <Select label="Disabled" disabled defaultValue="one"><option value="one">One</option><option value="two">Two</option></Select>
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -108,7 +134,7 @@ export default function SelectPage() {
       <DocsSection
         id="api-reference"
         title="API reference"
-        description={<>Native <code>&lt;select&gt;</code> attributes are forwarded to the underlying element. Use Select for form selection, not for action menus.</>}
+        description={<>Select forwards native select metadata to a hidden form element. Use Select for form selection, not for action menus.</>}
       >
         <PropsTable props={SELECT_PROPS} />
       </DocsSection>

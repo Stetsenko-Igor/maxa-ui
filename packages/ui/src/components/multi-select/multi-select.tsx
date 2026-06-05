@@ -1,0 +1,152 @@
+"use client"
+
+import * as React from "react"
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../dropdown-menu"
+import { FormField, type FormFieldSize } from "../form-field"
+import "./multi-select.css"
+
+export interface MultiSelectOption {
+  label: string
+  value: string
+}
+
+export interface MultiSelectProps {
+  disabled?: boolean
+  error?: string
+  hint?: string
+  label?: string
+  options: MultiSelectOption[]
+  placeholder?: string
+  required?: boolean
+  size?: FormFieldSize
+  value?: string[]
+  defaultValue?: string[]
+  wrapperClassName?: string
+  onValueChange?: (value: string[]) => void
+}
+
+function MultiSelect({
+  defaultValue = [],
+  disabled,
+  error,
+  hint,
+  label,
+  onValueChange,
+  options,
+  placeholder = "Select options",
+  required,
+  size = "md",
+  value,
+  wrapperClassName,
+}: MultiSelectProps) {
+  const [internalValue, setInternalValue] = React.useState(defaultValue)
+  const inputId = React.useId()
+  const hintId = hint || error ? `${inputId}-hint` : undefined
+  const selectedValues = value ?? internalValue
+  const selectedOptions = options.filter((option) => selectedValues.includes(option.value))
+
+  const setSelectedValues = (nextValue: string[]) => {
+    if (disabled) return
+    onValueChange?.(nextValue)
+    if (value === undefined) setInternalValue(nextValue)
+  }
+
+  const toggleValue = (optionValue: string) => {
+    setSelectedValues(
+      selectedValues.includes(optionValue)
+        ? selectedValues.filter((item) => item !== optionValue)
+        : [...selectedValues, optionValue],
+    )
+  }
+
+  return (
+    <FormField
+      className={wrapperClassName}
+      error={error}
+      hint={hint}
+      hintId={hintId}
+      htmlFor={inputId}
+      label={label}
+      required={required}
+      size={size}
+    >
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <div
+            id={inputId}
+            aria-describedby={hintId}
+            aria-disabled={disabled || undefined}
+            aria-invalid={error ? true : undefined}
+            className={[
+              "maxa-multi-select__trigger",
+              `maxa-multi-select__trigger--${size}`,
+              error ? "maxa-multi-select__trigger--error" : "",
+              disabled ? "maxa-multi-select__trigger--disabled" : "",
+            ].filter(Boolean).join(" ")}
+            role="button"
+            tabIndex={disabled ? -1 : 0}
+          >
+            <span className="maxa-multi-select__value">
+              {selectedOptions.length === 0 ? (
+                <span className="maxa-multi-select__placeholder">{placeholder}</span>
+              ) : (
+                selectedOptions.map((option) => (
+                  <span key={option.value} className="maxa-multi-select__chip">
+                    <span>{option.label}</span>
+                    <button
+                      type="button"
+                      aria-label={`Remove ${option.label}`}
+                      className="maxa-multi-select__chip-remove"
+                      disabled={disabled}
+                      onClick={(event) => {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        toggleValue(option.value)
+                      }}
+                    >
+                      <CloseIcon />
+                    </button>
+                  </span>
+                ))
+              )}
+            </span>
+            <span className="maxa-multi-select__chevron" aria-hidden="true"><ChevronDownIcon /></span>
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="start" className="maxa-multi-select__menu">
+          {options.map((option) => (
+            <DropdownMenuCheckboxItem
+              key={option.value}
+              checked={selectedValues.includes(option.value)}
+              onSelect={(event) => {
+                event.preventDefault()
+                toggleValue(option.value)
+              }}
+            >
+              {option.label}
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </FormField>
+  )
+}
+
+export { MultiSelect }
+
+function ChevronDownIcon() {
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  )
+}
+
+function CloseIcon() {
+  return (
+    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  )
+}

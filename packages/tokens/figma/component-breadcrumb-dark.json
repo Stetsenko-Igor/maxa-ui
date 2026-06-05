@@ -1,0 +1,48 @@
+{
+  "Breadcrumb": {
+    "gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "text": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "color"
+    },
+    "text-hover": {
+      "$value": "var(--color-text-primary)",
+      "$type": "color"
+    },
+    "current-text": {
+      "$value": "var(--color-text-primary)",
+      "$type": "color"
+    },
+    "separator": {
+      "$value": "var(--color-fg-tertiary)",
+      "$type": "color"
+    },
+    "ellipsis-bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "ellipsis-bg-active": {
+      "$value": "var(--color-action-neutral-subtle-active)",
+      "$type": "color"
+    },
+    "ellipsis-radius": {
+      "$value": "var(--radius-xs)",
+      "$type": "number"
+    },
+    "ellipsis-size": {
+      "$value": 28,
+      "$type": "number"
+    },
+    "font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.maxa-skeleton {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  min-height: var(--skeleton-text-height);
+  border-radius: var(--skeleton-radius);
+  background: var(--skeleton-bg);
+}
+
+.maxa-skeleton::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--skeleton-highlight), transparent);
+  animation: maxa-skeleton-shimmer var(--skeleton-duration) ease-in-out infinite;
+}
+
+.maxa-skeleton--text {
+  height: var(--skeleton-text-height);
+  border-radius: var(--radius-full);
+}
+
+.maxa-skeleton--rect {
+  min-height: calc(var(--spacing-16) + var(--spacing-2));
+}
+
+.maxa-skeleton--circle {
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  min-height: var(--spacing-10);
+  border-radius: var(--radius-full);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maxa-skeleton::after {
+    animation: none;
+  }
+}
+
+@keyframes maxa-skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

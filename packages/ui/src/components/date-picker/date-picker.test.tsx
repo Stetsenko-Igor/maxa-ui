@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { render, screen } from "@testing-library/react"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
 import { DatePicker, DateRangePicker } from "./date-picker"
 
@@ -28,5 +28,21 @@ describe("DatePicker", () => {
   it("has no accessibility violations", async () => {
     const { container } = render(<DatePicker label="Date Picker" />)
     expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("opens calendar and selects a date", () => {
+    render(<DatePicker label="Date Picker" />)
+    fireEvent.click(screen.getByRole("button", { name: "Open calendar" }))
+    fireEvent.click(screen.getByRole("button", { name: "June 4, 2026" }))
+    expect(screen.getByRole("textbox")).toHaveValue("6/4/2026")
+  })
+
+  it("opens range calendar and applies a range", () => {
+    render(<DateRangePicker label="Date Picker" />)
+    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
+    fireEvent.click(screen.getByRole("button", { name: "May 9, 2025" }))
+    fireEvent.click(screen.getByRole("button", { name: "June 18, 2025" }))
+    fireEvent.click(screen.getByRole("button", { name: "Apply" }))
+    expect(screen.getByRole("textbox")).toHaveValue("5/9/2025 - 6/18/2025")
   })
 })

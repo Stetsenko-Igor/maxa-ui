@@ -1,0 +1,87 @@
+.maxa-social-button {
+  display: inline-flex;
+  min-width: var(--social-button-min-width);
+  height: var(--social-button-height);
+  align-items: center;
+  justify-content: center;
+  gap: var(--social-button-gap);
+  padding-inline: var(--social-button-padding-x);
+  border: 1px solid var(--social-button-border);
+  border-radius: var(--social-button-radius);
+  background: var(--social-button-bg);
+  color: var(--social-button-text);
+  font-family: var(--font-body);
+  font-size: var(--social-button-font-size);
+  line-height: var(--social-button-line-height);
+  font-weight: var(--social-button-font-weight);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-standard),
+    border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.maxa-social-button:hover {
+  background: var(--social-button-bg-hover);
+  border-color: var(--social-button-border-hover);
+}
+
+.maxa-social-button:active {
+  background: var(--social-button-bg-active);
+  border-color: var(--social-button-border-active);
+}
+
+.maxa-social-button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.maxa-social-button:disabled,
+.maxa-social-button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: var(--social-button-disabled-opacity);
+}
+
+.maxa-social-button__icon {
+  display: inline-flex;
+  width: var(--social-button-icon-size);
+  height: var(--social-button-icon-size);
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.maxa-social-button__icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.maxa-social-button__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maxa-social-button--sm {
+  --social-button-height: var(--social-button-height-sm);
+  --social-button-padding-x: var(--social-button-padding-x-sm);
+  --social-button-gap: var(--social-button-gap-sm);
+  --social-button-font-size: var(--social-button-font-size-sm);
+  --social-button-line-height: var(--social-button-line-height-sm);
+  --social-button-icon-size: var(--social-button-icon-size-sm);
+}
+
+.maxa-social-button--lg {
+  --social-button-height: var(--social-button-height-lg);
+  --social-button-padding-x: var(--social-button-padding-x-lg);
+  --social-button-gap: var(--social-button-gap-lg);
+  --social-button-font-size: var(--social-button-font-size-lg);
+  --social-button-line-height: var(--social-button-line-height-lg);
+  --social-button-icon-size: var(--social-button-icon-size-lg);
+}
+
+.maxa-social-button--full-width {
+  width: 100%;
+}

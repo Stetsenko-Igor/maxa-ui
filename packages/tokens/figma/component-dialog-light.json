@@ -1,0 +1,148 @@
+{
+  "Dialog": {
+    "overlay-bg": {
+      "$value": "rgba(0, 0, 0, 0.72)",
+      "$type": "color"
+    },
+    "content-bg": {
+      "$value": "var(--color-bg-float)",
+      "$type": "color"
+    },
+    "content-border": {
+      "$value": "var(--color-border-primary)",
+      "$type": "color"
+    },
+    "content-radius": {
+      "$value": "var(--radius-md)",
+      "$type": "number"
+    },
+    "content-shadow": {
+      "$value": "4px 4px 8px rgba(106, 106, 106, 0.1)",
+      "$type": "color"
+    },
+    "content-width-sm": {
+      "$value": 360,
+      "$type": "number"
+    },
+    "content-width-md": {
+      "$value": 500,
+      "$type": "number"
+    },
+    "content-width-lg": {
+      "$value": 604,
+      "$type": "number"
+    },
+    "header-padding-x": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "header-padding-top": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "header-padding-bottom": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "header-gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "header-border": {
+      "$value": "var(--color-border-primary)",
+      "$type": "color"
+    },
+    "body-padding-x": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "body-padding-y": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "body-font-size": {
+      "$value": "var(--text-md)",
+      "$type": "number"
+    },
+    "body-line-height": {
+      "$value": "var(--text-md--line-height)",
+      "$type": "number"
+    },
+    "body-font-weight": {
+      "$value": "var(--font-weight-regular)",
+      "$type": "string"
+    },
+    "body-color": {
+      "$value": "var(--color-text-primary)",
+      "$type": "string"
+    },
+    "footer-padding-x": {
+      "$value": "var(--spacing-6)",
+      "$type": "number"
+    },
+    "footer-padding-top": {
+      "$value": "var(--spacing-3)",
+      "$type": "number"
+    },
+    "footer-padding-bottom": {
+      "$value": "var(--spacing-4)",
+      "$type": "number"
+    },
+    "title-color": {
+      "$value": "var(--color-text-primary)",
+      "$type": "string"
+    },
+    "title-font-size": {
+      "$value": "var(--text-heading-xs)",
+      "$type": "number"
+    },
+    "title-line-height": {
+      "$value": 20,
+      "$type": "number"
+    },
+    "title-font-weight": {
+      "$value": "var(--font-weight-bold)",
+      "$type": "string"
+    },
+    "description-color": {
+      "$value": "var(--color-text-secondary)",
+      "$type": "string"
+    },
+    "description-font-size": {
+      "$value": "var(--text-sm)",
+      "$type": "number"
+    },
+    "description-line-height": {
+      "$value": "var(--text-sm--line-height)",
+      "$type": "number"
+    },
+    "description-font-weight": {
+      "$value": "var(--font-weight-medium)",
+      "$type": "string"
+    },
+    "close-size": {
+      "$value": 48,
+      "$type": "number"
+    },
+    "close-icon-size": {
+      "$value": 20,
+      "$type": "color"
+    },
+    "close-bg-hover": {
+      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "close-color": {
+      "$value": "var(--color-fg-secondary)",
+      "$type": "string"
+    },
+    "footer-gap": {
+      "$value": "var(--spacing-2)",
+      "$type": "number"
+    },
+    "z": {
+      "$value": "var(--z-modal)",
+      "$type": "string"
+    }
+  }
+}

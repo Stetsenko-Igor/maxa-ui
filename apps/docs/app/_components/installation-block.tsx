@@ -51,10 +51,13 @@ function CodeRow({ label, value }: { label: string; value: string }) {
         {label}
       </span>
       <code
+        className="docs-inline-code-scroll"
         style={{
           minWidth: 0,
           display: "block",
           overflowX: "auto",
+          scrollbarGutter: "stable",
+          paddingBottom: "4px",
           fontFamily: "var(--font-mono)",
           fontSize: "var(--text-sm)",
           color: "var(--color-text-primary)",

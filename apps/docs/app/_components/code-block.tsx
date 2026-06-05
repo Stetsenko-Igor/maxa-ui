@@ -24,11 +24,12 @@ function TokenLines({ tokens }: { tokens: { color?: string; content: string }[][
 const preStyle: React.CSSProperties = {
   border: "1px solid var(--color-border-secondary)",
   borderRadius: "var(--radius-md)",
-  padding: "16px 20px",
+  padding: "20px 24px 24px",
   overflowX: "auto",
+  scrollbarGutter: "stable",
   fontFamily: "var(--font-mono)",
   fontSize: "var(--text-sm)",
-  lineHeight: "20px",
+  lineHeight: "var(--text-md--line-height)",
   margin: 0,
 }
 

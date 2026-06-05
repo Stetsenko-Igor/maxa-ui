@@ -1,0 +1,73 @@
+.maxa-context-menu {
+  position: fixed;
+  z-index: var(--context-menu-z);
+  min-width: var(--context-menu-min-width);
+  max-width: var(--context-menu-max-width);
+  padding-block: var(--context-menu-padding-y);
+  border: 1px solid var(--context-menu-border);
+  border-radius: var(--context-menu-radius);
+  background: var(--context-menu-bg);
+  box-shadow: var(--context-menu-shadow);
+  color: var(--context-menu-item-text);
+  font-family: var(--context-menu-font-family);
+  font-size: var(--context-menu-font-size);
+  line-height: var(--context-menu-line-height);
+  overflow: hidden;
+}
+
+.maxa-context-menu__item {
+  display: flex;
+  min-height: var(--context-menu-item-height);
+  align-items: center;
+  gap: var(--context-menu-item-gap);
+  padding-inline: var(--context-menu-item-padding-x);
+  cursor: default;
+  user-select: none;
+}
+
+.maxa-context-menu__item:hover {
+  background: var(--context-menu-item-bg-hover);
+  color: var(--context-menu-item-text-hover);
+}
+
+.maxa-context-menu__item:focus-visible {
+  background: var(--context-menu-item-bg-hover);
+  color: var(--context-menu-item-text-hover);
+  outline: none;
+}
+
+.maxa-context-menu__item:active {
+  background: var(--context-menu-item-bg-active);
+}
+
+.maxa-context-menu__item[aria-disabled="true"] {
+  color: var(--context-menu-item-text-disabled);
+  pointer-events: none;
+}
+
+.maxa-context-menu__item--destructive {
+  color: var(--context-menu-item-text-destructive);
+}
+
+.maxa-context-menu__label {
+  min-height: var(--context-menu-item-height);
+  display: flex;
+  align-items: center;
+  padding-inline: var(--context-menu-item-padding-x);
+  color: var(--context-menu-label-text);
+  font-size: var(--text-caption-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.maxa-context-menu__separator {
+  height: 1px;
+  margin-block: var(--spacing-1);
+  background: var(--context-menu-separator);
+}
+
+.maxa-context-menu__shortcut {
+  margin-inline-start: auto;
+  color: var(--context-menu-shortcut-text);
+  font-size: var(--text-caption-sm);
+}
