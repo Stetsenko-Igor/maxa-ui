@@ -3,6 +3,30 @@
     "bg": {
       "$value": "var(--color-neutral-950)",
       "$type": "color"
+    },
+    "toolbar": {
+      "height": {
+        "$value": 52,
+        "$type": "number"
+      },
+      "padding-x": {
+        "$value": "var(--spacing-5)",
+        "$type": "string"
+      },
+      "gap": {
+        "$value": "var(--spacing-3)",
+        "$type": "string"
+      }
+    },
+    "sidebar": {
+      "width": {
+        "$value": 215,
+        "$type": "number"
+      },
+      "width-collapsed": {
+        "$value": 48,
+        "$type": "number"
+      }
     }
   }
 }

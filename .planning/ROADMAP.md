@@ -163,8 +163,11 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 04-01: Product pattern inventory and priority map
-- [ ] 04-02: First pattern implementation tranche
+- [x] 04-01: Product pattern inventory and priority map (coverage matrix + naming matrix)
+- [x] 04-02: First pattern tranche — FilterBar, Sidebar, DesignCard, PageHeader (2026-06-08)
+  - Layout tokens: `--toolbar-height/padding-x/gap`, `--sidebar-width/collapsed` (component-nav.css)
+  - Specs: `specs/patterns/filter-bar.md`, `sidebar.md`, `design-card.md`, `page-header.md`
+  - Docs: `apps/docs/app/docs/patterns/filter-bar/`, `sidebar/`, `design-card/`, `page-header/`
 
 #### Phase 5: Figma Code Connect
 **Goal**: Every shipped component and approved product pattern in Figma points to its source file in code via Code Connect.
