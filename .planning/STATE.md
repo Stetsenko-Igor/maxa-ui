@@ -11,8 +11,8 @@ See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 Phase: 3 of 7 (Application UI component layer)
 Plan: Phase 3 stabilization bridge (see `.claude/plans/adaptive-shimmying-pine.md`)
-Status: **35 components + 5 product patterns shipped.** Phase 3 stabilization bridge complete. Phase 4 product patterns complete: FilterBar, Sidebar, DesignCard, PageHeader (+ existing Toolbar Menus). Each pattern has a spec in `specs/patterns/` and a docs page in `apps/docs/app/docs/patterns/`. Accordion/Disclosure remains deferred.
-Last activity: 2026-06-08 — Phase 4 product patterns shipped. Layout tokens added (`--toolbar-height`, `--toolbar-padding-x`, `--toolbar-gap`, `--sidebar-width`, `--sidebar-width-collapsed`) to `component-nav.css` + Figma JSON + bundle rebuilt. Post-stabilization fixes committed (Figma type sanity, CSS corrections for checkbox/radio/multi-select/utility-button). Phase 4 grounded in real MAXA product inventory — no fabricated values.
+Status: **35 components shipped** (all with spec, implementation, docs, tests). Roadmap expanded on 2026-06-04 to include application UI components, MAXA product patterns, Figma Code Connect, v1.0 release prep, and post-core Tailwind adapter work. DropdownMenu, Avatar, the bulk parity pack, Select v2, MultiSelect, Calendar/DatePicker, ContextMenu, Dialog, AlertDialog, SocialButton, UtilityButton, Slider, SegmentedControl, and Table are shipped. Accordion/Disclosure remains deferred.
+Last activity: 2026-06-05 — Stabilization bridge executed. Divider/Separator naming resolved (Divider canonical, Separator a token-aliased compat alias; both have spec + tests). Figma component-token parity **completed** (34 component families synced, stub JSON for divider/separator/nav filled, import bundle rebuilt). Deprecated `--color-bg-elevated` alias removed from semantic + specs. Planning docs synced to the 35-component reality. Remaining: coverage measurement and visual QA sweep.
 
 Progress: [███████░░░] 70%
 

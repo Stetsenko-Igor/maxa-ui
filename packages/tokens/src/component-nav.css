@@ -5,15 +5,4 @@
 
 :root {
   --nav-bg: var(--color-neutral-950);  /* always dark — never overridden in dark mode */
-
-  /* ── Toolbar layout ────────────────────────────────────────────── */
-  /* off-scale px values are permitted here as token definitions;     */
-  /* usage in component/pattern CSS must reference var(--toolbar-*). */
-  --toolbar-height:    52px;
-  --toolbar-padding-x: var(--spacing-5);  /* 20px */
-  --toolbar-gap:       var(--spacing-3);  /* 12px */
-
-  /* ── Sidebar layout ────────────────────────────────────────────── */
-  --sidebar-width:           215px;
-  --sidebar-width-collapsed: 48px;
 }

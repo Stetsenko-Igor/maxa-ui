@@ -62,10 +62,6 @@ const NAV = [
     group: "Patterns",
     items: [
       { href: "/docs/patterns/toolbar-menus", label: "Toolbar Menus" },
-      { href: "/docs/patterns/filter-bar", label: "Filter Bar" },
-      { href: "/docs/patterns/sidebar", label: "Sidebar" },
-      { href: "/docs/patterns/design-card", label: "Design Card" },
-      { href: "/docs/patterns/page-header", label: "Page Header" },
     ],
   },
 ]
