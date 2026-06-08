@@ -3,18 +3,34 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./theme.css": "./src/theme.css",
-    "./primitives.css": "./src/primitives.css",
-    "./semantic.css": "./src/semantic.css",
-    "./dimensions.css": "./src/dimensions.css",
-    "./shadows.css": "./src/shadows.css",
-    "./typography.css": "./src/typography.css",
-    "./themes/maxa.css": "./src/themes/maxa.css"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./primitives.css": "./dist/primitives.css",
+    "./semantic.css": "./dist/semantic.css",
+    "./dimensions.css": "./dist/dimensions.css",
+    "./shadows.css": "./dist/shadows.css",
+    "./typography.css": "./dist/typography.css",
+    "./themes/maxa.css": "./dist/themes/maxa.css"
   },
+  "files": [
+    "dist",
+    "figma",
+    "README.md",
+    "package.json"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "node ../../scripts/clean-package-dist.mjs packages/tokens && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/tokens",
     "figma:bundle": "node ./scripts/build-figma-import-bundle.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",

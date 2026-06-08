@@ -32,6 +32,7 @@ const NAV = [
       { href: "/docs/components/calendar", label: "Calendar" },
       { href: "/docs/components/checkbox", label: "Checkbox" },
       { href: "/docs/components/context-menu", label: "Context Menu" },
+      { href: "/docs/components/datatable", label: "DataTable", isNew: true },
       { href: "/docs/components/date-picker", label: "Date Picker" },
       { href: "/docs/components/dialog", label: "Dialog" },
       { href: "/docs/components/divider", label: "Divider" },
@@ -61,9 +62,7 @@ const NAV = [
   },
   {
     group: "Patterns",
-    items: [
-      { href: "/docs/patterns/toolbar-menus", label: "Toolbar Menus" },
-    ],
+    items: [{ href: "/docs/patterns/toolbar-menus", label: "Toolbar Menus" }],
   },
 ]
 
@@ -121,7 +120,12 @@ export function Sidebar() {
           <div key={section.group} style={{ marginBottom: "20px" }}>
             <p style={groupLabelStyle}>{section.group}</p>
             {section.items.map((item) => (
-              <NavItem key={item.href} href={item.href} label={item.label} isNew={"isNew" in item ? item.isNew : false} />
+              <NavItem
+                key={item.href}
+                href={item.href}
+                label={item.label}
+                isNew={"isNew" in item ? item.isNew : false}
+              />
             ))}
           </div>
         ))}

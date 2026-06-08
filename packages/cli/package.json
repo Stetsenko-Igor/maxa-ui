@@ -3,10 +3,26 @@
   "version": "0.0.0",
   "private": false,
   "type": "module",
-  "bin": { "maxa-ui": "./dist/index.js" },
-  "exports": { ".": "./src/index.ts" },
+  "bin": {
+    "maxa-ui": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
-    "build": "tsc --build",
+    "build": "node ../../scripts/clean-package-dist.mjs packages/cli && tsc --build --force",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run"

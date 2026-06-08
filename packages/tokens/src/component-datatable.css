@@ -1,0 +1,8 @@
+/* DataTable component tokens — Layer 3 */
+/* DataTable builds on the Table primitive. These tokens control the gaps  */
+/* above and below the table within the DataTable wrapper.                 */
+
+:root {
+  --datatable-controls-gap: var(--spacing-3);  /* 12px — between optional controls and table */
+  --datatable-footer-gap:   var(--spacing-3);  /* 12px — between table and pagination */
+}

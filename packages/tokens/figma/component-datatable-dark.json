@@ -1,0 +1,14 @@
+{
+  "DataTable": {
+    "layout": {
+      "controls-gap": {
+        "$value": "var(--spacing-3)",
+        "$type": "string"
+      },
+      "footer-gap": {
+        "$value": "var(--spacing-3)",
+        "$type": "string"
+      }
+    }
+  }
+}

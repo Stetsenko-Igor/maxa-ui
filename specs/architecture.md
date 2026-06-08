@@ -50,6 +50,20 @@ Continue building components in `@maxa/ui` using `@maxa/tokens` as the token sou
 
 Do not create `@maxa/tailwind` yet. Tailwind is currently only used by the docs app as an implementation tool, not as a required public integration.
 
+## Distribution Contract
+
+Packages are prepared for future npm publishing, but publishing is a separate release step.
+
+Expected package shape:
+
+- public package exports point to built `dist` files, not `src`
+- CSS assets are copied into `dist` during package builds
+- `files` allowlists keep published tarballs focused on runtime artifacts
+- CSS files are listed as side effects so bundlers do not tree-shake component styles
+- `@maxa/ui` supports React 18 and 19 peer ranges unless a component explicitly requires a newer React API
+
+Do not publish packages from local WIP. Before any publish attempt, run package builds, package dry-runs, and the full verification pipeline.
+
 ## Practical Component Rule
 
 When creating or changing a component:
@@ -59,4 +73,3 @@ When creating or changing a component:
 3. If a value is component-specific styling, prefer a component token in `@maxa/tokens`.
 4. If a value is pure behavior or layout mechanics, keep it in `@maxa/ui`.
 5. Keep docs examples importing `@maxa/tokens/theme.css` once at the app root.
-

@@ -3,66 +3,42 @@
   "collections": {
     "Breakpoints": {
       "modes": {
-        "Value": [
-          "breakpoints.json"
-        ]
+        "Value": ["breakpoints.json"]
       }
     },
     "Spacing": {
       "modes": {
-        "Value": [
-          "spacing.json"
-        ]
+        "Value": ["spacing.json"]
       }
     },
     "Radius": {
       "modes": {
-        "Value": [
-          "radius.json"
-        ]
+        "Value": ["radius.json"]
       }
     },
     "Primitives": {
       "modes": {
-        "Value": [
-          "primitives.json"
-        ]
+        "Value": ["primitives.json"]
       }
     },
     "Color modes": {
       "modes": {
-        "Light": [
-          "colors-semantic-light.json"
-        ],
-        "Dark": [
-          "colors-semantic-dark.json"
-        ]
+        "Light": ["colors-semantic-light.json"],
+        "Dark": ["colors-semantic-dark.json"]
       }
     },
     "Typography": {
       "modes": {
-        "Desktop": [
-          "typography.json"
-        ],
-        "Tablet": [
-          "typography-tablet.json"
-        ],
-        "Mobile": [
-          "typography-mobile.json"
-        ]
+        "Desktop": ["typography.json"],
+        "Tablet": ["typography-tablet.json"],
+        "Mobile": ["typography-mobile.json"]
       }
     },
     "Layout": {
       "modes": {
-        "Desktop": [
-          "layout-desktop.json"
-        ],
-        "Tablet": [
-          "layout-tablet.json"
-        ],
-        "Mobile": [
-          "layout-mobile.json"
-        ]
+        "Desktop": ["layout-desktop.json"],
+        "Tablet": ["layout-tablet.json"],
+        "Mobile": ["layout-mobile.json"]
       }
     },
     "Component-based": {
@@ -76,6 +52,7 @@
           "component-calendar-light.json",
           "component-checkbox-light.json",
           "component-context-menu-light.json",
+          "component-datatable-light.json",
           "component-date-picker-light.json",
           "component-dialog-light.json",
           "component-divider-light.json",
@@ -113,6 +90,7 @@
           "component-calendar-dark.json",
           "component-checkbox-dark.json",
           "component-context-menu-dark.json",
+          "component-datatable-dark.json",
           "component-date-picker-dark.json",
           "component-dialog-dark.json",
           "component-divider-dark.json",

@@ -1,0 +1,57 @@
+/* DataTable wrapper */
+
+.maxa-datatable {
+  display: flex;
+  flex-direction: column;
+}
+
+.maxa-datatable__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--datatable-footer-gap);
+}
+
+/* Sort button in TableHead */
+.maxa-datatable__sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.maxa-datatable__sort-btn:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+.maxa-datatable__sort-icon {
+  flex-shrink: 0;
+  color: var(--color-fg-tertiary);
+}
+
+.maxa-datatable__sort-icon--active {
+  color: var(--color-fg-primary);
+}
+
+/* Empty state wrapper */
+.maxa-datatable__empty {
+  padding: var(--spacing-10) 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Skeleton cell */
+.maxa-datatable__skeleton-cell {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}

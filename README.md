@@ -152,6 +152,8 @@ The intent is simple: agents should build with the Maxa design system, not inven
 
 MAXA UI is under active development. The foundation, token system, documentation site, and core component set are in place. The project is currently moving from primitive components into higher-level product and data-display patterns.
 
+The packages are structured for future npm distribution, but publishing is a separate release step. Before publishing, run the full verification pipeline and package dry-runs for `@maxa/tokens` and `@maxa/ui`.
+
 ## License
 
 Private Maxa repository unless stated otherwise.
