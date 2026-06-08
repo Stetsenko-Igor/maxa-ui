@@ -101,7 +101,8 @@
           "component-toggle-light.json",
           "component-tooltip-light.json",
           "component-utility-button-light.json",
-          "component-utility-light.json"
+          "component-utility-light.json",
+          "component-toast-light.json"
         ],
         "Dark": [
           "component-alert-dark.json",
@@ -137,7 +138,8 @@
           "component-toggle-dark.json",
           "component-tooltip-dark.json",
           "component-utility-button-dark.json",
-          "component-utility-dark.json"
+          "component-utility-dark.json",
+          "component-toast-dark.json"
         ]
       }
     }

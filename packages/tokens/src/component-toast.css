@@ -1,0 +1,55 @@
+/* Toast component tokens — Layer 3 */
+/* Short-lived viewport notifications. Intents reuse semantic border and  */
+/* foreground colors. Dark mode is handled by semantic.css overrides.     */
+
+:root {
+  --toast-bg:               var(--color-bg-float);
+  --toast-border:           var(--color-border-primary);
+  --toast-radius:           var(--radius-lg);
+  --toast-shadow:           var(--shadow-lg);
+
+  --toast-padding-x:        var(--spacing-4);   /* 16px */
+  --toast-padding-y:        var(--spacing-3);   /* 12px */
+  --toast-gap:              var(--spacing-2);   /* 8px — between icon/stripe and content */
+  --toast-content-gap:      var(--spacing-1);   /* 4px — between title and description */
+  --toast-action-gap:       var(--spacing-3);   /* 12px — between description and action */
+
+  --toast-width:            360px;
+  --toast-z:                var(--z-toast);     /* 1700 */
+
+  --toast-stripe-width:     var(--width-4);     /* 4px accent stripe */
+
+  --toast-title-color:      var(--color-text-primary);
+  --toast-title-size:       var(--text-md);
+  --toast-title-line-height: var(--text-md--line-height);
+  --toast-title-weight:     var(--font-weight-semibold);
+
+  --toast-desc-color:       var(--color-text-secondary);
+  --toast-desc-size:        var(--text-sm);
+  --toast-desc-line-height: var(--text-sm--line-height);
+
+  --toast-close-size:       var(--spacing-6);   /* 24px */
+  --toast-close-icon-size:  10px;              /* ✕ line length */
+  --toast-close-icon-height: 1.5px;           /* ✕ line thickness */
+  --toast-close-color:      var(--color-fg-tertiary);
+
+  /* ── Viewport positioning ────────────────────────────────────────── */
+  --toast-viewport-bottom:  var(--spacing-5);   /* 20px */
+  --toast-viewport-right:   var(--spacing-5);   /* 20px */
+  --toast-viewport-gap:     var(--spacing-2);   /* 8px between stacked toasts */
+  --toast-viewport-width:   360px;
+
+  /* ── Intent stripe colors ───────────────────────────────────────── */
+  --toast-stripe-neutral:   var(--color-border-primary);
+  --toast-stripe-info:      var(--color-border-info-strong);
+  --toast-stripe-success:   var(--color-border-success-strong);
+  --toast-stripe-warning:   var(--color-border-warning-strong);
+  --toast-stripe-error:     var(--color-border-error-strong);
+
+  /* ── Intent icon colors ─────────────────────────────────────────── */
+  --toast-icon-neutral:     var(--color-fg-secondary);
+  --toast-icon-info:        var(--color-fg-info);
+  --toast-icon-success:     var(--color-fg-positive);
+  --toast-icon-warning:     var(--color-fg-warning);
+  --toast-icon-error:       var(--color-fg-negative);
+}

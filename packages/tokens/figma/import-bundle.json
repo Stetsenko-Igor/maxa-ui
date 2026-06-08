@@ -1613,7 +1613,24 @@
           "Utility/bg-rose-muted": "{Colors.Rose.100}",
           "Utility/bg-rose-strong": "{Colors.Rose.700}",
           "Utility/text-rose": "{Colors.Rose.900}",
-          "Utility/fg-rose": "{Utility/text-rose}"
+          "Utility/fg-rose": "{Utility/text-rose}",
+          "Toast/layout/width": 360,
+          "Toast/layout/padding-x": "var(--spacing-4)",
+          "Toast/layout/padding-y": "var(--spacing-3)",
+          "Toast/layout/gap": "var(--spacing-2)",
+          "Toast/layout/stripe-width": 4,
+          "Toast/layout/z": 1700,
+          "Toast/color/bg": "var(--color-bg-float)",
+          "Toast/color/border": "var(--color-border-primary)",
+          "Toast/color/title": "var(--color-text-primary)",
+          "Toast/color/description": "var(--color-text-secondary)",
+          "Toast/color/stripe-neutral": "var(--color-border-primary)",
+          "Toast/color/stripe-info": "var(--color-border-info-strong)",
+          "Toast/color/stripe-success": "var(--color-border-success-strong)",
+          "Toast/color/stripe-warning": "var(--color-border-warning-strong)",
+          "Toast/color/stripe-error": "var(--color-border-error-strong)",
+          "Toast/radius": "var(--radius-lg)",
+          "Toast/shadow": "var(--shadow-lg)"
         },
         "Dark": {
           "Alert/layout/radius": "{Radius/radius-md}",
@@ -2497,7 +2514,24 @@
           "Utility/bg-rose-subtle": "{Colors.Rose.950}",
           "Utility/bg-rose-muted": "{Colors.Rose.900}",
           "Utility/text-rose": "{Colors.Rose.300}",
-          "Utility/fg-rose": "{Utility/text-rose}"
+          "Utility/fg-rose": "{Utility/text-rose}",
+          "Toast/layout/width": 360,
+          "Toast/layout/padding-x": "var(--spacing-4)",
+          "Toast/layout/padding-y": "var(--spacing-3)",
+          "Toast/layout/gap": "var(--spacing-2)",
+          "Toast/layout/stripe-width": 4,
+          "Toast/layout/z": 1700,
+          "Toast/color/bg": "var(--color-bg-float)",
+          "Toast/color/border": "var(--color-border-primary)",
+          "Toast/color/title": "var(--color-text-primary)",
+          "Toast/color/description": "var(--color-text-secondary)",
+          "Toast/color/stripe-neutral": "var(--color-border-primary)",
+          "Toast/color/stripe-info": "var(--color-border-info-strong)",
+          "Toast/color/stripe-success": "var(--color-border-success-strong)",
+          "Toast/color/stripe-warning": "var(--color-border-warning-strong)",
+          "Toast/color/stripe-error": "var(--color-border-error-strong)",
+          "Toast/radius": "var(--radius-lg)",
+          "Toast/shadow": "var(--shadow-lg)"
         }
       }
     }

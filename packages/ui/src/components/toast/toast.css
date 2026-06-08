@@ -1,0 +1,215 @@
+/* Toast component styles */
+
+/* ── Viewport ──────────────────────────────────────────────────────────── */
+
+.maxa-toast__viewport {
+  position: fixed;
+  bottom: var(--toast-viewport-bottom);
+  right:  var(--toast-viewport-right);
+  z-index: var(--toast-z);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--toast-viewport-gap);
+  width: var(--toast-viewport-width);
+  max-height: 100dvh;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+}
+
+/* ── Root ──────────────────────────────────────────────────────────────── */
+
+.maxa-toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--toast-gap);
+  width: var(--toast-width);
+  padding: var(--toast-padding-y) var(--toast-padding-x);
+  background: var(--toast-bg);
+  border: 1px solid var(--toast-border);
+  border-radius: var(--toast-radius);
+  box-shadow: var(--toast-shadow);
+  overflow: hidden;
+  pointer-events: auto;
+  /* Swipe animation */
+  transition: transform 100ms ease, opacity 100ms ease;
+}
+
+/* Left accent stripe via ::before */
+.maxa-toast::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--toast-stripe-width);
+  background: var(--_toast-stripe);
+  border-radius: var(--toast-radius) 0 0 var(--toast-radius);
+}
+
+/* Body content shifted right to account for stripe */
+.maxa-toast__body {
+  flex: 1;
+  padding-left: calc(var(--toast-stripe-width) + var(--toast-gap));
+  display: flex;
+  flex-direction: column;
+  gap: var(--toast-content-gap);
+  min-width: 0;
+}
+
+/* ── Intent variants ───────────────────────────────────────────────────── */
+
+.maxa-toast--neutral { --_toast-stripe: var(--toast-stripe-neutral); }
+.maxa-toast--info    { --_toast-stripe: var(--toast-stripe-info); }
+.maxa-toast--success { --_toast-stripe: var(--toast-stripe-success); }
+.maxa-toast--warning { --_toast-stripe: var(--toast-stripe-warning); }
+.maxa-toast--error   { --_toast-stripe: var(--toast-stripe-error); }
+
+/* ── Title & Description ───────────────────────────────────────────────── */
+
+.maxa-toast__title {
+  font-family: var(--font-body);
+  font-size: var(--toast-title-size);
+  font-weight: var(--toast-title-weight);
+  line-height: var(--toast-title-line-height);
+  color: var(--toast-title-color);
+  margin: 0;
+}
+
+.maxa-toast__description {
+  font-family: var(--font-body);
+  font-size: var(--toast-desc-size);
+  line-height: var(--toast-desc-line-height);
+  color: var(--toast-desc-color);
+  margin: 0;
+}
+
+/* ── Action ────────────────────────────────────────────────────────────── */
+
+.maxa-toast__action {
+  flex-shrink: 0;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--spacing-8);
+  padding-inline: var(--spacing-3);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--duration-base) var(--easing-standard),
+              border-color var(--duration-base) var(--easing-standard);
+}
+
+.maxa-toast__action:hover {
+  background: var(--color-bg-muted);
+}
+
+.maxa-toast__action:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ── Close button ──────────────────────────────────────────────────────── */
+
+.maxa-toast__close {
+  flex-shrink: 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--toast-close-size);
+  height: var(--toast-close-size);
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--toast-close-color);
+  cursor: pointer;
+  padding: 0;
+  transition: color var(--duration-base) var(--easing-standard),
+              background-color var(--duration-base) var(--easing-standard);
+}
+
+.maxa-toast__close:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-muted);
+}
+
+.maxa-toast__close:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+/* ✕ icon via CSS */
+.maxa-toast__close::before,
+.maxa-toast__close::after {
+  content: "";
+  position: absolute;
+  width: var(--toast-close-icon-size);
+  height: var(--toast-close-icon-height);
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.maxa-toast__close {
+  position: relative;
+}
+
+.maxa-toast__close::before { transform: rotate(45deg); }
+.maxa-toast__close::after  { transform: rotate(-45deg); }
+
+/* ── Radix open/close animations ──────────────────────────────────────── */
+
+.maxa-toast[data-state="open"] {
+  animation: toast-slide-in var(--duration-base) var(--easing-standard);
+}
+
+.maxa-toast[data-state="closed"] {
+  animation: toast-fade-out var(--duration-base) var(--easing-standard) forwards;
+}
+
+/* Swipe-to-dismiss */
+.maxa-toast[data-swipe="move"] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+  transition: none;
+}
+
+.maxa-toast[data-swipe="cancel"] {
+  transform: translateX(0);
+}
+
+.maxa-toast[data-swipe="end"] {
+  animation: toast-swipe-out 100ms ease forwards;
+}
+
+@keyframes toast-slide-in {
+  from { transform: translateX(calc(100% + var(--toast-viewport-right))); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; max-height: 0; margin: 0; padding-block: 0; }
+}
+
+@keyframes toast-swipe-out {
+  from { transform: translateX(var(--radix-toast-swipe-end-x)); }
+  to   { transform: translateX(calc(100% + var(--toast-viewport-right))); opacity: 0; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .maxa-toast[data-state="open"],
+  .maxa-toast[data-state="closed"],
+  .maxa-toast[data-swipe="end"] {
+    animation: none;
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "Toast": {
+    "layout": {
+      "width": {
+        "$value": 360,
+        "$type": "number"
+      },
+      "padding-x": {
+        "$value": "var(--spacing-4)",
+        "$type": "string"
+      },
+      "padding-y": {
+        "$value": "var(--spacing-3)",
+        "$type": "string"
+      },
+      "gap": {
+        "$value": "var(--spacing-2)",
+        "$type": "string"
+      },
+      "stripe-width": {
+        "$value": 4,
+        "$type": "number"
+      },
+      "z": {
+        "$value": 1700,
+        "$type": "number"
+      }
+    },
+    "color": {
+      "bg": {
+        "$value": "var(--color-bg-float)",
+        "$type": "color"
+      },
+      "border": {
+        "$value": "var(--color-border-primary)",
+        "$type": "color"
+      },
+      "title": {
+        "$value": "var(--color-text-primary)",
+        "$type": "color"
+      },
+      "description": {
+        "$value": "var(--color-text-secondary)",
+        "$type": "color"
+      },
+      "stripe-neutral": {
+        "$value": "var(--color-border-primary)",
+        "$type": "color"
+      },
+      "stripe-info": {
+        "$value": "var(--color-border-info-strong)",
+        "$type": "color"
+      },
+      "stripe-success": {
+        "$value": "var(--color-border-success-strong)",
+        "$type": "color"
+      },
+      "stripe-warning": {
+        "$value": "var(--color-border-warning-strong)",
+        "$type": "color"
+      },
+      "stripe-error": {
+        "$value": "var(--color-border-error-strong)",
+        "$type": "color"
+      }
+    },
+    "radius": {
+      "$value": "var(--radius-lg)",
+      "$type": "string"
+    },
+    "shadow": {
+      "$value": "var(--shadow-lg)",
+      "$type": "string"
+    }
+  }
+}
