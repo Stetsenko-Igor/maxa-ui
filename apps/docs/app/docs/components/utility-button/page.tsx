@@ -11,6 +11,7 @@ const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
   { href: "#sizes", label: "Sizes" },
+  { href: "#states", label: "States" },
   { href: "#api-reference", label: "API reference" },
 ]
 
@@ -74,6 +75,19 @@ export default function UtilityButtonPage() {
               <UtilityButton size="sm" aria-label="Small grid view" icon={<GridIcon />} />
               <UtilityButton aria-label="Medium grid view" icon={<GridIcon />} />
               <UtilityButton size="lg" aria-label="Large grid view" icon={<GridIcon />} />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
+      <DocsSection id="states" title="States">
+        <DocsExample title="Default, hover, pressed, disabled">
+          <ComponentPreview code={`<UtilityButton aria-label="Default grid view" icon={<GridIcon />} />\n<UtilityButton aria-label="Pressed grid view" icon={<GridIcon />} selected />\n<UtilityButton aria-label="Disabled grid view" icon={<GridIcon />} disabled />`}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", padding: "32px" }}>
+              <UtilityButton aria-label="Default grid view" icon={<GridIcon />} />
+              <UtilityButton aria-label="Pressed grid view" icon={<GridIcon />} selected />
+              <UtilityButton aria-label="Disabled grid view" icon={<GridIcon />} disabled />
+              <UtilityButton aria-label="List view" icon={<ListIcon />} />
             </div>
           </ComponentPreview>
         </DocsExample>

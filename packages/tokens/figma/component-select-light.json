@@ -26,11 +26,11 @@
     },
     "focus-ring-offset": {
       "$value": "var(--input-focus-ring-offset)",
-      "$type": "color"
+      "$type": "number"
     },
     "focus-ring-width": {
       "$value": "var(--input-focus-ring-width)",
-      "$type": "color"
+      "$type": "number"
     },
     "text": {
       "$value": "var(--input-text)",
@@ -82,7 +82,7 @@
     },
     "size-sm-text": {
       "$value": "var(--input-size-sm-text)",
-      "$type": "color"
+      "$type": "number"
     },
     "size-sm-line-height": {
       "$value": "var(--text-sm--line-height)",
@@ -90,7 +90,7 @@
     },
     "icon-sm-size": {
       "$value": "var(--input-icon-sm-size)",
-      "$type": "color"
+      "$type": "number"
     },
     "size-md-height": {
       "$value": "var(--input-size-md-height)",
@@ -110,7 +110,7 @@
     },
     "size-md-text": {
       "$value": "var(--input-size-md-text)",
-      "$type": "color"
+      "$type": "number"
     },
     "size-md-line-height": {
       "$value": "var(--text-sm--line-height)",
@@ -118,7 +118,7 @@
     },
     "icon-md-size": {
       "$value": "var(--input-icon-md-size)",
-      "$type": "color"
+      "$type": "number"
     },
     "size-lg-height": {
       "$value": "var(--input-size-lg-height)",
@@ -138,7 +138,7 @@
     },
     "size-lg-text": {
       "$value": "var(--input-size-lg-text)",
-      "$type": "color"
+      "$type": "number"
     },
     "size-lg-line-height": {
       "$value": "var(--text-md--line-height)",
@@ -146,7 +146,7 @@
     },
     "icon-lg-size": {
       "$value": "var(--input-icon-lg-size)",
-      "$type": "color"
+      "$type": "number"
     },
     "listbox-bg": {
       "$value": "var(--dropdown-menu-bg)",

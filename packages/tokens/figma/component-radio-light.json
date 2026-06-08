@@ -72,7 +72,7 @@
         "$type": "color"
       },
       "border-error": {
-        "$value": "#D31510",
+        "$value": "var(--color-border-error)",
         "$type": "color"
       },
       "border-disabled": {
@@ -84,27 +84,27 @@
         "$type": "color"
       },
       "top-label": {
-        "$value": "#444445",
+        "$value": "var(--color-text-primary)",
         "$type": "color"
       },
       "side-label": {
-        "$value": "#444445",
+        "$value": "var(--color-text-primary)",
         "$type": "color"
       },
       "description": {
-        "$value": "#575758",
+        "$value": "var(--color-text-secondary)",
         "$type": "color"
       },
       "top-label-disabled": {
-        "$value": "#8C8C8E",
+        "$value": "var(--color-text-disabled)",
         "$type": "color"
       },
       "text-disabled": {
-        "$value": "#C2C2C2",
+        "$value": "var(--color-text-disabled)",
         "$type": "color"
       },
       "error": {
-        "$value": "#D31510",
+        "$value": "var(--color-text-error)",
         "$type": "color"
       }
     },

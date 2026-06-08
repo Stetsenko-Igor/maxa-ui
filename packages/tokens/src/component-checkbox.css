@@ -35,7 +35,7 @@
   --checkbox-border-checked-hover: #5e5e5f;
 
   /* ── Colors — error ───────────────────────────────────────────── */
-  --checkbox-border-error:     #d31510;
+  --checkbox-border-error:     var(--color-border-error);
   --checkbox-bg-error-checked: #2d2d2e;
 
   /* ── Colors — disabled ────────────────────────────────────────── */
@@ -46,12 +46,12 @@
 
   /* ── Label / helper ───────────────────────────────────────────── */
   --checkbox-font-family:      var(--font-body);
-  --checkbox-top-label-text:   #444445;
-  --checkbox-top-label-disabled: #8c8c8e;
-  --checkbox-side-label-text:  #444445;
-  --checkbox-description-text: #575758;
-  --checkbox-text-disabled:    #c2c2c2;
-  --checkbox-helper-error:     #d31510;
+  --checkbox-top-label-text:   var(--color-text-primary);
+  --checkbox-top-label-disabled: var(--color-text-disabled);
+  --checkbox-side-label-text:  var(--color-text-primary);
+  --checkbox-description-text: var(--color-text-secondary);
+  --checkbox-text-disabled:    var(--color-text-disabled);
+  --checkbox-helper-error:     var(--color-text-error);
   --checkbox-label-font-size:  var(--text-sm);
   --checkbox-label-line-height: 14px;
   --checkbox-label-font-weight: var(--font-weight-medium);

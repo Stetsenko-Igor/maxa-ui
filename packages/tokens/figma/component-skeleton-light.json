@@ -14,7 +14,7 @@
     },
     "text-height": {
       "$value": 14,
-      "$type": "color"
+      "$type": "number"
     },
     "duration": {
       "$value": "1.4s",

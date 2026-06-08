@@ -97,7 +97,10 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
     React.useEffect(() => {
       if (!open) return
-      setHighlightedValue(currentValue && !selectedOption?.disabled ? currentValue : enabledOptions[0]?.value ?? null)
+      const nextHighlightedValue = currentValue && !selectedOption?.disabled
+        ? currentValue
+        : enabledOptions[0]?.value ?? null
+      setHighlightedValue((current) => current === nextHighlightedValue ? current : nextHighlightedValue)
     }, [currentValue, enabledOptions, open, selectedOption?.disabled])
 
     function commitValue(nextValue: string) {

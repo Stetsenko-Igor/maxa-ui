@@ -8,11 +8,16 @@
   --utility-button-bg: transparent;
   --utility-button-bg-hover: var(--color-action-neutral-subtle-hover);
   --utility-button-bg-active: var(--color-action-neutral-subtle-active);
+  --utility-button-bg-disabled: transparent;
   --utility-button-border: transparent;
+  --utility-button-border-hover: transparent;
   --utility-button-border-active: var(--color-border-secondary);
   --utility-button-text: var(--color-fg-secondary);
   --utility-button-text-hover: var(--color-fg-primary);
+  --utility-button-text-active: var(--color-fg-primary);
+  --utility-button-text-disabled: var(--color-text-disabled);
   --utility-button-icon-sm: 14px;
   --utility-button-icon-md: 16px;
   --utility-button-icon-lg: 20px;
+  --utility-button-disabled-opacity: 1;
 }

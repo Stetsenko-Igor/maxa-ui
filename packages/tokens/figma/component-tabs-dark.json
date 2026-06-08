@@ -42,7 +42,7 @@
     },
     "trigger-border-width": {
       "$value": 1,
-      "$type": "color"
+      "$type": "number"
     },
     "trigger-border-active": {
       "$value": "var(--color-bg-neutral-strong)",

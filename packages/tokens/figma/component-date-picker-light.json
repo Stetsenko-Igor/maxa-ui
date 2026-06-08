@@ -6,7 +6,7 @@
     },
     "popover-z": {
       "$value": "var(--z-popover)",
-      "$type": "string"
+      "$type": "number"
     },
     "range-bg": {
       "$value": "var(--color-bg-float)",
@@ -18,11 +18,11 @@
     },
     "range-radius": {
       "$value": "var(--radius-md)",
-      "$type": "color"
+      "$type": "number"
     },
     "range-shadow": {
       "$value": "var(--shadow-sm)",
-      "$type": "color"
+      "$type": "string"
     },
     "range-divider": {
       "$value": "var(--color-border-secondary)",
@@ -30,11 +30,11 @@
     },
     "range-presets-width": {
       "$value": 176,
-      "$type": "color"
+      "$type": "number"
     },
     "range-content-padding": {
       "$value": "var(--spacing-4)",
-      "$type": "color"
+      "$type": "number"
     },
     "range-footer-bg": {
       "$value": "var(--color-bg-muted)",
@@ -42,15 +42,15 @@
     },
     "range-footer-padding": {
       "$value": "var(--spacing-4)",
-      "$type": "color"
+      "$type": "number"
     },
     "range-footer-gap": {
       "$value": "var(--spacing-3)",
-      "$type": "color"
+      "$type": "number"
     },
     "range-input-width": {
       "$value": 128,
-      "$type": "color"
+      "$type": "number"
     },
     "preset-height": {
       "$value": "var(--spacing-8)",

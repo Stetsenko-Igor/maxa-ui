@@ -34,6 +34,19 @@ describe("Dialog", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
   })
 
+  it("closes with Escape and returns focus to the trigger", () => {
+    render(<DemoDialog />)
+    const trigger = screen.getByText("Open dialog")
+
+    trigger.focus()
+    fireEvent.click(trigger)
+    const dialog = screen.getByRole("dialog", { name: "Share package" })
+    fireEvent.keyDown(dialog, { key: "Escape" })
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(trigger).toHaveFocus()
+  })
+
   it("has no accessibility violations when open", async () => {
     const { container } = render(<DemoDialog />)
     fireEvent.click(screen.getByText("Open dialog"))

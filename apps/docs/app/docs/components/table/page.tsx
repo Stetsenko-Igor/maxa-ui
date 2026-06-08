@@ -121,7 +121,7 @@ export default function TablePage() {
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
           <ComponentPreview code={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead align="right" sort="descending">Total</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive selected>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell><Badge intent="success">Approved</Badge></TableCell>\n      <TableCell align="right">$148.00</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}>
-            <div style={{ width: "100%", padding: "32px" }}>
+            <div className="docs-table-example">
               <ExampleTable />
             </div>
           </ComponentPreview>
@@ -139,7 +139,7 @@ export default function TablePage() {
       <DocsSection id="states" title="States">
         <DocsExample title="Subdued, selected, interactive">
           <ComponentPreview code={`<TableRow interactive>Default</TableRow>\n<TableRow interactive selected>Selected</TableRow>\n<TableRow interactive subdued>Subdued</TableRow>`}>
-            <div style={{ width: "100%", padding: "32px" }}>
+            <div className="docs-table-example">
               <Table density="sm" style={{ minWidth: "360px" }}>
                 <TableHeader>
                   <TableRow>
@@ -170,7 +170,7 @@ export default function TablePage() {
       <DocsSection id="cells" title="Cells">
         <DocsExample title="Composable cell content">
           <ComponentPreview code={`<TableCell><Checkbox aria-label="Select row" /></TableCell>\n<TableCell><Tag>VIP</Tag></TableCell>\n<TableCell><Button size="sm">Open</Button></TableCell>\n<TableCell><Spinner size="sm" label="Loading" /></TableCell>`}>
-            <div style={{ width: "100%", padding: "32px" }}>
+            <div className="docs-table-example">
               <Table density="lg" style={{ minWidth: "420px" }}>
                 <TableHeader>
                   <TableRow>

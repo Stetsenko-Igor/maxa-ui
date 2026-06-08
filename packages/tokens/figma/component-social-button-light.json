@@ -102,19 +102,19 @@
     },
     "icon-size-sm": {
       "$value": 16,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-size": {
       "$value": 18,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-size-lg": {
       "$value": 20,
-      "$type": "color"
+      "$type": "number"
     },
     "disabled-opacity": {
       "$value": "var(--opacity-disabled)",
-      "$type": "color"
+      "$type": "number"
     }
   }
 }

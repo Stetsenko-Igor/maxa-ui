@@ -9,9 +9,11 @@
   background: var(--utility-button-bg);
   color: var(--utility-button-text);
   cursor: pointer;
+  transition: border-color 120ms ease, background 120ms ease, color 120ms ease, box-shadow 120ms ease;
 }
 
 .maxa-utility-button:hover {
+  border-color: var(--utility-button-border-hover);
   background: var(--utility-button-bg-hover);
   color: var(--utility-button-text-hover);
 }
@@ -20,6 +22,23 @@
 .maxa-utility-button[data-selected="true"] {
   border-color: var(--utility-button-border-active);
   background: var(--utility-button-bg-active);
+  color: var(--utility-button-text-active);
+}
+
+.maxa-utility-button:disabled,
+.maxa-utility-button[aria-disabled="true"] {
+  border-color: var(--utility-button-border);
+  background: var(--utility-button-bg-disabled);
+  color: var(--utility-button-text-disabled);
+  cursor: not-allowed;
+  opacity: var(--utility-button-disabled-opacity);
+}
+
+.maxa-utility-button:disabled:hover,
+.maxa-utility-button[aria-disabled="true"]:hover {
+  border-color: var(--utility-button-border);
+  background: var(--utility-button-bg-disabled);
+  color: var(--utility-button-text-disabled);
 }
 
 .maxa-utility-button--sm {

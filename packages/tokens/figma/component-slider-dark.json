@@ -6,11 +6,11 @@
     },
     "track-height": {
       "$value": 6,
-      "$type": "color"
+      "$type": "number"
     },
     "track-radius": {
       "$value": "var(--radius-full)",
-      "$type": "color"
+      "$type": "number"
     },
     "track-bg": {
       "$value": "var(--color-bg-neutral-subtle)",
@@ -22,7 +22,7 @@
     },
     "thumb-size": {
       "$value": 20,
-      "$type": "color"
+      "$type": "number"
     },
     "thumb-bg": {
       "$value": "var(--color-bg-page)",
@@ -34,19 +34,19 @@
     },
     "thumb-border-width": {
       "$value": 2,
-      "$type": "color"
+      "$type": "number"
     },
     "thumb-shadow": {
       "$value": "var(--shadow-sm)",
-      "$type": "color"
+      "$type": "string"
     },
     "thumb-shadow-hover": {
       "$value": "var(--shadow-md)",
-      "$type": "color"
+      "$type": "string"
     },
     "disabled-opacity": {
       "$value": 0.5,
-      "$type": "color"
+      "$type": "number"
     },
     "label-color": {
       "$value": "var(--color-text-primary)",

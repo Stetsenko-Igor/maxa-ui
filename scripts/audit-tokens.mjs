@@ -35,7 +35,7 @@ const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', 'audit-tokens.m
 // is no longer defined (except bg-elevated which is a temporary alias).
 // External consumers should migrate to the new names.
 const LEGACY_BG_NAMES = [
-  // bg-elevated is an intentional 1-release alias — exclude from the check.
+  '--color-bg-elevated',
   '--color-bg-default',
   '--color-bg-primary',
   '--color-bg-secondary',
@@ -53,6 +53,7 @@ const LEGACY_NAME_MIGRATION = {
   '--color-bg-surface-layer1': '--color-bg-surface',
   '--color-bg-surface-layer2': '--color-bg-inset',
   '--color-bg-nav': '--nav-bg (from component-nav.css)',
+  '--color-bg-elevated': '--color-bg-surface',
 };
 
 const SPACING_TOKENS = {
@@ -377,6 +378,62 @@ function scanFigmaAliasResolution() {
   return violations;
 }
 
+function scanFigmaTokenTypeSanity() {
+  const violations = [];
+  const figmaFiles = collectFiles(FIGMA_DIR, ['.json']).filter((file) => {
+    return /\/component-[^/]+-(light|dark)\.json$/.test(file);
+  });
+  const numericValueRe = /^var\(--(spacing|radius|opacity|z|input-size|input-icon|input-focus-ring-(offset|width)|button-size|dropdown-menu-(padding|item-height|item-padding|item-gap|min-width)|multi-select-)/;
+  const stringValueRe = /^var\(--shadow/;
+
+  function visit(value, pathParts, file, content) {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) return;
+
+    if ('$value' in value && '$type' in value) {
+      const tokenPath = pathParts.join('/');
+      const tokenValue = value.$value;
+      const type = value.$type;
+      const line = lineOf(content, `"${pathParts[pathParts.length - 1]}"`);
+
+      let expected;
+      if (typeof tokenValue === 'number' && type === 'color') expected = 'number';
+      else if (typeof tokenValue === 'string') {
+        if (type === 'color' && numericValueRe.test(tokenValue)) expected = 'number';
+        if (type === 'color' && stringValueRe.test(tokenValue)) expected = 'string';
+      }
+
+      if (expected && type !== expected) {
+        violations.push({
+          file: relative(ROOT, file),
+          line,
+          type: 'figma-token-type',
+          value: `${tokenPath} uses $type "${type}" for ${JSON.stringify(tokenValue)}`,
+          hint: `Use $type "${expected}" so Figma imports this token into the correct variable type`,
+        });
+      }
+      return;
+    }
+
+    for (const [childName, childValue] of Object.entries(value)) {
+      visit(childValue, [...pathParts, childName], file, content);
+    }
+  }
+
+  for (const filePath of figmaFiles) {
+    let json;
+    let content;
+    try {
+      content = readFileSync(filePath, 'utf8');
+      json = JSON.parse(content);
+    } catch {
+      continue;
+    }
+    visit(json, [], filePath, content);
+  }
+
+  return violations;
+}
+
 function lineOf(content, needle) {
   const index = content.indexOf(needle);
   if (index === -1) return 0;
@@ -506,6 +563,7 @@ const violations = [
   ...scanCrossLayerDrift(),
   ...scanCssVarResolution(),
   ...scanFigmaAliasResolution(),
+  ...scanFigmaTokenTypeSanity(),
   ...scanFigmaSemanticColorNaming(),
 ];
 

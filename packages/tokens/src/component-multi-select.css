@@ -3,8 +3,8 @@
 :root {
   --multi-select-width: 320px;
   --multi-select-trigger-min-height-sm: 36px;
-  --multi-select-trigger-min-height: 54px;
-  --multi-select-trigger-min-height-lg: 60px;
+  --multi-select-trigger-min-height: 44px;
+  --multi-select-trigger-min-height-lg: 48px;
   --multi-select-trigger-padding-x: var(--spacing-3);
   --multi-select-trigger-padding-y: var(--spacing-2);
   --multi-select-trigger-gap: var(--spacing-2);
@@ -25,13 +25,13 @@
   --multi-select-chip-text: var(--color-text-primary);
   --multi-select-chip-radius: var(--radius-full);
   --multi-select-chip-gap: var(--spacing-1);
-  --multi-select-chip-height: 32px;
-  --multi-select-chip-padding-x: 12px;
+  --multi-select-chip-height: 28px;
+  --multi-select-chip-padding-x: 10px;
   --multi-select-chip-font-size: var(--text-sm);
   --multi-select-chip-font-weight: var(--font-weight-semibold);
   --multi-select-chip-line-height: 14px;
-  --multi-select-chip-remove-size: 16px;
-  --multi-select-chip-remove-icon-size: 10px;
+  --multi-select-chip-remove-size: 18px;
+  --multi-select-chip-remove-icon-size: 12px;
   --multi-select-chip-remove-bg-hover: var(--color-action-neutral-subtle-hover);
   --multi-select-chevron-size: 16px;
   --multi-select-menu-max-height: 240px;

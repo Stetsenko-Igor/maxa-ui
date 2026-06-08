@@ -26,7 +26,7 @@
     },
     "shadow": {
       "$value": "var(--shadow-sm)",
-      "$type": "color"
+      "$type": "string"
     },
     "title-color": {
       "$value": "var(--color-text-primary)",
@@ -94,7 +94,7 @@
     },
     "day-disabled-opacity": {
       "$value": "var(--opacity-disabled)",
-      "$type": "color"
+      "$type": "number"
     },
     "day-bg-current": {
       "$value": "var(--color-bg-surface)",
@@ -118,7 +118,7 @@
     },
     "range-width": {
       "$value": 640,
-      "$type": "color"
+      "$type": "number"
     },
     "range-footer-bg": {
       "$value": "var(--color-bg-muted)",

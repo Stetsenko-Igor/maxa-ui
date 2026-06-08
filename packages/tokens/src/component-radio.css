@@ -31,7 +31,7 @@
   --radio-dot-color-hover:    #04549b;
 
   /* ── Colors — error ───────────────────────────────────────────── */
-  --radio-border-error:       #d31510;
+  --radio-border-error:       var(--color-border-error);
   --radio-bg-error-checked:   transparent;
 
   /* ── Colors — disabled ────────────────────────────────────────── */
@@ -41,12 +41,12 @@
 
   /* ── Label / helper ───────────────────────────────────────────── */
   --radio-font-family:        var(--font-body);
-  --radio-top-label-text:     #444445;
-  --radio-top-label-disabled: #8c8c8e;
-  --radio-side-label-text:    #444445;
-  --radio-description-text:   #575758;
-  --radio-text-disabled:      #c2c2c2;
-  --radio-helper-error:       #d31510;
+  --radio-top-label-text:     var(--color-text-primary);
+  --radio-top-label-disabled: var(--color-text-disabled);
+  --radio-side-label-text:    var(--color-text-primary);
+  --radio-description-text:   var(--color-text-secondary);
+  --radio-text-disabled:      var(--color-text-disabled);
+  --radio-helper-error:       var(--color-text-error);
   --radio-label-font-size:    var(--text-sm);
   --radio-label-line-height:  14px;
   --radio-label-font-weight:  var(--font-weight-medium);

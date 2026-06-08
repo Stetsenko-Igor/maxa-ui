@@ -126,7 +126,7 @@
     },
     "close-icon-size": {
       "$value": 20,
-      "$type": "color"
+      "$type": "number"
     },
     "close-bg-hover": {
       "$value": "var(--color-action-neutral-subtle-hover)",

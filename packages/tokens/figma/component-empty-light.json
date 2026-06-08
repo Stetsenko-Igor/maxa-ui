@@ -18,15 +18,15 @@
     },
     "icon-size-sm": {
       "$value": 32,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-size-md": {
       "$value": 40,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-size-lg": {
       "$value": 48,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-bg": {
       "$value": "var(--color-bg-neutral-subtle)",

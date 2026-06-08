@@ -28,7 +28,15 @@
       "$value": "var(--color-action-neutral-subtle-active)",
       "$type": "color"
     },
+    "bg-disabled": {
+      "$value": "transparent",
+      "$type": "color"
+    },
     "border": {
+      "$value": "transparent",
+      "$type": "color"
+    },
+    "border-hover": {
       "$value": "transparent",
       "$type": "color"
     },
@@ -44,17 +52,29 @@
       "$value": "var(--color-fg-primary)",
       "$type": "color"
     },
+    "text-active": {
+      "$value": "var(--color-fg-primary)",
+      "$type": "color"
+    },
+    "text-disabled": {
+      "$value": "var(--color-text-disabled)",
+      "$type": "color"
+    },
     "icon-sm": {
       "$value": 14,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-md": {
       "$value": 16,
-      "$type": "color"
+      "$type": "number"
     },
     "icon-lg": {
       "$value": 20,
-      "$type": "color"
+      "$type": "number"
+    },
+    "disabled-opacity": {
+      "$value": 1,
+      "$type": "number"
     }
   }
 }

@@ -79,7 +79,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
 
       {/* preview pane */}
       {tab === "preview" && (
-        <div className="component-preview-pane" style={{
+        <div className="component-preview-pane" data-layout={layout} style={{
           padding: layout === "block" ? "32px 40px" : "32px 24px",
           display: "flex",
           flexDirection: layout === "block" ? "column" : "row",

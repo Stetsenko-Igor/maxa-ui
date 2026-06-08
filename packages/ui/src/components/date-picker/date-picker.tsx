@@ -197,9 +197,10 @@ const DateRangePickerField = React.forwardRef<HTMLInputElement, DateRangePickerP
 
     React.useEffect(() => {
       if (!open) return
-      setDraftStart(resolvedStart)
-      setDraftEnd(resolvedEnd)
-      setLeftMonth(getMonthStart(resolvedStart ?? new Date(2025, 4, 1)))
+      const nextLeftMonth = getMonthStart(resolvedStart ?? new Date(2025, 4, 1))
+      setDraftStart((current) => isSameDay(current, resolvedStart) ? current : resolvedStart)
+      setDraftEnd((current) => isSameDay(current, resolvedEnd) ? current : resolvedEnd)
+      setLeftMonth((current) => isSameMonth(current, nextLeftMonth) ? current : nextLeftMonth)
     }, [open, resolvedStart, resolvedEnd])
 
     const rightMonth = new Date(leftMonth.getFullYear(), leftMonth.getMonth() + 1, 1)
@@ -351,6 +352,15 @@ function formatRangeValue(startDate: Date | undefined, endDate: Date | undefined
 
 function isBeforeDay(a: Date, b: Date) {
   return new Date(a.getFullYear(), a.getMonth(), a.getDate()).getTime() < new Date(b.getFullYear(), b.getMonth(), b.getDate()).getTime()
+}
+
+function isSameDay(a: Date | undefined, b: Date | undefined) {
+  if (!a || !b) return a === b
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+}
+
+function isSameMonth(a: Date, b: Date) {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth()
 }
 
 function getMonthStart(date: Date) {
