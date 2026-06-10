@@ -3,16 +3,18 @@
 .maxa-table__container {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--table-border);
-  border-radius: var(--table-radius);
-  background: var(--table-bg);
+  background: transparent;
 }
 
 .maxa-table {
   width: 100%;
   min-width: var(--table-min-width);
-  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid var(--table-border);
+  border-collapse: separate;
   border-spacing: 0;
+  border-radius: var(--table-radius);
+  background: var(--table-bg);
   color: var(--table-text);
   font-family: var(--table-font-family);
   font-size: var(--table-font-size);
@@ -20,13 +22,18 @@
 }
 
 .maxa-table__caption {
-  padding: var(--table-caption-padding-y) var(--table-cell-padding-x);
+  caption-side: top;
+  padding: 0 0 var(--table-caption-padding-y);
   color: var(--table-caption-text);
+  font-size: var(--table-caption-font-size);
+  line-height: var(--table-caption-line-height);
+  font-weight: var(--table-caption-font-weight);
   text-align: left;
 }
 
 .maxa-table__head,
 .maxa-table__cell {
+  box-sizing: border-box;
   height: var(--table-row-height);
   padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
   border-bottom: 1px solid var(--table-border);
@@ -36,6 +43,8 @@
 }
 
 .maxa-table__head {
+  height: var(--table-header-height);
+  padding: var(--table-header-padding-y) var(--table-header-padding-x);
   background: var(--table-header-bg);
   color: var(--table-header-text);
   font-size: var(--table-header-font-size);
@@ -49,12 +58,18 @@
   justify-content: inherit;
   gap: var(--table-head-gap);
   min-width: 0;
+  color: var(--table-header-text);
+  font-size: var(--table-header-font-size);
+  line-height: var(--table-header-line-height);
+  font-weight: var(--table-header-font-weight);
 }
 
 .maxa-table__head-label {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: inherit;
+  font: inherit;
 }
 
 .maxa-table__sort-icon {
@@ -72,6 +87,161 @@
   background: var(--table-cell-bg);
   color: var(--table-cell-text);
   font-weight: var(--table-cell-font-weight);
+}
+
+.maxa-table__head[data-header-type="checkbox"],
+.maxa-table__cell[data-cell-type="checkbox"] {
+  width: var(--table-checkbox-cell-width);
+  min-width: var(--table-checkbox-cell-width);
+  max-width: var(--table-checkbox-cell-width);
+  text-align: center;
+}
+
+.maxa-table__head[data-header-type="checkbox"] .maxa-checkbox,
+.maxa-table__cell[data-cell-type="checkbox"] .maxa-checkbox {
+  width: var(--table-checkbox-control-size);
+  height: var(--table-checkbox-control-size);
+  display: inline-grid;
+  place-items: center;
+  vertical-align: middle;
+}
+
+.maxa-table__head[data-header-type="checkbox"] .maxa-checkbox__row,
+.maxa-table__cell[data-cell-type="checkbox"] .maxa-checkbox__row,
+.maxa-table__head[data-header-type="checkbox"] .maxa-checkbox__control,
+.maxa-table__cell[data-cell-type="checkbox"] .maxa-checkbox__control {
+  width: var(--table-checkbox-control-size);
+  height: var(--table-checkbox-control-size);
+  display: inline-grid;
+  place-items: center;
+}
+
+.maxa-table__head[data-header-type="checkbox"] .maxa-checkbox__box,
+.maxa-table__cell[data-cell-type="checkbox"] .maxa-checkbox__box {
+  flex: 0 0 var(--table-checkbox-control-size);
+}
+
+.maxa-table__head[data-header-type="empty"] {
+  color: transparent;
+}
+
+.maxa-table__head[data-header-type="numeric"],
+.maxa-table__cell[data-cell-type="numeric"] {
+  text-align: right;
+}
+
+.maxa-table__cell[data-cell-type="checkbox"],
+.maxa-table__cell[data-cell-type="button"],
+.maxa-table__cell[data-cell-type="icon-button"],
+.maxa-table__cell[data-cell-type="icon"],
+.maxa-table__cell[data-cell-type="avatar"],
+.maxa-table__cell[data-cell-type="thumbnail"],
+.maxa-table__cell[data-cell-type="input"],
+.maxa-table__cell[data-cell-type="input-field"],
+.maxa-table__cell[data-cell-type="loader"] {
+  white-space: nowrap;
+}
+
+.maxa-table__cell[data-cell-type="numeric"] {
+  font-weight: var(--table-cell-numeric-font-weight);
+}
+
+.maxa-table__cell[data-cell-type="link"] {
+  color: var(--table-cell-link-text);
+  font-weight: var(--table-cell-link-font-weight);
+}
+
+.maxa-table__cell[data-cell-type="thumbnail"],
+.maxa-table__cell[data-cell-type="icon"],
+.maxa-table__cell[data-cell-type="avatar"] {
+  min-width: 0;
+}
+
+.maxa-table__cell[data-cell-type="loader"] {
+  color: var(--table-loader-bg);
+}
+
+.maxa-table__cell[data-cell-size="sm"] {
+  height: var(--table-row-height-sm);
+  padding-block: var(--table-cell-padding-y-sm);
+}
+
+.maxa-table__cell[data-cell-size="lg"] {
+  height: var(--table-row-height-lg);
+  padding-block: var(--table-cell-padding-y-lg);
+}
+
+.maxa-table__cell-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--table-cell-content-gap);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.maxa-table__cell-stack {
+  display: inline-flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--table-cell-stack-gap);
+}
+
+.maxa-table__cell-title,
+.maxa-table__cell-subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maxa-table__cell-title {
+  color: var(--table-cell-text);
+  font-weight: var(--table-cell-title-font-weight);
+}
+
+.maxa-table__cell-subtitle {
+  color: var(--table-cell-subtitle-text);
+  font-size: var(--table-cell-subtitle-font-size);
+  line-height: var(--table-cell-subtitle-line-height);
+  font-weight: var(--table-cell-subtitle-font-weight);
+}
+
+.maxa-table__cell-icon {
+  display: inline-flex;
+  width: var(--table-cell-icon-size);
+  height: var(--table-cell-icon-size);
+  align-items: center;
+  justify-content: center;
+  color: var(--table-cell-text);
+  vertical-align: middle;
+}
+
+.maxa-table__cell-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.maxa-table__thumbnail {
+  width: var(--table-thumbnail-size);
+  height: var(--table-thumbnail-size);
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: var(--table-thumbnail-radius);
+  background:
+    linear-gradient(135deg, var(--table-thumbnail-accent) 0 34%, transparent 34%),
+    linear-gradient(315deg, var(--table-thumbnail-muted) 0 42%, transparent 42%),
+    var(--table-thumbnail-bg);
+  object-fit: cover;
+}
+
+.maxa-table__loader {
+  display: block;
+  width: 100%;
+  min-width: var(--table-loader-min-width);
+  height: var(--table-loader-height);
+  border-radius: var(--table-loader-radius);
+  background: var(--table-loader-bg);
 }
 
 .maxa-table__row:last-child > .maxa-table__cell {
@@ -127,4 +297,3 @@
   --table-row-height: var(--table-row-height-lg);
   --table-cell-padding-y: var(--table-cell-padding-y-lg);
 }
-

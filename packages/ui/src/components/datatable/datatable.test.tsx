@@ -6,16 +6,16 @@ import { DataTable, type ColumnDef } from "./datatable"
 type Row = { id: string; name: string; status: string; date: string }
 
 const COLUMNS: ColumnDef<Row>[] = [
-  { key: "name",   header: "Name",   sortable: true },
+  { key: "name", header: "Name", sortable: true },
   { key: "status", header: "Status" },
-  { key: "date",   header: "Date",   sortable: true },
+  { key: "date", header: "Date", sortable: true, align: "right", cellType: "numeric" },
 ]
 
 const DATA: Row[] = [
-  { id: "1", name: "Branding Kit", status: "Active",  date: "2025-06-01" },
-  { id: "2", name: "Annual Report",status: "Draft",   date: "2025-03-15" },
-  { id: "3", name: "Social Pack",  status: "Active",  date: "2025-07-20" },
-  { id: "4", name: "Ad Campaign",  status: "Archived",date: "2025-01-10" },
+  { id: "1", name: "Branding Kit", status: "Active", date: "2025-06-01" },
+  { id: "2", name: "Annual Report", status: "Draft", date: "2025-03-15" },
+  { id: "3", name: "Social Pack", status: "Active", date: "2025-07-20" },
+  { id: "4", name: "Ad Campaign", status: "Archived", date: "2025-01-10" },
 ]
 
 const ROW_ID = (row: Row) => row.id
@@ -46,6 +46,7 @@ describe("DataTable", () => {
   it("renders skeleton rows when loading", () => {
     render(<DataTable columns={COLUMNS} data={[]} loading />)
     expect(document.querySelector(".maxa-skeleton")).toBeInTheDocument()
+    expect(document.querySelector(".maxa-skeleton--rect")).not.toBeInTheDocument()
     expect(screen.queryByText("No results")).not.toBeInTheDocument()
   })
 
@@ -73,7 +74,7 @@ describe("DataTable", () => {
         rowId={ROW_ID}
         selectable
         onSelectionChange={onChange}
-      />
+      />,
     )
     const checkboxes = screen.getAllByRole("checkbox")
     // first checkbox is select-all, second is first row
@@ -87,9 +88,31 @@ describe("DataTable", () => {
     expect(screen.getByText("2")).toBeInTheDocument() // page 2 link
   })
 
+  it("maps column and row semantic variants to table primitives", () => {
+    render(
+      <DataTable
+        columns={COLUMNS}
+        data={DATA}
+        rowId={ROW_ID}
+        rowSubdued={(row) => row.status === "Archived"}
+      />,
+    )
+
+    const dateHeader = screen.getByRole("columnheader", { name: /date/i })
+    expect(dateHeader).toHaveAttribute("data-align", "right")
+    expect(dateHeader).toHaveAttribute("data-header-type", "sort")
+
+    const archivedRow = screen.getByRole("cell", { name: "Ad Campaign" }).closest("tr")
+    expect(archivedRow).toHaveAttribute("data-subdued")
+
+    const dateCell = screen.getByRole("cell", { name: "2025-01-10" })
+    expect(dateCell).toHaveAttribute("data-cell-type", "numeric")
+    expect(dateCell).toHaveAttribute("data-align", "right")
+  })
+
   it("has no accessibility violations", async () => {
     const { container } = render(
-      <DataTable columns={COLUMNS} data={DATA} rowId={ROW_ID} caption="Test designs" />
+      <DataTable columns={COLUMNS} data={DATA} rowId={ROW_ID} caption="Test designs" />,
     )
     expect(await axe(container)).toHaveNoViolations()
   })

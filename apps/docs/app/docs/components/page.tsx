@@ -628,7 +628,7 @@ export default function ComponentsPage() {
             </p>
             <div style={{ ...preview, flexDirection: "column" }}>
               <SocialButton provider="google" />
-              <SocialButton provider="apple" />
+              <SocialButton provider="linkedin" />
             </div>
             <span style={footer}>View Social Button →</span>
           </Link>

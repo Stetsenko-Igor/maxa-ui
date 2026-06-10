@@ -4,6 +4,12 @@
 
 DataTable is a higher-level data display component built on top of the `Table` primitive. It adds client-side sorting, optional row selection, optional pagination, loading states, and empty states. Use it when data is known at render time and fits on-page.
 
+The visual model follows the existing Figma table system:
+
+- `Index Header Cell`: empty, heading, sort, numeric, checkbox
+- `Index Cell`: checkbox, text, numeric text, thumbnail/preview, badge, link, button, icon button, icon, avatar, input field, loader
+- `Table Row`: default, subdued, hover, selected, and combined selected/subdued states
+
 **Component package:** `@maxa/ui` -> `DataTable`
 **Token source:** `packages/tokens/src/component-datatable.css`
 **Pattern:** `"use client"` function component (generic `DataTable<T>`)
@@ -26,29 +32,33 @@ DataTable is a higher-level data display component built on top of the `Table` p
 
 ## Props
 
-| Prop                | Type                      | Default                        | Description                            |
-| ------------------- | ------------------------- | ------------------------------ | -------------------------------------- |
-| `columns`           | `ColumnDef<T>[]`          | —                              | Column definitions                     |
-| `data`              | `T[]`                     | —                              | Row data array                         |
-| `caption`           | `string`                  | —                              | Accessible table caption               |
-| `density`           | `"sm" \| "md" \| "lg"`    | `"md"`                         | Row density                            |
-| `defaultSort`       | `{ key, direction }`      | —                              | Initial sort state                     |
-| `selectable`        | `boolean`                 | `false`                        | Adds checkbox column for row selection |
-| `onSelectionChange` | `(ids: string[]) => void` | —                              | Called when selection changes          |
-| `rowId`             | `(row, index) => string`  | index-based                    | Row identity function                  |
-| `pageSize`          | `number`                  | —                              | Enables client-side pagination         |
-| `loading`           | `boolean`                 | `false`                        | Shows skeleton rows                    |
-| `emptyState`        | `ReactNode`               | `<Empty title="No results" />` | Rendered when data is empty            |
+| Prop                | Type                      | Default                        | Description                                 |
+| ------------------- | ------------------------- | ------------------------------ | ------------------------------------------- |
+| `columns`           | `ColumnDef<T>[]`          | —                              | Column definitions                          |
+| `data`              | `T[]`                     | —                              | Row data array                              |
+| `caption`           | `string`                  | —                              | Accessible table caption                    |
+| `density`           | `"sm" \| "md" \| "lg"`    | `"md"`                         | Row density                                 |
+| `defaultSort`       | `{ key, direction }`      | —                              | Initial sort state                          |
+| `selectable`        | `boolean`                 | `false`                        | Adds checkbox column for row selection      |
+| `onSelectionChange` | `(ids: string[]) => void` | —                              | Called when selection changes               |
+| `rowSubdued`        | `(row, index) => boolean` | —                              | Marks secondary rows with subdued row state |
+| `rowId`             | `(row, index) => string`  | index-based                    | Row identity function                       |
+| `pageSize`          | `number`                  | —                              | Enables client-side pagination              |
+| `loading`           | `boolean`                 | `false`                        | Shows skeleton rows                         |
+| `emptyState`        | `ReactNode`               | `<Empty title="No results" />` | Rendered when data is empty                 |
 
 ### `ColumnDef<T>`
 
-| Field      | Type                        | Description                       |
-| ---------- | --------------------------- | --------------------------------- |
-| `key`      | `string`                    | Field key on the row object       |
-| `header`   | `ReactNode`                 | Column header label               |
-| `cell`     | `(row, index) => ReactNode` | Optional custom cell renderer     |
-| `sortable` | `boolean`                   | Enables header sort click         |
-| `width`    | `string`                    | CSS column width (e.g. `"120px"`) |
+| Field        | Type                            | Description                                               |
+| ------------ | ------------------------------- | --------------------------------------------------------- |
+| `key`        | `string`                        | Field key on the row object                               |
+| `header`     | `ReactNode`                     | Column header label                                       |
+| `align`      | `"left" \| "center" \| "right"` | Column alignment; numeric columns should be right aligned |
+| `cell`       | `(row, index) => ReactNode`     | Optional custom cell renderer                             |
+| `cellType`   | `TableCellType`                 | Maps content to the table cell semantic variant           |
+| `headerType` | `TableHeaderType`               | Overrides derived header semantic variant                 |
+| `sortable`   | `boolean`                       | Enables header sort click                                 |
+| `width`      | `string`                        | CSS column width (e.g. `"120px"`)                         |
 
 ---
 
@@ -56,9 +66,11 @@ DataTable is a higher-level data display component built on top of the `Table` p
 
 - **Sort** — click a sortable `TableHead` toggles ascending → descending → ascending. One column at a time.
 - **Select** — checkbox column prepended when `selectable`. Select-all in header is `indeterminate` when partial selection. `onSelectionChange` receives an array of row IDs.
+- **Rows** — data rows are interactive by default and may be marked `subdued` through `rowSubdued`.
+- **Row actions** — action columns use `cellType: "icon-button"` and the same small ghost `IconButton` treatment as Table examples. Prefer direct Edit and Copy buttons followed by a More menu button when the row has multiple secondary actions.
 - **Pagination** — when `pageSize` is set, only the current page slice renders. `Pagination` component renders below the table.
 - **Loading** — 5 skeleton rows with Skeleton cells instead of data rows. Table header remains visible.
-- **Empty** — rendered below the table header when `data.length === 0` and `loading` is false.
+- **Empty** — when `data.length === 0` and `loading` is false, render the standalone `Empty` surface instead of an empty table header/shell.
 
 ---
 
@@ -69,7 +81,7 @@ DataTable is a higher-level data display component built on top of the `Table` p
 --datatable-footer-gap: var(--spacing-3); /* 12px */
 ```
 
-All other visual values come from `--table-*` tokens (inherited via Table primitive).
+All other visual values come from `--table-*` tokens (inherited via Table primitive), including header height, cell padding, row heights, content gaps, thumbnail size, and loader bars.
 
 ---
 

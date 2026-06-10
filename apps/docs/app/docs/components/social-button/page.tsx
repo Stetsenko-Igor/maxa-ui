@@ -17,12 +17,32 @@ const TOC = [
 ]
 
 const PROPS = [
-  { name: "provider", type: "'apple' | 'facebook' | 'google'", default: undefined, description: "Provider visual preset." },
+  {
+    name: "provider",
+    type: "'apple' | 'facebook' | 'github' | 'google' | 'instagram' | 'linkedin' | 'pinterest' | 'reddit' | 'telegram' | 'tiktok' | 'twitter' | 'whatsapp' | 'x' | 'youtube'",
+    default: undefined,
+    description: "Provider visual preset.",
+  },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Button size." },
   { name: "fullWidth", type: "boolean", default: "false", description: "Expands the button to the width of its container." },
   { name: "icon", type: "React.ReactNode", default: "provider icon", description: "Optional custom provider icon." },
-  { name: "label", type: "string", default: "'Continue with …'", description: "Accessible label text when children are not provided." },
+  { name: "label", type: "string", default: "'Sign in with …'", description: "Accessible label text when children are not provided." },
 ]
+
+const ADDITIONAL_PROVIDERS = [
+  "apple",
+  "facebook",
+  "github",
+  "instagram",
+  "pinterest",
+  "reddit",
+  "telegram",
+  "tiktok",
+  "twitter",
+  "whatsapp",
+  "x",
+  "youtube",
+] as const
 
 export default function SocialButtonPage() {
   return (
@@ -33,7 +53,7 @@ export default function SocialButtonPage() {
       markdown=""
       previous={{ href: "/docs/components/slider", label: "Slider" }}
       next={{ href: "/docs/components/spinner", label: "Spinner" }}
-      lead="Provider sign-in button for authentication and account-linking surfaces. Uses real provider icons, button sizing, and tokenized states."
+      lead="Provider sign-in button for authentication and account-linking surfaces. Uses color provider icons, bordered surfaces, shadow, and tokenized states."
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
@@ -54,12 +74,20 @@ export default function SocialButtonPage() {
       </DocsSection>
 
       <DocsSection id="providers" title="Providers">
-        <DocsExample title="Apple, Facebook, Google">
-          <ComponentPreview code={`<SocialButton provider="apple" />\n<SocialButton provider="facebook" />\n<SocialButton provider="google" />`}>
+        <DocsExample title="Google and LinkedIn">
+          <ComponentPreview code={`<SocialButton provider="google" />\n<SocialButton provider="linkedin" />`}>
             <div style={{ display: "grid", gap: "12px", width: "320px", padding: "32px" }}>
-              <SocialButton provider="apple" />
-              <SocialButton provider="facebook" />
               <SocialButton provider="google" />
+              <SocialButton provider="linkedin" />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+        <DocsExample title="Additional provider presets">
+          <ComponentPreview code={`<SocialButton provider="apple" />\n<SocialButton provider="facebook" />\n<SocialButton provider="instagram" />\n<SocialButton provider="youtube" />`}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "12px", padding: "32px" }}>
+              {ADDITIONAL_PROVIDERS.map((provider) => (
+                <SocialButton key={provider} provider={provider} />
+              ))}
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -79,10 +107,10 @@ export default function SocialButtonPage() {
 
       <DocsSection id="states" title="States">
         <DocsExample title="Full width and disabled">
-          <ComponentPreview code={`<SocialButton provider="facebook" fullWidth />\n<SocialButton provider="apple" disabled fullWidth />`}>
+          <ComponentPreview code={`<SocialButton provider="linkedin" fullWidth />\n<SocialButton provider="google" disabled fullWidth />`}>
             <div style={{ display: "grid", gap: "12px", width: "360px", maxWidth: "100%", padding: "32px" }}>
-              <SocialButton provider="facebook" fullWidth />
-              <SocialButton provider="apple" disabled fullWidth />
+              <SocialButton provider="linkedin" fullWidth />
+              <SocialButton provider="google" disabled fullWidth />
             </div>
           </ComponentPreview>
         </DocsExample>

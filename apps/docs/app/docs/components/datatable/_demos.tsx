@@ -1,10 +1,23 @@
 "use client"
 
-import { Badge, DataTable, type ColumnDef } from "@maxa/ui"
+import {
+  Badge,
+  Button,
+  DataTable,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  IconButton,
+  Empty,
+  type ColumnDef,
+} from "@maxa/ui"
 
 type DesignRow = {
   id: string
   design: string
+  format: string
   owner: string
   status: "Approved" | "Review" | "Draft" | "Archived"
   due: string
@@ -15,6 +28,7 @@ const DATA: DesignRow[] = [
   {
     id: "1",
     design: "Lunch & Learn postcard",
+    format: "Direct mail",
     owner: "Igor Stetsenko",
     status: "Approved",
     due: "Jun 12, 2026",
@@ -23,6 +37,7 @@ const DATA: DesignRow[] = [
   {
     id: "2",
     design: "Market report flyer",
+    format: "Flyer",
     owner: "Ava Wilson",
     status: "Review",
     due: "Jun 18, 2026",
@@ -31,6 +46,7 @@ const DATA: DesignRow[] = [
   {
     id: "3",
     design: "Open house social post",
+    format: "Social post",
     owner: "Mia Chen",
     status: "Draft",
     due: "Jun 22, 2026",
@@ -39,6 +55,7 @@ const DATA: DesignRow[] = [
   {
     id: "4",
     design: "Listing presentation",
+    format: "Presentation",
     owner: "James Wu",
     status: "Approved",
     due: "Jun 24, 2026",
@@ -47,6 +64,7 @@ const DATA: DesignRow[] = [
   {
     id: "5",
     design: "Direct mail campaign",
+    format: "Campaign",
     owner: "Nora Lee",
     status: "Archived",
     due: "May 30, 2026",
@@ -55,6 +73,7 @@ const DATA: DesignRow[] = [
   {
     id: "6",
     design: "Seller guide brochure",
+    format: "Brochure",
     owner: "Mia Chen",
     status: "Review",
     due: "Jul 01, 2026",
@@ -63,6 +82,7 @@ const DATA: DesignRow[] = [
   {
     id: "7",
     design: "Neighborhood postcard",
+    format: "Direct mail",
     owner: "Ava Wilson",
     status: "Draft",
     due: "Jul 04, 2026",
@@ -71,6 +91,7 @@ const DATA: DesignRow[] = [
   {
     id: "8",
     design: "Brand refresh kit",
+    format: "Brand kit",
     owner: "Igor Stetsenko",
     status: "Approved",
     due: "Jul 09, 2026",
@@ -91,23 +112,130 @@ function StatusBadge({ status }: { status: DesignRow["status"] }) {
   return <Badge intent={intent}>{status}</Badge>
 }
 
+function DotsIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M3.5 8a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Z"
+      />
+    </svg>
+  )
+}
+
+function EditIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M11.8 2.2a1.5 1.5 0 0 1 2.12 2.12l-7.5 7.5-2.83.71.71-2.83 7.5-7.5Zm-.88 2.12L5.24 10l-.24.95.95-.24 5.68-5.68-.71-.71Z"
+      />
+      <path fill="currentColor" d="M3 13h10v1H3v-1Z" />
+    </svg>
+  )
+}
+
+function CopyIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M5 2.5A1.5 1.5 0 0 1 6.5 1h6A1.5 1.5 0 0 1 14 2.5v6A1.5 1.5 0 0 1 12.5 10h-1V8.5h1v-6h-6v1H5v-1Z"
+      />
+      <path
+        fill="currentColor"
+        d="M2 6.5A1.5 1.5 0 0 1 3.5 5h6A1.5 1.5 0 0 1 11 6.5v6A1.5 1.5 0 0 1 9.5 14h-6A1.5 1.5 0 0 1 2 12.5v-6Zm1.5 0v6h6v-6h-6Z"
+      />
+    </svg>
+  )
+}
+
+function AudienceIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.75"
+        d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm6.5-5.5h5m-5 4h5m-5 4h5M3.5 19a5.5 5.5 0 0 1 11 0"
+      />
+    </svg>
+  )
+}
+
+function PreviewCell({ row }: { row: DesignRow }) {
+  return (
+    <span className="maxa-table__cell-content">
+      <span className="maxa-table__thumbnail" aria-hidden="true" />
+      <span className="maxa-table__cell-stack">
+        <span className="maxa-table__cell-title">{row.design}</span>
+        <span className="maxa-table__cell-subtitle">{row.format}</span>
+      </span>
+    </span>
+  )
+}
+
+function RowActions() {
+  return (
+    <span className="docs-row-actions">
+      <IconButton aria-label="Edit design" icon={<EditIcon />} size="sm" variant="ghost" />
+      <IconButton aria-label="Copy design" icon={<CopyIcon />} size="sm" variant="ghost" />
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <IconButton aria-label="Open row actions" icon={<DotsIcon />} size="sm" variant="ghost" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem>Open design</DropdownMenuItem>
+          <DropdownMenuItem>Edit design</DropdownMenuItem>
+          <DropdownMenuItem>Copy design</DropdownMenuItem>
+          <DropdownMenuItem>Share</DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem variant="destructive">Archive</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </span>
+  )
+}
+
 const COLUMNS: ColumnDef<DesignRow>[] = [
-  { key: "design", header: "Design", sortable: true, width: "240px" },
-  { key: "owner", header: "Owner", sortable: true, width: "180px" },
+  {
+    key: "design",
+    header: "Design",
+    sortable: true,
+    cellType: "thumbnail",
+    cell: (row) => <PreviewCell row={row} />,
+  },
   {
     key: "status",
     header: "Status",
     cell: (row) => <StatusBadge status={row.status} />,
-    width: "130px",
+    cellType: "badge",
+    width: "120px",
   },
-  { key: "due", header: "Due", sortable: true, width: "140px" },
-  { key: "total", header: "Total", sortable: true, width: "120px" },
+  {
+    key: "total",
+    header: "Total",
+    sortable: true,
+    align: "right",
+    cellType: "numeric",
+    width: "96px",
+  },
+  {
+    key: "actions",
+    header: "",
+    headerType: "empty",
+    cellType: "icon-button",
+    align: "right",
+    cell: () => <RowActions />,
+    width: "112px",
+  },
 ]
 
 const ROW_ID = (row: DesignRow) => row.id
-
 function DemoFrame({ children }: { children: React.ReactNode }) {
-  return <div style={{ width: "100%", maxWidth: "860px", overflowX: "auto" }}>{children}</div>
+  return <div className="docs-datatable-demo">{children}</div>
 }
 
 export function DefaultDataTableDemo() {
@@ -117,6 +245,7 @@ export function DefaultDataTableDemo() {
         columns={COLUMNS}
         data={DATA.slice(0, 4)}
         rowId={ROW_ID}
+        selectable
         caption="Recent design orders"
       />
     </DemoFrame>
@@ -130,7 +259,7 @@ export function SortableDataTableDemo() {
         columns={COLUMNS}
         data={DATA.slice(0, 5)}
         rowId={ROW_ID}
-        defaultSort={{ key: "due", direction: "ascending" }}
+        defaultSort={{ key: "design", direction: "ascending" }}
         caption="Sortable design orders"
       />
     </DemoFrame>
@@ -165,6 +294,55 @@ export function PaginationDataTableDemo() {
   )
 }
 
+export function CellTypesDataTableDemo() {
+  return (
+    <DemoFrame>
+      <DataTable
+        columns={[
+          {
+            key: "design",
+            header: "Thumbnail",
+            cellType: "thumbnail",
+            cell: (row) => <PreviewCell row={row} />,
+            width: "280px",
+          },
+          {
+            key: "status",
+            header: "Badge",
+            cellType: "badge",
+            cell: (row) => <StatusBadge status={row.status} />,
+            width: "130px",
+          },
+          {
+            key: "open",
+            header: "Button",
+            cellType: "button",
+            cell: () => (
+              <Button size="xs" variant="primary">
+                Open
+              </Button>
+            ),
+            width: "96px",
+          },
+          {
+            key: "actions",
+            header: "",
+            headerType: "empty",
+            cellType: "icon-button",
+            align: "right",
+            cell: () => <RowActions />,
+            width: "112px",
+          },
+        ]}
+        data={DATA.slice(0, 2)}
+        rowId={ROW_ID}
+        caption="Table cell types"
+        density="lg"
+      />
+    </DemoFrame>
+  )
+}
+
 export function LoadingDataTableDemo() {
   return (
     <DemoFrame>
@@ -176,7 +354,22 @@ export function LoadingDataTableDemo() {
 export function EmptyDataTableDemo() {
   return (
     <DemoFrame>
-      <DataTable columns={COLUMNS} data={[]} caption="Empty design orders" />
+      <DataTable
+        columns={COLUMNS}
+        data={[]}
+        emptyState={
+          <Empty
+            icon={<AudienceIcon />}
+            title="You Don't Have Any Mailing List Yet"
+            description="Create a new mailing list to unlock MAXA Direct Mail full potential."
+            action={
+              <Button size="sm" variant="outline">
+                Create Mailing List
+              </Button>
+            }
+          />
+        }
+      />
     </DemoFrame>
   )
 }

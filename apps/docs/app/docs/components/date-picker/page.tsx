@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { DatePicker, DateRangePicker } from "@maxa/ui"
+import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
@@ -8,9 +8,9 @@ import { PropsTable } from "../../../_components/props-table"
 export const metadata: Metadata = { title: "Date Picker - MAXA UI" }
 
 const stack: React.CSSProperties = { display: "flex", flexDirection: "column", gap: "16px", width: "360px" }
-
 const TOC = [
   { href: "#preview", label: "Preview" },
+  { href: "#single-day-variants", label: "Single day variants" },
   { href: "#installation", label: "Installation" },
   { href: "#states", label: "States" },
   { href: "#api-reference", label: "API reference" },
@@ -25,25 +25,32 @@ const DATE_PICKER_PROPS = [
   { name: "visualState", type: "'default' | 'hover' | 'focus' | 'error' | 'disabled'", default: "'default'", description: "Controlled visual state for docs and examples." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the date field." },
   { name: "selectedDate", type: "Date", default: undefined, description: "Selected date passed to the calendar popover." },
+  { name: "defaultCalendarMonth", type: "Date", default: undefined, description: "Initial visible month for an open single-date calendar." },
+  { name: "calendarCurrentDate", type: "Date", default: "today", description: "Date marked as current inside the single-date calendar." },
   { name: "onDateSelect", type: "(date: Date) => void", default: undefined, description: "Called when a date is selected from the calendar." },
+  { name: "quickSelect", type: "'inline' | 'more'", default: undefined, description: "Shows single-day quick presets above the calendar." },
+  { name: "confirmSelection", type: "boolean", default: "false", description: "Adds Cancel and Apply actions on a muted footer." },
+  { name: "timePicker", type: "boolean", default: "false", description: "Adds a time field below the single-day calendar." },
+  { name: "defaultTime", type: "string", default: "'8:00 am'", description: "Initial time value for the time picker variant." },
   { name: "startDate / endDate", type: "Date", default: undefined, description: "Selected range dates for DateRangePicker." },
   { name: "onRangeApply", type: "(range) => void", default: undefined, description: "Called when the range dropdown Apply button is pressed." },
+  { name: "quarter / year", type: "number", default: undefined, description: "Selected quarter and year for QuarterPicker." },
+  { name: "onQuarterSelect", type: "(selection) => void", default: undefined, description: "Called when a quarter is selected." },
 ]
 
 const DATE_PICKER_MARKDOWN = `# Date Picker
 
-Separate date form components for single-date and range-date entry. DatePicker includes a single-month calendar popover; DateRangePicker includes a two-month range popover with presets and footer actions.
+Separate date form components for single-date, range-date, and quarter entry. DatePicker includes a single-month calendar popover; DateRangePicker includes a two-month range popover with presets and footer actions; QuarterPicker includes quarter and year selection.
 
 ## Installation
 
 \`\`\`tsx
-import { DatePicker, DateRangePicker } from "@maxa/ui"
+import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"
 import "@maxa/tokens/theme.css"
 \`\`\`
 `
 
 const GITHUB_DATE_PICKER_URL = "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/date-picker"
-
 export default function DatePickerPage() {
   return (
     <ComponentPage
@@ -62,15 +69,33 @@ export default function DatePickerPage() {
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Single date and range">
           <ComponentPreview
-            code={`import { DatePicker, DateRangePicker } from "@maxa/ui"\n\n<DatePicker label="Date Picker" defaultValue="5/9/2025" />\n<DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />`}
+            code={`import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"\n\n<DatePicker label="Date Picker" defaultValue="5/9/2025" />\n<DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />\n<QuarterPicker label="Quarter Picker" defaultValue="Q1/2025" />`}
           >
             <div style={stack}>
               <DatePicker label="Date Picker" defaultValue="5/9/2025" />
               <DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />
+              <QuarterPicker label="Quarter Picker" defaultValue="Q1/2025" />
             </div>
           </ComponentPreview>
         </DocsExample>
       </section>
+
+      <DocsSection
+        id="single-day-variants"
+        title="Single day variants"
+        description="Single-day picker variants from the layout reference: predefined quick list with confirmation and single-day time selection."
+      >
+        <DocsExample title="Date Picker Variants">
+          <ComponentPreview
+            code={`<DatePicker label="Predefined List & Confirmation" defaultValue="12/10/2026" quickSelect="more" confirmSelection />\n<DatePicker label="Single Day w Time Picker" defaultValue="12/10/2026" timePicker confirmSelection />`}
+          >
+            <div style={stack}>
+              <DatePicker label="Predefined List & Confirmation" defaultValue="12/10/2026" quickSelect="more" confirmSelection />
+              <DatePicker label="Single Day w Time Picker" defaultValue="12/10/2026" timePicker confirmSelection />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
 
       <DocsSection
         id="installation"
@@ -79,12 +104,12 @@ export default function DatePickerPage() {
       >
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
-          imports={`import { DatePicker, DateRangePicker } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
+          imports={`import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
           usage={`<DatePicker label="Date Picker" />`}
         />
       </DocsSection>
 
-      <DocsSection id="states" title="States" description="Single-date fields open the shared Calendar primitive. Range fields open the two-month range dropdown from the layout reference.">
+      <DocsSection id="states" title="States" description="Single-date fields open the shared Calendar primitive. Range fields open the two-month range dropdown from the layout reference. Quarter fields open the quarter and year picker.">
         <DocsExample title="Validation and disabled states">
           <ComponentPreview code={`<DatePicker label="Default" />
 <DatePicker label="Focus" visualState="focus" defaultValue="5/9/2025" />

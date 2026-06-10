@@ -3,6 +3,15 @@
 /* above and below the table within the DataTable wrapper.                 */
 
 :root {
-  --datatable-controls-gap: var(--spacing-3);  /* 12px — between optional controls and table */
-  --datatable-footer-gap:   var(--spacing-3);  /* 12px — between table and pagination */
+  --datatable-controls-gap: var(--spacing-3); /* 12px — between optional controls and table */
+  --datatable-footer-gap: var(--spacing-3); /* 12px — between table and pagination */
+  --datatable-skeleton-line-height: 16px;
+  --datatable-skeleton-line-width: 120px;
+  --datatable-skeleton-title-width: 180px;
+  --datatable-skeleton-subtitle-width: 96px;
+  --datatable-skeleton-subtitle-height: 10px;
+  --datatable-skeleton-avatar-size: 32px;
+  --datatable-skeleton-badge-width: 72px;
+  --datatable-skeleton-badge-height: 24px;
+  --datatable-skeleton-action-size: 28px;
 }

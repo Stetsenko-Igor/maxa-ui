@@ -19,13 +19,17 @@ function BasicTable() {
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
-          <TableHead align="right" sort="ascending">Price</TableHead>
+          <TableHead align="right" headerType="numeric" sort="ascending">
+            Price
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow selected interactive>
           <TableCell>Postcard</TableCell>
-          <TableCell align="right">$48.00</TableCell>
+          <TableCell align="right" cellType="numeric" cellSize="lg">
+            $48.00
+          </TableCell>
         </TableRow>
       </TableBody>
       <TableFooter>
@@ -57,7 +61,60 @@ describe("Table", () => {
     render(<BasicTable />)
     const head = screen.getByRole("columnheader", { name: /price/i })
     expect(head).toHaveAttribute("data-align", "right")
+    expect(head).toHaveAttribute("data-header-type", "numeric")
     expect(head).toHaveAttribute("aria-sort", "ascending")
+  })
+
+  it("applies cell semantic variants", () => {
+    render(<BasicTable />)
+    const cell = screen.getAllByRole("cell", { name: "$48.00" })[0]
+    expect(cell).toHaveAttribute("data-cell-type", "numeric")
+    expect(cell).toHaveAttribute("data-cell-size", "lg")
+  })
+
+  it("supports Figma cell type aliases", () => {
+    render(
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell cellType="tag">Tag</TableCell>
+            <TableCell cellType="input-field">Input field</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>,
+    )
+
+    expect(screen.getByRole("cell", { name: "Tag" })).toHaveAttribute("data-cell-type", "tag")
+    expect(screen.getByRole("cell", { name: "Input field" })).toHaveAttribute(
+      "data-cell-type",
+      "input-field",
+    )
+  })
+
+  it("applies checkbox header and cell semantics", () => {
+    render(
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead headerType="checkbox">Select</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell cellType="checkbox">Control</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>,
+    )
+
+    expect(screen.getByRole("columnheader", { name: "Select" })).toHaveAttribute(
+      "data-header-type",
+      "checkbox",
+    )
+    expect(screen.getByRole("cell", { name: "Control" })).toHaveAttribute(
+      "data-cell-type",
+      "checkbox",
+    )
   })
 
   it("applies density class", () => {
@@ -67,7 +124,13 @@ describe("Table", () => {
 
   it("forwards ref to the table element", () => {
     let node: HTMLTableElement | null = null
-    render(<Table ref={(el) => { node = el }} />)
+    render(
+      <Table
+        ref={(el) => {
+          node = el
+        }}
+      />,
+    )
     expect(node?.tagName).toBe("TABLE")
   })
 
@@ -76,4 +139,3 @@ describe("Table", () => {
     expect(await axe(container)).toHaveNoViolations()
   })
 })
-

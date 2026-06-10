@@ -1,15 +1,19 @@
 {
   "Social Button": {
     "min-width": {
-      "$value": 220,
+      "$value": 198,
+      "$type": "number"
+    },
+    "linkedin-min-width": {
+      "$value": 209,
       "$type": "number"
     },
     "height-sm": {
-      "$value": "var(--button-size-sm-height)",
+      "$value": 32,
       "$type": "number"
     },
     "height": {
-      "$value": "var(--button-size-md-height)",
+      "$value": 40,
       "$type": "number"
     },
     "height-lg": {
@@ -41,7 +45,7 @@
       "$type": "number"
     },
     "radius": {
-      "$value": "var(--button-size-md-radius)",
+      "$value": "var(--radius-md)",
       "$type": "number"
     },
     "border": {
@@ -56,21 +60,37 @@
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
+    "border-focus": {
+      "$value": "#c7e5f0",
+      "$type": "color"
+    },
     "bg": {
-      "$value": "var(--color-bg-surface)",
+      "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "bg-hover": {
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "bg-active": {
-      "$value": "var(--color-action-neutral-subtle-active)",
+      "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "text": {
       "$value": "var(--color-text-primary)",
       "$type": "color"
+    },
+    "shadow": {
+      "$value": "var(--shadow-sm)",
+      "$type": "shadow"
+    },
+    "shadow-hover": {
+      "$value": "var(--shadow-sm)",
+      "$type": "shadow"
+    },
+    "shadow-focus": {
+      "$value": "0 0 0 3px var(--social-button-border-focus)",
+      "$type": "shadow"
     },
     "font-size-sm": {
       "$value": "var(--button-size-sm-text)",
@@ -105,7 +125,7 @@
       "$type": "number"
     },
     "icon-size": {
-      "$value": 18,
+      "$value": 16,
       "$type": "number"
     },
     "icon-size-lg": {

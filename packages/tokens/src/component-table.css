@@ -11,17 +11,22 @@
   --table-line-height: var(--text-sm--line-height);
 
   --table-header-bg: var(--color-bg-muted);
-  --table-header-text: var(--color-text-tertiary);
-  --table-header-font-size: var(--text-caption-sm);
-  --table-header-line-height: var(--text-caption-sm--line-height);
+  --table-header-text: var(--color-text-primary);
+  --table-header-font-size: var(--text-sm);
+  --table-header-line-height: var(--text-sm--line-height);
   --table-header-font-weight: var(--font-weight-semibold);
+  --table-header-height: 40px;
+  --table-header-padding-x: var(--spacing-3);
+  --table-header-padding-y: var(--spacing-2);
   --table-head-gap: var(--spacing-1);
   --table-sort-icon: var(--color-fg-tertiary);
   --table-sort-icon-size: 14px;
   --table-sort-icon-font-size: var(--text-caption-sm);
+  --table-checkbox-cell-width: 44px;
+  --table-checkbox-control-size: 20px;
 
   --table-row-height-sm: 40px;
-  --table-row-height: 48px;
+  --table-row-height: 40px;
   --table-row-height-lg: 64px;
   --table-row-bg-hover: var(--color-action-neutral-subtle-hover);
   --table-row-bg-selected: var(--color-action-primary-subtle);
@@ -31,17 +36,40 @@
   --table-cell-bg: var(--color-bg-surface);
   --table-cell-text: var(--color-text-primary);
   --table-cell-font-weight: var(--font-weight-medium);
-  --table-cell-padding-x: var(--spacing-4);
+  --table-cell-title-font-weight: var(--font-weight-semibold);
+  --table-cell-subtitle-text: var(--color-text-tertiary);
+  --table-cell-subtitle-font-size: var(--text-caption-sm);
+  --table-cell-subtitle-line-height: var(--text-caption-sm--line-height);
+  --table-cell-subtitle-font-weight: var(--font-weight-regular);
+  --table-cell-numeric-font-weight: var(--font-weight-medium);
+  --table-cell-link-text: var(--color-action-primary);
+  --table-cell-link-font-weight: var(--font-weight-semibold);
+  --table-cell-content-gap: var(--spacing-2);
+  --table-cell-icon-size: 20px;
+  --table-cell-stack-gap: var(--spacing-1);
+  --table-cell-padding-x: var(--spacing-3);
   --table-cell-padding-y-sm: var(--spacing-2);
-  --table-cell-padding-y: var(--spacing-3);
+  --table-cell-padding-y: var(--spacing-2);
   --table-cell-padding-y-lg: var(--spacing-4);
+  --table-thumbnail-size: 40px;
+  --table-thumbnail-radius: var(--radius-sm);
+  --table-thumbnail-bg: var(--color-bg-muted);
+  --table-thumbnail-accent: var(--color-action-primary-subtle);
+  --table-thumbnail-muted: var(--color-bg-surface);
+  --table-loader-height: 16px;
+  --table-loader-min-width: 96px;
+  --table-loader-radius: var(--radius-sm);
+  --table-loader-bg: var(--color-bg-neutral-subtle);
 
   --table-footer-bg: var(--color-bg-muted);
   --table-footer-text: var(--color-text-primary);
   --table-footer-font-weight: var(--font-weight-semibold);
 
-  --table-caption-text: var(--color-text-secondary);
-  --table-caption-padding-y: var(--spacing-3);
+  --table-caption-text: var(--color-text-tertiary);
+  --table-caption-font-size: var(--text-caption-sm);
+  --table-caption-line-height: var(--text-caption-sm--line-height);
+  --table-caption-font-weight: var(--font-weight-medium);
+  --table-caption-padding-y: var(--spacing-1);
 }
 
 [data-theme="dark"] {
@@ -50,4 +78,3 @@
   --table-row-bg-selected: var(--color-action-primary-subtle);
   --table-row-bg-selected-hover: var(--color-action-primary-subtle-hover);
 }
-

@@ -4,6 +4,23 @@ import "./table.css"
 export type TableDensity = "sm" | "md" | "lg"
 export type TableAlign = "left" | "center" | "right"
 export type TableSortDirection = "ascending" | "descending" | "none"
+export type TableHeaderType = "empty" | "heading" | "sort" | "numeric" | "checkbox"
+export type TableCellType =
+  | "checkbox"
+  | "text"
+  | "numeric"
+  | "thumbnail"
+  | "badge"
+  | "tag"
+  | "link"
+  | "button"
+  | "icon-button"
+  | "icon"
+  | "avatar"
+  | "input"
+  | "input-field"
+  | "loader"
+export type TableCellSize = "sm" | "lg"
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
   density?: TableDensity
@@ -22,25 +39,40 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
 )
 Table.displayName = "Table"
 
-const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, ...props }, ref) => (
-    <thead ref={ref} className={["maxa-table__header", className].filter(Boolean).join(" ")} {...props} />
-  ),
-)
+const TableHeader = React.forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, ...props }, ref) => (
+  <thead
+    ref={ref}
+    className={["maxa-table__header", className].filter(Boolean).join(" ")}
+    {...props}
+  />
+))
 TableHeader.displayName = "TableHeader"
 
-const TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, ...props }, ref) => (
-    <tbody ref={ref} className={["maxa-table__body", className].filter(Boolean).join(" ")} {...props} />
-  ),
-)
+const TableBody = React.forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, ...props }, ref) => (
+  <tbody
+    ref={ref}
+    className={["maxa-table__body", className].filter(Boolean).join(" ")}
+    {...props}
+  />
+))
 TableBody.displayName = "TableBody"
 
-const TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, ...props }, ref) => (
-    <tfoot ref={ref} className={["maxa-table__footer", className].filter(Boolean).join(" ")} {...props} />
-  ),
-)
+const TableFooter = React.forwardRef<
+  HTMLTableSectionElement,
+  React.HTMLAttributes<HTMLTableSectionElement>
+>(({ className, ...props }, ref) => (
+  <tfoot
+    ref={ref}
+    className={["maxa-table__footer", className].filter(Boolean).join(" ")}
+    {...props}
+  />
+))
 TableFooter.displayName = "TableFooter"
 
 export interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
@@ -65,18 +97,25 @@ TableRow.displayName = "TableRow"
 
 export interface TableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign
+  headerType?: TableHeaderType
   sort?: TableSortDirection
 }
 
 const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
-  ({ className, align = "left", sort, children, "aria-sort": ariaSort, ...props }, ref) => {
+  (
+    { className, align = "left", headerType, sort, children, "aria-sort": ariaSort, ...props },
+    ref,
+  ) => {
     const sortValue = sort && sort !== "none" ? sort : undefined
+    const resolvedHeaderType =
+      headerType ?? (sort ? "sort" : align === "right" ? "numeric" : "heading")
 
     return (
       <th
         ref={ref}
         className={["maxa-table__head", className].filter(Boolean).join(" ")}
         data-align={align}
+        data-header-type={resolvedHeaderType}
         data-sort={sortValue}
         aria-sort={sortValue ?? ariaSort}
         {...props}
@@ -97,35 +136,34 @@ TableHead.displayName = "TableHead"
 
 export interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
   align?: TableAlign
+  cellSize?: TableCellSize
+  cellType?: TableCellType
 }
 
 const TableCell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
-  ({ className, align = "left", ...props }, ref) => (
+  ({ className, align = "left", cellSize, cellType = "text", ...props }, ref) => (
     <td
       ref={ref}
       className={["maxa-table__cell", className].filter(Boolean).join(" ")}
       data-align={align}
+      data-cell-size={cellSize}
+      data-cell-type={cellType}
       {...props}
     />
   ),
 )
 TableCell.displayName = "TableCell"
 
-const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(
-  ({ className, ...props }, ref) => (
-    <caption ref={ref} className={["maxa-table__caption", className].filter(Boolean).join(" ")} {...props} />
-  ),
-)
+const TableCaption = React.forwardRef<
+  HTMLTableCaptionElement,
+  React.HTMLAttributes<HTMLTableCaptionElement>
+>(({ className, ...props }, ref) => (
+  <caption
+    ref={ref}
+    className={["maxa-table__caption", className].filter(Boolean).join(" ")}
+    {...props}
+  />
+))
 TableCaption.displayName = "TableCaption"
 
-export {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
-  TableHead,
-  TableHeader,
-  TableRow,
-}
-
+export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow }

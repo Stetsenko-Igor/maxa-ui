@@ -9,6 +9,7 @@
   border: 1px solid var(--social-button-border);
   border-radius: var(--social-button-radius);
   background: var(--social-button-bg);
+  box-shadow: var(--social-button-shadow);
   color: var(--social-button-text);
   font-family: var(--font-body);
   font-size: var(--social-button-font-size);
@@ -18,12 +19,14 @@
   transition:
     background-color var(--motion-duration-fast) var(--motion-ease-standard),
     border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-standard),
     color var(--motion-duration-fast) var(--motion-ease-standard);
 }
 
 .maxa-social-button:hover {
   background: var(--social-button-bg-hover);
   border-color: var(--social-button-border-hover);
+  box-shadow: var(--social-button-shadow-hover);
 }
 
 .maxa-social-button:active {
@@ -32,8 +35,9 @@
 }
 
 .maxa-social-button:focus-visible {
-  outline: 2px solid var(--color-border-focus);
-  outline-offset: 2px;
+  border-color: var(--social-button-border-focus);
+  outline: none;
+  box-shadow: var(--social-button-shadow-focus);
 }
 
 .maxa-social-button:disabled,
@@ -49,12 +53,24 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  overflow: visible;
 }
 
-.maxa-social-button__icon svg {
+.maxa-social-button__glyph {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.maxa-social-button__glyph svg {
   display: block;
   width: 100%;
   height: 100%;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
 .maxa-social-button__label {
@@ -84,4 +100,8 @@
 
 .maxa-social-button--full-width {
   width: 100%;
+}
+
+.maxa-social-button--linkedin {
+  min-width: var(--social-button-linkedin-min-width);
 }

@@ -31,49 +31,63 @@ Do not add a generic `Row` component that accepts an object, columns, or render 
 The MAXA Figma table reference separates:
 
 - Header cells: empty, heading, sortable, numeric, checkbox.
-- Body cells: checkbox, text, numeric text, thumbnail, tag, link, button, icon button, icon, avatar, input field, loader.
+- Body cells: checkbox, text, numeric text, thumbnail / preview, tag / badge, link, button, icon button, icon, avatar, input field, loader.
 - Rows: subdued, selected, hover, and combinations of those states.
 
 The code maps this to semantic parts:
 
-- Header cell variants map to `TableHead` with `align` and `sort`.
-- Body cell variants map to `TableCell` composition with existing components.
+- Header cell variants map to `TableHead` with `headerType`, `align`, and `sort`.
+- Body cell variants map to `TableCell` with `cellType`, `cellSize`, and composition with existing components.
 - Row states map to `TableRow` props: `selected`, `subdued`, `interactive`.
+
+## Product Row Pattern
+
+Most MAXA product tables are selectable lists. Default table examples should include a leading checkbox header/cell and selected rows should pair `TableRow selected` with a checked checkbox.
+
+Row actions should be consistent across Table and DataTable examples:
+
+- Use `TableCell cellType="icon-button"` for the action cell.
+- Use the same small ghost `IconButton` treatment for row actions.
+- Show direct Edit and Copy actions before the More actions button when space allows.
+- Do not mix `UtilityButton`, custom three-dot SVG sizing, and `IconButton` in row action cells.
 
 ## API
 
 ### Table
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `density` | `"sm" \| "md" \| "lg"` | `"md"` | Controls row height and vertical padding. |
+| Prop      | Type                   | Default | Description                               |
+| --------- | ---------------------- | ------- | ----------------------------------------- |
+| `density` | `"sm" \| "md" \| "lg"` | `"md"`  | Controls row height and vertical padding. |
 
 Extends `React.TableHTMLAttributes<HTMLTableElement>`.
 
 ### TableRow
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `selected` | `boolean` | `false` | Applies selected row background. |
-| `subdued` | `boolean` | `false` | Applies subdued row background. |
+| Prop          | Type      | Default | Description                             |
+| ------------- | --------- | ------- | --------------------------------------- |
+| `selected`    | `boolean` | `false` | Applies selected row background.        |
+| `subdued`     | `boolean` | `false` | Applies subdued row background.         |
 | `interactive` | `boolean` | `false` | Enables hover state for clickable rows. |
 
 Extends `React.HTMLAttributes<HTMLTableRowElement>`.
 
 ### TableHead
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `align` | `"left" \| "center" \| "right"` | `"left"` | Aligns header content. |
-| `sort` | `"ascending" \| "descending" \| "none"` | `undefined` | Displays sort indicator and sets `aria-sort`. |
+| Prop         | Type                                                        | Default     | Description                                                |
+| ------------ | ----------------------------------------------------------- | ----------- | ---------------------------------------------------------- |
+| `align`      | `"left" \| "center" \| "right"`                             | `"left"`    | Aligns header content.                                     |
+| `headerType` | `"empty" \| "heading" \| "sort" \| "numeric" \| "checkbox"` | derived     | Maps the header to the Figma header-cell semantic variant. |
+| `sort`       | `"ascending" \| "descending" \| "none"`                     | `undefined` | Displays sort indicator and sets `aria-sort`.              |
 
 Extends `React.ThHTMLAttributes<HTMLTableCellElement>`.
 
 ### TableCell
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| `align` | `"left" \| "center" \| "right"` | `"left"` | Aligns cell content. |
+| Prop       | Type                                                                                                                                              | Default  | Description                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------- |
+| `align`    | `"left" \| "center" \| "right"`                                                                                                                   | `"left"` | Aligns cell content.                                          |
+| `cellType` | `"checkbox" \| "text" \| "numeric" \| "thumbnail" \| "badge" \| "tag" \| "link" \| "button" \| "icon-button" \| "icon" \| "avatar" \| "input" \| "input-field" \| "loader"` | `"text"` | Maps the cell to the Figma body-cell semantic variant. `tag` and `input-field` are Figma-name aliases for the existing badge/tag and input compositions. |
+| `cellSize` | `"sm" \| "lg"`                                                                                                                                    | density  | Overrides a specific cell to the Figma small or large height. |
 
 Extends `React.TdHTMLAttributes<HTMLTableCellElement>`.
 
@@ -90,7 +104,9 @@ Extends `React.TdHTMLAttributes<HTMLTableCellElement>`.
 - Uses component tokens only.
 - Container owns border, radius, background, and horizontal overflow.
 - Rows own selected/subdued/interactive states.
-- Cells own alignment and padding.
+- Caption renders as a small muted table label above the bordered table.
+- Header cells use semibold table-heading typography, not regular body text.
+- Cells own alignment, padding, content type hooks, small/large height overrides, thumbnail helper, icon helper, text stack helper, input-field composition, and loader helper.
 
 ## Future DataTable
 
@@ -102,4 +118,3 @@ Extends `React.TdHTMLAttributes<HTMLTableCellElement>`.
 - Row selection state.
 - Empty/loading states.
 - Column visibility and density controls.
-

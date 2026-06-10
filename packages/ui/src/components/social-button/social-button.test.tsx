@@ -4,8 +4,8 @@ import { SocialButton } from "./social-button"
 
 describe("SocialButton", () => {
   it("renders the default provider label", () => {
-    render(<SocialButton provider="facebook" />)
-    expect(screen.getByRole("button", { name: "Continue with Facebook" })).toBeInTheDocument()
+    render(<SocialButton provider="linkedin" />)
+    expect(screen.getByRole("button", { name: "Sign in with LinkedIn" })).toBeInTheDocument()
   })
 
   it("renders a custom label", () => {
@@ -13,8 +13,13 @@ describe("SocialButton", () => {
     expect(screen.getByRole("button", { name: "Sign in with Google" })).toBeInTheDocument()
   })
 
+  it("supports additional provider presets", () => {
+    render(<SocialButton provider="youtube" />)
+    expect(screen.getByRole("button", { name: "Sign in with YouTube" })).toBeInTheDocument()
+  })
+
   it("applies size and full-width classes", () => {
-    render(<SocialButton provider="apple" size="lg" fullWidth />)
+    render(<SocialButton provider="google" size="lg" fullWidth />)
     expect(screen.getByRole("button")).toHaveClass("maxa-social-button--lg")
     expect(screen.getByRole("button")).toHaveClass("maxa-social-button--full-width")
   })

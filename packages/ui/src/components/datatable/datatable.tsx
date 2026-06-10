@@ -1,10 +1,7 @@
 "use client"
 
 import * as React from "react"
-import {
-  Checkbox,
-  type CheckedState,
-} from "../checkbox"
+import { Checkbox, type CheckedState } from "../checkbox"
 import { Empty } from "../empty"
 import {
   Pagination,
@@ -20,6 +17,9 @@ import {
   TableBody,
   TableCaption,
   TableCell,
+  type TableAlign,
+  type TableCellType,
+  type TableHeaderType,
   TableHead,
   TableHeader,
   TableRow,
@@ -31,7 +31,10 @@ export type SortDirection = "ascending" | "descending"
 export type ColumnDef<T extends Record<string, unknown>> = {
   key: string
   header: React.ReactNode
+  align?: TableAlign
   cell?: (row: T, index: number) => React.ReactNode
+  cellType?: TableCellType
+  headerType?: TableHeaderType
   sortable?: boolean
   width?: string
 }
@@ -44,6 +47,7 @@ export interface DataTableProps<T extends Record<string, unknown>> {
   defaultSort?: { key: string; direction: SortDirection }
   selectable?: boolean
   onSelectionChange?: (ids: string[]) => void
+  rowSubdued?: (row: T, index: number) => boolean
   rowId?: (row: T, index: number) => string
   pageSize?: number
   loading?: boolean
@@ -55,7 +59,14 @@ const SKELETON_ROWS = 5
 
 function SortUpIcon() {
   return (
-    <svg className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <svg
+      className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active"
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
       <path d="M6 2L10 8H2L6 2Z" fill="currentColor" />
     </svg>
   )
@@ -63,7 +74,14 @@ function SortUpIcon() {
 
 function SortDownIcon() {
   return (
-    <svg className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <svg
+      className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active"
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
       <path d="M6 10L2 4H10L6 10Z" fill="currentColor" />
     </svg>
   )
@@ -71,11 +89,70 @@ function SortDownIcon() {
 
 function SortBothIcon() {
   return (
-    <svg className="maxa-datatable__sort-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <svg
+      className="maxa-datatable__sort-icon"
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
       <path d="M6 1L9 5H3L6 1Z" fill="currentColor" />
       <path d="M6 11L3 7H9L6 11Z" fill="currentColor" />
     </svg>
   )
+}
+
+function LoadingCell({ cellType }: { cellType?: TableCellType }) {
+  if (cellType === "checkbox") {
+    return <Skeleton variant="text" className="maxa-datatable__skeleton-control" />
+  }
+
+  if (cellType === "thumbnail") {
+    return (
+      <span className="maxa-table__cell-content">
+        <Skeleton variant="text" className="maxa-datatable__skeleton-thumbnail" />
+        <span className="maxa-table__cell-stack">
+          <Skeleton
+            variant="text"
+            className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--title"
+          />
+          <Skeleton
+            variant="text"
+            className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--subtitle"
+          />
+        </span>
+      </span>
+    )
+  }
+
+  if (cellType === "avatar") {
+    return (
+      <span className="maxa-table__cell-content">
+        <Skeleton variant="circle" className="maxa-datatable__skeleton-avatar" />
+        <Skeleton
+          variant="text"
+          className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--title"
+        />
+      </span>
+    )
+  }
+
+  if (cellType === "badge") {
+    return <Skeleton variant="text" className="maxa-datatable__skeleton-badge" />
+  }
+
+  if (cellType === "icon-button") {
+    return (
+      <span className="maxa-datatable__skeleton-actions">
+        <Skeleton variant="text" className="maxa-datatable__skeleton-action" />
+        <Skeleton variant="text" className="maxa-datatable__skeleton-action" />
+        <Skeleton variant="text" className="maxa-datatable__skeleton-action" />
+      </span>
+    )
+  }
+
+  return <Skeleton variant="text" className="maxa-datatable__skeleton-line" />
 }
 
 export function DataTable<T extends Record<string, unknown>>({
@@ -86,6 +163,7 @@ export function DataTable<T extends Record<string, unknown>>({
   defaultSort,
   selectable = false,
   onSelectionChange,
+  rowSubdued,
   rowId = (_row, index) => String(index),
   pageSize,
   loading = false,
@@ -93,7 +171,7 @@ export function DataTable<T extends Record<string, unknown>>({
   className,
 }: DataTableProps<T>) {
   const [sort, setSort] = React.useState<{ key: string; direction: SortDirection } | null>(
-    defaultSort ?? null
+    defaultSort ?? null,
   )
   const [page, setPage] = React.useState(1)
   const [selectedIds, setSelectedIds] = React.useState<Set<string>>(new Set())
@@ -133,7 +211,11 @@ export function DataTable<T extends Record<string, unknown>>({
   function toggleRow(id: string) {
     setSelectedIds((prev) => {
       const next = new Set(prev)
-      if (next.has(id)) { next.delete(id) } else { next.add(id) }
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
       onSelectionChange?.(Array.from(next))
       return next
     })
@@ -151,9 +233,7 @@ export function DataTable<T extends Record<string, unknown>>({
   }
 
   const allChecked: CheckedState =
-    selectedIds.size === 0 ? false :
-    selectedIds.size === allIds.length ? true :
-    "indeterminate"
+    selectedIds.size === 0 ? false : selectedIds.size === allIds.length ? true : "indeterminate"
 
   const cols = selectable
     ? [{ key: "__select__", header: null, sortable: false } as ColumnDef<T>, ...columns]
@@ -161,16 +241,40 @@ export function DataTable<T extends Record<string, unknown>>({
 
   const isEmpty = !loading && data.length === 0
 
+  if (isEmpty) {
+    return (
+      <div className={["maxa-datatable", className].filter(Boolean).join(" ")}>
+        <div className="maxa-datatable__empty maxa-datatable__empty--standalone">
+          {emptyState ?? <Empty title="No results" size="sm" />}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={["maxa-datatable", className].filter(Boolean).join(" ")}>
       <Table density={density}>
         {caption && <TableCaption>{caption}</TableCaption>}
+        <colgroup>
+          {cols.map((col) => (
+            <col
+              key={col.key}
+              style={
+                col.key === "__select__"
+                  ? { width: "var(--table-checkbox-cell-width)" }
+                  : col.width
+                    ? { width: col.width }
+                    : undefined
+              }
+            />
+          ))}
+        </colgroup>
         <TableHeader>
           <TableRow>
             {cols.map((col) => {
               if (col.key === "__select__") {
                 return (
-                  <TableHead key="__select__" style={{ width: "44px" }}>
+                  <TableHead key="__select__" headerType="checkbox">
                     <Checkbox
                       checked={allChecked}
                       onCheckedChange={toggleAll}
@@ -184,6 +288,11 @@ export function DataTable<T extends Record<string, unknown>>({
               return (
                 <TableHead
                   key={col.key}
+                  align={col.align ?? "left"}
+                  headerType={
+                    col.headerType ??
+                    (col.sortable ? "sort" : col.align === "right" ? "numeric" : "heading")
+                  }
                   {...(sortDir ? { sort: sortDir } : {})}
                   style={col.width ? { width: col.width } : undefined}
                 >
@@ -195,11 +304,17 @@ export function DataTable<T extends Record<string, unknown>>({
                       aria-label={`Sort by ${typeof col.header === "string" ? col.header : col.key}`}
                     >
                       {col.header}
-                      {isActive && sort!.direction === "ascending" ? <SortUpIcon /> :
-                       isActive && sort!.direction === "descending" ? <SortDownIcon /> :
-                       <SortBothIcon />}
+                      {isActive && sort!.direction === "ascending" ? (
+                        <SortUpIcon />
+                      ) : isActive && sort!.direction === "descending" ? (
+                        <SortDownIcon />
+                      ) : (
+                        <SortBothIcon />
+                      )}
                     </button>
-                  ) : col.header}
+                  ) : (
+                    col.header
+                  )}
                 </TableHead>
               )
             })}
@@ -207,57 +322,59 @@ export function DataTable<T extends Record<string, unknown>>({
         </TableHeader>
 
         <TableBody>
-          {loading ? (
-            Array.from({ length: SKELETON_ROWS }, (_, rowIdx) => (
-              <TableRow key={`skeleton-${rowIdx}`}>
-                {cols.map((col) => (
-                  <TableCell key={col.key}>
-                    <div className="maxa-datatable__skeleton-cell">
-                      <Skeleton variant="rect" style={{ height: "var(--spacing-4)", width: "100%", borderRadius: "var(--radius-xs)" }} />
-                    </div>
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : isEmpty ? null : (
-            pageData.map((row, pageIdx) => {
-              const globalIdx = (safePage - 1) * (pageSize ?? pageData.length) + pageIdx
-              const id = rowId(row, globalIdx)
-              const isSelected = selectedIds.has(id)
-              return (
-                <TableRow key={id} selected={isSelected}>
+          {loading
+            ? Array.from({ length: SKELETON_ROWS }, (_, rowIdx) => (
+                <TableRow key={`skeleton-${rowIdx}`}>
                   {cols.map((col) => {
-                    if (col.key === "__select__") {
-                      return (
-                        <TableCell key="__select__">
-                          <Checkbox
-                            checked={isSelected}
-                            onCheckedChange={() => toggleRow(id)}
-                            aria-label={`Select row ${globalIdx + 1}`}
-                          />
-                        </TableCell>
-                      )
-                    }
+                    const cellType: TableCellType =
+                      col.key === "__select__" ? "checkbox" : (col.cellType ?? "text")
+
                     return (
-                      <TableCell key={col.key}>
-                        {col.cell
-                          ? col.cell(row, globalIdx)
-                          : (row[col.key] as React.ReactNode) ?? null}
+                      <TableCell key={col.key} align={col.align ?? "left"} cellType={cellType}>
+                        <div className="maxa-datatable__skeleton-cell">
+                          <LoadingCell cellType={cellType} />
+                        </div>
                       </TableCell>
                     )
                   })}
                 </TableRow>
-              )
-            })
-          )}
+              ))
+            : pageData.map((row, pageIdx) => {
+                  const globalIdx = (safePage - 1) * (pageSize ?? pageData.length) + pageIdx
+                  const id = rowId(row, globalIdx)
+                  const isSelected = selectedIds.has(id)
+                  const isSubdued = rowSubdued?.(row, globalIdx) ?? false
+                  return (
+                    <TableRow key={id} selected={isSelected} subdued={isSubdued} interactive>
+                      {cols.map((col) => {
+                        if (col.key === "__select__") {
+                          return (
+                            <TableCell key="__select__" cellType="checkbox">
+                              <Checkbox
+                                checked={isSelected}
+                                onCheckedChange={() => toggleRow(id)}
+                                aria-label={`Select row ${globalIdx + 1}`}
+                              />
+                            </TableCell>
+                          )
+                        }
+                        return (
+                          <TableCell
+                            key={col.key}
+                            align={col.align ?? "left"}
+                            cellType={col.cellType ?? "text"}
+                          >
+                            {col.cell
+                              ? col.cell(row, globalIdx)
+                              : ((row[col.key] as React.ReactNode) ?? null)}
+                          </TableCell>
+                        )
+                      })}
+                    </TableRow>
+                  )
+              })}
         </TableBody>
       </Table>
-
-      {isEmpty && (
-        <div className="maxa-datatable__empty">
-          {emptyState ?? <Empty title="No results" size="sm" />}
-        </div>
-      )}
 
       {pageSize && totalPages > 1 && (
         <div className="maxa-datatable__footer">
@@ -267,7 +384,10 @@ export function DataTable<T extends Record<string, unknown>>({
                 <PaginationPrevious
                   href="#"
                   aria-disabled={safePage <= 1}
-                  onClick={(e) => { e.preventDefault(); if (safePage > 1) setPage(safePage - 1) }}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (safePage > 1) setPage(safePage - 1)
+                  }}
                 />
               </PaginationItem>
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
@@ -275,7 +395,10 @@ export function DataTable<T extends Record<string, unknown>>({
                   <PaginationLink
                     href="#"
                     isActive={p === safePage}
-                    onClick={(e) => { e.preventDefault(); setPage(p) }}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      setPage(p)
+                    }}
                   >
                     {p}
                   </PaginationLink>
@@ -285,7 +408,10 @@ export function DataTable<T extends Record<string, unknown>>({
                 <PaginationNext
                   href="#"
                   aria-disabled={safePage >= totalPages}
-                  onClick={(e) => { e.preventDefault(); if (safePage < totalPages) setPage(safePage + 1) }}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    if (safePage < totalPages) setPage(safePage + 1)
+                  }}
                 />
               </PaginationItem>
             </PaginationList>

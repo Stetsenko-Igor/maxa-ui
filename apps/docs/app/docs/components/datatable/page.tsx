@@ -5,6 +5,7 @@ import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 import {
   DefaultDataTableDemo,
+  CellTypesDataTableDemo,
   EmptyDataTableDemo,
   LoadingDataTableDemo,
   PaginationDataTableDemo,
@@ -18,6 +19,7 @@ const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
   { href: "#sortable", label: "Sortable" },
+  { href: "#cells", label: "Cells" },
   { href: "#selectable", label: "Selectable" },
   { href: "#pagination", label: "Pagination" },
   { href: "#loading", label: "Loading" },
@@ -39,6 +41,12 @@ const DATATABLE_PROPS = [
     type: "'sm' | 'md' | 'lg'",
     default: "'md'",
     description: "Passes row density to the Table primitive.",
+  },
+  {
+    name: "rowSubdued",
+    type: "(row: T, index: number) => boolean",
+    default: undefined,
+    description: "Marks secondary rows with the subdued row state from the Table primitive.",
   },
   {
     name: "defaultSort",
@@ -88,10 +96,29 @@ const COLUMN_PROPS = [
   { name: "key", type: "string", default: undefined, description: "Field key on the row object." },
   { name: "header", type: "ReactNode", default: undefined, description: "Column header label." },
   {
+    name: "align",
+    type: "'left' | 'center' | 'right'",
+    default: "'left'",
+    description: "Column alignment. Numeric columns should use right alignment.",
+  },
+  {
     name: "cell",
     type: "(row: T, index: number) => ReactNode",
     default: undefined,
     description: "Optional custom cell renderer.",
+  },
+  {
+    name: "cellType",
+    type: "TableCellType",
+    default: "'text'",
+    description:
+      "Maps the cell to MAXA table-cell semantics: checkbox, text, numeric, thumbnail, badge, link, button, icon-button, icon, avatar, input, or loader.",
+  },
+  {
+    name: "headerType",
+    type: "TableHeaderType",
+    default: "derived",
+    description: "Optional header semantic variant: empty, heading, sort, numeric, or checkbox.",
   },
   {
     name: "sortable",
@@ -136,12 +163,13 @@ export default function DataTablePage() {
         imports={`import { DataTable, type ColumnDef } from "@maxa/ui"
 import "@maxa/tokens/theme.css"`}
         usage={`const columns: ColumnDef<Row>[] = [
-  { key: "design", header: "Design", sortable: true },
-  { key: "owner", header: "Owner", sortable: true },
-  { key: "status", header: "Status", cell: (row) => <Badge>{row.status}</Badge> },
+  { key: "design", header: "Design", sortable: true, cellType: "thumbnail", cell: (row) => <PreviewCell row={row} /> },
+  { key: "status", header: "Status", cellType: "badge", cell: (row) => <Badge>{row.status}</Badge> },
+  { key: "total", header: "Total", align: "right", cellType: "numeric" },
+  { key: "actions", header: "", headerType: "empty", cellType: "icon-button", align: "right", cell: () => <RowActions /> },
 ]
 
-<DataTable columns={columns} data={rows} rowId={(row) => row.id} />`}
+<DataTable columns={columns} data={rows} rowId={(row) => row.id} selectable />`}
       />
 
       <DocsSection
@@ -155,10 +183,30 @@ import "@maxa/tokens/theme.css"`}
             code={`<DataTable
   columns={columns}
   data={data}
-  defaultSort={{ key: "due", direction: "ascending" }}
+  defaultSort={{ key: "design", direction: "ascending" }}
 />`}
           >
             <SortableDataTableDemo />
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="cells"
+        title="Cells"
+        description="DataTable columns map to the same table-cell primitives used in Figma: thumbnail, badge, button, and icon-button cells."
+      >
+        <DocsExample title="MAXA cell types">
+          <ComponentPreview
+            layout="block"
+            code={`const columns: ColumnDef<Row>[] = [
+  { key: "design", header: "Thumbnail", cellType: "thumbnail", cell: (row) => <PreviewCell row={row} /> },
+  { key: "status", header: "Badge", cellType: "badge", cell: (row) => <StatusBadge status={row.status} /> },
+  { key: "open", header: "Button", cellType: "button", cell: () => <Button size="xs">Open</Button> },
+  { key: "actions", header: "", headerType: "empty", cellType: "icon-button", align: "right", cell: () => <RowActions /> },
+]`}
+          >
+            <CellTypesDataTableDemo />
           </ComponentPreview>
         </DocsExample>
       </DocsSection>
@@ -220,10 +268,13 @@ import "@maxa/tokens/theme.css"`}
       <DocsSection
         id="empty"
         title="Empty"
-        description="Empty state appears when data is empty and loading is false."
+        description="Empty state appears as a standalone Empty surface when data is empty and loading is false."
       >
         <DocsExample title="No results">
-          <ComponentPreview layout="block" code={`<DataTable columns={columns} data={[]} />`}>
+          <ComponentPreview
+            layout="block"
+            code={`<DataTable\n  columns={columns}\n  data={[]}\n  emptyState={<Empty title="You Don't Have Any Mailing List Yet" />}\n/>`}
+          >
             <EmptyDataTableDemo />
           </ComponentPreview>
         </DocsExample>

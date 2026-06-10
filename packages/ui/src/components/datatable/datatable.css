@@ -20,7 +20,10 @@
   border: none;
   padding: 0;
   margin: 0;
-  font: inherit;
+  font-family: inherit;
+  font-size: var(--table-header-font-size);
+  line-height: var(--table-header-line-height);
+  font-weight: var(--table-header-font-weight);
   color: inherit;
   cursor: pointer;
   text-align: left;
@@ -49,9 +52,94 @@
   justify-content: center;
 }
 
+.maxa-datatable__empty--standalone {
+  min-height: 220px;
+  padding: var(--spacing-12);
+  border: 1px dashed var(--table-border);
+  border-radius: var(--table-radius);
+  background: var(--table-bg);
+  align-items: center;
+}
+
 /* Skeleton cell */
 .maxa-datatable__skeleton-cell {
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.maxa-table__cell[data-align="center"] .maxa-datatable__skeleton-cell {
+  justify-content: center;
+}
+
+.maxa-table__cell[data-cell-type="checkbox"] .maxa-datatable__skeleton-cell {
+  justify-content: center;
+}
+
+.maxa-table__cell[data-align="right"] .maxa-datatable__skeleton-cell {
+  justify-content: flex-end;
+}
+
+.maxa-datatable__skeleton-cell .maxa-skeleton {
+  background: var(--table-loader-bg);
+  min-height: 0;
+}
+
+.maxa-datatable__skeleton-line {
+  width: var(--datatable-skeleton-line-width);
+  max-width: 100%;
+  height: var(--datatable-skeleton-line-height);
+  min-height: var(--datatable-skeleton-line-height);
+}
+
+.maxa-datatable__skeleton-line--title {
+  width: var(--datatable-skeleton-title-width);
+}
+
+.maxa-datatable__skeleton-line--subtitle {
+  width: var(--datatable-skeleton-subtitle-width);
+  height: var(--datatable-skeleton-subtitle-height);
+  min-height: var(--datatable-skeleton-subtitle-height);
+}
+
+.maxa-datatable__skeleton-thumbnail {
+  width: var(--table-thumbnail-size);
+  height: var(--table-thumbnail-size);
+  min-height: var(--table-thumbnail-size);
+  flex: 0 0 auto;
+  border-radius: var(--table-thumbnail-radius);
+}
+
+.maxa-datatable__skeleton-avatar {
+  width: var(--datatable-skeleton-avatar-size);
+  height: var(--datatable-skeleton-avatar-size);
+  min-height: var(--datatable-skeleton-avatar-size);
+  flex: 0 0 auto;
+}
+
+.maxa-datatable__skeleton-badge {
+  width: var(--datatable-skeleton-badge-width);
+  height: var(--datatable-skeleton-badge-height);
+  min-height: var(--datatable-skeleton-badge-height);
+  border-radius: var(--radius-full);
+}
+
+.maxa-datatable__skeleton-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.maxa-datatable__skeleton-action {
+  width: var(--datatable-skeleton-action-size);
+  height: var(--datatable-skeleton-action-size);
+  min-height: var(--datatable-skeleton-action-size);
+  border-radius: var(--radius-xs);
+}
+
+.maxa-datatable__skeleton-control {
+  width: var(--table-checkbox-control-size);
+  height: var(--table-checkbox-control-size);
+  min-height: var(--table-checkbox-control-size);
+  border-radius: var(--radius-xs);
 }

@@ -1,6 +1,7 @@
 /* Button component styles — references only component tokens */
 
 .maxa-button {
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -89,6 +90,15 @@
 .maxa-button--lg.maxa-button--icon-only {
   width: var(--button-icon-only-lg-size);
   padding-inline: 0;
+}
+
+.maxa-button--icon-only {
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  aspect-ratio: 1 / 1;
 }
 
 /* ── Variants ────────────────────────────────────────────────── */
@@ -210,7 +220,20 @@
 .maxa-button__icon {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  line-height: 0;
+}
+
+.maxa-button--icon-only .maxa-button__icon {
+  margin: auto;
+}
+
+.maxa-button__icon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: 0 0 auto;
 }
 
 .maxa-button--xs .maxa-button__icon { width: var(--button-size-xs-icon-size); height: var(--button-size-xs-icon-size); }

@@ -7,9 +7,11 @@ Calendar renders a single month grid for date pickers, scheduling views, and dat
 ## Anatomy
 
 - Header with previous and next navigation buttons.
-- Month title.
+- Month title button with month/year dropdown views.
 - Weekday row.
 - Day grid with outside, today, and selected states.
+- Optional range grid state. In range mode, horizontal date cells touch so the
+  selected range reads as a continuous band.
 
 ## API
 
@@ -29,3 +31,5 @@ Calendar renders a single month grid for date pickers, scheduling views, and dat
 ## Accessibility
 
 Each day button exposes a full date label. Calendar navigation controls must have accessible names.
+The month/year title button must expose an accessible name and keep keyboard
+focus visible with the same focus shadow used by day cells.

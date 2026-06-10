@@ -5,7 +5,8 @@ import {
   Badge,
   Button,
   Checkbox,
-  Spinner,
+  IconButton,
+  Input,
   Table,
   TableBody,
   TableCaption,
@@ -14,7 +15,6 @@ import {
   TableHeader,
   TableRow,
   Tag,
-  UtilityButton,
 } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
@@ -32,75 +32,322 @@ const TOC = [
 ]
 
 const PROPS = [
-  { name: "Table", type: "table", default: undefined, description: "Responsive wrapper and semantic table element." },
-  { name: "density", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Controls row height and vertical cell padding." },
-  { name: "TableRow", type: "tr", default: undefined, description: "Semantic row part. Use selected, subdued, and interactive for row state styling." },
-  { name: "selected", type: "boolean", default: "false", description: "Applies selected row background." },
-  { name: "subdued", type: "boolean", default: "false", description: "Applies subdued row background." },
-  { name: "interactive", type: "boolean", default: "false", description: "Enables hover styling for clickable rows." },
-  { name: "TableHead", type: "th", default: undefined, description: "Header cell. Use align and sort for numeric or sortable columns." },
-  { name: "sort", type: "'ascending' | 'descending' | 'none'", default: undefined, description: "Displays a sort indicator and sets aria-sort." },
-  { name: "TableCell", type: "td", default: undefined, description: "Body/footer cell. Compose with Badge, Tag, Avatar, Button, Checkbox, or Spinner as needed." },
-  { name: "align", type: "'left' | 'center' | 'right'", default: "'left'", description: "Aligns header or cell content." },
+  {
+    name: "Table",
+    type: "table",
+    default: undefined,
+    description: "Responsive wrapper and semantic table element.",
+  },
+  {
+    name: "density",
+    type: "'sm' | 'md' | 'lg'",
+    default: "'md'",
+    description: "Controls row height and vertical cell padding.",
+  },
+  {
+    name: "TableRow",
+    type: "tr",
+    default: undefined,
+    description: "Semantic row part. Use selected, subdued, and interactive for row state styling.",
+  },
+  {
+    name: "selected",
+    type: "boolean",
+    default: "false",
+    description: "Applies selected row background.",
+  },
+  {
+    name: "subdued",
+    type: "boolean",
+    default: "false",
+    description: "Applies subdued row background.",
+  },
+  {
+    name: "interactive",
+    type: "boolean",
+    default: "false",
+    description: "Enables hover styling for clickable rows.",
+  },
+  {
+    name: "TableHead",
+    type: "th",
+    default: undefined,
+    description: "Header cell. Use align and sort for numeric or sortable columns.",
+  },
+  {
+    name: "headerType",
+    type: "'empty' | 'heading' | 'sort' | 'numeric' | 'checkbox'",
+    default: "derived",
+    description: "Header semantic variant from the Figma table header cell set.",
+  },
+  {
+    name: "sort",
+    type: "'ascending' | 'descending' | 'none'",
+    default: undefined,
+    description: "Displays a sort indicator and sets aria-sort.",
+  },
+  {
+    name: "TableCell",
+    type: "td",
+    default: undefined,
+    description:
+      "Body/footer cell. Compose with Badge, Tag, Avatar, Button, Checkbox, or Spinner as needed.",
+  },
+  {
+    name: "cellType",
+    type: "'checkbox' | 'text' | 'numeric' | 'thumbnail' | 'badge' | 'tag' | 'link' | 'button' | 'icon-button' | 'icon' | 'avatar' | 'input' | 'input-field' | 'loader'",
+    default: "'text'",
+    description: "Cell semantic variant from the Figma table cell set.",
+  },
+  {
+    name: "cellSize",
+    type: "'sm' | 'lg'",
+    default: "density",
+    description: "Overrides the cell height to the Figma small (40px) or large (64px) size.",
+  },
+  {
+    name: "align",
+    type: "'left' | 'center' | 'right'",
+    default: "'left'",
+    description: "Aligns header or cell content.",
+  },
 ]
 
 function DotsIcon() {
   return (
-    <svg viewBox="0 0 20 20" aria-hidden="true">
-      <path fill="currentColor" d="M5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm6.5 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0ZM18 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M3.5 8a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Z"
+      />
     </svg>
   )
 }
 
+function EditIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M11.8 2.2a1.5 1.5 0 0 1 2.12 2.12l-7.5 7.5-2.83.71.71-2.83 7.5-7.5Zm-.88 2.12L5.24 10l-.24.95.95-.24 5.68-5.68-.71-.71Z"
+      />
+      <path fill="currentColor" d="M3 13h10v1H3v-1Z" />
+    </svg>
+  )
+}
+
+function CopyIcon() {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M5 2.5A1.5 1.5 0 0 1 6.5 1h6A1.5 1.5 0 0 1 14 2.5v6A1.5 1.5 0 0 1 12.5 10h-1V8.5h1v-6h-6v1H5v-1Z"
+      />
+      <path
+        fill="currentColor"
+        d="M2 6.5A1.5 1.5 0 0 1 3.5 5h6A1.5 1.5 0 0 1 11 6.5v6A1.5 1.5 0 0 1 9.5 14h-6A1.5 1.5 0 0 1 2 12.5v-6Zm1.5 0v6h6v-6h-6Z"
+      />
+    </svg>
+  )
+}
+
+function SparkIcon() {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M10 2.25 11.8 7.2l4.95 1.8-4.95 1.8L10 15.75 8.2 10.8 3.25 9l4.95-1.8L10 2.25Z"
+      />
+    </svg>
+  )
+}
+
+function RowActions() {
+  return (
+    <span className="docs-row-actions">
+      <IconButton aria-label="Edit design" icon={<EditIcon />} size="sm" variant="ghost" />
+      <IconButton aria-label="Copy design" icon={<CopyIcon />} size="sm" variant="ghost" />
+      <IconButton aria-label="Open row actions" icon={<DotsIcon />} size="sm" variant="ghost" />
+    </span>
+  )
+}
+
+function renderCellVariant(
+  type:
+    | "checkbox"
+    | "text"
+    | "numeric"
+    | "thumbnail"
+    | "tag"
+    | "link"
+    | "button"
+    | "icon-button"
+    | "icon"
+    | "avatar"
+    | "input-field"
+    | "loader",
+) {
+  switch (type) {
+    case "checkbox":
+      return <Checkbox aria-label="Select example row" />
+    case "text":
+      return (
+        <span className="maxa-table__cell-stack">
+          <span className="maxa-table__cell-title">Content</span>
+          <span className="maxa-table__cell-subtitle">Sub content</span>
+        </span>
+      )
+    case "numeric":
+      return "$148.00"
+    case "thumbnail":
+      return (
+        <span className="maxa-table__cell-content">
+          <span className="maxa-table__thumbnail" aria-hidden="true" />
+          <span className="maxa-table__cell-title">Preview</span>
+        </span>
+      )
+    case "tag":
+      return <Tag>VIP</Tag>
+    case "link":
+      return <a href="#api-reference">View details</a>
+    case "button":
+      return (
+        <Button size="sm" variant="outline">
+          Open
+        </Button>
+      )
+    case "icon-button":
+      return <RowActions />
+    case "icon":
+      return (
+        <span className="maxa-table__cell-icon" aria-hidden="true">
+          <SparkIcon />
+        </span>
+      )
+    case "avatar":
+      return (
+        <span className="maxa-table__cell-content">
+          <Avatar size="sm">
+            <AvatarFallback>IS</AvatarFallback>
+          </Avatar>
+          <span className="maxa-table__cell-title">Igor</span>
+        </span>
+      )
+    case "input-field":
+      return <Input size="sm" placeholder="Any" aria-label="Example input" wrapperClassName="docs-table-input" />
+    case "loader":
+      return <span className="maxa-table__loader" />
+  }
+}
+
+const CELL_VARIANTS = [
+  { label: "Checkbox", cellType: "checkbox" },
+  { label: "Text", cellType: "text" },
+  { label: "Numeric text", cellType: "numeric" },
+  { label: "Thumbnail / Preview", cellType: "thumbnail" },
+  { label: "Tag / Badge", cellType: "tag" },
+  { label: "Link", cellType: "link" },
+  { label: "Button", cellType: "button" },
+  { label: "Icon Button", cellType: "icon-button" },
+  { label: "Icon", cellType: "icon" },
+  { label: "Avatar", cellType: "avatar" },
+  { label: "Input Field", cellType: "input-field" },
+  { label: "Loader", cellType: "loader" },
+] as const
+
 function ExampleTable() {
   return (
-    <Table style={{ minWidth: "560px" }}>
+    <Table className="docs-product-table-example" style={{ minWidth: 0 }}>
+      <colgroup>
+        <col style={{ width: "44px" }} />
+        <col />
+        <col style={{ width: "120px" }} />
+        <col style={{ width: "96px" }} />
+        <col style={{ width: "112px" }} />
+      </colgroup>
       <TableCaption>Recent design orders</TableCaption>
       <TableHeader>
         <TableRow>
+          <TableHead scope="col" headerType="checkbox">
+            <Checkbox aria-label="Select all design orders" />
+          </TableHead>
           <TableHead scope="col">Design</TableHead>
-          <TableHead scope="col">Owner</TableHead>
           <TableHead scope="col">Status</TableHead>
-          <TableHead scope="col" align="right" sort="descending">Total</TableHead>
-          <TableHead scope="col" align="center">Actions</TableHead>
+          <TableHead scope="col" align="right" headerType="numeric" sort="descending">
+            Total
+          </TableHead>
+          <TableHead scope="col" headerType="empty" />
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow interactive selected>
-          <TableCell>Lunch & Learn postcard</TableCell>
-          <TableCell>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-              <Avatar size="sm"><AvatarFallback>IS</AvatarFallback></Avatar>
-              Igor Stetsenko
+        <TableRow interactive>
+          <TableCell cellType="checkbox">
+            <Checkbox aria-label="Select Lunch & Learn postcard" />
+          </TableCell>
+          <TableCell cellType="thumbnail">
+            <span className="maxa-table__cell-content">
+              <span className="maxa-table__thumbnail" aria-hidden="true" />
+              <span className="maxa-table__cell-stack">
+                <span className="maxa-table__cell-title">Lunch & Learn postcard</span>
+                <span className="maxa-table__cell-subtitle">Direct mail</span>
+              </span>
             </span>
           </TableCell>
-          <TableCell><Badge intent="success">Approved</Badge></TableCell>
-          <TableCell align="right">$148.00</TableCell>
-          <TableCell align="center"><UtilityButton aria-label="Open row actions" icon={<DotsIcon />} /></TableCell>
+          <TableCell cellType="badge">
+            <Badge intent="success">Approved</Badge>
+          </TableCell>
+          <TableCell align="right" cellType="numeric">
+            $148.00
+          </TableCell>
+          <TableCell cellType="icon-button">
+            <RowActions />
+          </TableCell>
         </TableRow>
         <TableRow interactive>
-          <TableCell>Market report flyer</TableCell>
-          <TableCell>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-              <Avatar size="sm"><AvatarFallback>AV</AvatarFallback></Avatar>
-              Ava Wilson
+          <TableCell cellType="checkbox">
+            <Checkbox aria-label="Select Market report flyer" />
+          </TableCell>
+          <TableCell cellType="thumbnail">
+            <span className="maxa-table__cell-content">
+              <span className="maxa-table__thumbnail" aria-hidden="true" />
+              <span className="maxa-table__cell-stack">
+                <span className="maxa-table__cell-title">Market report flyer</span>
+                <span className="maxa-table__cell-subtitle">Flyer</span>
+              </span>
             </span>
           </TableCell>
-          <TableCell><Badge intent="warning">Review</Badge></TableCell>
-          <TableCell align="right">$72.00</TableCell>
-          <TableCell align="center"><UtilityButton aria-label="Open row actions" icon={<DotsIcon />} /></TableCell>
+          <TableCell cellType="badge">
+            <Badge intent="warning">Review</Badge>
+          </TableCell>
+          <TableCell align="right" cellType="numeric">
+            $72.00
+          </TableCell>
+          <TableCell cellType="icon-button">
+            <RowActions />
+          </TableCell>
         </TableRow>
-        <TableRow interactive subdued>
-          <TableCell>Open house social post</TableCell>
-          <TableCell>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-              <Avatar size="sm"><AvatarFallback>MC</AvatarFallback></Avatar>
-              Mia Chen
+        <TableRow interactive>
+          <TableCell cellType="checkbox">
+            <Checkbox aria-label="Select Open house social post" />
+          </TableCell>
+          <TableCell cellType="thumbnail">
+            <span className="maxa-table__cell-content">
+              <span className="maxa-table__thumbnail" aria-hidden="true" />
+              <span className="maxa-table__cell-stack">
+                <span className="maxa-table__cell-title">Open house social post</span>
+                <span className="maxa-table__cell-subtitle">Social post</span>
+              </span>
             </span>
           </TableCell>
-          <TableCell><Badge>Draft</Badge></TableCell>
-          <TableCell align="right">$32.00</TableCell>
-          <TableCell align="center"><UtilityButton aria-label="Open row actions" icon={<DotsIcon />} /></TableCell>
+          <TableCell cellType="badge">
+            <Badge>Draft</Badge>
+          </TableCell>
+          <TableCell align="right" cellType="numeric">
+            $32.00
+          </TableCell>
+          <TableCell cellType="icon-button">
+            <RowActions />
+          </TableCell>
         </TableRow>
       </TableBody>
     </Table>
@@ -120,8 +367,11 @@ export default function TablePage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead align="right" sort="descending">Total</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive selected>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell><Badge intent="success">Approved</Badge></TableCell>\n      <TableCell align="right">$148.00</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}>
-            <div className="docs-table-example">
+          <ComponentPreview
+            layout="block"
+            code={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead headerType="checkbox"><Checkbox aria-label="Select all" /></TableHead>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead align="right" sort="descending">Total</TableHead>\n      <TableHead headerType="empty" />\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive>\n      <TableCell cellType="checkbox"><Checkbox aria-label="Select row" /></TableCell>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell><Badge intent="success">Approved</Badge></TableCell>\n      <TableCell align="right" cellType="numeric">$148.00</TableCell>\n      <TableCell cellType="icon-button"><RowActions /></TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}
+          >
+            <div className="docs-table-example docs-table-example--full">
               <ExampleTable />
             </div>
           </ComponentPreview>
@@ -132,13 +382,16 @@ export default function TablePage() {
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
           imports={`import {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
-          usage={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell>Approved</TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}
+          usage={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead headerType="checkbox"><Checkbox aria-label="Select all" /></TableHead>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead headerType="empty" />\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive>\n      <TableCell cellType="checkbox"><Checkbox aria-label="Select row" /></TableCell>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell>Approved</TableCell>\n      <TableCell cellType="icon-button"><RowActions /></TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}
         />
       </DocsSection>
 
       <DocsSection id="states" title="States">
         <DocsExample title="Subdued, selected, interactive">
-          <ComponentPreview code={`<TableRow interactive>Default</TableRow>\n<TableRow interactive selected>Selected</TableRow>\n<TableRow interactive subdued>Subdued</TableRow>`}>
+          <ComponentPreview
+            layout="block"
+            code={`<TableRow interactive>Default</TableRow>\n<TableRow interactive selected>Selected</TableRow>\n<TableRow interactive subdued>Subdued</TableRow>`}
+          >
             <div className="docs-table-example">
               <Table density="sm" style={{ minWidth: "360px" }}>
                 <TableHeader>
@@ -168,25 +421,33 @@ export default function TablePage() {
       </DocsSection>
 
       <DocsSection id="cells" title="Cells">
-        <DocsExample title="Composable cell content">
-          <ComponentPreview code={`<TableCell><Checkbox aria-label="Select row" /></TableCell>\n<TableCell><Tag>VIP</Tag></TableCell>\n<TableCell><Button size="sm">Open</Button></TableCell>\n<TableCell><Spinner size="sm" label="Loading" /></TableCell>`}>
-            <div className="docs-table-example">
-              <Table density="lg" style={{ minWidth: "420px" }}>
+        <DocsExample title="Figma content type variants">
+          <ComponentPreview
+            code={`<TableCell cellType="checkbox"><Checkbox aria-label="Select row" /></TableCell>\n<TableCell cellType="text"><span className="maxa-table__cell-title">Content</span></TableCell>\n<TableCell cellType="numeric" align="right">$148.00</TableCell>\n<TableCell cellType="input-field"><Input size="sm" placeholder="Any" /></TableCell>`}
+          >
+            <div className="docs-table-example docs-table-example--cells">
+              <Table className="docs-cell-variant-table" style={{ minWidth: 0 }}>
+                <colgroup>
+                  <col style={{ width: "11rem" }} />
+                  <col />
+                </colgroup>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Checkbox</TableHead>
-                    <TableHead>Tag</TableHead>
-                    <TableHead>Button</TableHead>
-                    <TableHead align="center">Loader</TableHead>
+                    <TableHead scope="col">Content type</TableHead>
+                    <TableHead scope="col">Example</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  <TableRow>
-                    <TableCell><Checkbox aria-label="Select row" /></TableCell>
-                    <TableCell><Tag>VIP</Tag></TableCell>
-                    <TableCell><Button size="sm" variant="outline">Open</Button></TableCell>
-                    <TableCell align="center"><Spinner size="sm" label="Loading" /></TableCell>
-                  </TableRow>
+                  {CELL_VARIANTS.map(({ label, cellType }) => (
+                    <TableRow key={cellType}>
+                      <TableCell cellType="text">
+                        <span className="maxa-table__cell-title">{label}</span>
+                      </TableCell>
+                      <TableCell cellType={cellType}>
+                        {renderCellVariant(cellType)}
+                      </TableCell>
+                    </TableRow>
+                  ))}
                 </TableBody>
               </Table>
             </div>

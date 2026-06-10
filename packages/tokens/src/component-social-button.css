@@ -1,9 +1,10 @@
 /* SocialButton component tokens */
 
 :root {
-  --social-button-min-width: 220px;
-  --social-button-height-sm: var(--button-size-sm-height);
-  --social-button-height: var(--button-size-md-height);
+  --social-button-min-width: 198px;
+  --social-button-linkedin-min-width: 209px;
+  --social-button-height-sm: 32px;
+  --social-button-height: 40px;
   --social-button-height-lg: var(--button-size-lg-height);
   --social-button-padding-x-sm: var(--button-size-sm-padding-x);
   --social-button-padding-x: var(--button-size-md-padding-x);
@@ -11,14 +12,18 @@
   --social-button-gap-sm: var(--spacing-2);
   --social-button-gap: var(--spacing-2);
   --social-button-gap-lg: var(--spacing-3);
-  --social-button-radius: var(--button-size-md-radius);
+  --social-button-radius: var(--radius-md);
   --social-button-border: var(--color-border-primary);
   --social-button-border-hover: var(--color-border-secondary);
   --social-button-border-active: var(--color-border-secondary);
-  --social-button-bg: var(--color-bg-surface);
-  --social-button-bg-hover: var(--color-action-neutral-subtle-hover);
-  --social-button-bg-active: var(--color-action-neutral-subtle-active);
+  --social-button-border-focus: #c7e5f0;
+  --social-button-bg: var(--button-outline-bg);
+  --social-button-bg-hover: var(--button-outline-bg);
+  --social-button-bg-active: var(--button-outline-bg);
   --social-button-text: var(--color-text-primary);
+  --social-button-shadow: var(--shadow-sm);
+  --social-button-shadow-hover: var(--shadow-sm);
+  --social-button-shadow-focus: 0 0 0 3px var(--social-button-border-focus);
   --social-button-font-size-sm: var(--button-size-sm-text);
   --social-button-font-size: var(--button-size-md-text);
   --social-button-font-size-lg: var(--button-size-lg-text);
@@ -27,7 +32,7 @@
   --social-button-line-height-lg: var(--button-size-lg-line-height);
   --social-button-font-weight: var(--button-size-md-weight);
   --social-button-icon-size-sm: 16px;
-  --social-button-icon-size: 18px;
+  --social-button-icon-size: 16px;
   --social-button-icon-size-lg: 20px;
   --social-button-disabled-opacity: var(--opacity-disabled);
 }

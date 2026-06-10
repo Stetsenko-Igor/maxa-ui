@@ -20,4 +20,11 @@
   --date-picker-preset-bg-hover: var(--color-action-neutral-subtle-hover);
   --date-picker-preset-font-size: var(--text-sm);
   --date-picker-field-separator-color: var(--color-text-tertiary);
+  --date-picker-quarter-popover-width: 360px;
+  --date-picker-quarter-header-height: 56px;
+  --date-picker-quarter-grid-padding: 20px 28px 28px;
+  --date-picker-quarter-grid-gap: var(--spacing-4);
+  --date-picker-quarter-item-height: 40px;
+  --date-picker-quarter-year-panel-width: 304px;
+  --date-picker-quarter-year-panel-padding: 24px;
 }

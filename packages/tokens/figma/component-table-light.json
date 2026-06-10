@@ -27,6 +27,7 @@
     "cell-bg": { "$value": "var(--color-bg-surface)", "$type": "color" },
     "cell-text": { "$value": "var(--color-text-primary)", "$type": "color" },
     "cell-font-weight": { "$value": "var(--font-weight-medium)", "$type": "string" },
+    "cell-icon-size": { "$value": 20, "$type": "number" },
     "cell-padding-x": { "$value": "var(--spacing-4)", "$type": "number" },
     "cell-padding-y-sm": { "$value": "var(--spacing-2)", "$type": "number" },
     "cell-padding-y": { "$value": "var(--spacing-3)", "$type": "number" },
@@ -38,4 +39,3 @@
     "caption-padding-y": { "$value": "var(--spacing-3)", "$type": "number" }
   }
 }
-
