@@ -3,6 +3,14 @@ import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { Calendar } from "./calendar"
 
+function getButton(name: string, root: ParentNode = document.body) {
+  const button = Array.from(root.querySelectorAll<HTMLButtonElement>("button")).find((element) =>
+    element.getAttribute("aria-label") === name || element.textContent?.trim() === name,
+  )
+  if (!button) throw new Error(`Button not found: ${name}`)
+  return button
+}
+
 describe("Calendar", () => {
   it("renders a month grid and selects dates", () => {
     const onSelect = vi.fn()
@@ -35,15 +43,18 @@ describe("Calendar", () => {
   })
 
   it("selects month and year from the dropdown views", () => {
-    render(<Calendar defaultMonth={new Date(2025, 4, 1)} />)
-    fireEvent.click(screen.getByRole("button", { name: "Choose month and year" }))
-    expect(document.querySelector(".maxa-calendar__grid")).toBeInTheDocument()
-    expect(document.querySelector(".maxa-calendar__picker-panel")).toBeInTheDocument()
-    fireEvent.click(screen.getByRole("button", { name: "Choose year" }))
-    fireEvent.click(screen.getByRole("button", { name: "2026" }))
-    fireEvent.click(screen.getByRole("button", { name: "Jun" }))
+    const { container } = render(<Calendar defaultMonth={new Date(2025, 4, 1)} />)
+
+    fireEvent.click(getButton("Choose month and year", container))
+    expect(container.querySelector(".maxa-calendar__grid")).toBeInTheDocument()
+    expect(container.querySelector(".maxa-calendar__picker-panel")).toBeInTheDocument()
+
+    fireEvent.click(getButton("Choose year", container))
+    fireEvent.click(getButton("2026", container))
+    fireEvent.click(getButton("Jun", container))
+
     expect(screen.getByText("June 2026")).toBeInTheDocument()
-  }, 10_000)
+  })
 
   it("does not select disabled dates", () => {
     const onSelect = vi.fn()

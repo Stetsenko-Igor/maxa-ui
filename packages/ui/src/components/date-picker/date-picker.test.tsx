@@ -2,6 +2,22 @@ import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { DatePicker, DateRangePicker, QuarterPicker } from "./date-picker"
 
+function getButton(name: string, root: ParentNode = document.body) {
+  const button = Array.from(root.querySelectorAll<HTMLButtonElement>("button")).find((element) =>
+    element.getAttribute("aria-label") === name || element.textContent?.trim() === name,
+  )
+  if (!button) throw new Error(`Button not found: ${name}`)
+  return button
+}
+
+function getDialog(name: string) {
+  const dialog = Array.from(document.querySelectorAll<HTMLElement>('[role="dialog"]')).find((element) =>
+    element.getAttribute("aria-label") === name,
+  )
+  if (!dialog) throw new Error(`Dialog not found: ${name}`)
+  return dialog
+}
+
 describe("DatePicker", () => {
   it("renders a single date field", () => {
     render(<DatePicker label="Date Picker" />)
@@ -133,26 +149,32 @@ describe("DatePicker", () => {
 
   it("opens range calendar and applies a range", () => {
     render(<DateRangePicker label="Date Picker" />)
-    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
-    fireEvent.click(screen.getByRole("button", { name: "May 9, 2025" }))
-    fireEvent.click(screen.getByRole("button", { name: "June 18, 2025" }))
-    fireEvent.click(screen.getByRole("button", { name: "Apply" }))
+
+    fireEvent.click(getButton("Open date range calendar"))
+    const dialog = getDialog("Choose date range")
+    fireEvent.click(getButton("May 9, 2025", dialog))
+    fireEvent.click(getButton("June 18, 2025", dialog))
+    fireEvent.click(getButton("Apply", dialog))
+
     expect(screen.getByRole("textbox")).toHaveValue("5/9/2025 - 6/18/2025")
-  }, 10_000)
+  })
 
   it("updates the range draft from presets", () => {
     render(<DateRangePicker label="Date Picker" />)
-    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
-    fireEvent.click(screen.getByRole("button", { name: "Last 30 days" }))
+
+    fireEvent.click(getButton("Open date range calendar"))
+    const dialog = getDialog("Choose date range")
+    const last30Days = getButton("Last 30 days", dialog)
+    fireEvent.click(last30Days)
 
     expect(screen.getByDisplayValue("4/16/2025")).toBeInTheDocument()
     expect(screen.getByDisplayValue("5/15/2025")).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: "Last 30 days" })).toHaveAttribute("data-selected", "true")
+    expect(last30Days).toHaveAttribute("data-selected", "true")
 
-    fireEvent.click(screen.getByRole("button", { name: "Apply" }))
+    fireEvent.click(getButton("Apply", dialog))
 
     expect(screen.getByRole("textbox")).toHaveValue("4/16/2025 - 5/15/2025")
-  }, 10_000)
+  })
 
   it("normalizes changed range input digits", () => {
     render(<DateRangePicker label="Date Picker" />)
@@ -381,20 +403,21 @@ describe("DatePicker interactions", () => {
 
   it("restarts the range when selecting an earlier or extra date", () => {
     render(<DateRangePicker label="Range" />)
-    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
+    fireEvent.click(getButton("Open date range calendar"))
+    const dialog = getDialog("Choose date range")
 
-    fireEvent.click(screen.getByRole("button", { name: "May 9, 2025" }))
-    fireEvent.click(screen.getByRole("button", { name: "May 2, 2025" }))
+    fireEvent.click(getButton("May 9, 2025", dialog))
+    fireEvent.click(getButton("May 2, 2025", dialog))
 
     expect(screen.getByDisplayValue("5/2/2025")).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole("button", { name: "May 20, 2025" }))
+    fireEvent.click(getButton("May 20, 2025", dialog))
     expect(screen.getByDisplayValue("5/20/2025")).toBeInTheDocument()
 
-    fireEvent.click(screen.getAllByRole("button", { name: "May 27, 2025" })[0]!)
+    fireEvent.click(getButton("May 27, 2025", dialog))
     expect(screen.getByDisplayValue("5/27/2025")).toBeInTheDocument()
     expect(screen.queryByDisplayValue("5/20/2025")).not.toBeInTheDocument()
-  }, 10_000)
+  })
 
   it("cancels the range popover without applying", () => {
     const onRangeApply = vi.fn()
