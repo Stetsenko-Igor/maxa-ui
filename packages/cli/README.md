@@ -1,37 +1,42 @@
 # @maxa/cli
 
-> **EXPERIMENTAL STUB - no commands implemented yet.** The binary only prints its version. Do not depend on this package for any workflow.
+> **EXPERIMENTAL** read-only command-line introspection for the Maxa design system. Do not depend on this package for stable workflows yet.
 
-Future command-line tooling for the Maxa design system, exposed as the `maxa-ui` binary.
+The package exposes the `maxa-ui` binary. Its current scope is intentionally small: inspect known components and tokens from a local checkout of this repository.
 
-## Current state
+## Current scope
 
-Running the built binary does nothing useful yet:
+- `components list` - list component specs and implementation status
+- `tokens search <query>` - search design token names
+- `tokens get <token>` - print one token value and its `var(...)` resolution chain
+- `--json` - return machine-readable output for supported commands
 
-```bash
-node packages/cli/dist/index.js
-# maxa-ui v0.0.0
-```
-
-There are no commands, no flags, and no stable API. Everything below is planned, not built.
-
-## Planned scope
-
-- **Token introspection** - query token names, values, and layers from the terminal (e.g. resolve `--color-action-primary` through the primitive → semantic → component chain)
-- **Component scaffolding** - generate a new component skeleton (spec file, component token CSS, React implementation, tests, docs page) that follows repo conventions
+Component generators, project scaffolding, install helpers, and mutation commands are intentionally not implemented.
 
 ## Usage inside this workspace
 
 ```bash
 pnpm --filter @maxa/cli build
-node packages/cli/dist/index.js
+node packages/cli/dist/index.js --help
+node packages/cli/dist/index.js components list
+node packages/cli/dist/index.js tokens search button
+node packages/cli/dist/index.js tokens get --button-primary-bg --mode dark
+```
+
+## Running outside this workspace
+
+The CLI reads token CSS and component specs from the repository. Set `MAXA_REPO_ROOT` when running from another directory:
+
+```bash
+MAXA_REPO_ROOT=/path/to/maxa-ui node packages/cli/dist/index.js tokens search color
 ```
 
 ## Usage from GitHub (no npm registry)
 
-Not recommended while the package is a stub. When it becomes useful: clone the repo, build, then `pnpm add file:../maxa-ui/packages/cli` or run the built binary directly. See the root [README](../../README.md) for distribution options.
+This package is not published to npm. For now, clone the repo, build the package, then run the built binary directly or install it from a local file path. See the root [README](../../README.md) for distribution options.
 
 ## Exports
 
-- `version` - package version string (placeholder)
-- `maxa-ui` bin - prints version, nothing else
+- `version` - CLI package version string
+- `runCli(argv, io)` - testable command runner
+- `maxa-ui` bin - experimental read-only introspection commands

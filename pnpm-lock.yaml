@@ -98,7 +98,14 @@ importers:
         version: 5.9.3
 
   packages/cli:
+    dependencies:
+      '@maxa/mcp':
+        specifier: workspace:*
+        version: link:../mcp
     devDependencies:
+      '@types/node':
+        specifier: '*'
+        version: 25.6.0
       typescript:
         specifier: '*'
         version: 5.9.3
