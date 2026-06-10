@@ -24,6 +24,7 @@
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
+    "eslint-config-next": "^15.5.15",
     "typescript": "*"
   }
 }
