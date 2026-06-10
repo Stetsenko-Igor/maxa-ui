@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs"
+import { join } from "node:path"
+
 import { describe, expect, it } from "vitest"
 
 import { createServer, resolveRepoRoot, version } from "./index"
@@ -9,7 +12,8 @@ describe("mcp", () => {
 
   it("resolves the repo root relative to the package", () => {
     const root = resolveRepoRoot({})
-    expect(root.endsWith("maxa-ui-codex")).toBe(true)
+    expect(existsSync(join(root, "packages/mcp/package.json"))).toBe(true)
+    expect(existsSync(join(root, "specs"))).toBe(true)
   })
 
   it("honors the MAXA_REPO_ROOT override", () => {
