@@ -1,2 +1,2 @@
-export { Input, TextArea, inputWrapperVariants } from "./input"
-export type { InputProps, TextAreaProps } from "./input"
+export { Input, inputWrapperVariants } from "./input"
+export type { InputProps } from "./input"

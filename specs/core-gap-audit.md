@@ -22,11 +22,10 @@ Implemented component entries in `@maxa/ui`:
 - Overlays and menus: `ContextMenu`, `Dialog`, `DropdownMenu`, `Popover`, `Tooltip`
 - Navigation/data display: `Avatar`, `Badge`, `Breadcrumb`, `Calendar`, `DataTable`, `Divider`, `Pagination`, `SegmentedControl`, `Separator`, `Table`, `Tabs`, `Tag`
 
-Known catalog mismatch:
+Recently resolved:
 
-- `TextArea` is implemented and exported from `@maxa/ui`, but it lives under `components/input`, is
-  documented on the Input page, and does not have its own component directory/spec/doc route.
-- Search and Figma discovery should treat TextArea as a separate component, not as an Input variant.
+- `TextArea` now has a separate component entry, spec, docs route, and package export. It still
+  reuses Input field internals and tokens where appropriate.
 
 ## Decisions
 
@@ -43,25 +42,26 @@ Known catalog mismatch:
 
 ### P0 — TextArea Catalog Split
 
+Status: completed
+
 Current state:
 
-- `TextArea` exists in `packages/ui/src/components/input/input.tsx`.
-- It is exported through `packages/ui/src/components/input/index.ts`.
-- Docs live under `apps/docs/app/docs/components/input/page.tsx`.
-- Spec mentions TextArea under `specs/components/input.md`.
+- `TextArea` has its own entrypoint at `packages/ui/src/components/textarea`.
+- Docs live under `apps/docs/app/docs/components/textarea/page.tsx`.
+- Spec lives at `specs/components/textarea.md`.
+- The implementation is intentionally shared with Input internals for now.
 
 Problem:
 
 - Designers and developers should be able to find TextArea as its own component.
 - Figma will likely keep Text Field and Text Area as separate components, not variants of one Input.
 
-Recommended work:
+Completed work:
 
-- Add `specs/components/textarea.md`.
-- Add `apps/docs/app/docs/components/textarea/page.tsx`.
-- Add `packages/ui/src/components/textarea/` as a separate entrypoint.
-- Re-export the existing implementation first, then split internals only if needed.
-- Keep shared styling/tokens where appropriate; discoverability is the immediate gap.
+- Added `specs/components/textarea.md`.
+- Added `apps/docs/app/docs/components/textarea/page.tsx`.
+- Added `packages/ui/src/components/textarea/` as a separate entrypoint.
+- Kept shared styling/tokens where appropriate.
 
 Non-goal:
 

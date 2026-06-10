@@ -54,7 +54,7 @@ export default function SelectPage() {
       toc={TOC}
       githubHref={GITHUB_SELECT_URL}
       markdown={SELECT_MARKDOWN}
-      previous={{ href: "/docs/components/input", label: "Input" }}
+      previous={{ href: "/docs/components/textarea", label: "TextArea" }}
       next={{ href: "/docs/components/date-picker", label: "Date Picker" }}
       lead={
         <>

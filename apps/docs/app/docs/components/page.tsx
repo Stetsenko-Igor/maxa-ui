@@ -67,6 +67,7 @@ import {
   TableHeader,
   TableRow,
   Tag,
+  TextArea,
   Toggle,
   Tooltip,
   TooltipProvider,
@@ -187,7 +188,7 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Thirty-five components covering identity, status indicators, data labels, actions, form controls, selection,
+          Component catalog covering identity, status indicators, data labels, actions, form controls, selection,
           layout, feedback, and overlays. All use component-level tokens, typed React APIs, and full documentation.
         </>
       }
@@ -463,6 +464,21 @@ export default function ComponentsPage() {
               </div>
             </div>
             <span style={footer}>View Input →</span>
+          </Link>
+
+          <Link href="/docs/components/textarea" style={card}>
+            <NewBadge />
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>TextArea</h2>
+            <p style={description}>
+              Multiline text entry for descriptions, bios, notes, disclaimers, and long-form values.
+            </p>
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "300px" }}>
+                <TextArea label="Message" placeholder="Write a message" />
+              </div>
+            </div>
+            <span style={footer}>View TextArea →</span>
           </Link>
 
           <Link href="/docs/components/multi-select" style={card}>

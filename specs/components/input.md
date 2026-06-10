@@ -9,7 +9,6 @@ keeping Figma and React composition aligned.
 The current `@maxa/ui` implementation covers:
 
 - `Input` for text-like single-line fields
-- `TextArea` for multiline text entry
 - built-in `Input` kinds: `text`, `password`, `search`, `quantity`
 - visual states: default, hover, focus, filled, error, disabled, readonly
 - form chrome: label, required marker, hint text, error text
@@ -17,6 +16,10 @@ The current `@maxa/ui` implementation covers:
 Dropdown and date picker are not part of the current `Input` API. They should
 be separate form-level components that reuse the same label/helper/error model
 and their own field primitives.
+
+TextArea is also a separate component entry. It reuses the same field chrome and
+tokens, but it must be documented and discovered as `TextArea`, not as
+`Input.kind="textarea"`.
 
 ## Figma composition model
 
@@ -50,6 +53,8 @@ target API shape. Prefer separate form components per field family.
 - Date picker single and dual range fields should share date-picker primitives,
   not be added as more `Input.kind` variants.
 - Dropdown should use a dropdown primitive, not `Input.kind="dropdown"`.
+- TextArea should use the standalone `TextArea` component, not
+  `Input.kind="textarea"`.
 
 ## Implementation references
 

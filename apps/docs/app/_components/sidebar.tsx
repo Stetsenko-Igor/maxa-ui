@@ -54,6 +54,7 @@ const NAV = [
       { href: "/docs/components/tabs", label: "Tabs" },
       { href: "/docs/components/table", label: "Table", isNew: true },
       { href: "/docs/components/tag", label: "Tag" },
+      { href: "/docs/components/textarea", label: "TextArea", isNew: true },
       { href: "/docs/components/toast", label: "Toast", isNew: true },
       { href: "/docs/components/toggle", label: "Toggle" },
       { href: "/docs/components/tooltip", label: "Tooltip" },

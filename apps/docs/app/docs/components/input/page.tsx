@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Input, TextArea, FormField } from "@maxa/ui"
+import { Input, FormField } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
@@ -22,7 +22,6 @@ const TOC = [
   { href: "#sizes", label: "Sizes" },
   { href: "#states", label: "States" },
   { href: "#label-and-helper-content", label: "Label and helper content" },
-  { href: "#text-area", label: "Text area" },
   { href: "#form-composition", label: "Form composition" },
   { href: "#api-reference", label: "API reference" },
 ]
@@ -53,7 +52,7 @@ A composable form field family. MAXA separates field primitives from form-level 
 ## Installation
 
 \`\`\`tsx
-import { Input, TextArea } from "@maxa/ui"
+import { Input } from "@maxa/ui"
 import "@maxa/tokens/theme.css"
 \`\`\`
 
@@ -61,7 +60,6 @@ import "@maxa/tokens/theme.css"
 
 \`\`\`tsx
 <Input label="Email" placeholder="you@example.com" />
-<TextArea label="Message" placeholder="Write a message" />
 \`\`\`
 `
 
@@ -75,7 +73,7 @@ export default function InputPage() {
       githubHref={GITHUB_INPUT_URL}
       markdown={INPUT_MARKDOWN}
       previous={{ href: "/docs/components/button", label: "Button" }}
-      next={{ href: "/docs/components/select", label: "Select" }}
+      next={{ href: "/docs/components/textarea", label: "TextArea" }}
       lead={
         <>
           A composable form field family. MAXA separates field primitives from
@@ -101,7 +99,7 @@ export default function InputPage() {
       >
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
-          imports={`import { Input, TextArea } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
+          imports={`import { Input } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
           usage={`<Input label="Email" placeholder="you@example.com" />`}
         />
       </DocsSection>
@@ -360,28 +358,6 @@ export default function InputPage() {
       </DocsSection>
 
       <DocsSection
-        id="text-area"
-        title="Text area"
-        description="Textarea uses the same wrapper, states, helper text, and error model as Input."
-      >
-        <DocsExample title="Default textarea">
-          <ComponentPreview code={inputExample("TextAreaDefaultExample", `<TextArea label="Text Area" placeholder="Type to search" characterCounter maxLength={500} />`, "TextArea")}>
-            <div style={{ width: "min(100%, 420px)" }}>
-              <TextArea label="Text Area" placeholder="Type to search" characterCounter maxLength={500} />
-            </div>
-          </ComponentPreview>
-        </DocsExample>
-
-        <DocsExample title="Textarea error">
-          <ComponentPreview code={inputExample("TextAreaErrorExample", `<TextArea label="Text Area" defaultValue="Bad text" error="Error message goes here." maxLength={500} characterCounter />`, "TextArea")}>
-            <div style={{ width: "min(100%, 420px)" }}>
-              <TextArea label="Text Area" defaultValue="Bad text" error="Error message goes here." maxLength={500} characterCounter />
-            </div>
-          </ComponentPreview>
-        </DocsExample>
-      </DocsSection>
-
-      <DocsSection
         id="form-composition"
         title="Form composition"
         description={
@@ -426,10 +402,8 @@ export default function InputPage() {
         description={
           <>
             All native <code>&lt;input&gt;</code> attributes are forwarded to the
-            underlying element. Textarea-specific attributes are available on{" "}
-            <code>TextArea</code>. Select and date picker should be built as
-            separate form components that reuse the same label, helper, and error
-            model.
+            underlying element. TextArea, Select, and DatePicker are separate form
+            components that reuse the same label, helper, and error model.
           </>
         }
       >
