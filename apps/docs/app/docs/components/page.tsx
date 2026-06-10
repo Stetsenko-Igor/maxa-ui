@@ -38,6 +38,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
   Empty,
+  FileInput,
   IconButton,
   Input,
   MultiSelect,
@@ -434,6 +435,21 @@ export default function ComponentsPage() {
               />
             </div>
             <span style={footer}>View Empty →</span>
+          </Link>
+
+          <Link href="/docs/components/file-input" style={card}>
+            <NewBadge />
+            <p style={eyebrow}>Form</p>
+            <h2 style={title}>FileInput</h2>
+            <p style={description}>
+              Low-level file picker and optional dropzone primitive for product upload flows.
+            </p>
+            <div style={preview}>
+              <div style={{ width: "100%", maxWidth: "300px" }}>
+                <FileInput label="Attachment" description="PDF, PNG, JPG, or SVG" />
+              </div>
+            </div>
+            <span style={footer}>View FileInput →</span>
           </Link>
 
           {/* I */}

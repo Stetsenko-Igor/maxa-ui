@@ -38,6 +38,7 @@ const NAV = [
       { href: "/docs/components/divider", label: "Divider" },
       { href: "/docs/components/dropdown-menu", label: "Dropdown Menu" },
       { href: "/docs/components/empty", label: "Empty" },
+      { href: "/docs/components/file-input", label: "FileInput", isNew: true },
       { href: "/docs/components/icon-button", label: "Icon Button" },
       { href: "/docs/components/input", label: "Input" },
       { href: "/docs/components/multi-select", label: "Multi Select" },

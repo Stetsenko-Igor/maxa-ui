@@ -26,6 +26,8 @@ Recently resolved:
 
 - `TextArea` now has a separate component entry, spec, docs route, and package export. It still
   reuses Input field internals and tokens where appropriate.
+- `FileInput` now exists as a low-level picker/dropzone primitive with its own tokens, spec,
+  docs route, tests, and package export.
 
 ## Decisions
 
@@ -69,10 +71,14 @@ Non-goal:
 
 ### P0 — FileInput Primitive
 
+Status: completed
+
 Current state:
 
-- No low-level file input/dropzone component exists in `@maxa/ui`.
-- Product inventory includes file/photo/logo/PDF upload surfaces, but those are product flows.
+- `FileInput` has its own entrypoint at `packages/ui/src/components/file-input`.
+- Docs live under `apps/docs/app/docs/components/file-input/page.tsx`.
+- Spec lives at `specs/components/file-input.md`.
+- Component tokens live in `packages/tokens/src/component-file-input.css`.
 
 Problem:
 
@@ -80,11 +86,11 @@ Problem:
 - File picking has real accessibility and browser behavior details that should not be reimplemented
   per product surface.
 
-Recommended scope:
+Completed scope:
 
 - Component: `FileInput`
 - Modes: click-to-pick and optional drag/drop zone
-- States: default, hover, focus, disabled, error, loading/processing
+- States: default, hover, focus, dragging, disabled, error
 - Content slots: icon, label, description, accepted formats/help text, selected file list
 - Props: `accept`, `multiple`, `disabled`, `error`, `maxFiles`, `maxSize`, `onFilesChange`
 - Accessibility: native `input[type="file"]`, keyboard activation, visible label, error text,

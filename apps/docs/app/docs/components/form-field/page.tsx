@@ -66,7 +66,7 @@ export default function FormFieldPage() {
       toc={TOC}
       githubHref={GITHUB_URL}
       markdown={FORM_FIELD_MARKDOWN}
-      previous={{ href: "/docs/components/date-picker", label: "DatePicker" }}
+      previous={{ href: "/docs/components/file-input", label: "FileInput" }}
       next={{ href: "/docs/components/icon-button", label: "IconButton" }}
       lead={
         <>

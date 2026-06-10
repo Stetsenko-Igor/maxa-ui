@@ -31,7 +31,7 @@ export default function EmptyPage() {
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/empty"
       markdown=""
       previous={{ href: "/docs/components/dropdown-menu", label: "Dropdown Menu" }}
-      next={{ href: "/docs/components/form-field", label: "Form Field" }}
+      next={{ href: "/docs/components/file-input", label: "FileInput" }}
       lead="Standard empty state for no results, first-run surfaces, carts, folders, and scheduled content."
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>

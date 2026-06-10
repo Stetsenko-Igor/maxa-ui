@@ -1,0 +1,200 @@
+.maxa-file-input {
+  display: grid;
+  gap: var(--file-input-label-gap);
+  font-family: var(--file-input-font-family);
+  color: var(--file-input-title-text);
+}
+
+.maxa-file-input__label-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.maxa-file-input__label,
+.maxa-file-input__required {
+  color: var(--file-input-label-text);
+  font-size: var(--file-input-label-font-size);
+  line-height: var(--file-input-label-line-height);
+  font-weight: var(--file-input-label-font-weight);
+}
+
+.maxa-file-input__required {
+  color: var(--file-input-error-text);
+}
+
+.maxa-file-input__surface {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--file-input-gap);
+  min-height: var(--file-input-min-height-md);
+  padding: var(--file-input-padding-md);
+  border: 1px dashed var(--file-input-border);
+  border-radius: var(--file-input-radius);
+  background: var(--file-input-bg);
+  color: var(--file-input-title-text);
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-standard),
+    border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.maxa-file-input--sm .maxa-file-input__surface {
+  min-height: var(--file-input-min-height-sm);
+  padding: var(--file-input-padding-sm);
+}
+
+.maxa-file-input--lg .maxa-file-input__surface {
+  min-height: var(--file-input-min-height-lg);
+  padding: var(--file-input-padding-lg);
+}
+
+.maxa-file-input__surface:hover,
+.maxa-file-input--hover .maxa-file-input__surface {
+  border-color: var(--file-input-border-hover);
+  background: var(--file-input-bg-hover);
+}
+
+.maxa-file-input__surface:focus-visible,
+.maxa-file-input--focus .maxa-file-input__surface {
+  border-color: var(--file-input-border-focus);
+  box-shadow: 0 0 0 var(--file-input-focus-ring-offset) var(--file-input-bg),
+    0 0 0 calc(var(--file-input-focus-ring-offset) + var(--file-input-focus-ring-width)) var(--file-input-focus-ring);
+}
+
+.maxa-file-input--dragging .maxa-file-input__surface,
+.maxa-file-input__surface[data-dragging] {
+  border-color: var(--file-input-border-focus);
+  background: var(--file-input-bg-dragging);
+}
+
+.maxa-file-input--error .maxa-file-input__surface {
+  border-color: var(--file-input-border-error);
+}
+
+.maxa-file-input--disabled {
+  opacity: var(--file-input-disabled-opacity);
+}
+
+.maxa-file-input--disabled .maxa-file-input__surface {
+  border-color: var(--file-input-border-disabled);
+  background: var(--file-input-disabled-bg);
+  color: var(--file-input-disabled-text);
+  cursor: not-allowed;
+}
+
+.maxa-file-input__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.maxa-file-input__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--file-input-icon-size-md);
+  height: var(--file-input-icon-size-md);
+  flex: 0 0 auto;
+  border-radius: var(--radius-full);
+  background: var(--file-input-icon-bg);
+  color: var(--file-input-icon-color);
+}
+
+.maxa-file-input--sm .maxa-file-input__icon {
+  width: var(--file-input-icon-size-sm);
+  height: var(--file-input-icon-size-sm);
+}
+
+.maxa-file-input--lg .maxa-file-input__icon {
+  width: var(--file-input-icon-size-lg);
+  height: var(--file-input-icon-size-lg);
+}
+
+.maxa-file-input--dragging .maxa-file-input__icon,
+.maxa-file-input__surface[data-dragging] .maxa-file-input__icon {
+  color: var(--file-input-icon-color-active);
+}
+
+.maxa-file-input__content {
+  display: grid;
+  gap: var(--spacing-1);
+  min-width: 0;
+}
+
+.maxa-file-input__title {
+  color: var(--file-input-title-text);
+  font-size: var(--file-input-title-font-size);
+  line-height: var(--file-input-title-line-height);
+  font-weight: var(--file-input-title-font-weight);
+}
+
+.maxa-file-input__description,
+.maxa-file-input__hint,
+.maxa-file-input__file-size {
+  color: var(--file-input-description-text);
+  font-size: var(--file-input-description-font-size);
+  line-height: var(--file-input-description-line-height);
+}
+
+.maxa-file-input__footer {
+  display: grid;
+  gap: var(--file-input-file-list-gap);
+}
+
+.maxa-file-input__hint {
+  color: var(--file-input-hint-text);
+}
+
+.maxa-file-input--error .maxa-file-input__hint {
+  color: var(--file-input-error-text);
+}
+
+.maxa-file-input__files {
+  display: grid;
+  gap: var(--file-input-file-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.maxa-file-input__file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--file-input-file-item-gap);
+  min-width: 0;
+  padding: var(--file-input-file-item-padding-y) var(--file-input-file-item-padding-x);
+  border-radius: var(--file-input-file-item-radius);
+  background: var(--file-input-file-item-bg);
+}
+
+.maxa-file-input__file-name {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--file-input-title-text);
+  font-size: var(--file-input-description-font-size);
+  line-height: var(--file-input-description-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maxa-file-input__file-size {
+  flex: 0 0 auto;
+  color: var(--file-input-meta-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .maxa-file-input__surface {
+    transition: none;
+  }
+}
