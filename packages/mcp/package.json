@@ -1,8 +1,11 @@
 {
   "name": "@maxa/mcp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
+  "bin": {
+    "maxa-mcp": "./dist/cli.js"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,7 +28,12 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@types/node": "*",
     "typescript": "*",
     "vitest": "*"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
   }
 }
