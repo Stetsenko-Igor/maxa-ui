@@ -45,8 +45,8 @@
 
 .maxa-calendar__title-button svg {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: var(--calendar-title-icon-size);
+  height: var(--calendar-title-icon-size);
 }
 
 .maxa-calendar__nav,
@@ -71,8 +71,8 @@
 
 .maxa-calendar__nav svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: var(--calendar-nav-icon-size);
+  height: var(--calendar-nav-icon-size);
 }
 
 .maxa-calendar__grid {
@@ -102,9 +102,9 @@
   border: 1px solid transparent;
   border-radius: var(--calendar-day-radius);
   color: var(--calendar-day-text);
-  font-size: 12px;
+  font-size: var(--calendar-day-font-size);
   font-weight: var(--font-weight-medium);
-  line-height: 14px;
+  line-height: var(--calendar-day-line-height);
 }
 
 .maxa-calendar__day:hover,
@@ -239,5 +239,5 @@
   outline: none;
   box-shadow:
     0 0 0 1px var(--calendar-focus-ring-offset-color),
-    0 0 0 3px var(--calendar-focus-ring);
+    0 0 0 var(--calendar-focus-ring-width) var(--calendar-focus-ring);
 }

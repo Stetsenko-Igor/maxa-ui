@@ -53,7 +53,7 @@
 }
 
 .maxa-datatable__empty--standalone {
-  min-height: 220px;
+  min-height: var(--datatable-empty-min-height);
   padding: var(--spacing-12);
   border: 1px dashed var(--table-border);
   border-radius: var(--table-radius);

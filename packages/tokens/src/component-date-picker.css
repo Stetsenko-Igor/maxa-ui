@@ -20,6 +20,9 @@
   --date-picker-preset-bg-hover: var(--color-action-neutral-subtle-hover);
   --date-picker-preset-font-size: var(--text-sm);
   --date-picker-field-separator-color: var(--color-text-tertiary);
+  --date-picker-more-icon-size: 14px;
+  --date-picker-more-menu-min-width: 132px;
+  --date-picker-quarter-icon-size: 16px;
   --date-picker-quarter-popover-width: 360px;
   --date-picker-quarter-header-height: 56px;
   --date-picker-quarter-grid-padding: 20px 28px 28px;

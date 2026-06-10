@@ -223,8 +223,8 @@
 
 .maxa-date-picker__more-trigger svg {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: var(--date-picker-more-icon-size);
+  height: var(--date-picker-more-icon-size);
 }
 
 .maxa-date-picker__more-menu {
@@ -233,7 +233,7 @@
   top: calc(100% + var(--spacing-1));
   right: 0;
   display: grid;
-  min-width: 132px;
+  min-width: var(--date-picker-more-menu-min-width);
   padding-block: var(--spacing-2);
   border: 1px solid var(--date-picker-range-border);
   border-radius: var(--date-picker-range-radius);
@@ -495,8 +495,8 @@
 .maxa-date-picker__quarter-nav svg,
 .maxa-date-picker__quarter-title svg {
   display: block;
-  width: 16px;
-  height: 16px;
+  width: var(--date-picker-quarter-icon-size);
+  height: var(--date-picker-quarter-icon-size);
 }
 
 .maxa-date-picker__quarter-title {
@@ -591,5 +591,5 @@
   outline: none;
   box-shadow:
     0 0 0 1px var(--calendar-focus-ring-offset-color),
-    0 0 0 3px var(--calendar-focus-ring);
+    0 0 0 var(--calendar-focus-ring-width) var(--calendar-focus-ring);
 }

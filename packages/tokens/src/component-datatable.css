@@ -5,6 +5,7 @@
 :root {
   --datatable-controls-gap: var(--spacing-3); /* 12px — between optional controls and table */
   --datatable-footer-gap: var(--spacing-3); /* 12px — between table and pagination */
+  --datatable-empty-min-height: 220px;
   --datatable-skeleton-line-height: 16px;
   --datatable-skeleton-line-width: 120px;
   --datatable-skeleton-title-width: 180px;
