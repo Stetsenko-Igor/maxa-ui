@@ -18,6 +18,7 @@ LLMs fabricate design values. They generate `padding: 13px` or `color: #3b82f6` 
 6. **Need a CSS variable name?** — search `specs/tokens-reference.md`
 7. **Need package ownership rules?** — read `specs/architecture.md`
 8. **Need Figma/Code Connect guidance?** — read `specs/figma-code-connect-readiness.md`
+9. **Planning core components?** — read `specs/core-gap-audit.md`
 
 ## Enforcement
 
@@ -35,6 +36,7 @@ This runs in CI with `exit 1` on violations. Do not hardcode values that have to
 specs/
 ├── README.md                        ← this file
 ├── architecture.md                  ← package ownership rules
+├── core-gap-audit.md                ← core component gaps vs product patterns
 ├── figma-code-connect-readiness.md  ← optional Figma Code Connect strategy
 ├── tokens-reference.md              ← master CSS variable index
 ├── foundations/
