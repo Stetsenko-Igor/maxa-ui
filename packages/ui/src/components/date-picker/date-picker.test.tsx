@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { DatePicker, DateRangePicker, QuarterPicker } from "./date-picker"
 
@@ -197,5 +197,252 @@ describe("DatePicker", () => {
     expect(screen.getByRole("button", { name: "Choose quarter year" })).toHaveClass(
       "maxa-date-picker__quarter-title--active",
     )
+  })
+})
+
+describe("DatePicker segment typing", () => {
+  it("types date segments with keyboard digits", () => {
+    render(<DatePicker label="Date" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    fireEvent.focus(input)
+    for (const key of ["5", "4", "2", "0", "2", "5"]) {
+      fireEvent.keyDown(input, { key })
+    }
+
+    expect(input).toHaveValue("5/4/2025")
+  })
+
+  it("ignores digit keys with modifiers", () => {
+    render(<DatePicker label="Date" defaultValue="5/4/2025" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    fireEvent.keyDown(input, { key: "5", ctrlKey: true })
+
+    expect(input).toHaveValue("5/4/2025")
+  })
+
+  it("clears segments with Backspace and Delete", () => {
+    render(<DatePicker label="Date" defaultValue="5/4/2025" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    input.setSelectionRange(8, 8)
+    fireEvent.keyDown(input, { key: "Backspace" })
+    expect(input).toHaveValue("5//2025")
+
+    input.setSelectionRange(0, 1)
+    fireEvent.keyDown(input, { key: "Delete" })
+    expect(input).toHaveValue("//2025")
+  })
+
+  it("replaces a selected month segment and composes two-digit months", () => {
+    render(<DatePicker label="Date" defaultValue="5/4/2025" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    input.setSelectionRange(0, 1)
+    fireEvent.keyDown(input, { key: "1" })
+    expect(input).toHaveValue("1/4/2025")
+
+    fireEvent.keyDown(input, { key: "2" })
+    expect(input).toHaveValue("12/4/2025")
+  })
+
+  it("moves between segments with arrows and slash", () => {
+    render(<DatePicker label="Date" defaultValue="5/4/2025" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    input.setSelectionRange(0, 1)
+    fireEvent.keyDown(input, { key: "ArrowRight" })
+    expect(input.selectionStart).toBe(2)
+    expect(input.selectionEnd).toBe(3)
+
+    fireEvent.keyDown(input, { key: "/" })
+    expect(input.selectionStart).toBe(4)
+    expect(input.selectionEnd).toBe(8)
+
+    fireEvent.keyDown(input, { key: "ArrowLeft" })
+    expect(input.selectionStart).toBe(2)
+    expect(input.selectionEnd).toBe(3)
+  })
+
+  it("normalizes pasted digits into a single date", () => {
+    render(<DatePicker label="Date" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    fireEvent.paste(input, { clipboardData: { getData: () => "04162025" } })
+
+    expect(input).toHaveValue("4/16/2025")
+  })
+
+  it("ignores pastes without digits", () => {
+    render(<DatePicker label="Date" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    fireEvent.paste(input, { clipboardData: { getData: () => "abc" } })
+
+    expect(input).toHaveValue("")
+  })
+
+  it("normalizes pasted digits into a range", () => {
+    render(<DateRangePicker label="Range" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    fireEvent.paste(input, { clipboardData: { getData: () => "0416202505152025" } })
+
+    expect(input).toHaveValue("4/16/2025 - 5/15/2025")
+  })
+
+  it("navigates and types across both range dates", () => {
+    render(<DateRangePicker label="Range" defaultValue="4/16/2025 - 5/15/2025" />)
+    const input = screen.getByRole("textbox") as HTMLInputElement
+
+    input.setSelectionRange(12, 12)
+    fireEvent.keyDown(input, { key: "ArrowLeft" })
+    expect(input.selectionStart).toBe(5)
+    expect(input.selectionEnd).toBe(9)
+
+    fireEvent.keyDown(input, { key: "ArrowRight" })
+    expect(input.selectionStart).toBe(12)
+    expect(input.selectionEnd).toBe(13)
+
+    fireEvent.keyDown(input, { key: "6" })
+    expect(input).toHaveValue("4/16/2025 - 6/15/2025")
+  })
+})
+
+describe("DatePicker interactions", () => {
+  it("cancels a draft selection in confirm mode", () => {
+    render(<DatePicker label="Date" confirmSelection defaultOpen />)
+
+    fireEvent.click(screen.getByRole("button", { name: "May 4, 2025" }))
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }))
+
+    expect(screen.getByRole("textbox")).toHaveValue("")
+    expect(screen.queryByRole("dialog", { name: "Choose date" })).not.toBeInTheDocument()
+  })
+
+  it("applies inline single presets and reports the apply payload", () => {
+    const onDateApply = vi.fn()
+    render(<DatePicker label="Date" quickSelect="inline" defaultOpen onDateApply={onDateApply} />)
+
+    fireEvent.click(screen.getByRole("button", { name: "Yesterday" }))
+    fireEvent.click(screen.getByRole("button", { name: "Today" }))
+    fireEvent.click(screen.getByRole("button", { name: "Apply" }))
+
+    expect(screen.getByRole("textbox")).toHaveValue("5/15/2025")
+    expect(onDateApply).toHaveBeenCalledWith({ date: new Date(2025, 4, 15), time: undefined })
+  })
+
+  it("closes the more menu when pointing elsewhere in the popover", () => {
+    render(<DatePicker label="Date" quickSelect="more" defaultOpen defaultMoreOpen />)
+
+    expect(screen.getByRole("menu")).toBeInTheDocument()
+
+    fireEvent.pointerDown(screen.getByRole("dialog", { name: "Choose date" }))
+
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument()
+  })
+
+  it("closes the time dropdown when pointing elsewhere in the popover", () => {
+    render(<DatePicker label="Date" timePicker defaultOpen defaultTimeDropdownOpen />)
+
+    expect(screen.getByRole("listbox")).toBeInTheDocument()
+
+    fireEvent.pointerDown(screen.getByRole("dialog", { name: "Choose date" }))
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
+  })
+
+  it("keeps a controlled value when selecting a date", () => {
+    const onDateSelect = vi.fn()
+    render(
+      <DatePicker label="Date" value="5/9/2025" onChange={() => {}} onDateSelect={onDateSelect} />,
+    )
+
+    fireEvent.click(screen.getByRole("button", { name: "Open calendar" }))
+    fireEvent.click(screen.getByRole("button", { name: "May 4, 2025" }))
+
+    expect(onDateSelect).toHaveBeenCalledWith(new Date(2025, 4, 4))
+    expect(screen.getByRole("textbox")).toHaveValue("5/9/2025")
+  })
+
+  it("does not open the calendar when disabled", () => {
+    render(<DatePicker label="Date" disabled />)
+    const input = screen.getByRole("textbox")
+
+    fireEvent.focus(input)
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(screen.getByRole("button", { name: "Open calendar" })).toBeDisabled()
+    expect(input.closest(".maxa-date-picker__field")).toHaveClass(
+      "maxa-date-picker__field--disabled",
+    )
+  })
+
+  it("restarts the range when selecting an earlier or extra date", () => {
+    render(<DateRangePicker label="Range" />)
+    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
+
+    fireEvent.click(screen.getByRole("button", { name: "May 9, 2025" }))
+    fireEvent.click(screen.getByRole("button", { name: "May 2, 2025" }))
+
+    expect(screen.getByDisplayValue("5/2/2025")).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole("button", { name: "May 20, 2025" }))
+    expect(screen.getByDisplayValue("5/20/2025")).toBeInTheDocument()
+
+    fireEvent.click(screen.getAllByRole("button", { name: "May 27, 2025" })[0]!)
+    expect(screen.getByDisplayValue("5/27/2025")).toBeInTheDocument()
+    expect(screen.queryByDisplayValue("5/20/2025")).not.toBeInTheDocument()
+  })
+
+  it("cancels the range popover without applying", () => {
+    const onRangeApply = vi.fn()
+    render(<DateRangePicker label="Range" onRangeApply={onRangeApply} />)
+    fireEvent.click(screen.getByRole("button", { name: "Open date range calendar" }))
+    fireEvent.click(screen.getByRole("button", { name: "May 9, 2025" }))
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }))
+
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(onRangeApply).not.toHaveBeenCalled()
+    expect(screen.getByRole("textbox")).toHaveValue("")
+  })
+
+  it("navigates quarter years backwards and pages the year panel", () => {
+    const onQuarterSelect = vi.fn()
+    render(<QuarterPicker label="Quarter" defaultValue="Q2/2025" onQuarterSelect={onQuarterSelect} />)
+
+    fireEvent.click(screen.getByRole("button", { name: "Open quarter picker" }))
+    fireEvent.click(screen.getByRole("button", { name: "Previous year" }))
+    fireEvent.click(screen.getByRole("button", { name: "Choose quarter year" }))
+
+    const prevRange = screen.getAllByRole("button", { name: "Previous year range" })
+    expect(prevRange).toHaveLength(2)
+    fireEvent.click(prevRange[0]!)
+    fireEvent.click(prevRange[1]!)
+
+    const nextRange = screen.getAllByRole("button", { name: "Next year range" })
+    fireEvent.click(nextRange[0]!)
+    fireEvent.click(nextRange[1]!)
+
+    expect(screen.getByText("2014 - 2025")).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole("button", { name: "2020" }))
+    fireEvent.click(screen.getByRole("button", { name: "Q1" }))
+
+    expect(onQuarterSelect).toHaveBeenCalledWith({ quarter: 1, year: 2020 })
+    expect(screen.getByRole("textbox")).toHaveValue("Q1/2020")
+  })
+
+  it("falls back to the current year when the quarter value cannot be parsed", () => {
+    render(<QuarterPicker label="Quarter" defaultValue="bogus" />)
+    const input = screen.getByRole("textbox")
+    const year = new Date().getFullYear()
+
+    fireEvent.change(input, { target: { value: "still bogus" } })
+    fireEvent.focus(input)
+    fireEvent.click(screen.getByRole("button", { name: "Q2" }))
+
+    expect(input).toHaveValue(`Q2/${year}`)
   })
 })

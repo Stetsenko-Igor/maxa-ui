@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest"
-import { render, screen } from "@testing-library/react"
+import { describe, it, expect, vi } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
 import { Input, TextArea } from "./input"
 
@@ -161,5 +161,107 @@ describe("Input", () => {
       </div>,
     )
     expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("calls onClear when the clear button is clicked", () => {
+    const onClear = vi.fn()
+    render(<Input defaultValue="abc" onClear={onClear} />)
+
+    fireEvent.click(screen.getByRole("button", { name: "Clear value" }))
+
+    expect(onClear).toHaveBeenCalledTimes(1)
+    expect(document.querySelector(".maxa-input__clear")).toBeInTheDocument()
+  })
+
+  it("calls stepper callbacks for quantity inputs", () => {
+    const onIncrement = vi.fn()
+    const onDecrement = vi.fn()
+    render(<Input kind="quantity" defaultValue={1} onIncrement={onIncrement} onDecrement={onDecrement} />)
+
+    fireEvent.click(screen.getByRole("button", { name: "Increase value" }))
+    fireEvent.click(screen.getByRole("button", { name: "Decrease value" }))
+
+    expect(onIncrement).toHaveBeenCalledTimes(1)
+    expect(onDecrement).toHaveBeenCalledTimes(1)
+  })
+
+  it("blocks pointer and focus interaction on readonly input", () => {
+    const onMouseDown = vi.fn()
+    const onFocus = vi.fn()
+    render(<Input readOnly defaultValue="Locked" onMouseDown={onMouseDown} onFocus={onFocus} />)
+    const input = screen.getByRole("textbox")
+
+    fireEvent.mouseDown(input)
+    fireEvent.focus(input)
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1)
+    expect(onFocus).toHaveBeenCalledTimes(1)
+    expect(input).not.toHaveFocus()
+  })
+
+  it("forwards mousedown and focus when editable", () => {
+    const onMouseDown = vi.fn()
+    const onFocus = vi.fn()
+    render(<Input onMouseDown={onMouseDown} onFocus={onFocus} />)
+    const input = screen.getByRole("textbox")
+
+    fireEvent.mouseDown(input)
+    fireEvent.focus(input)
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1)
+    expect(onFocus).toHaveBeenCalledTimes(1)
+  })
+
+  it("blocks pointer and focus interaction on readonly textarea", () => {
+    const onMouseDown = vi.fn()
+    const onFocus = vi.fn()
+    render(<TextArea readOnly defaultValue="Locked" onMouseDown={onMouseDown} onFocus={onFocus} />)
+    const textarea = screen.getByRole("textbox")
+
+    fireEvent.mouseDown(textarea)
+    fireEvent.focus(textarea)
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1)
+    expect(onFocus).toHaveBeenCalledTimes(1)
+    expect(textarea).not.toHaveFocus()
+  })
+
+  it("forwards mousedown and focus on editable textarea", () => {
+    const onMouseDown = vi.fn()
+    const onFocus = vi.fn()
+    render(<TextArea onMouseDown={onMouseDown} onFocus={onFocus} />)
+    const textarea = screen.getByRole("textbox")
+
+    fireEvent.mouseDown(textarea)
+    fireEvent.focus(textarea)
+
+    expect(onMouseDown).toHaveBeenCalledTimes(1)
+    expect(onFocus).toHaveBeenCalledTimes(1)
+  })
+
+  it("marks controlled inputs with a value as filled", () => {
+    render(<Input value="hello" onChange={() => {}} />)
+    expect(document.querySelector(".maxa-input-wrapper")).toHaveClass(
+      "maxa-input-wrapper--filled",
+    )
+  })
+
+  it("renders textarea error state with alert role", () => {
+    render(<TextArea error="Too long" />)
+    expect(screen.getByRole("textbox")).toHaveAttribute("aria-invalid", "true")
+    expect(screen.getByRole("alert")).toHaveTextContent("Too long")
+  })
+
+  it("renders disabled textarea with disabled wrapper class", () => {
+    render(<TextArea label="Notes" disabled />)
+    expect(screen.getByRole("textbox")).toBeDisabled()
+    expect(document.querySelector(".maxa-input-wrapper")).toHaveClass(
+      "maxa-input-wrapper--disabled",
+    )
+  })
+
+  it("counts controlled textarea characters", () => {
+    render(<TextArea value="hello" onChange={() => {}} characterCounter maxLength={10} />)
+    expect(screen.getByText("5/10")).toBeInTheDocument()
   })
 })
