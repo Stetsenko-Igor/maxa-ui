@@ -15,3 +15,9 @@ if (!("ResizeObserver" in globalThis)) {
 
   globalThis.ResizeObserver = ResizeObserverStub
 }
+
+if ("HTMLCanvasElement" in globalThis) {
+  HTMLCanvasElement.prototype.getContext = function getContext() {
+    return null
+  } as HTMLCanvasElement["getContext"]
+}

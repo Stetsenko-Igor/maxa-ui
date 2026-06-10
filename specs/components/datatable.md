@@ -65,7 +65,7 @@ The visual model follows the existing Figma table system:
 ## Behavior
 
 - **Sort** — click a sortable `TableHead` toggles ascending → descending → ascending. One column at a time.
-- **Select** — checkbox column prepended when `selectable`. Select-all in header is `indeterminate` when partial selection. `onSelectionChange` receives an array of row IDs.
+- **Select** — checkbox column prepended when `selectable`. Select-all in header selects every row in the full `data` array, not only the current page. It is `indeterminate` when partial selection. `onSelectionChange` receives an array of row IDs.
 - **Rows** — data rows are interactive by default and may be marked `subdued` through `rowSubdued`.
 - **Row actions** — action columns use `cellType: "icon-button"` and the same small ghost `IconButton` treatment as Table examples. Prefer direct Edit and Copy buttons followed by a More menu button when the row has multiple secondary actions.
 - **Pagination** — when `pageSize` is set, only the current page slice renders. `Pagination` component renders below the table.

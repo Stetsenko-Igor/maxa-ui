@@ -217,6 +217,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             className="maxa-select__native"
             defaultValue={defaultValue}
             disabled={disabled}
+            onChange={onChange ?? (value !== undefined ? () => {} : undefined)}
             tabIndex={-1}
             value={value}
             {...props}

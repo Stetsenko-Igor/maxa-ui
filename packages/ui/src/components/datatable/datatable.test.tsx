@@ -126,6 +126,23 @@ describe("DataTable", () => {
     expect(onChange).toHaveBeenLastCalledWith([])
   })
 
+  it("selects the full data set from the header checkbox even when paginated", () => {
+    const onChange = vi.fn()
+    render(
+      <DataTable
+        columns={COLUMNS}
+        data={DATA}
+        rowId={ROW_ID}
+        selectable
+        pageSize={2}
+        onSelectionChange={onChange}
+      />,
+    )
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "Select all rows" }))
+    expect(onChange).toHaveBeenLastCalledWith(["1", "2", "3", "4"])
+  })
+
   it("accumulates selection across individual rows", () => {
     const onChange = vi.fn()
     render(

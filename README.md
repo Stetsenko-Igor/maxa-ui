@@ -13,7 +13,7 @@ The goal is to close the gap between design and engineering: the same decisions 
 - `@maxa/icons` - shared icon package placeholder for Maxa-owned icon assets.
 - `@maxa/hooks` - shared React hooks package placeholder for reusable interaction logic.
 - `@maxa/cli` - experimental stub for future design-system CLI tooling (no commands yet).
-- `@maxa/mcp` - MCP server that exposes the design system to AI agents (being implemented).
+- `@maxa/mcp` - MCP server that exposes the design system to AI agents.
 - `apps/docs` - local documentation site with component examples and usage guidance.
 - `specs` - agent-readable design system contracts for foundations, components, and patterns.
 - `packages/tokens/figma` - import-ready Figma variable collections and bundles.
