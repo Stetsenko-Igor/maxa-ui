@@ -31,6 +31,9 @@ jobs:
       - name: Token audit
         run: pnpm audit:tokens
 
+      - name: Token reference freshness
+        run: pnpm tokens:reference:check
+
       - name: Test
         run: pnpm test
 

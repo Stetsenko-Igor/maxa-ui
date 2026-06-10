@@ -29,7 +29,7 @@ const SCAN_DIRS = ['packages/ui/src', 'packages/tokens/src', 'apps/docs'];
 const TOKEN_CSS_DIR = join(ROOT, 'packages/tokens/src');
 const FIGMA_DIR = join(ROOT, 'packages/tokens/figma');
 
-const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', 'audit-tokens.mjs'];
+const IGNORE_PATHS = ['node_modules', 'dist', '.turbo', '.next', '.next-dev', 'out', 'audit-tokens.mjs'];
 
 // Legacy semantic names removed in the surface redesign. Their CSS var
 // is no longer defined (except bg-elevated which is a temporary alias).
