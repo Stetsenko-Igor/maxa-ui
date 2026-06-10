@@ -37,5 +37,6 @@ Status: Under development
   - `pnpm figma:bundle`
 
 ## Docs
-- https://ui.maxa.com/docs
-- https://ui.maxa.com/AGENT.md
+- https://stetsenko-igor.github.io/maxa-ui/docs/introduction
+- https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/AGENT.md
+- Full token index: https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/specs/tokens-reference.md (auto-generated, 1500+ tokens)

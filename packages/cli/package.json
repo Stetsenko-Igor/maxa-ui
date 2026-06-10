@@ -1,6 +1,7 @@
 {
   "name": "@maxa/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "EXPERIMENTAL (stub): future design-system CLI tooling - no commands implemented yet",
   "private": false,
   "type": "module",
   "bin": {
