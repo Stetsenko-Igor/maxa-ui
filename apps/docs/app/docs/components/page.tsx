@@ -31,6 +31,13 @@ import {
   DialogTitle,
   DialogTrigger,
   Divider,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -394,6 +401,28 @@ export default function ComponentsPage() {
           </Link>
 
           {/* Dr */}
+          <Link href="/docs/components/drawer" style={card}>
+            <NewBadge />
+            <p style={eyebrow}>Overlay</p>
+            <h2 style={title}>Drawer</h2>
+            <p style={description}>
+              Side overlay primitive for contained settings, filters, and secondary workflows.
+            </p>
+            <div style={preview}>
+              <Drawer>
+                <DrawerTrigger className="maxa-button maxa-button--outline maxa-button--md">Open drawer</DrawerTrigger>
+                <DrawerContent>
+                  <DrawerHeader>
+                    <DrawerTitle>Package settings</DrawerTitle>
+                    <DrawerDescription>Update metadata and visibility.</DrawerDescription>
+                  </DrawerHeader>
+                  <DrawerBody>Drawer content</DrawerBody>
+                </DrawerContent>
+              </Drawer>
+            </div>
+            <span style={footer}>View Drawer →</span>
+          </Link>
+
           <Link href="/docs/components/dropdown-menu" style={card}>
             <p style={eyebrow}>Overlay</p>
             <h2 style={title}>Dropdown Menu</h2>

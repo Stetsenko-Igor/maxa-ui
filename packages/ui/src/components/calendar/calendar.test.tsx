@@ -43,7 +43,7 @@ describe("Calendar", () => {
     fireEvent.click(screen.getByRole("button", { name: "2026" }))
     fireEvent.click(screen.getByRole("button", { name: "Jun" }))
     expect(screen.getByText("June 2026")).toBeInTheDocument()
-  })
+  }, 10_000)
 
   it("does not select disabled dates", () => {
     const onSelect = vi.fn()

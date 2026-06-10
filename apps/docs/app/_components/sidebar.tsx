@@ -36,6 +36,7 @@ const NAV = [
       { href: "/docs/components/date-picker", label: "Date Picker" },
       { href: "/docs/components/dialog", label: "Dialog" },
       { href: "/docs/components/divider", label: "Divider" },
+      { href: "/docs/components/drawer", label: "Drawer", isNew: true },
       { href: "/docs/components/dropdown-menu", label: "Dropdown Menu" },
       { href: "/docs/components/empty", label: "Empty" },
       { href: "/docs/components/file-input", label: "FileInput", isNew: true },

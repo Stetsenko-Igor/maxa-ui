@@ -39,7 +39,7 @@ See the root [README](../../README.md) for the full distribution options and cav
 Single entry point (`@maxa/ui`) exporting:
 
 - **Layout/typography primitives** - `Box`, `Stack`, `Inline`, `Text`, `Heading`, `Surface`, `TokenSwatch`, plus type-safe token prop types (`TextColorToken`, `BackgroundColorToken`, `BorderColorToken`, `SpaceToken`, `RadiusToken`, ...)
-- **Components** - Alert, AlertDialog, Avatar, Badge, Breadcrumb, Button, Calendar, Checkbox, ContextMenu, DataTable, DatePicker, Dialog, Divider, DropdownMenu, Empty, FormField, IconButton, Input, MultiSelect, Pagination, Popover, Progress, Radio, SegmentedControl, Select, Separator, Skeleton, Slider, SocialButton, Spinner, Table, Tabs, Tag, Toast, Toggle, Tooltip, UtilityButton
+- **Components** - Alert, AlertDialog, Avatar, Badge, Breadcrumb, Button, Calendar, Checkbox, ContextMenu, DataTable, DatePicker, Dialog, Divider, Drawer, DropdownMenu, Empty, FileInput, FormField, IconButton, Input, MultiSelect, Pagination, Popover, Progress, Radio, SegmentedControl, Select, Separator, Skeleton, Slider, SocialButton, Spinner, Table, Tabs, Tag, TextArea, Toast, Toggle, Tooltip, UtilityButton
 
 ## Example
 

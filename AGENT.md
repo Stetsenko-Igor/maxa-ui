@@ -185,7 +185,7 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
   - additional variants after real Figma component usage
 - Current Input architecture:
   - split field primitives from form-level components
-  - current React scope includes `Input` and `TextArea`
+  - current React scope includes `Input`, `TextArea`, and `FileInput`
   - `Input` kinds are `text`, `password`, `search`, and `quantity`
   - `readonly` maps to the Figma `Not-Editable` state and is distinct from `disabled`
   - `Input Form Universal` is a composition example, not the target public API shape

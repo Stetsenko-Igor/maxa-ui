@@ -1,0 +1,42 @@
+/* Drawer component tokens */
+
+:root {
+  --drawer-overlay-bg: var(--dialog-overlay-bg);
+  --drawer-content-bg: var(--color-bg-float);
+  --drawer-content-border: var(--color-border-primary);
+  --drawer-content-shadow: var(--shadow-lg);
+  --drawer-content-width-sm: 320px;
+  --drawer-content-width-md: 400px;
+  --drawer-content-width-lg: 520px;
+  --drawer-content-height-sm: 280px;
+  --drawer-content-height-md: 360px;
+  --drawer-content-height-lg: 480px;
+  --drawer-header-padding-x: var(--spacing-6);
+  --drawer-header-padding-top: var(--spacing-6);
+  --drawer-header-padding-bottom: var(--spacing-6);
+  --drawer-header-gap: var(--spacing-2);
+  --drawer-header-border: var(--color-border-primary);
+  --drawer-body-padding-x: var(--spacing-6);
+  --drawer-body-padding-y: var(--spacing-6);
+  --drawer-body-font-size: var(--text-md);
+  --drawer-body-line-height: var(--text-md--line-height);
+  --drawer-body-font-weight: var(--font-weight-regular);
+  --drawer-body-color: var(--color-text-primary);
+  --drawer-footer-padding-x: var(--spacing-6);
+  --drawer-footer-padding-top: var(--spacing-3);
+  --drawer-footer-padding-bottom: var(--spacing-4);
+  --drawer-footer-gap: var(--spacing-2);
+  --drawer-title-color: var(--color-text-primary);
+  --drawer-title-font-size: var(--text-heading-xs);
+  --drawer-title-line-height: 20px;
+  --drawer-title-font-weight: var(--font-weight-bold);
+  --drawer-description-color: var(--color-text-secondary);
+  --drawer-description-font-size: var(--text-sm);
+  --drawer-description-line-height: var(--text-sm--line-height);
+  --drawer-description-font-weight: var(--font-weight-medium);
+  --drawer-close-size: 48px;
+  --drawer-close-icon-size: 20px;
+  --drawer-close-bg-hover: var(--color-action-neutral-subtle-hover);
+  --drawer-close-color: var(--color-fg-secondary);
+  --drawer-z: var(--z-modal);
+}

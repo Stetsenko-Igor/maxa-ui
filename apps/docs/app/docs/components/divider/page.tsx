@@ -30,8 +30,8 @@ export default function DividerPage() {
       toc={TOC}
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/divider"
       markdown=""
-      previous={{ href: "/docs/components/checkbox", label: "Checkbox" }}
-      next={{ href: "/docs/components/icon-button", label: "Icon Button" }}
+      previous={{ href: "/docs/components/dialog", label: "Dialog" }}
+      next={{ href: "/docs/components/drawer", label: "Drawer" }}
       lead={
         <>
           A thin rule that divides groups of content. Horizontal or vertical,

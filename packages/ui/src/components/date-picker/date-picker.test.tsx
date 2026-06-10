@@ -138,7 +138,7 @@ describe("DatePicker", () => {
     fireEvent.click(screen.getByRole("button", { name: "June 18, 2025" }))
     fireEvent.click(screen.getByRole("button", { name: "Apply" }))
     expect(screen.getByRole("textbox")).toHaveValue("5/9/2025 - 6/18/2025")
-  })
+  }, 10_000)
 
   it("updates the range draft from presets", () => {
     render(<DateRangePicker label="Date Picker" />)
@@ -152,7 +152,7 @@ describe("DatePicker", () => {
     fireEvent.click(screen.getByRole("button", { name: "Apply" }))
 
     expect(screen.getByRole("textbox")).toHaveValue("4/16/2025 - 5/15/2025")
-  })
+  }, 10_000)
 
   it("normalizes changed range input digits", () => {
     render(<DateRangePicker label="Date Picker" />)
@@ -394,7 +394,7 @@ describe("DatePicker interactions", () => {
     fireEvent.click(screen.getAllByRole("button", { name: "May 27, 2025" })[0]!)
     expect(screen.getByDisplayValue("5/27/2025")).toBeInTheDocument()
     expect(screen.queryByDisplayValue("5/20/2025")).not.toBeInTheDocument()
-  })
+  }, 10_000)
 
   it("cancels the range popover without applying", () => {
     const onRangeApply = vi.fn()

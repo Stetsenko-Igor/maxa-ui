@@ -28,6 +28,8 @@ Recently resolved:
   reuses Input field internals and tokens where appropriate.
 - `FileInput` now exists as a low-level picker/dropzone primitive with its own tokens, spec,
   docs route, tests, and package export.
+- `Drawer` now exists as a core overlay primitive with side placement, tokens, spec, docs route,
+  tests, and package export.
 
 ## Decisions
 
@@ -37,8 +39,8 @@ Recently resolved:
 - Add `FileInput` as a low-level picker/dropzone primitive, not as a product-specific upload flow.
 - Treat mobile table behavior as a core data-display concern, but do not solve it with product card
   patterns inside `Table` or `DataTable`.
-- Verify Drawer/Sheet source before planning implementation. The need is real, but this repo does
-  not currently expose a `Drawer` or `Sheet` component from `@maxa/ui`.
+- Use `Drawer` for side-panel overlay primitives. `Sheet` remains a possible future alias only if
+  Figma/product naming requires it.
 
 ## Priority Gaps
 
@@ -105,10 +107,14 @@ Non-goals:
 
 ### P1 — Drawer / Sheet Verification
 
+Status: completed
+
 Current state:
 
-- No `Drawer` or `Sheet` component directory/export is present in this repo.
-- Overlay foundations already mention drawers as an elevation/z-index use case.
+- `Drawer` has its own entrypoint at `packages/ui/src/components/drawer`.
+- Docs live under `apps/docs/app/docs/components/drawer/page.tsx`.
+- Spec lives at `specs/components/drawer.md`.
+- Component tokens live in `packages/tokens/src/component-drawer.css`.
 
 Problem:
 
@@ -116,13 +122,13 @@ Problem:
   needed.
 - It should not be confused with product app shell/sidebar navigation.
 
-Recommended work:
+Completed scope:
 
-- First verify whether Drawer exists in another Maxa codebase or Figma library.
-- If absent from `@maxa/ui`, define `Drawer` or `Sheet` as an overlay primitive.
-- Build on Radix Dialog patterns if possible: focus trap, escape close, overlay, portal, controlled
-  and uncontrolled open state.
-- Support side placement: `left`, `right`, `bottom` at minimum.
+- Component: `Drawer`
+- Anatomy: trigger, content, header, title, description, body, footer, close
+- Open state: controlled and uncontrolled
+- Placement: `left`, `right`, `top`, `bottom`
+- Behavior: focus return, focus trap, Escape close, overlay close
 
 Non-goal:
 
