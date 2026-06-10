@@ -1,0 +1,11 @@
+#!/bin/sh
+set -eu
+
+if [ "${MAXA_SKIP_GIT_HOOKS:-}" = "1" ]; then
+  echo "Skipping MAXA pre-push checks because MAXA_SKIP_GIT_HOOKS=1."
+  exit 0
+fi
+
+echo "Running MAXA pre-push checks..."
+pnpm audit:tokens
+pnpm tokens:reference:check

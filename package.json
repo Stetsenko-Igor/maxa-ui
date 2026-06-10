@@ -16,6 +16,7 @@
     "token:stats": "node scripts/token-stats.mjs",
     "tokens:reference": "node scripts/generate-tokens-reference.mjs",
     "tokens:reference:check": "node scripts/generate-tokens-reference.mjs --check",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",

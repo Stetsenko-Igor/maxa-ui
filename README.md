@@ -169,6 +169,15 @@ pnpm figma:bundle
 pnpm build
 ```
 
+Local git hooks are installed by `pnpm install` through the `prepare` script. The pre-push hook runs the fast design-system guards:
+
+```bash
+pnpm audit:tokens
+pnpm tokens:reference:check
+```
+
+For an emergency push, set `MAXA_SKIP_GIT_HOOKS=1`.
+
 ## Figma workflow
 
 Figma variables are generated from `packages/tokens/figma`.
