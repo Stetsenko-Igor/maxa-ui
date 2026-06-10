@@ -25,20 +25,23 @@ export interface MultiSelectProps {
   onValueChange?: (value: string[]) => void
 }
 
-function MultiSelect({
-  defaultValue = [],
-  disabled,
-  error,
-  hint,
-  label,
-  onValueChange,
-  options,
-  placeholder = "Select options",
-  required,
-  size = "md",
-  value,
-  wrapperClassName,
-}: MultiSelectProps) {
+const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function MultiSelect(
+  {
+    defaultValue = [],
+    disabled,
+    error,
+    hint,
+    label,
+    onValueChange,
+    options,
+    placeholder = "Select options",
+    required,
+    size = "md",
+    value,
+    wrapperClassName,
+  },
+  ref,
+) {
   const [internalValue, setInternalValue] = React.useState(defaultValue)
   const inputId = React.useId()
   const hintId = hint || error ? `${inputId}-hint` : undefined
@@ -61,6 +64,7 @@ function MultiSelect({
 
   return (
     <FormField
+      ref={ref}
       className={wrapperClassName}
       error={error}
       hint={hint}
@@ -130,7 +134,9 @@ function MultiSelect({
       </DropdownMenu>
     </FormField>
   )
-}
+})
+
+MultiSelect.displayName = "MultiSelect"
 
 export { MultiSelect }
 

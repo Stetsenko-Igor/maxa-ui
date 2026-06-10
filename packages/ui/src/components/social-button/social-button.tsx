@@ -187,20 +187,24 @@ const providerIcon: Record<SocialButtonProps["provider"], React.ReactNode> = {
   ),
 }
 
-function SocialButton({
-  className,
-  provider,
-  size = "md",
-  fullWidth = false,
-  icon,
-  label,
-  children,
-  ...props
-}: SocialButtonProps) {
+const SocialButton = React.forwardRef<HTMLButtonElement, SocialButtonProps>(function SocialButton(
+  {
+    className,
+    provider,
+    size = "md",
+    fullWidth = false,
+    icon,
+    label,
+    children,
+    ...props
+  },
+  ref,
+) {
   const content = children ?? label ?? `Sign in with ${providerLabel[provider]}`
 
   return (
     <button
+      ref={ref}
       className={[
         "maxa-social-button",
         `maxa-social-button--${provider}`,
@@ -217,6 +221,8 @@ function SocialButton({
       <span className="maxa-social-button__label">{content}</span>
     </button>
   )
-}
+})
+
+SocialButton.displayName = "SocialButton"
 
 export { SocialButton }

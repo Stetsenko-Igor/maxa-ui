@@ -1,3 +1,4 @@
+import * as React from "react"
 import { describe, it, expect, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
@@ -65,6 +66,29 @@ describe("DataTable", () => {
     expect(screen.getAllByRole("row")[1]).toHaveTextContent("Social Pack")
   })
 
+  it("updates row order and aria-sort through the sort cycle", () => {
+    render(<DataTable columns={COLUMNS} data={DATA} rowId={ROW_ID} />)
+    const sortBtn = screen.getByLabelText("Sort by Name")
+    const nameHeader = screen.getByRole("columnheader", { name: /name/i })
+
+    // Unsorted: original data order, no aria-sort on the header
+    expect(screen.getAllByRole("row")[1]).toHaveTextContent("Branding Kit")
+    expect(nameHeader).not.toHaveAttribute("aria-sort")
+
+    fireEvent.click(sortBtn)
+    expect(screen.getAllByRole("row")[1]).toHaveTextContent("Ad Campaign")
+    expect(nameHeader).toHaveAttribute("aria-sort", "ascending")
+
+    fireEvent.click(sortBtn)
+    expect(screen.getAllByRole("row")[1]).toHaveTextContent("Social Pack")
+    expect(nameHeader).toHaveAttribute("aria-sort", "descending")
+
+    // Third click cycles back to ascending
+    fireEvent.click(sortBtn)
+    expect(screen.getAllByRole("row")[1]).toHaveTextContent("Ad Campaign")
+    expect(nameHeader).toHaveAttribute("aria-sort", "ascending")
+  })
+
   it("calls onSelectionChange when row selected", () => {
     const onChange = vi.fn()
     render(
@@ -82,10 +106,84 @@ describe("DataTable", () => {
     expect(onChange).toHaveBeenCalledWith(["1"])
   })
 
+  it("selects and deselects all rows via the header checkbox", () => {
+    const onChange = vi.fn()
+    render(
+      <DataTable
+        columns={COLUMNS}
+        data={DATA}
+        rowId={ROW_ID}
+        selectable
+        onSelectionChange={onChange}
+      />,
+    )
+    const selectAll = screen.getByRole("checkbox", { name: "Select all rows" })
+
+    fireEvent.click(selectAll)
+    expect(onChange).toHaveBeenLastCalledWith(["1", "2", "3", "4"])
+
+    fireEvent.click(selectAll)
+    expect(onChange).toHaveBeenLastCalledWith([])
+  })
+
+  it("accumulates selection across individual rows", () => {
+    const onChange = vi.fn()
+    render(
+      <DataTable
+        columns={COLUMNS}
+        data={DATA}
+        rowId={ROW_ID}
+        selectable
+        onSelectionChange={onChange}
+      />,
+    )
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "Select row 1" }))
+    expect(onChange).toHaveBeenLastCalledWith(["1"])
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "Select row 3" }))
+    expect(onChange).toHaveBeenLastCalledWith(["1", "3"])
+
+    fireEvent.click(screen.getByRole("checkbox", { name: "Select row 1" }))
+    expect(onChange).toHaveBeenLastCalledWith(["3"])
+  })
+
   it("renders pagination when pageSize is set", () => {
     render(<DataTable columns={COLUMNS} data={DATA} rowId={ROW_ID} pageSize={2} />)
     expect(screen.getByLabelText("Pagination")).toBeInTheDocument()
     expect(screen.getByText("2")).toBeInTheDocument() // page 2 link
+  })
+
+  it("disables previous/next at pagination boundaries", () => {
+    render(<DataTable columns={COLUMNS} data={DATA} rowId={ROW_ID} pageSize={2} />)
+    const previous = screen.getByRole("link", { name: "Go to previous page" })
+    const next = screen.getByRole("link", { name: "Go to next page" })
+
+    // First page: previous disabled, first two rows shown
+    expect(previous).toHaveAttribute("aria-disabled", "true")
+    expect(next).toHaveAttribute("aria-disabled", "false")
+    expect(screen.getByText("Branding Kit")).toBeInTheDocument()
+    expect(screen.queryByText("Social Pack")).not.toBeInTheDocument()
+
+    fireEvent.click(next)
+
+    // Last page: next disabled, last two rows shown
+    expect(next).toHaveAttribute("aria-disabled", "true")
+    expect(previous).toHaveAttribute("aria-disabled", "false")
+    expect(screen.getByText("Social Pack")).toBeInTheDocument()
+    expect(screen.queryByText("Branding Kit")).not.toBeInTheDocument()
+
+    // Clicking next on the last page does not advance further
+    fireEvent.click(next)
+    expect(screen.getByText("Social Pack")).toBeInTheDocument()
+
+    fireEvent.click(previous)
+    expect(screen.getByText("Branding Kit")).toBeInTheDocument()
+    expect(previous).toHaveAttribute("aria-disabled", "true")
+
+    // Clicking previous on the first page does not go back further
+    fireEvent.click(previous)
+    expect(screen.getByText("Branding Kit")).toBeInTheDocument()
   })
 
   it("maps column and row semantic variants to table primitives", () => {
@@ -108,6 +206,20 @@ describe("DataTable", () => {
     const dateCell = screen.getByRole("cell", { name: "2025-01-10" })
     expect(dateCell).toHaveAttribute("data-cell-type", "numeric")
     expect(dateCell).toHaveAttribute("data-align", "right")
+  })
+
+  it("forwards ref to the root element", () => {
+    const ref = React.createRef<HTMLDivElement>()
+    render(<DataTable ref={ref} columns={COLUMNS} data={DATA} rowId={ROW_ID} />)
+    expect(ref.current).toBeInstanceOf(HTMLDivElement)
+    expect(ref.current).toHaveClass("maxa-datatable")
+  })
+
+  it("forwards ref to the root element in the empty state", () => {
+    const ref = React.createRef<HTMLDivElement>()
+    render(<DataTable ref={ref} columns={COLUMNS} data={[]} />)
+    expect(ref.current).toBeInstanceOf(HTMLDivElement)
+    expect(ref.current).toHaveClass("maxa-datatable")
   })
 
   it("has no accessibility violations", async () => {

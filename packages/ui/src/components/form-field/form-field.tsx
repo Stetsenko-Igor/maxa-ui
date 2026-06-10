@@ -19,24 +19,28 @@ export interface FormFieldProps {
   status?: FormFieldStatus
 }
 
-export function FormField({
-  children,
-  className,
-  error,
-  footerEnd,
-  hint,
-  hintId,
-  htmlFor,
-  infoIcon,
-  label,
-  required,
-  size = "md",
-  status = "default",
-}: FormFieldProps) {
+export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>(function FormField(
+  {
+    children,
+    className,
+    error,
+    footerEnd,
+    hint,
+    hintId,
+    htmlFor,
+    infoIcon,
+    label,
+    required,
+    size = "md",
+    status = "default",
+  },
+  ref,
+) {
   const resolvedStatus = error ? "error" : status
 
   return (
     <div
+      ref={ref}
       className={[
         "maxa-form-field",
         `maxa-form-field--${size}`,
@@ -76,4 +80,6 @@ export function FormField({
       )}
     </div>
   )
-}
+})
+
+FormField.displayName = "FormField"

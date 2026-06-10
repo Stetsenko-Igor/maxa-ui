@@ -1,3 +1,4 @@
+import * as React from "react"
 import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { Calendar } from "./calendar"
@@ -49,5 +50,12 @@ describe("Calendar", () => {
     render(<Calendar month={new Date(2026, 5, 1)} disabledDates={[new Date(2026, 5, 4)]} onDateSelect={onSelect} />)
     fireEvent.click(screen.getByRole("button", { name: "June 4, 2026" }))
     expect(onSelect).not.toHaveBeenCalled()
+  })
+
+  it("forwards ref to the root element", () => {
+    const ref = React.createRef<HTMLDivElement>()
+    render(<Calendar ref={ref} defaultMonth={new Date(2026, 5, 1)} />)
+    expect(ref.current).toBeInstanceOf(HTMLDivElement)
+    expect(ref.current).toHaveClass("maxa-calendar")
   })
 })

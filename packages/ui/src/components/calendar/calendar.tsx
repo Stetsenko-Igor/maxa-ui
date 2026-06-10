@@ -42,22 +42,25 @@ function getMonthStart(date: Date) {
   return new Date(date.getFullYear(), date.getMonth(), 1)
 }
 
-function Calendar({
-  className,
-  defaultMonth = new Date(2026, 5, 1),
-  disableDate,
-  disabledDates = [],
-  maxDate,
-  minDate,
-  month: controlledMonth,
-  onDateSelect,
-  onMonthChange,
-  currentDate = new Date(),
-  rangeEnd,
-  rangeStart,
-  selected,
-  ...props
-}: CalendarProps) {
+const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
+  {
+    className,
+    defaultMonth = new Date(2026, 5, 1),
+    disableDate,
+    disabledDates = [],
+    maxDate,
+    minDate,
+    month: controlledMonth,
+    onDateSelect,
+    onMonthChange,
+    currentDate = new Date(),
+    rangeEnd,
+    rangeStart,
+    selected,
+    ...props
+  },
+  ref,
+) {
   const [uncontrolledMonth, setUncontrolledMonth] = React.useState(getMonthStart(defaultMonth))
   const [view, setView] = React.useState<"days" | "months" | "years">("days")
   const [yearPageStart, setYearPageStart] = React.useState(() => defaultMonth.getFullYear() - 10)
@@ -105,6 +108,7 @@ function Calendar({
 
   return (
     <div
+      ref={ref}
       className={["maxa-calendar", className].filter(Boolean).join(" ")}
       data-range={hasRange || undefined}
       {...props}
@@ -248,7 +252,9 @@ function Calendar({
       )}
     </div>
   )
-}
+})
+
+Calendar.displayName = "Calendar"
 
 export { Calendar }
 

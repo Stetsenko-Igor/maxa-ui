@@ -155,21 +155,24 @@ function LoadingCell({ cellType }: { cellType?: TableCellType }) {
   return <Skeleton variant="text" className="maxa-datatable__skeleton-line" />
 }
 
-export function DataTable<T extends Record<string, unknown>>({
-  columns,
-  data,
-  caption,
-  density = "md",
-  defaultSort,
-  selectable = false,
-  onSelectionChange,
-  rowSubdued,
-  rowId = (_row, index) => String(index),
-  pageSize,
-  loading = false,
-  emptyState,
-  className,
-}: DataTableProps<T>) {
+function DataTableInner<T extends Record<string, unknown>>(
+  {
+    columns,
+    data,
+    caption,
+    density = "md",
+    defaultSort,
+    selectable = false,
+    onSelectionChange,
+    rowSubdued,
+    rowId = (_row, index) => String(index),
+    pageSize,
+    loading = false,
+    emptyState,
+    className,
+  }: DataTableProps<T>,
+  ref: React.ForwardedRef<HTMLDivElement>,
+) {
   const [sort, setSort] = React.useState<{ key: string; direction: SortDirection } | null>(
     defaultSort ?? null,
   )
@@ -243,7 +246,7 @@ export function DataTable<T extends Record<string, unknown>>({
 
   if (isEmpty) {
     return (
-      <div className={["maxa-datatable", className].filter(Boolean).join(" ")}>
+      <div ref={ref} className={["maxa-datatable", className].filter(Boolean).join(" ")}>
         <div className="maxa-datatable__empty maxa-datatable__empty--standalone">
           {emptyState ?? <Empty title="No results" size="sm" />}
         </div>
@@ -252,7 +255,7 @@ export function DataTable<T extends Record<string, unknown>>({
   }
 
   return (
-    <div className={["maxa-datatable", className].filter(Boolean).join(" ")}>
+    <div ref={ref} className={["maxa-datatable", className].filter(Boolean).join(" ")}>
       <Table density={density}>
         {caption && <TableCaption>{caption}</TableCaption>}
         <colgroup>
@@ -421,3 +424,12 @@ export function DataTable<T extends Record<string, unknown>>({
     </div>
   )
 }
+
+// forwardRef erases generics, so cast back to a generic-preserving signature.
+const DataTable = React.forwardRef(DataTableInner) as (<T extends Record<string, unknown>>(
+  props: DataTableProps<T> & { ref?: React.Ref<HTMLDivElement> },
+) => React.ReactElement) & { displayName?: string }
+
+DataTable.displayName = "DataTable"
+
+export { DataTable }

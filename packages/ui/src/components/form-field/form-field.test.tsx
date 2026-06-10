@@ -1,3 +1,4 @@
+import * as React from "react"
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
@@ -106,6 +107,13 @@ describe("FormField", () => {
   it("applies custom className to wrapper", () => {
     render(<FormField className="custom-class"><input /></FormField>)
     expect(document.querySelector(".maxa-form-field")).toHaveClass("custom-class")
+  })
+
+  it("forwards ref to the root element", () => {
+    const ref = React.createRef<HTMLDivElement>()
+    render(<FormField ref={ref}><input /></FormField>)
+    expect(ref.current).toBeInstanceOf(HTMLDivElement)
+    expect(ref.current).toHaveClass("maxa-form-field")
   })
 
   it("has no accessibility violations", async () => {

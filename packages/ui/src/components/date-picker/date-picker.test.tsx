@@ -71,6 +71,38 @@ describe("DatePicker", () => {
     expect(screen.getByRole("textbox", { name: "Date Picker" })).toHaveValue("5/9/2025 9:30 am")
   })
 
+  it("toggles the time dropdown via the clock icon button", () => {
+    render(<DatePicker label="Date Picker" defaultValue="5/9/2025" timePicker defaultOpen />)
+    const clockButton = screen.getByRole("button", { name: "Open time picker" })
+
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
+    expect(clockButton).toHaveAttribute("aria-expanded", "false")
+
+    fireEvent.click(clockButton)
+    expect(screen.getByRole("listbox")).toBeInTheDocument()
+    expect(clockButton).toHaveAttribute("aria-expanded", "true")
+
+    fireEvent.click(clockButton)
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
+  })
+
+  it("marks the active time option as selected in the dropdown", () => {
+    render(<DatePicker label="Date Picker" defaultValue="5/9/2025" timePicker defaultOpen defaultTimeDropdownOpen />)
+    const selected = screen.getByRole("option", { name: "8:00 am" })
+
+    expect(selected).toHaveAttribute("aria-selected", "true")
+    expect(screen.getByRole("option", { name: "6:00 am" })).toHaveAttribute("aria-selected", "false")
+  })
+
+  it("applies a custom typed time value", () => {
+    render(<DatePicker label="Date Picker" defaultValue="5/9/2025" timePicker defaultOpen />)
+
+    fireEvent.change(screen.getByDisplayValue("8:00 am"), { target: { value: "10:45 am" } })
+    fireEvent.click(screen.getByRole("button", { name: "Apply" }))
+
+    expect(screen.getByRole("textbox", { name: "Date Picker" })).toHaveValue("5/9/2025 10:45 am")
+  })
+
   it("normalizes pasted or changed single-date digits", () => {
     render(<DatePicker label="Date Picker" />)
     const input = screen.getByRole("textbox") as HTMLInputElement

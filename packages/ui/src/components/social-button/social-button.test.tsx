@@ -1,3 +1,4 @@
+import * as React from "react"
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { SocialButton } from "./social-button"
@@ -22,5 +23,12 @@ describe("SocialButton", () => {
     render(<SocialButton provider="google" size="lg" fullWidth />)
     expect(screen.getByRole("button")).toHaveClass("maxa-social-button--lg")
     expect(screen.getByRole("button")).toHaveClass("maxa-social-button--full-width")
+  })
+
+  it("forwards ref to the root button element", () => {
+    const ref = React.createRef<HTMLButtonElement>()
+    render(<SocialButton ref={ref} provider="github" />)
+    expect(ref.current).toBeInstanceOf(HTMLButtonElement)
+    expect(ref.current).toHaveClass("maxa-social-button")
   })
 })
