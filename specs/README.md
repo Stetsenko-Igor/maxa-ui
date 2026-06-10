@@ -17,6 +17,7 @@ LLMs fabricate design values. They generate `padding: 13px` or `color: #3b82f6` 
 5. **Not sure which button variant?** — read `specs/patterns/interactive-hierarchy.md`
 6. **Need a CSS variable name?** — search `specs/tokens-reference.md`
 7. **Need package ownership rules?** — read `specs/architecture.md`
+8. **Need Figma/Code Connect guidance?** — read `specs/figma-code-connect-readiness.md`
 
 ## Enforcement
 
@@ -34,6 +35,7 @@ This runs in CI with `exit 1` on violations. Do not hardcode values that have to
 specs/
 ├── README.md                        ← this file
 ├── architecture.md                  ← package ownership rules
+├── figma-code-connect-readiness.md  ← optional Figma Code Connect strategy
 ├── tokens-reference.md              ← master CSS variable index
 ├── foundations/
 │   ├── color.md                     ← semantic color tokens + surface model
