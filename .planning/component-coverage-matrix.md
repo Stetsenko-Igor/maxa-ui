@@ -19,7 +19,7 @@ Primary references:
 
 Implemented component families:
 
-Implemented inventory: **37 components** (all with spec, implementation, docs, tests).
+Implemented inventory: **40 components** (all with spec, implementation, docs, tests). Updated 2026-06-11.
 
 | Component                    | Status     | Notes                                                                                                                |
 | ---------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -32,14 +32,18 @@ Implemented inventory: **37 components** (all with spec, implementation, docs, t
 | Calendar                     | Shipped    | Date grid primitive backing DatePicker                                                                               |
 | Checkbox                     | Shipped    | Form primitive                                                                                                       |
 | ContextMenu                  | Shipped    | Right-click command menu; separate from DropdownMenu                                                                 |
+| DataTable                    | Shipped    | Client-side data display layer with sorting, selection, pagination, loading, empty states                            |
 | DatePicker / DateRangePicker | Shipped    | Form-level component                                                                                                 |
+| Drawer                       | Shipped    | Side-panel overlay (left/right/top/bottom placements); the Sheet/Slideout primitive                                  |
 | Dialog                       | Shipped    | Focused modal overlay                                                                                                |
 | Divider                      | Shipped    | **Canonical** divide primitive. `Separator` ships as a Radix/shadcn compat alias (tokens reference `--divider-*`)    |
 | DropdownMenu                 | Shipped    | Action/command menu; separate from Select and ContextMenu                                                            |
 | Empty                        | Shipped    | Empty/no-result state primitive                                                                                      |
 | FormField                    | Shipped    | Label/helper/error composition                                                                                       |
 | IconButton                   | Shipped    | Utility action primitive                                                                                             |
-| Input / TextArea             | Shipped    | TextArea is included in input implementation                                                                         |
+| Input                        | Shipped    | Core text-field primitive                                                                                            |
+| TextArea                     | Shipped    | Separate component entry sharing Input internals                                                                     |
+| FileInput                    | Shipped    | Low-level file picker/dropzone primitive with own tokens                                                             |
 | MultiSelect                  | Shipped    | Multi-value chip field; internals still use DropdownMenu (future Select-like refactor)                               |
 | Pagination                   | Shipped    | Page navigation; pairs with future DataTable                                                                         |
 | Popover                      | Shipped    | Overlay primitive                                                                                                    |
@@ -52,8 +56,7 @@ Implemented inventory: **37 components** (all with spec, implementation, docs, t
 | Slider                       | Shipped    | Radix-backed numeric range control with marks/value                                                                  |
 | SocialButton                 | Shipped    | Provider sign-in button (icon-based, sizes/states)                                                                   |
 | Spinner                      | Shipped    | Inline async activity primitive                                                                                      |
-| Table                        | Shipped    | Semantic data-table primitive (DataTable abstraction pending)                                                        |
-| DataTable                    | Shipped    | Client-side data display layer with sorting, selection, pagination, loading, and empty states                        |
+| Table                        | Shipped    | Semantic data-table primitive (DataTable builds on it)                                                               |
 | Tabs                         | Shipped    | Horizontal panel switching                                                                                           |
 | Tag                          | Shipped    | Data/category/removable label; no intent API                                                                         |
 | Toggle                       | Shipped    | Binary control / toggle button                                                                                       |
@@ -98,7 +101,7 @@ Priority scale:
 | Slider                          | Benchmark gap for numeric settings such as opacity, zoom, density                             | Shipped 2026-06-04          | Sliders                                      | Slider                                   | P2             | Radix-backed range control with marks/value examples                       |
 | Social Button                   | Login and external auth flows include Facebook sign-in                                        | Shipped                     | Social buttons                               | Button variants/custom                   | P2             | Provider sign-in button with icons, sizes, full-width, disabled state      |
 | Utility Button                  | Icon/action utility affordance gap vs Untitled UI                                             | Shipped                     | Utility button                               | Button/IconButton                        | P2             | Dense utility action primitive                                             |
-| Sheet / Slideout                | Side panels, editor/tool settings, responsive menus                                           | Missing                     | Slideout menus                               | Sheet, Drawer                            | P1             | Build after Dialog/Menu/DataTable basics                                   |
+| Sheet / Slideout                | Side panels, editor/tool settings, responsive menus                                           | Shipped (Drawer)            | Slideout menus                               | Sheet, Drawer                            | P1             | Shipped 2026-06-10 as Drawer with left/right/top/bottom placements         |
 | Toast / Notification            | Save/download/share feedback and async workflow status                                        | Shipped                     | Notifications, alerts                        | Sonner, Toast                            | P1             | Viewport notification primitive shipped                                    |
 | Table / DataTable               | Orders, admin/account lists, request lists likely need structured data                        | Shipped                     | Tables                                       | Table, Data Table                        | P1             | Table primitive and client-side DataTable abstraction shipped              |
 | Sidebar / Navigation primitives | Dashboard left sidebar, AMP package sidebar                                                   | Missing as reusable pattern | Sidebar navigations, header navigations      | Sidebar, Navigation Menu                 | P0 pattern     | Treat as product pattern first, componentize primitives as needed          |
@@ -111,7 +114,7 @@ Priority scale:
 | Pagination                      | Tables/template lists may need it; current captured screens emphasize grids/sort/search       | Shipped                     | Paginations                                  | Pagination                               | P2             | Pair with DataTable or template grid work                                  |
 | Skeleton / Loading              | Useful for async dashboard and editor surfaces                                                | Shipped                     | Loading indicators                           | Skeleton, Spinner                        | P1             | Product loading examples pending                                           |
 | Progress                        | Uploads, file/PDF/import workflows                                                            | Shipped                     | Progress indicators, progress steps          | Progress                                 | P2             | Product upload/import examples pending                                     |
-| FileUpload                      | PDF to Print and Upload workflows exist in product shell                                      | Missing                     | File uploaders                               | Input + custom patterns                  | P1             | Needs Maxa-specific upload pattern                                         |
+| FileUpload                      | PDF to Print and Upload workflows exist in product shell                                      | Shipped (FileInput)         | File uploaders                               | Input + custom patterns                  | P1             | Low-level FileInput primitive shipped 2026-06-10; MAXA upload pattern → Phase 4 |
 | CommandMenu                     | Useful for power search/actions, but not visible in current inventory                         | Missing                     | Command menus                                | Command                                  | P2             | Do not build before visible menu/dialog needs                              |
 | Accordion / Disclosure          | No confirmed high-frequency MAXA production need in current inventory                         | Missing                     | FAQ/marketing, tree/details patterns         | Accordion, Collapsible                   | Deferred       | Do not build now                                                           |
 | Card                            | Product has cards, but generic Card risks wrong abstraction                                   | Missing generic component   | Card headers, app examples                   | Card                                     | Deferred       | Prefer `DesignCard`, `ServiceCard`, `PublicationCard`, etc. patterns       |
@@ -145,17 +148,23 @@ Priority scale:
 
 ### Next App-Layer Tranche
 
-Recommended stabilization order after the shipped component pack:
+Component-layer stabilization is **complete** (2026-06-11). Done:
 
-1. Planning truth sync and naming architecture cleanup
-2. Visual QA for shipped components across light, dark, and page-background contexts
-3. Figma token JSON parity and importer handoff polish
-4. PageHeader + FilterBar / Toolbar patterns
-5. Sidebar / Navigation pattern
-6. Sheet / Slideout
-7. FileUpload
-8. Product table/list examples using DataTable
-9. Package publishing readiness / external consumer smoke test
+1. ✅ Planning truth sync and naming architecture cleanup
+2. ✅ Visual QA for shipped components across light, dark, and page-background contexts
+3. ✅ Figma token JSON parity and importer handoff polish
+4. ✅ Sheet / Slideout (shipped as Drawer)
+5. ✅ FileUpload (shipped as FileInput primitive)
+
+Remaining work is **Phase 4 product patterns** (composition of shipped primitives, not new core components):
+
+- PageHeader + FilterBar / Toolbar patterns
+- Sidebar / Navigation pattern
+- DesignCard / TemplateCard patterns
+- Product table/list examples using DataTable
+- MAXA-specific upload pattern built on FileInput
+
+Then Phase 5 (Figma Code Connect) and Phase 6 (v1.0 release prep / external consumer smoke test).
 
 ### Explicitly Deferred
 

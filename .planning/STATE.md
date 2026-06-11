@@ -5,16 +5,16 @@
 See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 **Core value:** LLM-generated UI code always conforms to the design system — no hardcoded design values.
-**Current focus:** Phase 3 stabilization bridge: benchmark-parity component coverage, naming architecture cleanup, Figma token parity, and visual QA before the product pattern layer.
+**Current focus:** Phase 3 closeout complete. Component layer is done (40 components shipped); next milestone is Phase 4 (MAXA product patterns), explicitly not started yet.
 
 ## Current Position
 
-Phase: 3 of 7 (Application UI component layer)
-Plan: Phase 3 stabilization bridge (see `.claude/plans/adaptive-shimmying-pine.md`)
-Status: **35 components shipped** (all with spec, implementation, docs, tests). Roadmap expanded on 2026-06-04 to include application UI components, MAXA product patterns, Figma Code Connect, v1.0 release prep, and post-core Tailwind adapter work. DropdownMenu, Avatar, the bulk parity pack, Select v2, MultiSelect, Calendar/DatePicker, ContextMenu, Dialog, AlertDialog, SocialButton, UtilityButton, Slider, SegmentedControl, and Table are shipped. Accordion/Disclosure remains deferred.
-Last activity: 2026-06-05 — Stabilization bridge executed. Divider/Separator naming resolved (Divider canonical, Separator a token-aliased compat alias; both have spec + tests). Figma component-token parity **completed** (34 component families synced, stub JSON for divider/separator/nav filled, import bundle rebuilt). Deprecated `--color-bg-elevated` alias removed from semantic + specs. Planning docs synced to the 35-component reality. Remaining: coverage measurement and visual QA sweep.
+Phase: 3 of 7 (Application UI component layer) — component layer complete, closed out
+Plan: Phase 3 closeout + cleanup (see `.claude/plans/goofy-doodling-gadget.md`)
+Status: **40 components shipped** (all with spec, implementation, docs, tests). Roadmap expanded on 2026-06-04 to include application UI components, MAXA product patterns, Figma Code Connect, v1.0 release prep, and post-core Tailwind adapter work. Beyond the 35-component bridge: TextArea (split into its own entry sharing Input internals), FileInput (low-level picker/dropzone primitive), Drawer (side-panel overlay), Empty, and the full overlay/menu set are shipped. Accordion/Disclosure and Combobox/Command remain deferred (see `specs/core-gap-audit.md`).
+Last activity: 2026-06-11 — Phase 3 closeout. Visual QA sweep run across all 40 component doc pages (light/dark/page-background + open-state overlays). Superseded `badge-tag-pill.md` archived to `specs/_archive/`. `@maxa/icons` and `@maxa/hooks` confirmed as documented reserved placeholders. Stray `next-env.d.ts` dev artifact reverted. Planning docs synced to the 40-component reality.
 
-Progress: [███████░░░] 70%
+Progress: [█████████░] 90%
 
 ## Performance Metrics
 
@@ -26,15 +26,15 @@ Progress: [███████░░░] 70%
 
 **By Phase:**
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 1. Dark mode + a11y audit | 2/2 | ~45min | ~22min |
-| 2. Base/action component tranche | partial/TBD | — | — |
-| 3. Application UI component layer | 0/TBD | — | — |
-| 4. MAXA product patterns | 0/TBD | — | — |
-| 5. Figma Code Connect | 0/TBD | — | — |
-| 6. v1.0 release prep | 0/TBD | — | — |
-| 7. Tailwind v4 adapter | 0/TBD | — | — |
+| Phase | Plans | Total | Avg/Plan | Status |
+|-------|-------|-------|----------|--------|
+| 1. Dark mode + a11y audit | 2/2 | ~45min | ~22min | ✅ Complete |
+| 2. Base/action component tranche | complete | — | — | ✅ Complete |
+| 3. Application UI component layer | complete | — | — | ✅ Component layer + closeout done |
+| 4. MAXA product patterns | 0/TBD | — | — | ⏳ Not started (next milestone) |
+| 5. Figma Code Connect | 0/TBD | — | — | ⏳ Not started |
+| 6. v1.0 release prep | 0/TBD | — | — | ⏳ Not started |
+| 7. Tailwind v4 adapter | 0/TBD | — | — | ⏳ Not started (post-core) |
 
 **Recent Trend:**
 - Last shipped work: motion/foundation tokens, Badge, Tag, Alert, Divider, Toggle, Tooltip, Popover, DropdownMenu, Avatar, Spinner, Skeleton, Progress, Tabs, Segment Control, Breadcrumb, Pagination, Empty, Slider, Figma component token bundle, CI token audit gate.
@@ -63,6 +63,7 @@ Recent decisions affecting current work:
 - 2026-06-05: `Divider` is the canonical MAXA public primitive. `Separator` remains as a Radix/shadcn compatibility alias whose tokens reference `--divider-*` (single source of truth); it is not a second visual system. Both now have spec + tests.
 - 2026-06-05: Figma component-token parity achieved — all CSS component token families have matching light/dark JSON entries in `packages/tokens/figma`. `utility` is an intentional Figma-only group (no CSS counterpart), documented in the figma README.
 - 2026-06-05: Deprecated `--color-bg-elevated` alias removed (zero source consumers); migrate any external use to `--color-bg-surface`.
+- 2026-06-11: Phase 3 closed out. Component layer declared complete at 40 components. `badge-tag-pill.md` archived to `specs/_archive/` (superseded by canonical `badge.md`/`tag.md`). `@maxa/icons` + `@maxa/hooks` kept as documented reserved placeholders, not removed. Phase 4 (product patterns) is the next milestone but intentionally not started.
 - 2026-06-04: Further product pattern work is paused. The active priority is benchmark-parity component coverage against Untitled UI and shadcn component families.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
 - v0.x: Surface model = `bg/page` + `bg/surface` + `bg/float` + `bg/muted` (no shadow tokens unless overlay work requires them). The early `bg/elevated` alias was removed 2026-06-05.
@@ -77,14 +78,14 @@ None yet.
 ### Blockers / Concerns
 
 - CI-local parity depends on `packages/tokens/src/index.test.ts` validating `packages/tokens/figma/manifest.json` as component token files are added.
-- Planning files were synced to the 35-component reality on 2026-06-05 (coverage matrix, STATE, naming matrix). `.planning/project-audit-2026-06-05.md` is partly superseded — treat `.claude/plans/adaptive-shimmying-pine.md` as the active stabilization checklist.
-- Visual QA sweep (light, dark, page-background; open-state for menus/listboxes) is the remaining P1 before Phase 4.
+- Planning files were synced to the 40-component reality on 2026-06-11 (STATE, ROADMAP, REQUIREMENTS, coverage matrix). Older audit/plan artifacts (`.planning/project-audit-2026-06-05.md`, `.claude/plans/adaptive-shimmying-pine.md`) are superseded by the Phase 3 closeout.
+- Visual QA sweep (light, dark, page-background; open-state for menus/listboxes) completed 2026-06-11 — see `.planning/phases/03-application-ui-component-layer/visual-qa-sweep.md`.
 
-### Coverage baseline (2026-06-05, @maxa/ui, vitest v8)
+### Coverage baseline (2026-06-11, @maxa/ui, vitest v8)
 
-- Statements 86.68% · Branches 81.17% · Functions 87.12% · Lines 90.72%
+- Statements 90.44% · Branches 83.66% · Functions 92.61% · Lines 93.16%
 - Thresholds set ~5pts below baseline in `packages/ui/vitest.config.ts` (regression floor). `pnpm test:coverage` runs it; CI enforces via the Coverage step.
-- Lowest-covered units to target next: `input.tsx` (64% stmts), `select.tsx` (74%), `context-menu.tsx` (75% / 47% branch).
+- Lowest-covered units to target next: `tooltip.tsx` (75% stmts), `slider.tsx` (78% stmts).
 
 ### Verification status
 
@@ -97,6 +98,7 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-05
-Stopped at: stabilization bridge — B (Divider/Separator), A (planning sync + token cleanup), C (Figma parity) complete; E (coverage) and D (visual QA) remaining
-Resume file: `.claude/plans/adaptive-shimmying-pine.md`
+Last session: 2026-06-11
+Stopped at: Phase 3 closeout complete — visual QA sweep done, planning docs synced to 40 components, superseded spec archived, placeholders confirmed, dev artifact reverted. Component layer is closed.
+Resume file: `.claude/plans/goofy-doodling-gadget.md`
+Next milestone: Phase 4 (MAXA product patterns) — not started, awaiting go-ahead.

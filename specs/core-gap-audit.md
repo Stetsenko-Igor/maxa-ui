@@ -1,7 +1,7 @@
 # Core Gap Audit
 
 Status: active planning reference
-Last reviewed: 2026-06-10
+Last reviewed: 2026-06-12
 
 This audit separates core design-system components from Maxa product patterns.
 
@@ -18,8 +18,8 @@ Implemented component entries in `@maxa/ui`:
 
 - Feedback: `Alert`, `AlertDialog`, `Empty`, `Progress`, `Skeleton`, `Spinner`, `Toast`
 - Actions: `Button`, `IconButton`, `SocialButton`, `UtilityButton`
-- Form controls: `Checkbox`, `DatePicker`, `FormField`, `Input`, `MultiSelect`, `Radio`, `Select`, `Slider`, `TextArea`, `Toggle`
-- Overlays and menus: `ContextMenu`, `Dialog`, `DropdownMenu`, `Popover`, `Tooltip`
+- Form controls: `Checkbox`, `DatePicker`, `FileInput`, `FormField`, `Input`, `MultiSelect`, `Radio`, `Select`, `Slider`, `TextArea`, `Toggle`
+- Overlays and menus: `ContextMenu`, `Dialog`, `Drawer`, `DropdownMenu`, `Popover`, `Tooltip`
 - Navigation/data display: `Avatar`, `Badge`, `Breadcrumb`, `Calendar`, `DataTable`, `Divider`, `Pagination`, `SegmentedControl`, `Separator`, `Table`, `Tabs`, `Tag`
 
 Recently resolved:
@@ -37,6 +37,8 @@ Recently resolved:
 - Keep product navigation and shell patterns out of core for now.
 - Keep `TextArea` as a separate searchable component entry, even if it reuses input wrapper logic.
 - Add `FileInput` as a low-level picker/dropzone primitive, not as a product-specific upload flow.
+- Keep `Badge` for non-interactive status/count/metadata and `Tag` for interactive/removable labels.
+- Do not add `Pill` as a core component yet; the pill shape is not enough semantics for a public API.
 - Treat mobile table behavior as a core data-display concern, but do not solve it with product card
   patterns inside `Table` or `DataTable`.
 - Use `Drawer` for side-panel overlay primitives. `Sheet` remains a possible future alias only if

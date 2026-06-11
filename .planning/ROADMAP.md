@@ -84,15 +84,15 @@ Plans:
   5. Component tokens are included in `packages/tokens/src/` and the Figma import bundle when visual decisions are component-specific
   6. `pnpm verify` mirrors CI and is green (`typecheck && lint && audit:tokens && test && build`)
   7. Changeset added for each public package affected
-**Status**: In progress. Badge, Tag, Alert, Divider, Toggle, Tooltip, Popover, DropdownMenu, and Tabs are shipped. Accordion/Disclosure is deferred until real MAXA evidence appears. This phase is now closeout and verification of the first expanded component tranche.
-**Plans**: TBD
+**Status**: ✅ Complete. Badge, Tag, Alert, Divider, Toggle, Tooltip, Popover, DropdownMenu, and Tabs are shipped. Accordion/Disclosure is deferred until real MAXA evidence appears. Closed out as part of the 2026-06-11 Phase 3 closeout.
+**Plans**: complete
 
 Plans:
 - [x] 02-shipped: Badge, Tag, Alert, Divider, Toggle, Tooltip — shipped outside formal GSD plan files
 - [x] 02-01: Popover
 - [x] 02-02: DropdownMenu
 - [x] 02-03: Tabs
-- [ ] 02-closeout: Phase 2 verification summary and planning-state cleanup
+- [x] 02-closeout: rolled into the 2026-06-11 Phase 3 closeout (planning-state cleanup + verification)
 
 #### Phase 3: Application UI component layer
 **Goal**: Add the reusable application components needed to build production-like MAXA screens without one-off local UI.
@@ -118,22 +118,20 @@ Plans:
   - Slider — shipped 2026-06-04
   - Empty — shipped 2026-06-04
   - Table — shipped 2026-06-05
-  - DataTable
-  - EmptyState
-  - PageHeader
-  - FilterBar
-  - Sidebar / Navigation primitives
-  - FileUpload
+  - DataTable — shipped 2026-06-10
+  - FileUpload (FileInput primitive) — shipped 2026-06-10
   - Dialog / Modal — shipped 2026-06-05
   - AlertDialog — shipped 2026-06-05
   - DropdownMenu — shipped 2026-06-04
   - ContextMenu — shipped 2026-06-05
-  - CommandMenu
-  - Sheet / Slideout
-  - Toast / Notification
+  - Sheet / Slideout (Drawer) — shipped 2026-06-10
+  - Toast / Notification — shipped 2026-06-08
+  - TextArea (split entry sharing Input internals) — shipped 2026-06-10
   - Social Button — shipped 2026-06-05
   - Utility Button — shipped 2026-06-05
-**Plans**: TBD
+  - EmptyState, PageHeader, FilterBar, Sidebar / Navigation, CommandMenu — deferred to Phase 4 product patterns (composition of shipped primitives, not core components — see `specs/core-gap-audit.md`)
+**Status**: ✅ Component layer complete. 40 components shipped with spec + implementation + docs + tests. Closed out 2026-06-11.
+**Plans**: complete
 
 Plans:
 - [x] 03-01: Component coverage matrix vs MAXA product inventory, Untitled UI, and shadcn/ui — `.planning/component-coverage-matrix.md`
@@ -144,12 +142,13 @@ Plans:
 - [x] 03-06: Dialog + AlertDialog + ContextMenu
 - [x] 03-07: Social Button + Utility Button
 - [x] 03-08: Table primitive
-- [~] 03-stabilization (bridge — `.claude/plans/adaptive-shimmying-pine.md`):
+- [x] 03-stabilization (bridge — `.claude/plans/adaptive-shimmying-pine.md`):
   - [x] Divider/Separator resolved (Divider canonical; Separator token-aliased compat alias; both have spec + tests)
   - [x] Planning truth sync to 35-component reality + deprecated `--color-bg-elevated` removed
   - [x] Figma token parity (34 component families synced; stub JSON filled; bundle rebuilt)
-  - [ ] Coverage measurement (vitest v8) + CI step
-  - [ ] Visual QA sweep (light/dark/page-background; open-state for menus/listboxes)
+  - [x] Coverage measurement (vitest v8) + CI step — baseline 90.44/83.66/92.61/93.16 enforced via CI Coverage step
+  - [x] Visual QA sweep (light/dark/page-background; open-state for menus/listboxes) — completed 2026-06-11, see `.planning/phases/03-application-ui-component-layer/visual-qa-sweep.md`
+- [x] 03-closeout (`.claude/plans/goofy-doodling-gadget.md`): planning sync to 40 components, superseded spec archived, placeholders confirmed, dev artifact reverted
 
 #### Phase 4: MAXA product patterns
 **Goal**: Capture reusable patterns from the real MAXA app so agents and developers build actual MAXA surfaces, not generic task-shell prototypes.
@@ -225,9 +224,9 @@ Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 
 | 0b. Eight core components | v0.x | n/a | Complete | 2026-05-13 |
 | 0c. Token polish | v0.x | n/a | Complete | 2026-05-15 |
 | 1. Dark mode + a11y audit | v1.0 | 2/2 | Complete | 2026-05-18 |
-| 2. Base/action component tranche | v1.0 | partial/TBD | In progress | — |
-| 3. Application UI component layer | v1.0 | 0/TBD | Not started | — |
-| 4. MAXA product patterns | v1.0 | 0/TBD | Not started | — |
+| 2. Base/action component tranche | v1.0 | complete | Complete | 2026-06-11 |
+| 3. Application UI component layer | v1.0 | complete | Complete (40 components + closeout) | 2026-06-11 |
+| 4. MAXA product patterns | v1.0 | 0/TBD | Not started (next milestone) | — |
 | 5. Figma Code Connect | v1.0 | 0/TBD | Not started | — |
 | 6. v1.0 release prep | v1.0 | 0/TBD | Not started | — |
 | 7. Tailwind v4 adapter | v1.1 | 0/TBD | Not started | — |

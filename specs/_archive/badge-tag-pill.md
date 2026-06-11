@@ -2,7 +2,7 @@
 
 Status: superseded handoff  
 Source reference: Direct Mail Audience Figma file, Badge node `6020:18341`  
-Related components: Badge, Tag, FilterChip/Pill, DecorativeLabel
+Related components: Badge, Tag, Pill / FilterChip research, DecorativeLabel
 
 > **Badge is now implemented.** The canonical Badge spec is `specs/components/badge.md`.
 > The canonical Tag spec is `specs/components/tag.md`.
@@ -17,6 +17,9 @@ Related components: Badge, Tag, FilterChip/Pill, DecorativeLabel
 > `gray`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`,
 > `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`,
 > `pink`, `rose`.
+> Current decision: `Pill` / `FilterChip` is **not** a core component yet. Use
+> `Tag` for interactive/removable labels and revisit a dedicated filter control
+> only after repeated product usage proves the API.
 
 ## Context
 
@@ -99,7 +102,7 @@ Recommended examples:
 
 ### FilterChip / Pill
 
-Pills or filter chips are interactive controls. They represent selected filters, toggles, or compact options.
+Historical research only. Pills or filter chips could become interactive controls for selected filters, toggles, or compact options, but MAXA has not promoted them to a core component yet.
 
 Recommended props:
 
@@ -114,7 +117,7 @@ type FilterChipProps = {
 }
 ```
 
-Use FilterChip/Pill for filtering and selection. Do not overload Tag with toggle behavior unless the interaction is truly tag editing.
+Current guidance: use `Tag` for interactive/removable labels and label-like filters. Do not add a separate `Pill` component until the product needs toggle-button semantics, grouped selection behavior, or a richer filter-control API.
 
 ### DecorativeLabel
 
@@ -217,12 +220,12 @@ Removable Tag behavior:
 - remove button must be keyboard accessible
 - remove icon should have an accessible label such as `Remove {tag label}`
 
-## Recommended Implementation Order
+## Historical Implementation Order
 
 1. Create a real Badge spec and component.
 2. Add intent tokens for Badge, starting with neutral/info/success/warning/error.
 3. Create real Tag component with `removable`.
-4. Create FilterChip/Pill separately for interactive selection.
+4. Superseded: create FilterChip/Pill separately for interactive selection. Current decision is to defer this.
 5. Move current docs-only badges away from "Badge" terminology.
 6. Keep gradient labels out of core. Revisit as `DecorativeLabel` only after product usage is confirmed.
 
@@ -239,5 +242,5 @@ Keep `neutral`, but make it intentional:
 
 - yes: `Badge intent="neutral"`
 - no: `Tag intent="neutral"`; Tag uses `appearance`, not `intent`
-- yes: `FilterChip` neutral selected/unselected states
+- deferred: `FilterChip` neutral selected/unselected states
 - no: vague global `bg-neutral-*` tokens without component ownership

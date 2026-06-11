@@ -1,11 +1,11 @@
 # Badge
 
 Status: implemented
-Canonical spec for the MAXA `Badge` component. Supersedes the Badge section of `badge-tag-pill.md` (which remains the broader Badge/Tag/FilterChip handoff).
+Canonical spec for the MAXA `Badge` component. Supersedes the Badge section of the archived `_archive/badge-tag-pill.md` (retained as historical Badge/Tag/Pill research).
 
 ## Purpose
 
-Badge is a compact, **non-interactive** indicator for status, count, quality, or metadata. It is not a control. For removable data labels use `Tag`; for interactive filters use `FilterChip`.
+Badge is a compact, **non-interactive** indicator for status, count, quality, or metadata. It is not a control. For interactive or removable data labels use `Tag`. Interactive filter controls remain a future pattern decision; do not introduce `Pill` or `FilterChip` as a core component until the product semantics are clearer.
 
 ## Anatomy
 
@@ -119,7 +119,7 @@ Mapping rule per appearance (18 hues × 3 emphasis):
 
 - Do use Badge for static status/count/metadata.
 - Do keep labels short (1–2 words).
-- Don't attach click handlers or use Badge as a button — use `Button`/`FilterChip`.
+- Don't attach click handlers or use Badge as a button — compose a dedicated filter/control pattern instead.
 - Don't make Badge removable — that is `Tag`.
 - Don't merge Badge and Tag. They share anatomy but have different semantics.
 - Don't introduce the foreign Figma palette; stay on MAXA semantic tokens.

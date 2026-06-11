@@ -31,13 +31,13 @@ Requirements for v1.0 (current scope). Each maps to a phase in `ROADMAP.md`.
 ### Application UI (APP)
 
 - [x] **APP-01**: Component coverage matrix created against MAXA product inventory, Untitled UI, and shadcn/ui
-- [ ] **APP-02**: Navigation and wayfinding components selected and partially shipped where needed (Breadcrumb, Pagination, Tabs, and SegmentedControl complete; Sidebar/Nav patterns pending)
-- [ ] **APP-03**: Data display components selected and partially shipped where needed (Pagination and Table primitives complete; DataTable and Metrics pending)
-- [ ] **APP-04**: Feedback/loading components selected and partially shipped where needed (Skeleton, Progress, Spinner, Alert, Empty complete; Toast/Notification pending)
-- [ ] **APP-05**: Overlay/action components selected and shipped where needed (Dialog, AlertDialog, DropdownMenu, ContextMenu, Popover, Tooltip complete; Sheet and Toast pending)
-- [ ] **APP-06**: EmptyState and PageHeader patterns/components shipped for product-density app screens
-- [ ] **APP-07**: FileUpload shipped if confirmed by MAXA product workflows
-- [ ] **APP-08**: Docs/catalog examples use production-like MAXA app contexts rather than generic SaaS placeholders
+- [~] **APP-02**: Navigation/wayfinding components shipped (Breadcrumb, Pagination, Tabs, SegmentedControl complete). Sidebar/top-nav are composition patterns moved to Phase 4 (PAT-02).
+- [x] **APP-03**: Data display components shipped — Table primitive and DataTable complete
+- [x] **APP-04**: Feedback/loading components shipped — Skeleton, Progress, Spinner, Alert, Empty, Toast/Notification complete
+- [x] **APP-05**: Overlay/action components shipped — Dialog, AlertDialog, DropdownMenu, ContextMenu, Popover, Tooltip, Sheet (Drawer), and Toast complete
+- [~] **APP-06**: EmptyState shipped (Empty). PageHeader is a composition pattern moved to Phase 4 (PAT-01/PAT-03).
+- [x] **APP-07**: FileUpload shipped — FileInput low-level picker/dropzone primitive
+- [x] **APP-08**: Docs/catalog examples use production-like MAXA app contexts rather than generic SaaS placeholders
 - [x] **APP-09**: DropdownMenu shipped as a separate overlay/action primitive — spec + implementation + docs page + Figma component tokens
 - [x] **APP-10**: Avatar shipped — spec + implementation + docs page + Figma component tokens
 - [x] **APP-11**: Select v2 shipped with custom accessible popup/listbox, replacing native browser menu behavior
@@ -100,13 +100,13 @@ Which phases cover which requirements. Updated during roadmap creation.
 | COMP-08 | Phase 2 | Complete |
 | COMP-09 | Phase 2 | Complete |
 | APP-01 | Phase 3 | Complete |
-| APP-02 | Phase 3 | Pending |
-| APP-03 | Phase 3 | Pending |
-| APP-04 | Phase 3 | Pending |
-| APP-05 | Phase 3 | Pending |
-| APP-06 | Phase 3 | Pending |
-| APP-07 | Phase 3 | Pending |
-| APP-08 | Phase 3 | Pending |
+| APP-02 | Phase 3 / 4 | Components complete; Sidebar/Nav → Phase 4 |
+| APP-03 | Phase 3 | Complete |
+| APP-04 | Phase 3 | Complete |
+| APP-05 | Phase 3 | Complete |
+| APP-06 | Phase 3 / 4 | EmptyState complete; PageHeader → Phase 4 |
+| APP-07 | Phase 3 | Complete |
+| APP-08 | Phase 3 | Complete |
 | APP-09 | Phase 3 | Complete |
 | APP-10 | Phase 3 | Complete |
 | APP-11 | Phase 3 | Complete |
@@ -131,4 +131,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-18*
-*Last updated: 2026-06-04 after expanding the roadmap toward a full MAXA UI platform*
+*Last updated: 2026-06-11 — Phase 3 closeout: APP-03/04/05/07/08 marked complete (DataTable, Toast, Drawer, FileInput, production docs); APP-02/06 split with Sidebar/PageHeader moved to Phase 4 patterns. COMP-04 (Accordion) remains deferred.*

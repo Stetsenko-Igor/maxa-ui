@@ -4,6 +4,7 @@ dist/
 .turbo/
 .next/
 .next-dev/
+.netlify/
 apps/docs/out/
 coverage/
 test-results/

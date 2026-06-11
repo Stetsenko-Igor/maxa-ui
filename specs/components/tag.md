@@ -5,7 +5,7 @@ Canonical spec for the MAXA `Tag` component.
 
 ## Purpose
 
-Tag is a compact data label for categories, selected values, entity attributes, and editable/removable metadata.
+Tag is a compact, interactive-capable data label for categories, selected values, entity attributes, and editable/removable metadata.
 
 Use Tag for:
 
@@ -13,6 +13,7 @@ Use Tag for:
 - attributes: `Sea view`, `Prague`, `3 bedrooms`
 - entity labels: `VIP client`, `Lead`, `Returning`
 - selected or removable values
+- applied filters when the interaction is label-like, removable, or selectable
 
 Do not use Tag for system status. Use `Badge` for status, count, quality, or metadata indicators.
 
@@ -93,6 +94,12 @@ Tag intentionally has no `intent` prop.
 
 If a label needs `success`, `warning`, `error`, `info`, or `neutral` semantic state, use `Badge`. If a data label only needs a color bucket, use `appearance`.
 
+## Relationship to Pill / FilterChip
+
+`Pill` is not a core MAXA component right now. The pill shape is a visual form, not enough product semantics to justify a separate API.
+
+Use `Tag` for interactive labels, removable selected values, and label-like filters. If a future filtering surface needs toggle-button semantics, grouped selection behavior, or richer state than Tag can honestly own, define that as a product pattern first and only promote it to a core component after repeated usage.
+
 ## Removable
 
 Removable Tag behavior:
@@ -160,5 +167,6 @@ Tag references the same appearance palette as Badge, but keeps separate `--tag-*
 - Do use `appearance` for category color.
 - Don't add `intent`.
 - Don't use Tag for status.
+- Don't introduce `Pill` as a synonym for Tag or Badge.
 - Don't add generic trailing icon in v1.
 - Don't merge Tag into Badge.
