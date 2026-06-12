@@ -12,7 +12,7 @@ Drawer presents a viewport-attached modal panel for secondary workflows such as 
 - `DrawerHeader`, `DrawerTitle`, `DrawerDescription`: semantic heading block.
 - `DrawerBody`: scrollable body region.
 - `DrawerFooter`: action row.
-- `DrawerClose`: close control; supports `inline` for footer actions.
+- `DrawerClose`: close control; supports `inline` for footer actions. Default corner variant renders a 20px X icon (inline SVG, `currentColor`) inside a 48px hit area, inset top-right by `--drawer-close-offset`; hover/active surfaces use the neutral-subtle action tokens.
 
 ## Variants
 

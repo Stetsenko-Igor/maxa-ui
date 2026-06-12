@@ -128,8 +128,16 @@
       "$value": 20,
       "$type": "number"
     },
+    "close-offset": {
+      "$value": "var(--spacing-3)",
+      "$type": "string"
+    },
     "close-bg-hover": {
       "$value": "var(--color-action-neutral-subtle-hover)",
+      "$type": "color"
+    },
+    "close-bg-active": {
+      "$value": "var(--color-action-neutral-subtle-active)",
       "$type": "color"
     },
     "close-color": {

@@ -11,7 +11,7 @@ Dialog presents a modal surface for focused decisions, short forms, and containe
 - `DialogHeader`, `DialogTitle`, `DialogDescription`: semantic heading block.
 - `DialogBody`: body copy or form region with modal content typography.
 - `DialogFooter`: action row.
-- `DialogClose`: close control; supports `inline` for footer actions.
+- `DialogClose`: close control; supports `inline` for footer actions. Default corner variant renders a 20px X icon (inline SVG, `currentColor`) inside a 48px hit area, inset top-right by `--dialog-close-offset`; hover/active surfaces use the neutral-subtle action tokens.
 
 ## Variants
 

@@ -130,13 +130,14 @@
 
 .maxa-drawer__close {
   position: absolute;
-  top: calc(var(--drawer-close-size) / -4);
-  right: calc(var(--drawer-close-size) / -4);
+  top: var(--drawer-close-offset);
+  right: var(--drawer-close-offset);
   display: inline-flex;
   width: var(--drawer-close-size);
   height: var(--drawer-close-size);
   align-items: center;
   justify-content: center;
+  padding: 0;
   border: 0;
   border-radius: var(--radius-xs);
   background: transparent;
@@ -147,8 +148,17 @@
   line-height: 1;
 }
 
+.maxa-drawer__close > svg {
+  width: var(--drawer-close-icon-size);
+  height: var(--drawer-close-icon-size);
+}
+
 .maxa-drawer__close:hover {
   background: var(--drawer-close-bg-hover);
+}
+
+.maxa-drawer__close:active {
+  background: var(--drawer-close-bg-active);
 }
 
 .maxa-drawer__close[data-inline="true"] {

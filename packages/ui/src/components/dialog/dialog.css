@@ -78,13 +78,14 @@
 
 .maxa-dialog__close {
   position: absolute;
-  top: calc(var(--dialog-close-size) / -4);
-  right: calc(var(--dialog-close-size) / -4);
+  top: var(--dialog-close-offset);
+  right: var(--dialog-close-offset);
   display: inline-flex;
   width: var(--dialog-close-size);
   height: var(--dialog-close-size);
   align-items: center;
   justify-content: center;
+  padding: 0;
   border: 0;
   border-radius: var(--radius-xs);
   background: transparent;
@@ -95,8 +96,17 @@
   line-height: 1;
 }
 
+.maxa-dialog__close > svg {
+  width: var(--dialog-close-icon-size);
+  height: var(--dialog-close-icon-size);
+}
+
 .maxa-dialog__close:hover {
   background: var(--dialog-close-bg-hover);
+}
+
+.maxa-dialog__close:active {
+  background: var(--dialog-close-bg-active);
 }
 
 .maxa-dialog__close[data-inline="true"] {

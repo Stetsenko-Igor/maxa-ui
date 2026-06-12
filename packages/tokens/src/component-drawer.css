@@ -36,7 +36,9 @@
   --drawer-description-font-weight: var(--font-weight-medium);
   --drawer-close-size: 48px;
   --drawer-close-icon-size: 20px;
+  --drawer-close-offset: var(--spacing-3);
   --drawer-close-bg-hover: var(--color-action-neutral-subtle-hover);
+  --drawer-close-bg-active: var(--color-action-neutral-subtle-active);
   --drawer-close-color: var(--color-fg-secondary);
   --drawer-z: var(--z-modal);
 }

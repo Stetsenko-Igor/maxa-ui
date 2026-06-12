@@ -33,7 +33,9 @@
   --dialog-description-font-weight: var(--font-weight-medium);
   --dialog-close-size: 48px;
   --dialog-close-icon-size: 20px;
+  --dialog-close-offset: var(--spacing-3);
   --dialog-close-bg-hover: var(--color-action-neutral-subtle-hover);
+  --dialog-close-bg-active: var(--color-action-neutral-subtle-active);
   --dialog-close-color: var(--color-fg-secondary);
   --dialog-footer-gap: var(--spacing-2);
   --dialog-z: var(--z-modal);

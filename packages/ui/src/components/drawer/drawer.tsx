@@ -218,8 +218,19 @@ export interface DrawerCloseProps extends React.ButtonHTMLAttributes<HTMLButtonE
   inline?: boolean
 }
 
+const closeIcon = (
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20" fill="none">
+    <path
+      d="M5 5l10 10M15 5L5 15"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </svg>
+)
+
 const DrawerClose = React.forwardRef<HTMLButtonElement, DrawerCloseProps>(
-  ({ className, children = "×", inline, onClick, ...props }, ref) => {
+  ({ className, children = closeIcon, inline, onClick, ...props }, ref) => {
     const { setOpen } = useDrawer()
     return (
       <button

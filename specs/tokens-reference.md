@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1603
+Total tokens: 1607
 
 ## Primitives
 
@@ -1751,7 +1751,9 @@ Source: `packages/tokens/src/component-dialog.css`
 --dialog-description-font-weight: var(--font-weight-medium);
 --dialog-close-size: 48px;
 --dialog-close-icon-size: 20px;
+--dialog-close-offset: var(--spacing-3);
 --dialog-close-bg-hover: var(--color-action-neutral-subtle-hover);
+--dialog-close-bg-active: var(--color-action-neutral-subtle-active);
 --dialog-close-color: var(--color-fg-secondary);
 --dialog-footer-gap: var(--spacing-2);
 --dialog-z: var(--z-modal);
@@ -1797,7 +1799,9 @@ Source: `packages/tokens/src/component-drawer.css`
 --drawer-description-font-weight: var(--font-weight-medium);
 --drawer-close-size: 48px;
 --drawer-close-icon-size: 20px;
+--drawer-close-offset: var(--spacing-3);
 --drawer-close-bg-hover: var(--color-action-neutral-subtle-hover);
+--drawer-close-bg-active: var(--color-action-neutral-subtle-active);
 --drawer-close-color: var(--color-fg-secondary);
 --drawer-z: var(--z-modal);
 ```
@@ -2025,7 +2029,7 @@ Source: `packages/tokens/src/component-toast.css`
 --toast-viewport-bottom: var(--spacing-5);/* 20px */
 --toast-viewport-right: var(--spacing-5);/* 20px */
 --toast-viewport-gap: var(--spacing-2); /* 8px between stacked toasts */
---toast-viewport-width: 360px;
+--toast-viewport-width: min(360px, calc(100vw - 2 * var(--spacing-5)));
 
 /* ── Intent stripe colors ── */
 --toast-stripe-neutral: var(--color-border-primary);
