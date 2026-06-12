@@ -49,6 +49,7 @@
 }
 
 .maxa-slider__thumb {
+  position: relative;
   display: block;
   width: var(--slider-thumb-size);
   height: var(--slider-thumb-size);
@@ -84,4 +85,16 @@
   color: var(--slider-mark-color);
   font-size: var(--slider-mark-font-size);
   line-height: var(--text-caption-sm--line-height);
+}
+
+/* Invisible hit-area expansion to the full touch-target size.
+   No visual change — only the clickable zone grows. */
+.maxa-slider__thumb::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--slider-thumb-hit-area));
+  height: max(100%, var(--slider-thumb-hit-area));
+  transform: translate(-50%, -50%);
 }

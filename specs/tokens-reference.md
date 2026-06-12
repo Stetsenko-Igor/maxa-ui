@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1607
+Total tokens: 1610
 
 ## Primitives
 
@@ -532,6 +532,9 @@ Source: `packages/tokens/src/dimensions.css`
 --width-2: 2px;
 --width-4: 4px;
 
+/* ── Interaction — minimum touch-target hit area ── */
+--touch-target-size: 44px;
+
 /* ── Motion — durations + easings ── */
 --duration-instant: 50ms;
 --duration-fast: 100ms;
@@ -1050,6 +1053,7 @@ Source: `packages/tokens/src/component-slider.css`
 --slider-track-bg: var(--color-bg-neutral-subtle);/* dark: var(--color-bg-neutral-subtle) */
 --slider-range-bg: var(--color-action-primary);
 --slider-thumb-size: 20px;
+--slider-thumb-hit-area: var(--touch-target-size);
 --slider-thumb-bg: var(--color-bg-surface);/* dark: var(--color-bg-page) */
 --slider-thumb-border: var(--color-action-primary);/* dark: var(--color-action-primary) */
 --slider-thumb-border-width: 2px;
@@ -2090,6 +2094,7 @@ Source: `packages/tokens/src/component-date-picker.css`
 --date-picker-preset-font-size: var(--text-sm);
 --date-picker-field-separator-color: var(--color-text-tertiary);
 --date-picker-more-icon-size: 14px;
+--date-picker-icon-hit-area: var(--touch-target-size);
 --date-picker-more-menu-min-width: 132px;
 --date-picker-quarter-icon-size: 16px;
 --date-picker-quarter-popover-width: 360px;

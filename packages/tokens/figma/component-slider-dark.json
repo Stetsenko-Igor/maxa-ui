@@ -24,6 +24,10 @@
       "$value": 20,
       "$type": "number"
     },
+    "thumb-hit-area": {
+      "$value": "var(--touch-target-size)",
+      "$type": "number"
+    },
     "thumb-bg": {
       "$value": "var(--color-bg-page)",
       "$type": "color"

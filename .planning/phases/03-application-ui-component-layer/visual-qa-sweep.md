@@ -82,19 +82,21 @@ Measured rendered hit areas of interactive elements in demo previews at 375px. T
 
 **Meets WCAG AA, standard design-system sizing (no action):** Button md 36px / sm 28px / xs 24px height, IconButton 36/28/24, SegmentedControl 36, Tabs 38, Pagination 32, Calendar day cells 32, Select items 32–36, toolbar/menu triggers 36, SocialButton 40, DataTable row actions 28, Input steppers 28×34, Toast action 28. Breadcrumb links (20px text height) fall under the WCAG inline-text exception.
 
-**Below the 24px AA floor — needs invisible hit-area expansion:**
+**Below the 24px AA floor — FIXED 2026-06-12 (invisible hit-area expansion):**
 
-| Component | Element | Measured | Suggested fix |
-|-----------|---------|----------|---------------|
-| Tag | remove (×) button | 14×14 | pseudo-element hit-area ≥24px (≥44 ideal) |
-| DatePicker | calendar icon trigger | 16×16 | same |
-| MultiSelect | chip remove button | 18×18 | same |
-| Checkbox | input box | 20×20 | label already extends the click area; verify label-less usage, expand if needed |
-| Radio | input box | 20×20 | same as Checkbox |
-| Slider | thumb | 20×20 | expand thumb hit-area (Radix supports this via padding) |
-| Toggle | switch | 36×20 | expand vertical hit-area to ≥24px |
+| Component | Element | Visual size | Hit area after fix | Probe verdict |
+|-----------|---------|-------------|--------------------|---------------|
+| Tag | remove (×) button | 14×14 | ≥24 (`::after`, `--spacing-6`) | ✅ ±11px probes pass |
+| DatePicker | calendar icon trigger | 16×16 | 44 (`--date-picker-icon-hit-area`) | ✅ ±21px probes pass |
+| MultiSelect | chip remove button | 18×18 | ≥24 (`::after`) | ✅ ±11px |
+| Checkbox | input box | 20×20 | 24 (invisible input grown) | ✅ ±11px |
+| Radio | input box | 20×20 | 24 (invisible input grown) | ✅ ±11px |
+| Slider | thumb | 20×20 | 44 (`--slider-thumb-hit-area`) | ✅ ±21px |
+| Toggle | switch | 36×20 | 36×24 (`::after` floor) | ✅ ±11px |
 
-Recommended approach: transparent `::after` hit-area expansion — zero visual change, no token or layout impact, one small CSS block per component. Scope ≈ half a day across 7 components + re-run of this audit. Tracked as a follow-up tranche (can ride along with the icons task).
+Technique: transparent `::after` pseudo-element (or, for Checkbox/Radio, growing the already-invisible native input) — zero visual change, verified by `document.elementFromPoint` hit-probing at 375×812 and before/after screenshot comparison. New dimension token `--touch-target-size: 44px` (in `dimensions.css`); isolated controls (Slider thumb, DatePicker trigger) take the full 44px via component tokens, dense/inline controls take the 24px WCAG AA floor to avoid overlapping neighbors.
+
+**Latent bug discovered during this work (follow-up):** Tailwind v4 tree-shakes `@theme` variables that are not referenced inside its processed import graph — `--duration-*` and `--easing-*` tokens come out empty in the docs app, silently disabling all component transitions there. Component CSS references them, but that CSS is outside the Tailwind graph. Fix options: reference motion tokens from a token-layer file, or move them out of `@theme` into plain `:root`. Queued as a separate task.
 
 ## Working rule added for Phase 4
 

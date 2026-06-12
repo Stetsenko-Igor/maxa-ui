@@ -593,3 +593,15 @@
     0 0 0 1px var(--calendar-focus-ring-offset-color),
     0 0 0 var(--calendar-focus-ring-width) var(--calendar-focus-ring);
 }
+
+/* Invisible hit-area expansion to the full touch-target size.
+   No visual change — only the clickable zone grows. */
+.maxa-date-picker__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--date-picker-icon-hit-area));
+  height: max(100%, var(--date-picker-icon-hit-area));
+  transform: translate(-50%, -50%);
+}

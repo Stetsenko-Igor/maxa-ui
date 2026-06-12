@@ -38,13 +38,17 @@
 }
 
 .maxa-checkbox__input {
+  /* Centered and expanded past the visual box to the WCAG 2.2 AA
+     touch-target floor — the input is invisible, so no visual change. */
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   margin: 0;
   opacity: 0;
   cursor: inherit;
-  width: 100%;
-  height: 100%;
+  width: max(100%, var(--spacing-6));
+  height: max(100%, var(--spacing-6));
 }
 
 .maxa-checkbox__box {

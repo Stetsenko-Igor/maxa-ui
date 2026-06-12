@@ -21,6 +21,8 @@
   --date-picker-preset-font-size: var(--text-sm);
   --date-picker-field-separator-color: var(--color-text-tertiary);
   --date-picker-more-icon-size: 14px;
+  /* invisible expanded hit area for touch (see dimensions.css) */
+  --date-picker-icon-hit-area: var(--touch-target-size);
   --date-picker-more-menu-min-width: 132px;
   --date-picker-quarter-icon-size: 16px;
   --date-picker-quarter-popover-width: 360px;

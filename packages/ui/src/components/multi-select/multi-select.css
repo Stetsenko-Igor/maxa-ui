@@ -97,6 +97,7 @@
 }
 
 .maxa-multi-select__chip-remove {
+  position: relative;
   display: inline-flex;
   width: var(--multi-select-chip-remove-size);
   height: var(--multi-select-chip-remove-size);
@@ -134,4 +135,16 @@
 .maxa-multi-select__menu {
   max-height: var(--multi-select-menu-max-height);
   overflow-y: auto;
+}
+
+/* Invisible hit-area expansion to the WCAG 2.2 AA touch-target floor.
+   No visual change — only the clickable zone grows. */
+.maxa-multi-select__chip-remove::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--spacing-6));
+  height: max(100%, var(--spacing-6));
+  transform: translate(-50%, -50%);
 }

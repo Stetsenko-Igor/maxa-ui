@@ -75,6 +75,10 @@
     "field-separator-color": {
       "$value": "var(--color-text-tertiary)",
       "$type": "color"
+    },
+    "icon-hit-area": {
+      "$value": "var(--touch-target-size)",
+      "$type": "number"
     }
   }
 }

@@ -62,6 +62,7 @@
 /* ── Remove button ───────────────────────────────────────────── */
 
 .maxa-tag__remove {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,4 +106,16 @@
 .maxa-tag__remove svg {
   width: 75%;
   height: 75%;
+}
+
+/* Invisible hit-area expansion to the WCAG 2.2 AA touch-target floor.
+   No visual change — only the clickable zone grows. */
+.maxa-tag__remove::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--spacing-6));
+  height: max(100%, var(--spacing-6));
+  transform: translate(-50%, -50%);
 }

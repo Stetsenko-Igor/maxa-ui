@@ -7,6 +7,8 @@
   --slider-track-bg: var(--color-bg-neutral-subtle);
   --slider-range-bg: var(--color-action-primary);
   --slider-thumb-size: 20px;
+  /* invisible expanded hit area for touch (see dimensions.css) */
+  --slider-thumb-hit-area: var(--touch-target-size);
   --slider-thumb-bg: var(--color-bg-surface);
   --slider-thumb-border: var(--color-action-primary);
   --slider-thumb-border-width: 2px;

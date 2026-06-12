@@ -68,6 +68,9 @@
   --width-2: 2px;
   --width-4: 4px;
 
+  /* ── Interaction — minimum touch-target hit area ─────────────────── */
+  --touch-target-size: 44px;
+
   /* ── Motion — durations + easings ────────────────────────────────── */
   --duration-instant:  50ms;
   --duration-fast:     100ms;

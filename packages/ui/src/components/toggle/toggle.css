@@ -136,3 +136,15 @@
 .maxa-toggle[disabled] .maxa-toggle__thumb {
   background: var(--toggle-thumb-bg-disabled);
 }
+
+/* Invisible hit-area expansion to the WCAG 2.2 AA touch-target floor.
+   No visual change — only the clickable zone grows. */
+.maxa-toggle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, var(--spacing-6));
+  height: max(100%, var(--spacing-6));
+  transform: translate(-50%, -50%);
+}
