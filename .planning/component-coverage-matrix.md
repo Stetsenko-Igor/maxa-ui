@@ -175,6 +175,7 @@ Then Phase 5 (Figma Code Connect) and Phase 6 (v1.0 release prep / external cons
 
 ## Working Rules
 
+- Every Phase 4 pattern spec must include a mandatory responsive-behavior section (mobile 375 / tablet 768 / desktop): how the pattern collapses, wraps, or transforms. The MAXA product is responsive and mobile design is routine — desktop-only pattern specs are not accepted.
 - Do not implement a benchmark component only because Untitled UI or shadcn has it.
 - Do not implement `Accordion/Disclosure` until a real MAXA workflow needs expandable content.
 - Do not use `Select` for action menus.

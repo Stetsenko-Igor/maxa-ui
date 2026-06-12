@@ -37,7 +37,9 @@
   --toast-viewport-bottom:  var(--spacing-5);   /* 20px */
   --toast-viewport-right:   var(--spacing-5);   /* 20px */
   --toast-viewport-gap:     var(--spacing-2);   /* 8px between stacked toasts */
-  --toast-viewport-width:   360px;
+  /* clamped so the stack never overflows narrow phone screens once the
+     right offset is applied */
+  --toast-viewport-width:   min(360px, calc(100vw - 2 * var(--spacing-5)));
 
   /* ── Intent stripe colors ───────────────────────────────────────── */
   --toast-stripe-neutral:   var(--color-border-primary);
