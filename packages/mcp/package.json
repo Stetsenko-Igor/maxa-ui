@@ -22,7 +22,7 @@
     "package.json"
   ],
   "scripts": {
-    "build": "node ../../scripts/clean-package-dist.mjs packages/mcp && tsc --build --force",
+    "build": "node ../../scripts/clean-package-dist.mjs packages/mcp && tsc --build --force && chmod +x dist/cli.js",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run"

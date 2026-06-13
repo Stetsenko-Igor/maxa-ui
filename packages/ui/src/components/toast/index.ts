@@ -6,8 +6,8 @@ export {
   ToastDescription,
   ToastAction,
   ToastClose,
-} from "./toast"
-export { Toaster } from "./toaster"
-export { useToast } from "./use-toast"
-export type { ToastProps, ToastIntent } from "./toast"
-export type { ToasterToast, ToastActionElement } from "./use-toast"
+} from "./toast.js"
+export { Toaster } from "./toaster.js"
+export { useToast } from "./use-toast.js"
+export type { ToastProps, ToastIntent } from "./toast.js"
+export type { ToasterToast, ToastActionElement } from "./use-toast.js"

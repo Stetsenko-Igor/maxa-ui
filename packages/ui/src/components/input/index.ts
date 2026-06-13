@@ -1,2 +1,2 @@
-export { Input, inputWrapperVariants } from "./input"
-export type { InputProps } from "./input"
+export { Input, inputWrapperVariants } from "./input.js"
+export type { InputProps } from "./input.js"

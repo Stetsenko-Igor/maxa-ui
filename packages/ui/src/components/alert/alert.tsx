@@ -2,7 +2,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Info, CheckCircle, Warning, XCircle, X } from "@maxa/icons"
-import { Button, type ButtonProps } from "../button"
+import { Button, type ButtonProps } from "../button/index.js"
 import "./alert.css"
 
 const alertVariants = cva("maxa-alert", {

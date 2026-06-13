@@ -1,2 +1,2 @@
-export { SocialButton } from "./social-button"
-export type { SocialButtonProps } from "./social-button"
+export { SocialButton } from "./social-button.js"
+export type { SocialButtonProps } from "./social-button.js"

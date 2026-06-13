@@ -1,2 +1,2 @@
-export { Separator } from "./separator"
-export type { SeparatorProps, SeparatorOrientation } from "./separator"
+export { Separator } from "./separator.js"
+export type { SeparatorProps, SeparatorOrientation } from "./separator.js"

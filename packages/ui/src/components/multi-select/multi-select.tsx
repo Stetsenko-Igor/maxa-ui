@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { CaretDown, X } from "@maxa/icons"
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../dropdown-menu"
-import { FormField, type FormFieldSize } from "../form-field"
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../dropdown-menu/index.js"
+import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./multi-select.css"
 
 export interface MultiSelectOption {

@@ -10,7 +10,7 @@ import {
   DialogTrigger as AlertDialogTrigger,
   type DialogCloseProps,
   type DialogContentProps,
-} from "../dialog"
+} from "../dialog/index.js"
 
 const AlertDialogContent = (props: DialogContentProps) => (
   <DialogContent role="alertdialog" {...props} />

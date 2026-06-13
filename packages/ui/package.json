@@ -22,8 +22,8 @@
     "**/*.css"
   ],
   "scripts": {
-    "build": "node ../../scripts/clean-package-dist.mjs packages/ui && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/ui",
-    "typecheck": "tsc --noEmit",
+    "build": "pnpm --filter @maxa/ui^... build && node ../../scripts/clean-package-dist.mjs packages/ui && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/ui",
+    "typecheck": "pnpm --filter @maxa/ui^... build && tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"

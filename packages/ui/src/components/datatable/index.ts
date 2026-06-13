@@ -1,2 +1,2 @@
-export { DataTable } from "./datatable"
-export type { DataTableProps, ColumnDef, SortDirection } from "./datatable"
+export { DataTable } from "./datatable.js"
+export type { DataTableProps, ColumnDef, SortDirection } from "./datatable.js"

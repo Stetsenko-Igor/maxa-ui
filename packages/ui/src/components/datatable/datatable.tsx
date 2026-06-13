@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { Checkbox, type CheckedState } from "../checkbox"
-import { Empty } from "../empty"
+import { Checkbox, type CheckedState } from "../checkbox/index.js"
+import { Empty } from "../empty/index.js"
 import {
   Pagination,
   PaginationItem,
@@ -10,8 +10,8 @@ import {
   PaginationList,
   PaginationNext,
   PaginationPrevious,
-} from "../pagination"
-import { Skeleton } from "../skeleton"
+} from "../pagination/index.js"
+import { Skeleton } from "../skeleton/index.js"
 import {
   Table,
   TableBody,
@@ -23,7 +23,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../table"
+} from "../table/index.js"
 import "./datatable.css"
 
 export type SortDirection = "ascending" | "descending"

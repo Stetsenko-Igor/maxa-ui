@@ -1,2 +1,2 @@
-export { TextArea } from "../input/input"
-export type { TextAreaProps } from "../input/input"
+export { TextArea } from "../input/input.js"
+export type { TextAreaProps } from "../input/input.js"

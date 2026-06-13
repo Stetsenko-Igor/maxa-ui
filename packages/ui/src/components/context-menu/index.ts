@@ -6,5 +6,5 @@ export {
   ContextMenuSeparator,
   ContextMenuShortcut,
   ContextMenuTrigger,
-} from "./context-menu"
-export type { ContextMenuItemProps } from "./context-menu"
+} from "./context-menu.js"
+export type { ContextMenuItemProps } from "./context-menu.js"

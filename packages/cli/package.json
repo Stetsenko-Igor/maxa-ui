@@ -23,8 +23,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "node ../../scripts/clean-package-dist.mjs packages/cli && tsc --build --force",
-    "typecheck": "tsc --noEmit",
+    "build": "pnpm --filter @maxa/cli^... build && node ../../scripts/clean-package-dist.mjs packages/cli && tsc --build --force && chmod +x dist/index.js",
+    "typecheck": "pnpm --filter @maxa/cli^... build && tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run"
   },

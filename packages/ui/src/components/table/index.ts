@@ -7,7 +7,7 @@ export {
   TableHead,
   TableHeader,
   TableRow,
-} from "./table"
+} from "./table.js"
 export type {
   TableAlign,
   TableCellSize,
@@ -19,4 +19,4 @@ export type {
   TableProps,
   TableRowProps,
   TableSortDirection,
-} from "./table"
+} from "./table.js"

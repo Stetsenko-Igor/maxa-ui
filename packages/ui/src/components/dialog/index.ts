@@ -8,5 +8,5 @@ export {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./dialog"
-export type { DialogCloseProps, DialogContentProps, DialogProps } from "./dialog"
+} from "./dialog.js"
+export type { DialogCloseProps, DialogContentProps, DialogProps } from "./dialog.js"

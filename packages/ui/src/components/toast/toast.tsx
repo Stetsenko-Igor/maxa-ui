@@ -116,4 +116,4 @@ export {
   ToastAction,
   ToastClose,
 }
-export type { ToastActionElement } from "./use-toast"
+export type { ToastActionElement } from "./use-toast.js"

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { CaretDown, Check } from "@maxa/icons"
-import { FormField, type FormFieldSize } from "../form-field"
+import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"

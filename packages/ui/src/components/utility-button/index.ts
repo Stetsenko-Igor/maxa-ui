@@ -1,2 +1,2 @@
-export { UtilityButton } from "./utility-button"
-export type { UtilityButtonProps } from "./utility-button"
+export { UtilityButton } from "./utility-button.js"
+export type { UtilityButtonProps } from "./utility-button.js"

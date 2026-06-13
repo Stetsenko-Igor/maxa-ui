@@ -14,10 +14,10 @@ export {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "./dropdown-menu"
+} from "./dropdown-menu.js"
 export type {
   DropdownMenuAlign,
   DropdownMenuContentProps,
   DropdownMenuItemVariant,
   DropdownMenuSide,
-} from "./dropdown-menu"
+} from "./dropdown-menu.js"

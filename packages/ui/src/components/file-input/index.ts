@@ -1,2 +1,2 @@
-export { FileInput } from "./file-input"
-export type { FileInputProps, FileInputRejectedFile, FileInputSize, FileInputVisualState } from "./file-input"
+export { FileInput } from "./file-input.js"
+export type { FileInputProps, FileInputRejectedFile, FileInputSize, FileInputVisualState } from "./file-input.js"

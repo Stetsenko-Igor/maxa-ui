@@ -2,8 +2,8 @@
 
 import * as React from "react"
 import { CalendarBlank, CaretLeft, CaretRight, CaretDown, Clock } from "@maxa/icons"
-import { Calendar } from "../calendar"
-import { FormField, type FormFieldSize } from "../form-field"
+import { Calendar } from "../calendar/index.js"
+import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./date-picker.css"
 
 type DatePickerVisualState = "default" | "hover" | "focus" | "error" | "disabled"

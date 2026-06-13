@@ -1,4 +1,4 @@
-export { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "./avatar"
+export { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "./avatar.js"
 export type {
   AvatarFallbackProps,
   AvatarColor,
@@ -9,4 +9,4 @@ export type {
   AvatarSize,
   AvatarStatus,
   AvatarTone,
-} from "./avatar"
+} from "./avatar.js"

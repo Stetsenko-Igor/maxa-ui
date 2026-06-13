@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import type { ToastProps, ToastIntent } from "./toast"
+import type { ToastProps, ToastIntent } from "./toast.js"
 
 // Module-level state — works outside React tree (shadcn pattern)
 
