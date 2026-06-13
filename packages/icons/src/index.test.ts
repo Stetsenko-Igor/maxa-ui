@@ -16,4 +16,19 @@ describe("icons", () => {
     expect(typeof social.GoogleIcon).toBe("function")
     expect(typeof social.AppleIcon).toBe("function")
   })
+
+  it("keeps social brand icons decorative by default", () => {
+    const icon = social.GoogleIcon({})
+
+    expect(icon.props["aria-hidden"]).toBe(true)
+    expect(icon.props.role).toBeUndefined()
+  })
+
+  it("allows social brand icons to be named when used standalone", () => {
+    const icon = social.GoogleIcon({ "aria-label": "Google" })
+
+    expect(icon.props["aria-hidden"]).toBeUndefined()
+    expect(icon.props.role).toBe("img")
+    expect(icon.props["aria-label"]).toBe("Google")
+  })
 })

@@ -8,7 +8,7 @@ The MAXA icon system is **Phosphor Icons**, shipped through the `@maxa/icons` pa
 
 - **Library:** [Phosphor Icons](https://phosphoricons.com) via `@phosphor-icons/react`.
 - **Weight:** **Regular** — the system standard and Phosphor's default. Do not mix weights without a product reason.
-- **Source of truth:** `@maxa/icons` re-exports all Phosphor icons. Import from `@maxa/icons`, never from `@phosphor-icons/react` directly, so the dependency stays owned by the design system.
+- **Source of truth:** `@maxa/icons` exports a curated set of Phosphor icons. Import from `@maxa/icons`, never from `@phosphor-icons/react` directly, so the dependency and allowed icon set stay owned by the design system.
 
 ```tsx
 import { CaretDown, X, Check, MagnifyingGlass } from "@maxa/icons"
@@ -19,6 +19,7 @@ import { CaretDown, X, Check, MagnifyingGlass } from "@maxa/icons"
 - Icon size is **16 / 20 / 24px**, set by the consuming component via CSS on a wrapper or via `width`/`height` props.
 - The common pattern is an icon that fills a CSS-sized box: pass `width="100%" height="100%"` and size the wrapper with a token.
 - **Never** use Phosphor's `size` prop for fixed values — size comes from component tokens (e.g. `--input-icon-md-size`), not hardcoded numbers in JSX.
+- To add a system icon, add a direct subpath export in `packages/icons/src/index.ts` (for example, `@phosphor-icons/react/X`). Do not add a full Phosphor barrel export.
 
 ## Color
 
@@ -33,10 +34,12 @@ import { CaretDown, X, Check, MagnifyingGlass } from "@maxa/icons"
 ## Social / brand icons
 
 - Provider brand marks (Google, Apple, Facebook, …) live in the `social` namespace of `@maxa/icons` and keep **hardcoded brand colors** — they are brand assets, not system icons, so they intentionally ignore `currentColor`.
+- Social icons are decorative by default (`aria-hidden`). If a brand mark is used standalone as meaningful content, pass an accessible name such as `aria-label="Google"`.
 
 ```tsx
 import { social } from "@maxa/icons"
 <social.GoogleIcon width={20} height={20} />
+<social.GoogleIcon width={20} height={20} aria-label="Google" />
 ```
 
 - Namespaced to avoid collisions with Phosphor's own `*Icon` aliases and `*Logo` glyphs.

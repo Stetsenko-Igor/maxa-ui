@@ -8,10 +8,6 @@ export default defineConfig({
     exclude: [...configDefaults.exclude, "dist/**"],
     globals: true,
     setupFiles: ["./src/test-setup.ts"],
-    // Headroom for interaction tests (userEvent + fake timers). The @maxa/icons
-    // barrel re-exports the full Phosphor set, which inflates module import time
-    // under parallel turbo runs and can tip 5s-default interaction tests over.
-    testTimeout: 15000,
     coverage: {
       provider: "v8",
       reporter: ["text", "html", "json-summary"],

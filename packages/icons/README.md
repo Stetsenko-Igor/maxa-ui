@@ -1,14 +1,20 @@
 # @maxa/icons
 
-Shared icon package for Maxa-owned icon assets. Icons will ship as React SVG components sized and colored through the `@maxa/tokens` system.
+Shared React icon package for the MAXA design system.
 
 ## Status
 
-Placeholder. The package builds and exports only a `version` constant - SVG icon components are planned for a later phase. The package exists now so that workspace wiring, build scripts, and consumers do not change when icons land.
+Implemented. The package exposes:
+
+- `version` - package version string
+- curated Phosphor system icons used by MAXA components
+- `social` - full-color provider brand marks for `SocialButton` and related auth/share UI
+
+System icons are intentionally curated instead of re-exporting the full Phosphor package. Add a new icon to `src/index.ts` only when a MAXA package needs it.
 
 ## Requirements
 
-- React 18 or 19 (peer dependency)
+- React 18 or 19
 
 ## Usage inside this workspace
 
@@ -17,8 +23,48 @@ Placeholder. The package builds and exports only a `version` constant - SVG icon
 "dependencies": { "@maxa/icons": "workspace:^" }
 ```
 
-```ts
-import { version } from "@maxa/icons"
+```tsx
+import { CaretDown, Check, X, social } from "@maxa/icons"
+
+<CaretDown width={16} height={16} aria-hidden="true" focusable={false} />
+<social.GoogleIcon width={20} height={20} />
+```
+
+## System Icons
+
+System icons are Phosphor Regular glyphs. They render with `currentColor`, so consumers should size and color them through component tokens or wrapper CSS. Import from `@maxa/icons`, not `@phosphor-icons/react`, so the dependency and allowed icon set stay owned by the design system.
+
+Decorative system icons should be hidden from assistive technology:
+
+```tsx
+<X width={16} height={16} aria-hidden="true" focusable={false} />
+```
+
+Icon-only controls must put the accessible name on the control, not the icon:
+
+```tsx
+<button type="button" aria-label="Close">
+  <X width={20} height={20} aria-hidden="true" focusable={false} />
+</button>
+```
+
+## Social Icons
+
+Social icons keep provider brand colors and do not use `currentColor`.
+
+They are decorative by default (`aria-hidden`) because the accessible name usually lives on the surrounding button or link:
+
+```tsx
+<button type="button">
+  <social.GoogleIcon width={20} height={20} />
+  Sign in with Google
+</button>
+```
+
+When a brand mark is used standalone as meaningful content, provide an accessible name:
+
+```tsx
+<social.GoogleIcon width={20} height={20} aria-label="Google" />
 ```
 
 ## Usage from GitHub (no npm registry)
@@ -33,13 +79,3 @@ pnpm add file:../maxa-ui/packages/icons
 ```
 
 See the root [README](../../README.md) for distribution options and caveats.
-
-## Exports
-
-- `version` - package version string (placeholder)
-
-## Planned scope
-
-- React SVG icon components with consistent viewBox and sizing
-- Color inheritance via `currentColor` so icons follow semantic text tokens
-- Figma icon library parity

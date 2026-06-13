@@ -16,10 +16,11 @@ type SocialIconProps = React.SVGProps<SVGSVGElement>
 
 const base = (props: SocialIconProps) => ({
   viewBox: "0 0 24 24",
-  role: "img" as const,
   focusable: false,
   width: props.width ?? "100%",
   height: props.height ?? "100%",
+  role: (props["aria-label"] || props["aria-labelledby"]) ? ("img" as const) : undefined,
+  "aria-hidden": (props["aria-label"] || props["aria-labelledby"]) ? undefined : true,
   ...props,
 })
 
