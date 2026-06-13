@@ -1,6 +1,6 @@
 {
   "name": "@maxa/icons",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": false,
   "type": "module",
   "main": "./dist/index.js",
@@ -28,7 +28,12 @@
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10"
+  },
   "devDependencies": {
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "typescript": "*",
     "vitest": "*",
     "react": "^19.0.0",

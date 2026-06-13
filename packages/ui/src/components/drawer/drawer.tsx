@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { X } from "@maxa/icons"
 import "./drawer.css"
 
 type DrawerContextValue = {
@@ -218,16 +219,8 @@ export interface DrawerCloseProps extends React.ButtonHTMLAttributes<HTMLButtonE
   inline?: boolean
 }
 
-const closeIcon = (
-  <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20" fill="none">
-    <path
-      d="M5 5l10 10M15 5L5 15"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-)
+const closeIcon = <X aria-hidden="true" focusable={false} />
+
 
 const DrawerClose = React.forwardRef<HTMLButtonElement, DrawerCloseProps>(
   ({ className, children = closeIcon, inline, onClick, ...props }, ref) => {

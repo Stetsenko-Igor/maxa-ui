@@ -1,6 +1,7 @@
 "use client"
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Info, CheckCircle, Warning, XCircle, X } from "@maxa/icons"
 import { Button, type ButtonProps } from "../button"
 import "./alert.css"
 
@@ -31,64 +32,11 @@ export interface AlertProps
   onDismiss?: () => void
 }
 
-function InfoIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" />
-      <line x1="8" y1="7.25" x2="8" y2="11.5" />
-      <circle cx="8" cy="4.75" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function SuccessIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" />
-      <path d="M5.25 8.25 7 10l3.75-4" />
-    </svg>
-  )
-}
-
-function WarningIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M8 1.75 14.75 13.5H1.25L8 1.75Z" />
-      <line x1="8" y1="6.25" x2="8" y2="9.5" />
-      <circle cx="8" cy="11.5" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function DangerIcon() {
-  return (
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="8" cy="8" r="6.5" />
-      <line x1="8" y1="4.75" x2="8" y2="8.5" />
-      <circle cx="8" cy="11.25" r="0.5" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function XIcon() {
-  return (
-    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-      <line x1="2" y1="2" x2="10" y2="10" />
-      <line x1="10" y1="2" x2="2" y2="10" />
-    </svg>
-  )
-}
-
-const intentIcons: Record<AlertIntent, () => React.JSX.Element> = {
-  info: InfoIcon,
-  success: SuccessIcon,
-  warning: WarningIcon,
-  danger: DangerIcon,
+const intentIcons: Record<AlertIntent, React.ComponentType<{ "aria-hidden"?: boolean }>> = {
+  info: Info,
+  success: CheckCircle,
+  warning: Warning,
+  danger: XCircle,
 }
 
 const intentRole: Record<AlertIntent, "alert" | "status"> = {
@@ -117,7 +65,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
     const resolvedRole = role ?? intentRole[intent]
     const ariaLive = resolvedRole === "alert" ? "assertive" : "polite"
     const DefaultIcon = intentIcons[intent]
-    const iconNode = icon ?? <DefaultIcon />
+    const iconNode = icon ?? <DefaultIcon aria-hidden />
     const hasTitle = Boolean(title)
     const layout = hasTitle ? "stacked" : "inline"
 
@@ -151,7 +99,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
                 aria-label="Dismiss"
                 onClick={(e) => { e.stopPropagation(); onDismiss?.() }}
               >
-                <XIcon />
+                <X aria-hidden focusable={false} />
               </button>
             )}
           </div>
@@ -172,7 +120,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
                     aria-label="Dismiss"
                     onClick={(e) => { e.stopPropagation(); onDismiss?.() }}
                   >
-                    <XIcon />
+                    <X aria-hidden focusable={false} />
                   </button>
                 )}
               </div>

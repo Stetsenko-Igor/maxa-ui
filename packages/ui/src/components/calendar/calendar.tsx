@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { CaretLeft, CaretRight, CaretDown } from "@maxa/icons"
 import "./calendar.css"
 
 export interface CalendarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -259,46 +260,13 @@ Calendar.displayName = "Calendar"
 export { Calendar }
 
 function ChevronLeftIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m10 12-4-4 4-4"
-      />
-    </svg>
-  )
+  return <CaretLeft width="100%" height="100%" aria-hidden focusable={false} />
 }
 
 function ChevronRightIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m6 4 4 4-4 4"
-      />
-    </svg>
-  )
+  return <CaretRight width="100%" height="100%" aria-hidden focusable={false} />
 }
 
 function ChevronDownIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.5"
-        d="m4 6 4 4 4-4"
-      />
-    </svg>
-  )
+  return <CaretDown width="100%" height="100%" aria-hidden focusable={false} />
 }

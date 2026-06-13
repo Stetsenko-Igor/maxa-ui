@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { Check, CaretRight } from "@maxa/icons"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import "./dropdown-menu.css"
 
@@ -216,11 +217,7 @@ export {
 }
 
 function CheckIcon() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  )
+  return <Check width="100%" height="100%" aria-hidden focusable={false} />
 }
 
 function DotIcon() {
@@ -232,9 +229,5 @@ function DotIcon() {
 }
 
 function ChevronRightIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="9 18 15 12 9 6" />
-    </svg>
-  )
+  return <CaretRight width={16} height={16} aria-hidden focusable={false} />
 }

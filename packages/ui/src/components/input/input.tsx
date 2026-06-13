@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { MagnifyingGlass, Eye, X, Minus, Plus } from "@maxa/icons"
 import { cva, type VariantProps } from "class-variance-authority"
 import "./input.css"
 
@@ -351,45 +352,21 @@ TextArea.displayName = "TextArea"
 export { Input, TextArea, inputWrapperVariants }
 
 function SearchIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  )
+  return <MagnifyingGlass width={16} height={16} aria-hidden focusable={false} />
 }
 
 function EyeIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  )
+  return <Eye width={16} height={16} aria-hidden focusable={false} />
 }
 
 function ClearIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="18" y1="6" x2="6" y2="18" />
-      <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-  )
+  return <X width={14} height={14} aria-hidden focusable={false} />
 }
 
 function MinusIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="5" y1="12" x2="19" y2="12" />
-    </svg>
-  )
+  return <Minus width={16} height={16} aria-hidden focusable={false} />
 }
 
 function PlusIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="12" y1="5" x2="12" y2="19" />
-      <line x1="5" y1="12" x2="19" y2="12" />
-    </svg>
-  )
+  return <Plus width={16} height={16} aria-hidden focusable={false} />
 }

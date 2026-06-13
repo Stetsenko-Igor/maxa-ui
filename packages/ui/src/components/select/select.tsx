@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field"
 import "./select.css"
 
@@ -295,17 +296,9 @@ function textFromNode(node: React.ReactNode): string {
 }
 
 function ChevronDownIcon() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  )
+  return <CaretDown width="100%" height="100%" aria-hidden focusable={false} />
 }
 
 function CheckIcon() {
-  return (
-    <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  )
+  return <Check width="100%" height="100%" aria-hidden focusable={false} />
 }
