@@ -71,6 +71,12 @@
   /* ── Interaction — minimum touch-target hit area ─────────────────── */
   --touch-target-size: 44px;
 
+}
+
+/* These tokens are NOT Tailwind utilities — they must live in :root so
+   Tailwind v4's @theme tree-shaking does not strip them from the output.
+   Component CSS references them as var(--duration-*) / var(--z-*) etc. */
+:root {
   /* ── Motion — durations + easings ────────────────────────────────── */
   --duration-instant:  50ms;
   --duration-fast:     100ms;
