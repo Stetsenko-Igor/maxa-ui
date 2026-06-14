@@ -1,6 +1,6 @@
 {
   "name": "@maxa/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "EXPERIMENTAL: read-only Maxa design-system introspection commands",
   "private": false,
   "type": "module",

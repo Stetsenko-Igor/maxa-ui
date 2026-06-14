@@ -1,5 +1,23 @@
 # @maxa/ui
 
+## 0.1.1
+
+### Patch Changes
+
+- Fix the Dialog/Drawer corner close button. The button was positioned with negative offsets outside the content box (clipped by `overflow: hidden`) and rendered a bare "×" text glyph. Now: positioned inside the corner via new `--dialog-close-offset` / `--drawer-close-offset` tokens, renders a proper 20px X icon (inline SVG, `currentColor`), and gains an active-state surface via `--dialog-close-bg-active` / `--drawer-close-bg-active`. Matches the Figma Button Close component (48px hit area, 20px icon, hover/pressed states).
+
+- Ship the real `@maxa/icons` package and adopt it across the component library.
+
+  `@maxa/icons` now exports the curated Phosphor Icons used by the MAXA component library (Regular weight is the system standard) plus a `social` namespace with the 14 full-color brand marks extracted from SocialButton. Import system icons from `@maxa/icons` instead of `@phosphor-icons/react` directly; add new icons as direct subpath exports instead of exposing the full Phosphor barrel.
+
+  All 18 hand-drawn inline SVGs across 10 components (Dialog, Drawer, Alert, Input, Select, MultiSelect, DropdownMenu, Calendar, DatePicker, FileInput) were migrated to Phosphor icons for a consistent icon set. SocialButton now renders its brand icons from the `social` namespace. Social icons are decorative by default and become named images only when passed an accessible name. Two shapes stay inline (DataTable bidirectional sort caret, DropdownMenu radio dot) as they have no Phosphor equivalent. New spec: `specs/foundations/icons.md`.
+
+- Harden published package entrypoints.
+
+  Relative ESM imports in built package files now resolve with explicit `.js` entrypoints, CLI/MCP bin builds preserve executable mode, and the root verification flow includes a package smoke test that checks built and packed entrypoints, bin targets, and packed manifests for leaked `workspace:` dependencies.
+
+- Expand touch targets of small interactive elements to meet WCAG 2.2 AA (24px floor) with zero visual change. Tag remove, MultiSelect chip remove, Toggle, Checkbox, and Radio gain an invisible hit area of at least 24px (`--spacing-6`); Slider thumb and the DatePicker calendar trigger take the full 44px via the new `--touch-target-size` dimension token, exposed through `--slider-thumb-hit-area` and `--date-picker-icon-hit-area` component tokens. Verified by element-from-point hit probing at 375px.
+
 ## 0.1.0
 
 ### Minor Changes
