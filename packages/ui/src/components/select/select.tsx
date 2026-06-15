@@ -5,7 +5,7 @@ import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
 import { cn } from "../../lib/cn.js"
-import { useControlledState } from "@maxa/hooks"
+import { useControlledState, useFieldId } from "@maxa/hooks"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"
 
@@ -64,8 +64,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const reactId = React.useId()
-    const selectId = id ?? reactId
+    const selectId = useFieldId(id)
     const triggerId = `${selectId}-trigger`
     const listboxId = `${selectId}-listbox`
     const hintId = hint || error ? `${selectId}-hint` : undefined

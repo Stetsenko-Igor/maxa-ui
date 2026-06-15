@@ -1,6 +1,7 @@
 import * as React from "react"
 import "./radio.css"
 import { cn } from "../../lib/cn.js"
+import { useLabelIds } from "@maxa/hooks"
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "children" | "size" | "type"> {
@@ -33,16 +34,16 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     },
     ref,
   ) => {
-    const reactId = React.useId()
     const sideLabelContent = sideLabel ?? children
     const descriptionContent = description ?? helperText
-    const topLabelId = label ? `${reactId}-label` : undefined
-    const sideLabelId = sideLabelContent ? `${reactId}-side-label` : undefined
-    const descriptionId = descriptionContent ? `${reactId}-description` : undefined
-    const labelledBy = ariaLabel || ariaLabelledBy
-      ? ariaLabelledBy
-      : cn(topLabelId, sideLabelId) || undefined
-    const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
+    const { labelId: topLabelId, sideLabelId, descriptionId, labelledBy, describedBy } = useLabelIds({
+      label,
+      sideLabel: sideLabelContent,
+      description: descriptionContent,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+    })
     return (
       <label
         className={cn("maxa-radio", error && "maxa-radio--error", disabled && "maxa-radio--disabled", className, containerClassName)}

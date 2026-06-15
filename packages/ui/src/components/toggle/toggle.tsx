@@ -4,6 +4,7 @@ import * as React from "react"
 import * as TogglePrimitive from "@radix-ui/react-switch"
 import "./toggle.css"
 import { cn } from "../../lib/cn.js"
+import { useLabelIds } from "@maxa/hooks"
 
 export interface ToggleProps
   extends Omit<React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root>, "children"> {
@@ -32,14 +33,14 @@ const Toggle = React.forwardRef<
   sideLabel,
   ...props
 }, ref) => {
-  const reactId = React.useId()
-  const topLabelId = label ? `${reactId}-label` : undefined
-  const sideLabelId = sideLabel || children ? `${reactId}-side-label` : undefined
-  const descriptionId = description ? `${reactId}-description` : undefined
-  const labelledBy = ariaLabel || ariaLabelledBy
-    ? ariaLabelledBy
-    : cn(topLabelId, sideLabelId) || undefined
-  const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
+  const { labelId: topLabelId, sideLabelId, descriptionId, labelledBy, describedBy } = useLabelIds({
+    label,
+    sideLabel: sideLabel ?? children,
+    description,
+    ariaLabel,
+    ariaLabelledBy,
+    ariaDescribedBy,
+  })
   const sideLabelContent = sideLabel ?? children
   const hasFieldContent = Boolean(label || sideLabelContent || description)
 

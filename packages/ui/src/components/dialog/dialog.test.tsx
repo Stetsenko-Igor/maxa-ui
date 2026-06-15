@@ -34,6 +34,16 @@ describe("Dialog", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
   })
 
+  it("does not apply corner close geometry to inline footer actions", () => {
+    render(<DemoDialog />)
+    fireEvent.click(screen.getByText("Open dialog"))
+    const cancel = screen.getByRole("button", { name: "Cancel" })
+
+    expect(cancel).toHaveClass("maxa-dialog__close-inline")
+    expect(cancel).toHaveClass("maxa-button")
+    expect(cancel).not.toHaveClass("maxa-dialog__close")
+  })
+
   it("closes with Escape and returns focus to the trigger", () => {
     render(<DemoDialog />)
     const trigger = screen.getByText("Open dialog")

@@ -5,6 +5,7 @@ import { MagnifyingGlass, Eye, X, Minus, Plus } from "@maxa/icons"
 import { cva, type VariantProps } from "class-variance-authority"
 import "./input.css"
 import { cn } from "../../lib/cn.js"
+import { useFieldId } from "@maxa/hooks"
 
 type InputKind = "text" | "password" | "search" | "quantity"
 
@@ -86,7 +87,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
     const resolvedVisualState = disabled ? "disabled"
@@ -260,7 +261,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
     const resolvedVisualState = disabled ? "disabled"

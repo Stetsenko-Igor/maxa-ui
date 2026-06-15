@@ -176,7 +176,7 @@ const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
         ref={ref}
         type="button"
         data-inline={inline || undefined}
-        className={cn("maxa-dialog__close", className)}
+        className={cn(inline ? "maxa-dialog__close-inline" : "maxa-dialog__close", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)

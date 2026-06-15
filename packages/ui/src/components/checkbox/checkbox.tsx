@@ -3,6 +3,7 @@
 import * as React from "react"
 import "./checkbox.css"
 import { cn } from "../../lib/cn.js"
+import { useLabelIds } from "@maxa/hooks"
 
 export type CheckedState = boolean | "indeterminate"
 
@@ -57,16 +58,16 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [isIndeterminate])
 
-    const reactId = React.useId()
     const sideLabelContent = sideLabel ?? children
     const descriptionContent = description ?? helperText
-    const topLabelId = label ? `${reactId}-label` : undefined
-    const sideLabelId = sideLabelContent ? `${reactId}-side-label` : undefined
-    const descriptionId = descriptionContent ? `${reactId}-description` : undefined
-    const labelledBy = ariaLabel || ariaLabelledBy
-      ? ariaLabelledBy
-      : cn(topLabelId, sideLabelId) || undefined
-    const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
+    const { labelId: topLabelId, sideLabelId, descriptionId, labelledBy, describedBy } = useLabelIds({
+      label,
+      sideLabel: sideLabelContent,
+      description: descriptionContent,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+    })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onCheckedChange?.(e.target.checked)
