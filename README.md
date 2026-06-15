@@ -10,7 +10,7 @@ The goal is to close the gap between design and engineering: the same decisions 
 
 - `@maxa/tokens` - CSS variables, theme files, TypeScript token exports, and Figma import JSON.
 - `@maxa/ui` - accessible React components built on top of the token system.
-- `@maxa/icons` - shared icon package placeholder for Maxa-owned icon assets.
+- `@maxa/icons` - curated system icon package for approved Phosphor icons and Maxa-owned social icons.
 - `@maxa/hooks` - shared React hooks package placeholder for reusable interaction logic.
 - `@maxa/cli` - experimental stub for future design-system CLI tooling (no commands yet).
 - `@maxa/mcp` - MCP server that exposes the design system to AI agents.
@@ -157,6 +157,10 @@ Run the full verification pipeline:
 ```bash
 pnpm verify
 ```
+
+Release/versioning is intentionally separate from day-to-day package readiness.
+Do not run `pnpm changeset version` unless the team has explicitly decided to
+start a registry release. See [Release Policy](docs/release-policy.md).
 
 Useful scripts:
 
