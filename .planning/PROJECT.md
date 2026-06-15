@@ -26,9 +26,9 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-- **Phase 2: Base/action component tranche** — partially shipped. Badge, Tag, Alert, Divider, Toggle, Tooltip, and Popover are in code/docs/tokens/Figma bundle. Remaining immediate work: Tabs and Accordion/Disclosure.
-- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. After the current tranche, the roadmap extends into application UI components, MAXA product patterns, Figma Code Connect, and release stabilization. The Tailwind adapter is post-core adoption work, not the next main objective.
-- **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → test → build`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code.
+- **Phase 4: MAXA product patterns** — active next scope. Start with product pattern inventory and priority map, then implement the first product-pattern tranche grounded in real MAXA screenshots/routes.
+- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. The current component layer is complete; the roadmap now moves into MAXA product patterns, Figma Code Connect, and release stabilization. The Tailwind adapter is post-core adoption work, not the next main objective.
+- **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → tokens:reference:check → test → build → pack:smoke`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code. `pack:smoke` verifies packed entrypoints plus a temporary Vite consumer build.
 
 ### Out of Scope
 
@@ -37,7 +37,7 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 - **Shadow / elevation tokens** — design intentionally uses "gray page + white surface" hierarchy (School A aesthetic). Revisit only if an overlay component genuinely needs depth (e.g., during Phase 2 Popover/Tooltip work).
 - **Motion / animation tokens** — deferred until a component needs guided motion. Premature to define without a use case.
 - **Z-index / stacking-context tokens** — implicit per component today. Revisit when overlay components arrive.
-- **Pre-v1.0 semver guarantees** — current version is `0.0.0`. Breaking changes are allowed. Phase 4 (v1.0 release prep) lifts this.
+- **Registry release / versioning** — do not run `pnpm changeset version` or publish packages unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only.
 - **OAuth / external auth tokens** — design system has no auth scope. Out of project bounds.
 
 ## Context
@@ -48,7 +48,7 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 - **Design contracts:** live in `specs/` (foundations, components, patterns). `specs/` says **what**; `.planning/` says **when / in what order**.
 - **Product reference:** MAXA product UI inventory and screenshots are mandatory context before creating app-level components or product patterns. The design system must model the real product, not generic SaaS placeholders.
 - **Figma:** token source lives in `packages/tokens/figma/`. The MAXA Token Importer plugin (`.knowledge/Figma Plugins/MAXA Token Importer/`) fetches `import-bundle.json` from GitHub Raw — push first, then import.
-- **Release flow:** Changesets (`@changesets/cli`). Currently no pending entries.
+- **Release flow:** Changesets (`@changesets/cli`). Pending entries are allowed as release notes, but versioning/publishing is gated by `docs/release-policy.md`.
 - **Parallel agents:** Both Claude Code and Codex operate on this repo. Both read `.planning/` and `specs/` at session start.
 
 ## Constraints
@@ -65,17 +65,19 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 
 <!-- Decisions that constrain future work. Add throughout project lifecycle. -->
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| Three-tier tokens (primitive → semantic → component) | Prevents agents from referencing raw values; gives a stable rename surface | ✓ Good |
-| Spec-first workflow under `specs/` | LLMs fabricate design values; specs give grounded context | ✓ Good |
-| `forwardRef + cva + Slot` pattern across all components | Single shape simplifies review, audit, and authoring | ✓ Good |
-| CSS custom properties as runtime contract (no CSS-in-JS) | Universal consumer support; trivial theme switching | ✓ Good |
-| Surface model: `bg/surface` (white) + `bg/elevated` (one step up) — no shadows | School A aesthetic; testable without elevation tokens | ✓ Good |
-| `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && test && build`) | One local command answers "will this pass GitHub Actions?" | ✓ Good |
-| Brownfield GSD initialization (templates filled manually from existing reality, not `/gsd:new-project` interview) | Existing code and specs already encode requirements; the interview would re-derive what's already known | — Pending evaluation |
-| MAXA UI targets a full design-system platform, not a minimal component package | Igor accepted the Untitled UI / shadcn-level ambition on 2026-06-04; MAXA needs base components, app components, product patterns, docs/catalog, and Figma handoff | Accepted |
-| Tailwind adapter is post-core adoption work | It helps external consumers use MAXA tokens in Tailwind, but it does not replace the core component/pattern catalog | Accepted |
+| Decision                                                                                                          | Rationale                                                                                                                                                                  | Outcome              |
+| ----------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- |
+| Three-tier tokens (primitive → semantic → component)                                                              | Prevents agents from referencing raw values; gives a stable rename surface                                                                                                 | ✓ Good               |
+| Spec-first workflow under `specs/`                                                                                | LLMs fabricate design values; specs give grounded context                                                                                                                  | ✓ Good               |
+| `forwardRef + cva + Slot` pattern across all components                                                           | Single shape simplifies review, audit, and authoring                                                                                                                       | ✓ Good               |
+| CSS custom properties as runtime contract (no CSS-in-JS)                                                          | Universal consumer support; trivial theme switching                                                                                                                        | ✓ Good               |
+| Surface model: `bg/surface` (white) + `bg/elevated` (one step up) — no shadows                                    | School A aesthetic; testable without elevation tokens                                                                                                                      | ✓ Good               |
+| `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && test && build`)                                   | One local command answers "will this pass GitHub Actions?"                                                                                                                 | ✓ Good               |
+| Brownfield GSD initialization (templates filled manually from existing reality, not `/gsd:new-project` interview) | Existing code and specs already encode requirements; the interview would re-derive what's already known                                                                    | — Pending evaluation |
+| MAXA UI targets a full design-system platform, not a minimal component package                                    | Igor accepted the Untitled UI / shadcn-level ambition on 2026-06-04; MAXA needs base components, app components, product patterns, docs/catalog, and Figma handoff         | Accepted             |
+| Tailwind adapter is post-core adoption work                                                                       | It helps external consumers use MAXA tokens in Tailwind, but it does not replace the core component/pattern catalog                                                        | Accepted             |
+| Package readiness is not release mode                                                                             | Igor explicitly stopped accidental versioning on 2026-06-15; package smoke/docs can improve, but `pnpm changeset version` and publishing require explicit release approval | Accepted             |
 
 ---
-*Last updated: 2026-06-04 after expanding the roadmap toward a full MAXA UI platform*
+
+_Last updated: 2026-06-15 after package-readiness hardening and Phase 4 next-plan sync_
