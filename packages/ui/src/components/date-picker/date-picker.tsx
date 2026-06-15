@@ -169,16 +169,14 @@ const DatePickerField = React.forwardRef<HTMLInputElement, DatePickerProps>(
       >
         <div ref={rootRef} className="maxa-date-picker">
           <div
-            className={[
+            className={cn(
               "maxa-date-picker__field",
               `maxa-date-picker__field--${size}`,
               `maxa-date-picker__field--visual-${resolvedVisualState}`,
-              open ? "maxa-date-picker__field--open" : "",
-              error ? "maxa-date-picker__field--error" : "",
-              disabled ? "maxa-date-picker__field--disabled" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
+              open && "maxa-date-picker__field--open",
+              error && "maxa-date-picker__field--error",
+              disabled && "maxa-date-picker__field--disabled",
+            )}
           >
             <input
               ref={setInputRef}

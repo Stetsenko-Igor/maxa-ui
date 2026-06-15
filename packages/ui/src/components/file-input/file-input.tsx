@@ -197,15 +197,13 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
 
     return (
       <div
-        className={[
+        className={cn(
           "maxa-file-input",
           `maxa-file-input--${size}`,
           `maxa-file-input--${resolvedVisualState}`,
-          disabled ? "maxa-file-input--disabled" : "",
-          wrapperClassName ?? "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+          disabled && "maxa-file-input--disabled",
+          wrapperClassName,
+        )}
       >
         {label && (
           <div className="maxa-file-input__label-row">

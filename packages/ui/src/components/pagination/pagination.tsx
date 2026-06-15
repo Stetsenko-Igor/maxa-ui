@@ -36,9 +36,7 @@ const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
   ({ className, isActive = false, "aria-current": ariaCurrent, ...props }, ref) => (
     <a
       ref={ref}
-      className={["maxa-pagination__link", isActive ? "maxa-pagination__link--active" : "", className]
-        .filter(Boolean)
-        .join(" ")}
+      className={cn("maxa-pagination__link", isActive && "maxa-pagination__link--active", className)}
       aria-current={isActive ? "page" : ariaCurrent}
       {...props}
     />

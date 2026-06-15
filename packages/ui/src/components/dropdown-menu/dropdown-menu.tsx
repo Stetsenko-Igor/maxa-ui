@@ -34,16 +34,14 @@ const getItemClassName = (
   className: string | undefined,
   { inset, selection, variant = "default" }: MenuItemOptions,
 ) =>
-  [
+  cn(
     "maxa-dropdown-menu__item",
-    inset ? "maxa-dropdown-menu__item--inset" : "",
-    variant === "destructive" ? "maxa-dropdown-menu__item--destructive" : "",
-    selection === "checkbox" ? "maxa-dropdown-menu__item--checkbox" : "",
-    selection === "radio" ? "maxa-dropdown-menu__item--radio" : "",
+    inset && "maxa-dropdown-menu__item--inset",
+    variant === "destructive" && "maxa-dropdown-menu__item--destructive",
+    selection === "checkbox" && "maxa-dropdown-menu__item--checkbox",
+    selection === "radio" && "maxa-dropdown-menu__item--radio",
     className,
-  ]
-    .filter(Boolean)
-    .join(" ")
+  )
 
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -80,9 +78,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     sideOffset={sideOffset}
-    className={["maxa-dropdown-menu", "maxa-dropdown-menu--sub", className]
-      .filter(Boolean)
-      .join(" ")}
+    className={cn("maxa-dropdown-menu", "maxa-dropdown-menu--sub", className)}
     {...props}
   />
 ))
@@ -163,13 +159,7 @@ const DropdownMenuLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={[
-      "maxa-dropdown-menu__label",
-      inset ? "maxa-dropdown-menu__label--inset" : "",
-      className,
-    ]
-      .filter(Boolean)
-      .join(" ")}
+    className={cn("maxa-dropdown-menu__label", inset && "maxa-dropdown-menu__label--inset", className)}
     {...props}
   />
 ))

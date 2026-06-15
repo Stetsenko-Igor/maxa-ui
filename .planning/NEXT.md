@@ -4,13 +4,14 @@ Last updated: 2026-06-15
 
 ## Default Next Move
 
-Start **Foundation Excellence** before Phase 4 product patterns.
+The Foundation Audit (queue item 1) is **done** — see
+`.planning/foundation-excellence-audit.md`. The next move is to execute the named
+tranche: **"Shared React behavior + UI internal utilities cleanup"** (extract
+`useControlledState` + field/label-id hooks into `@maxa/hooks`; extract `cn()` +
+focus-trap utility inside `@maxa/ui`). Fix the trivial `PROJECT.md` drift (F13)
+immediately alongside it.
 
-The product-pattern layer should wait until the foundation feels excellent:
-tokens, semantic naming, component APIs, visual quality, docs, reuse, package
-boundaries, and verification should all feel boringly reliable. The goal is to
-make the core system sharp enough that product patterns can be built without
-dragging foundational uncertainty forward.
+Product patterns (Phase 4) still wait until the ranked P1 items are addressed.
 
 ## Current Position
 
@@ -29,28 +30,23 @@ dragging foundational uncertainty forward.
 
 ## Priority Queue
 
-### 1. Foundation Audit And Scorecard
+### 1. Foundation Audit And Scorecard — ✅ DONE (2026-06-15)
 
-Create a focused audit of the foundation layer before changing more code.
+Completed. See `.planning/foundation-excellence-audit.md`.
 
-Audit areas:
+Result: foundation is structurally sound (no P0; fresh audit/typecheck/coverage all
+green, 90.43% stmts). Six P1 findings (reuse debt, variant vocabulary, MultiSelect
+a11y, PROJECT.md drift) and eight P2 findings ranked, each with `file:line` evidence
+and an ownership tag.
 
-- token naming and semantic layering
-- component-token coverage and drift between CSS/Figma JSON/docs
-- component API consistency across size, variant, state, ref, Slot/asChild, and
-  accessibility props
-- visual polish across light/dark/theme backgrounds
-- docs accuracy and example quality
-- reuse boundaries: what belongs in `@maxa/ui`, `@maxa/tokens`,
-  `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, and `@maxa/mcp`
-- test/coverage gaps and slow/flaky checks
+**Named next tranche → "Shared React behavior + UI internal utilities cleanup"**
+(split by ownership):
 
-Definition of done:
+- `@maxa/hooks`: `useControlledState`, `useFieldId`/`useLabelIds`
+- `@maxa/ui` internal: `cn()` helper, shared focusable-selector / focus-trap util
 
-- `.planning/foundation-excellence-audit.md` exists.
-- Findings are ranked P0/P1/P2.
-- Each finding has an owner area and suggested fix path.
-- The next implementation tranche is named.
+Trivial fix to make immediately (outside the tranche): correct the stale
+`PROJECT.md` constraints (F13).
 
 ### 2. Token And Semantic Cleanup
 

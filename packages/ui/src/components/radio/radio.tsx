@@ -43,17 +43,9 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       ? ariaLabelledBy
       : cn(topLabelId, sideLabelId) || undefined
     const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
-    const wrapperClasses = [
-      "maxa-radio",
-      error && "maxa-radio--error",
-      disabled && "maxa-radio--disabled",
-    ]
-      .filter(Boolean)
-      .join(" ")
-
     return (
       <label
-        className={cn(wrapperClasses, className, containerClassName)}
+        className={cn("maxa-radio", error && "maxa-radio--error", disabled && "maxa-radio--disabled", className, containerClassName)}
         htmlFor={id}
       >
         {label ? <span className="maxa-radio__top-label" id={topLabelId}>{label}</span> : null}

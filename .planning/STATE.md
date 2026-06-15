@@ -9,10 +9,10 @@ See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 ## Current Position
 
-Phase: Foundation Excellence bridge before Phase 4 — ready to audit
-Plan: Next plan should be `Foundation audit and scorecard`
-Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness has been hardened without entering release mode: curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, and release workflow draft are in place. Product patterns are deferred until the foundation feels excellent across tokens, semantics, component APIs, visual quality, reuse, docs, and verification.
-Last activity: 2026-06-15 — Igor chose foundation excellence before product patterns. `.planning/NEXT.md` now makes foundation audit/polish the default next move. Versioning remains explicitly gated; pending `.changeset/*.md` files remain release notes for a future explicit release decision.
+Phase: Foundation Excellence — audit complete, ready to execute the named tranche
+Plan: Next plan should be `Shared React behavior + UI internal utilities cleanup`
+Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness has been hardened without entering release mode: curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, and release workflow draft are in place. Foundation audit complete (`.planning/foundation-excellence-audit.md`): no P0, foundation structurally sound; six P1 + eight P2 findings ranked with evidence. Product patterns remain deferred until the ranked P1 items are addressed.
+Last activity: 2026-06-15 — Ran the Foundation Excellence audit. Fresh verification all green (audit:tokens exit 0, typecheck 11/11, 86 token tests, 476 UI tests, 90.43% stmts). Produced ranked scorecard and named the next tranche. `.planning/NEXT.md` updated to point at the tranche. Versioning remains explicitly gated.
 
 Progress: [█████████░] 90%
 
@@ -70,6 +70,7 @@ Recent decisions affecting current work:
 - 2026-06-15: Package readiness hardened without release: `@maxa/icons` is real and curated, published package entrypoints are smoke-tested, packed tarballs install in a temporary consumer project, and a Vite React consumer build verifies `@maxa/tokens/theme.css` + `@maxa/ui`.
 - 2026-06-15: Release/versioning guardrail adopted. Pending Changesets are release notes only; do not run `pnpm changeset version` or publish packages without an explicit release decision.
 - 2026-06-15: Current default next move captured in `.planning/NEXT.md`: Foundation Excellence first, then Phase 4 product patterns.
+- 2026-06-15: Foundation Excellence audit complete (`.planning/foundation-excellence-audit.md`). No P0. Fresh verification green (audit:tokens, typecheck 11/11, 86 token tests, 476 UI tests, coverage 90.43% stmts). Six P1 findings (F1 `cn` helper across 30 files, F2 duplicated focus-trap selector, F3 `useControlledState`, F4 field/label-id hooks, F5 fragmented variant vocabulary intent/appearance/tone/variant, F9 MultiSelect not a true listbox, F13 stale PROJECT.md constraints) + eight P2. Named next tranche: **Shared React behavior + UI internal utilities cleanup** — `useControlledState`/`useFieldId`/`useLabelIds` → `@maxa/hooks`; `cn()`/focus-trap util → `@maxa/ui` internal (ownership split intentional; hooks package is not a generic utility dump). Variant glossary (F5) and MultiSelect rebuild (F9) are separate later tranches.
 - 2026-06-15: Igor explicitly deferred product patterns until the foundation is polished: tokens, semantics, components, visual quality, reuse, docs, and verification.
 - 2026-06-04: Further product pattern work is paused. The active priority is benchmark-parity component coverage against Untitled UI and shadcn component families.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).

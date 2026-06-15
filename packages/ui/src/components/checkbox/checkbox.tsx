@@ -68,21 +68,13 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       : cn(topLabelId, sideLabelId) || undefined
     const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
 
-    const wrapperClasses = [
-      "maxa-checkbox",
-      error && "maxa-checkbox--error",
-      disabled && "maxa-checkbox--disabled",
-    ]
-      .filter(Boolean)
-      .join(" ")
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onCheckedChange?.(e.target.checked)
     }
 
     return (
       <label
-        className={cn(wrapperClasses, className, containerClassName)}
+        className={cn("maxa-checkbox", error && "maxa-checkbox--error", disabled && "maxa-checkbox--disabled", className, containerClassName)}
         htmlFor={id}
       >
         {label ? <span className="maxa-checkbox__top-label" id={topLabelId}>{label}</span> : null}
