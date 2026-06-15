@@ -15,11 +15,11 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 <!-- Shipped and confirmed valuable. -->
 
 - ✓ **Three-tier token architecture** (primitives → semantic → component) — shipped in M0 (2026-04-21..23)
-- ✓ **Eight core components** (Button, IconButton, Input, Select, DatePicker, Checkbox, Radio, FormField) — shipped in M1 (2026-04-24..2026-05-13)
+- ✓ **40 components** across base, action, application UI layers — shipped through M1-M3 (2026-04-24..2026-06-11)
 - ✓ **Audit script** (`scripts/audit-tokens.mjs`) blocks hardcoded design values in CI — shipped in M0
 - ✓ **Dark mode runtime** via `[data-theme="dark"]` with token overrides in `packages/tokens/src/themes/maxa.css` — shipped in M0
 - ✓ **Figma token bundle** (`pnpm figma:bundle` → `packages/tokens/figma/import-bundle.json`) — shipped in M0
-- ✓ **Surface model + neutral palette polish** (`bg/surface`, `bg/elevated`, semantic spacing, breakpoints, border-subtle) — shipped in M2 (2026-05-13..15)
+- ✓ **Surface model + neutral palette polish** (`bg/surface`, semantic spacing, breakpoints, border-subtle) — shipped in M2 (2026-05-13..15). Note: `bg/elevated` alias removed 2026-06-05 (zero consumers; use `bg/surface`).
 - ✓ **LLM-readable spec layer** at `specs/` (foundations, components, patterns, tokens-reference) — shipped in M1
 
 ### Active
@@ -34,8 +34,8 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 
 <!-- Explicit boundaries. Includes reasoning to prevent re-adding. -->
 
-- **Shadow / elevation tokens** — design intentionally uses "gray page + white surface" hierarchy (School A aesthetic). Revisit only if an overlay component genuinely needs depth (e.g., during Phase 2 Popover/Tooltip work).
-- **Motion / animation tokens** — deferred until a component needs guided motion. Premature to define without a use case.
+- **Shadow / elevation tokens** — shipped (`packages/tokens/src/shadows.css`, `specs/foundations/shadows.md`). Design uses "gray page + white surface" hierarchy; shadow scale is minimal and present. Not out of scope.
+- **Motion / animation tokens** — shipped (`packages/tokens/src/motion.css`, `specs/foundations/motion.md`) with reduced-motion guard. Not out of scope.
 - **Z-index / stacking-context tokens** — implicit per component today. Revisit when overlay components arrive.
 - **Registry release / versioning** — do not run `pnpm changeset version` or publish packages unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only.
 - **OAuth / external auth tokens** — design system has no auth scope. Out of project bounds.
@@ -44,7 +44,7 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 
 - **Repo:** Turborepo + pnpm workspaces, Node ≥ 20. Private GitHub repo.
 - **Packages:** `@maxa/ui` (React components), `@maxa/tokens` (CSS variables + TS constants), `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`.
-- **Apps:** `apps/docs` — Next.js 15 + Tailwind v4, live previews for foundations and all 8 components.
+- **Apps:** `apps/docs` — Next.js 15 + Tailwind v4, live previews for foundations and all 40 components.
 - **Design contracts:** live in `specs/` (foundations, components, patterns). `specs/` says **what**; `.planning/` says **when / in what order**.
 - **Product reference:** MAXA product UI inventory and screenshots are mandatory context before creating app-level components or product patterns. The design system must model the real product, not generic SaaS placeholders.
 - **Figma:** token source lives in `packages/tokens/figma/`. The MAXA Token Importer plugin (`.knowledge/Figma Plugins/MAXA Token Importer/`) fetches `import-bundle.json` from GitHub Raw — push first, then import.

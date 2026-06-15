@@ -3,7 +3,6 @@
 import * as React from "react"
 import * as TogglePrimitive from "@radix-ui/react-switch"
 import "./toggle.css"
-import { cn } from "../../lib/cn.js"
 import { useLabelIds } from "@maxa/hooks"
 
 export interface ToggleProps
