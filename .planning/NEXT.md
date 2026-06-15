@@ -4,14 +4,20 @@ Last updated: 2026-06-15
 
 ## Default Next Move
 
-The Foundation Audit (queue item 1) is **done** — see
-`.planning/foundation-excellence-audit.md`. The next move is to execute the named
-tranche: **"Shared React behavior + UI internal utilities cleanup"** (extract
-`useControlledState` + field/label-id hooks into `@maxa/hooks`; extract `cn()` +
-focus-trap utility inside `@maxa/ui`). Fix the trivial `PROJECT.md` drift (F13)
-immediately alongside it.
+**Shared React behavior + UI internal utilities cleanup tranche — ✅ DONE (2026-06-16)**
 
-Product patterns (Phase 4) still wait until the ranked P1 items are addressed.
+Next remaining P1s from the audit (`.planning/foundation-excellence-audit.md`):
+
+- **F5 (P1, ui component):** Fragmented variant vocabulary — `intent` / `appearance` / `tone` / `variant` all express the same "semantic color" axis across 9 components. Write a glossary spec in `specs/patterns/`, then align props.
+- **F9 (P1, ui component):** MultiSelect not a true ARIA listbox — uses DropdownMenu + `div role="button"`. Rebuild as proper listbox/chip field (per decision 2026-06-05).
+
+Remaining P2s (batch when convenient):
+- F10: Replace inline SVGs in `datatable`, `dropdown-menu`, `tag` with `@maxa/icons`.
+- F11: Raise coverage for `tooltip.tsx` (75%) and `slider.tsx` (78%).
+- F12: Add docs pages for motion + breakpoints foundations and interactive-hierarchy pattern.
+- F14: Decide on border legacy aliases at `packages/tokens/src/semantic.css:140-142`.
+
+Product patterns (Phase 4) wait until P1s are addressed.
 
 ## Current Position
 
