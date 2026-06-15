@@ -6,6 +6,7 @@ export const metadata: Metadata = { title: "Installation — MAXA UI" }
 
 const TOC = [
   { href: "#install-packages", label: "Install packages" },
+  { href: "#external-consumption", label: "External consumption" },
   { href: "#import-stylesheet", label: "Import stylesheet" },
   { href: "#dark-mode", label: "Dark mode" },
   { href: "#use-a-component", label: "Use a component" },
@@ -93,9 +94,8 @@ export default function InstallationPage() {
       toc={TOC}
       lead={
         <>
-          Get MAXA UI running in your React project in five steps. The token
-          layer is separate from components, so install both packages to get
-          the full system.
+          Get MAXA UI running in your React project in five steps. The token layer is separate from
+          components, so install both packages to get the full system.
         </>
       }
     >
@@ -105,18 +105,40 @@ export default function InstallationPage() {
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Install packages</p>
             <p style={stepDescStyle}>
-              Install <code style={inlineCodeStyle}>@maxa/ui</code> and{" "}
-              <code style={inlineCodeStyle}>@maxa/tokens</code> from the
-              registry. Tokens are a separate package so you can consume them
-              independently of the React components.
+              Inside this monorepo, depend on <code style={inlineCodeStyle}>@maxa/ui</code> and{" "}
+              <code style={inlineCodeStyle}>@maxa/tokens</code> with the workspace protocol. Tokens
+              are a separate package so apps can consume them independently of the React components.
             </p>
-            <CodeBlock code={`npm install @maxa/ui @maxa/tokens
-# or
-pnpm add @maxa/ui @maxa/tokens
-# or
-yarn add @maxa/ui @maxa/tokens`} />
+            <CodeBlock
+              code={`{
+  "dependencies": {
+    "@maxa/ui": "workspace:^",
+    "@maxa/tokens": "workspace:^"
+  }
+}`}
+            />
+            <p style={noteStyle}>
+              <strong style={{ color: "var(--color-text-primary)" }}>Note:</strong> MAXA UI is
+              currently distributed from GitHub only. The packages are not published to npmjs.com.
+            </p>
           </div>
         </div>
+      </DocsPageSection>
+
+      <DocsPageSection id="external-consumption" title="External consumption">
+        <p style={pStyle}>
+          For external projects, clone this repository, build it, and install the built packages
+          with <code style={inlineCodeStyle}>file:</code> links. Direct git subdirectory installs
+          are not supported because the packages publish built{" "}
+          <code style={inlineCodeStyle}>dist/</code> output, not raw TypeScript sources.
+        </p>
+        <CodeBlock
+          code={`git clone https://github.com/Stetsenko-Igor/maxa-ui.git
+cd maxa-ui && pnpm install && pnpm build
+
+# in your project
+pnpm add file:../maxa-ui/packages/tokens file:../maxa-ui/packages/icons file:../maxa-ui/packages/ui`}
+        />
       </DocsPageSection>
 
       <DocsPageSection id="import-stylesheet" title="Import stylesheet">
@@ -125,19 +147,19 @@ yarn add @maxa/ui @maxa/tokens`} />
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Import the token stylesheet</p>
             <p style={stepDescStyle}>
-              Add the token CSS to your app root. This loads primitive,
-              semantic, and component tokens as CSS custom properties on{" "}
-              <code style={inlineCodeStyle}>:root</code>.
+              Add the token CSS to your app root. This loads primitive, semantic, and component
+              tokens as CSS custom properties on <code style={inlineCodeStyle}>:root</code>.
             </p>
-            <CodeBlock code={`// app/layout.tsx (Next.js App Router)
+            <CodeBlock
+              code={`// app/layout.tsx (Next.js App Router)
 import "@maxa/tokens/theme.css"
 
 // or in your global CSS entry
-@import "@maxa/tokens/theme.css";`} />
+@import "@maxa/tokens/theme.css";`}
+            />
             <p style={noteStyle}>
-              <strong style={{ color: "var(--color-text-primary)" }}>Note:</strong>{" "}
-              Import <code style={inlineCodeStyle}>theme.css</code> once at the
-              top of your CSS cascade.
+              <strong style={{ color: "var(--color-text-primary)" }}>Note:</strong> Import{" "}
+              <code style={inlineCodeStyle}>theme.css</code> once at the top of your CSS cascade.
             </p>
           </div>
         </div>
@@ -150,10 +172,11 @@ import "@maxa/tokens/theme.css"
             <p style={stepTitleStyle}>Set up dark mode</p>
             <p style={stepDescStyle}>
               Dark mode is driven entirely by a{" "}
-              <code style={inlineCodeStyle}>data-theme="dark"</code> attribute
-              on the <code style={inlineCodeStyle}>{"<html>"}</code> element.
+              <code style={inlineCodeStyle}>data-theme="dark"</code> attribute on the{" "}
+              <code style={inlineCodeStyle}>{"<html>"}</code> element.
             </p>
-            <CodeBlock code={`// app/layout.tsx
+            <CodeBlock
+              code={`// app/layout.tsx
 export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="dark">
@@ -163,7 +186,8 @@ export default function RootLayout({ children }) {
 }
 
 document.documentElement.setAttribute("data-theme", "dark")
-document.documentElement.removeAttribute("data-theme")`} />
+document.documentElement.removeAttribute("data-theme")`}
+            />
           </div>
         </div>
       </DocsPageSection>
@@ -174,11 +198,11 @@ document.documentElement.removeAttribute("data-theme")`} />
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Import and use a component</p>
             <p style={stepDescStyle}>
-              All components are exported from{" "}
-              <code style={inlineCodeStyle}>@maxa/ui</code>. Styling is
-              controlled via CSS variables.
+              All components are exported from <code style={inlineCodeStyle}>@maxa/ui</code>.
+              Styling is controlled via CSS variables.
             </p>
-            <CodeBlock code={`import { Button } from "@maxa/ui"
+            <CodeBlock
+              code={`import { Button } from "@maxa/ui"
 
 export default function Page() {
   return (
@@ -191,7 +215,8 @@ export default function Page() {
       </Button>
     </main>
   )
-}`} />
+}`}
+            />
           </div>
         </div>
       </DocsPageSection>
@@ -202,19 +227,21 @@ export default function Page() {
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Verify token resolution</p>
             <p style={stepDescStyle}>
-              Inspect any MAXA UI component in DevTools. Computed styles should
-              show resolved CSS values, not bare <code style={inlineCodeStyle}>var(--...)</code> strings.
+              Inspect any MAXA UI component in DevTools. Computed styles should show resolved CSS
+              values, not bare <code style={inlineCodeStyle}>var(--...)</code> strings.
             </p>
-            <CodeBlock code={`/* Expected in DevTools computed styles */
+            <CodeBlock
+              code={`/* Expected in DevTools computed styles */
 background-color: #1a1a1a;
 color: #ffffff;
 border-radius: 8px;
 
 /* If you see this instead, theme.css is missing: */
-background-color: var(--button-primary-bg);`} />
+background-color: var(--button-primary-bg);`}
+            />
             <p style={noteStyle}>
-              Run <code style={inlineCodeStyle}>node scripts/audit-tokens.mjs</code>{" "}
-              from the repository root to validate token references before shipping.
+              Run <code style={inlineCodeStyle}>node scripts/audit-tokens.mjs</code> from the
+              repository root to validate token references before shipping.
             </p>
           </div>
         </div>
@@ -222,23 +249,28 @@ background-color: var(--button-primary-bg);`} />
 
       <DocsPageSection id="peer-dependencies" title="Peer dependencies">
         <p style={pStyle}>
-          MAXA UI requires React 18 or 19 and does not bundle React itself.
-          Radix UI primitives are direct dependencies and are installed
-          automatically.
+          MAXA UI requires React 18 or 19 and does not bundle React itself. The component package
+          peers on <code style={inlineCodeStyle}>@maxa/tokens</code> because the consuming app must
+          load the token stylesheet once. Radix UI primitives and{" "}
+          <code style={inlineCodeStyle}>@maxa/icons</code> are direct dependencies of{" "}
+          <code style={inlineCodeStyle}>@maxa/ui</code> and are installed automatically.
         </p>
-        <CodeBlock code={`{
+        <CodeBlock
+          code={`{
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "@maxa/tokens": "^0.1.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   }
-}`} />
+}`}
+        />
       </DocsPageSection>
 
       <DocsPageSection id="next-steps" title="Next steps">
         <p style={pStyle}>
-          Browse the <strong>Foundations</strong> section to understand the
-          color, typography, and spacing token system. Then head to{" "}
-          <strong>Components</strong> to see each component variant and size API.
+          Browse the <strong>Foundations</strong> section to understand the color, typography, and
+          spacing token system. Then head to <strong>Components</strong> to see each component
+          variant and size API.
         </p>
       </DocsPageSection>
     </DocsPageLayout>

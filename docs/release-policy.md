@@ -36,6 +36,8 @@ pnpm changeset version
 ```
 
 Then review the generated version bumps and changelog entries before publishing.
+Use the draft checklist in [Release Workflow Draft](release-workflow.md) when
+the team is ready to plan that release.
 
 ## Guardrail
 

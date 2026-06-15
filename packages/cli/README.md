@@ -33,7 +33,7 @@ MAXA_REPO_ROOT=/path/to/maxa-ui node packages/cli/dist/index.js tokens search co
 
 ## Usage from GitHub (no npm registry)
 
-This package is not published to npm. For now, clone the repo, build the package, then run the built binary directly or install it from a local file path. See the root [README](../../README.md) for distribution options.
+This package is not published to npm. For now, clone the repo, build the package, then run the built binary directly or install it from a local file path. It depends on `@maxa/mcp` at runtime, so install both packages together when using `file:` links. See the root [README](../../README.md) for distribution options.
 
 ## Exports
 

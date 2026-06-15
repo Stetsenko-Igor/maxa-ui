@@ -296,6 +296,43 @@ await access(new URL(themeUrl))
 `
 }
 
+function bundlerSmokeHtml() {
+  return `
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAXA Consumer Smoke</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+`
+}
+
+function bundlerSmokeSource() {
+  return `
+import React from "react"
+import { createRoot } from "react-dom/client"
+import "@maxa/tokens/theme.css"
+import { Button, Input } from "@maxa/ui"
+
+function App() {
+  return (
+    <main>
+      <Button variant="primary" size="md">Save</Button>
+      <Input label="Email" placeholder="you@maxa.com" />
+    </main>
+  )
+}
+
+createRoot(document.getElementById("root")).render(<App />)
+`
+}
+
 async function assertConsumerInstall(packages) {
   const tempDir = await mkdtemp(path.join(tmpdir(), "maxa-consumer-smoke-"))
   try {
@@ -327,6 +364,13 @@ async function assertConsumerInstall(packages) {
             react: "^19.0.0",
             "react-dom": "^19.0.0",
           },
+          devDependencies: {
+            "@vitejs/plugin-react": "^6.0.1",
+            vite: "^8.0.0",
+          },
+          scripts: {
+            build: "vite build",
+          },
           pnpm: {
             overrides: localPackageOverrides,
           },
@@ -349,6 +393,25 @@ async function assertConsumerInstall(packages) {
     await execFileAsync("pnpm", ["exec", "maxa-ui", "--help"], {
       cwd: tempDir,
       maxBuffer: 1024 * 1024,
+    })
+
+    await mkdir(path.join(tempDir, "src"))
+    await writeFile(path.join(tempDir, "index.html"), bundlerSmokeHtml())
+    await writeFile(path.join(tempDir, "src/main.jsx"), bundlerSmokeSource())
+    await writeFile(
+      path.join(tempDir, "vite.config.mjs"),
+      `
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react()],
+})
+`,
+    )
+    await execFileAsync("pnpm", ["run", "build"], {
+      cwd: tempDir,
+      maxBuffer: 1024 * 1024 * 8,
     })
   } catch (error) {
     fail(`consumer install smoke failed: ${formatError(error)}`)

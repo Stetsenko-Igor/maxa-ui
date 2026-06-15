@@ -12,7 +12,7 @@ The goal is to close the gap between design and engineering: the same decisions 
 - `@maxa/ui` - accessible React components built on top of the token system.
 - `@maxa/icons` - curated system icon package for approved Phosphor icons and Maxa-owned social icons.
 - `@maxa/hooks` - shared React hooks package placeholder for reusable interaction logic.
-- `@maxa/cli` - experimental stub for future design-system CLI tooling (no commands yet).
+- `@maxa/cli` - experimental read-only design-system introspection commands.
 - `@maxa/mcp` - MCP server that exposes the design system to AI agents.
 - `apps/docs` - local documentation site with component examples and usage guidance.
 - `specs` - agent-readable design system contracts for foundations, components, and patterns.
@@ -137,6 +137,7 @@ Then depend on `@maxa/ui` with `workspace:^` and build the submodule packages as
 Publishing to the GitHub Packages npm registry (scoped to the repo owner, auth via `.npmrc`) would allow normal `pnpm add @maxa/ui` installs without cloning. Not set up yet; if registry-style consumption becomes a real need, this is the intended path - not npmjs.com.
 
 Each package also has its own README under `packages/<name>/README.md` with package-specific usage.
+The package dependency contract is documented in [Package Contracts](docs/package-contracts.md).
 
 ## Development
 
@@ -161,6 +162,7 @@ pnpm verify
 Release/versioning is intentionally separate from day-to-day package readiness.
 Do not run `pnpm changeset version` unless the team has explicitly decided to
 start a registry release. See [Release Policy](docs/release-policy.md).
+The future release sequence is drafted in [Release Workflow Draft](docs/release-workflow.md).
 
 Useful scripts:
 
