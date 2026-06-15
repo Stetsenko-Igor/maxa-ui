@@ -1,5 +1,6 @@
 import * as React from "react"
 import "./empty.css"
+import { cn } from "../../lib/cn.js"
 
 export type EmptySize = "sm" | "md" | "lg"
 
@@ -28,7 +29,7 @@ const Empty = React.forwardRef<HTMLDivElement, EmptyProps>(
   ) => (
     <div
       ref={ref}
-      className={["maxa-empty", `maxa-empty--${size}`, className].filter(Boolean).join(" ")}
+      className={cn("maxa-empty", `maxa-empty--${size}`, className)}
       {...props}
     >
       {icon && <div className="maxa-empty__icon" aria-hidden="true">{icon}</div>}

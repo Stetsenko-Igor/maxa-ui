@@ -4,6 +4,7 @@ import * as React from "react"
 import { MagnifyingGlass, Eye, X, Minus, Plus } from "@maxa/icons"
 import { cva, type VariantProps } from "class-variance-authority"
 import "./input.css"
+import { cn } from "../../lib/cn.js"
 
 type InputKind = "text" | "password" | "search" | "quantity"
 
@@ -162,7 +163,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             id={inputId}
-            className={["maxa-input__input", className ?? ""].filter(Boolean).join(" ")}
+            className={cn("maxa-input__input", className ?? "")}
             disabled={disabled}
             readOnly={readOnly}
             aria-disabled={readOnly || undefined}
@@ -314,7 +315,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           <textarea
             ref={ref}
             id={inputId}
-            className={["maxa-input__input maxa-input__textarea", className ?? ""].filter(Boolean).join(" ")}
+            className={cn("maxa-input__input maxa-input__textarea", className ?? "")}
             disabled={disabled}
             readOnly={readOnly}
             aria-disabled={readOnly || undefined}

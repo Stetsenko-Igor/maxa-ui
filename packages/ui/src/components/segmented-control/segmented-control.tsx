@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import "./segmented-control.css"
+import { cn } from "../../lib/cn.js"
 
 export interface SegmentedControlProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string
@@ -51,7 +52,7 @@ const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>
         <div
           ref={ref}
           role="group"
-          className={["maxa-segmented-control", className].filter(Boolean).join(" ")}
+          className={cn("maxa-segmented-control", className)}
           {...props}
         >
           {children}
@@ -71,7 +72,7 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
       <button
         ref={ref}
         type={type}
-        className={["maxa-segmented-control__item", className].filter(Boolean).join(" ")}
+        className={cn("maxa-segmented-control__item", className)}
         aria-pressed={selected}
         data-state={selected ? "active" : "inactive"}
         onClick={(event) => {

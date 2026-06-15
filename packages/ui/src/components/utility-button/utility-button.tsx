@@ -1,5 +1,6 @@
 import * as React from "react"
 import "./utility-button.css"
+import { cn } from "../../lib/cn.js"
 
 export interface UtilityButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ReactNode
@@ -15,7 +16,7 @@ const UtilityButton = React.forwardRef<HTMLButtonElement, UtilityButtonProps>(
       aria-label={ariaLabel}
       aria-pressed={selected || undefined}
       data-selected={selected || undefined}
-      className={["maxa-utility-button", `maxa-utility-button--${size}`, className].filter(Boolean).join(" ")}
+      className={cn("maxa-utility-button", `maxa-utility-button--${size}`, className)}
       {...props}
     >
       {icon}

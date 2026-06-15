@@ -3,6 +3,7 @@
 import * as React from "react"
 import { UploadSimple } from "@maxa/icons"
 import "./file-input.css"
+import { cn } from "../../lib/cn.js"
 
 export type FileInputSize = "sm" | "md" | "lg"
 export type FileInputVisualState = "default" | "hover" | "focus" | "dragging" | "error" | "disabled"
@@ -216,7 +217,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         )}
 
         <div
-          className={["maxa-file-input__surface", className ?? ""].filter(Boolean).join(" ")}
+          className={cn("maxa-file-input__surface", className ?? "")}
           role="button"
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled || undefined}

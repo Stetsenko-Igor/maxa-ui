@@ -3,6 +3,7 @@
 import * as React from "react"
 import { CaretLeft, CaretRight, CaretDown } from "@maxa/icons"
 import "./calendar.css"
+import { cn } from "../../lib/cn.js"
 
 export interface CalendarProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultMonth?: Date
@@ -110,7 +111,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calend
   return (
     <div
       ref={ref}
-      className={["maxa-calendar", className].filter(Boolean).join(" ")}
+      className={cn("maxa-calendar", className)}
       data-range={hasRange || undefined}
       {...props}
     >

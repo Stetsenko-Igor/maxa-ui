@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import "./tooltip.css"
+import { cn } from "../../lib/cn.js"
 
 /**
  * Re-export of Radix Tooltip Provider. Mount once near your app root so
@@ -94,7 +95,7 @@ const Tooltip = React.forwardRef<
             side={side}
             align={align}
             sideOffset={sideOffset}
-            className={["maxa-tooltip", className].filter(Boolean).join(" ")}
+            className={cn("maxa-tooltip", className)}
             {...contentProps}
           >
             {content}

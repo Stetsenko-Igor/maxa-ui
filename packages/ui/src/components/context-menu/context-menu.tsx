@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import "./context-menu.css"
+import { cn } from "../../lib/cn.js"
 
 type ContextMenuState = { open: boolean; x: number; y: number }
 type ContextMenuContextValue = ContextMenuState & {
@@ -70,7 +71,7 @@ const ContextMenuContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes
       <div
         ref={ref}
         role="menu"
-        className={["maxa-context-menu", className].filter(Boolean).join(" ")}
+        className={cn("maxa-context-menu", className)}
         style={{ left: x, top: y, ...style }}
         {...props}
       />
@@ -93,11 +94,11 @@ const ContextMenuItem = React.forwardRef<HTMLDivElement, ContextMenuItemProps>(
         role="menuitem"
         aria-disabled={disabled || undefined}
         tabIndex={disabled ? -1 : 0}
-        className={[
+        className={cn(
           "maxa-context-menu__item",
           variant === "destructive" ? "maxa-context-menu__item--destructive" : "",
           className,
-        ].filter(Boolean).join(" ")}
+        )}
         onClick={(event) => {
           if (disabled) return
           onClick?.(event)
@@ -117,21 +118,21 @@ ContextMenuItem.displayName = "ContextMenuItem"
 
 const ContextMenuLabel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-context-menu__label", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-context-menu__label", className)} {...props} />
   ),
 )
 ContextMenuLabel.displayName = "ContextMenuLabel"
 
 const ContextMenuSeparator = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} role="separator" className={["maxa-context-menu__separator", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} role="separator" className={cn("maxa-context-menu__separator", className)} {...props} />
   ),
 )
 ContextMenuSeparator.displayName = "ContextMenuSeparator"
 
 const ContextMenuShortcut = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
   ({ className, ...props }, ref) => (
-    <span ref={ref} className={["maxa-context-menu__shortcut", className].filter(Boolean).join(" ")} {...props} />
+    <span ref={ref} className={cn("maxa-context-menu__shortcut", className)} {...props} />
   ),
 )
 ContextMenuShortcut.displayName = "ContextMenuShortcut"

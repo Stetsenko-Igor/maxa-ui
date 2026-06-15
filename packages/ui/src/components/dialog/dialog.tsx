@@ -3,6 +3,7 @@
 import * as React from "react"
 import { X } from "@maxa/icons"
 import "./dialog.css"
+import { cn } from "../../lib/cn.js"
 
 type DialogContextValue = {
   open: boolean
@@ -76,7 +77,7 @@ const DialogOverlay = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
     return (
       <div
         ref={ref}
-        className={["maxa-dialog__overlay", className].filter(Boolean).join(" ")}
+        className={cn("maxa-dialog__overlay", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)
@@ -128,7 +129,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
           aria-modal="true"
           aria-labelledby={titleId}
           aria-describedby={descriptionId}
-          className={["maxa-dialog__content", `maxa-dialog__content--${size}`, className].filter(Boolean).join(" ")}
+          className={cn("maxa-dialog__content", `maxa-dialog__content--${size}`, className)}
           onKeyDown={(event) => {
             onKeyDown?.(event)
             if (!event.defaultPrevented && event.key === "Escape") setOpen(false)
@@ -174,7 +175,7 @@ DialogContent.displayName = "DialogContent"
 
 const DialogHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-dialog__header", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-dialog__header", className)} {...props} />
   ),
 )
 DialogHeader.displayName = "DialogHeader"
@@ -182,7 +183,7 @@ DialogHeader.displayName = "DialogHeader"
 const DialogTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
     const { titleId } = useDialog()
-    return <h2 ref={ref} id={titleId} className={["maxa-dialog__title", className].filter(Boolean).join(" ")} {...props} />
+    return <h2 ref={ref} id={titleId} className={cn("maxa-dialog__title", className)} {...props} />
   },
 )
 DialogTitle.displayName = "DialogTitle"
@@ -190,21 +191,21 @@ DialogTitle.displayName = "DialogTitle"
 const DialogDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => {
     const { descriptionId } = useDialog()
-    return <p ref={ref} id={descriptionId} className={["maxa-dialog__description", className].filter(Boolean).join(" ")} {...props} />
+    return <p ref={ref} id={descriptionId} className={cn("maxa-dialog__description", className)} {...props} />
   },
 )
 DialogDescription.displayName = "DialogDescription"
 
 const DialogBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-dialog__body", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-dialog__body", className)} {...props} />
   ),
 )
 DialogBody.displayName = "DialogBody"
 
 const DialogFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-dialog__footer", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-dialog__footer", className)} {...props} />
   ),
 )
 DialogFooter.displayName = "DialogFooter"
@@ -224,7 +225,7 @@ const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
         ref={ref}
         type="button"
         data-inline={inline || undefined}
-        className={["maxa-dialog__close", className].filter(Boolean).join(" ")}
+        className={cn("maxa-dialog__close", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)

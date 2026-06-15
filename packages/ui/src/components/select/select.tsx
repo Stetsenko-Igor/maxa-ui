@@ -4,6 +4,7 @@ import * as React from "react"
 import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
+import { cn } from "../../lib/cn.js"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"
 
@@ -186,14 +187,14 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             aria-expanded={open}
             aria-haspopup="listbox"
             aria-invalid={error ? true : undefined}
-            className={[
+            className={cn(
               "maxa-select__field",
               `maxa-select__field--${size}`,
               `maxa-select__field--visual-${resolvedVisualState}`,
               error ? "maxa-select__field--error" : "",
               disabled ? "maxa-select__field--disabled" : "",
               className ?? "",
-            ].filter(Boolean).join(" ")}
+            )}
             disabled={disabled}
             onBlur={(event) => onBlur?.(event as unknown as React.FocusEvent<HTMLSelectElement>)}
             onClick={() => {
@@ -242,11 +243,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                     type="button"
                     aria-disabled={option.disabled || undefined}
                     aria-selected={selected}
-                    className={[
+                    className={cn(
                       "maxa-select__option",
                       selected ? "maxa-select__option--selected" : "",
                       highlighted ? "maxa-select__option--highlighted" : "",
-                    ].filter(Boolean).join(" ")}
+                    )}
                     disabled={option.disabled}
                     onClick={() => commitValue(option.value)}
                     onMouseEnter={() => {

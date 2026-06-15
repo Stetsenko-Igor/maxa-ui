@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 import "./avatar.css"
+import { cn } from "../../lib/cn.js"
 
 export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl"
 export type AvatarShape = "circle" | "square"
@@ -45,7 +46,7 @@ const Avatar = React.forwardRef<
 >(({ className, children, color = "blue", shape = "circle", size = "md", status, tone = "strong", ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
-    className={["maxa-avatar", className].filter(Boolean).join(" ")}
+    className={cn("maxa-avatar", className)}
     data-color={color}
     data-shape={shape}
     data-size={size}
@@ -64,7 +65,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Image
     ref={ref}
-    className={["maxa-avatar__image", className].filter(Boolean).join(" ")}
+    className={cn("maxa-avatar__image", className)}
     {...props}
   />
 ))
@@ -76,7 +77,7 @@ const AvatarFallback = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
-    className={["maxa-avatar__fallback", className].filter(Boolean).join(" ")}
+    className={cn("maxa-avatar__fallback", className)}
     {...props}
   />
 ))
@@ -91,7 +92,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
     return (
       <div
         ref={ref}
-        className={["maxa-avatar-group", className].filter(Boolean).join(" ")}
+        className={cn("maxa-avatar-group", className)}
         {...props}
       >
         {visibleChildren}

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import "./checkbox.css"
+import { cn } from "../../lib/cn.js"
 
 export type CheckedState = boolean | "indeterminate"
 
@@ -64,8 +65,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const descriptionId = descriptionContent ? `${reactId}-description` : undefined
     const labelledBy = ariaLabel || ariaLabelledBy
       ? ariaLabelledBy
-      : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
-    const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
+      : cn(topLabelId, sideLabelId) || undefined
+    const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
 
     const wrapperClasses = [
       "maxa-checkbox",
@@ -81,7 +82,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label
-        className={[wrapperClasses, className, containerClassName].filter(Boolean).join(" ")}
+        className={cn(wrapperClasses, className, containerClassName)}
         htmlFor={id}
       >
         {label ? <span className="maxa-checkbox__top-label" id={topLabelId}>{label}</span> : null}

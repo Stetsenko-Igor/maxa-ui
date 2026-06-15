@@ -25,6 +25,7 @@ import {
   TableRow,
 } from "../table/index.js"
 import "./datatable.css"
+import { cn } from "../../lib/cn.js"
 
 export type SortDirection = "ascending" | "descending"
 
@@ -246,7 +247,7 @@ function DataTableInner<T extends Record<string, unknown>>(
 
   if (isEmpty) {
     return (
-      <div ref={ref} className={["maxa-datatable", className].filter(Boolean).join(" ")}>
+      <div ref={ref} className={cn("maxa-datatable", className)}>
         <div className="maxa-datatable__empty maxa-datatable__empty--standalone">
           {emptyState ?? <Empty title="No results" size="sm" />}
         </div>
@@ -255,7 +256,7 @@ function DataTableInner<T extends Record<string, unknown>>(
   }
 
   return (
-    <div ref={ref} className={["maxa-datatable", className].filter(Boolean).join(" ")}>
+    <div ref={ref} className={cn("maxa-datatable", className)}>
       <Table density={density}>
         {caption && <TableCaption>{caption}</TableCaption>}
         <colgroup>

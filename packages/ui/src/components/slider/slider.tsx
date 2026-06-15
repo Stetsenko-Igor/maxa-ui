@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 import "./slider.css"
+import { cn } from "../../lib/cn.js"
 
 export interface SliderProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, "children"> {
@@ -52,7 +53,7 @@ const Slider = React.forwardRef<
         )}
         <SliderPrimitive.Root
           ref={ref}
-          className={["maxa-slider", className].filter(Boolean).join(" ")}
+          className={cn("maxa-slider", className)}
           {...valueProps}
           min={min}
           max={max}

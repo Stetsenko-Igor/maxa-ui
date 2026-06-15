@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as TogglePrimitive from "@radix-ui/react-switch"
 import "./toggle.css"
+import { cn } from "../../lib/cn.js"
 
 export interface ToggleProps
   extends Omit<React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root>, "children"> {
@@ -37,8 +38,8 @@ const Toggle = React.forwardRef<
   const descriptionId = description ? `${reactId}-description` : undefined
   const labelledBy = ariaLabel || ariaLabelledBy
     ? ariaLabelledBy
-    : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
-  const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
+    : cn(topLabelId, sideLabelId) || undefined
+  const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
   const sideLabelContent = sideLabel ?? children
   const hasFieldContent = Boolean(label || sideLabelContent || description)
 

@@ -1,5 +1,6 @@
 import * as React from "react"
 import "./radio.css"
+import { cn } from "../../lib/cn.js"
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "children" | "size" | "type"> {
@@ -40,8 +41,8 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     const descriptionId = descriptionContent ? `${reactId}-description` : undefined
     const labelledBy = ariaLabel || ariaLabelledBy
       ? ariaLabelledBy
-      : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
-    const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
+      : cn(topLabelId, sideLabelId) || undefined
+    const describedBy = cn(ariaDescribedBy, descriptionId) || undefined
     const wrapperClasses = [
       "maxa-radio",
       error && "maxa-radio--error",
@@ -52,7 +53,7 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <label
-        className={[wrapperClasses, className, containerClassName].filter(Boolean).join(" ")}
+        className={cn(wrapperClasses, className, containerClassName)}
         htmlFor={id}
       >
         {label ? <span className="maxa-radio__top-label" id={topLabelId}>{label}</span> : null}

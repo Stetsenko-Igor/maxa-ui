@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as PopoverPrimitive from "@radix-ui/react-popover"
 import "./popover.css"
+import { cn } from "../../lib/cn.js"
 
 const Popover = PopoverPrimitive.Root
 const PopoverTrigger = PopoverPrimitive.Trigger
@@ -46,7 +47,7 @@ const PopoverContent = React.forwardRef<
         side={side}
         align={align}
         sideOffset={sideOffset}
-        className={["maxa-popover", className].filter(Boolean).join(" ")}
+        className={cn("maxa-popover", className)}
         {...props}
       >
         {children}

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { X } from "@maxa/icons"
 import "./drawer.css"
+import { cn } from "../../lib/cn.js"
 
 type DrawerContextValue = {
   open: boolean
@@ -79,7 +80,7 @@ const DrawerOverlay = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
     return (
       <div
         ref={ref}
-        className={["maxa-drawer__overlay", className].filter(Boolean).join(" ")}
+        className={cn("maxa-drawer__overlay", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)
@@ -134,7 +135,7 @@ const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps>(
           aria-describedby={descriptionId}
           data-side={side}
           data-size={size}
-          className={["maxa-drawer__content", className].filter(Boolean).join(" ")}
+          className={cn("maxa-drawer__content", className)}
           onKeyDown={(event) => {
             onKeyDown?.(event)
             if (!event.defaultPrevented && event.key === "Escape") setOpen(false)
@@ -180,7 +181,7 @@ DrawerContent.displayName = "DrawerContent"
 
 const DrawerHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__header", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__header", className)} {...props} />
   ),
 )
 DrawerHeader.displayName = "DrawerHeader"
@@ -188,7 +189,7 @@ DrawerHeader.displayName = "DrawerHeader"
 const DrawerTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
     const { titleId } = useDrawer()
-    return <h2 ref={ref} id={titleId} className={["maxa-drawer__title", className].filter(Boolean).join(" ")} {...props} />
+    return <h2 ref={ref} id={titleId} className={cn("maxa-drawer__title", className)} {...props} />
   },
 )
 DrawerTitle.displayName = "DrawerTitle"
@@ -196,21 +197,21 @@ DrawerTitle.displayName = "DrawerTitle"
 const DrawerDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => {
     const { descriptionId } = useDrawer()
-    return <p ref={ref} id={descriptionId} className={["maxa-drawer__description", className].filter(Boolean).join(" ")} {...props} />
+    return <p ref={ref} id={descriptionId} className={cn("maxa-drawer__description", className)} {...props} />
   },
 )
 DrawerDescription.displayName = "DrawerDescription"
 
 const DrawerBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__body", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__body", className)} {...props} />
   ),
 )
 DrawerBody.displayName = "DrawerBody"
 
 const DrawerFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__footer", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__footer", className)} {...props} />
   ),
 )
 DrawerFooter.displayName = "DrawerFooter"
@@ -230,7 +231,7 @@ const DrawerClose = React.forwardRef<HTMLButtonElement, DrawerCloseProps>(
         ref={ref}
         type="button"
         data-inline={inline || undefined}
-        className={["maxa-drawer__close", className].filter(Boolean).join(" ")}
+        className={cn("maxa-drawer__close", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)

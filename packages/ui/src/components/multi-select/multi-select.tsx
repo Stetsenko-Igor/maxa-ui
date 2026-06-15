@@ -5,6 +5,7 @@ import { CaretDown, X } from "@maxa/icons"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../dropdown-menu/index.js"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./multi-select.css"
+import { cn } from "../../lib/cn.js"
 
 export interface MultiSelectOption {
   label: string
@@ -82,12 +83,12 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
             aria-describedby={hintId}
             aria-disabled={disabled || undefined}
             aria-invalid={error ? true : undefined}
-            className={[
+            className={cn(
               "maxa-multi-select__trigger",
               `maxa-multi-select__trigger--${size}`,
               error ? "maxa-multi-select__trigger--error" : "",
               disabled ? "maxa-multi-select__trigger--disabled" : "",
-            ].filter(Boolean).join(" ")}
+            )}
             role="button"
             tabIndex={disabled ? -1 : 0}
           >
