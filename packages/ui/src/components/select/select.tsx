@@ -5,6 +5,7 @@ import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
 import { cn } from "../../lib/cn.js"
+import { useControlledState } from "@maxa/hooks"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"
 
@@ -71,12 +72,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const parsedOptions = React.useMemo(() => options ?? optionsFromChildren(children), [children, options])
     const enabledOptions = React.useMemo(() => parsedOptions.filter((option) => !option.disabled), [parsedOptions])
     const initialValue = defaultValue ?? parsedOptions.find((option) => !option.disabled)?.value ?? ""
-    const [internalValue, setInternalValue] = React.useState(initialValue)
+    const [currentValue, setCurrentValue] = useControlledState({ value, defaultValue: initialValue, onChange: onValueChange })
     const [open, setOpen] = React.useState(defaultOpen)
     const [highlightedValue, setHighlightedValue] = React.useState<string | null>(null)
     const rootRef = React.useRef<HTMLDivElement | null>(null)
     const selectRef = React.useRef<HTMLSelectElement | null>(null)
-    const currentValue = value ?? internalValue
     const selectedOption = parsedOptions.find((option) => option.value === currentValue)
     const showPlaceholder = !selectedOption || (selectedOption.disabled && selectedOption.value === "")
     const highlightedOption = parsedOptions.find((option) => option.value === highlightedValue)
@@ -110,8 +110,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       const nextOption = parsedOptions.find((option) => option.value === nextValue)
       if (!nextOption || nextOption.disabled) return
 
-      onValueChange?.(nextValue)
-      if (value === undefined) setInternalValue(nextValue)
+      setCurrentValue(nextValue)
 
       if (selectRef.current) {
         selectRef.current.value = nextValue

@@ -3,6 +3,7 @@
 import * as React from "react"
 import "./segmented-control.css"
 import { cn } from "../../lib/cn.js"
+import { useControlledState } from "@maxa/hooks"
 
 export interface SegmentedControlProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: string
@@ -34,18 +35,11 @@ const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>
     },
     ref,
   ) => {
-    const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue)
-    const value = controlledValue ?? uncontrolledValue
-
-    const setValue = React.useCallback(
-      (nextValue: string) => {
-        if (controlledValue === undefined) {
-          setUncontrolledValue(nextValue)
-        }
-        onValueChange?.(nextValue)
-      },
-      [controlledValue, onValueChange],
-    )
+    const [value, setValue] = useControlledState<string>({
+      value: controlledValue,
+      defaultValue: defaultValue ?? "",
+      onChange: onValueChange,
+    })
 
     return (
       <SegmentedControlContext.Provider value={{ value, setValue }}>
