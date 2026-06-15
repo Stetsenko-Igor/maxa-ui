@@ -4,6 +4,7 @@ import * as React from "react"
 import { X } from "@maxa/icons"
 import "./dialog.css"
 import { cn } from "../../lib/cn.js"
+import { useFocusTrap } from "../../lib/use-focus-trap.js"
 
 type DialogContextValue = {
   open: boolean
@@ -13,15 +14,6 @@ type DialogContextValue = {
 }
 
 const DialogContext = React.createContext<DialogContextValue | null>(null)
-
-const FOCUSABLE_SELECTOR = [
-  "a[href]",
-  "button:not([disabled])",
-  "textarea:not([disabled])",
-  "input:not([disabled])",
-  "select:not([disabled])",
-  "[tabindex]:not([tabindex='-1'])",
-].join(",")
 
 export interface DialogProps {
   children: React.ReactNode
@@ -97,21 +89,9 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
   ({ className, children, size = "md", role = "dialog", onKeyDown, ...props }, ref) => {
     const { open, setOpen, titleId, descriptionId } = useDialog()
     const contentRef = React.useRef<HTMLDivElement | null>(null)
-    const returnFocusRef = React.useRef<HTMLElement | null>(null)
-
-    React.useEffect(() => {
-      if (!open) return
-      returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
-
-      const content = contentRef.current
-      const firstFocusable = content?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)
-      ;(firstFocusable ?? content)?.focus()
-
-      return () => {
-        returnFocusRef.current?.focus()
-        returnFocusRef.current = null
-      }
-    }, [open])
+    const { onKeyDown: trapKeyDown } = useFocusTrap(contentRef, open, {
+      onEscape: () => setOpen(false),
+    })
 
     if (!open) return null
 
@@ -132,36 +112,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
           className={cn("maxa-dialog__content", `maxa-dialog__content--${size}`, className)}
           onKeyDown={(event) => {
             onKeyDown?.(event)
-            if (!event.defaultPrevented && event.key === "Escape") setOpen(false)
-            if (event.defaultPrevented || event.key !== "Tab") return
-
-            const focusable = Array.from(
-              event.currentTarget.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
-            ).filter((element) => {
-              const style = window.getComputedStyle(element)
-              return !element.hasAttribute("disabled")
-                && !element.hidden
-                && style.display !== "none"
-                && style.visibility !== "hidden"
-            })
-
-            if (focusable.length === 0) {
-              event.preventDefault()
-              event.currentTarget.focus()
-              return
-            }
-
-            const first = focusable[0]
-            const last = focusable[focusable.length - 1]
-            if (!first || !last) return
-
-            if (event.shiftKey && document.activeElement === first) {
-              event.preventDefault()
-              last.focus()
-            } else if (!event.shiftKey && document.activeElement === last) {
-              event.preventDefault()
-              first.focus()
-            }
+            trapKeyDown(event)
           }}
           {...props}
         >
