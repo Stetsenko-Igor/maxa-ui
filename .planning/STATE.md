@@ -5,14 +5,14 @@
 See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 **Core value:** LLM-generated UI code always conforms to the design system — no hardcoded design values.
-**Current focus:** Phase 4 planning. Component layer is done (40 components shipped); package readiness is hardened; next work is the MAXA product-pattern inventory and priority map.
+**Current focus:** Foundation Excellence. Component layer is done (40 components shipped); package readiness is hardened; next work is a foundation audit and polish pass before MAXA product patterns.
 
 ## Current Position
 
-Phase: 4 of 7 (MAXA product patterns) — ready to plan, not yet executed
-Plan: Next plan should be `04-01 Product pattern inventory and priority map`
-Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness has been hardened without entering release mode: curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, and release workflow draft are in place. Roadmap remains focused on product patterns before Figma Code Connect and v1.0 release prep.
-Last activity: 2026-06-15 — Package-readiness hardening and planning sync. Added `docs/release-policy.md`, `docs/package-contracts.md`, `docs/release-workflow.md`, consumer install smoke, Vite bundler smoke, and `.planning/NEXT.md`. Versioning was explicitly reverted; pending `.changeset/*.md` files remain release notes for a future explicit release decision.
+Phase: Foundation Excellence bridge before Phase 4 — ready to audit
+Plan: Next plan should be `Foundation audit and scorecard`
+Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness has been hardened without entering release mode: curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, and release workflow draft are in place. Product patterns are deferred until the foundation feels excellent across tokens, semantics, component APIs, visual quality, reuse, docs, and verification.
+Last activity: 2026-06-15 — Igor chose foundation excellence before product patterns. `.planning/NEXT.md` now makes foundation audit/polish the default next move. Versioning remains explicitly gated; pending `.changeset/*.md` files remain release notes for a future explicit release decision.
 
 Progress: [█████████░] 90%
 
@@ -32,7 +32,8 @@ Progress: [█████████░] 90%
 | 1. Dark mode + a11y audit         | 2/2      | ~45min | ~22min   | ✅ Complete                        |
 | 2. Base/action component tranche  | complete | —      | —        | ✅ Complete                        |
 | 3. Application UI component layer | complete | —      | —        | ✅ Component layer + closeout done |
-| 4. MAXA product patterns          | 0/TBD    | —      | —        | ⏳ Ready to plan (next milestone)  |
+| Foundation Excellence             | 0/TBD    | —      | —        | ⏳ Ready to audit (next milestone) |
+| 4. MAXA product patterns          | 0/TBD    | —      | —        | ⏸ Deferred until foundation polish |
 | 5. Figma Code Connect             | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 6. v1.0 release prep              | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 7. Tailwind v4 adapter            | 0/TBD    | —      | —        | ⏳ Not started (post-core)         |
@@ -40,7 +41,7 @@ Progress: [█████████░] 90%
 **Recent Trend:**
 
 - Last shipped work: curated icon package adoption, published entrypoint hardening, consumer install smoke, Vite bundler smoke, package contracts, and release workflow guardrails.
-- Trend: Component surface is stable enough; the next work should turn real MAXA product screens into reusable product patterns instead of expanding generic primitives.
+- Trend: Component surface is broad enough; the next work should make the foundation feel excellent before turning real MAXA product screens into reusable product patterns.
 
 ## Accumulated Context
 
@@ -68,7 +69,8 @@ Recent decisions affecting current work:
 - 2026-06-11: Phase 3 closed out. Component layer declared complete at 40 components. `badge-tag-pill.md` archived to `specs/_archive/` (superseded by canonical `badge.md`/`tag.md`). `@maxa/icons` + `@maxa/hooks` kept as documented reserved placeholders, not removed. Phase 4 (product patterns) is the next milestone but intentionally not started.
 - 2026-06-15: Package readiness hardened without release: `@maxa/icons` is real and curated, published package entrypoints are smoke-tested, packed tarballs install in a temporary consumer project, and a Vite React consumer build verifies `@maxa/tokens/theme.css` + `@maxa/ui`.
 - 2026-06-15: Release/versioning guardrail adopted. Pending Changesets are release notes only; do not run `pnpm changeset version` or publish packages without an explicit release decision.
-- 2026-06-15: Current default next move captured in `.planning/NEXT.md`: plan Phase 4 product patterns, starting with product pattern inventory and priority map.
+- 2026-06-15: Current default next move captured in `.planning/NEXT.md`: Foundation Excellence first, then Phase 4 product patterns.
+- 2026-06-15: Igor explicitly deferred product patterns until the foundation is polished: tokens, semantics, components, visual quality, reuse, docs, and verification.
 - 2026-06-04: Further product pattern work is paused. The active priority is benchmark-parity component coverage against Untitled UI and shadcn component families.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
 - v0.x: Surface model = `bg/page` + `bg/surface` + `bg/float` + `bg/muted` (no shadow tokens unless overlay work requires them). The early `bg/elevated` alias was removed 2026-06-05.
@@ -107,4 +109,4 @@ None yet.
 Last session: 2026-06-15
 Stopped at: Package-readiness hardening complete, release guardrails documented, and future plan captured in `.planning/NEXT.md`.
 Resume file: `.planning/NEXT.md`
-Next milestone: Phase 4 (MAXA product patterns) — start with product pattern inventory and priority map.
+Next milestone: Foundation Excellence — start with foundation audit and scorecard.

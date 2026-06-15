@@ -26,8 +26,8 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-- **Phase 4: MAXA product patterns** — active next scope. Start with product pattern inventory and priority map, then implement the first product-pattern tranche grounded in real MAXA screenshots/routes.
-- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. The current component layer is complete; the roadmap now moves into MAXA product patterns, Figma Code Connect, and release stabilization. The Tailwind adapter is post-core adoption work, not the next main objective.
+- **Foundation Excellence** — active next scope. Before product patterns, tighten tokens, semantic naming, component APIs, visual quality, reuse boundaries, docs, and verification.
+- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. The current component layer is complete, but product patterns are deferred until the foundation feels excellent. The Tailwind adapter is post-core adoption work, not the next main objective.
 - **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → tokens:reference:check → test → build → pack:smoke`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code. `pack:smoke` verifies packed entrypoints plus a temporary Vite consumer build.
 
 ### Out of Scope
@@ -77,7 +77,8 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 | MAXA UI targets a full design-system platform, not a minimal component package                                    | Igor accepted the Untitled UI / shadcn-level ambition on 2026-06-04; MAXA needs base components, app components, product patterns, docs/catalog, and Figma handoff         | Accepted             |
 | Tailwind adapter is post-core adoption work                                                                       | It helps external consumers use MAXA tokens in Tailwind, but it does not replace the core component/pattern catalog                                                        | Accepted             |
 | Package readiness is not release mode                                                                             | Igor explicitly stopped accidental versioning on 2026-06-15; package smoke/docs can improve, but `pnpm changeset version` and publishing require explicit release approval | Accepted             |
+| Foundation excellence comes before product patterns                                                               | Igor wants tokens, semantics, components, visual polish, and reuse to feel excellent before moving into MAXA product patterns                                              | Accepted             |
 
 ---
 
-_Last updated: 2026-06-15 after package-readiness hardening and Phase 4 next-plan sync_
+_Last updated: 2026-06-15 after switching next focus to Foundation Excellence_

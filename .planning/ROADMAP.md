@@ -6,7 +6,7 @@ From a stable Component + Token Parity baseline (May 2026) to a full MAXA UI pla
 
 The benchmark is not a small component package. The target is closer in ambition to Untitled UI and shadcn/ui, but filtered through MAXA's real product surface. MAXA UI should cover base components, overlay/action components, application UI patterns, and reusable MAXA product patterns such as dashboard cards, sidebars, editor toolbars, request/support menus, package detail screens, and template grids.
 
-The near-term path is now: turn the completed component layer into production-grounded MAXA product patterns, prepare Figma Code Connect around stable components/patterns, then enter v1.0 release prep only after an explicit release decision. Package-readiness guardrails are in place, but publishing remains out of scope until Igor explicitly chooses a registry release. Phase order is non-binding — `/gsd:insert-phase`, `/gsd:add-phase`, and `/gsd:remove-phase` (Codex: `$gsd-insert-phase`, etc.) let Igor reorder once execution starts.
+The near-term path is now: make the foundation excellent, then turn the completed component layer into production-grounded MAXA product patterns, prepare Figma Code Connect around stable components/patterns, and enter v1.0 release prep only after an explicit release decision. Package-readiness guardrails are in place, but publishing remains out of scope until Igor explicitly chooses a registry release. Phase order is non-binding — `/gsd:insert-phase`, `/gsd:add-phase`, and `/gsd:remove-phase` (Codex: `$gsd-insert-phase`, etc.) let Igor reorder once execution starts.
 
 ## Milestones
 
@@ -177,7 +177,7 @@ Plans:
 2. Pattern docs include production-like examples for dashboard grid, template cards, sidebars, editor toolbar, request/support menus, package detail screens, and related flows
 3. Patterns use only approved MAXA tokens and components
 4. Agents are instructed to prefer these patterns before inventing new layout shells
-   **Status**: ⏳ Ready to plan. Use `.planning/NEXT.md` as the current priority queue.
+   **Status**: ⏸ Deferred. Igor wants Foundation Excellence first: tokens, semantics, component APIs, visual quality, reuse, docs, and verification.
    **Plans**: TBD
 
 Plans:
@@ -260,7 +260,8 @@ Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 
 | 1. Dark mode + a11y audit         | v1.0      | 2/2            | Complete                            | 2026-05-18 |
 | 2. Base/action component tranche  | v1.0      | complete       | Complete                            | 2026-06-11 |
 | 3. Application UI component layer | v1.0      | complete       | Complete (40 components + closeout) | 2026-06-11 |
-| 4. MAXA product patterns          | v1.0      | 0/TBD          | Ready to plan (next milestone)      | —          |
+| Foundation Excellence             | v1.0      | 0/TBD          | Ready to audit (next milestone)     | —          |
+| 4. MAXA product patterns          | v1.0      | 0/TBD          | Deferred until foundation polish    | —          |
 | 5. Figma Code Connect             | v1.0      | 0/TBD          | Not started                         | —          |
 | 6. v1.0 release prep              | v1.0      | 0/TBD          | Not started                         | —          |
 | 7. Tailwind v4 adapter            | v1.1      | 0/TBD          | Not started                         | —          |
