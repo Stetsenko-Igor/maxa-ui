@@ -40,7 +40,7 @@ pnpm add file:../maxa-ui/packages/tokens
 @import "@maxa/tokens/themes/maxa.css";  /* brand layer (light + dark overrides) */
 @import "@maxa/tokens/semantic.css";     /* --color-text-primary, --color-action-primary, ... */
 @import "@maxa/tokens/dimensions.css";   /* spacing and radius scales */
-@import "@maxa/tokens/typography.css";   /* Montserrat body, Roboto Mono code */
+@import "@maxa/tokens/typography.css";   /* Montserrat body, system mono code */
 @import "@maxa/tokens/shadows.css";
 ```
 

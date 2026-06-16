@@ -7,6 +7,7 @@ type TokenKind =
   | "literal"
   | "number"
   | "punctuation"
+  | "comment"
   | "text"
 
 interface Token {
@@ -15,7 +16,7 @@ interface Token {
 }
 
 const TOKEN_PATTERN =
-  /(".*?"|'.*?'|`.*?`|<\/?[A-Z][A-Za-z0-9_.]*|[A-Za-z_$][A-Za-z0-9_$]*(?==)|@[A-Za-z0-9_./-]+|--[A-Za-z0-9-]+|\b(?:import|from|export|function|return|const|let|var|type|interface|extends|as|default|async|await)\b|\b(?:pnpm|npm|npx|yarn|bun)\b|\b(?:true|false|null|undefined)\b|\b\d+\b|[{}()[\]<>/=.,;:|?+-])/g
+  /(\/\/.*|\/\*.*?\*\/|".*?"|'.*?'|`.*?`|<\/?[A-Z][A-Za-z0-9_.]*|[A-Za-z_$][A-Za-z0-9_$]*(?==)|@[A-Za-z0-9_./-]+|--[A-Za-z0-9-]+|\b(?:import|from|export|function|return|const|let|var|type|interface|extends|as|default|async|await)\b|\b(?:pnpm|npm|npx|yarn|bun)\b|\b(?:true|false|null|undefined)\b|\b\d+\b|[{}()[\]<>/=.,;:|?+-])/g
 
 const TOKEN_COLORS: Record<TokenKind, string> = {
   keyword: "var(--docs-syntax-keyword)",
@@ -26,6 +27,7 @@ const TOKEN_COLORS: Record<TokenKind, string> = {
   literal: "var(--docs-syntax-constant)",
   number: "var(--docs-syntax-number)",
   punctuation: "var(--docs-syntax-punctuation)",
+  comment: "var(--docs-syntax-muted)",
   text: "var(--docs-syntax-text)",
 }
 
@@ -89,12 +91,14 @@ function tokenize(line: string): Token[] {
 }
 
 function classify(token: string): TokenKind {
+  if (/^(\/\/|\/\*)/.test(token)) return "comment"
   if (/^["'`]/.test(token)) return "string"
   if (/^<\/?[A-Z]/.test(token)) return "component"
   if (/^(pnpm|npm|npx|yarn|bun)$/.test(token)) return "command"
   if (/^(true|false|null|undefined)$/.test(token)) return "literal"
   if (/^\d+$/.test(token)) return "number"
   if (/^(import|from|export|function|return|const|let|var|type|interface|extends|as|default|async|await)$/.test(token)) return "keyword"
+  if (/^--[A-Za-z0-9-]+$/.test(token)) return "property"
   if (/^[A-Za-z_$][A-Za-z0-9_$]*$/.test(token)) return "property"
   if (/^[{}()[\]<>/=.,;:|?+-]$/.test(token)) return "punctuation"
   return "text"
