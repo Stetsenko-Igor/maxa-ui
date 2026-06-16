@@ -573,7 +573,7 @@ Source: `packages/tokens/src/typography.css`
 ```css
 /* ── Font families ── */
 --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
---font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+--font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
 /* ── Font sizes + line-heights ── */
 --text-heading-2xl: 40px;
