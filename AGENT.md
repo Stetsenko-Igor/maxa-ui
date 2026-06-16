@@ -14,6 +14,13 @@ Docs: https://stetsenko-igor.github.io/maxa-ui/
 
 MAXA uses a structured spec layer to prevent token fabrication. Every design value in this system has a named token. Your job is to use the right token, not invent values.
 
+### Subagent usage
+
+- Proactively use subagents when they improve speed, quality, or confidence.
+- Do not wait for the user to explicitly approve subagent usage when the work benefits from parallel research, implementation slices, UI audits, verification, or review passes.
+- Keep tiny, highly coupled, or direct-answer tasks local when delegation would add more coordination than value.
+- When delegating code work, give each subagent bounded ownership and integrate their results before reporting completion.
+
 ### Step-by-step before writing any UI
 
 1. **Read `specs/README.md`** — understand the directory structure

@@ -45,7 +45,7 @@ export function useFocusTrap(
       document.activeElement instanceof HTMLElement ? document.activeElement : null
 
     const content = contentRef.current
-    const firstFocusable = content?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)
+    const firstFocusable = content ? getVisibleFocusable(content)[0] : undefined
     ;(firstFocusable ?? content)?.focus()
 
     return () => {

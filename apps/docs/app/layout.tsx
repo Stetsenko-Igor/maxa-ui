@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import { Montserrat, Roboto_Mono } from "next/font/google"
 import "./globals.css"
 import { Sidebar } from "./_components/sidebar"
@@ -21,6 +20,15 @@ export const metadata: Metadata = {
   description: "A React design system with a token-first architecture.",
 }
 
+const themeInitScript = `
+try {
+  var storedTheme = localStorage.getItem("maxa-theme");
+  var theme = storedTheme || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.style.colorScheme = theme;
+} catch (error) {}
+`
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -29,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${montserrat.variable} ${robotoMono.variable}`}
     >
       <head>
-        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body
         suppressHydrationWarning
