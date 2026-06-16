@@ -1,6 +1,39 @@
 @import "tailwindcss";
 @import "@maxa/tokens/theme.css";
 
+:root {
+  --font-code: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --docs-code-font-size: 13px;
+  --docs-code-line-height: 20px;
+  --docs-code-bg: #f6f8fa;
+  --docs-code-border: #d8dee4;
+  --docs-syntax-text: #24292f;
+  --docs-syntax-muted: #6e7781;
+  --docs-syntax-keyword: #cf222e;
+  --docs-syntax-string: #0a5fb4;
+  --docs-syntax-component: #953800;
+  --docs-syntax-property: #0550ae;
+  --docs-syntax-function: #8250df;
+  --docs-syntax-constant: #0550ae;
+  --docs-syntax-number: #116329;
+  --docs-syntax-punctuation: #57606a;
+}
+
+[data-theme="dark"] {
+  --docs-code-bg: #151b23;
+  --docs-code-border: #30363d;
+  --docs-syntax-text: #e6edf3;
+  --docs-syntax-muted: #8b949e;
+  --docs-syntax-keyword: #ff7b72;
+  --docs-syntax-string: #a5d6ff;
+  --docs-syntax-component: #ffa657;
+  --docs-syntax-property: #79c0ff;
+  --docs-syntax-function: #d2a8ff;
+  --docs-syntax-constant: #79c0ff;
+  --docs-syntax-number: #7ee787;
+  --docs-syntax-punctuation: #c9d1d9;
+}
+
 body {
   background: var(--color-bg-surface);
   color: var(--color-text-primary);

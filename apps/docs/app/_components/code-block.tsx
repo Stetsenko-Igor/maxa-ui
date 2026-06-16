@@ -27,9 +27,9 @@ const preStyle: React.CSSProperties = {
   padding: "20px 24px 24px",
   overflowX: "auto",
   scrollbarGutter: "stable",
-  fontFamily: "var(--font-mono)",
-  fontSize: "var(--text-sm)",
-  lineHeight: "var(--text-md--line-height)",
+  fontFamily: "var(--font-code)",
+  fontSize: "var(--docs-code-font-size)",
+  lineHeight: "var(--docs-code-line-height)",
   margin: 0,
 }
 
@@ -44,11 +44,11 @@ export async function CodeBlock({ code, language = "tsx" }: CodeBlockProps) {
   return (
     <>
       {/* Light mode */}
-      <pre className="code-block-light" style={{ ...preStyle, background: "var(--color-bg-muted)" }}>
+      <pre className="code-block-light" style={{ ...preStyle, background: "var(--docs-code-bg)" }}>
         <TokenLines tokens={light.tokens} />
       </pre>
       {/* Dark mode */}
-      <pre className="code-block-dark" style={{ ...preStyle, background: dark.bg, border: "1px solid #30363d" }}>
+      <pre className="code-block-dark" style={{ ...preStyle, background: "var(--docs-code-bg)", border: "1px solid var(--docs-code-border)" }}>
         <TokenLines tokens={dark.tokens} />
       </pre>
     </>
