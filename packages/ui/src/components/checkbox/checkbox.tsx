@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import "./checkbox.css"
+import { cn } from "../../lib/cn.js"
+import { useLabelIds } from "@maxa/hooks"
 
 export type CheckedState = boolean | "indeterminate"
 
@@ -56,24 +58,16 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [isIndeterminate])
 
-    const reactId = React.useId()
     const sideLabelContent = sideLabel ?? children
     const descriptionContent = description ?? helperText
-    const topLabelId = label ? `${reactId}-label` : undefined
-    const sideLabelId = sideLabelContent ? `${reactId}-side-label` : undefined
-    const descriptionId = descriptionContent ? `${reactId}-description` : undefined
-    const labelledBy = ariaLabel || ariaLabelledBy
-      ? ariaLabelledBy
-      : [topLabelId, sideLabelId].filter(Boolean).join(" ") || undefined
-    const describedBy = [ariaDescribedBy, descriptionId].filter(Boolean).join(" ") || undefined
-
-    const wrapperClasses = [
-      "maxa-checkbox",
-      error && "maxa-checkbox--error",
-      disabled && "maxa-checkbox--disabled",
-    ]
-      .filter(Boolean)
-      .join(" ")
+    const { labelId: topLabelId, sideLabelId, descriptionId, labelledBy, describedBy } = useLabelIds({
+      label,
+      sideLabel: sideLabelContent,
+      description: descriptionContent,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+    })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       onCheckedChange?.(e.target.checked)
@@ -81,7 +75,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label
-        className={[wrapperClasses, className, containerClassName].filter(Boolean).join(" ")}
+        className={cn("maxa-checkbox", error && "maxa-checkbox--error", disabled && "maxa-checkbox--disabled", className, containerClassName)}
         htmlFor={id}
       >
         {label ? <span className="maxa-checkbox__top-label" id={topLabelId}>{label}</span> : null}

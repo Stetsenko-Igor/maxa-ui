@@ -2,9 +2,11 @@
 
 import * as React from "react"
 import { CalendarBlank, CaretLeft, CaretRight, CaretDown, Clock } from "@maxa/icons"
+import { useFieldId } from "@maxa/hooks"
 import { Calendar } from "../calendar/index.js"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./date-picker.css"
+import { cn } from "../../lib/cn.js"
 
 type DatePickerVisualState = "default" | "hover" | "focus" | "error" | "disabled"
 
@@ -99,7 +101,7 @@ const DatePickerField = React.forwardRef<HTMLInputElement, DatePickerProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [open, setOpen] = React.useState(defaultOpen)
@@ -168,21 +170,19 @@ const DatePickerField = React.forwardRef<HTMLInputElement, DatePickerProps>(
       >
         <div ref={rootRef} className="maxa-date-picker">
           <div
-            className={[
+            className={cn(
               "maxa-date-picker__field",
               `maxa-date-picker__field--${size}`,
               `maxa-date-picker__field--visual-${resolvedVisualState}`,
-              open ? "maxa-date-picker__field--open" : "",
-              error ? "maxa-date-picker__field--error" : "",
-              disabled ? "maxa-date-picker__field--disabled" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
+              open && "maxa-date-picker__field--open",
+              error && "maxa-date-picker__field--error",
+              disabled && "maxa-date-picker__field--disabled",
+            )}
           >
             <input
               ref={setInputRef}
               id={inputId}
-              className={["maxa-date-picker__input", className ?? ""].filter(Boolean).join(" ")}
+              className={cn("maxa-date-picker__input", className ?? "")}
               disabled={disabled}
               inputMode="numeric"
               value={inputValue}
@@ -232,10 +232,10 @@ const DatePickerField = React.forwardRef<HTMLInputElement, DatePickerProps>(
           </div>
           {calendar && open && !disabled && (
             <div
-              className={[
+              className={cn(
                 "maxa-date-picker__single-popover",
                 confirmMode ? "maxa-date-picker__single-popover--confirm" : "",
-              ].filter(Boolean).join(" ")}
+              )}
               role="dialog"
               aria-label="Choose date"
               onPointerDownCapture={(event) => {
@@ -385,7 +385,7 @@ const DateRangePickerField = React.forwardRef<HTMLInputElement, DateRangePickerP
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [open, setOpen] = React.useState(false)
@@ -455,19 +455,19 @@ const DateRangePickerField = React.forwardRef<HTMLInputElement, DateRangePickerP
       >
         <div ref={rootRef} className="maxa-date-picker">
           <div
-            className={[
+            className={cn(
               "maxa-date-picker__field",
               `maxa-date-picker__field--${size}`,
               `maxa-date-picker__field--visual-${resolvedVisualState}`,
               open ? "maxa-date-picker__field--open" : "",
               error ? "maxa-date-picker__field--error" : "",
               disabled ? "maxa-date-picker__field--disabled" : "",
-            ].filter(Boolean).join(" ")}
+            )}
           >
             <input
               ref={setInputRef}
               id={inputId}
-              className={["maxa-date-picker__input", className ?? ""].filter(Boolean).join(" ")}
+              className={cn("maxa-date-picker__input", className ?? "")}
               disabled={disabled}
               inputMode="numeric"
               value={inputValue}
@@ -591,7 +591,7 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const [open, setOpen] = React.useState(false)
     const [yearPickerOpen, setYearPickerOpen] = React.useState(false)
@@ -634,19 +634,19 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
       >
         <div ref={rootRef} className="maxa-date-picker">
           <div
-            className={[
+            className={cn(
               "maxa-date-picker__field",
               `maxa-date-picker__field--${size}`,
               `maxa-date-picker__field--visual-${resolvedVisualState}`,
               open ? "maxa-date-picker__field--open" : "",
               error ? "maxa-date-picker__field--error" : "",
               disabled ? "maxa-date-picker__field--disabled" : "",
-            ].filter(Boolean).join(" ")}
+            )}
           >
             <input
               ref={ref}
               id={inputId}
-              className={["maxa-date-picker__input", className ?? ""].filter(Boolean).join(" ")}
+              className={cn("maxa-date-picker__input", className ?? "")}
               disabled={disabled}
               inputMode="numeric"
               value={inputValue}
@@ -695,10 +695,10 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
                   <ChevronLeftIcon />
                 </button>
                 <button
-                  className={[
+                  className={cn(
                     "maxa-date-picker__quarter-title",
                     yearPickerOpen ? "maxa-date-picker__quarter-title--active" : "",
-                  ].filter(Boolean).join(" ")}
+                  )}
                   type="button"
                   aria-label="Choose quarter year"
                   onClick={() => setYearPickerOpen((current) => !current)}

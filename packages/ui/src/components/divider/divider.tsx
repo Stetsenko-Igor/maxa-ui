@@ -2,6 +2,7 @@
 import * as React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
 import "./divider.css"
+import { cn } from "../../lib/cn.js"
 
 export type DividerOrientation = "horizontal" | "vertical"
 
@@ -21,7 +22,7 @@ const Divider = React.forwardRef<
   ) => (
     <SeparatorPrimitive.Root
       ref={ref}
-      className={["maxa-divider", className].filter(Boolean).join(" ")}
+      className={cn("maxa-divider", className)}
       orientation={orientation}
       decorative={decorative}
       {...props}

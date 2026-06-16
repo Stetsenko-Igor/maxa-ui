@@ -3,6 +3,8 @@
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 import "./slider.css"
+import { cn } from "../../lib/cn.js"
+import { useControlledState } from "@maxa/hooks"
 
 export interface SliderProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, "children"> {
@@ -31,8 +33,7 @@ const Slider = React.forwardRef<
     ref,
   ) => {
     const labelId = React.useId()
-    const [internalValue, setInternalValue] = React.useState(defaultValue)
-    const currentValue = value ?? internalValue
+    const [currentValue, setValue] = useControlledState({ value, defaultValue, onChange: onValueChange })
     const firstValue = Array.isArray(currentValue) ? currentValue[0] : undefined
     const hasAccessibleName = Boolean(props["aria-label"] || props["aria-labelledby"])
     const labelElementId = label && !hasAccessibleName ? labelId : undefined
@@ -52,15 +53,12 @@ const Slider = React.forwardRef<
         )}
         <SliderPrimitive.Root
           ref={ref}
-          className={["maxa-slider", className].filter(Boolean).join(" ")}
+          className={cn("maxa-slider", className)}
           {...valueProps}
           min={min}
           max={max}
           aria-labelledby={labelElementId}
-          onValueChange={(nextValue) => {
-            if (value === undefined) setInternalValue(nextValue)
-            onValueChange?.(nextValue)
-          }}
+          onValueChange={setValue}
           {...props}
         >
           <SliderPrimitive.Track className="maxa-slider__track">

@@ -2,7 +2,9 @@
 
 import * as React from "react"
 import { UploadSimple } from "@maxa/icons"
+import { useFieldId } from "@maxa/hooks"
 import "./file-input.css"
+import { cn } from "../../lib/cn.js"
 
 export type FileInputSize = "sm" | "md" | "lg"
 export type FileInputVisualState = "default" | "hover" | "focus" | "dragging" | "error" | "disabled"
@@ -113,8 +115,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     },
     ref,
   ) => {
-    const generatedId = React.useId()
-    const inputId = id ?? generatedId
+    const inputId = useFieldId(id)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [uncontrolledFiles, setUncontrolledFiles] = React.useState<File[]>(defaultFiles ?? [])
     const [dragging, setDragging] = React.useState(false)
@@ -196,15 +197,13 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
 
     return (
       <div
-        className={[
+        className={cn(
           "maxa-file-input",
           `maxa-file-input--${size}`,
           `maxa-file-input--${resolvedVisualState}`,
-          disabled ? "maxa-file-input--disabled" : "",
-          wrapperClassName ?? "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+          disabled && "maxa-file-input--disabled",
+          wrapperClassName,
+        )}
       >
         {label && (
           <div className="maxa-file-input__label-row">
@@ -216,7 +215,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         )}
 
         <div
-          className={["maxa-file-input__surface", className ?? ""].filter(Boolean).join(" ")}
+          className={cn("maxa-file-input__surface", className ?? "")}
           role="button"
           tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled || undefined}

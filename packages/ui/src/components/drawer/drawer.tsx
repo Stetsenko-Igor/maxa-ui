@@ -3,6 +3,8 @@
 import * as React from "react"
 import { X } from "@maxa/icons"
 import "./drawer.css"
+import { cn } from "../../lib/cn.js"
+import { useFocusTrap } from "../../lib/use-focus-trap.js"
 
 type DrawerContextValue = {
   open: boolean
@@ -12,15 +14,6 @@ type DrawerContextValue = {
 }
 
 const DrawerContext = React.createContext<DrawerContextValue | null>(null)
-
-const FOCUSABLE_SELECTOR = [
-  "a[href]",
-  "button:not([disabled])",
-  "textarea:not([disabled])",
-  "input:not([disabled])",
-  "select:not([disabled])",
-  "[tabindex]:not([tabindex='-1'])",
-].join(",")
 
 export interface DrawerProps {
   children: React.ReactNode
@@ -79,7 +72,7 @@ const DrawerOverlay = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
     return (
       <div
         ref={ref}
-        className={["maxa-drawer__overlay", className].filter(Boolean).join(" ")}
+        className={cn("maxa-drawer__overlay", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)
@@ -100,21 +93,9 @@ const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps>(
   ({ className, children, side = "right", size = "md", role = "dialog", onKeyDown, ...props }, ref) => {
     const { open, setOpen, titleId, descriptionId } = useDrawer()
     const contentRef = React.useRef<HTMLDivElement | null>(null)
-    const returnFocusRef = React.useRef<HTMLElement | null>(null)
-
-    React.useEffect(() => {
-      if (!open) return
-      returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null
-
-      const content = contentRef.current
-      const firstFocusable = content?.querySelector<HTMLElement>(FOCUSABLE_SELECTOR)
-      ;(firstFocusable ?? content)?.focus()
-
-      return () => {
-        returnFocusRef.current?.focus()
-        returnFocusRef.current = null
-      }
-    }, [open])
+    const { onKeyDown: trapKeyDown } = useFocusTrap(contentRef, open, {
+      onEscape: () => setOpen(false),
+    })
 
     if (!open) return null
 
@@ -134,39 +115,10 @@ const DrawerContent = React.forwardRef<HTMLDivElement, DrawerContentProps>(
           aria-describedby={descriptionId}
           data-side={side}
           data-size={size}
-          className={["maxa-drawer__content", className].filter(Boolean).join(" ")}
+          className={cn("maxa-drawer__content", className)}
           onKeyDown={(event) => {
             onKeyDown?.(event)
-            if (!event.defaultPrevented && event.key === "Escape") setOpen(false)
-            if (event.defaultPrevented || event.key !== "Tab") return
-
-            const focusable = Array.from(
-              event.currentTarget.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
-            ).filter((element) => {
-              const style = window.getComputedStyle(element)
-              return !element.hasAttribute("disabled")
-                && !element.hidden
-                && style.display !== "none"
-                && style.visibility !== "hidden"
-            })
-
-            if (focusable.length === 0) {
-              event.preventDefault()
-              event.currentTarget.focus()
-              return
-            }
-
-            const first = focusable[0]
-            const last = focusable[focusable.length - 1]
-            if (!first || !last) return
-
-            if (event.shiftKey && document.activeElement === first) {
-              event.preventDefault()
-              last.focus()
-            } else if (!event.shiftKey && document.activeElement === last) {
-              event.preventDefault()
-              first.focus()
-            }
+            trapKeyDown(event)
           }}
           {...props}
         >
@@ -180,7 +132,7 @@ DrawerContent.displayName = "DrawerContent"
 
 const DrawerHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__header", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__header", className)} {...props} />
   ),
 )
 DrawerHeader.displayName = "DrawerHeader"
@@ -188,7 +140,7 @@ DrawerHeader.displayName = "DrawerHeader"
 const DrawerTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
     const { titleId } = useDrawer()
-    return <h2 ref={ref} id={titleId} className={["maxa-drawer__title", className].filter(Boolean).join(" ")} {...props} />
+    return <h2 ref={ref} id={titleId} className={cn("maxa-drawer__title", className)} {...props} />
   },
 )
 DrawerTitle.displayName = "DrawerTitle"
@@ -196,21 +148,21 @@ DrawerTitle.displayName = "DrawerTitle"
 const DrawerDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => {
     const { descriptionId } = useDrawer()
-    return <p ref={ref} id={descriptionId} className={["maxa-drawer__description", className].filter(Boolean).join(" ")} {...props} />
+    return <p ref={ref} id={descriptionId} className={cn("maxa-drawer__description", className)} {...props} />
   },
 )
 DrawerDescription.displayName = "DrawerDescription"
 
 const DrawerBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__body", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__body", className)} {...props} />
   ),
 )
 DrawerBody.displayName = "DrawerBody"
 
 const DrawerFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={["maxa-drawer__footer", className].filter(Boolean).join(" ")} {...props} />
+    <div ref={ref} className={cn("maxa-drawer__footer", className)} {...props} />
   ),
 )
 DrawerFooter.displayName = "DrawerFooter"
@@ -230,7 +182,7 @@ const DrawerClose = React.forwardRef<HTMLButtonElement, DrawerCloseProps>(
         ref={ref}
         type="button"
         data-inline={inline || undefined}
-        className={["maxa-drawer__close", className].filter(Boolean).join(" ")}
+        className={cn(inline ? "maxa-drawer__close-inline" : "maxa-drawer__close", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)

@@ -12,6 +12,7 @@ export function ThemeToggle() {
     const isDark = stored ? stored === "dark" : prefersDark
     setDark(isDark)
     document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light")
+    document.documentElement.style.colorScheme = isDark ? "dark" : "light"
     setMounted(true)
   }, [])
 
@@ -19,6 +20,7 @@ export function ThemeToggle() {
     const next = !dark
     setDark(next)
     document.documentElement.setAttribute("data-theme", next ? "dark" : "light")
+    document.documentElement.style.colorScheme = next ? "dark" : "light"
     localStorage.setItem("maxa-theme", next ? "dark" : "light")
   }
 

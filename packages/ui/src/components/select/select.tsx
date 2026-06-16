@@ -4,6 +4,8 @@ import * as React from "react"
 import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
+import { cn } from "../../lib/cn.js"
+import { useControlledState, useFieldId } from "@maxa/hooks"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"
 
@@ -62,20 +64,18 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const reactId = React.useId()
-    const selectId = id ?? reactId
+    const selectId = useFieldId(id)
     const triggerId = `${selectId}-trigger`
     const listboxId = `${selectId}-listbox`
     const hintId = hint || error ? `${selectId}-hint` : undefined
     const parsedOptions = React.useMemo(() => options ?? optionsFromChildren(children), [children, options])
     const enabledOptions = React.useMemo(() => parsedOptions.filter((option) => !option.disabled), [parsedOptions])
     const initialValue = defaultValue ?? parsedOptions.find((option) => !option.disabled)?.value ?? ""
-    const [internalValue, setInternalValue] = React.useState(initialValue)
+    const [currentValue, setCurrentValue] = useControlledState({ value, defaultValue: initialValue, onChange: onValueChange })
     const [open, setOpen] = React.useState(defaultOpen)
     const [highlightedValue, setHighlightedValue] = React.useState<string | null>(null)
     const rootRef = React.useRef<HTMLDivElement | null>(null)
     const selectRef = React.useRef<HTMLSelectElement | null>(null)
-    const currentValue = value ?? internalValue
     const selectedOption = parsedOptions.find((option) => option.value === currentValue)
     const showPlaceholder = !selectedOption || (selectedOption.disabled && selectedOption.value === "")
     const highlightedOption = parsedOptions.find((option) => option.value === highlightedValue)
@@ -109,8 +109,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       const nextOption = parsedOptions.find((option) => option.value === nextValue)
       if (!nextOption || nextOption.disabled) return
 
-      onValueChange?.(nextValue)
-      if (value === undefined) setInternalValue(nextValue)
+      setCurrentValue(nextValue)
 
       if (selectRef.current) {
         selectRef.current.value = nextValue
@@ -186,14 +185,14 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             aria-expanded={open}
             aria-haspopup="listbox"
             aria-invalid={error ? true : undefined}
-            className={[
+            className={cn(
               "maxa-select__field",
               `maxa-select__field--${size}`,
               `maxa-select__field--visual-${resolvedVisualState}`,
               error ? "maxa-select__field--error" : "",
               disabled ? "maxa-select__field--disabled" : "",
               className ?? "",
-            ].filter(Boolean).join(" ")}
+            )}
             disabled={disabled}
             onBlur={(event) => onBlur?.(event as unknown as React.FocusEvent<HTMLSelectElement>)}
             onClick={() => {
@@ -242,11 +241,11 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                     type="button"
                     aria-disabled={option.disabled || undefined}
                     aria-selected={selected}
-                    className={[
+                    className={cn(
                       "maxa-select__option",
                       selected ? "maxa-select__option--selected" : "",
                       highlighted ? "maxa-select__option--highlighted" : "",
-                    ].filter(Boolean).join(" ")}
+                    )}
                     disabled={option.disabled}
                     onClick={() => commitValue(option.value)}
                     onMouseEnter={() => {

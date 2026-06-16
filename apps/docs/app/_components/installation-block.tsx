@@ -58,9 +58,10 @@ function CodeRow({ label, value }: { label: string; value: string }) {
           overflowX: "auto",
           scrollbarGutter: "stable",
           paddingBottom: "4px",
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-sm)",
-          color: "var(--color-text-primary)",
+          fontFamily: "var(--font-code)",
+          fontSize: "var(--docs-code-font-size)",
+          lineHeight: "var(--docs-code-line-height)",
+          color: "var(--docs-syntax-text)",
           whiteSpace: "pre",
         }}
       >

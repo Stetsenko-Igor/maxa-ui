@@ -2,6 +2,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { X } from "@maxa/icons"
 import "./tag.css"
 
 const tagVariants = cva("maxa-tag", {
@@ -34,16 +35,6 @@ export interface TagProps
   onRemove?: () => void
   asChild?: boolean
   icon?: React.ReactNode
-}
-
-function XIcon() {
-  return (
-    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor"
-      strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
-      <line x1="2" y1="2" x2="10" y2="10" />
-      <line x1="10" y1="2" x2="2" y2="10" />
-    </svg>
-  )
 }
 
 const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
@@ -105,7 +96,7 @@ const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
             }}
             tabIndex={0}
           >
-            <XIcon />
+            <X width="100%" height="100%" aria-hidden focusable={false} />
           </button>
         )}
       </Comp>

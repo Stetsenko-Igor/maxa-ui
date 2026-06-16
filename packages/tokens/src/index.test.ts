@@ -978,7 +978,7 @@ describe("typography.css — font families", () => {
     expect(css).toContain("--font-body:")
     expect(css).toContain("--font-mono:")
     expect(css).toContain('"Montserrat", ui-sans-serif, system-ui, sans-serif')
-    expect(css).toContain('"Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace')
+    expect(css).toContain('ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace')
   })
 })
 
@@ -1047,7 +1047,8 @@ describe("tokens.ts — spacing", () => {
 describe("tokens.ts — fontFamily", () => {
   it("contains correct font names", () => {
     expect(fontFamily.body).toContain("Montserrat")
-    expect(fontFamily.mono).toContain("Roboto Mono")
+    expect(fontFamily.mono).toContain("SF Mono")
+    expect(fontFamily.mono).toContain("Consolas")
   })
 })
 

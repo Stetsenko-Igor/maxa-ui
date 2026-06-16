@@ -34,7 +34,7 @@ export const spacing = {
 
 export const fontFamily = {
   body: "Montserrat, ui-sans-serif, system-ui, sans-serif",
-  mono: "Roboto Mono, ui-monospace, SFMono-Regular, Menlo, monospace",
+  mono: 'ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
 } as const
 
 export const fontSize = {

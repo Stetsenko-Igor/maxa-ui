@@ -233,7 +233,7 @@ export default function TypographyPage() {
       <div style={{ display: "flex", gap: "12px" }}>
         {[
           { name: "Montserrat",  token: "--font-body", role: "Body & UI",   sample: "ABCDEFGHIJKLM\nNOPQRSTUVWXYZ\n0123456789" },
-          { name: "Roboto Mono", token: "--font-mono", role: "Code & data", sample: "const x = 42\nfn(a, b) => a + b\n/* comment */" },
+          { name: "SF Mono stack", token: "--font-mono", role: "Code & data", sample: "const x = 42\nfn(a, b) => a + b\n/* comment */" },
         ].map(f => (
           <div key={f.token} style={{ flex: 1, padding: "24px", borderRadius: "var(--radius-md)", border: "1px solid var(--color-border-secondary)", background: "var(--color-bg-surface)", display: "flex", flexDirection: "column", gap: "16px" }}>
             <pre style={{ margin: 0, fontFamily: `var(${f.token})`, fontSize: "var(--text-heading-xs)", lineHeight: "26px", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)", letterSpacing: "0.04em" }}>{f.sample}</pre>

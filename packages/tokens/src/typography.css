@@ -6,7 +6,7 @@
   /* ── Font families ───────────────────────────────────────────────── */
   /* Fonts must be loaded by the consumer (Google Fonts / self-hosted). */
   --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* ── Font sizes + line-heights ───────────────────────────────────── */
   /* Tailwind v4: --text-{name}--line-height pairs with --text-{name}  */
@@ -35,7 +35,7 @@
    which are invalid when used standalone in font-size: var(--text-*). */
 :root {
   --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --text-heading-2xl:              40px;
   --text-heading-2xl--line-height: 48px;

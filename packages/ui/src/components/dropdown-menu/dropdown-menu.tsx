@@ -4,6 +4,7 @@ import * as React from "react"
 import { Check, CaretRight } from "@maxa/icons"
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import "./dropdown-menu.css"
+import { cn } from "../../lib/cn.js"
 
 const DropdownMenu = DropdownMenuPrimitive.Root
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger
@@ -33,16 +34,14 @@ const getItemClassName = (
   className: string | undefined,
   { inset, selection, variant = "default" }: MenuItemOptions,
 ) =>
-  [
+  cn(
     "maxa-dropdown-menu__item",
-    inset ? "maxa-dropdown-menu__item--inset" : "",
-    variant === "destructive" ? "maxa-dropdown-menu__item--destructive" : "",
-    selection === "checkbox" ? "maxa-dropdown-menu__item--checkbox" : "",
-    selection === "radio" ? "maxa-dropdown-menu__item--radio" : "",
+    inset && "maxa-dropdown-menu__item--inset",
+    variant === "destructive" && "maxa-dropdown-menu__item--destructive",
+    selection === "checkbox" && "maxa-dropdown-menu__item--checkbox",
+    selection === "radio" && "maxa-dropdown-menu__item--radio",
     className,
-  ]
-    .filter(Boolean)
-    .join(" ")
+  )
 
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -64,7 +63,7 @@ const DropdownMenuContent = React.forwardRef<
         side={side}
         align={align}
         sideOffset={sideOffset}
-        className={["maxa-dropdown-menu", className].filter(Boolean).join(" ")}
+        className={cn("maxa-dropdown-menu", className)}
         {...props}
       />
     </DropdownMenuPrimitive.Portal>
@@ -79,9 +78,7 @@ const DropdownMenuSubContent = React.forwardRef<
   <DropdownMenuPrimitive.SubContent
     ref={ref}
     sideOffset={sideOffset}
-    className={["maxa-dropdown-menu", "maxa-dropdown-menu--sub", className]
-      .filter(Boolean)
-      .join(" ")}
+    className={cn("maxa-dropdown-menu", "maxa-dropdown-menu--sub", className)}
     {...props}
   />
 ))
@@ -162,13 +159,7 @@ const DropdownMenuLabel = React.forwardRef<
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
     ref={ref}
-    className={[
-      "maxa-dropdown-menu__label",
-      inset ? "maxa-dropdown-menu__label--inset" : "",
-      className,
-    ]
-      .filter(Boolean)
-      .join(" ")}
+    className={cn("maxa-dropdown-menu__label", inset && "maxa-dropdown-menu__label--inset", className)}
     {...props}
   />
 ))
@@ -180,7 +171,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={["maxa-dropdown-menu__separator", className].filter(Boolean).join(" ")}
+    className={cn("maxa-dropdown-menu__separator", className)}
     {...props}
   />
 ))
@@ -192,7 +183,7 @@ const DropdownMenuShortcut = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <span
     ref={ref}
-    className={["maxa-dropdown-menu__shortcut", className].filter(Boolean).join(" ")}
+    className={cn("maxa-dropdown-menu__shortcut", className)}
     {...props}
   />
 ))

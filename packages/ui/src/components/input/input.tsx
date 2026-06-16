@@ -4,6 +4,8 @@ import * as React from "react"
 import { MagnifyingGlass, Eye, X, Minus, Plus } from "@maxa/icons"
 import { cva, type VariantProps } from "class-variance-authority"
 import "./input.css"
+import { cn } from "../../lib/cn.js"
+import { useFieldId } from "@maxa/hooks"
 
 type InputKind = "text" | "password" | "search" | "quantity"
 
@@ -85,7 +87,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
     const resolvedVisualState = disabled ? "disabled"
@@ -96,14 +98,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       : "default"
     const resolvedType = kind === "password" ? "password" : kind === "search" ? "search" : kind === "quantity" ? "number" : type
 
-    const fieldClasses = [
+    const fieldClasses = cn(
       "maxa-input__field",
       `maxa-input__field--${kind}`,
-      leadingIcon || kind === "search" ? "maxa-input__field--has-leading" : "",
-      trailingIcon || kind === "password" || onClear ? "maxa-input__field--has-trailing" : "",
-    ]
-      .filter(Boolean)
-      .join(" ")
+      Boolean(leadingIcon || kind === "search") && "maxa-input__field--has-leading",
+      Boolean(trailingIcon || kind === "password" || onClear) && "maxa-input__field--has-trailing",
+    )
 
     function handleMouseDown(event: React.MouseEvent<HTMLInputElement>) {
       if (readOnly) {
@@ -121,14 +121,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={[
+        className={cn(
           inputWrapperVariants({ size, status: resolvedStatus, visualState: resolvedVisualState }),
-          disabled ? "maxa-input-wrapper--disabled" : "",
-          readOnly ? "maxa-input-wrapper--readonly" : "",
-          wrapperClassName ?? "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+          disabled && "maxa-input-wrapper--disabled",
+          readOnly && "maxa-input-wrapper--readonly",
+          wrapperClassName,
+        )}
       >
         {label && (
           <div className="maxa-input__label-row">
@@ -162,7 +160,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             id={inputId}
-            className={["maxa-input__input", className ?? ""].filter(Boolean).join(" ")}
+            className={cn("maxa-input__input", className ?? "")}
             disabled={disabled}
             readOnly={readOnly}
             aria-disabled={readOnly || undefined}
@@ -263,7 +261,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
     const resolvedVisualState = disabled ? "disabled"
@@ -290,15 +288,13 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     return (
       <div
-        className={[
+        className={cn(
           inputWrapperVariants({ size, status: resolvedStatus, visualState: resolvedVisualState }),
           "maxa-input-wrapper--textarea",
-          disabled ? "maxa-input-wrapper--disabled" : "",
-          readOnly ? "maxa-input-wrapper--readonly" : "",
-          wrapperClassName ?? "",
-        ]
-          .filter(Boolean)
-          .join(" ")}
+          disabled && "maxa-input-wrapper--disabled",
+          readOnly && "maxa-input-wrapper--readonly",
+          wrapperClassName,
+        )}
       >
         {label && (
           <div className="maxa-input__label-row">
@@ -314,7 +310,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           <textarea
             ref={ref}
             id={inputId}
-            className={["maxa-input__input maxa-input__textarea", className ?? ""].filter(Boolean).join(" ")}
+            className={cn("maxa-input__input maxa-input__textarea", className ?? "")}
             disabled={disabled}
             readOnly={readOnly}
             aria-disabled={readOnly || undefined}

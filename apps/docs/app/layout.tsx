@@ -1,17 +1,11 @@
 import type { Metadata } from "next"
-import { Montserrat, Roboto_Mono } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import "./globals.css"
 import { Sidebar } from "./_components/sidebar"
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap",
-})
-
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
   display: "swap",
 })
 
@@ -34,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${montserrat.variable} ${robotoMono.variable}`}
+      className={montserrat.variable}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

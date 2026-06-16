@@ -4,13 +4,20 @@ Last updated: 2026-06-15
 
 ## Default Next Move
 
-Start **Foundation Excellence** before Phase 4 product patterns.
+**Shared React behavior + UI internal utilities cleanup tranche — ✅ DONE (2026-06-16)**
 
-The product-pattern layer should wait until the foundation feels excellent:
-tokens, semantic naming, component APIs, visual quality, docs, reuse, package
-boundaries, and verification should all feel boringly reliable. The goal is to
-make the core system sharp enough that product patterns can be built without
-dragging foundational uncertainty forward.
+Next remaining P1s from the audit (`.planning/foundation-excellence-audit.md`):
+
+- **F5 (P1, ui component):** Fragmented variant vocabulary — `intent` / `appearance` / `tone` / `variant` all express the same "semantic color" axis across 9 components. Write a glossary spec in `specs/patterns/`, then align props.
+- **F9 (P1, ui component):** MultiSelect not a true ARIA listbox — uses DropdownMenu + `div role="button"`. Rebuild as proper listbox/chip field (per decision 2026-06-05).
+
+Remaining P2s (batch when convenient):
+- F10: Replace inline SVGs in `datatable`, `dropdown-menu`, `tag` with `@maxa/icons`.
+- F11: Raise coverage for `tooltip.tsx` (75%) and `slider.tsx` (78%).
+- F12: Add docs pages for motion + breakpoints foundations and interactive-hierarchy pattern.
+- F14: Decide on border legacy aliases at `packages/tokens/src/semantic.css:140-142`.
+
+Product patterns (Phase 4) wait until P1s are addressed.
 
 ## Current Position
 
@@ -29,28 +36,23 @@ dragging foundational uncertainty forward.
 
 ## Priority Queue
 
-### 1. Foundation Audit And Scorecard
+### 1. Foundation Audit And Scorecard — ✅ DONE (2026-06-15)
 
-Create a focused audit of the foundation layer before changing more code.
+Completed. See `.planning/foundation-excellence-audit.md`.
 
-Audit areas:
+Result: foundation is structurally sound (no P0; fresh audit/typecheck/coverage all
+green, 90.43% stmts). Six P1 findings (reuse debt, variant vocabulary, MultiSelect
+a11y, PROJECT.md drift) and eight P2 findings ranked, each with `file:line` evidence
+and an ownership tag.
 
-- token naming and semantic layering
-- component-token coverage and drift between CSS/Figma JSON/docs
-- component API consistency across size, variant, state, ref, Slot/asChild, and
-  accessibility props
-- visual polish across light/dark/theme backgrounds
-- docs accuracy and example quality
-- reuse boundaries: what belongs in `@maxa/ui`, `@maxa/tokens`,
-  `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, and `@maxa/mcp`
-- test/coverage gaps and slow/flaky checks
+**Named next tranche → "Shared React behavior + UI internal utilities cleanup"**
+(split by ownership):
 
-Definition of done:
+- `@maxa/hooks`: `useControlledState`, `useFieldId`/`useLabelIds`
+- `@maxa/ui` internal: `cn()` helper, shared focusable-selector / focus-trap util
 
-- `.planning/foundation-excellence-audit.md` exists.
-- Findings are ranked P0/P1/P2.
-- Each finding has an owner area and suggested fix path.
-- The next implementation tranche is named.
+Trivial fix to make immediately (outside the tranche): correct the stale
+`PROJECT.md` constraints (F13).
 
 ### 2. Token And Semantic Cleanup
 

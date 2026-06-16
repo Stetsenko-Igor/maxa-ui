@@ -1,12 +1,13 @@
 import * as React from "react"
 import "./breadcrumb.css"
+import { cn } from "../../lib/cn.js"
 
 const Breadcrumb = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   ({ className, ...props }, ref) => (
     <nav
       ref={ref}
       aria-label="Breadcrumb"
-      className={["maxa-breadcrumb", className].filter(Boolean).join(" ")}
+      className={cn("maxa-breadcrumb", className)}
       {...props}
     />
   ),
@@ -15,21 +16,21 @@ Breadcrumb.displayName = "Breadcrumb"
 
 const BreadcrumbList = React.forwardRef<HTMLOListElement, React.OlHTMLAttributes<HTMLOListElement>>(
   ({ className, ...props }, ref) => (
-    <ol ref={ref} className={["maxa-breadcrumb__list", className].filter(Boolean).join(" ")} {...props} />
+    <ol ref={ref} className={cn("maxa-breadcrumb__list", className)} {...props} />
   ),
 )
 BreadcrumbList.displayName = "BreadcrumbList"
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.LiHTMLAttributes<HTMLLIElement>>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={["maxa-breadcrumb__item", className].filter(Boolean).join(" ")} {...props} />
+    <li ref={ref} className={cn("maxa-breadcrumb__item", className)} {...props} />
   ),
 )
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
 const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, React.AnchorHTMLAttributes<HTMLAnchorElement>>(
   ({ className, ...props }, ref) => (
-    <a ref={ref} className={["maxa-breadcrumb__link", className].filter(Boolean).join(" ")} {...props} />
+    <a ref={ref} className={cn("maxa-breadcrumb__link", className)} {...props} />
   ),
 )
 BreadcrumbLink.displayName = "BreadcrumbLink"
@@ -39,7 +40,7 @@ const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HT
     <span
       ref={ref}
       aria-current="page"
-      className={["maxa-breadcrumb__page", className].filter(Boolean).join(" ")}
+      className={cn("maxa-breadcrumb__page", className)}
       {...props}
     />
   ),
@@ -52,7 +53,7 @@ const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, React.LiHTMLAttribut
       ref={ref}
       role="presentation"
       aria-hidden="true"
-      className={["maxa-breadcrumb__separator", className].filter(Boolean).join(" ")}
+      className={cn("maxa-breadcrumb__separator", className)}
       {...props}
     >
       {children}
@@ -67,7 +68,7 @@ const BreadcrumbEllipsis = React.forwardRef<HTMLButtonElement, React.ButtonHTMLA
       ref={ref}
       aria-label="More pages"
       type={type}
-      className={["maxa-breadcrumb__ellipsis", className].filter(Boolean).join(" ")}
+      className={cn("maxa-breadcrumb__ellipsis", className)}
       {...props}
     >
       ...

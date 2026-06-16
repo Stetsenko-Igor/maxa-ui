@@ -2,6 +2,7 @@
 import * as React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
 import "./separator.css"
+import { cn } from "../../lib/cn.js"
 
 export type SeparatorOrientation = "horizontal" | "vertical"
 
@@ -21,7 +22,7 @@ const Separator = React.forwardRef<
   ) => (
     <SeparatorPrimitive.Root
       ref={ref}
-      className={["maxa-separator", className].filter(Boolean).join(" ")}
+      className={cn("maxa-separator", className)}
       orientation={orientation}
       decorative={decorative}
       {...props}

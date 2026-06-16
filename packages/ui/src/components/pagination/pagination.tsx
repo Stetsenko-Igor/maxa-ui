@@ -1,12 +1,13 @@
 import * as React from "react"
 import "./pagination.css"
+import { cn } from "../../lib/cn.js"
 
 const Pagination = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
   ({ className, ...props }, ref) => (
     <nav
       ref={ref}
       aria-label="Pagination"
-      className={["maxa-pagination", className].filter(Boolean).join(" ")}
+      className={cn("maxa-pagination", className)}
       {...props}
     />
   ),
@@ -15,14 +16,14 @@ Pagination.displayName = "Pagination"
 
 const PaginationList = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLUListElement>>(
   ({ className, ...props }, ref) => (
-    <ul ref={ref} className={["maxa-pagination__list", className].filter(Boolean).join(" ")} {...props} />
+    <ul ref={ref} className={cn("maxa-pagination__list", className)} {...props} />
   ),
 )
 PaginationList.displayName = "PaginationList"
 
 const PaginationItem = React.forwardRef<HTMLLIElement, React.LiHTMLAttributes<HTMLLIElement>>(
   ({ className, ...props }, ref) => (
-    <li ref={ref} className={["maxa-pagination__item", className].filter(Boolean).join(" ")} {...props} />
+    <li ref={ref} className={cn("maxa-pagination__item", className)} {...props} />
   ),
 )
 PaginationItem.displayName = "PaginationItem"
@@ -35,9 +36,7 @@ const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
   ({ className, isActive = false, "aria-current": ariaCurrent, ...props }, ref) => (
     <a
       ref={ref}
-      className={["maxa-pagination__link", isActive ? "maxa-pagination__link--active" : "", className]
-        .filter(Boolean)
-        .join(" ")}
+      className={cn("maxa-pagination__link", isActive && "maxa-pagination__link--active", className)}
       aria-current={isActive ? "page" : ariaCurrent}
       {...props}
     />
@@ -70,7 +69,7 @@ const PaginationEllipsis = React.forwardRef<HTMLSpanElement, React.HTMLAttribute
     <span
       ref={ref}
       aria-hidden="true"
-      className={["maxa-pagination__ellipsis", className].filter(Boolean).join(" ")}
+      className={cn("maxa-pagination__ellipsis", className)}
       {...props}
     >
       ...

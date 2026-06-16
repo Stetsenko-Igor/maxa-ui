@@ -161,49 +161,6 @@
   background: var(--drawer-close-bg-active);
 }
 
-.maxa-drawer__close[data-inline="true"] {
-  position: static;
-  width: auto;
-  height: auto;
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button {
-  font-family: var(--button-font-family);
-  font-size: var(--button-size-md-text);
-  line-height: var(--button-size-md-line-height);
-  font-weight: var(--button-size-md-weight);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button--secondary {
-  border-color: var(--button-secondary-border);
-  background-color: var(--button-secondary-bg);
-  color: var(--button-secondary-text);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button--primary {
-  border-color: var(--button-primary-border);
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button--danger {
-  border-color: var(--button-danger-border);
-  background-color: var(--button-danger-bg);
-  color: var(--button-danger-text);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button:hover {
-  background-color: var(--button-secondary-bg-hover);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button--primary:hover {
-  background-color: var(--button-primary-bg-hover);
-}
-
-.maxa-drawer__close[data-inline="true"].maxa-button--danger:hover {
-  background-color: var(--button-danger-bg-hover);
-}
-
 .maxa-drawer__close:focus-visible,
 .maxa-drawer__content:focus-visible {
   outline: 2px solid var(--color-border-focus);

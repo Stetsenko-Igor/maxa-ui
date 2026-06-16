@@ -3,6 +3,7 @@
 import * as React from "react"
 import { social } from "@maxa/icons"
 import "./social-button.css"
+import { cn } from "../../lib/cn.js"
 
 export interface SocialButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   provider:
@@ -78,13 +79,13 @@ const SocialButton = React.forwardRef<HTMLButtonElement, SocialButtonProps>(func
   return (
     <button
       ref={ref}
-      className={[
+      className={cn(
         "maxa-social-button",
         `maxa-social-button--${provider}`,
         `maxa-social-button--${size}`,
         fullWidth && "maxa-social-button--full-width",
         className,
-      ].filter(Boolean).join(" ")}
+      )}
       type="button"
       {...props}
     >

@@ -3,6 +3,7 @@
 import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 import "./tabs.css"
+import { cn } from "../../lib/cn.js"
 
 const Tabs = TabsPrimitive.Root
 
@@ -12,7 +13,7 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={["maxa-tabs__list", className].filter(Boolean).join(" ")}
+    className={cn("maxa-tabs__list", className)}
     {...props}
   />
 ))
@@ -24,7 +25,7 @@ const TabsTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
-    className={["maxa-tabs__trigger", className].filter(Boolean).join(" ")}
+    className={cn("maxa-tabs__trigger", className)}
     {...props}
   />
 ))
@@ -36,7 +37,7 @@ const TabsContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
     ref={ref}
-    className={["maxa-tabs__content", className].filter(Boolean).join(" ")}
+    className={cn("maxa-tabs__content", className)}
     {...props}
   />
 ))

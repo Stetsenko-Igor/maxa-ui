@@ -4,6 +4,7 @@ import * as React from "react"
 import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import "./toast.css"
+import { cn } from "../../lib/cn.js"
 
 export type ToastIntent = "neutral" | "info" | "success" | "warning" | "error"
 
@@ -18,7 +19,7 @@ const ToastViewport = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Viewport
     ref={ref}
-    className={["maxa-toast__viewport", className].filter(Boolean).join(" ")}
+    className={cn("maxa-toast__viewport", className)}
     {...props}
   />
 ))
@@ -63,7 +64,7 @@ const ToastTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Title
     ref={ref}
-    className={["maxa-toast__title", className].filter(Boolean).join(" ")}
+    className={cn("maxa-toast__title", className)}
     {...props}
   />
 ))
@@ -75,7 +76,7 @@ const ToastDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Description
     ref={ref}
-    className={["maxa-toast__description", className].filter(Boolean).join(" ")}
+    className={cn("maxa-toast__description", className)}
     {...props}
   />
 ))
@@ -87,7 +88,7 @@ const ToastAction = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Action
     ref={ref}
-    className={["maxa-toast__action", className].filter(Boolean).join(" ")}
+    className={cn("maxa-toast__action", className)}
     {...props}
   />
 ))
@@ -99,7 +100,7 @@ const ToastClose = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitives.Close
     ref={ref}
-    className={["maxa-toast__close", className].filter(Boolean).join(" ")}
+    className={cn("maxa-toast__close", className)}
     aria-label="Dismiss notification"
     toast-close=""
     {...props}

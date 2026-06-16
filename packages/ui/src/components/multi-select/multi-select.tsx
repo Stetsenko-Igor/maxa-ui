@@ -5,6 +5,8 @@ import { CaretDown, X } from "@maxa/icons"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "../dropdown-menu/index.js"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./multi-select.css"
+import { cn } from "../../lib/cn.js"
+import { useControlledState, useFieldId } from "@maxa/hooks"
 
 export interface MultiSelectOption {
   label: string
@@ -43,16 +45,14 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
   },
   ref,
 ) {
-  const [internalValue, setInternalValue] = React.useState(defaultValue)
-  const inputId = React.useId()
+  const [selectedValues, setValues] = useControlledState({ value, defaultValue, onChange: onValueChange })
+  const inputId = useFieldId()
   const hintId = hint || error ? `${inputId}-hint` : undefined
-  const selectedValues = value ?? internalValue
   const selectedOptions = options.filter((option) => selectedValues.includes(option.value))
 
   const setSelectedValues = (nextValue: string[]) => {
     if (disabled) return
-    onValueChange?.(nextValue)
-    if (value === undefined) setInternalValue(nextValue)
+    setValues(nextValue)
   }
 
   const toggleValue = (optionValue: string) => {
@@ -82,12 +82,12 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
             aria-describedby={hintId}
             aria-disabled={disabled || undefined}
             aria-invalid={error ? true : undefined}
-            className={[
+            className={cn(
               "maxa-multi-select__trigger",
               `maxa-multi-select__trigger--${size}`,
               error ? "maxa-multi-select__trigger--error" : "",
               disabled ? "maxa-multi-select__trigger--disabled" : "",
-            ].filter(Boolean).join(" ")}
+            )}
             role="button"
             tabIndex={disabled ? -1 : 0}
           >

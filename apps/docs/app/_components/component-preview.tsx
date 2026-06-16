@@ -68,7 +68,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
             <span style={{
               fontSize: "var(--text-caption-sm)",
               color: "var(--color-text-tertiary)",
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-code)",
             }}>
               {label}
             </span>
@@ -100,12 +100,12 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
         <pre style={{
           margin: 0,
           padding: "24px 28px 28px",
-          background: "var(--color-bg-muted)",
+          background: "var(--docs-code-bg)",
           borderRadius: "0 0 var(--radius-md) var(--radius-md)",
-          fontFamily: "var(--font-mono)",
-          fontSize: "var(--text-sm)",
-          lineHeight: "var(--text-md--line-height)",
-          color: "var(--color-text-primary)",
+          fontFamily: "var(--font-code)",
+          fontSize: "var(--docs-code-font-size)",
+          lineHeight: "var(--docs-code-line-height)",
+          color: "var(--docs-syntax-text)",
           overflow: "auto",
           scrollbarGutter: "stable",
           minHeight: panelMinHeight,
