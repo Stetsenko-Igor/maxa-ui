@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { CalendarBlank, CaretLeft, CaretRight, CaretDown, Clock } from "@maxa/icons"
+import { useFieldId } from "@maxa/hooks"
 import { Calendar } from "../calendar/index.js"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./date-picker.css"
@@ -100,7 +101,7 @@ const DatePickerField = React.forwardRef<HTMLInputElement, DatePickerProps>(
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [open, setOpen] = React.useState(defaultOpen)
@@ -384,7 +385,7 @@ const DateRangePickerField = React.forwardRef<HTMLInputElement, DateRangePickerP
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [open, setOpen] = React.useState(false)
@@ -590,7 +591,7 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
     },
     ref,
   ) => {
-    const inputId = id ?? React.useId()
+    const inputId = useFieldId(id)
     const rootRef = React.useRef<HTMLDivElement>(null)
     const [open, setOpen] = React.useState(false)
     const [yearPickerOpen, setYearPickerOpen] = React.useState(false)

@@ -182,7 +182,7 @@ const DrawerClose = React.forwardRef<HTMLButtonElement, DrawerCloseProps>(
         ref={ref}
         type="button"
         data-inline={inline || undefined}
-        className={cn("maxa-drawer__close", className)}
+        className={cn(inline ? "maxa-drawer__close-inline" : "maxa-drawer__close", className)}
         onClick={(event) => {
           onClick?.(event)
           if (!event.defaultPrevented) setOpen(false)

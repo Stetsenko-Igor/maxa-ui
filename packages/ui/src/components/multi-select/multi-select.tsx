@@ -6,7 +6,7 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./multi-select.css"
 import { cn } from "../../lib/cn.js"
-import { useControlledState } from "@maxa/hooks"
+import { useControlledState, useFieldId } from "@maxa/hooks"
 
 export interface MultiSelectOption {
   label: string
@@ -46,7 +46,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
   ref,
 ) {
   const [selectedValues, setValues] = useControlledState({ value, defaultValue, onChange: onValueChange })
-  const inputId = React.useId()
+  const inputId = useFieldId()
   const hintId = hint || error ? `${inputId}-hint` : undefined
   const selectedOptions = options.filter((option) => selectedValues.includes(option.value))
 

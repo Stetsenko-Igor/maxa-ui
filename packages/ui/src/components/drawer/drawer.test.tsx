@@ -59,6 +59,16 @@ describe("Drawer", () => {
     expect(trigger).toHaveFocus()
   })
 
+  it("does not apply corner close geometry to inline footer actions", () => {
+    render(<DemoDrawer />)
+    fireEvent.click(screen.getByText("Open drawer"))
+    const cancel = screen.getByRole("button", { name: "Cancel" })
+
+    expect(cancel).toHaveClass("maxa-drawer__close-inline")
+    expect(cancel).toHaveClass("maxa-button")
+    expect(cancel).not.toHaveClass("maxa-drawer__close")
+  })
+
   it("supports controlled open state", () => {
     const onOpenChange = vi.fn()
     render(

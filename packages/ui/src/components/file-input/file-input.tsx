@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { UploadSimple } from "@maxa/icons"
+import { useFieldId } from "@maxa/hooks"
 import "./file-input.css"
 import { cn } from "../../lib/cn.js"
 
@@ -114,8 +115,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
     },
     ref,
   ) => {
-    const generatedId = React.useId()
-    const inputId = id ?? generatedId
+    const inputId = useFieldId(id)
     const inputRef = React.useRef<HTMLInputElement | null>(null)
     const [uncontrolledFiles, setUncontrolledFiles] = React.useState<File[]>(defaultFiles ?? [])
     const [dragging, setDragging] = React.useState(false)
