@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { X } from "@maxa/icons"
+import { useId } from "@maxa/hooks"
 import "./drawer.css"
 import { cn } from "../../lib/cn.js"
 import { useFocusTrap } from "../../lib/use-focus-trap.js"
@@ -33,8 +34,8 @@ function useDrawer() {
 
 function Drawer({ children, defaultOpen = false, open: controlledOpen, onOpenChange }: DrawerProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(defaultOpen)
-  const titleId = React.useId()
-  const descriptionId = React.useId()
+  const titleId = useId()
+  const descriptionId = useId()
   const open = controlledOpen ?? uncontrolledOpen
   const setOpen = React.useCallback((nextOpen: boolean) => {
     onOpenChange?.(nextOpen)

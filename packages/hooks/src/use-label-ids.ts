@@ -1,4 +1,5 @@
-import * as React from "react"
+import type * as React from "react"
+import { useId } from "./use-id.js"
 
 interface UseLabelIdsOptions {
   label?: React.ReactNode | undefined
@@ -18,13 +19,13 @@ interface UseLabelIdsResult {
 }
 
 /**
- * Derives accessible name + description ids from a base React.useId().
+ * Derives accessible name + description ids from a base generated id.
  * Covers the checkbox/radio/toggle pattern:
  *   top label, side label, description → composed labelledBy / describedBy.
  */
 export function useLabelIds(opts: UseLabelIdsOptions = {}): UseLabelIdsResult {
   const { label, sideLabel, description, ariaLabel, ariaLabelledBy, ariaDescribedBy } = opts
-  const baseId = React.useId()
+  const baseId = useId()
 
   const labelId = label ? `${baseId}-label` : undefined
   const sideLabelId = sideLabel ? `${baseId}-side-label` : undefined

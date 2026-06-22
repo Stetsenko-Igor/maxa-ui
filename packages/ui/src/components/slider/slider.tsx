@@ -4,7 +4,7 @@ import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 import "./slider.css"
 import { cn } from "../../lib/cn.js"
-import { useControlledState } from "@maxa/hooks"
+import { useControlledState, useId } from "@maxa/hooks"
 
 export interface SliderProps
   extends Omit<React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>, "children"> {
@@ -32,7 +32,7 @@ const Slider = React.forwardRef<
     },
     ref,
   ) => {
-    const labelId = React.useId()
+    const labelId = useId()
     const [currentValue, setValue] = useControlledState({ value, defaultValue, onChange: onValueChange })
     const firstValue = Array.isArray(currentValue) ? currentValue[0] : undefined
     const hasAccessibleName = Boolean(props["aria-label"] || props["aria-labelledby"])

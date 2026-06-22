@@ -1,4 +1,5 @@
 export const version = "0.0.0"
 export { useControlledState } from "./use-controlled-state.js"
 export { useFieldId } from "./use-field-id.js"
+export { useId } from "./use-id.js"
 export { useLabelIds } from "./use-label-ids.js"

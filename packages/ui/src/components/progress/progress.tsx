@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
+import { useId } from "@maxa/hooks"
 import "./progress.css"
 
 export type ProgressSize = "sm" | "md"
@@ -34,7 +35,7 @@ const Progress = React.forwardRef<
     },
     ref,
   ) => {
-    const labelId = React.useId()
+    const labelId = useId()
     const boundedValue = typeof value === "number" ? Math.min(Math.max(value, 0), max) : null
     const percent = boundedValue === null ? 0 : Math.round((boundedValue / max) * 100)
     const hasAccessibleName = Boolean(props["aria-label"] || props["aria-labelledby"])
