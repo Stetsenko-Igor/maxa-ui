@@ -79,7 +79,7 @@ export default function IntroductionPage() {
       }
     >
       <div style={badgeRowStyle}>
-        {["React 19", "TypeScript", "CSS Variables", "Radix Primitives", "CVA"].map((badge) => (
+        {["React 17+", "TypeScript", "CSS Variables", "Radix Primitives", "CVA"].map((badge) => (
           <span key={badge} style={badgeStyle}>{badge}</span>
         ))}
       </div>

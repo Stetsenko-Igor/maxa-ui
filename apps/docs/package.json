@@ -11,6 +11,7 @@
     "lint": "eslint app/"
   },
   "dependencies": {
+    "@maxa/icons": "workspace:^",
     "@maxa/tokens": "workspace:^",
     "@maxa/ui": "workspace:^",
     "@tailwindcss/postcss": "^4.2.3",

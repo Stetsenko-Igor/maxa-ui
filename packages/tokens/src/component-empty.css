@@ -8,6 +8,9 @@
   --empty-icon-size-sm: 32px;
   --empty-icon-size-md: 40px;
   --empty-icon-size-lg: 48px;
+  --empty-icon-glyph-size-sm: 16px;
+  --empty-icon-glyph-size-md: 20px;
+  --empty-icon-glyph-size-lg: 24px;
   --empty-icon-bg: var(--color-bg-muted);
   --empty-icon-color: var(--color-fg-tertiary);
   --empty-title-color: var(--color-text-primary);

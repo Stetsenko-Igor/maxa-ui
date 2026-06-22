@@ -60,7 +60,7 @@ Expected package shape:
 - CSS assets are copied into `dist` during package builds
 - `files` allowlists keep published tarballs focused on runtime artifacts
 - CSS files are listed as side effects so bundlers do not tree-shake component styles
-- `@maxa/ui` supports React 18 and 19 peer ranges unless a component explicitly requires a newer React API
+- `@maxa/ui` supports React 17, 18, and 19 peer ranges unless a component explicitly requires a newer React API
 
 Do not publish packages from local WIP. Before any publish attempt, run package builds, package dry-runs, and the full verification pipeline.
 

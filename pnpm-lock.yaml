@@ -56,6 +56,9 @@ importers:
 
   apps/docs:
     dependencies:
+      '@maxa/icons':
+        specifier: workspace:^
+        version: link:../../packages/icons
       '@maxa/tokens':
         specifier: workspace:^
         version: link:../../packages/tokens

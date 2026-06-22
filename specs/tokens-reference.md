@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1615
+Total tokens: 1633
 
 ## Primitives
 
@@ -1170,12 +1170,27 @@ Source: `packages/tokens/src/component-table.css`
 --table-cell-link-text: var(--color-action-primary);
 --table-cell-link-font-weight: var(--font-weight-semibold);
 --table-cell-content-gap: var(--spacing-2);
---table-cell-icon-size: 20px;
+--table-cell-icon-size: 16px;
 --table-cell-stack-gap: var(--spacing-1);
 --table-cell-padding-x: var(--spacing-3);
 --table-cell-padding-y-sm: var(--spacing-2);
 --table-cell-padding-y: var(--spacing-2);
 --table-cell-padding-y-lg: var(--spacing-4);
+--table-row-actions-gap: var(--spacing-1);
+--table-row-action-size: 28px;
+--table-row-action-icon-size: 16px;
+--table-row-action-radius: 3px;
+--table-row-action-bg: var(--color-bg-surface);
+--table-row-action-bg-hover: var(--color-action-neutral-subtle-hover);
+--table-row-action-bg-active: var(--color-action-neutral-subtle-active);
+--table-row-action-bg-disabled: var(--color-bg-surface);
+--table-row-action-border: var(--color-border-primary);
+--table-row-action-border-hover: var(--color-border-primary);
+--table-row-action-border-active: var(--color-border-primary);
+--table-row-action-text: var(--color-fg-secondary);
+--table-row-action-text-hover: var(--color-fg-primary);
+--table-row-action-text-active: var(--color-fg-primary);
+--table-row-action-text-disabled: var(--color-text-disabled);
 --table-thumbnail-size: 40px;
 --table-thumbnail-radius: var(--radius-sm);
 --table-thumbnail-bg: var(--color-bg-muted);
@@ -1245,6 +1260,9 @@ Source: `packages/tokens/src/component-empty.css`
 --empty-icon-size-sm: 32px;
 --empty-icon-size-md: 40px;
 --empty-icon-size-lg: 48px;
+--empty-icon-glyph-size-sm: 16px;
+--empty-icon-glyph-size-md: 20px;
+--empty-icon-glyph-size-lg: 24px;
 --empty-icon-bg: var(--color-bg-muted); /* dark: var(--color-bg-neutral-subtle) */
 --empty-icon-color: var(--color-fg-tertiary);
 --empty-title-color: var(--color-text-primary);
@@ -2069,7 +2087,7 @@ Source: `packages/tokens/src/component-datatable.css`
 --datatable-empty-min-height: 220px;
 --datatable-skeleton-line-height: 16px;
 --datatable-skeleton-line-width: 120px;
---datatable-skeleton-title-width: 180px;
+--datatable-skeleton-title-width: 220px;
 --datatable-skeleton-subtitle-width: 96px;
 --datatable-skeleton-subtitle-height: 10px;
 --datatable-skeleton-avatar-size: 32px;

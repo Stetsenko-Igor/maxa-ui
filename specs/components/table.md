@@ -47,9 +47,12 @@ Most MAXA product tables are selectable lists. Default table examples should inc
 Row actions should be consistent across Table and DataTable examples:
 
 - Use `TableCell cellType="icon-button"` for the action cell.
-- Use the same small ghost `IconButton` treatment for row actions.
+- Use the same bordered `UtilityButton` treatment for row actions:
+  `maxa-table__row-actions` on the group and `maxa-table__row-action` on each button.
 - Show direct Edit and Copy actions before the More actions button when space allows.
-- Do not mix `UtilityButton`, custom three-dot SVG sizing, and `IconButton` in row action cells.
+- Use the Figma icon set for this cell: PencilSimple, Copy, and DotsThreeVertical.
+- Use 16px by 16px icons for row action buttons in every density.
+- Do not mix ghost `IconButton`, custom unbordered buttons, or mismatched icon sizes in row action cells.
 
 ## API
 

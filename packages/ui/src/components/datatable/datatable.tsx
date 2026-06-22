@@ -111,19 +111,10 @@ function LoadingCell({ cellType }: { cellType?: TableCellType }) {
 
   if (cellType === "thumbnail") {
     return (
-      <span className="maxa-table__cell-content">
-        <Skeleton variant="text" className="maxa-datatable__skeleton-thumbnail" />
-        <span className="maxa-table__cell-stack">
-          <Skeleton
-            variant="text"
-            className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--title"
-          />
-          <Skeleton
-            variant="text"
-            className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--subtitle"
-          />
-        </span>
-      </span>
+      <Skeleton
+        variant="text"
+        className="maxa-datatable__skeleton-line maxa-datatable__skeleton-line--title"
+      />
     )
   }
 

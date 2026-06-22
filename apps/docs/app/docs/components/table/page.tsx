@@ -5,7 +5,6 @@ import {
   Badge,
   Button,
   Checkbox,
-  IconButton,
   Input,
   Table,
   TableBody,
@@ -20,6 +19,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { TableRowActions } from "../_table-row-actions"
 
 export const metadata: Metadata = { title: "Table - MAXA UI" }
 
@@ -113,44 +113,6 @@ const PROPS = [
   },
 ]
 
-function DotsIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M3.5 8a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Z"
-      />
-    </svg>
-  )
-}
-
-function EditIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M11.8 2.2a1.5 1.5 0 0 1 2.12 2.12l-7.5 7.5-2.83.71.71-2.83 7.5-7.5Zm-.88 2.12L5.24 10l-.24.95.95-.24 5.68-5.68-.71-.71Z"
-      />
-      <path fill="currentColor" d="M3 13h10v1H3v-1Z" />
-    </svg>
-  )
-}
-
-function CopyIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M5 2.5A1.5 1.5 0 0 1 6.5 1h6A1.5 1.5 0 0 1 14 2.5v6A1.5 1.5 0 0 1 12.5 10h-1V8.5h1v-6h-6v1H5v-1Z"
-      />
-      <path
-        fill="currentColor"
-        d="M2 6.5A1.5 1.5 0 0 1 3.5 5h6A1.5 1.5 0 0 1 11 6.5v6A1.5 1.5 0 0 1 9.5 14h-6A1.5 1.5 0 0 1 2 12.5v-6Zm1.5 0v6h6v-6h-6Z"
-      />
-    </svg>
-  )
-}
-
 function SparkIcon() {
   return (
     <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -159,16 +121,6 @@ function SparkIcon() {
         d="M10 2.25 11.8 7.2l4.95 1.8-4.95 1.8L10 15.75 8.2 10.8 3.25 9l4.95-1.8L10 2.25Z"
       />
     </svg>
-  )
-}
-
-function RowActions() {
-  return (
-    <span className="docs-row-actions">
-      <IconButton aria-label="Edit design" icon={<EditIcon />} size="sm" variant="ghost" />
-      <IconButton aria-label="Copy design" icon={<CopyIcon />} size="sm" variant="ghost" />
-      <IconButton aria-label="Open row actions" icon={<DotsIcon />} size="sm" variant="ghost" />
-    </span>
   )
 }
 
@@ -217,7 +169,7 @@ function renderCellVariant(
         </Button>
       )
     case "icon-button":
-      return <RowActions />
+      return <TableRowActions />
     case "icon":
       return (
         <span className="maxa-table__cell-icon" aria-hidden="true">
@@ -300,7 +252,7 @@ function ExampleTable() {
             $148.00
           </TableCell>
           <TableCell cellType="icon-button">
-            <RowActions />
+            <TableRowActions />
           </TableCell>
         </TableRow>
         <TableRow interactive>
@@ -323,7 +275,7 @@ function ExampleTable() {
             $72.00
           </TableCell>
           <TableCell cellType="icon-button">
-            <RowActions />
+            <TableRowActions />
           </TableCell>
         </TableRow>
         <TableRow interactive>
@@ -346,7 +298,7 @@ function ExampleTable() {
             $32.00
           </TableCell>
           <TableCell cellType="icon-button">
-            <RowActions />
+            <TableRowActions />
           </TableCell>
         </TableRow>
       </TableBody>
@@ -381,7 +333,7 @@ export default function TablePage() {
       <DocsSection id="installation" title="Installation">
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
-          imports={`import {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
+          imports={`import {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n  UtilityButton,\n} from "@maxa/ui"\nimport { Copy, DotsThreeVertical, PencilSimple } from "@maxa/icons"\nimport "@maxa/tokens/theme.css"`}
           usage={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead headerType="checkbox"><Checkbox aria-label="Select all" /></TableHead>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead headerType="empty" />\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive>\n      <TableCell cellType="checkbox"><Checkbox aria-label="Select row" /></TableCell>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell>Approved</TableCell>\n      <TableCell cellType="icon-button"><RowActions /></TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}
         />
       </DocsSection>

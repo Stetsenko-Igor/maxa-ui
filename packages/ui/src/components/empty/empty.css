@@ -28,14 +28,29 @@
   flex-shrink: 0;
 }
 
+.maxa-empty__icon svg {
+  width: var(--empty-icon-glyph-size-md);
+  height: var(--empty-icon-glyph-size-md);
+}
+
 .maxa-empty--sm .maxa-empty__icon {
   width: var(--empty-icon-size-sm);
   height: var(--empty-icon-size-sm);
 }
 
+.maxa-empty--sm .maxa-empty__icon svg {
+  width: var(--empty-icon-glyph-size-sm);
+  height: var(--empty-icon-glyph-size-sm);
+}
+
 .maxa-empty--lg .maxa-empty__icon {
   width: var(--empty-icon-size-lg);
   height: var(--empty-icon-size-lg);
+}
+
+.maxa-empty--lg .maxa-empty__icon svg {
+  width: var(--empty-icon-glyph-size-lg);
+  height: var(--empty-icon-glyph-size-lg);
 }
 
 .maxa-empty__content {

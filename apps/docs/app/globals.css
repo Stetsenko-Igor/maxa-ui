@@ -118,13 +118,6 @@ body {
   width: 10rem;
 }
 
-.docs-row-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-1);
-  white-space: nowrap;
-}
-
 .docs-product-table-example {
   width: 100%;
 }

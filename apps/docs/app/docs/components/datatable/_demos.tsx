@@ -4,15 +4,10 @@ import {
   Badge,
   Button,
   DataTable,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  IconButton,
   Empty,
   type ColumnDef,
 } from "@maxa/ui"
+import { TableRowActions } from "../_table-row-actions"
 
 type DesignRow = {
   id: string
@@ -112,44 +107,6 @@ function StatusBadge({ status }: { status: DesignRow["status"] }) {
   return <Badge intent={intent}>{status}</Badge>
 }
 
-function DotsIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M3.5 8a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Zm4.5 0a1.25 1.25 0 1 0 0 .01V8Z"
-      />
-    </svg>
-  )
-}
-
-function EditIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M11.8 2.2a1.5 1.5 0 0 1 2.12 2.12l-7.5 7.5-2.83.71.71-2.83 7.5-7.5Zm-.88 2.12L5.24 10l-.24.95.95-.24 5.68-5.68-.71-.71Z"
-      />
-      <path fill="currentColor" d="M3 13h10v1H3v-1Z" />
-    </svg>
-  )
-}
-
-function CopyIcon() {
-  return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M5 2.5A1.5 1.5 0 0 1 6.5 1h6A1.5 1.5 0 0 1 14 2.5v6A1.5 1.5 0 0 1 12.5 10h-1V8.5h1v-6h-6v1H5v-1Z"
-      />
-      <path
-        fill="currentColor"
-        d="M2 6.5A1.5 1.5 0 0 1 3.5 5h6A1.5 1.5 0 0 1 11 6.5v6A1.5 1.5 0 0 1 9.5 14h-6A1.5 1.5 0 0 1 2 12.5v-6Zm1.5 0v6h6v-6h-6Z"
-      />
-    </svg>
-  )
-}
-
 function AudienceIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -173,28 +130,6 @@ function PreviewCell({ row }: { row: DesignRow }) {
         <span className="maxa-table__cell-title">{row.design}</span>
         <span className="maxa-table__cell-subtitle">{row.format}</span>
       </span>
-    </span>
-  )
-}
-
-function RowActions() {
-  return (
-    <span className="docs-row-actions">
-      <IconButton aria-label="Edit design" icon={<EditIcon />} size="sm" variant="ghost" />
-      <IconButton aria-label="Copy design" icon={<CopyIcon />} size="sm" variant="ghost" />
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <IconButton aria-label="Open row actions" icon={<DotsIcon />} size="sm" variant="ghost" />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem>Open design</DropdownMenuItem>
-          <DropdownMenuItem>Edit design</DropdownMenuItem>
-          <DropdownMenuItem>Copy design</DropdownMenuItem>
-          <DropdownMenuItem>Share</DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem variant="destructive">Archive</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
     </span>
   )
 }
@@ -228,7 +163,7 @@ const COLUMNS: ColumnDef<DesignRow>[] = [
     headerType: "empty",
     cellType: "icon-button",
     align: "right",
-    cell: () => <RowActions />,
+    cell: () => <TableRowActions menu />,
     width: "112px",
   },
 ]
@@ -330,7 +265,7 @@ export function CellTypesDataTableDemo() {
             headerType: "empty",
             cellType: "icon-button",
             align: "right",
-            cell: () => <RowActions />,
+            cell: () => <TableRowActions menu />,
             width: "112px",
           },
         ]}

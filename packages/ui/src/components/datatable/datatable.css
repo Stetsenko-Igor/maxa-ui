@@ -85,9 +85,18 @@
   min-height: 0;
 }
 
+.maxa-datatable__skeleton-cell .maxa-table__cell-content {
+  flex: 0 0 auto;
+}
+
+.maxa-datatable__skeleton-cell .maxa-table__cell-stack {
+  width: var(--datatable-skeleton-title-width);
+  flex: 0 0 auto;
+}
+
 .maxa-datatable__skeleton-line {
   width: var(--datatable-skeleton-line-width);
-  max-width: 100%;
+  flex: 0 0 auto;
   height: var(--datatable-skeleton-line-height);
   min-height: var(--datatable-skeleton-line-height);
 }

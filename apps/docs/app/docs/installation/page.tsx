@@ -249,7 +249,7 @@ background-color: var(--button-primary-bg);`}
 
       <DocsPageSection id="peer-dependencies" title="Peer dependencies">
         <p style={pStyle}>
-          MAXA UI requires React 18 or 19 and does not bundle React itself. The component package
+          MAXA UI supports React 17, 18, and 19 and does not bundle React itself. The component package
           peers on <code style={inlineCodeStyle}>@maxa/tokens</code> because the consuming app must
           load the token stylesheet once. Radix UI primitives and{" "}
           <code style={inlineCodeStyle}>@maxa/icons</code> are direct dependencies of{" "}
@@ -259,8 +259,8 @@ background-color: var(--button-primary-bg);`}
           code={`{
   "peerDependencies": {
     "@maxa/tokens": "^0.1.0",
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   }
 }`}
         />

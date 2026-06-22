@@ -14,7 +14,7 @@ System icons are intentionally curated instead of re-exporting the full Phosphor
 
 ## Requirements
 
-- React 18 or 19
+- React 17, 18, or 19
 
 ## Usage inside this workspace
 
