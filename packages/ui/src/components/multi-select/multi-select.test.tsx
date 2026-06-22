@@ -42,6 +42,18 @@ describe("MultiSelect", () => {
     expect(onValueChange).toHaveBeenCalledWith(["pdf"])
   })
 
+  it("removing a chip does not open the dropdown menu", () => {
+    render(<MultiSelect options={options} defaultValue={["pdf", "png"]} />)
+    const removeButton = screen.getByRole("button", { name: "Remove PNG" })
+
+    fireEvent.pointerDown(removeButton, { button: 0, ctrlKey: false })
+    fireEvent.click(removeButton)
+
+    expect(screen.queryByRole("menu")).not.toBeInTheDocument()
+    expect(screen.queryByRole("menuitemcheckbox")).not.toBeInTheDocument()
+    expect(screen.queryByText("PNG")).not.toBeInTheDocument()
+  })
+
   it("removing a chip updates the rendered chips", () => {
     render(<MultiSelect options={options} defaultValue={["pdf", "png"]} />)
     expect(document.querySelectorAll(".maxa-multi-select__chip")).toHaveLength(2)

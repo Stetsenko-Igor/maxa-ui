@@ -103,6 +103,17 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
                       aria-label={`Remove ${option.label}`}
                       className="maxa-multi-select__chip-remove"
                       disabled={disabled}
+                      onPointerDown={(event) => {
+                        // Radix opens the menu on pointerdown; stop it here so the
+                        // remove button doesn't also toggle the dropdown.
+                        event.preventDefault()
+                        event.stopPropagation()
+                      }}
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.stopPropagation()
+                        }
+                      }}
                       onClick={(event) => {
                         event.preventDefault()
                         event.stopPropagation()

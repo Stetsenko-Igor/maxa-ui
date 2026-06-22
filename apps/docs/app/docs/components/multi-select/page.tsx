@@ -17,6 +17,7 @@ const OPTIONS = [
 const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
+  { href: "#wrapping", label: "Wrapping" },
   { href: "#states", label: "States" },
   { href: "#api-reference", label: "API reference" },
 ]
@@ -48,7 +49,7 @@ export default function MultiSelectPage() {
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
           <ComponentPreview code={`<MultiSelect\n  label="Asset types"\n  options={options}\n  defaultValue={["brand", "social"]}\n/>`}>
-            <div style={{ padding: "32px" }}>
+            <div style={{ width: "320px" }}>
               <MultiSelect label="Asset types" options={OPTIONS} defaultValue={["brand", "social"]} />
             </div>
           </ComponentPreview>
@@ -63,10 +64,28 @@ export default function MultiSelectPage() {
         />
       </DocsSection>
 
+      <DocsSection
+        id="wrapping"
+        title="Wrapping"
+        description="The field fills its container width. As tags accumulate they wrap onto new rows and the field grows in height; removing a tag keeps the width constant."
+      >
+        <DocsExample title="Tags wrap to new rows">
+          <ComponentPreview code={`<MultiSelect\n  label="Asset types"\n  options={options}\n  defaultValue={["brand", "social", "presentation", "print"]}\n/>`}>
+            <div style={{ width: "260px" }}>
+              <MultiSelect
+                label="Asset types"
+                options={OPTIONS}
+                defaultValue={["brand", "social", "presentation", "print"]}
+              />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
       <DocsSection id="states" title="States">
         <DocsExample title="Error and disabled">
           <ComponentPreview code={`<MultiSelect label="Asset types" options={options} error="Choose at least one type" />\n<MultiSelect label="Locked types" options={options} defaultValue={["brand"]} disabled />`}>
-            <div style={{ display: "grid", gap: "20px", padding: "32px" }}>
+            <div style={{ display: "grid", gap: "20px", width: "320px" }}>
               <MultiSelect label="Asset types" options={OPTIONS} error="Choose at least one type" />
               <MultiSelect label="Locked types" options={OPTIONS} defaultValue={["brand"]} disabled />
             </div>
