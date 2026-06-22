@@ -2,7 +2,7 @@
 
 ## What This Is
 
-An agent-readable design-system platform for MAXA: design tokens, React components, LLM-readable specs, docs/catalog pages, Figma handoff, and production-grounded MAXA product patterns that together prevent agents and humans from fabricating design values or generic UI surfaces. Distributed as a private monorepo with public packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`).
+An agent-readable design-system platform for MAXA: design tokens, React components, LLM-readable specs, docs/catalog pages, Figma handoff, and production-grounded MAXA product patterns that together prevent agents and humans from fabricating design values or generic UI surfaces. A private monorepo of versioned packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`); not yet published to any registry — distribution is GitHub-only.
 
 ## Core Value
 
@@ -21,23 +21,24 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 - ✓ **Figma token bundle** (`pnpm figma:bundle` → `packages/tokens/figma/import-bundle.json`) — shipped in M0
 - ✓ **Surface model + neutral palette polish** (`bg/surface`, semantic spacing, breakpoints, border-subtle) — shipped in M2 (2026-05-13..15). Note: `bg/elevated` alias removed 2026-06-05 (zero consumers; use `bg/surface`).
 - ✓ **LLM-readable spec layer** at `specs/` (foundations, components, patterns, tokens-reference) — shipped in M1
+- ✓ **Shadow / elevation tokens** (`packages/tokens/src/shadows.css`, `specs/foundations/shadows.md`) — shipped. Minimal scale; "gray page + white surface" hierarchy.
+- ✓ **Motion / animation tokens** (`packages/tokens/src/motion.css`, `specs/foundations/motion.md`) — shipped with a reduced-motion guard.
+- ✓ **Shared React hooks** (`@maxa/hooks`: `useFieldId`, `useLabelIds`, `useControlledState`) adopted across form components — shipped 2026-06-16.
 
 ### Active
 
 <!-- Current scope. Building toward these. Populated when Igor picks Phase 1 work. -->
 
-- **Foundation Excellence** — active next scope. Before product patterns, tighten tokens, semantic naming, component APIs, visual quality, reuse boundaries, docs, and verification.
-- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. The current component layer is complete, but product patterns are deferred until the foundation feels excellent. The Tailwind adapter is post-core adoption work, not the next main objective.
+- **Foundation Excellence** — active scope. Before product patterns, tighten tokens, semantic naming, component APIs, visual quality, reuse boundaries, docs, and verification. Progress: shared React behavior + UI internal utilities cleanup tranche done (2026-06-16). Next P1s: F5 variant-vocabulary glossary (`intent`/`appearance`/`tone`/`variant` alignment across ~10 components) and F9 MultiSelect rebuild to a true ARIA listbox/chip field.
+- **Expanded platform target** — accepted 2026-06-04. MAXA UI should be closer in ambition to Untitled UI / shadcn/ui, but grounded in MAXA's production product inventory. The current component layer is complete; product patterns are deferred until the foundation feels excellent. The Tailwind adapter is **cancelled** — the MAXA product stack has no Tailwind (confirmed with the product team).
 - **CI quality gate** — `pnpm verify` mirrors GitHub Actions: `typecheck → lint → audit:tokens → tokens:reference:check → test → build → pack:smoke`. Token audit blocks hardcoded hex values and direct primitive-token usage in component code. `pack:smoke` verifies packed entrypoints plus a temporary Vite consumer build.
 
 ### Out of Scope
 
 <!-- Explicit boundaries. Includes reasoning to prevent re-adding. -->
 
-- **Shadow / elevation tokens** — shipped (`packages/tokens/src/shadows.css`, `specs/foundations/shadows.md`). Design uses "gray page + white surface" hierarchy; shadow scale is minimal and present. Not out of scope.
-- **Motion / animation tokens** — shipped (`packages/tokens/src/motion.css`, `specs/foundations/motion.md`) with reduced-motion guard. Not out of scope.
 - **Z-index / stacking-context tokens** — implicit per component today. Revisit when overlay components arrive.
-- **Registry release / versioning** — do not run `pnpm changeset version` or publish packages unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only.
+- **Registry release / versioning** — publishing setup is the planned next track (target: GitHub Packages, private), but actual `pnpm changeset version` / publish stays **gated**: do not run them unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only until then.
 - **OAuth / external auth tokens** — design system has no auth scope. Out of project bounds.
 
 ## Context
@@ -71,14 +72,14 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 | Spec-first workflow under `specs/`                                                                                | LLMs fabricate design values; specs give grounded context                                                                                                                  | ✓ Good               |
 | `forwardRef + cva + Slot` pattern across all components                                                           | Single shape simplifies review, audit, and authoring                                                                                                                       | ✓ Good               |
 | CSS custom properties as runtime contract (no CSS-in-JS)                                                          | Universal consumer support; trivial theme switching                                                                                                                        | ✓ Good               |
-| Surface model: `bg/surface` (white) + `bg/elevated` (one step up) — no shadows                                    | School A aesthetic; testable without elevation tokens                                                                                                                      | ✓ Good               |
-| `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && test && build`)                                   | One local command answers "will this pass GitHub Actions?"                                                                                                                 | ✓ Good               |
+| Surface model: `bg/surface` (white) — minimal shadow scale                                                        | School A aesthetic; `bg/elevated` alias removed 2026-06-05 (zero consumers)                                                                                                 | ✓ Good               |
+| `pnpm verify` mirrors CI (`typecheck && lint && audit:tokens && tokens:reference:check && test && build && pack:smoke`) | One local command answers "will this pass GitHub Actions?"                                                                                                                 | ✓ Good               |
 | Brownfield GSD initialization (templates filled manually from existing reality, not `/gsd:new-project` interview) | Existing code and specs already encode requirements; the interview would re-derive what's already known                                                                    | — Pending evaluation |
 | MAXA UI targets a full design-system platform, not a minimal component package                                    | Igor accepted the Untitled UI / shadcn-level ambition on 2026-06-04; MAXA needs base components, app components, product patterns, docs/catalog, and Figma handoff         | Accepted             |
-| Tailwind adapter is post-core adoption work                                                                       | It helps external consumers use MAXA tokens in Tailwind, but it does not replace the core component/pattern catalog                                                        | Accepted             |
+| Tailwind adapter cancelled                                                                                        | The MAXA product stack has no Tailwind (confirmed with the product team 2026-06); an adapter has no consumer                                                                | Superseded           |
 | Package readiness is not release mode                                                                             | Igor explicitly stopped accidental versioning on 2026-06-15; package smoke/docs can improve, but `pnpm changeset version` and publishing require explicit release approval | Accepted             |
 | Foundation excellence comes before product patterns                                                               | Igor wants tokens, semantics, components, visual polish, and reuse to feel excellent before moving into MAXA product patterns                                              | Accepted             |
 
 ---
 
-_Last updated: 2026-06-15 after switching next focus to Foundation Excellence_
+_Last updated: 2026-06-22 — freshness pass: shadows/motion/hooks marked shipped, Tailwind adapter cancelled, `bg/elevated` references dropped, registry/verify lines corrected._
