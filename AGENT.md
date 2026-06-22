@@ -2,7 +2,7 @@
 
 > Raw: https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/AGENT.md
 
-Component library: @maxa/ui (React + TypeScript + Radix UI + Tailwind v4)
+Component library: @maxa/ui (React + TypeScript + Radix UI + Tailwind v4). Supports React 17, 18, and 19 (a `useId` ponyfill covers React 17).
 
 **Status:** Under development — full context available in Phase 4.
 

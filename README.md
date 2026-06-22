@@ -75,6 +75,13 @@ Then import components from `@maxa/ui`:
 import { Button, Select, Dialog } from "@maxa/ui"
 ```
 
+### Compatibility
+
+`@maxa/ui`, `@maxa/hooks`, and `@maxa/icons` support **React 17, 18, and 19**
+(`react`/`react-dom` peer range `^17 || ^18 || ^19`). React 17 is supported via a
+`useId` ponyfill in `@maxa/hooks` (native `useId` on 18+, a stable counter fallback
+on 17) — intended for client-rendered (SPA) apps.
+
 ## Installation / Consumption
 
 Distribution is **GitHub-only**. The packages are not published to the npm registry, and there is no plan to publish them there.

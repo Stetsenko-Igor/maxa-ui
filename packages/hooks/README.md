@@ -4,11 +4,13 @@ Shared React hooks for reusable interaction logic across Maxa products - the hom
 
 ## Status
 
-Placeholder. The package builds and exports only a `version` constant - hooks are planned for a later phase. The package exists now so that workspace wiring, build scripts, and consumers do not change when hooks land.
+Active. Ships the shared interaction hooks used across `@maxa/ui` components:
+controlled/uncontrolled state, stable id generation (React 17-safe), and accessible
+label/description id wiring.
 
 ## Requirements
 
-- React 18 or 19 (peer dependency)
+- React 17, 18, or 19 (peer dependency)
 
 ## Usage inside this workspace
 
@@ -36,9 +38,13 @@ See the root [README](../../README.md) for distribution options and caveats.
 
 ## Exports
 
-- `version` - package version string (placeholder)
+- `useControlledState` - controlled/uncontrolled value with an `onChange` callback
+- `useFieldId` - resolves a provided id or generates a stable one
+- `useId` - `useId` ponyfill: native React 18+ `useId`, with a stable counter fallback for React 17 (client/SPA)
+- `useLabelIds` - derives label / side-label / description ids and composed `aria-labelledby` / `aria-describedby`
+- `version` - package version string
 
 ## Planned scope
 
-- Interaction hooks shared by `@maxa/ui` components (focus management, controlled/uncontrolled state, dismissal)
+- Additional interaction hooks shared by `@maxa/ui` components (focus management, dismissal)
 - Product-level hooks that encode Maxa UX patterns

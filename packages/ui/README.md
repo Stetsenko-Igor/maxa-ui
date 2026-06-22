@@ -4,7 +4,7 @@ Accessible React components for the Maxa design system. Every component is style
 
 ## Requirements
 
-- React 18 or 19 (peer dependency)
+- React 17, 18, or 19 (peer dependency). On React 17 a `useId` ponyfill from `@maxa/hooks` is used automatically.
 - `@maxa/tokens` (peer dependency) - the theme CSS must be loaded once at the app root
 - `@maxa/icons` is a direct dependency because components import curated system icons at runtime
 
