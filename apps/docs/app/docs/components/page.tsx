@@ -471,11 +471,11 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>FileInput</h2>
             <p style={description}>
-              Low-level file picker and optional dropzone primitive for product upload flows.
+              Styled native file picker — a Choose File button joined to a file-name field.
             </p>
             <div style={preview}>
               <div style={{ width: "100%", maxWidth: "300px" }}>
-                <FileInput label="Attachment" description="PDF, PNG, JPG, or SVG" />
+                <FileInput label="Attachment" accept=".pdf,image/*" />
               </div>
             </div>
             <span style={footer}>View FileInput →</span>

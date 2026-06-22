@@ -1,18 +1,46 @@
 .maxa-file-input {
   display: grid;
-  gap: var(--file-input-label-gap);
+  gap: var(--file-input-row-gap);
   font-family: var(--file-input-font-family);
-  color: var(--file-input-title-text);
+
+  /* Per-size values resolved by the size modifier below. */
+  --_height: var(--file-input-md-height);
+  --_field-padding-x: var(--file-input-md-field-padding-x);
+  --_button-padding-x: var(--file-input-md-button-padding-x);
+  --_gap: var(--file-input-md-gap);
+  --_radius: var(--file-input-md-radius);
+  --_text: var(--file-input-md-text);
+  --_icon: var(--file-input-md-icon);
 }
 
+.maxa-file-input--sm {
+  --_height: var(--file-input-sm-height);
+  --_field-padding-x: var(--file-input-sm-field-padding-x);
+  --_button-padding-x: var(--file-input-sm-button-padding-x);
+  --_gap: var(--file-input-sm-gap);
+  --_radius: var(--file-input-sm-radius);
+  --_text: var(--file-input-sm-text);
+  --_icon: var(--file-input-sm-icon);
+}
+
+.maxa-file-input--lg {
+  --_height: var(--file-input-lg-height);
+  --_field-padding-x: var(--file-input-lg-field-padding-x);
+  --_button-padding-x: var(--file-input-lg-button-padding-x);
+  --_gap: var(--file-input-lg-gap);
+  --_radius: var(--file-input-lg-radius);
+  --_text: var(--file-input-lg-text);
+  --_icon: var(--file-input-lg-icon);
+}
+
+/* ── Label ──────────────────────────────────────────────────────── */
 .maxa-file-input__label-row {
   display: flex;
   align-items: center;
-  gap: var(--spacing-1);
+  gap: var(--file-input-label-gap);
 }
 
-.maxa-file-input__label,
-.maxa-file-input__required {
+.maxa-file-input__label {
   color: var(--file-input-label-text);
   font-size: var(--file-input-label-font-size);
   line-height: var(--file-input-label-line-height);
@@ -20,70 +48,20 @@
 }
 
 .maxa-file-input__required {
-  color: var(--file-input-error-text);
+  color: var(--file-input-required-text);
 }
 
-.maxa-file-input__surface {
+.maxa-file-input__info {
+  display: inline-flex;
+  color: var(--file-input-info-color);
+}
+
+/* ── Control (button + field) ───────────────────────────────────── */
+.maxa-file-input__control {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: var(--file-input-gap);
-  min-height: var(--file-input-min-height-md);
-  padding: var(--file-input-padding-md);
-  border: 1px dashed var(--file-input-border);
-  border-radius: var(--file-input-radius);
-  background: var(--file-input-bg);
-  color: var(--file-input-title-text);
-  cursor: pointer;
-  outline: none;
-  transition:
-    background-color var(--motion-duration-fast) var(--motion-ease-standard),
-    border-color var(--motion-duration-fast) var(--motion-ease-standard),
-    box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
-}
-
-.maxa-file-input--sm .maxa-file-input__surface {
-  min-height: var(--file-input-min-height-sm);
-  padding: var(--file-input-padding-sm);
-}
-
-.maxa-file-input--lg .maxa-file-input__surface {
-  min-height: var(--file-input-min-height-lg);
-  padding: var(--file-input-padding-lg);
-}
-
-.maxa-file-input__surface:hover,
-.maxa-file-input--hover .maxa-file-input__surface {
-  border-color: var(--file-input-border-hover);
-  background: var(--file-input-bg-hover);
-}
-
-.maxa-file-input__surface:focus-visible,
-.maxa-file-input--focus .maxa-file-input__surface {
-  border-color: var(--file-input-border-focus);
-  box-shadow: 0 0 0 var(--file-input-focus-ring-offset) var(--file-input-bg),
-    0 0 0 calc(var(--file-input-focus-ring-offset) + var(--file-input-focus-ring-width)) var(--file-input-focus-ring);
-}
-
-.maxa-file-input--dragging .maxa-file-input__surface,
-.maxa-file-input__surface[data-dragging] {
-  border-color: var(--file-input-border-focus);
-  background: var(--file-input-bg-dragging);
-}
-
-.maxa-file-input--error .maxa-file-input__surface {
-  border-color: var(--file-input-border-error);
-}
-
-.maxa-file-input--disabled {
-  opacity: var(--file-input-disabled-opacity);
-}
-
-.maxa-file-input--disabled .maxa-file-input__surface {
-  border-color: var(--file-input-border-disabled);
-  background: var(--file-input-disabled-bg);
-  color: var(--file-input-disabled-text);
-  cursor: not-allowed;
+  align-items: stretch;
+  width: 100%;
 }
 
 .maxa-file-input__native {
@@ -98,103 +76,181 @@
   border: 0;
 }
 
-.maxa-file-input__icon {
+/* ── Button ─────────────────────────────────────────────────────── */
+.maxa-file-input__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--file-input-icon-size-md);
-  height: var(--file-input-icon-size-md);
   flex: 0 0 auto;
-  border-radius: var(--radius-full);
-  background: var(--file-input-icon-bg);
-  color: var(--file-input-icon-color);
+  gap: var(--_gap);
+  height: var(--_height);
+  padding-inline: var(--_button-padding-x);
+  border-radius: var(--_radius) 0 0 var(--_radius);
+  background: var(--file-input-button-bg);
+  color: var(--file-input-button-text);
+  font-size: var(--_text);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--motion-duration-fast) var(--motion-ease-standard);
 }
 
-.maxa-file-input--sm .maxa-file-input__icon {
-  width: var(--file-input-icon-size-sm);
-  height: var(--file-input-icon-size-sm);
+.maxa-file-input__button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--_icon);
+  height: var(--_icon);
 }
 
-.maxa-file-input--lg .maxa-file-input__icon {
-  width: var(--file-input-icon-size-lg);
-  height: var(--file-input-icon-size-lg);
+.maxa-file-input__button-label {
+  white-space: nowrap;
 }
 
-.maxa-file-input--dragging .maxa-file-input__icon,
-.maxa-file-input__surface[data-dragging] .maxa-file-input__icon {
-  color: var(--file-input-icon-color-active);
-}
-
-.maxa-file-input__content {
-  display: grid;
-  gap: var(--spacing-1);
-  min-width: 0;
-}
-
-.maxa-file-input__title {
-  color: var(--file-input-title-text);
-  font-size: var(--file-input-title-font-size);
-  line-height: var(--file-input-title-line-height);
-  font-weight: var(--file-input-title-font-weight);
-}
-
-.maxa-file-input__description,
-.maxa-file-input__hint,
-.maxa-file-input__file-size {
-  color: var(--file-input-description-text);
-  font-size: var(--file-input-description-font-size);
-  line-height: var(--file-input-description-line-height);
-}
-
-.maxa-file-input__footer {
-  display: grid;
-  gap: var(--file-input-file-list-gap);
-}
-
-.maxa-file-input__hint {
-  color: var(--file-input-hint-text);
-}
-
-.maxa-file-input--error .maxa-file-input__hint {
-  color: var(--file-input-error-text);
-}
-
-.maxa-file-input__files {
-  display: grid;
-  gap: var(--file-input-file-list-gap);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.maxa-file-input__file {
+/* ── Field ──────────────────────────────────────────────────────── */
+.maxa-file-input__field {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--file-input-file-item-gap);
+  gap: var(--_gap);
+  flex: 1 1 0;
   min-width: 0;
-  padding: var(--file-input-file-item-padding-y) var(--file-input-file-item-padding-x);
-  border-radius: var(--file-input-file-item-radius);
-  background: var(--file-input-file-item-bg);
+  height: var(--_height);
+  padding-inline: var(--_field-padding-x);
+  border: 1px solid var(--file-input-field-border);
+  border-left: 0;
+  border-radius: 0 var(--_radius) var(--_radius) 0;
+  background: var(--file-input-field-bg);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-standard);
 }
 
-.maxa-file-input__file-name {
+.maxa-file-input__placeholder,
+.maxa-file-input__filename {
   min-width: 0;
+  font-size: var(--_text);
+  line-height: 1.2;
   overflow: hidden;
-  color: var(--file-input-title-text);
-  font-size: var(--file-input-description-font-size);
-  line-height: var(--file-input-description-line-height);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.maxa-file-input__file-size {
+.maxa-file-input__placeholder {
+  color: var(--file-input-placeholder-text);
+}
+
+.maxa-file-input__filename {
+  color: var(--file-input-filename-text);
+}
+
+.maxa-file-input__lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
-  color: var(--file-input-meta-text);
+  margin-left: auto;
+  width: var(--_icon);
+  height: var(--_icon);
+  color: var(--file-input-lock-color);
+}
+
+.maxa-file-input__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 0;
+  width: var(--_icon);
+  height: var(--_icon);
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  color: var(--file-input-clear-color);
+  cursor: pointer;
+  transition: color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.maxa-file-input__clear:hover {
+  color: var(--file-input-clear-color-hover);
+}
+
+.maxa-file-input__clear:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--file-input-focus-ring);
+}
+
+/* ── Error message ──────────────────────────────────────────────── */
+.maxa-file-input__error {
+  margin: 0;
+  color: var(--file-input-error-text);
+  font-size: var(--file-input-error-font-size);
+  line-height: var(--file-input-error-line-height);
+}
+
+/* ── States ─────────────────────────────────────────────────────── */
+/* Hover */
+.maxa-file-input__button:hover,
+.maxa-file-input--hover .maxa-file-input__button {
+  background: var(--file-input-button-bg-hover);
+}
+
+.maxa-file-input__field:hover,
+.maxa-file-input--hover .maxa-file-input__field {
+  border-color: var(--file-input-field-border-hover);
+}
+
+.maxa-file-input__button:active {
+  background: var(--file-input-button-bg-active);
+}
+
+/* Focus (keyboard focus lands on the hidden native input) */
+.maxa-file-input__control:focus-within .maxa-file-input__field,
+.maxa-file-input--focus .maxa-file-input__field {
+  border-color: var(--file-input-field-border-focus);
+  box-shadow:
+    0 0 0 var(--file-input-focus-ring-offset) var(--file-input-field-bg),
+    0 0 0 calc(var(--file-input-focus-ring-offset) + var(--file-input-focus-ring-width))
+      var(--file-input-focus-ring);
+}
+
+/* Error */
+.maxa-file-input--error .maxa-file-input__field {
+  border-color: var(--file-input-field-border-error);
+}
+
+.maxa-file-input--error .maxa-file-input__placeholder {
+  color: var(--file-input-error-text);
+}
+
+/* Disabled + not-editable (button greys out, selection blocked) */
+.maxa-file-input--blocked .maxa-file-input__button {
+  background: var(--file-input-button-bg-disabled);
+  color: var(--file-input-button-text-disabled);
+  cursor: not-allowed;
+}
+
+.maxa-file-input--blocked .maxa-file-input__field {
+  cursor: not-allowed;
+}
+
+.maxa-file-input--disabled .maxa-file-input__field {
+  background: var(--file-input-field-bg-disabled);
+  border-color: var(--file-input-field-border-disabled);
+}
+
+.maxa-file-input--disabled .maxa-file-input__placeholder,
+.maxa-file-input--disabled .maxa-file-input__filename {
+  color: var(--file-input-field-text-disabled);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .maxa-file-input__surface {
+  .maxa-file-input__button,
+  .maxa-file-input__field {
     transition: none;
   }
 }

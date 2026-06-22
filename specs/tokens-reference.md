@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1610
+Total tokens: 1615
 
 ## Primitives
 
@@ -871,65 +871,74 @@ Source: `packages/tokens/src/component-input.css`
 Source: `packages/tokens/src/component-file-input.css`
 
 ```css
-/* ── Surface ── */
---file-input-bg: var(--color-bg-surface);
---file-input-bg-hover: var(--color-action-neutral-subtle-hover);
---file-input-bg-dragging: var(--color-action-primary-subtle);
---file-input-border: var(--color-border-primary);
---file-input-border-hover: var(--color-border-secondary);
---file-input-border-focus: var(--color-border-focus);
---file-input-border-error: var(--color-border-error);
---file-input-border-disabled: var(--color-border-tertiary);
---file-input-radius: var(--radius-md);
---file-input-focus-ring: var(--color-action-primary);
---file-input-focus-ring-width: 3px;
---file-input-focus-ring-offset: 1px;
-
-/* ── Typography ── */
+/* ── Shared ── */
 --file-input-font-family: var(--font-body);
+--file-input-row-gap: var(--spacing-2); /* label row ↔ input row */
+--file-input-label-gap: var(--spacing-1);/* label ↔ info icon */
+
+/* ── Label ── */
 --file-input-label-text: var(--color-text-secondary);
 --file-input-label-font-size: var(--text-sm);
 --file-input-label-line-height: var(--text-sm--line-height);
 --file-input-label-font-weight: var(--font-weight-semibold);
---file-input-title-text: var(--color-text-primary);
---file-input-title-font-size: var(--text-md);
---file-input-title-line-height: var(--text-md--line-height);
---file-input-title-font-weight: var(--font-weight-semibold);
---file-input-description-text: var(--color-text-secondary);
---file-input-description-font-size: var(--text-sm);
---file-input-description-line-height: var(--text-sm--line-height);
---file-input-hint-text: var(--color-text-tertiary);
+--file-input-required-text: var(--color-text-error);
+--file-input-info-color: var(--color-text-tertiary);
+
+/* ── Button ("Choose File") ── */
+--file-input-button-bg: var(--color-action-primary);
+--file-input-button-bg-hover: var(--color-action-primary-hover);
+--file-input-button-bg-active: var(--color-action-primary-active);
+--file-input-button-bg-disabled: var(--color-bg-disabled);
+--file-input-button-text: var(--color-text-inverse);
+--file-input-button-text-disabled: var(--color-text-disabled);
+
+/* ── Field (file-name display) ── */
+--file-input-field-bg: var(--color-bg-surface);
+--file-input-field-bg-disabled: var(--color-bg-disabled);
+--file-input-field-border: var(--color-border-primary);
+--file-input-field-border-hover: var(--color-border-secondary);
+--file-input-field-border-focus: var(--color-border-focus);
+--file-input-field-border-error: var(--color-border-error);
+--file-input-field-border-disabled: var(--color-border-tertiary);
+--file-input-placeholder-text: var(--color-text-tertiary);
+--file-input-filename-text: var(--color-text-primary);
+--file-input-field-text-disabled: var(--color-text-disabled);
+--file-input-lock-color: var(--color-text-tertiary);
+--file-input-clear-color: var(--color-text-tertiary);
+--file-input-clear-color-hover: var(--color-text-secondary);
+
+/* ── Focus ring ── */
+--file-input-focus-ring: var(--color-action-primary);
+--file-input-focus-ring-width: 3px;
+--file-input-focus-ring-offset: 1px;
+
+/* ── Error message ── */
 --file-input-error-text: var(--color-text-error);
---file-input-meta-text: var(--color-text-tertiary);
+--file-input-error-font-size: var(--text-sm);
+--file-input-error-line-height: var(--text-sm--line-height);
 
-/* ── Layout ── */
---file-input-gap: var(--spacing-2);
---file-input-label-gap: var(--spacing-xs);
---file-input-padding-sm: 12px;
---file-input-padding-md: 16px;
---file-input-padding-lg: 20px;
---file-input-min-height-sm: 88px;
---file-input-min-height-md: 116px;
---file-input-min-height-lg: 144px;
---file-input-icon-size-sm: 28px;
---file-input-icon-size-md: 36px;
---file-input-icon-size-lg: 44px;
---file-input-file-list-gap: var(--spacing-1);
---file-input-file-item-gap: var(--spacing-2);
---file-input-file-item-padding-x: var(--spacing-2);
---file-input-file-item-padding-y: var(--spacing-1);
---file-input-file-item-radius: var(--radius-xs);
---file-input-file-item-bg: var(--color-bg-muted);
-
-/* ── Icon ── */
---file-input-icon-bg: var(--color-bg-muted);
---file-input-icon-color: var(--color-fg-secondary);
---file-input-icon-color-active: var(--color-fg-brand);
-
-/* ── Disabled ── */
---file-input-disabled-bg: var(--color-bg-disabled);
---file-input-disabled-text: var(--color-text-disabled);
---file-input-disabled-opacity: 1;
+/* ── Sizes (mirror Input/Button heights for form alignment) ── */
+--file-input-sm-height: 28px;
+--file-input-sm-field-padding-x: 10px;
+--file-input-sm-button-padding-x: 8px;
+--file-input-sm-gap: 6px;
+--file-input-sm-radius: var(--radius-xs);
+--file-input-sm-text: var(--text-sm);
+--file-input-sm-icon: 14px;
+--file-input-md-height: 36px;
+--file-input-md-field-padding-x: 12px;
+--file-input-md-button-padding-x: 14px;
+--file-input-md-gap: 8px;
+--file-input-md-radius: var(--radius-xs);
+--file-input-md-text: var(--text-sm);
+--file-input-md-icon: 16px;
+--file-input-lg-height: 48px;
+--file-input-lg-field-padding-x: 16px;
+--file-input-lg-button-padding-x: 16px;
+--file-input-lg-gap: 8px;
+--file-input-lg-radius: var(--radius-sm);
+--file-input-lg-text: var(--text-md);
+--file-input-lg-icon: 18px;
 ```
 
 ## Avatar Component Tokens
