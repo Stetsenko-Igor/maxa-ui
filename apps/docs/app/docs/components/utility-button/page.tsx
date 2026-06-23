@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { UtilityButtonDefaultPreview } from "./utility-button-default-preview"
 
 export const metadata: Metadata = { title: "Utility Button - MAXA UI" }
 
@@ -51,12 +52,7 @@ export default function UtilityButtonPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<UtilityButton aria-label="Grid view" icon={<GridIcon />} selected />`}>
-            <div style={{ display: "flex", gap: "8px", padding: "32px" }}>
-              <UtilityButton aria-label="Grid view" icon={<GridIcon />} selected />
-              <UtilityButton aria-label="List view" icon={<ListIcon />} />
-            </div>
-          </ComponentPreview>
+          <UtilityButtonDefaultPreview />
         </DocsExample>
       </section>
 

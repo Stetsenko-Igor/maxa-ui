@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Button, IconButton } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
+import { ButtonDefaultPreview } from "./button-default-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 
@@ -79,13 +80,7 @@ export default function ButtonPage() {
       {/* Preview */}
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Button variant="primary">Create project</Button>
-<Button variant="secondary">Cancel</Button>
-<Button variant="outline">Learn more</Button>`}>
-            <Button variant="primary">Create project</Button>
-            <Button variant="secondary">Cancel</Button>
-            <Button variant="outline">Learn more</Button>
-          </ComponentPreview>
+          <ButtonDefaultPreview />
         </DocsExample>
       </section>
 

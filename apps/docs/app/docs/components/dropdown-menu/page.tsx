@@ -20,6 +20,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { DropdownMenuDefaultPreview } from "./dropdown-menu-default-preview"
 
 export const metadata: Metadata = { title: "Dropdown Menu - MAXA UI" }
 
@@ -213,21 +214,7 @@ export default function DropdownMenuPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@maxa/ui"\n\n<DropdownMenu>\n  <DropdownMenuTrigger asChild>\n    <Button variant="outline">Actions</Button>\n  </DropdownMenuTrigger>\n  <DropdownMenuContent align="end">\n    <DropdownMenuItem>Request design</DropdownMenuItem>\n    <DropdownMenuItem>Duplicate</DropdownMenuItem>\n    <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>`}>
-            <div style={row}>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" iconTrailing={<ChevronDownIcon />}>Actions</Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Request design</DropdownMenuItem>
-                  <DropdownMenuItem>Duplicate</DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </ComponentPreview>
+          <DropdownMenuDefaultPreview />
         </DocsExample>
       </section>
 

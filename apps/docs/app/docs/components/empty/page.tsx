@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import { Button, Empty } from "@maxa/ui"
+import { Empty } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { EmptyDefaultPreview } from "./empty-default-preview"
 
 export const metadata: Metadata = { title: "Empty - MAXA UI" }
 
@@ -36,16 +37,7 @@ export default function EmptyPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Empty\n  title="Scheduled Post Not Found"\n  description="Try another search or clear the current filters."\n  action={<Button variant="secondary">Clear search</Button>}\n/>`}>
-            <div style={{ width: "420px" }}>
-              <Empty
-                icon={<SearchIcon />}
-                title="Scheduled Post Not Found"
-                description="Try another search or clear the current filters."
-                action={<Button variant="secondary">Clear search</Button>}
-              />
-            </div>
-          </ComponentPreview>
+          <EmptyDefaultPreview />
         </DocsExample>
       </section>
 
@@ -72,15 +64,6 @@ export default function EmptyPage() {
         <PropsTable props={PROPS} />
       </DocsSection>
     </ComponentPage>
-  )
-}
-
-function SearchIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-3.5-3.5" />
-    </svg>
   )
 }
 

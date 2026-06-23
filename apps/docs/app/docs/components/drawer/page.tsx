@@ -1,21 +1,18 @@
 import type { Metadata } from "next"
 import {
-  Button,
   Drawer,
   DrawerBody,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-  Input,
 } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { DrawerDefaultPreview } from "./drawer-default-preview"
 
 export const metadata: Metadata = { title: "Drawer - MAXA UI" }
 
@@ -57,27 +54,7 @@ export default function DrawerPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Drawer>\n  <DrawerTrigger className="maxa-button maxa-button--outline maxa-button--md">Edit package</DrawerTrigger>\n  <DrawerContent>\n    <DrawerHeader>\n      <DrawerTitle>Package Settings</DrawerTitle>\n      <DrawerDescription>Update metadata and visibility.</DrawerDescription>\n      <DrawerClose aria-label="Close" />\n    </DrawerHeader>\n    <DrawerBody>\n      <Input label="Package name" defaultValue="Listing Package" />\n    </DrawerBody>\n    <DrawerFooter>\n      <DrawerClose inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</DrawerClose>\n      <Button>Save Changes</Button>\n    </DrawerFooter>\n  </DrawerContent>\n</Drawer>`}>
-            <div style={{ padding: "32px" }}>
-              <Drawer>
-                <DrawerTrigger className="maxa-button maxa-button--outline maxa-button--md">Edit package</DrawerTrigger>
-                <DrawerContent>
-                  <DrawerHeader>
-                    <DrawerTitle>Package Settings</DrawerTitle>
-                    <DrawerDescription>Update metadata and visibility.</DrawerDescription>
-                    <DrawerClose aria-label="Close" />
-                  </DrawerHeader>
-                  <DrawerBody>
-                    <Input label="Package name" defaultValue="Listing Package" />
-                  </DrawerBody>
-                  <DrawerFooter>
-                    <DrawerClose inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</DrawerClose>
-                    <Button>Save Changes</Button>
-                  </DrawerFooter>
-                </DrawerContent>
-              </Drawer>
-            </div>
-          </ComponentPreview>
+          <DrawerDefaultPreview />
         </DocsExample>
       </section>
 

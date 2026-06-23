@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { TextareaDefaultPreview } from "./textarea-default-preview"
 
 export const metadata: Metadata = { title: "TextArea - MAXA UI" }
 
@@ -76,11 +77,7 @@ export default function TextAreaPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={textAreaExample("TextAreaDefaultExample", `<TextArea label="Message" placeholder="Write a message" />`)}>
-            <div style={fieldWidth}>
-              <TextArea label="Message" placeholder="Write a message" />
-            </div>
-          </ComponentPreview>
+          <TextareaDefaultPreview />
         </DocsExample>
       </section>
 

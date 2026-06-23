@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuLabel, ContextMenuSeparator, ContextMenuShortcut, ContextMenuTrigger } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
-import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { ContextMenuDefaultPreview } from "./context-menu-default-preview"
 
 export const metadata: Metadata = { title: "Context Menu - MAXA UI" }
 
@@ -32,22 +31,7 @@ export default function ContextMenuPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<ContextMenu>\n  <ContextMenuTrigger>Right click area</ContextMenuTrigger>\n  <ContextMenuContent>\n    <ContextMenuLabel>Package</ContextMenuLabel>\n    <ContextMenuItem>Open<ContextMenuShortcut>Enter</ContextMenuShortcut></ContextMenuItem>\n    <ContextMenuItem>Duplicate<ContextMenuShortcut>Cmd+D</ContextMenuShortcut></ContextMenuItem>\n    <ContextMenuSeparator />\n    <ContextMenuItem variant="destructive">Delete</ContextMenuItem>\n  </ContextMenuContent>\n</ContextMenu>`}>
-            <div style={{ padding: "32px" }}>
-              <ContextMenu>
-                <ContextMenuTrigger style={{ width: "320px", minHeight: "144px", display: "grid", placeItems: "center", border: "1px dashed var(--color-border-primary)", borderRadius: "var(--radius-md)", color: "var(--color-text-secondary)", fontSize: "var(--text-sm)" }}>
-                  Right click area
-                </ContextMenuTrigger>
-                <ContextMenuContent>
-                  <ContextMenuLabel>Package</ContextMenuLabel>
-                  <ContextMenuItem>Open<ContextMenuShortcut>Enter</ContextMenuShortcut></ContextMenuItem>
-                  <ContextMenuItem>Duplicate<ContextMenuShortcut>Cmd+D</ContextMenuShortcut></ContextMenuItem>
-                  <ContextMenuSeparator />
-                  <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
-                </ContextMenuContent>
-              </ContextMenu>
-            </div>
-          </ComponentPreview>
+          <ContextMenuDefaultPreview />
         </DocsExample>
       </section>
 

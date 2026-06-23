@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { MultiSelectDefaultPreview } from "./multi-select-default-preview"
 
 export const metadata: Metadata = { title: "Multi Select - MAXA UI" }
 
@@ -48,11 +49,7 @@ export default function MultiSelectPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<MultiSelect\n  label="Asset types"\n  options={options}\n  defaultValue={["brand", "social"]}\n/>`}>
-            <div style={{ width: "320px" }}>
-              <MultiSelect label="Asset types" options={OPTIONS} defaultValue={["brand", "social"]} />
-            </div>
-          </ComponentPreview>
+          <MultiSelectDefaultPreview />
         </DocsExample>
       </section>
 

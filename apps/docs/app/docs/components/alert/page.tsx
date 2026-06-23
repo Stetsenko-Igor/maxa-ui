@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { AlertDefaultPreview } from "./alert-default-preview"
 
 export const metadata: Metadata = { title: "Alert - MAXA UI" }
 
@@ -63,11 +64,7 @@ export default function AlertPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Alert, AlertAction } from "@maxa/ui"\n\n<Alert intent="info">\n  Your trial ends in 3 days.\n</Alert>`}>
-            <div style={col}>
-              <Alert intent="info">Your trial ends in 3 days.</Alert>
-            </div>
-          </ComponentPreview>
+          <AlertDefaultPreview />
         </DocsExample>
       </section>
 

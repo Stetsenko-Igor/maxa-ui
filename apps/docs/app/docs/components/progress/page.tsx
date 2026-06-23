@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { ProgressDefaultPreview } from "./progress-default-preview"
 
 export const metadata: Metadata = { title: "Progress - MAXA UI" }
 
@@ -36,11 +37,7 @@ export default function ProgressPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Progress value={64} label="Uploading package" showValue />`}>
-            <div style={{ width: "360px", padding: "32px" }}>
-              <Progress value={64} label="Uploading package" showValue />
-            </div>
-          </ComponentPreview>
+          <ProgressDefaultPreview />
         </DocsExample>
       </section>
 

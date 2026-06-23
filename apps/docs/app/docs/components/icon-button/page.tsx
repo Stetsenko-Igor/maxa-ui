@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { IconButtonDefaultPreview } from "./icon-button-default-preview"
 
 export const metadata: Metadata = { title: "IconButton - MAXA UI" }
 
@@ -64,9 +65,7 @@ export default function IconButtonPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { IconButton } from "@maxa/ui"\n\n<IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />`}>
-            <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
-          </ComponentPreview>
+          <IconButtonDefaultPreview />
         </DocsExample>
       </section>
 

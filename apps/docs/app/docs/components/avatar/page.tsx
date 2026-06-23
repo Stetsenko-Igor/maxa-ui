@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { AvatarDefaultPreview } from "./avatar-default-preview"
 
 export const metadata: Metadata = { title: "Avatar - MAXA UI" }
 
@@ -72,17 +73,7 @@ export default function AvatarPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from "@maxa/ui"\n\n<Avatar color="blue">\n  <AvatarImage alt="Igor Stetsenko" src="/avatar.png" />\n  <AvatarFallback>IS</AvatarFallback>\n</Avatar>`}>
-            <div style={row}>
-              <Avatar color="blue">
-                <AvatarImage alt="Igor Stetsenko" src={AVATAR_IMAGE_SRC} />
-                <AvatarFallback>IS</AvatarFallback>
-              </Avatar>
-              <Avatar color="teal" shape="square">
-                <AvatarFallback>MW</AvatarFallback>
-              </Avatar>
-            </div>
-          </ComponentPreview>
+          <AvatarDefaultPreview imageSrc={AVATAR_IMAGE_SRC} />
         </DocsExample>
       </section>
 

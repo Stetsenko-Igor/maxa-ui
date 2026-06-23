@@ -4,10 +4,10 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { FileInputDefaultPreview } from "./file-input-default-preview"
 
 export const metadata: Metadata = { title: "FileInput - MAXA UI" }
 
-const fieldWidth: React.CSSProperties = { width: "min(100%, 480px)" }
 const stack: React.CSSProperties = { display: "grid", gap: "16px", width: "min(100%, 480px)" }
 
 const TOC = [
@@ -78,11 +78,7 @@ export default function FileInputPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={fileInputExample("FileInputDefaultExample", `<FileInput label="Default Package" accept=".pdf,image/*" />`)}>
-            <div style={fieldWidth}>
-              <FileInput label="Default Package" accept=".pdf,image/*" />
-            </div>
-          </ComponentPreview>
+          <FileInputDefaultPreview />
         </DocsExample>
       </section>
 

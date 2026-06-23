@@ -3,17 +3,22 @@
 import { useState } from "react"
 import { CopyIconButton } from "./copy-icon-button"
 import { HighlightedCode } from "./syntax-highlight"
+import { Playground, type PlaygroundConfig } from "./playground"
+
+type PreviewTab = "preview" | "code" | "playground"
 
 interface ComponentPreviewProps {
   children: React.ReactNode
   code: string
   label?: string
   layout?: "inline" | "block" | "center"
+  playground?: PlaygroundConfig
 }
 
-export function ComponentPreview({ children, code, label, layout = "inline" }: ComponentPreviewProps) {
-  const [tab, setTab] = useState<"preview" | "code">("preview")
+export function ComponentPreview({ children, code, label, layout = "inline", playground }: ComponentPreviewProps) {
+  const [tab, setTab] = useState<PreviewTab>("preview")
   const panelMinHeight = layout === "block" ? "220px" : "180px"
+  const tabs: PreviewTab[] = playground ? ["preview", "code", "playground"] : ["preview", "code"]
 
   return (
     <div data-component-preview style={{
@@ -40,7 +45,7 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
       }}>
         {/* tabs */}
         <div style={{ display: "flex", gap: "2px" }}>
-          {(["preview", "code"] as const).map(t => (
+          {tabs.map(t => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -116,6 +121,11 @@ export function ComponentPreview({ children, code, label, layout = "inline" }: C
             <HighlightedCode code={code} withLineNumbers />
           </code>
         </pre>
+      )}
+
+      {/* playground pane */}
+      {tab === "playground" && playground && (
+        <Playground config={playground} />
       )}
     </div>
   )

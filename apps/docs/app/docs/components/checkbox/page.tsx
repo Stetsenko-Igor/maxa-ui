@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { CheckboxDefaultPreview } from "./checkbox-default-preview"
 
 export const metadata: Metadata = { title: "Checkbox - MAXA UI" }
 
@@ -70,14 +71,7 @@ export default function CheckboxPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Checkbox } from "@maxa/ui"\n\n<Checkbox\n  label="Permissions"\n  sideLabel="Accept terms"\n  description="Required to continue."\n  defaultChecked\n/>`}>
-            <Checkbox
-              label="Permissions"
-              sideLabel="Accept terms"
-              description="Required to continue."
-              defaultChecked
-            />
-          </ComponentPreview>
+          <CheckboxDefaultPreview />
         </DocsExample>
       </section>
 

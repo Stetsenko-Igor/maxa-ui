@@ -4,7 +4,6 @@ import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 import {
-  DefaultDataTableDemo,
   CellTypesDataTableDemo,
   EmptyDataTableDemo,
   LoadingDataTableDemo,
@@ -12,6 +11,7 @@ import {
   SelectableDataTableDemo,
   SortableDataTableDemo,
 } from "./_demos"
+import { DataTableDefaultPreview } from "./datatable-default-preview"
 
 export const metadata: Metadata = { title: "DataTable - MAXA UI" }
 
@@ -145,17 +145,7 @@ export default function DataTablePage() {
       next={{ href: "/docs/components/date-picker", label: "Date Picker" }}
     >
       <DocsSection id="preview" title="Default">
-        <ComponentPreview
-          layout="block"
-          code={`<DataTable
-  columns={columns}
-  data={data}
-  rowId={(row) => row.id}
-  caption="Recent design orders"
-/>`}
-        >
-          <DefaultDataTableDemo />
-        </ComponentPreview>
+        <DataTableDefaultPreview />
       </DocsSection>
 
       <InstallationBlock

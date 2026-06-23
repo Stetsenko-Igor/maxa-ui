@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { CalendarDefaultPreview } from "./calendar-default-preview"
 
 export const metadata: Metadata = { title: "Calendar - MAXA UI" }
 
@@ -41,11 +42,7 @@ export default function CalendarPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Selected date">
-          <ComponentPreview code={`<Calendar\n  defaultMonth={new Date(2025, 4, 1)}\n  selected={new Date(2025, 4, 9)}\n  currentDate={new Date(2025, 4, 15)}\n  onDateSelect={(date) => console.log(date)}\n/>`}>
-            <div style={{ padding: "32px" }}>
-              <Calendar defaultMonth={new Date(2025, 4, 1)} selected={new Date(2025, 4, 9)} currentDate={new Date(2025, 4, 15)} />
-            </div>
-          </ComponentPreview>
+          <CalendarDefaultPreview />
         </DocsExample>
       </section>
 

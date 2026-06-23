@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { TooltipDefaultPreview } from "./tooltip-default-preview"
 
 export const metadata: Metadata = { title: "Tooltip - MAXA UI" }
 
@@ -47,15 +48,7 @@ export default function TooltipPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Tooltip, TooltipProvider } from "@maxa/ui"\n\n<TooltipProvider>\n  <Tooltip content="Copy to clipboard">\n    <Button variant="outline">Copy</Button>\n  </Tooltip>\n</TooltipProvider>`}>
-            <TooltipProvider>
-              <div style={row}>
-                <Tooltip content="Copy to clipboard">
-                  <Button variant="outline">Hover me</Button>
-                </Tooltip>
-              </div>
-            </TooltipProvider>
-          </ComponentPreview>
+          <TooltipDefaultPreview />
         </DocsExample>
       </section>
 

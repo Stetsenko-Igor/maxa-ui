@@ -10,6 +10,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { PopoverDefaultPreview } from "./popover-default-preview"
 
 export const metadata: Metadata = { title: "Popover - MAXA UI" }
 
@@ -80,22 +81,7 @@ export default function PopoverPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Button, Popover, PopoverContent, PopoverTrigger } from "@maxa/ui"\n\n<Popover>\n  <PopoverTrigger asChild>\n    <Button variant="outline">Open popover</Button>\n  </PopoverTrigger>\n  <PopoverContent>\n    <p>Interactive content belongs here.</p>\n  </PopoverContent>\n</Popover>`}>
-            <div style={row}>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline">Open popover</Button>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <div style={panel}>
-                    <p style={panelTitle}>Filters</p>
-                    <p style={panelText}>Choose the segment and apply the view.</p>
-                    <Button size="sm">Apply</Button>
-                  </div>
-                </PopoverContent>
-              </Popover>
-            </div>
-          </ComponentPreview>
+          <PopoverDefaultPreview />
         </DocsExample>
       </section>
 

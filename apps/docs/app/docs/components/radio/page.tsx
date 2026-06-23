@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { RadioDefaultPreview } from "./radio-default-preview"
 
 export const metadata: Metadata = { title: "Radio - MAXA UI" }
 
@@ -75,25 +76,7 @@ export default function RadioPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Radio } from "@maxa/ui"\n\n<Radio\n  name="plan"\n  value="pro"\n  label="Plan"\n  sideLabel="Pro"\n  description="Best for growing teams."\n  defaultChecked\n/>`}>
-            <div style={stack}>
-              <Radio
-                name="plan-preview"
-                value="pro"
-                label="Plan"
-                sideLabel="Pro"
-                description="Best for growing teams."
-                defaultChecked
-              />
-              <Radio
-                name="plan-preview"
-                value="enterprise"
-                label="Plan"
-                sideLabel="Enterprise"
-                description="Advanced controls and support."
-              />
-            </div>
-          </ComponentPreview>
+          <RadioDefaultPreview />
         </DocsExample>
       </section>
 

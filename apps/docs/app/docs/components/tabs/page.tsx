@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
-import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { TabsDefaultPreview } from "./tabs-default-preview"
 
 export const metadata: Metadata = { title: "Tabs - MAXA UI" }
 
@@ -33,20 +32,7 @@ export default function TabsPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Tabs defaultValue="designs">\n  <TabsList aria-label="Dashboard view">\n    <TabsTrigger value="designs">Designs</TabsTrigger>\n    <TabsTrigger value="scheduled">Scheduled</TabsTrigger>\n    <TabsTrigger value="packages">Packages</TabsTrigger>\n  </TabsList>\n  <TabsContent value="designs">Designs panel</TabsContent>\n</Tabs>`}>
-            <div style={{ display: "grid", justifyContent: "center", width: "100%", padding: "32px" }}>
-              <Tabs defaultValue="designs">
-                <TabsList aria-label="Dashboard view">
-                  <TabsTrigger value="designs">Designs</TabsTrigger>
-                  <TabsTrigger value="scheduled">Scheduled</TabsTrigger>
-                  <TabsTrigger value="packages">Packages</TabsTrigger>
-                </TabsList>
-                <TabsContent value="designs">Designs</TabsContent>
-                <TabsContent value="scheduled">Scheduled</TabsContent>
-                <TabsContent value="packages">Packages</TabsContent>
-              </Tabs>
-            </div>
-          </ComponentPreview>
+          <TabsDefaultPreview />
         </DocsExample>
       </section>
 

@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { DividerDefaultPreview } from "./divider-default-preview"
 
 export const metadata: Metadata = { title: "Divider - MAXA UI" }
 
@@ -41,13 +42,7 @@ export default function DividerPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Divider } from "@maxa/ui"\n\n<Divider />`}>
-            <div style={col}>
-              <span>Section one</span>
-              <Divider />
-              <span>Section two</span>
-            </div>
-          </ComponentPreview>
+          <DividerDefaultPreview />
         </DocsExample>
       </section>
 

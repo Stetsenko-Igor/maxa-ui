@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { FormFieldDefaultPreview } from "./form-field-default-preview"
 
 export const metadata: Metadata = { title: "FormField - MAXA UI" }
 
@@ -78,17 +79,7 @@ export default function FormFieldPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { FormField, Input } from "@maxa/ui"
-
-<FormField label="Email" htmlFor="email" hint="We will never share your email.">
-  <Input id="email" type="email" placeholder="you@example.com" />
-</FormField>`}>
-            <div style={{ maxWidth: "420px" }}>
-              <FormField label="Email" htmlFor="email" hint="We will never share your email.">
-                <Input id="email" type="email" placeholder="you@example.com" />
-              </FormField>
-            </div>
-          </ComponentPreview>
+          <FormFieldDefaultPreview />
         </DocsExample>
       </section>
 

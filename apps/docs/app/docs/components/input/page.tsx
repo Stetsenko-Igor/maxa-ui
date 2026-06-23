@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { InputDefaultPreview } from "./input-default-preview"
 
 export const metadata: Metadata = { title: "Input - MAXA UI" }
 
@@ -84,11 +85,7 @@ export default function InputPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={inputExample("InputDefaultExample", `<Input label="Default Package" placeholder="Any" />`)}>
-            <div style={{ width: "320px" }}>
-              <Input label="Default Package" placeholder="Any" />
-            </div>
-          </ComponentPreview>
+          <InputDefaultPreview />
         </DocsExample>
       </section>
 

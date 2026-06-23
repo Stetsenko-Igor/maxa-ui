@@ -1,9 +1,8 @@
 import type { Metadata } from "next"
-import { Pagination, PaginationEllipsis, PaginationItem, PaginationLink, PaginationList, PaginationNext, PaginationPrevious } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
-import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { PaginationDefaultPreview } from "./pagination-default-preview"
 
 export const metadata: Metadata = { title: "Pagination - MAXA UI" }
 
@@ -34,21 +33,7 @@ export default function PaginationPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Pagination>\n  <PaginationList>\n    <PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem>\n    <PaginationItem><PaginationLink href="?page=2" isActive>2</PaginationLink></PaginationItem>\n    <PaginationItem><PaginationNext href="?page=3" /></PaginationItem>\n  </PaginationList>\n</Pagination>`}>
-            <div style={{ padding: "32px" }}>
-              <Pagination>
-                <PaginationList>
-                  <PaginationItem><PaginationPrevious href="?page=1" /></PaginationItem>
-                  <PaginationItem><PaginationLink href="?page=1">1</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="?page=2" isActive>2</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationLink href="?page=3">3</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationEllipsis /></PaginationItem>
-                  <PaginationItem><PaginationLink href="?page=12">12</PaginationLink></PaginationItem>
-                  <PaginationItem><PaginationNext href="?page=3" /></PaginationItem>
-                </PaginationList>
-              </Pagination>
-            </div>
-          </ComponentPreview>
+          <PaginationDefaultPreview />
         </DocsExample>
       </section>
 

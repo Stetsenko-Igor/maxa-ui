@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import { Button, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Input } from "@maxa/ui"
+import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { DialogDefaultPreview } from "./dialog-default-preview"
 
 export const metadata: Metadata = { title: "Dialog - MAXA UI" }
 
@@ -36,26 +37,7 @@ export default function DialogPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Dialog>\n  <DialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Edit list settings</DialogTrigger>\n  <DialogContent size="lg">\n    <DialogHeader>\n      <DialogTitle>Edit List Settings</DialogTitle>\n      <DialogClose aria-label="Close" />\n    </DialogHeader>\n    <DialogBody>\n      <Input label="List name" defaultValue="Interested homeowners" />\n    </DialogBody>\n    <DialogFooter>\n      <DialogClose inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</DialogClose>\n      <Button>Save Changes</Button>\n    </DialogFooter>\n  </DialogContent>\n</Dialog>`}>
-            <div style={{ padding: "32px" }}>
-              <Dialog>
-                <DialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Edit list settings</DialogTrigger>
-                <DialogContent size="lg">
-                  <DialogHeader>
-                    <DialogTitle>Edit List Settings</DialogTitle>
-                    <DialogClose aria-label="Close" />
-                  </DialogHeader>
-                  <DialogBody>
-                    <Input label="List name" defaultValue="Interested homeowners" />
-                  </DialogBody>
-                  <DialogFooter>
-                    <DialogClose inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</DialogClose>
-                    <Button>Save Changes</Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
-            </div>
-          </ComponentPreview>
+          <DialogDefaultPreview />
         </DocsExample>
       </section>
 

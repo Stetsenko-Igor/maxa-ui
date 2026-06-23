@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { ToggleDefaultPreview } from "./toggle-default-preview"
 
 export const metadata: Metadata = { title: "Toggle - MAXA UI" }
 
@@ -30,7 +31,6 @@ const TOGGLE_PROPS = [
   { name: "aria-label", type: "string", default: undefined, description: "Accessible name. Use when the toggle has no visible label." },
 ]
 
-const row: React.CSSProperties = { display: "flex", flexWrap: "wrap", gap: "24px", alignItems: "flex-start" }
 const stack: React.CSSProperties = { display: "grid", gap: "16px", alignItems: "start" }
 
 export default function TogglePage() {
@@ -51,21 +51,7 @@ export default function TogglePage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Toggle } from "@maxa/ui"\n\n<Toggle\n  label="Notifications"\n  sideLabel="Email updates"\n  description="Receive product and billing messages."\n  defaultChecked\n/>`}>
-            <div style={row}>
-              <Toggle
-                label="Notifications"
-                sideLabel="Email updates"
-                description="Receive product and billing messages."
-                defaultChecked
-              />
-              <Toggle
-                label="Privacy"
-                sideLabel="Show online status"
-                description="Visible to teammates in the workspace."
-              />
-            </div>
-          </ComponentPreview>
+          <ToggleDefaultPreview />
         </DocsExample>
       </section>
 

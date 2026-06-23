@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SliderDefaultPreview } from "./slider-default-preview"
 
 export const metadata: Metadata = { title: "Slider - MAXA UI" }
 
@@ -40,11 +41,7 @@ export default function SliderPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Slider label="Opacity" defaultValue={[64]} showValue />`}>
-            <div style={{ width: "360px", padding: "32px" }}>
-              <Slider label="Opacity" defaultValue={[64]} showValue />
-            </div>
-          </ComponentPreview>
+          <SliderDefaultPreview />
         </DocsExample>
       </section>
 

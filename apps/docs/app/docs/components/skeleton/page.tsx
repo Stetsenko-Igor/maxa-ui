@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SkeletonDefaultPreview } from "./skeleton-default-preview"
 
 export const metadata: Metadata = { title: "Skeleton - MAXA UI" }
 
@@ -31,13 +32,7 @@ export default function SkeletonPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Card loading">
-          <ComponentPreview code={`<Skeleton style={{ height: 128 }} />\n<Skeleton variant="text" style={{ width: "70%" }} />`}>
-            <div style={{ display: "grid", gap: "12px", width: "260px", padding: "24px" }}>
-              <Skeleton style={{ height: 128 }} />
-              <Skeleton variant="text" style={{ width: "70%" }} />
-              <Skeleton variant="text" style={{ width: "48%" }} />
-            </div>
-          </ComponentPreview>
+          <SkeletonDefaultPreview />
         </DocsExample>
       </section>
 

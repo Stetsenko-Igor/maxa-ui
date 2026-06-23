@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { BadgeDefaultPreview } from "./badge-default-preview"
 
 export const metadata: Metadata = { title: "Badge - MAXA UI" }
 
@@ -51,15 +52,7 @@ export default function BadgePage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Badge } from "@maxa/ui"\n\n<Badge intent="success" emphasis="low">Active</Badge>`}>
-            <div style={row}>
-              <Badge intent="neutral">Draft</Badge>
-              <Badge intent="info">In review</Badge>
-              <Badge intent="success">Active</Badge>
-              <Badge intent="warning">Pending</Badge>
-              <Badge intent="error">Failed</Badge>
-            </div>
-          </ComponentPreview>
+          <BadgeDefaultPreview />
         </DocsExample>
       </section>
 

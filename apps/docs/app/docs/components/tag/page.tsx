@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { TagDefaultPreview } from "./tag-default-preview"
 
 export const metadata: Metadata = { title: "Tag - MAXA UI" }
 
@@ -51,15 +52,7 @@ export default function TagPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`import { Tag } from "@maxa/ui"\n\n<Tag appearance="violet" removable onRemove={() => {}}>Customers</Tag>`}>
-            <div style={row}>
-              <Tag appearance="gray">Segment</Tag>
-              <Tag appearance="blue" removable>Audience</Tag>
-              <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
-              <Tag appearance="teal">Prague</Tag>
-              <Tag appearance="rose" removable>Luxury</Tag>
-            </div>
-          </ComponentPreview>
+          <TagDefaultPreview />
         </DocsExample>
       </section>
 

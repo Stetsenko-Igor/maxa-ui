@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SelectDefaultPreview } from "./select-default-preview"
 
 export const metadata: Metadata = { title: "Select - MAXA UI" }
 
@@ -66,17 +67,7 @@ export default function SelectPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview
-            code={`import { Select } from "@maxa/ui"\n\n<Select label="Sort by" defaultValue="newest">\n  <option value="newest">Newest</option>\n  <option value="oldest">Oldest</option>\n  <option value="name">Name</option>\n</Select>`}
-          >
-            <div style={{ width: "320px" }}>
-              <Select label="Sort by" defaultValue="newest">
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="name">Name</option>
-              </Select>
-            </div>
-          </ComponentPreview>
+          <SelectDefaultPreview />
         </DocsExample>
       </section>
 

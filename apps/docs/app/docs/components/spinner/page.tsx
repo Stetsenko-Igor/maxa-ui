@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SpinnerDefaultPreview } from "./spinner-default-preview"
 
 export const metadata: Metadata = { title: "Spinner - MAXA UI" }
 
@@ -35,11 +36,7 @@ export default function SpinnerPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Spinner label="Loading designs" />`}>
-            <div style={{ display: "flex", justifyContent: "center", padding: "32px" }}>
-              <Spinner label="Loading designs" />
-            </div>
-          </ComponentPreview>
+          <SpinnerDefaultPreview />
         </DocsExample>
       </section>
 

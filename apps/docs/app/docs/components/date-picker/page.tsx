@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"
+import { DatePicker } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { DatePickerDefaultPreview } from "./date-picker-default-preview"
 
 export const metadata: Metadata = { title: "Date Picker - MAXA UI" }
 
@@ -68,15 +69,7 @@ export default function DatePickerPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Single date and range">
-          <ComponentPreview
-            code={`import { DatePicker, DateRangePicker, QuarterPicker } from "@maxa/ui"\n\n<DatePicker label="Date Picker" defaultValue="5/9/2025" />\n<DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />\n<QuarterPicker label="Quarter Picker" defaultValue="Q1/2025" />`}
-          >
-            <div style={stack}>
-              <DatePicker label="Date Picker" defaultValue="5/9/2025" />
-              <DateRangePicker label="Date Picker" defaultValue="5/9/2025 - 6/18/2025" />
-              <QuarterPicker label="Quarter Picker" defaultValue="Q1/2025" />
-            </div>
-          </ComponentPreview>
+          <DatePickerDefaultPreview />
         </DocsExample>
       </section>
 

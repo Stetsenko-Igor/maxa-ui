@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SegmentedControlDefaultPreview } from "./segmented-control-default-preview"
 
 export const metadata: Metadata = { title: "Segment Control - MAXA UI" }
 
@@ -34,15 +35,7 @@ export default function SegmentedControlPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<SegmentedControl defaultValue="center" aria-label="Alignment">\n  <SegmentedControlItem value="left">Left</SegmentedControlItem>\n  <SegmentedControlItem value="center">Center</SegmentedControlItem>\n  <SegmentedControlItem value="right">Right</SegmentedControlItem>\n</SegmentedControl>`}>
-            <div style={{ padding: "32px" }}>
-              <SegmentedControl defaultValue="center" aria-label="Alignment">
-                <SegmentedControlItem value="left">Left</SegmentedControlItem>
-                <SegmentedControlItem value="center">Center</SegmentedControlItem>
-                <SegmentedControlItem value="right">Right</SegmentedControlItem>
-              </SegmentedControl>
-            </div>
-          </ComponentPreview>
+          <SegmentedControlDefaultPreview />
         </DocsExample>
       </section>
 

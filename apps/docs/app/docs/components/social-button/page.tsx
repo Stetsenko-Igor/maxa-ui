@@ -4,6 +4,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { SocialButtonDefaultPreview } from "./social-button-default-preview"
 
 export const metadata: Metadata = { title: "Social Button - MAXA UI" }
 
@@ -57,11 +58,7 @@ export default function SocialButtonPage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<SocialButton provider="google" label="Sign in with Google" />`}>
-            <div style={{ padding: "32px", display: "flex", justifyContent: "center" }}>
-              <SocialButton provider="google" label="Sign in with Google" />
-            </div>
-          </ComponentPreview>
+          <SocialButtonDefaultPreview />
         </DocsExample>
       </section>
 

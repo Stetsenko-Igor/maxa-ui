@@ -5,10 +5,10 @@ import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 import {
   AllIntentsDemo,
-  DefaultDemo,
   WithActionDemo,
   WithDescriptionDemo,
 } from "./_demos"
+import { ToastDefaultPreview } from "./toast-default-preview"
 
 export const metadata: Metadata = { title: "Toast - MAXA UI" }
 
@@ -51,19 +51,7 @@ export default function ToastPage() {
       toc={TOC}
     >
       <DocsSection id="preview" title="Default">
-        <ComponentPreview
-          code={`<ToastProvider>
-  <Toast open={open} onOpenChange={setOpen}>
-    <div className="maxa-toast__body">
-      <ToastTitle>Design saved</ToastTitle>
-    </div>
-    <ToastClose />
-  </Toast>
-  <ToastViewport />
-</ToastProvider>`}
-        >
-          <DefaultDemo />
-        </ComponentPreview>
+        <ToastDefaultPreview />
       </DocsSection>
 
       <InstallationBlock

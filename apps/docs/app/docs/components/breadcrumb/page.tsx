@@ -16,6 +16,7 @@ import { ComponentPage, DocsExample, DocsSection } from "../../../_components/co
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
+import { BreadcrumbDefaultPreview } from "./breadcrumb-default-preview"
 
 export const metadata: Metadata = { title: "Breadcrumb - MAXA UI" }
 
@@ -49,19 +50,7 @@ export default function BreadcrumbPageDocs() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/">Dashboard</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Marketing Packages</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}>
-            <div style={{ padding: "32px" }}>
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem><BreadcrumbLink href="/">Dashboard</BreadcrumbLink></BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            </div>
-          </ComponentPreview>
+          <BreadcrumbDefaultPreview />
         </DocsExample>
       </section>
 

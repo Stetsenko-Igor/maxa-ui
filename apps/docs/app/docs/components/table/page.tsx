@@ -2,13 +2,11 @@ import type { Metadata } from "next"
 import {
   Avatar,
   AvatarFallback,
-  Badge,
   Button,
   Checkbox,
   Input,
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -20,6 +18,7 @@ import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 import { TableRowActions } from "../_table-row-actions"
+import { TableDefaultPreview } from "./table-default-preview"
 
 export const metadata: Metadata = { title: "Table - MAXA UI" }
 
@@ -207,105 +206,6 @@ const CELL_VARIANTS = [
   { label: "Loader", cellType: "loader" },
 ] as const
 
-function ExampleTable() {
-  return (
-    <Table className="docs-product-table-example" style={{ minWidth: 0 }}>
-      <colgroup>
-        <col style={{ width: "44px" }} />
-        <col />
-        <col style={{ width: "120px" }} />
-        <col style={{ width: "96px" }} />
-        <col style={{ width: "112px" }} />
-      </colgroup>
-      <TableCaption>Recent design orders</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead scope="col" headerType="checkbox">
-            <Checkbox aria-label="Select all design orders" />
-          </TableHead>
-          <TableHead scope="col">Design</TableHead>
-          <TableHead scope="col">Status</TableHead>
-          <TableHead scope="col" align="right" headerType="numeric" sort="descending">
-            Total
-          </TableHead>
-          <TableHead scope="col" headerType="empty" />
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow interactive>
-          <TableCell cellType="checkbox">
-            <Checkbox aria-label="Select Lunch & Learn postcard" />
-          </TableCell>
-          <TableCell cellType="thumbnail">
-            <span className="maxa-table__cell-content">
-              <span className="maxa-table__thumbnail" aria-hidden="true" />
-              <span className="maxa-table__cell-stack">
-                <span className="maxa-table__cell-title">Lunch & Learn postcard</span>
-                <span className="maxa-table__cell-subtitle">Direct mail</span>
-              </span>
-            </span>
-          </TableCell>
-          <TableCell cellType="badge">
-            <Badge intent="success">Approved</Badge>
-          </TableCell>
-          <TableCell align="right" cellType="numeric">
-            $148.00
-          </TableCell>
-          <TableCell cellType="icon-button">
-            <TableRowActions />
-          </TableCell>
-        </TableRow>
-        <TableRow interactive>
-          <TableCell cellType="checkbox">
-            <Checkbox aria-label="Select Market report flyer" />
-          </TableCell>
-          <TableCell cellType="thumbnail">
-            <span className="maxa-table__cell-content">
-              <span className="maxa-table__thumbnail" aria-hidden="true" />
-              <span className="maxa-table__cell-stack">
-                <span className="maxa-table__cell-title">Market report flyer</span>
-                <span className="maxa-table__cell-subtitle">Flyer</span>
-              </span>
-            </span>
-          </TableCell>
-          <TableCell cellType="badge">
-            <Badge intent="warning">Review</Badge>
-          </TableCell>
-          <TableCell align="right" cellType="numeric">
-            $72.00
-          </TableCell>
-          <TableCell cellType="icon-button">
-            <TableRowActions />
-          </TableCell>
-        </TableRow>
-        <TableRow interactive>
-          <TableCell cellType="checkbox">
-            <Checkbox aria-label="Select Open house social post" />
-          </TableCell>
-          <TableCell cellType="thumbnail">
-            <span className="maxa-table__cell-content">
-              <span className="maxa-table__thumbnail" aria-hidden="true" />
-              <span className="maxa-table__cell-stack">
-                <span className="maxa-table__cell-title">Open house social post</span>
-                <span className="maxa-table__cell-subtitle">Social post</span>
-              </span>
-            </span>
-          </TableCell>
-          <TableCell cellType="badge">
-            <Badge>Draft</Badge>
-          </TableCell>
-          <TableCell align="right" cellType="numeric">
-            $32.00
-          </TableCell>
-          <TableCell cellType="icon-button">
-            <TableRowActions />
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  )
-}
-
 export default function TablePage() {
   return (
     <ComponentPage
@@ -319,14 +219,7 @@ export default function TablePage() {
     >
       <section id="preview" style={{ scrollMarginTop: "96px" }}>
         <DocsExample title="Default">
-          <ComponentPreview
-            layout="block"
-            code={`<Table>\n  <TableHeader>\n    <TableRow>\n      <TableHead headerType="checkbox"><Checkbox aria-label="Select all" /></TableHead>\n      <TableHead>Design</TableHead>\n      <TableHead>Status</TableHead>\n      <TableHead align="right" sort="descending">Total</TableHead>\n      <TableHead headerType="empty" />\n    </TableRow>\n  </TableHeader>\n  <TableBody>\n    <TableRow interactive>\n      <TableCell cellType="checkbox"><Checkbox aria-label="Select row" /></TableCell>\n      <TableCell>Lunch & Learn postcard</TableCell>\n      <TableCell><Badge intent="success">Approved</Badge></TableCell>\n      <TableCell align="right" cellType="numeric">$148.00</TableCell>\n      <TableCell cellType="icon-button"><RowActions /></TableCell>\n    </TableRow>\n  </TableBody>\n</Table>`}
-          >
-            <div className="docs-table-example docs-table-example--full">
-              <ExampleTable />
-            </div>
-          </ComponentPreview>
+          <TableDefaultPreview />
         </DocsExample>
       </section>
 
