@@ -19,6 +19,7 @@ LLMs fabricate design values. They generate `padding: 13px` or `color: #3b82f6` 
 7. **Need package ownership rules?** — read `specs/architecture.md`
 8. **Need Figma/Code Connect guidance?** — read `specs/figma-code-connect-readiness.md`
 9. **Planning core components?** — read `specs/core-gap-audit.md`
+10. **Coverage vs MaxaDevs FSD?** — read `specs/maxadevs-fsd-coverage.md`
 
 ## Enforcement
 
@@ -37,6 +38,7 @@ specs/
 ├── README.md                        ← this file
 ├── architecture.md                  ← package ownership rules
 ├── core-gap-audit.md                ← core component gaps vs product patterns
+├── maxadevs-fsd-coverage.md         ← kit coverage vs MaxaDevs FSD + roadmap direction
 ├── figma-code-connect-readiness.md  ← optional Figma Code Connect strategy
 ├── tokens-reference.md              ← master CSS variable index
 ├── foundations/
