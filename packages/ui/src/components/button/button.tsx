@@ -1,7 +1,10 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
+
 import "./button.css"
+
+import type { VariantProps } from "class-variance-authority"
 
 const buttonVariants = cva("maxa-button", {
   variants: {
@@ -13,6 +16,8 @@ const buttonVariants = cva("maxa-button", {
       link:      "maxa-button--link",
       success:   "maxa-button--success",
       danger:    "maxa-button--danger",
+      warning:   "maxa-button--warning",
+      text:      "maxa-button--text",
     },
     size: {
       xs: "maxa-button--xs",
@@ -24,11 +29,16 @@ const buttonVariants = cva("maxa-button", {
       true:  "maxa-button--icon-only",
       false: "",
     },
+    fullWidth: {
+      true:  "maxa-button--full-width",
+      false: "",
+    },
   },
   defaultVariants: {
     variant: "primary",
     size: "md",
     iconOnly: false,
+    fullWidth: false,
   },
 })
 
@@ -48,6 +58,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       iconOnly,
+      fullWidth,
       asChild = false,
       loading = false,
       disabled,
@@ -66,7 +77,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <Comp
           ref={ref}
-          className={buttonVariants({ variant, size, iconOnly, className })}
+          className={buttonVariants({ variant, size, iconOnly, fullWidth, className })}
           aria-disabled={isDisabled || undefined}
           aria-busy={loading || undefined}
           {...props}
@@ -79,22 +90,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={buttonVariants({ variant, size, iconOnly, className })}
+        className={buttonVariants({ variant, size, iconOnly, fullWidth, className })}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-busy={loading || undefined}
         data-loading={loading || undefined}
         {...props}
       >
-        {loading ? (
-          <span className="maxa-button__spinner" aria-hidden="true" />
-        ) : (
-          iconLeading && (
-            <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">
-              {iconLeading}
-            </span>
-          )
-        )}
+        { loading
+          ? <span className="maxa-button__spinner" aria-hidden="true" />
+          : iconLeading && <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">{iconLeading}</span>
+        }
         {children && <span className="maxa-button__label">{children}</span>}
         {!loading && iconTrailing && (
           <span className="maxa-button__icon maxa-button__icon--trailing" aria-hidden="true">

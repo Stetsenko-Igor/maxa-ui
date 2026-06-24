@@ -13,6 +13,7 @@ const TOC = [
   { href: "#installation", label: "Installation" },
   { href: "#variants", label: "Variants" },
   { href: "#sizes", label: "Sizes" },
+  { href: "#layout", label: "Layout" },
   { href: "#with-icons", label: "With icons" },
   { href: "#icon-button", label: "Icon button" },
   { href: "#loading", label: "Loading" },
@@ -22,11 +23,12 @@ const TOC = [
 ]
 
 const BUTTON_PROPS = [
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger'", default: "'primary'", description: "Visual hierarchy." },
+  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger' | 'warning' | 'text'", default: "'primary'", description: "Visual hierarchy." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Height, padding, and font size." },
   { name: "iconLeading", type: "ReactNode", default: undefined, description: "Icon before the label." },
   { name: "iconTrailing", type: "ReactNode", default: undefined, description: "Icon after the label." },
   { name: "iconOnly", type: "boolean", default: "false", description: "Square layout, no label. Always pair with aria-label." },
+  { name: "fullWidth", type: "boolean", default: "false", description: "Stretches the button to the available width." },
   { name: "loading", type: "boolean", default: "false", description: "Shows spinner, disables interaction." },
   { name: "asChild", type: "boolean", default: "false", description: "Merges props onto the child element (Radix Slot)." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the button." },
@@ -35,7 +37,7 @@ const BUTTON_PROPS = [
 const ICON_BUTTON_PROPS = [
   { name: "icon", type: "ReactNode", default: undefined, description: "Required. Icon to display." },
   { name: "aria-label", type: "string", default: undefined, description: "Required. Accessible label for screen readers." },
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger'", default: "'secondary'", description: "Visual style." },
+  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger' | 'warning' | 'text'", default: "'secondary'", description: "Visual style." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Square size." },
   { name: "loading", type: "boolean", default: "false", description: "Shows spinner." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the button." },
@@ -45,7 +47,7 @@ const GITHUB_BUTTON_URL = "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/p
 
 const BUTTON_MARKDOWN = `# Button
 
-Actions, navigation, and form submission. Seven variants, four sizes, icon support, and a dedicated IconButton wrapper for icon-only use cases.
+Actions, navigation, and form submission. Nine variants, four sizes, icon support, full-width layout, and a dedicated IconButton wrapper for icon-only use cases.
 
 ## Installation
 
@@ -71,7 +73,7 @@ export default function ButtonPage() {
       next={{ href: "/docs/components/checkbox", label: "Checkbox" }}
       lead={
         <>
-          Actions, navigation, and form submission. Seven variants, four sizes,
+          Actions, navigation, and form submission. Nine variants, four sizes,
           icon support, and a dedicated <code>IconButton</code> wrapper for
           icon-only use cases.
         </>
@@ -101,29 +103,47 @@ export default function ButtonPage() {
       <DocsSection
         id="variants"
         title="Variants"
-        description="Seven variants map to the action hierarchy. Use primary once per view for the main call-to-action."
+        description="Nine variants map to the action hierarchy. Use primary once per view for the main call-to-action."
       >
         <DocsExample title="Action variants">
           <ComponentPreview code={`<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>`}>
+<Button variant="link">Link</Button>
+<Button variant="text">Text</Button>`}>
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="link">Link</Button>
+            <Button variant="text">Text</Button>
           </ComponentPreview>
         </DocsExample>
 
         <DocsExample title="Semantic variants">
           <ComponentPreview code={`<Button variant="success">Confirm</Button>
+<Button variant="warning">Review</Button>
 <Button variant="danger">Delete</Button>`}>
             <Button variant="success">Confirm</Button>
+            <Button variant="warning">Review</Button>
             <Button variant="danger">Delete</Button>
           </ComponentPreview>
         </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="layout"
+        title="Layout"
+        description={<>Use <code>fullWidth</code> for form footers, stacked mobile actions, and single-column flows.</>}
+      >
+        <ComponentPreview code={`<Button variant="primary" fullWidth>Continue</Button>
+<Button variant="secondary" fullWidth>Save draft</Button>`}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px", width: "min(100%, 360px)" }}>
+            <Button variant="primary" fullWidth>Continue</Button>
+            <Button variant="secondary" fullWidth>Save draft</Button>
+          </div>
+        </ComponentPreview>
       </DocsSection>
 
       {/* Sizes */}

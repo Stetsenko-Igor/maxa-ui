@@ -56,6 +56,26 @@ target API shape. Prefer separate form components per field family.
 - TextArea should use the standalone `TextArea` component, not
   `Input.kind="textarea"`.
 
+## Formatted variants
+
+For inputs that need formatting/masking, prefer the dedicated wrapper instead
+of stacking props on `Input`. Each wrapper renders `Input` as the inner control
+via `react-number-format`'s `customInput`, so all label/hint/error/visual-state
+machinery still applies.
+
+- `NumberInput` — generic numeric field; passes `react-number-format`'s
+  `NumericFormat` props (`thousandSeparator`, `decimalScale`, `prefix`,
+  `suffix`, `allowNegative`, etc.). Returns the unmasked value via
+  `onValueChange({ floatValue, formattedValue, value })`.
+- `CurrencyInput` — `NumberInput` preset: `prefix="$"` (override with
+  `currencySymbol`), `thousandSeparator=","`, `decimalScale=2`,
+  `fixedDecimalScale`, `allowNegative=false`.
+- `PhoneInput` — wraps `PatternFormat` with default US mask
+  `"(###) ###-####"`. Pass `format` to override.
+
+Currency/percent/phone inputs **must not** be added as `Input.kind` variants;
+they remain wrappers so the base `Input` stays minimal.
+
 ## Implementation references
 
 - React component: `packages/ui/src/components/input/`

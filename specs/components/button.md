@@ -67,6 +67,19 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 - **Text:** `--button-danger-text` → `text/inverse`
 - Always pair with a confirmation dialog for truly destructive actions.
 
+### `warning`
+- **Use when:** Reversible cautious actions that need attention but are not destructive (e.g. publish overrides, override-defaults).
+- **Background:** `--button-warning-bg` → `action/warning` (yellow)
+- **Text:** `--button-warning-text` → `text/primary` (yellow needs dark foreground for contrast)
+- Distinct from `danger` — warning does not imply destruction.
+
+### `text`
+- **Use when:** Inline tertiary action that should read as a control but carry no surface weight (e.g. "Cancel" in a footer, inline "Edit").
+- **Background:** transparent always (no hover surface).
+- **Text:** `--button-text-text` → `text/primary`; on hover shifts to `action/primary`.
+- Differs from `link`: no underline, follows button spacing inside layouts.
+- Differs from `ghost`: no hover background surface.
+
 ---
 
 ## Sizes
@@ -85,6 +98,13 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 - `sm` → 28×28px
 - `md` → 36×36px
 - `lg` → 48×48px
+
+---
+
+## Layout flags
+
+- **`iconOnly`** — collapses padding to a square hit-target sized via `--button-icon-only-{size}-size`.
+- **`fullWidth`** — stretches the button to `width: 100%`. Cancels `iconOnly` aspect-ratio when both set.
 
 ---
 

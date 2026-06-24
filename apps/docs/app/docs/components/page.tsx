@@ -295,7 +295,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Action</p>
             <h2 style={title}>Button</h2>
             <p style={description}>
-              Seven variants, four sizes, icon support, loading state, and polymorphic rendering.
+              Nine variants, four sizes, icon support, loading state, and polymorphic rendering.
             </p>
             <div style={preview}>
               <Button variant="primary">Create</Button>

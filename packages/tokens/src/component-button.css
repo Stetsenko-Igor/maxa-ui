@@ -69,6 +69,26 @@
   --button-danger-border-hover: var(--color-action-negative-hover);
   --button-danger-border-focus: var(--color-border-focus);
 
+  /* warning */
+  --button-warning-bg:           var(--color-action-warning);
+  --button-warning-bg-hover:     var(--color-action-warning-hover);
+  --button-warning-bg-active:    var(--color-action-warning-active);
+  --button-warning-text:         var(--color-text-primary);
+  --button-warning-border:       var(--color-action-warning);
+  --button-warning-border-hover: var(--color-action-warning-hover);
+  --button-warning-border-focus: var(--color-border-focus);
+
+  /* text — minimal text-only button without hover surface */
+  --button-text-bg:             transparent;
+  --button-text-bg-hover:       transparent;
+  --button-text-bg-active:      transparent;
+  --button-text-text:           var(--color-text-primary);
+  --button-text-text-hover:     var(--color-action-primary);
+  --button-text-text-active:    var(--color-action-primary-active);
+  --button-text-border:         transparent;
+  --button-text-border-hover:   transparent;
+  --button-text-border-focus:   var(--color-border-focus);
+
   /* ── Sizes ────────────────────────────────────────────────────── */
 
   /* xs */

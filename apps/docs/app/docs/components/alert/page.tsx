@@ -26,6 +26,7 @@ const ALERT_PROPS = [
   { name: "action", type: "ReactNode", default: undefined, description: "Optional call-to-action. Use <AlertAction> to get automatic intent-colored styling." },
   { name: "dismissible", type: "boolean", default: "false", description: "Shows a × dismiss button." },
   { name: "onDismiss", type: "() => void", default: undefined, description: "Called when dismiss button is clicked." },
+  { name: "orientation", type: "'horizontal' | 'vertical'", default: "derived", description: "Forces inline or stacked layout. Without it, layout is derived from title presence." },
   { name: "role", type: "'alert' | 'status'", default: "derived", description: "Override the auto-derived ARIA role." },
 ]
 

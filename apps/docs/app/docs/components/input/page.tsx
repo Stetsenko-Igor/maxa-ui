@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Input, FormField } from "@maxa/ui"
+import { CurrencyInput, FormField, Input, NumberInput, PhoneInput } from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
@@ -19,6 +19,7 @@ const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
   { href: "#field-types", label: "Field types" },
+  { href: "#formatted-fields", label: "Formatted fields" },
   { href: "#with-icons", label: "With icons" },
   { href: "#sizes", label: "Sizes" },
   { href: "#states", label: "States" },
@@ -46,6 +47,12 @@ const INPUT_PROPS = [
   { name: "wrapperClassName", type: "string", default: undefined, description: "Extra class applied to the outer wrapper div." },
 ]
 
+const FORMATTED_INPUT_PROPS = [
+  { name: "NumberInput", type: "NumericFormat wrapper", default: undefined, description: "Generic numeric field. Supports react-number-format props such as thousandSeparator, decimalScale, prefix, suffix, allowNegative, and onValueChange." },
+  { name: "CurrencyInput", type: "NumberInput preset", default: undefined, description: "Currency field preset with prefix, thousand separator, fixed two decimals, and no negative values by default." },
+  { name: "PhoneInput", type: "PatternFormat wrapper", default: undefined, description: "Phone field with a default US mask. Pass format to override." },
+]
+
 const INPUT_MARKDOWN = `# Input
 
 A composable form field family. MAXA separates field primitives from form-level components.
@@ -53,7 +60,7 @@ A composable form field family. MAXA separates field primitives from form-level 
 ## Installation
 
 \`\`\`tsx
-import { Input } from "@maxa/ui"
+import { Input, NumberInput, CurrencyInput, PhoneInput } from "@maxa/ui"
 import "@maxa/tokens/theme.css"
 \`\`\`
 
@@ -96,7 +103,7 @@ export default function InputPage() {
       >
         <InstallationBlock
           command="pnpm add @maxa/ui @maxa/tokens"
-          imports={`import { Input } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
+          imports={`import { Input, NumberInput, CurrencyInput, PhoneInput } from "@maxa/ui"\nimport "@maxa/tokens/theme.css"`}
           usage={`<Input label="Email" placeholder="you@example.com" />`}
         />
       </DocsSection>
@@ -134,6 +141,52 @@ export default function InputPage() {
           <ComponentPreview code={inputExample("InputQuantityExample", `<Input kind="quantity" label="Quantity" defaultValue={1} />`)}>
             <div style={fieldWidth}>
               <Input kind="quantity" label="Quantity" defaultValue={1} />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+      </DocsSection>
+
+      <DocsSection
+        id="formatted-fields"
+        title="Formatted fields"
+        description={
+          <>
+            Use dedicated wrappers for number, currency, and phone formatting.
+            They render the same <code>Input</code> surface and keep formatting
+            logic out of <code>Input.kind</code>.
+          </>
+        }
+      >
+        <DocsExample title="Number">
+          <ComponentPreview code={`import { NumberInput } from "@maxa/ui"
+
+<NumberInput
+  label="Impressions"
+  thousandSeparator=","
+  placeholder="0"
+/>`}>
+            <div style={fieldWidth}>
+              <NumberInput label="Impressions" thousandSeparator="," placeholder="0" />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="Currency">
+          <ComponentPreview code={`import { CurrencyInput } from "@maxa/ui"
+
+<CurrencyInput label="Budget" placeholder="$0.00" />`}>
+            <div style={fieldWidth}>
+              <CurrencyInput label="Budget" placeholder="$0.00" />
+            </div>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="Phone">
+          <ComponentPreview code={`import { PhoneInput } from "@maxa/ui"
+
+<PhoneInput label="Phone" placeholder="(555) 000-0000" />`}>
+            <div style={fieldWidth}>
+              <PhoneInput label="Phone" placeholder="(555) 000-0000" />
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -405,6 +458,12 @@ export default function InputPage() {
         }
       >
         <PropsTable props={INPUT_PROPS} />
+        <div style={{ marginTop: "32px" }}>
+          <h3 style={{ fontSize: "var(--text-md)", fontWeight: "var(--font-weight-semibold)", marginBottom: "12px" }}>
+            Formatted input wrappers
+          </h3>
+          <PropsTable props={FORMATTED_INPUT_PROPS} />
+        </div>
       </DocsSection>
     </ComponentPage>
   )

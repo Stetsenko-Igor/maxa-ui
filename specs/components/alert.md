@@ -61,8 +61,10 @@ Each intent maps to theme-aware component token values.
 | `intent` | `'info' \| 'success' \| 'warning' \| 'danger'` | `'info'` | Visual + semantic intent. |
 | `title` | `ReactNode` | — | Optional bold heading line. |
 | `icon` | `ReactNode` | intent default | Leading icon, rendered `aria-hidden`. |
+| `action` | `ReactNode` | — | Custom action slot. Prefer `<AlertAction>` inside. |
 | `dismissible` | `boolean` | `false` | Shows a `×` dismiss button. Use with `onDismiss`. |
 | `onDismiss` | `() => void` | — | Called when the dismiss button is activated. |
+| `orientation` | `'horizontal' \| 'vertical'` | derived | Force inline (`horizontal`) or stacked (`vertical`) layout. Without it, layout is auto-derived from `title` presence. |
 | `role` | `'alert' \| 'status'` | derived | Override the auto-derived ARIA role. |
 
 All other native `div` attributes are forwarded.

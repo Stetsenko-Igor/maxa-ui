@@ -75,6 +75,12 @@ Then import components from `@maxa/ui`:
 import { Button, Select, Dialog } from "@maxa/ui"
 ```
 
+Formatted field wrappers are exported from the same entrypoint:
+
+```tsx
+import { NumberInput, CurrencyInput, PhoneInput } from "@maxa/ui"
+```
+
 ### Compatibility
 
 `@maxa/ui`, `@maxa/hooks`, and `@maxa/icons` support **React 17, 18, and 19**
@@ -213,6 +219,12 @@ Every production component should have:
 - tests for behavior and accessibility-sensitive states
 - docs examples in `apps/docs`
 - Figma token JSON when the component introduces component-level design values
+
+Current component API decisions:
+
+- `Button` includes `warning`, `text`, and `fullWidth` alongside the core variants.
+- Formatted fields use separate wrappers (`NumberInput`, `CurrencyInput`, `PhoneInput`) instead of expanding `Input.kind`.
+- `Alert` uses an explicit `action` slot with `AlertAction`; shorthand action props are intentionally not part of the public API.
 
 Do not hardcode design values in component code when a token exists. Run:
 

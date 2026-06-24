@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1633
+Total tokens: 1649
 
 ## Primitives
 
@@ -678,6 +678,22 @@ Source: `packages/tokens/src/component-button.css`
 --button-danger-border: var(--color-action-negative);
 --button-danger-border-hover: var(--color-action-negative-hover);
 --button-danger-border-focus: var(--color-border-focus);
+--button-warning-bg: var(--color-action-warning);
+--button-warning-bg-hover: var(--color-action-warning-hover);
+--button-warning-bg-active: var(--color-action-warning-active);
+--button-warning-text: var(--color-text-primary);
+--button-warning-border: var(--color-action-warning);
+--button-warning-border-hover: var(--color-action-warning-hover);
+--button-warning-border-focus: var(--color-border-focus);
+--button-text-bg: transparent;
+--button-text-bg-hover: transparent;
+--button-text-bg-active: transparent;
+--button-text-text: var(--color-text-primary);
+--button-text-text-hover: var(--color-action-primary);
+--button-text-text-active: var(--color-action-primary-active);
+--button-text-border: transparent;
+--button-text-border-hover: transparent;
+--button-text-border-focus: var(--color-border-focus);
 
 /* ── Sizes ── */
 --button-size-xs-height: 24px;

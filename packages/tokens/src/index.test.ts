@@ -732,6 +732,8 @@ describe("figma component-based button tokens", () => {
       "link",
       "success",
       "danger",
+      "warning",
+      "text",
       "disabled",
       "size",
       "icon-only",

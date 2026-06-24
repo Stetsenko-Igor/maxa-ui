@@ -1,13 +1,18 @@
 "use client"
 
 import * as React from "react"
-import { MagnifyingGlass, Eye, X, Minus, Plus } from "@maxa/icons"
-import { cva, type VariantProps } from "class-variance-authority"
-import "./input.css"
-import { cn } from "../../lib/cn.js"
-import { useFieldId } from "@maxa/hooks"
+import { cva } from "class-variance-authority"
 
-type InputKind = "text" | "password" | "search" | "quantity"
+import { useFieldId } from "@maxa/hooks"
+import { Eye, MagnifyingGlass, Minus, Plus, X } from "@maxa/icons"
+
+import { cn } from "../../lib/cn.js"
+
+import "./input.css"
+
+import type { VariantProps } from "class-variance-authority"
+
+export type InputKind = "text" | "password" | "search" | "quantity"
 
 const inputWrapperVariants = cva("maxa-input-wrapper", {
   variants: {
@@ -88,6 +93,24 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref,
   ) => {
     const inputId = useFieldId(id)
+    const innerRef = React.useRef<HTMLInputElement | null>(null)
+    const setRefs = React.useCallback(
+      (node: HTMLInputElement | null) => {
+        innerRef.current = node
+        if (typeof ref === "function") ref(node)
+        else if (ref) ref.current = node
+      },
+      [ref],
+    )
+
+    const step = (direction: 1 | -1) => {
+      const node = innerRef.current
+      if (!node) return
+      if (direction === 1) node.stepUp()
+      else node.stepDown()
+      node.dispatchEvent(new Event("input", { bubbles: true }))
+      node.dispatchEvent(new Event("change", { bubbles: true }))
+    }
     const hasValue = value != null ? String(value).length > 0 : defaultValue != null
     const resolvedStatus = error ? "error" : status
     const resolvedVisualState = disabled ? "disabled"
@@ -105,17 +128,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       Boolean(trailingIcon || kind === "password" || onClear) && "maxa-input__field--has-trailing",
     )
 
-    function handleMouseDown(event: React.MouseEvent<HTMLInputElement>) {
-      if (readOnly) {
-        event.preventDefault()
-      }
+    const handleMouseDown = (event: React.MouseEvent<HTMLInputElement>) => {
+      if (readOnly) event.preventDefault()
       onMouseDown?.(event)
     }
 
-    function handleFocus(event: React.FocusEvent<HTMLInputElement>) {
-      if (readOnly) {
-        event.currentTarget.blur()
-      }
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+      if (readOnly) event.currentTarget.blur()
       onFocus?.(event)
     }
 
@@ -143,7 +162,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               className="maxa-input__stepper maxa-input__stepper--decrement"
-              onClick={onDecrement}
+              onClick={onDecrement ?? (() => step(-1))}
               disabled={disabled || readOnly}
               aria-label="Decrease value"
             >
@@ -158,7 +177,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
 
           <input
-            ref={ref}
+            ref={setRefs}
             id={inputId}
             className={cn("maxa-input__input", className ?? "")}
             disabled={disabled}
@@ -179,7 +198,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <button
               type="button"
               className="maxa-input__stepper maxa-input__stepper--increment"
-              onClick={onIncrement}
+              onClick={onIncrement ?? (() => step(1))}
               disabled={disabled || readOnly}
               aria-label="Increase value"
             >
@@ -272,17 +291,13 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       : "default"
     const count = value != null ? String(value).length : defaultValue != null ? String(defaultValue).length : 0
 
-    function handleMouseDown(event: React.MouseEvent<HTMLTextAreaElement>) {
-      if (readOnly) {
-        event.preventDefault()
-      }
+    const handleMouseDown = (event: React.MouseEvent<HTMLTextAreaElement>) => {
+      if (readOnly) event.preventDefault()
       onMouseDown?.(event)
     }
 
-    function handleFocus(event: React.FocusEvent<HTMLTextAreaElement>) {
-      if (readOnly) {
-        event.currentTarget.blur()
-      }
+    const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
+      if (readOnly) event.currentTarget.blur()
       onFocus?.(event)
     }
 
@@ -345,24 +360,10 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
 TextArea.displayName = "TextArea"
 
-export { Input, TextArea, inputWrapperVariants }
+export { Input, inputWrapperVariants, TextArea }
 
-function SearchIcon() {
-  return <MagnifyingGlass width={16} height={16} aria-hidden focusable={false} />
-}
-
-function EyeIcon() {
-  return <Eye width={16} height={16} aria-hidden focusable={false} />
-}
-
-function ClearIcon() {
-  return <X width={14} height={14} aria-hidden focusable={false} />
-}
-
-function MinusIcon() {
-  return <Minus width={16} height={16} aria-hidden focusable={false} />
-}
-
-function PlusIcon() {
-  return <Plus width={16} height={16} aria-hidden focusable={false} />
-}
+const SearchIcon = () => <MagnifyingGlass width={16} height={16} aria-hidden focusable={false} />
+const EyeIcon = () => <Eye width={16} height={16} aria-hidden focusable={false} />
+const ClearIcon = () => <X width={14} height={14} aria-hidden focusable={false} />
+const MinusIcon = () => <Minus width={16} height={16} aria-hidden focusable={false} />
+const PlusIcon = () => <Plus width={16} height={16} aria-hidden focusable={false} />
