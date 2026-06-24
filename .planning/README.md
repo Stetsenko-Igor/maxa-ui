@@ -1,6 +1,6 @@
 # `.planning/` — Project Roadmap & Phase Plans
 
-This directory is the **roadmap layer** for `maxa-ui-codex`. It answers _in what order_, _by which phases_, and _with what success criteria_ the project moves forward.
+This directory is the **roadmap layer** for `maxa-ui`. It answers _in what order_, _by which phases_, and _with what success criteria_ the project moves forward.
 
 It is **GSD-compatible** — the file shape matches the templates GSD's commands expect. Both Claude Code (`/gsd:*`) and Codex (`$gsd-*`) can operate on it.
 

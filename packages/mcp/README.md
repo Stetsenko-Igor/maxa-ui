@@ -15,13 +15,13 @@ pnpm --filter @maxa/mcp build
 ### Register in Claude Code
 
 ```bash
-claude mcp add maxa -- node /path/to/maxa-ui-codex/packages/mcp/dist/cli.js
+claude mcp add maxa -- node /path/to/maxa-ui/packages/mcp/dist/cli.js
 ```
 
 Or run via npx from git (builds on install):
 
 ```bash
-claude mcp add maxa -- npx -y github:maxadesigns/maxa-ui-codex --workspace @maxa/mcp
+claude mcp add maxa -- npx -y github:maxadesigns/maxa-ui --workspace @maxa/mcp
 ```
 
 ### Repo root override
@@ -29,7 +29,7 @@ claude mcp add maxa -- npx -y github:maxadesigns/maxa-ui-codex --workspace @maxa
 By default the server resolves the repo root relative to its own location (`packages/mcp/../..`). To point it at a different checkout, set `MAXA_REPO_ROOT`:
 
 ```bash
-MAXA_REPO_ROOT=/path/to/maxa-ui-codex node packages/mcp/dist/cli.js
+MAXA_REPO_ROOT=/path/to/maxa-ui node packages/mcp/dist/cli.js
 ```
 
 ## Tools
