@@ -17,6 +17,8 @@ const NAV = [
       { href: "/docs/foundations/spacing", label: "Spacing" },
       { href: "/docs/foundations/radius", label: "Radius" },
       { href: "/docs/foundations/shadows", label: "Shadows" },
+      { href: "/docs/foundations/motion", label: "Motion" },
+      { href: "/docs/foundations/breakpoints", label: "Breakpoints" },
     ],
   },
   {
@@ -65,7 +67,10 @@ const NAV = [
   },
   {
     group: "Patterns",
-    items: [{ href: "/docs/patterns/toolbar-menus", label: "Toolbar Menus" }],
+    items: [
+      { href: "/docs/patterns/interactive-hierarchy", label: "Interactive Hierarchy" },
+      { href: "/docs/patterns/toolbar-menus", label: "Toolbar Menus" },
+    ],
   },
 ]
 

@@ -1,9 +1,15 @@
+.maxa-multi-select {
+  position: relative;
+  width: 100%;
+}
+
 .maxa-multi-select__trigger {
   display: flex;
   min-height: var(--multi-select-trigger-min-height);
   align-items: flex-start;
   gap: var(--multi-select-trigger-gap);
   width: 100%;
+  margin: 0;
   padding: var(--multi-select-trigger-padding-y) var(--multi-select-trigger-padding-x);
   border: 1px solid var(--multi-select-trigger-border);
   border-radius: var(--multi-select-trigger-radius);
@@ -32,7 +38,7 @@
   border-radius: var(--input-size-lg-radius);
 }
 
-.maxa-multi-select__trigger:focus-visible {
+.maxa-multi-select__trigger:focus-within {
   border-color: var(--input-border-focus);
   outline: none;
   box-shadow:
@@ -44,7 +50,7 @@
   border-color: var(--input-error-border);
 }
 
-.maxa-multi-select__trigger--error:focus-visible {
+.maxa-multi-select__trigger--error:focus-within {
   border-color: var(--input-error-border-focus);
   box-shadow:
     0 0 0 var(--multi-select-trigger-focus-ring-offset) var(--multi-select-trigger-bg),
@@ -135,14 +141,125 @@
   margin-left: auto;
 }
 
+.maxa-multi-select__combobox {
+  display: inline-flex;
+  width: var(--multi-select-chevron-size);
+  height: var(--multi-select-chip-height);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.maxa-multi-select__combobox:focus {
+  outline: none;
+}
+
+.maxa-multi-select__combobox:disabled {
+  cursor: not-allowed;
+}
+
+.maxa-multi-select__trigger-summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .maxa-multi-select__chevron svg {
   width: var(--multi-select-chevron-size);
   height: var(--multi-select-chevron-size);
 }
 
-.maxa-multi-select__menu {
-  max-height: var(--multi-select-menu-max-height);
-  overflow-y: auto;
+.maxa-multi-select__native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.maxa-multi-select__listbox {
+  position: absolute;
+  z-index: var(--multi-select-listbox-z);
+  top: calc(100% + var(--multi-select-listbox-offset));
+  left: 0;
+  width: 100%;
+  max-height: var(--multi-select-listbox-max-height);
+  overflow: auto;
+  padding-block: var(--multi-select-listbox-padding-y);
+  border: 1px solid var(--multi-select-listbox-border);
+  border-radius: var(--multi-select-listbox-radius);
+  background-color: var(--multi-select-listbox-bg);
+  box-shadow: var(--multi-select-listbox-shadow);
+  color: var(--multi-select-option-text);
+  outline: none;
+}
+
+.maxa-multi-select__option {
+  display: flex;
+  width: 100%;
+  min-height: var(--multi-select-option-height);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--multi-select-option-gap);
+  padding-inline: var(--multi-select-option-padding-x);
+  border: 0;
+  background: transparent;
+  color: var(--multi-select-option-text);
+  cursor: pointer;
+  font-family: var(--multi-select-trigger-font-family);
+  font-size: var(--multi-select-option-font-size);
+  font-weight: var(--multi-select-option-font-weight);
+  line-height: var(--multi-select-option-line-height);
+  text-align: start;
+}
+
+.maxa-multi-select__option:hover,
+.maxa-multi-select__option--highlighted {
+  background-color: var(--multi-select-option-bg-hover);
+  color: var(--multi-select-option-text-hover);
+}
+
+.maxa-multi-select__option--selected {
+  background-color: var(--multi-select-option-bg-selected);
+  color: var(--multi-select-option-text-selected);
+}
+
+.maxa-multi-select__option--selected.maxa-multi-select__option--highlighted {
+  background-color: var(--multi-select-option-bg-selected-hover);
+}
+
+.maxa-multi-select__option:disabled {
+  color: var(--multi-select-option-text-disabled);
+  cursor: not-allowed;
+}
+
+.maxa-multi-select__option-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.maxa-multi-select__option-check {
+  display: inline-flex;
+  width: var(--multi-select-option-check-size);
+  height: var(--multi-select-option-check-size);
+  flex: 0 0 auto;
+  color: var(--multi-select-option-check);
 }
 
 /* Invisible hit-area expansion to the WCAG 2.2 AA touch-target floor.

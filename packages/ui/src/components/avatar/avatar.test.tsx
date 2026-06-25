@@ -49,21 +49,21 @@ describe("Avatar", () => {
     const avatar = document.querySelector(".maxa-avatar")
     expect(avatar).toHaveAttribute("data-size", "md")
     expect(avatar).toHaveAttribute("data-shape", "circle")
-    expect(avatar).toHaveAttribute("data-color", "blue")
-    expect(avatar).toHaveAttribute("data-tone", "strong")
+    expect(avatar).toHaveAttribute("data-appearance", "blue")
+    expect(avatar).toHaveAttribute("data-emphasis", "strong")
   })
 
-  it("applies size, color, tone, and square shape", () => {
+  it("applies size, appearance, emphasis, and square shape", () => {
     render(
-      <Avatar color="green" shape="square" size="lg" tone="medium">
+      <Avatar appearance="green" shape="square" size="lg" emphasis="medium">
         <AvatarFallback>AV</AvatarFallback>
       </Avatar>,
     )
     const avatar = document.querySelector(".maxa-avatar")
     expect(avatar).toHaveAttribute("data-size", "lg")
     expect(avatar).toHaveAttribute("data-shape", "square")
-    expect(avatar).toHaveAttribute("data-color", "green")
-    expect(avatar).toHaveAttribute("data-tone", "medium")
+    expect(avatar).toHaveAttribute("data-appearance", "green")
+    expect(avatar).toHaveAttribute("data-emphasis", "medium")
   })
 
   it("renders image with alt text", async () => {
@@ -96,7 +96,7 @@ describe("Avatar", () => {
       </AvatarGroup>,
     )
     expect(screen.getByText("+1")).toBeInTheDocument()
-    expect(screen.getByLabelText("1 more")).toHaveAttribute("data-tone", "neutral")
+    expect(screen.getByLabelText("1 more")).toHaveAttribute("data-emphasis", "neutral")
   })
 
   it("renders avatar group overflow as ellipsis", () => {

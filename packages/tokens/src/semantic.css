@@ -136,12 +136,6 @@
   --color-action-warning-subtle-hover:    var(--color-yellow-50);
   --color-action-warning-subtle-active:   var(--color-yellow-100);
 
-  /* Border legacy aliases — kept for 1 release. */
-  --color-border-default:       var(--color-border-primary);
-  --color-border-brand-strong:  var(--color-border-brand);
-  --color-border-error-strong:  var(--color-border-error);
-
-
   /* ── Non-semantic appearance palette — light ───────────────────── */
   /* Mirrors intent pattern: --color-bg-{hue}-{tier}, --color-text-{hue} */
   /* subtle = low-emphasis bg  |  muted = medium-emphasis bg             */
@@ -334,12 +328,6 @@
   --color-action-warning-subtle:          var(--color-yellow-950);
   --color-action-warning-subtle-hover:    var(--color-yellow-950);
   --color-action-warning-subtle-active:   var(--color-yellow-900);
-
-  /* ── Deprecated aliases — dark ──────────────────────────────────── */
-  --color-border-default:       var(--color-border-primary);
-  --color-border-brand-strong:  var(--color-border-brand);
-  --color-border-error-strong:  var(--color-border-error);
-
 
   /* ── Non-semantic appearance palette — dark ────────────────────── */
   --color-bg-gray-subtle:   var(--color-gray-950);

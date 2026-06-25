@@ -26,75 +26,75 @@
   border-radius: var(--avatar-radius-square);
 }
 
-.maxa-avatar[data-color="blue"] {
+.maxa-avatar[data-appearance="blue"] {
   --avatar-bg: var(--color-bg-blue-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-blue-muted);
   --avatar-text-medium: var(--color-text-blue);
 }
 
-.maxa-avatar[data-color="green"] {
+.maxa-avatar[data-appearance="green"] {
   --avatar-bg: var(--color-bg-green-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-green-muted);
   --avatar-text-medium: var(--color-text-green);
 }
 
-.maxa-avatar[data-color="teal"] {
+.maxa-avatar[data-appearance="teal"] {
   --avatar-bg: var(--color-bg-teal-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-teal-muted);
   --avatar-text-medium: var(--color-text-teal);
 }
 
-.maxa-avatar[data-color="yellow"] {
+.maxa-avatar[data-appearance="yellow"] {
   --avatar-bg: var(--color-bg-yellow-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-yellow-muted);
   --avatar-text-medium: var(--color-text-yellow);
 }
 
-.maxa-avatar[data-color="orange"] {
+.maxa-avatar[data-appearance="orange"] {
   --avatar-bg: var(--color-bg-orange-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-orange-muted);
   --avatar-text-medium: var(--color-text-orange);
 }
 
-.maxa-avatar[data-color="red"] {
+.maxa-avatar[data-appearance="red"] {
   --avatar-bg: var(--color-bg-red-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-red-muted);
   --avatar-text-medium: var(--color-text-red);
 }
 
-.maxa-avatar[data-color="rose"] {
+.maxa-avatar[data-appearance="rose"] {
   --avatar-bg: var(--color-bg-rose-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-rose-muted);
   --avatar-text-medium: var(--color-text-rose);
 }
 
-.maxa-avatar[data-color="violet"] {
+.maxa-avatar[data-appearance="violet"] {
   --avatar-bg: var(--color-bg-violet-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-violet-muted);
   --avatar-text-medium: var(--color-text-violet);
 }
 
-.maxa-avatar[data-color="purple"] {
+.maxa-avatar[data-appearance="purple"] {
   --avatar-bg: var(--color-bg-purple-strong);
   --avatar-text: var(--color-neutral-0);
   --avatar-bg-medium: var(--color-bg-purple-muted);
   --avatar-text-medium: var(--color-text-purple);
 }
 
-.maxa-avatar[data-tone="medium"] {
+.maxa-avatar[data-emphasis="medium"] {
   --avatar-bg: var(--avatar-bg-medium);
   --avatar-text: var(--avatar-text-medium);
 }
 
-.maxa-avatar[data-tone="neutral"] {
+.maxa-avatar[data-emphasis="neutral"] {
   --avatar-bg: var(--color-neutral-100);
   --avatar-text: var(--color-neutral-950);
 }

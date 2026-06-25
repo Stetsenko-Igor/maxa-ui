@@ -46,8 +46,8 @@ import { social } from "@maxa/icons"
 
 ## Custom icons
 
-- MAXA-specific shapes with no Phosphor equivalent (e.g. the DataTable bidirectional sort caret) stay as small inline SVGs inside their component, or graduate into `@maxa/icons` if reused. Keep these rare — prefer a Phosphor icon whenever one fits.
+- MAXA-specific shapes with no Phosphor equivalent stay as small inline SVGs inside their component, or graduate into `@maxa/icons` if reused. Keep these rare — prefer a Phosphor icon whenever one fits.
 
 ## Migration note
 
-The component library originally used hand-drawn inline SVGs. These were migrated to Phosphor Regular for consistency. Two shapes remain inline because Phosphor has no equivalent: the DataTable bidirectional sort caret (`SortBothIcon`) and the DropdownMenu radio dot.
+The component library originally used hand-drawn inline SVGs. These were migrated to Phosphor Regular for consistency. One tiny shape remains inline because Phosphor has no equivalent: the DropdownMenu radio dot.

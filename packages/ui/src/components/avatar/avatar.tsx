@@ -8,8 +8,8 @@ import { cn } from "../../lib/cn.js"
 export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl"
 export type AvatarShape = "circle" | "square"
 export type AvatarStatus = "online" | "offline" | "busy" | "away"
-export type AvatarTone = "strong" | "medium" | "neutral"
-export type AvatarColor =
+export type AvatarEmphasis = "strong" | "medium" | "neutral"
+export type AvatarAppearance =
   | "blue"
   | "green"
   | "teal"
@@ -22,11 +22,11 @@ export type AvatarColor =
 
 export interface AvatarProps
   extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> {
-  color?: AvatarColor
+  appearance?: AvatarAppearance
+  emphasis?: AvatarEmphasis
   shape?: AvatarShape
   size?: AvatarSize
   status?: AvatarStatus
-  tone?: AvatarTone
 }
 
 export type AvatarImageProps =
@@ -43,14 +43,14 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   AvatarProps
->(({ className, children, color = "blue", shape = "circle", size = "md", status, tone = "strong", ...props }, ref) => (
+>(({ className, children, appearance = "blue", shape = "circle", size = "md", status, emphasis = "strong", ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     className={cn("maxa-avatar", className)}
-    data-color={color}
+    data-appearance={appearance}
     data-shape={shape}
     data-size={size}
-    data-tone={tone}
+    data-emphasis={emphasis}
     {...props}
   >
     {children}
@@ -97,7 +97,7 @@ const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
       >
         {visibleChildren}
         {overflow > 0 && (
-          <Avatar aria-label={`${overflow} more`} size="md" tone="neutral">
+          <Avatar aria-label={`${overflow} more`} size="md" emphasis="neutral">
             <AvatarFallback>{overflowVariant === "ellipsis" ? "..." : `+${overflow}`}</AvatarFallback>
           </Avatar>
         )}

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { CaretDown } from "@maxa/icons"
 import { Checkbox, type CheckedState } from "../checkbox/index.js"
 import { Empty } from "../empty/index.js"
 import {
@@ -59,48 +60,19 @@ export interface DataTableProps<T extends Record<string, unknown>> {
 const SKELETON_ROWS = 5
 
 function SortUpIcon() {
-  return (
-    <svg
-      className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active"
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path d="M6 2L10 8H2L6 2Z" fill="currentColor" />
-    </svg>
-  )
+  return <CaretDown className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active maxa-datatable__sort-icon--up" width="var(--spacing-3)" height="var(--spacing-3)" aria-hidden focusable={false} />
 }
 
 function SortDownIcon() {
-  return (
-    <svg
-      className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active"
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path d="M6 10L2 4H10L6 10Z" fill="currentColor" />
-    </svg>
-  )
+  return <CaretDown className="maxa-datatable__sort-icon maxa-datatable__sort-icon--active" width="var(--spacing-3)" height="var(--spacing-3)" aria-hidden focusable={false} />
 }
 
 function SortBothIcon() {
   return (
-    <svg
-      className="maxa-datatable__sort-icon"
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path d="M6 1L9 5H3L6 1Z" fill="currentColor" />
-      <path d="M6 11L3 7H9L6 11Z" fill="currentColor" />
-    </svg>
+    <span className="maxa-datatable__sort-icon maxa-datatable__sort-icon--both" aria-hidden="true">
+      <CaretDown className="maxa-datatable__sort-icon--up" width="100%" height="100%" focusable={false} />
+      <CaretDown width="100%" height="100%" focusable={false} />
+    </span>
   )
 }
 

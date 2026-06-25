@@ -45,6 +45,24 @@
   color: var(--color-fg-primary);
 }
 
+.maxa-datatable__sort-icon--up {
+  transform: rotate(180deg);
+}
+
+.maxa-datatable__sort-icon--both {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+  width: var(--spacing-3);
+  height: var(--spacing-3);
+  align-items: center;
+  justify-content: center;
+}
+
+.maxa-datatable__sort-icon--both svg {
+  flex: 0 0 auto;
+}
+
 /* Empty state wrapper */
 .maxa-datatable__empty {
   padding: var(--spacing-10) 0;

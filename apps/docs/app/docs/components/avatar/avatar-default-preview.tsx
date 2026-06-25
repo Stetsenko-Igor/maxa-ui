@@ -29,7 +29,7 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
     },
     {
       type: "select",
-      name: "color",
+      name: "appearance",
       options: [
         { label: "blue", value: "blue" },
         { label: "green", value: "green" },
@@ -45,7 +45,7 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
     },
     {
       type: "select",
-      name: "tone",
+      name: "emphasis",
       options: [
         { label: "strong", value: "strong" },
         { label: "medium", value: "medium" },
@@ -84,8 +84,8 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
     return (
       <Avatar
         size={v.size as "xs" | "sm" | "md" | "lg" | "xl"}
-        color={v.color as "blue" | "green" | "teal" | "yellow" | "orange" | "red" | "rose" | "violet" | "purple"}
-        tone={v.tone as "strong" | "medium" | "neutral"}
+        appearance={v.appearance as "blue" | "green" | "teal" | "yellow" | "orange" | "red" | "rose" | "violet" | "purple"}
+        emphasis={v.emphasis as "strong" | "medium" | "neutral"}
         shape={v.shape as "circle" | "square"}
         {...statusProps}
       >
@@ -94,7 +94,7 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
     )
   },
   code: (v: PlaygroundValues) => {
-    const attrs = [`size="${v.size}"`, `color="${v.color}"`, `tone="${v.tone}"`, `shape="${v.shape}"`]
+    const attrs = [`size="${v.size}"`, `appearance="${v.appearance}"`, `emphasis="${v.emphasis}"`, `shape="${v.shape}"`]
     if (v.status !== "none") attrs.push(`status="${v.status}"`)
     return `<Avatar ${attrs.join(" ")}>\n  <AvatarFallback>${v.initials}</AvatarFallback>\n</Avatar>`
   },
@@ -103,15 +103,15 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
 export function AvatarDefaultPreview({ imageSrc }: { imageSrc: string }) {
   return (
     <ComponentPreview
-      code={`import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from "@maxa/ui"\n\n<Avatar color="blue">\n  <AvatarImage alt="Igor Stetsenko" src="/avatar.png" />\n  <AvatarFallback>IS</AvatarFallback>\n</Avatar>`}
+      code={`import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from "@maxa/ui"\n\n<Avatar appearance="blue">\n  <AvatarImage alt="Igor Stetsenko" src="/avatar.png" />\n  <AvatarFallback>IS</AvatarFallback>\n</Avatar>`}
       playground={AVATAR_PLAYGROUND}
     >
       <div style={row}>
-        <Avatar color="blue">
+        <Avatar appearance="blue">
           <AvatarImage alt="Igor Stetsenko" src={imageSrc} />
           <AvatarFallback>IS</AvatarFallback>
         </Avatar>
-        <Avatar color="teal" shape="square">
+        <Avatar appearance="teal" shape="square">
           <AvatarFallback>MW</AvatarFallback>
         </Avatar>
       </div>

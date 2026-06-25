@@ -140,14 +140,18 @@ describe("semantic.css — text + border", () => {
     }
   })
 
-  it("defines all 10 border tokens", () => {
+  it("defines canonical border tokens", () => {
     for (const t of [
-      "border-default", "border-tertiary", "border-focus",
-      "border-brand-strong", "border-info-strong", "border-success-strong",
-      "border-error-strong", "border-warning-strong",
+      "border-primary", "border-secondary", "border-tertiary", "border-focus",
+      "border-brand", "border-error", "border-info-strong", "border-info-subtle",
+      "border-success-strong", "border-success-subtle", "border-warning-strong", "border-warning-subtle",
+      "border-danger-subtle",
       "border-neutral-strong", "border-neutral-subtle",
     ]) {
       expect(css).toContain(`--color-${t}:`)
+    }
+    for (const t of ["border-default", "border-brand-strong", "border-error-strong"]) {
+      expect(css).not.toContain(`--color-${t}:`)
     }
   })
 
