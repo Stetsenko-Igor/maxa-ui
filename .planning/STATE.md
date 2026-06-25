@@ -5,16 +5,16 @@
 See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 **Core value:** LLM-generated UI code always conforms to the design system — no hardcoded design values.
-**Current focus:** Foundation Excellence. Component layer is done (40 components shipped); package readiness is hardened; next work is a foundation audit and polish pass before MAXA product patterns.
+**Current focus:** Phase 4 product patterns. Foundation Excellence P1 + P2 are closed; component layer done (40 components); package readiness hardened. Start with 04-01 inventory + priority map.
 
 ## Current Position
 
-Phase: Foundation Excellence — audit complete, ready to execute the named tranche
-Plan: Next plan should be `Shared React behavior + UI internal utilities cleanup`
-Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness has been hardened without entering release mode: curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, and release workflow draft are in place. Foundation audit complete (`.planning/foundation-excellence-audit.md`): no P0, foundation structurally sound; six P1 + eight P2 findings ranked with evidence. Product patterns remain deferred until the ranked P1 items are addressed.
-Last activity: 2026-06-15 — Ran the Foundation Excellence audit. Fresh verification all green (audit:tokens exit 0, typecheck 11/11, 86 token tests, 476 UI tests, 90.43% stmts). Produced ranked scorecard and named the next tranche. `.planning/NEXT.md` updated to point at the tranche. Versioning remains explicitly gated.
+Phase: Phase 4 product patterns — ready to start 04-01 inventory + priority map.
+Plan: Start Phase 4 product patterns from the real MAXA product inventory/screenshots. Legacy/FSD migration remains a parallel gated track and still needs an explicit Igor go before product-repo migration work starts.
+Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness hardened without entering release mode (curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, release workflow draft). Foundation audit (`.planning/foundation-excellence-audit.md`): no P0; six P1 + eight P2. **All P1 + P2 now done:** F1-F4 (shared React behavior, `42dfd82`), F13 (PROJECT.md drift), F5+F6 (variant vocabulary glossary + Avatar/Spinner prop alignment, 2026-06-25), F9 (MultiSelect true ARIA listbox rebuild, 2026-06-25), F10-F12 + F14 (P2 cleanup batch, 2026-06-25). Also shipped along the way: React 17 support, FileInput rebuild, docs Playground tab, Button/Input family expansion, FSD coverage gap analysis, legacy/FSD migration matrix.
+Last activity: 2026-06-25 — Closed the Foundation Excellence P2 cleanup batch: DataTable sort glyphs now use curated `@maxa/icons`; Tooltip/Slider targeted branches are tested; Motion, Breakpoints, and Interactive Hierarchy docs pages exist; legacy border aliases were removed and consumers moved to canonical border tokens. Gate green: 504 UI tests, 86 token tests, typecheck 12/12, lint 7/7, audit clean, token reference fresh. Not yet committed. Versioning remains gated.
 
-Progress: [█████████░] 90%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -32,8 +32,8 @@ Progress: [█████████░] 90%
 | 1. Dark mode + a11y audit         | 2/2      | ~45min | ~22min   | ✅ Complete                        |
 | 2. Base/action component tranche  | complete | —      | —        | ✅ Complete                        |
 | 3. Application UI component layer | complete | —      | —        | ✅ Component layer + closeout done |
-| Foundation Excellence             | 0/TBD    | —      | —        | ⏳ Ready to audit (next milestone) |
-| 4. MAXA product patterns          | 0/TBD    | —      | —        | ⏸ Deferred until foundation polish |
+| Foundation Excellence             | —        | —      | —        | ✅ P1 + P2 complete (F1-F6, F9-F14) |
+| 4. MAXA product patterns          | 0/TBD    | —      | —        | 🟢 Unblocked; not started |
 | 5. Figma Code Connect             | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 6. v1.0 release prep              | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 7. Tailwind v4 adapter            | 0/TBD    | —      | —        | ⏳ Not started (post-core)         |
@@ -72,6 +72,13 @@ Recent decisions affecting current work:
 - 2026-06-15: Current default next move captured in `.planning/NEXT.md`: Foundation Excellence first, then Phase 4 product patterns.
 - 2026-06-15: Foundation Excellence audit complete (`.planning/foundation-excellence-audit.md`). No P0. Fresh verification green (audit:tokens, typecheck 11/11, 86 token tests, 476 UI tests, coverage 90.43% stmts). Six P1 findings (F1 `cn` helper across 30 files, F2 duplicated focus-trap selector, F3 `useControlledState`, F4 field/label-id hooks, F5 fragmented variant vocabulary intent/appearance/tone/variant, F9 MultiSelect not a true listbox, F13 stale PROJECT.md constraints) + eight P2. Named next tranche: **Shared React behavior + UI internal utilities cleanup** — `useControlledState`/`useFieldId`/`useLabelIds` → `@maxa/hooks`; `cn()`/focus-trap util → `@maxa/ui` internal (ownership split intentional; hooks package is not a generic utility dump). Variant glossary (F5) and MultiSelect rebuild (F9) are separate later tranches.
 - 2026-06-15: Igor explicitly deferred product patterns until the foundation is polished: tokens, semantics, components, visual quality, reuse, docs, and verification.
+- 2026-06-16: Shared-react-behavior tranche merged (`feat/shared-react-behavior-cleanup`, `42dfd82`). `useControlledState`, `useFieldId`/`useLabelIds` → `@maxa/hooks`; `cn()`, `useFocusTrap` → `@maxa/ui` internal. Closes audit F1-F4. F13 (stale PROJECT.md constraints) also fixed.
+- 2026-06-17: React 17 supported via `useId` ponyfill (`@maxa/ui`); docs + `@maxa/hooks` README updated.
+- 2026-06-23: Legacy/FSD migration decision recorded in `.planning/legacy-fsd-component-migration-matrix.md`. Do NOT treat Ilya's legacy component list as a direct `@maxa/ui` backlog; build thin `@/shared/ui` adapters over `@maxa/ui` and migrate consumers feature by feature. Candidate new primitives (each needs a spec first): `ColorPickerInput`, `CopyField`, conditional `Accordion`. Foundation Excellence no longer blocks this track; it still needs an explicit Igor go before product-repo migration work starts.
+- 2026-06-24: Dropped `-codex` suffix from project references (`eb3ea68`); Button + Input family expanded, Alert/Textarea/IconButton refined (`8a7cc1b`).
+- 2026-06-25: F9 closed — MultiSelect rebuilt as a true ARIA listbox/combobox (button[combobox] → div[listbox] → button[option], hidden native `<select multiple>` for form compat + `name` prop, custom keyboard, `option.disabled`). New `--multi-select-listbox-*`/`--multi-select-option-*` tokens alias the Select tokens (single source of truth). DropdownMenu dependency removed.
+- 2026-06-25: F5+F6 closed — `specs/patterns/variant-vocabulary.md` defines the canonical axes (`intent`=meaning, `appearance`=palette, `emphasis`=weight, `variant`=structure). Breaking renames: Avatar `color→appearance`, `tone→emphasis`; Spinner deprecated `tone` shim removed. Button keeps its fused `variant` as the single grandfathered exception.
+- 2026-06-25: Pre-commit discipline — ran an independent dual review (Codex adversarial + reviewer subagent) on the uncommitted F5+F9 diff; fixed the combobox focus-management findings before declaring done. Documented review follow-ups in `NEXT.md`.
 - 2026-06-04: Further product pattern work is paused. The active priority is benchmark-parity component coverage against Untitled UI and shadcn component families.
 - 2026-05-18: Adopted GSD with brownfield-filled templates (no `/gsd:new-project` interview).
 - v0.x: Surface model = `bg/page` + `bg/surface` + `bg/float` + `bg/muted` (no shadow tokens unless overlay work requires them). The early `bg/elevated` alias was removed 2026-06-05.
@@ -99,15 +106,17 @@ None yet.
 ### Verification status
 
 - CI workflow: ✓ includes Typecheck, Lint, Token audit, Token reference freshness, Test, Coverage, Build
-- Token audit: ✓ green (`pnpm audit:tokens`)
-- TypeScript: ✓ green (`pnpm typecheck`)
-- Lint: ✓ green (`pnpm lint`)
-- Tests/build/package smoke: ✓ green via `pnpm verify` on 2026-06-15, including `pack:smoke` and Vite consumer build.
-- Git status before current closeout: clean after `3289a83 docs(packages): clarify readiness contracts`
+- Token audit: ✓ green (`pnpm audit:tokens` — "No token violations found", 2026-06-24)
+- TypeScript: ✓ green (`pnpm typecheck` — 11/11 tasks, 2026-06-24)
+- Tests: ✓ green (`pnpm --filter @maxa/ui test` — 504 UI tests across 46 files; `@maxa/tokens` 86 tests, 2026-06-25). Up from 476 on 2026-06-15.
+- Token reference: ✓ fresh (`pnpm tokens:reference:check` — up to date after F9 token additions + rename, 2026-06-25).
+- Lint: ✓ green (`pnpm --filter @maxa/ui lint`, 2026-06-25).
+- Coverage: last measured 90.43% stmts on 2026-06-15; NOT re-measured this pass (`pnpm test` ≠ `pnpm test:coverage`). Re-run `pnpm test:coverage` before relying on a fresh number.
+- Build / package smoke: not re-run this pass; last green via `pnpm verify` on 2026-06-15 (incl. `pack:smoke` + Vite consumer build).
 
 ## Session Continuity
 
-Last session: 2026-06-15
-Stopped at: Package-readiness hardening complete, release guardrails documented, and future plan captured in `.planning/NEXT.md`.
+Last session: 2026-06-25
+Stopped at: Foundation Excellence P1 + P2 closed, reviewed, gate green. Changes uncommitted — Igor to trigger commit. Phase 4 product patterns is the next default move.
 Resume file: `.planning/NEXT.md`
-Next milestone: Foundation Excellence — start with foundation audit and scorecard.
+Next milestone: Phase 4 product patterns — start 04-01 inventory + priority map.

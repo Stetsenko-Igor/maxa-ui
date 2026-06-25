@@ -132,7 +132,7 @@
       "$value": 16,
       "$type": "number"
     },
-    "menu-max-height": {
+    "listbox-max-height": {
       "$value": 240,
       "$type": "number"
     }

@@ -11,8 +11,8 @@ export const metadata: Metadata = { title: "Avatar - MAXA UI" }
 const TOC = [
   { href: "#preview", label: "Preview" },
   { href: "#installation", label: "Installation" },
-  { href: "#colors", label: "Colors" },
-  { href: "#tones", label: "Tones" },
+  { href: "#appearance", label: "Appearance" },
+  { href: "#emphasis", label: "Emphasis" },
   { href: "#media", label: "Media" },
   { href: "#sizes", label: "Sizes" },
   { href: "#status", label: "Status" },
@@ -25,8 +25,8 @@ const AVATAR_PROPS = [
   { name: "AvatarImage", type: "Radix Image", default: undefined, description: "Image element. Provide alt text when identity is not already visible nearby." },
   { name: "AvatarFallback", type: "Radix Fallback", default: undefined, description: "Fallback initials or short label shown while image is unavailable." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: "Avatar size." },
-  { name: "color", type: "'blue' | 'green' | 'teal' | 'yellow' | 'orange' | 'red' | 'rose' | 'violet' | 'purple'", default: "'blue'", description: "Fallback color from the MAXA semantic palette." },
-  { name: "tone", type: "'strong' | 'medium' | 'neutral'", default: "'strong'", description: "Fallback emphasis. Group overflow uses neutral by default." },
+  { name: "appearance", type: "'blue' | 'green' | 'teal' | 'yellow' | 'orange' | 'red' | 'rose' | 'violet' | 'purple'", default: "'blue'", description: "Decorative palette hue for the fallback. No semantic meaning." },
+  { name: "emphasis", type: "'strong' | 'medium' | 'neutral'", default: "'strong'", description: "Visual weight of the fallback. Group overflow uses neutral by default." },
   { name: "shape", type: "'circle' | 'square'", default: "'circle'", description: "Circle for people, square for workspace/object avatars." },
   { name: "status", type: "'online' | 'offline' | 'busy' | 'away'", default: undefined, description: "Decorative status indicator anchored to the avatar." },
   { name: "AvatarGroup", type: "div", default: undefined, description: "Overlapping avatar stack. Accepts max for overflow count." },
@@ -42,7 +42,7 @@ const row: React.CSSProperties = {
   padding: "24px",
 }
 
-const AVATAR_COLORS = ["blue", "green", "teal", "yellow", "orange", "red", "rose", "violet", "purple"] as const
+const AVATAR_APPEARANCES = ["blue", "green", "teal", "yellow", "orange", "red", "rose", "violet", "purple"] as const
 
 const AVATAR_IMAGE_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%232d2d2e'/%3E%3Ccircle cx='40' cy='32' r='16' fill='%23f5f5f5'/%3E%3Cpath d='M14 76c4-18 17-28 26-28s22 10 26 28' fill='%230b73cb'/%3E%3C/svg%3E"
 
@@ -89,12 +89,12 @@ export default function AvatarPage() {
         />
       </DocsSection>
 
-      <DocsSection id="colors" title="Colors" description="Fallback avatars use the MAXA semantic color scale. Use color to distinguish people, teams, or generated identities when no image exists.">
-        <DocsExample title="Strong palette">
-          <ComponentPreview code={`{colors.map((color) => (\n  <Avatar key={color} color={color}>\n    <AvatarFallback>{initials}</AvatarFallback>\n  </Avatar>\n))}`}>
+      <DocsSection id="appearance" title="Appearance" description="Fallback avatars use the MAXA decorative palette. Use appearance to distinguish people, teams, or generated identities when no image exists.">
+        <DocsExample title="Palette">
+          <ComponentPreview code={`{appearances.map((appearance) => (\n  <Avatar key={appearance} appearance={appearance}>\n    <AvatarFallback>{initials}</AvatarFallback>\n  </Avatar>\n))}`}>
             <div style={row}>
-              {AVATAR_COLORS.map((color, index) => (
-                <Avatar key={color} color={color}>
+              {AVATAR_APPEARANCES.map((appearance, index) => (
+                <Avatar key={appearance} appearance={appearance}>
                   <AvatarFallback>{["IS", "AV", "MC", "JW", "TR", "AK", "NL", "OM", "KP"][index]}</AvatarFallback>
                 </Avatar>
               ))}
@@ -103,21 +103,21 @@ export default function AvatarPage() {
         </DocsExample>
       </DocsSection>
 
-      <DocsSection id="tones" title="Tones" description="Use strong for high contrast, medium for calmer identity chips, and neutral for overflow or low-emphasis placeholders.">
+      <DocsSection id="emphasis" title="Emphasis" description="Use strong for high contrast, medium for calmer identity chips, and neutral for overflow or low-emphasis placeholders.">
         <DocsExample title="strong, medium, neutral">
-          <ComponentPreview code={`<Avatar color="blue" tone="strong"><AvatarFallback>IS</AvatarFallback></Avatar>\n<Avatar color="blue" tone="medium"><AvatarFallback>IS</AvatarFallback></Avatar>\n<Avatar tone="neutral"><AvatarFallback>+1</AvatarFallback></Avatar>`}>
+          <ComponentPreview code={`<Avatar appearance="blue" emphasis="strong"><AvatarFallback>IS</AvatarFallback></Avatar>\n<Avatar appearance="blue" emphasis="medium"><AvatarFallback>IS</AvatarFallback></Avatar>\n<Avatar emphasis="neutral"><AvatarFallback>+1</AvatarFallback></Avatar>`}>
             <div style={{ display: "grid", gap: "24px", padding: "24px" }}>
               <div style={row}>
-                {AVATAR_COLORS.map((color, index) => (
-                  <Avatar key={color} color={color} tone="medium">
+                {AVATAR_APPEARANCES.map((appearance, index) => (
+                  <Avatar key={appearance} appearance={appearance} emphasis="medium">
                     <AvatarFallback>{["IS", "AV", "MC", "JW", "TR", "AK", "NL", "OM", "KP"][index]}</AvatarFallback>
                   </Avatar>
                 ))}
               </div>
               <div style={row}>
-                <Avatar tone="neutral"><AvatarFallback>IS</AvatarFallback></Avatar>
-                <Avatar tone="neutral"><AvatarFallback>MW</AvatarFallback></Avatar>
-                <Avatar tone="neutral"><AvatarFallback>+1</AvatarFallback></Avatar>
+                <Avatar emphasis="neutral"><AvatarFallback>IS</AvatarFallback></Avatar>
+                <Avatar emphasis="neutral"><AvatarFallback>MW</AvatarFallback></Avatar>
+                <Avatar emphasis="neutral"><AvatarFallback>+1</AvatarFallback></Avatar>
               </div>
             </div>
           </ComponentPreview>
@@ -126,9 +126,9 @@ export default function AvatarPage() {
 
       <DocsSection id="media" title="Media" description="Use an icon fallback when the person is unknown, and AvatarImage when a user photo is available.">
         <DocsExample title="icon and image">
-          <ComponentPreview code={`<Avatar tone="neutral"><AvatarFallback><UserIcon /></AvatarFallback></Avatar>\n<Avatar><AvatarImage alt="Ava Wilson" src="/avatar.png" /><AvatarFallback>AW</AvatarFallback></Avatar>`}>
+          <ComponentPreview code={`<Avatar emphasis="neutral"><AvatarFallback><UserIcon /></AvatarFallback></Avatar>\n<Avatar><AvatarImage alt="Ava Wilson" src="/avatar.png" /><AvatarFallback>AW</AvatarFallback></Avatar>`}>
             <div style={row}>
-              <Avatar tone="neutral">
+              <Avatar emphasis="neutral">
                 <AvatarFallback><UserIcon /></AvatarFallback>
               </Avatar>
               <Avatar>
@@ -145,7 +145,7 @@ export default function AvatarPage() {
           <ComponentPreview code={`{(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (\n  <Avatar key={size} size={size}><AvatarFallback>IS</AvatarFallback></Avatar>\n))}`}>
             <div style={row}>
               {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
-                <Avatar key={size} color="violet" size={size}>
+                <Avatar key={size} appearance="violet" size={size}>
                   <AvatarFallback>IS</AvatarFallback>
                 </Avatar>
               ))}
@@ -158,10 +158,10 @@ export default function AvatarPage() {
         <DocsExample title="online, offline, busy, away">
           <ComponentPreview code={`<Avatar status="online"><AvatarFallback>IS</AvatarFallback></Avatar>\n<Avatar status="busy"><AvatarFallback>AV</AvatarFallback></Avatar>`}>
             <div style={row}>
-              <Avatar color="blue" status="online"><AvatarFallback>IS</AvatarFallback></Avatar>
-              <Avatar color="green" status="offline"><AvatarFallback>AV</AvatarFallback></Avatar>
-              <Avatar color="rose" status="busy"><AvatarFallback>MC</AvatarFallback></Avatar>
-              <Avatar color="orange" status="away"><AvatarFallback>JW</AvatarFallback></Avatar>
+              <Avatar appearance="blue" status="online"><AvatarFallback>IS</AvatarFallback></Avatar>
+              <Avatar appearance="green" status="offline"><AvatarFallback>AV</AvatarFallback></Avatar>
+              <Avatar appearance="rose" status="busy"><AvatarFallback>MC</AvatarFallback></Avatar>
+              <Avatar appearance="orange" status="away"><AvatarFallback>JW</AvatarFallback></Avatar>
             </div>
           </ComponentPreview>
         </DocsExample>
@@ -172,17 +172,17 @@ export default function AvatarPage() {
           <ComponentPreview code={`<AvatarGroup max={3}>\n  <Avatar><AvatarFallback>IS</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>AV</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>MC</AvatarFallback></Avatar>\n  <Avatar><AvatarFallback>JW</AvatarFallback></Avatar>\n</AvatarGroup>\n\n<AvatarGroup max={3} overflow="ellipsis">...</AvatarGroup>`}>
             <div style={{ ...row, gap: "40px" }}>
               <AvatarGroup max={3}>
-                <Avatar color="blue" tone="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
-                <Avatar color="green" tone="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
-                <Avatar color="rose" tone="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
-                <Avatar color="orange" tone="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
+                <Avatar appearance="blue" emphasis="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
+                <Avatar appearance="green" emphasis="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
+                <Avatar appearance="rose" emphasis="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
+                <Avatar appearance="orange" emphasis="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
               </AvatarGroup>
               <AvatarGroup max={3} overflow="ellipsis">
-                <Avatar color="blue" tone="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
-                <Avatar color="green" tone="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
-                <Avatar color="rose" tone="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
-                <Avatar color="orange" tone="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
-                <Avatar color="violet" tone="medium"><AvatarFallback>TR</AvatarFallback></Avatar>
+                <Avatar appearance="blue" emphasis="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
+                <Avatar appearance="green" emphasis="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
+                <Avatar appearance="rose" emphasis="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
+                <Avatar appearance="orange" emphasis="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
+                <Avatar appearance="violet" emphasis="medium"><AvatarFallback>TR</AvatarFallback></Avatar>
               </AvatarGroup>
             </div>
           </ComponentPreview>

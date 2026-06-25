@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from "vitest"
+import { describe, it, expect, beforeAll, vi } from "vitest"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { axe } from "vitest-axe"
 import { Tooltip, TooltipProvider } from "./tooltip"
@@ -81,6 +81,26 @@ describe("Tooltip", () => {
       expect(tip).not.toBeNull()
       expect(tip).toHaveClass("my-custom")
     })
+  })
+
+  it("supports defaultOpen", async () => {
+    renderTooltip({ defaultOpen: true })
+
+    await waitFor(() => {
+      expect(screen.getByRole("tooltip")).toHaveTextContent("Copy to clipboard")
+    })
+  })
+
+  it("supports controlled open state", async () => {
+    const onOpenChange = vi.fn()
+    renderTooltip({ open: true, onOpenChange })
+
+    await waitFor(() => {
+      expect(screen.getByRole("tooltip")).toHaveTextContent("Copy to clipboard")
+    })
+
+    fireEvent.keyDown(screen.getByRole("button", { name: "Copy" }), { key: "Escape" })
+    expect(onOpenChange).toHaveBeenCalled()
   })
 
   it("forwards ref to the content element", async () => {

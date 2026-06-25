@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1649
+Total tokens: 1668
 
 ## Primitives
 
@@ -383,9 +383,6 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-warning-subtle: var(--color-yellow-50);/* dark: var(--color-yellow-950) */
 --color-action-warning-subtle-hover: var(--color-yellow-50);/* dark: var(--color-yellow-950) */
 --color-action-warning-subtle-active: var(--color-yellow-100);/* dark: var(--color-yellow-900) */
---color-border-default: var(--color-border-primary);/* dark: var(--color-border-primary) */
---color-border-brand-strong: var(--color-border-brand);/* dark: var(--color-border-brand) */
---color-border-error-strong: var(--color-border-error);/* dark: var(--color-border-error) */
 
 /* ── Non-semantic appearance palette — light ── */
 --color-bg-gray-subtle: var(--color-gray-50);/* dark: var(--color-gray-950) */
@@ -1973,7 +1970,29 @@ Source: `packages/tokens/src/component-multi-select.css`
 --multi-select-chip-remove-icon-size: 12px;
 --multi-select-chip-remove-bg-hover: var(--color-action-neutral-subtle-hover);
 --multi-select-chevron-size: 16px;
---multi-select-menu-max-height: 240px;
+--multi-select-listbox-max-height: 240px;
+--multi-select-listbox-bg: var(--select-listbox-bg);
+--multi-select-listbox-border: var(--select-listbox-border);
+--multi-select-listbox-radius: var(--select-listbox-radius);
+--multi-select-listbox-shadow: var(--select-listbox-shadow);
+--multi-select-listbox-offset: var(--select-listbox-offset);
+--multi-select-listbox-padding-y: var(--select-listbox-padding-y);
+--multi-select-listbox-z: var(--select-listbox-z);
+--multi-select-option-height: var(--select-option-height);
+--multi-select-option-padding-x: var(--select-option-padding-x);
+--multi-select-option-gap: var(--select-option-gap);
+--multi-select-option-font-size: var(--select-option-font-size);
+--multi-select-option-font-weight: var(--select-option-font-weight);
+--multi-select-option-line-height: var(--select-option-line-height);
+--multi-select-option-text: var(--select-option-text);
+--multi-select-option-text-hover: var(--select-option-text-hover);
+--multi-select-option-text-selected: var(--select-option-text-selected);
+--multi-select-option-text-disabled: var(--select-option-text-disabled);
+--multi-select-option-bg-hover: var(--select-option-bg-hover);
+--multi-select-option-bg-selected: var(--select-option-bg-selected);
+--multi-select-option-bg-selected-hover: var(--select-option-bg-selected-hover);
+--multi-select-option-check: var(--select-option-check);
+--multi-select-option-check-size: var(--select-option-check-size);
 ```
 
 ## Social Button Component Tokens
@@ -2083,7 +2102,7 @@ Source: `packages/tokens/src/component-toast.css`
 --toast-stripe-info: var(--color-border-info-strong);
 --toast-stripe-success: var(--color-border-success-strong);
 --toast-stripe-warning: var(--color-border-warning-strong);
---toast-stripe-error: var(--color-border-error-strong);
+--toast-stripe-error: var(--color-border-error);
 
 /* ── Intent icon colors ── */
 --toast-icon-neutral: var(--color-fg-secondary);

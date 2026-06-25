@@ -46,7 +46,7 @@
   --toast-stripe-info:      var(--color-border-info-strong);
   --toast-stripe-success:   var(--color-border-success-strong);
   --toast-stripe-warning:   var(--color-border-warning-strong);
-  --toast-stripe-error:     var(--color-border-error-strong);
+  --toast-stripe-error:     var(--color-border-error);
 
   /* ── Intent icon colors ─────────────────────────────────────────── */
   --toast-icon-neutral:     var(--color-fg-secondary);

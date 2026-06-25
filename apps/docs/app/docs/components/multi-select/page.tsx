@@ -25,14 +25,16 @@ const TOC = [
 
 const PROPS = [
   { name: "label", type: "string", default: undefined, description: "Accessible field label." },
-  { name: "options", type: "{ label: string; value: string }[]", default: undefined, description: "Available options." },
+  { name: "options", type: "{ label: string; value: string; disabled?: boolean }[]", default: undefined, description: "Available options. Disabled options are skipped by keyboard and click." },
   { name: "value", type: "string[]", default: undefined, description: "Controlled selected values." },
   { name: "defaultValue", type: "string[]", default: "[]", description: "Initial uncontrolled selected values." },
   { name: "onValueChange", type: "(value: string[]) => void", default: undefined, description: "Called when selections change." },
+  { name: "name", type: "string", default: undefined, description: "Applied to the hidden native multiple select for form submission." },
   { name: "placeholder", type: "string", default: "'Select options'", description: "Text shown when no values are selected." },
   { name: "error", type: "string", default: undefined, description: "Error message. Sets aria-invalid." },
   { name: "hint", type: "string", default: undefined, description: "Helper text below the field." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the field and chip remove controls." },
+  { name: "required", type: "boolean", default: "false", description: "Marks the field as required in FormField." },
   { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Form field size." },
 ]
 

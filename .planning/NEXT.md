@@ -1,23 +1,41 @@
 # Next Work Plan
 
-Last updated: 2026-06-15
+Last updated: 2026-06-25
 
 ## Default Next Move
 
-**Shared React behavior + UI internal utilities cleanup tranche — ✅ DONE (2026-06-16)**
+**Foundation Excellence P1 + P2 findings are closed.** Start **Phase 4 product patterns** with 04-01 inventory + priority map.
 
-Next remaining P1s from the audit (`.planning/foundation-excellence-audit.md`):
+### Closed this milestone
 
-- **F5 (P1, ui component):** Fragmented variant vocabulary — `intent` / `appearance` / `tone` / `variant` all express the same "semantic color" axis across 9 components. Write a glossary spec in `specs/patterns/`, then align props.
-- **F9 (P1, ui component):** MultiSelect not a true ARIA listbox — uses DropdownMenu + `div role="button"`. Rebuild as proper listbox/chip field (per decision 2026-06-05).
+- **F1-F4 + F13** — shared React behavior + UI internal utilities (merge `42dfd82`, 2026-06-16).
+- **F9** — MultiSelect rebuilt as a true ARIA listbox/combobox (2026-06-25). New `--multi-select-listbox-*`/`--multi-select-option-*` tokens; hidden native `<select multiple>` + `name`; custom keyboard; `option.disabled`.
+- **F9 review follow-up** — MultiSelect chip remove controls moved outside `button[role=combobox]`, removing the nested-interactive structure while preserving the same visual field.
+- **F5 + F6** — variant vocabulary glossary `specs/patterns/variant-vocabulary.md`; Avatar `color→appearance`/`tone→emphasis`; Spinner deprecated `tone` removed (2026-06-25).
+- **F10-F12 + F14** — P2 cleanup batch closed: DataTable sort icons migrated to `@maxa/icons`, Tooltip/Slider coverage branches tested, Motion/Breakpoints/Interactive Hierarchy docs pages added, border legacy aliases removed in favor of canonical tokens.
 
-Remaining P2s (batch when convenient):
-- F10: Replace inline SVGs in `datatable`, `dropdown-menu`, `tag` with `@maxa/icons`.
-- F11: Raise coverage for `tooltip.tsx` (75%) and `slider.tsx` (78%).
-- F12: Add docs pages for motion + breakpoints foundations and interactive-hierarchy pattern.
-- F14: Decide on border legacy aliases at `packages/tokens/src/semantic.css:140-142`.
+### Review follow-ups (from the 2026-06-25 dual review; deferred, not blocking)
 
-Product patterns (Phase 4) wait until P1s are addressed.
+- **Option id sanitization** — both Select and MultiSelect build option ids as `${listboxId}-${option.value}`; values with whitespace/special chars would produce invalid ids and break `aria-activedescendant`. Sanitize in both, or document the slug-value constraint.
+- **Apply the option focus fix to Select** — MultiSelect now uses `tabIndex={-1}` + `onMouseDown` preventDefault on options to keep focus/`aria-activedescendant` on the trigger; Select could adopt the same for consistency.
+
+Product patterns (Phase 4) are the default next move.
+
+## New Direction — Legacy / FSD Migration (parallel, gated)
+
+As of 2026-06-23 there is a parallel track: migrating the live product's legacy /
+`@/shared/ui` components onto `@maxa/ui`. The working decision matrix is
+`.planning/legacy-fsd-component-migration-matrix.md`.
+
+Key decisions:
+- Do NOT treat Ilya's legacy component list as a direct `@maxa/ui` backlog.
+- Build thin `@/shared/ui` adapters over `@maxa/ui`; migrate consumers feature by feature.
+- Candidate new primitives (spec required before build): `ColorPickerInput`, `CopyField`, conditional `Accordion`.
+- Open prerequisite: a product-repo usage audit (import counts per legacy entry) — see the matrix's "Recommended Next Step" and "Questions For Ilya".
+
+Foundation Excellence P1 no longer blocks this track; it still needs an explicit Igor go
+before product-repo migration work starts. See also `.planning/team-sync-2026-06-19/`
+for adoption framing.
 
 ## Current Position
 
@@ -31,8 +49,8 @@ Product patterns (Phase 4) wait until P1s are addressed.
   - release policy and release workflow draft
 - Versions are not bumped. Pending `.changeset/*.md` files remain release notes
   for a future explicit release decision.
-- Phase 4 product patterns are deferred until Foundation Excellence is complete
-  enough to trust.
+- Phase 4 product patterns are unblocked; start with 04-01 inventory + priority
+  map when Igor chooses that track.
 
 ## Priority Queue
 

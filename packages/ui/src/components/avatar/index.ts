@@ -1,12 +1,12 @@
 export { Avatar, AvatarFallback, AvatarGroup, AvatarImage } from "./avatar.js"
 export type {
+  AvatarAppearance,
+  AvatarEmphasis,
   AvatarFallbackProps,
-  AvatarColor,
   AvatarGroupProps,
   AvatarImageProps,
   AvatarProps,
   AvatarShape,
   AvatarSize,
   AvatarStatus,
-  AvatarTone,
 } from "./avatar.js"

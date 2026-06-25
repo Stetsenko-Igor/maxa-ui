@@ -15,6 +15,7 @@ LLMs fabricate design values. They generate `padding: 13px` or `color: #3b82f6` 
 3. **Before choosing spacing/layout** — read `specs/foundations/spacing.md`
 4. **Before choosing a radius** — read `specs/foundations/radius.md`
 5. **Not sure which button variant?** — read `specs/patterns/interactive-hierarchy.md`
+5b. **Naming a color/treatment prop?** — read `specs/patterns/variant-vocabulary.md` (`intent` vs `appearance` vs `emphasis` vs `variant`)
 6. **Need a CSS variable name?** — search `specs/tokens-reference.md`
 7. **Need package ownership rules?** — read `specs/architecture.md`
 8. **Need Figma/Code Connect guidance?** — read `specs/figma-code-connect-readiness.md`
@@ -63,7 +64,9 @@ specs/
 │   ├── popover.md                   ← Popover (interactive floating panel)
 │   └── form-field.md                ← FormField label + control + hint + error
 └── patterns/
-    └── interactive-hierarchy.md     ← which button variant for which context
+    ├── interactive-hierarchy.md     ← which button variant for which context
+    ├── variant-vocabulary.md        ← intent / appearance / emphasis / variant naming axes
+    └── toolbar-menus.md             ← toolbar + menu composition
 ```
 
 ## Token layer architecture

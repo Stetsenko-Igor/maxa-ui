@@ -56,7 +56,7 @@ Toast is a short-lived notification that appears in a viewport corner, communica
 | info | `--color-border-info-strong` | `--color-fg-info` |
 | success | `--color-border-success-strong` | `--color-fg-positive` |
 | warning | `--color-border-warning-strong` | `--color-fg-warning` |
-| error | `--color-border-error-strong` | `--color-fg-negative` |
+| error | `--color-border-error` | `--color-fg-negative` |
 
 ---
 

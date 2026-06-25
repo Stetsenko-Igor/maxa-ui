@@ -18,10 +18,10 @@ const prose = {
   h1: { fontSize: "var(--text-heading-2xl)", lineHeight: "48px", fontWeight: "var(--font-weight-bold)", color: "var(--color-text-primary)", margin: "0 0 24px", letterSpacing: "-0.02em" } as React.CSSProperties,
   h2: { fontSize: "var(--text-heading-md)", lineHeight: "30px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", margin: "32px 0 16px", paddingBottom: "8px", borderBottom: "1px solid var(--color-border-secondary)" } as React.CSSProperties,
   p:  { fontSize: "var(--text-md)", lineHeight: "24px", color: "var(--color-text-secondary)", margin: "0 0 16px" } as React.CSSProperties,
-  blockquote: { margin: "24px 0", paddingLeft: "16px", borderLeft: "3px solid var(--color-border-default)", fontStyle: "italic" as const, color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "24px" } as React.CSSProperties,
+  blockquote: { margin: "24px 0", paddingLeft: "16px", borderLeft: "3px solid var(--color-border-primary)", fontStyle: "italic" as const, color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "24px" } as React.CSSProperties,
   ul: { margin: "0 0 16px", paddingLeft: "24px", color: "var(--color-text-secondary)", fontSize: "var(--text-md)", lineHeight: "24px" } as React.CSSProperties,
   table: { width: "100%", borderCollapse: "collapse" as const, margin: "16px 0", fontSize: "var(--text-md)" } as React.CSSProperties,
-  th: { padding: "8px 16px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", borderBottom: "1px solid var(--color-border-default)", textAlign: "left" as const } as React.CSSProperties,
+  th: { padding: "8px 16px", fontWeight: "var(--font-weight-semibold)", color: "var(--color-text-primary)", borderBottom: "1px solid var(--color-border-primary)", textAlign: "left" as const } as React.CSSProperties,
   td: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-secondary)" } as React.CSSProperties,
   tdr: { padding: "8px 16px", color: "var(--color-text-secondary)", borderBottom: "1px solid var(--color-border-secondary)", background: "var(--color-bg-muted)" } as React.CSSProperties,
 }

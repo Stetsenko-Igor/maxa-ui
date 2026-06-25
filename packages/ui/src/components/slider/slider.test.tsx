@@ -20,6 +20,30 @@ describe("Slider", () => {
     expect(screen.getByText("100")).toBeInTheDocument()
   })
 
+  it("uses range-specific thumb labels", () => {
+    render(<Slider label="Price" defaultValue={[20, 80]} />)
+
+    expect(screen.getByRole("slider", { name: "Price minimum" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Price maximum" })).toBeInTheDocument()
+  })
+
+  it("uses ordinal labels for middle range thumbs", () => {
+    render(<Slider defaultValue={[20, 50, 80]} />)
+
+    expect(screen.getByRole("slider", { name: "Minimum value" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Value 2" })).toBeInTheDocument()
+    expect(screen.getByRole("slider", { name: "Maximum value" })).toBeInTheDocument()
+  })
+
+  it("does not override an explicit accessible name", () => {
+    render(<Slider label="Visible label" aria-label="Precise value" />)
+
+    const root = document.querySelector(".maxa-slider")
+    expect(root).toHaveAttribute("aria-label", "Precise value")
+    expect(root).not.toHaveAttribute("aria-labelledby")
+    expect(screen.getByRole("slider", { name: "Visible label" })).toBeInTheDocument()
+  })
+
   it("calls onValueChange from keyboard interaction", () => {
     const onValueChange = vi.fn()
     render(<Slider aria-label="Volume" defaultValue={[50]} onValueChange={onValueChange} />)

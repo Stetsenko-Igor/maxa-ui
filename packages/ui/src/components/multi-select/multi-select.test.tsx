@@ -1,6 +1,6 @@
 import * as React from "react"
 import { beforeAll, describe, expect, it, vi } from "vitest"
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react"
 import { MultiSelect } from "./multi-select"
 
 beforeAll(() => {
@@ -20,19 +20,26 @@ const options = [
   { label: "PNG", value: "png" },
 ]
 
-function openMenu(name: string | RegExp = "Select options") {
-  fireEvent.pointerDown(screen.getByRole("button", { name }), {
-    button: 0,
-    ctrlKey: false,
-  })
+function openListbox() {
+  fireEvent.click(screen.getByRole("combobox"))
 }
 
 describe("MultiSelect", () => {
   it("renders selected chips", () => {
     const onValueChange = vi.fn()
     render(<MultiSelect options={options} defaultValue={["pdf", "png"]} onValueChange={onValueChange} />)
-    expect(screen.getByText("PDF")).toBeInTheDocument()
-    expect(screen.getByText("PNG")).toBeInTheDocument()
+    const control = document.querySelector(".maxa-multi-select__trigger")
+    expect(control).not.toBeNull()
+    expect(within(control as HTMLElement).getByText("PDF")).toBeInTheDocument()
+    expect(within(control as HTMLElement).getByText("PNG")).toBeInTheDocument()
+  })
+
+  it("renders chip remove buttons outside the combobox trigger", () => {
+    render(<MultiSelect options={options} defaultValue={["pdf", "png"]} />)
+    const trigger = screen.getByRole("combobox")
+
+    expect(screen.getByRole("button", { name: "Remove PNG" })).toBeInTheDocument()
+    expect(within(trigger).queryByRole("button", { name: "Remove PNG" })).not.toBeInTheDocument()
   })
 
   it("removes chips", () => {
@@ -42,16 +49,18 @@ describe("MultiSelect", () => {
     expect(onValueChange).toHaveBeenCalledWith(["pdf"])
   })
 
-  it("removing a chip does not open the dropdown menu", () => {
+  it("removing a chip does not open the listbox", () => {
     render(<MultiSelect options={options} defaultValue={["pdf", "png"]} />)
     const removeButton = screen.getByRole("button", { name: "Remove PNG" })
 
     fireEvent.pointerDown(removeButton, { button: 0, ctrlKey: false })
     fireEvent.click(removeButton)
 
-    expect(screen.queryByRole("menu")).not.toBeInTheDocument()
-    expect(screen.queryByRole("menuitemcheckbox")).not.toBeInTheDocument()
-    expect(screen.queryByText("PNG")).not.toBeInTheDocument()
+    expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
+    expect(screen.queryByRole("option")).not.toBeInTheDocument()
+    const control = document.querySelector(".maxa-multi-select__trigger")
+    expect(control).not.toBeNull()
+    expect(within(control as HTMLElement).queryByText("PNG")).not.toBeInTheDocument()
   })
 
   it("removing a chip updates the rendered chips", () => {
@@ -61,81 +70,156 @@ describe("MultiSelect", () => {
     fireEvent.click(screen.getByRole("button", { name: "Remove PDF" }))
 
     expect(document.querySelectorAll(".maxa-multi-select__chip")).toHaveLength(1)
-    expect(screen.queryByText("PDF")).not.toBeInTheDocument()
-    expect(screen.getByText("PNG")).toBeInTheDocument()
+    const control = document.querySelector(".maxa-multi-select__trigger")
+    expect(control).not.toBeNull()
+    expect(within(control as HTMLElement).queryByText("PDF")).not.toBeInTheDocument()
+    const chip = document.querySelector(".maxa-multi-select__chip")
+    expect(chip).not.toBeNull()
+    expect(within(chip as HTMLElement).getByText("PNG")).toBeInTheDocument()
   })
 
   it("renders form error text", () => {
     render(<MultiSelect options={options} error="Choose at least one option" />)
     expect(screen.getByText("Choose at least one option")).toBeInTheDocument()
-    expect(screen.getByRole("button")).toHaveAttribute("aria-invalid", "true")
+    expect(screen.getByRole("combobox")).toHaveAttribute("aria-invalid", "true")
   })
 
-  it("does not render menu options before interaction", () => {
+  it("exposes listbox combobox semantics on the trigger", () => {
     render(<MultiSelect options={options} />)
-    expect(screen.queryByRole("menuitemcheckbox")).not.toBeInTheDocument()
+    const trigger = screen.getByRole("combobox")
+    expect(trigger).toHaveAttribute("aria-haspopup", "listbox")
+    expect(trigger).toHaveAttribute("aria-expanded", "false")
   })
 
-  it("opens the menu when the trigger is clicked", async () => {
+  it("names the combobox from the FormField label", () => {
+    // role="combobox" does not take its name from content, so the field label
+    // must name it.
+    render(<MultiSelect label="Asset types" options={options} />)
+    expect(screen.getByRole("combobox")).toHaveAccessibleName(/Asset types/)
+  })
+
+  it("names the combobox from the selection summary when unlabeled", () => {
+    // Without a FormField label the combobox falls back to an aria-label built
+    // from the summary, so it is never left unnamed.
+    render(<MultiSelect options={options} defaultValue={["pdf", "png"]} />)
+    expect(screen.getByRole("combobox")).toHaveAccessibleName("PDF, PNG")
+  })
+
+  it("does not render listbox options before interaction", () => {
     render(<MultiSelect options={options} />)
-    openMenu()
+    expect(screen.queryByRole("option")).not.toBeInTheDocument()
+  })
+
+  it("opens the listbox when the trigger is clicked", async () => {
+    render(<MultiSelect options={options} />)
+    openListbox()
     await waitFor(() => {
-      expect(screen.getByRole("menuitemcheckbox", { name: "PDF" })).toBeInTheDocument()
+      expect(screen.getByRole("option", { name: "PDF" })).toBeInTheDocument()
     })
-    expect(screen.getByRole("menuitemcheckbox", { name: "PNG" })).toBeInTheDocument()
+    expect(screen.getByRole("option", { name: "PNG" })).toBeInTheDocument()
+    expect(screen.getByRole("combobox")).toHaveAttribute("aria-expanded", "true")
   })
 
-  it("closes the menu on Escape", async () => {
+  it("closes the listbox on Escape", async () => {
     render(<MultiSelect options={options} />)
-    openMenu()
+    openListbox()
     await waitFor(() => {
-      expect(screen.getByRole("menu")).toBeInTheDocument()
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
     })
 
-    fireEvent.keyDown(screen.getByRole("menu"), { key: "Escape" })
+    fireEvent.keyDown(screen.getByRole("combobox"), { key: "Escape" })
 
     await waitFor(() => {
-      expect(screen.queryByRole("menu")).not.toBeInTheDocument()
+      expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
     })
   })
 
-  it("closes the menu on outside pointer down", async () => {
+  it("closes the listbox on outside pointer down", async () => {
     render(<MultiSelect options={options} />)
-    openMenu()
+    openListbox()
     await waitFor(() => {
-      expect(screen.getByRole("menu")).toBeInTheDocument()
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
     })
 
     fireEvent.pointerDown(document.body, { button: 0, ctrlKey: false })
 
     await waitFor(() => {
-      expect(screen.queryByRole("menu")).not.toBeInTheDocument()
+      expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
     })
   })
 
-  it("toggles an option to add and remove chips", async () => {
-    const onValueChange = vi.fn()
-    render(<MultiSelect options={options} onValueChange={onValueChange} />)
-    openMenu()
+  it("closes the listbox when focus leaves the component", async () => {
+    render(
+      <>
+        <MultiSelect options={options} />
+        <button type="button">outside</button>
+      </>,
+    )
+    openListbox()
     await waitFor(() => {
-      expect(screen.getByRole("menuitemcheckbox", { name: "PNG" })).toBeInTheDocument()
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
     })
 
-    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "PNG" }))
+    fireEvent.blur(screen.getByRole("combobox"), { relatedTarget: screen.getByRole("button", { name: "outside" }) })
+
+    await waitFor(() => {
+      expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
+    })
+  })
+
+  it("toggles an option to add and remove chips and keeps the listbox open", async () => {
+    const onValueChange = vi.fn()
+    render(<MultiSelect options={options} onValueChange={onValueChange} />)
+    openListbox()
+    await waitFor(() => {
+      expect(screen.getByRole("option", { name: "PNG" })).toBeInTheDocument()
+    })
+
+    fireEvent.click(screen.getByRole("option", { name: "PNG" }))
     expect(onValueChange).toHaveBeenLastCalledWith(["png"])
     await waitFor(() => {
       expect(document.querySelectorAll(".maxa-multi-select__chip")).toHaveLength(1)
     })
-    expect(screen.getByRole("menuitemcheckbox", { name: "PNG" })).toHaveAttribute(
-      "aria-checked",
-      "true",
-    )
+    expect(screen.getByRole("option", { name: "PNG" })).toHaveAttribute("aria-selected", "true")
+    // Listbox stays open so multiple values can be picked in one pass.
+    expect(screen.getByRole("listbox")).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole("menuitemcheckbox", { name: "PNG" }))
+    fireEvent.click(screen.getByRole("option", { name: "PNG" }))
     expect(onValueChange).toHaveBeenLastCalledWith([])
     await waitFor(() => {
       expect(document.querySelectorAll(".maxa-multi-select__chip")).toHaveLength(0)
     })
+  })
+
+  it("moves the active option with the arrow keys and toggles with Enter", async () => {
+    const onValueChange = vi.fn()
+    render(<MultiSelect options={options} onValueChange={onValueChange} />)
+    const trigger = screen.getByRole("combobox")
+
+    fireEvent.keyDown(trigger, { key: "ArrowDown" })
+    await waitFor(() => {
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
+    })
+    // First open highlights the first enabled option (PDF).
+    fireEvent.keyDown(trigger, { key: "ArrowDown" })
+    fireEvent.keyDown(trigger, { key: "Enter" })
+    expect(onValueChange).toHaveBeenLastCalledWith(["png"])
+  })
+
+  it("does not select a disabled option", async () => {
+    const onValueChange = vi.fn()
+    const withDisabled = [
+      { label: "PDF", value: "pdf" },
+      { label: "PNG", value: "png", disabled: true },
+    ]
+    render(<MultiSelect options={withDisabled} onValueChange={onValueChange} />)
+    openListbox()
+    await waitFor(() => {
+      expect(screen.getByRole("option", { name: "PNG" })).toBeInTheDocument()
+    })
+
+    fireEvent.click(screen.getByRole("option", { name: "PNG" }))
+    expect(onValueChange).not.toHaveBeenCalled()
   })
 
   it("forwards ref to the root element", () => {

@@ -34,5 +34,30 @@
   --multi-select-chip-remove-icon-size: 12px;
   --multi-select-chip-remove-bg-hover: var(--color-action-neutral-subtle-hover);
   --multi-select-chevron-size: 16px;
-  --multi-select-menu-max-height: 240px;
+  --multi-select-listbox-max-height: 240px;
+
+  /* Listbox surface + options. Single source of truth is the Select listbox so
+     both multi-value pickers share one visual system (mirrors Separator→Divider). */
+  --multi-select-listbox-bg: var(--select-listbox-bg);
+  --multi-select-listbox-border: var(--select-listbox-border);
+  --multi-select-listbox-radius: var(--select-listbox-radius);
+  --multi-select-listbox-shadow: var(--select-listbox-shadow);
+  --multi-select-listbox-offset: var(--select-listbox-offset);
+  --multi-select-listbox-padding-y: var(--select-listbox-padding-y);
+  --multi-select-listbox-z: var(--select-listbox-z);
+  --multi-select-option-height: var(--select-option-height);
+  --multi-select-option-padding-x: var(--select-option-padding-x);
+  --multi-select-option-gap: var(--select-option-gap);
+  --multi-select-option-font-size: var(--select-option-font-size);
+  --multi-select-option-font-weight: var(--select-option-font-weight);
+  --multi-select-option-line-height: var(--select-option-line-height);
+  --multi-select-option-text: var(--select-option-text);
+  --multi-select-option-text-hover: var(--select-option-text-hover);
+  --multi-select-option-text-selected: var(--select-option-text-selected);
+  --multi-select-option-text-disabled: var(--select-option-text-disabled);
+  --multi-select-option-bg-hover: var(--select-option-bg-hover);
+  --multi-select-option-bg-selected: var(--select-option-bg-selected);
+  --multi-select-option-bg-selected-hover: var(--select-option-bg-selected-hover);
+  --multi-select-option-check: var(--select-option-check);
+  --multi-select-option-check-size: var(--select-option-check-size);
 }

@@ -177,7 +177,7 @@ Plans:
 2. Pattern docs include production-like examples for dashboard grid, template cards, sidebars, editor toolbar, request/support menus, package detail screens, and related flows
 3. Patterns use only approved MAXA tokens and components
 4. Agents are instructed to prefer these patterns before inventing new layout shells
-   **Status**: ⏸ Deferred. Igor wants Foundation Excellence first: tokens, semantics, component APIs, visual quality, reuse, docs, and verification.
+   **Status**: 🟢 Unblocked (2026-06-25) — Foundation Excellence P1 + P2 complete. Not yet started.
    **Plans**: TBD
 
 Plans:
@@ -260,8 +260,8 @@ Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 
 | 1. Dark mode + a11y audit         | v1.0      | 2/2            | Complete                            | 2026-05-18 |
 | 2. Base/action component tranche  | v1.0      | complete       | Complete                            | 2026-06-11 |
 | 3. Application UI component layer | v1.0      | complete       | Complete (40 components + closeout) | 2026-06-11 |
-| Foundation Excellence             | v1.0      | 0/TBD          | Ready to audit (next milestone)     | —          |
-| 4. MAXA product patterns          | v1.0      | 0/TBD          | Deferred until foundation polish    | —          |
+| Foundation Excellence             | v1.0      | —              | P1 + P2 complete (F1-F6, F9-F14) | 2026-06-25 |
+| 4. MAXA product patterns          | v1.0      | 0/TBD          | Unblocked; not started              | —          |
 | 5. Figma Code Connect             | v1.0      | 0/TBD          | Not started                         | —          |
 | 6. v1.0 release prep              | v1.0      | 0/TBD          | Not started                         | —          |
 | 7. Tailwind v4 adapter            | v1.1      | 0/TBD          | Not started                         | —          |

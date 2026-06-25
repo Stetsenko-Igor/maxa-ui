@@ -19,11 +19,6 @@ describe("Spinner", () => {
     expect(screen.getByRole("status")).toHaveClass("maxa-spinner--inverted")
   })
 
-  it("keeps tone as a compatibility alias", () => {
-    render(<Spinner tone="inverse" label="Loading" />)
-    expect(screen.getByRole("status")).toHaveClass("maxa-spinner--inverted")
-  })
-
   it("can be decorative", () => {
     render(<Spinner decorative data-testid="spinner" />)
     const spinner = screen.getByTestId("spinner")

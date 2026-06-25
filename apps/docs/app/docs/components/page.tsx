@@ -245,10 +245,10 @@ export default function ComponentsPage() {
             </p>
             <div style={preview}>
               <AvatarGroup max={3}>
-                <Avatar color="blue" tone="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
-                <Avatar color="green" tone="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
-                <Avatar color="rose" tone="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
-                <Avatar color="orange" tone="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
+                <Avatar appearance="blue" emphasis="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
+                <Avatar appearance="green" emphasis="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
+                <Avatar appearance="rose" emphasis="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
+                <Avatar appearance="orange" emphasis="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
               </AvatarGroup>
             </div>
             <span style={footer}>View Avatar →</span>
