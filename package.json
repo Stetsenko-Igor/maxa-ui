@@ -24,6 +24,8 @@
     "test:coverage": "pnpm --filter @maxa/ui test:coverage",
     "verify": "pnpm typecheck && pnpm lint && pnpm audit:tokens && pnpm tokens:reference:check && pnpm test && pnpm build && pnpm pack:smoke",
     "ci": "pnpm verify",
+    "release:version": "changeset version",
+    "release:publish": "pnpm build && changeset publish",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css,yml,yaml}\""
   },
   "devDependencies": {

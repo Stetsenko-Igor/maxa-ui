@@ -18,6 +18,9 @@
     "README.md",
     "package.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "node ../../scripts/clean-package-dist.mjs packages/icons && tsc --build --force",
     "typecheck": "tsc --noEmit",

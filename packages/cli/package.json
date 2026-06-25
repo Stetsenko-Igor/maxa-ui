@@ -22,6 +22,9 @@
     "README.md",
     "package.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "pnpm --filter @maxa/cli^... build && node ../../scripts/clean-package-dist.mjs packages/cli && tsc --build --force && chmod +x dist/index.js",
     "typecheck": "pnpm --filter @maxa/cli^... build && tsc --noEmit",

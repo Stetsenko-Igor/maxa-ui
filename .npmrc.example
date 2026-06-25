@@ -1,0 +1,16 @@
+# Copy to `.npmrc` (gitignored) and uncomment ONE target before publishing.
+# The registry is chosen here, not in package.json — that is what keeps both
+# the GitLab Package Registry and public npm open at the same time.
+# Tokens are read from environment variables; never commit real tokens.
+
+# --- Target A: GitLab Package Registry (primary) ---------------------------
+# Project-level endpoint accepts the @maxa scope (group is maxa-designs, but the
+# project endpoint does not require a scope match). Replace <PROJECT_ID> with the
+# numeric ID of maxa-designs/ui-kit (Project → Settings → General).
+# @maxa:registry=https://gitlab.com/api/v4/projects/<PROJECT_ID>/packages/npm/
+# //gitlab.com/api/v4/projects/<PROJECT_ID>/packages/npm/:_authToken=${GITLAB_TOKEN}
+
+# --- Target B: public npm (for external developers) ------------------------
+# Requires the @maxa org on npmjs.com + an automation token.
+# @maxa:registry=https://registry.npmjs.org/
+# //registry.npmjs.org/:_authToken=${NPM_TOKEN}

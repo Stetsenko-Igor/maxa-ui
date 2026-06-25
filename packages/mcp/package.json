@@ -21,6 +21,9 @@
     "README.md",
     "package.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "node ../../scripts/clean-package-dist.mjs packages/mcp && tsc --build --force && chmod +x dist/cli.js",
     "typecheck": "tsc --noEmit",
