@@ -15,3 +15,6 @@ test-results/
 .env.development.local
 .env.production.local
 .superpowers/
+
+# Local npm auth / registry selection (holds tokens) — see .npmrc.example
+.npmrc

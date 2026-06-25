@@ -1,0 +1,39 @@
+# GitLab CI for maxa-ui. Mirrors the GitHub Actions gate, plus an optional manual
+# publish job to the project's npm Package Registry. See RELEASING.md.
+
+default:
+  image: node:20
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@9.0.0 --activate
+    - pnpm install --frozen-lockfile
+
+stages:
+  - verify
+  - release
+
+# Full CI gate (same chain as `pnpm verify`).
+verify:
+  stage: verify
+  script:
+    - pnpm verify
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+# Publish @maxa/* to THIS project's npm registry using the built-in CI_JOB_TOKEN.
+# Versions must already be bumped (pnpm release:version committed). Manual trigger.
+# Enable by removing `when: manual` or running it from the pipeline UI.
+publish:gitlab:
+  stage: release
+  script:
+    - |
+      cat > .npmrc <<NPMRC
+      @maxa:registry=https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/
+      //gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}
+      NPMRC
+    - pnpm release:publish
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: manual
+  allow_failure: false
