@@ -14,6 +14,7 @@ Primary references:
 - Current implementation: `packages/ui/src/components/`, `specs/components/`, `apps/docs/app/docs/components/`
 - Untitled UI React components: `https://www.untitledui.com/react/components`
 - shadcn/ui components: `https://ui.shadcn.com/docs/components`
+- Orbit (Kiwi.com): `https://github.com/kiwicom/orbit` — ~80 React components in a Lerna monorepo, mixing generic primitives with travel-domain composites (Itinerary, Seat, CarrierLogo). Breadth benchmark and a data point for the `@maxa/ui` vs product-pattern boundary; full notes in `~/.claude/knowledge/resources/2026-07-02-orbit-kiwi-design-system.md`. MAXA stays at 40, intentionally product-scoped.
 
 ## Current MAXA UI Coverage
 
