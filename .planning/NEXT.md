@@ -1,10 +1,10 @@
 # Next Work Plan
 
-Last updated: 2026-06-25
+Last updated: 2026-07-14
 
 ## Default Next Move
 
-**Foundation Excellence P1 + P2 findings are closed.** Start **Phase 4 product patterns** with 04-01 inventory + priority map.
+**Phase 4 is in progress.** 04-01 inventory + priority map is complete (`.planning/04-01-pattern-inventory.md`). Next: **04-02 first pattern tranche** — DashboardToolbar, TemplateCardGrid, SidebarNavigation, plus the EmptyState quick win — as documentation-first compositions (spec + docs page, no new exported components). Land the visual-regression pilot before 04-02 pattern implementation so patterns build under a visual gate.
 
 ### Closed this milestone
 
