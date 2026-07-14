@@ -5,6 +5,7 @@ import { CaretDown, Check } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./select.css"
 import { cn } from "../../lib/cn.js"
+import { optionDomId } from "../../lib/option-id.js"
 import { useControlledState, useFieldId } from "@maxa/hooks"
 
 type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | "open"
@@ -78,7 +79,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     const selectRef = React.useRef<HTMLSelectElement | null>(null)
     const selectedOption = parsedOptions.find((option) => option.value === currentValue)
     const showPlaceholder = !selectedOption || (selectedOption.disabled && selectedOption.value === "")
-    const highlightedOption = parsedOptions.find((option) => option.value === highlightedValue)
+    const highlightedIndex = parsedOptions.findIndex((option) => option.value === highlightedValue)
+    const highlightedOption = highlightedIndex === -1 ? undefined : parsedOptions[highlightedIndex]
     const resolvedVisualState = disabled ? "disabled" : error ? "error" : open ? "open" : visualState
 
     React.useImperativeHandle(ref, () => selectRef.current as HTMLSelectElement)
@@ -178,7 +180,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           <button
             id={triggerId}
             type="button"
-            aria-activedescendant={open && highlightedOption ? `${listboxId}-${highlightedOption.value}` : undefined}
+            aria-activedescendant={open && highlightedOption ? optionDomId(listboxId, highlightedIndex, highlightedOption.value) : undefined}
             aria-controls={listboxId}
             aria-describedby={hintId}
             aria-disabled={disabled || undefined}
@@ -231,13 +233,13 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
           {open && (
             <div id={listboxId} className="maxa-select__listbox" role="listbox" tabIndex={-1}>
-              {parsedOptions.map((option) => {
+              {parsedOptions.map((option, index) => {
                 const selected = option.value === currentValue
                 const highlighted = option.value === highlightedValue
                 return (
                   <button
                     key={option.value}
-                    id={`${listboxId}-${option.value}`}
+                    id={optionDomId(listboxId, index, option.value)}
                     type="button"
                     aria-disabled={option.disabled || undefined}
                     aria-selected={selected}
@@ -247,6 +249,12 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                       highlighted ? "maxa-select__option--highlighted" : "",
                     )}
                     disabled={option.disabled}
+                    tabIndex={-1}
+                    onMouseDown={(event) => {
+                      // Keep focus (and aria-activedescendant) on the combobox trigger;
+                      // an option button must not steal focus on click.
+                      event.preventDefault()
+                    }}
                     onClick={() => commitValue(option.value)}
                     onMouseEnter={() => {
                       if (!option.disabled) setHighlightedValue(option.value)

@@ -227,4 +227,69 @@ describe("Select", () => {
     expect(onKeyDown).toHaveBeenCalledTimes(1)
     expect(screen.queryByRole("listbox")).not.toBeInTheDocument()
   })
+
+  it("builds valid option ids for values with spaces and keeps aria-activedescendant resolvable", () => {
+    render(
+      <Select
+        label="Region"
+        defaultValue="North America"
+        options={[
+          { label: "North America", value: "North America" },
+          { label: "Europe", value: "Europe" },
+        ]}
+      />,
+    )
+
+    const combobox = screen.getByRole("combobox")
+    fireEvent.click(combobox)
+
+    const option = screen.getByRole("option", { name: "North America" })
+    expect(option.id).toMatch(/^[\w-]+$/)
+
+    const activeId = combobox.getAttribute("aria-activedescendant")
+    expect(activeId).toBe(option.id)
+    expect(document.getElementById(activeId as string)).toBe(option)
+  })
+
+  it("reports the original option value even when the id segment is sanitized", () => {
+    const handleValueChange = vi.fn()
+    render(
+      <Select
+        label="Region"
+        defaultValue="Europe"
+        onValueChange={handleValueChange}
+        options={[
+          { label: "Europe", value: "Europe" },
+          { label: "North America", value: "North America" },
+        ]}
+      />,
+    )
+
+    fireEvent.click(screen.getByRole("combobox"))
+    fireEvent.click(screen.getByRole("option", { name: "North America" }))
+
+    expect(handleValueChange).toHaveBeenCalledWith("North America")
+    expect(screen.getByRole("combobox")).toHaveTextContent("North America")
+  })
+
+  it("keeps focus on the trigger when an option is pressed", () => {
+    render(
+      <Select
+        label="Plan"
+        defaultValue="starter"
+        options={[
+          { label: "Starter", value: "starter" },
+          { label: "Pro", value: "pro" },
+        ]}
+      />,
+    )
+
+    fireEvent.click(screen.getByRole("combobox"))
+    const option = screen.getByRole("option", { name: "Pro" })
+
+    expect(option).toHaveAttribute("tabindex", "-1")
+    // fireEvent returns false when preventDefault() ran — the option must not
+    // steal focus (and aria-activedescendant) from the combobox trigger.
+    expect(fireEvent.mouseDown(option)).toBe(false)
+  })
 })

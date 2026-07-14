@@ -5,6 +5,7 @@ import { CaretDown, Check, X } from "@maxa/icons"
 import { FormField, type FormFieldSize } from "../form-field/index.js"
 import "./multi-select.css"
 import { cn } from "../../lib/cn.js"
+import { optionDomId } from "../../lib/option-id.js"
 import { useControlledState, useFieldId } from "@maxa/hooks"
 
 export interface MultiSelectOption {
@@ -60,7 +61,8 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
 
   const enabledOptions = React.useMemo(() => options.filter((option) => !option.disabled), [options])
   const selectedOptions = options.filter((option) => selectedValues.includes(option.value))
-  const highlightedOption = options.find((option) => option.value === highlightedValue)
+  const highlightedIndex = options.findIndex((option) => option.value === highlightedValue)
+  const highlightedOption = highlightedIndex === -1 ? undefined : options[highlightedIndex]
   const triggerSummary = selectedOptions.length > 0
     ? selectedOptions.map((option) => option.label).join(", ")
     : placeholder
@@ -220,7 +222,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
             ref={triggerRef}
             id={triggerId}
             type="button"
-            aria-activedescendant={open && highlightedOption ? `${listboxId}-${highlightedOption.value}` : undefined}
+            aria-activedescendant={open && highlightedOption ? optionDomId(listboxId, highlightedIndex, highlightedOption.value) : undefined}
             aria-controls={open ? listboxId : undefined}
             aria-describedby={hintId}
             // role="combobox" does not take its name from content, so without a
@@ -269,13 +271,13 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(function 
             role="listbox"
             tabIndex={-1}
           >
-            {options.map((option) => {
+            {options.map((option, index) => {
               const selected = selectedValues.includes(option.value)
               const highlighted = option.value === highlightedValue
               return (
                 <button
                   key={option.value}
-                  id={`${listboxId}-${option.value}`}
+                  id={optionDomId(listboxId, index, option.value)}
                   type="button"
                   aria-disabled={option.disabled || undefined}
                   aria-selected={selected}

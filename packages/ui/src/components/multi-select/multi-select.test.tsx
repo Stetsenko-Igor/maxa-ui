@@ -228,4 +228,51 @@ describe("MultiSelect", () => {
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
     expect(ref.current).toHaveClass("maxa-form-field")
   })
+
+  it("builds valid option ids for values with spaces and keeps aria-activedescendant resolvable", async () => {
+    render(
+      <MultiSelect
+        label="Regions"
+        options={[
+          { label: "North America", value: "North America" },
+          { label: "Europe", value: "Europe" },
+        ]}
+      />,
+    )
+
+    const trigger = screen.getByRole("combobox")
+    fireEvent.keyDown(trigger, { key: "ArrowDown" })
+    await waitFor(() => {
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
+    })
+
+    const option = screen.getByRole("option", { name: "North America" })
+    expect(option.id).toMatch(/^[\w-]+$/)
+
+    const activeId = trigger.getAttribute("aria-activedescendant")
+    expect(activeId).toBe(option.id)
+    expect(document.getElementById(activeId as string)).toBe(option)
+  })
+
+  it("reports original option values even when the id segment is sanitized", async () => {
+    const onValueChange = vi.fn()
+    render(
+      <MultiSelect
+        label="Regions"
+        onValueChange={onValueChange}
+        options={[
+          { label: "North America", value: "North America" },
+          { label: "Europe", value: "Europe" },
+        ]}
+      />,
+    )
+
+    openListbox()
+    await waitFor(() => {
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
+    })
+
+    fireEvent.click(screen.getByRole("option", { name: "North America" }))
+    expect(onValueChange).toHaveBeenLastCalledWith(["North America"])
+  })
 })

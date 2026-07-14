@@ -14,10 +14,10 @@ Last updated: 2026-06-25
 - **F5 + F6** — variant vocabulary glossary `specs/patterns/variant-vocabulary.md`; Avatar `color→appearance`/`tone→emphasis`; Spinner deprecated `tone` removed (2026-06-25).
 - **F10-F12 + F14** — P2 cleanup batch closed: DataTable sort icons migrated to `@maxa/icons`, Tooltip/Slider coverage branches tested, Motion/Breakpoints/Interactive Hierarchy docs pages added, border legacy aliases removed in favor of canonical tokens.
 
-### Review follow-ups (from the 2026-06-25 dual review; deferred, not blocking)
+### Review follow-ups (from the 2026-06-25 dual review) — closed 2026-07-14
 
-- **Option id sanitization** — both Select and MultiSelect build option ids as `${listboxId}-${option.value}`; values with whitespace/special chars would produce invalid ids and break `aria-activedescendant`. Sanitize in both, or document the slug-value constraint.
-- **Apply the option focus fix to Select** — MultiSelect now uses `tabIndex={-1}` + `onMouseDown` preventDefault on options to keep focus/`aria-activedescendant` on the trigger; Select could adopt the same for consistency.
+- **Option id sanitization** — done: Select and MultiSelect option ids now go through `optionDomId()` (`packages/ui/src/lib/option-id.ts`), which sanitizes only the DOM id segment and disambiguates by option index; original `option.value` still flows untouched through state, `onValueChange`, and the native `<select>`.
+- **Option focus fix on Select** — done: Select options now use `tabIndex={-1}` + `onMouseDown` preventDefault, matching MultiSelect, so focus/`aria-activedescendant` stays on the trigger.
 
 Product patterns (Phase 4) are the default next move.
 
