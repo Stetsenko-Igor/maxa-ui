@@ -97,11 +97,12 @@ None yet.
 - Planning files were synced to the 40-component reality on 2026-06-11 (STATE, ROADMAP, REQUIREMENTS, coverage matrix). Older audit/plan artifacts (`.planning/project-audit-2026-06-05.md`, `.claude/plans/adaptive-shimmying-pine.md`) are superseded by the Phase 3 closeout.
 - Visual QA sweep (light, dark, page-background; open-state for menus/listboxes) completed 2026-06-11 — see `.planning/phases/03-application-ui-component-layer/visual-qa-sweep.md`.
 
-### Coverage baseline (2026-06-11, @maxa/ui, vitest v8)
+### Coverage baseline (2026-07-14, @maxa/ui, vitest v8)
 
-- Statements 90.44% · Branches 83.66% · Functions 92.61% · Lines 93.16%
+- Statements 91.27% · Branches 84.35% · Functions 92.07% · Lines 93.96% (526 tests / 47 files)
+- axe assertions now cover 40/40 components (2026-07-14 expansion closed the last 9: context-menu, date-picker, calendar, textarea, multi-select, file-input, social-button, alert-dialog, utility-button). Real finding fixed along the way: calendar/date-picker `role="grid"` panels had no row/gridcell structure — switched to `role="group"`.
 - Thresholds set ~5pts below baseline in `packages/ui/vitest.config.ts` (regression floor). `pnpm test:coverage` runs it; CI enforces via the Coverage step.
-- Lowest-covered units to target next: `tooltip.tsx` (75% stmts), `slider.tsx` (78% stmts).
+- Previous baseline (2026-06-11): Statements 90.44% · Branches 83.66% · Functions 92.61% · Lines 93.16%.
 
 ### Verification status
 

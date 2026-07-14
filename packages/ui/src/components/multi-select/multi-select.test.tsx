@@ -1,6 +1,7 @@
 import * as React from "react"
 import { beforeAll, describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { MultiSelect } from "./multi-select"
 
 beforeAll(() => {
@@ -274,5 +275,20 @@ describe("MultiSelect", () => {
 
     fireEvent.click(screen.getByRole("option", { name: "North America" }))
     expect(onValueChange).toHaveBeenLastCalledWith(["North America"])
+  })
+
+  it("has no accessibility violations with the listbox open", async () => {
+    // Listbox content renders in a portal, so run axe on baseElement to include it.
+    const { baseElement } = render(
+      <MultiSelect label="Asset types" options={options} defaultValue={["pdf"]} />,
+    )
+    openListbox()
+    await waitFor(() => {
+      expect(screen.getByRole("listbox")).toBeInTheDocument()
+    })
+    // region is a page-level landmark rule; a component fixture is not a page.
+    expect(
+      await axe(baseElement, { rules: { region: { enabled: false } } }),
+    ).toHaveNoViolations()
   })
 })
