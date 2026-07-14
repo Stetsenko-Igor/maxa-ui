@@ -2,7 +2,7 @@
 
 ## What This Is
 
-An agent-readable design-system platform for MAXA: design tokens, React components, LLM-readable specs, docs/catalog pages, Figma handoff, and production-grounded MAXA product patterns that together prevent agents and humans from fabricating design values or generic UI surfaces. A private monorepo of versioned packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`); not yet published to any registry — distribution is GitHub-only.
+An agent-readable design-system platform for MAXA: design tokens, React components, LLM-readable specs, docs/catalog pages, Figma handoff, and production-grounded MAXA product patterns that together prevent agents and humans from fabricating design values or generic UI surfaces. A private monorepo of versioned packages (`@maxa/ui`, `@maxa/tokens`, `@maxa/icons`, `@maxa/hooks`, `@maxa/cli`, `@maxa/mcp`); not yet published to any registry — source of record on GitHub, mirrored to GitLab (`maxa-designs/ui-kit`); target registries per `RELEASING.md` (GitLab Package Registry primary, public npm optional).
 
 ## Core Value
 
@@ -38,7 +38,7 @@ LLM-generated UI code always conforms to the design system and the real MAXA pro
 <!-- Explicit boundaries. Includes reasoning to prevent re-adding. -->
 
 - **Z-index / stacking-context tokens** — implicit per component today. Revisit when overlay components arrive.
-- **Registry release / versioning** — publishing setup is the planned next track (target: GitHub Packages, private), but actual `pnpm changeset version` / publish stays **gated**: do not run them unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only until then.
+- **Registry release / versioning** — dual-registry publishing setup is in place (targets per `RELEASING.md`: GitLab Package Registry primary, public npm optional; GitHub Packages is not a target), but actual `pnpm changeset version` / publish stays **gated**: do not run them unless Igor explicitly enters release mode and names the target registry/package set. Pending Changesets are release notes only until then.
 - **OAuth / external auth tokens** — design system has no auth scope. Out of project bounds.
 
 ## Context

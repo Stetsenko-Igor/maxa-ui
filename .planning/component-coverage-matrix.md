@@ -45,7 +45,7 @@ Implemented inventory: **40 components** (all with spec, implementation, docs, t
 | Input                        | Shipped    | Core text-field primitive                                                                                            |
 | TextArea                     | Shipped    | Separate component entry sharing Input internals                                                                     |
 | FileInput                    | Shipped    | Low-level file picker/dropzone primitive with own tokens                                                             |
-| MultiSelect                  | Shipped    | Multi-value chip field; internals still use DropdownMenu (future Select-like refactor)                               |
+| MultiSelect                  | Shipped    | Multi-value chip field; rebuilt 2026-06-25 as ARIA combobox + listbox (F9)                                           |
 | Pagination                   | Shipped    | Page navigation; pairs with future DataTable                                                                         |
 | Popover                      | Shipped    | Overlay primitive                                                                                                    |
 | Progress                     | Shipped    | Determinate/indeterminate progress feedback                                                                          |

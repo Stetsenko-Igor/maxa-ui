@@ -1,8 +1,9 @@
 # Package Contracts
 
-MAXA UI packages are structured as publishable packages, but the repository is
-currently GitHub-only. This document describes the dependency contract we keep
-ready for future registry distribution without starting a release.
+MAXA UI packages are structured as publishable packages, but nothing is
+published to a registry yet (targets per `RELEASING.md`: GitLab Package Registry
+primary, public npm optional). This document describes the dependency contract
+we keep ready for registry distribution without starting a release.
 
 ## Dependency Rules
 

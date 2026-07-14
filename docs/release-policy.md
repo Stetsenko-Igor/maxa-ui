@@ -1,8 +1,9 @@
 # Release Policy
 
-MAXA UI is currently distributed from GitHub only. Packages are not published to
-npmjs.com, and package versions are repository metadata until a registry release
-is explicitly approved.
+MAXA UI packages are not yet published to any registry. Target registries are
+defined in [`RELEASING.md`](../RELEASING.md) (GitLab Package Registry primary,
+public npm optional), and package versions are repository metadata until a
+registry release is explicitly approved.
 
 ## Default Mode: Package Readiness
 
@@ -23,7 +24,7 @@ in the repository until the team intentionally starts a release.
 Only enter release mode after an explicit human decision that names the target
 registry and package set. A release decision should cover:
 
-- registry target, such as GitHub Packages or npmjs.com
+- registry target per `RELEASING.md` (GitLab Package Registry primary, public npm optional)
 - package scope ownership and access level
 - authentication and provenance requirements
 - versioning strategy

@@ -8,7 +8,7 @@ workflow unless the team has explicitly entered release mode.
 
 Record the decision before changing versions:
 
-- target registry: GitHub Packages or npmjs.com
+- target registry per `RELEASING.md`: GitLab Package Registry (primary) or public npm
 - package set: all packages or a named subset
 - access level: private, internal, or public
 - npm scope ownership and package name availability
