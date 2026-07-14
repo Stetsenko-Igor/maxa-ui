@@ -124,7 +124,7 @@ Focus:
 ## Explicit Non-Goals Right Now
 
 - No Phase 4 product pattern implementation yet.
-- No npm/GitHub Packages publishing.
+- No registry publishing (GitLab Package Registry or public npm).
 - No `pnpm changeset version`.
 - No Tailwind adapter.
 - No broad redesign of the component library.

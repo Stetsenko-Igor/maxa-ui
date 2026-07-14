@@ -36,7 +36,7 @@ Progress: [██████████] 100%
 | 4. MAXA product patterns          | 0/TBD    | —      | —        | 🟢 Unblocked; not started |
 | 5. Figma Code Connect             | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 6. v1.0 release prep              | 0/TBD    | —      | —        | ⏳ Not started                     |
-| 7. Tailwind v4 adapter            | 0/TBD    | —      | —        | ⏳ Not started (post-core)         |
+| 7. Tailwind v4 adapter            | —        | —      | —        | ❌ Cancelled — no Tailwind in product stack |
 
 **Recent Trend:**
 

@@ -226,11 +226,13 @@ Plans:
 - [ ] 06-01: TBD
 - [ ] 06-02: TBD
 
-### 📋 v1.1 External Adoption (Phase 7, planned)
+### ❌ v1.1 External Adoption (Phase 7, cancelled)
+
+**Cancelled 2026-06** — the MAXA product stack has no Tailwind (confirmed with the product team; see `PROJECT.md`). Revisit only if external adoption creates a real Tailwind consumer. Section kept for history.
 
 **Milestone Goal:** Make the design system consumable by external teams using Tailwind v4 without losing token fidelity.
 
-#### Phase 7: Tailwind v4 adapter
+#### Phase 7: Tailwind v4 adapter (cancelled)
 
 **Goal**: Ship `@maxa/tailwind` so external consumers using Tailwind get our tokens as utilities.
 **Depends on**: Phase 6 (token surface is stable post-v1.0)
@@ -250,7 +252,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 7. Phase 4 product patterns may run in parallel with Phase 3 once its dependent components exist.
+Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 (Phase 7 cancelled). Phase 4 product patterns may run in parallel with Phase 3 once its dependent components exist.
 
 | Phase                             | Milestone | Plans Complete | Status                              | Completed  |
 | --------------------------------- | --------- | -------------- | ----------------------------------- | ---------- |
@@ -264,4 +266,4 @@ Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 → 
 | 4. MAXA product patterns          | v1.0      | 0/TBD          | Unblocked; not started              | —          |
 | 5. Figma Code Connect             | v1.0      | 0/TBD          | Not started                         | —          |
 | 6. v1.0 release prep              | v1.0      | 0/TBD          | Not started                         | —          |
-| 7. Tailwind v4 adapter            | v1.1      | 0/TBD          | Not started                         | —          |
+| 7. Tailwind v4 adapter            | v1.1      | —              | Cancelled — product stack has no Tailwind | —          |

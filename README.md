@@ -92,7 +92,7 @@ on 17) — intended for client-rendered (SPA) apps.
 
 ## Installation / Consumption
 
-Distribution is **GitHub-only**. The packages are not published to the npm registry, and there is no plan to publish them there.
+The packages are not yet published to any registry. The intended targets are the **GitLab Package Registry** (primary) and, optionally, **public npm** for external developers — see [`RELEASING.md`](RELEASING.md). Until a release is explicitly approved, consumption is source-based (options below).
 
 ### Inside this monorepo
 
@@ -147,9 +147,9 @@ packages:
 
 Then depend on `@maxa/ui` with `workspace:^` and build the submodule packages as part of your pipeline. Best when you want to pin an exact commit and track updates through git.
 
-**Option C - GitHub Packages (possible later)**
+**Option C - registry install (once released)**
 
-Publishing to the GitHub Packages npm registry (scoped to the repo owner, auth via `.npmrc`) would allow normal `pnpm add @maxa/ui` installs without cloning. Not set up yet; if registry-style consumption becomes a real need, this is the intended path - not npmjs.com.
+When a release is approved, packages publish to the GitLab Package Registry (primary, auth via `.npmrc`) and optionally to public npm, allowing normal `pnpm add @maxa/ui` installs without cloning. The publish flow is documented in [`RELEASING.md`](RELEASING.md). GitHub Packages is not a target.
 
 Each package also has its own README under `packages/<name>/README.md` with package-specific usage.
 The package dependency contract is documented in [Package Contracts](docs/package-contracts.md).
@@ -255,7 +255,7 @@ The intent is simple: agents should build with the Maxa design system, not inven
 
 MAXA UI is under active development. The foundation, token system, documentation site, and core component set are in place. The project is currently moving from primitive components into higher-level product and data-display patterns.
 
-The packages are structured like publishable npm packages (exports maps, `files` lists, peer dependencies), but distribution is GitHub-only - see [Installation / Consumption](#installation--consumption). Run the full verification pipeline (`pnpm verify`) before tagging any state that external consumers will pin.
+The packages are structured like publishable npm packages (exports maps, `files` lists, peer dependencies), but nothing is published yet - target registries are the GitLab Package Registry (primary) and optionally public npm; see [Installation / Consumption](#installation--consumption) and [`RELEASING.md`](RELEASING.md). Run the full verification pipeline (`pnpm verify`) before tagging any state that external consumers will pin.
 
 ## License
 
