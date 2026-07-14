@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { DatePicker, DateRangePicker, QuarterPicker } from "./date-picker"
 
 function getButton(name: string, root: ParentNode = document.body) {
@@ -467,5 +468,24 @@ describe("DatePicker interactions", () => {
     fireEvent.click(screen.getByRole("button", { name: "Q2" }))
 
     expect(input).toHaveValue(`Q2/${year}`)
+  })
+})
+
+describe("DatePicker accessibility", () => {
+  it("has no accessibility violations in the closed field state", async () => {
+    const { container } = render(<DatePicker label="Date Picker" defaultValue="5/9/2025" />)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+
+  it("has no accessibility violations with the calendar popover open", async () => {
+    // defaultValue pins the calendar month so the rendered grid is deterministic.
+    const { baseElement } = render(
+      <DatePicker label="Date Picker" defaultValue="5/9/2025" defaultOpen />,
+    )
+    expect(screen.getByRole("dialog", { name: "Choose date" })).toBeInTheDocument()
+    // region is a page-level landmark rule; a component fixture is not a page.
+    expect(
+      await axe(baseElement, { rules: { region: { enabled: false } } }),
+    ).toHaveNoViolations()
   })
 })

@@ -1,6 +1,7 @@
 import * as React from "react"
 import { describe, expect, it, vi } from "vitest"
 import { fireEvent, render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { Calendar } from "./calendar"
 
 function getButton(name: string, root: ParentNode = document.body) {
@@ -68,5 +69,12 @@ describe("Calendar", () => {
     render(<Calendar ref={ref} defaultMonth={new Date(2026, 5, 1)} />)
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
     expect(ref.current).toHaveClass("maxa-calendar")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Calendar month={new Date(2026, 5, 1)} selected={new Date(2026, 5, 4)} />,
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

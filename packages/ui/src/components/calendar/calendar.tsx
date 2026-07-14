@@ -187,7 +187,9 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calend
           <ChevronRightIcon />
         </button>
       </div>
-      <div className="maxa-calendar__grid" role="grid" aria-label="Calendar">
+      {/* role="group": flat layout without row/gridcell semantics; each day button
+          carries a full date aria-label, so ARIA grid structure is not required. */}
+      <div className="maxa-calendar__grid" role="group" aria-label="Calendar">
         {WEEKDAYS.map((weekday) => <div key={weekday} className="maxa-calendar__weekday">{weekday}</div>)}
         {days.map((date) => {
           const dateLabel = date.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
@@ -221,7 +223,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calend
       {view !== "days" && (
         <div className="maxa-calendar__picker-panel">
           {view === "months" ? (
-            <div className="maxa-calendar__picker-grid" role="grid" aria-label="Choose month">
+            <div className="maxa-calendar__picker-grid" role="group" aria-label="Choose month">
               {MONTHS.map((monthName, index) => (
                 <button
                   key={monthName}
@@ -235,7 +237,7 @@ const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calend
               ))}
             </div>
           ) : (
-            <div className="maxa-calendar__picker-grid" role="grid" aria-label="Choose year">
+            <div className="maxa-calendar__picker-grid" role="group" aria-label="Choose year">
               {Array.from({ length: 12 }, (_, index) => yearPageStart + index).map((year) => (
                 <button
                   key={year}

@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import { describe, expect, it, vi } from "vitest"
+import { axe } from "vitest-axe"
 import { FileInput } from "./file-input"
 
 function file(name: string, size = 128, type = "text/plain") {
@@ -99,5 +100,10 @@ describe("FileInput", () => {
 
     expect(ref.current).toBeInstanceOf(HTMLInputElement)
     expect(ref.current?.type).toBe("file")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<FileInput label="Default Package" />)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

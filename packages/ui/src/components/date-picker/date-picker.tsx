@@ -722,7 +722,7 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
                   <ChevronRightIcon />
                 </button>
               </div>
-              <div className="maxa-date-picker__quarter-grid" role="grid" aria-label="Choose quarter">
+              <div className="maxa-date-picker__quarter-grid" role="group" aria-label="Choose quarter">
                 {[1, 2, 3, 4].map((candidateQuarter) => (
                   <button
                     key={candidateQuarter}
@@ -762,7 +762,7 @@ const QuarterPickerField = React.forwardRef<HTMLInputElement, QuarterPickerProps
                       <ChevronRightIcon />
                     </button>
                   </div>
-                  <div className="maxa-date-picker__year-grid" role="grid" aria-label="Choose quarter year">
+                  <div className="maxa-date-picker__year-grid" role="group" aria-label="Choose quarter year">
                     {Array.from({ length: 12 }, (_, index) => yearPageStart + index).map((candidateYear) => (
                       <button
                         key={candidateYear}

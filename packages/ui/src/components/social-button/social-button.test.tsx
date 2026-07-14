@@ -1,6 +1,7 @@
 import * as React from "react"
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
+import { axe } from "vitest-axe"
 import { SocialButton } from "./social-button"
 
 describe("SocialButton", () => {
@@ -30,5 +31,10 @@ describe("SocialButton", () => {
     render(<SocialButton ref={ref} provider="github" />)
     expect(ref.current).toBeInstanceOf(HTMLButtonElement)
     expect(ref.current).toHaveClass("maxa-social-button")
+  })
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<SocialButton provider="google" />)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
