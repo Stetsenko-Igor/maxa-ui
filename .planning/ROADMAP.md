@@ -182,7 +182,7 @@ Plans:
 
 Plans:
 
-- [ ] 04-01: Product pattern inventory and priority map
+- [x] 04-01: Product pattern inventory and priority map — complete 2026-07-14, see `.planning/04-01-pattern-inventory.md`
   - Read product inventory/screenshots.
   - Rank dashboard toolbar, template card grid, sidebar navigation, request/support/user menus, template masonry grid, AMP package detail, editor top bar/tool rail, upload/PDF-to-print, and empty states.
   - Decide documentation-only compositions vs future exported React helpers.
@@ -263,7 +263,7 @@ Phases execute in numeric order by default: 1 → 2 → 3 → 4 → 5 → 6 (Pha
 | 2. Base/action component tranche  | v1.0      | complete       | Complete                            | 2026-06-11 |
 | 3. Application UI component layer | v1.0      | complete       | Complete (40 components + closeout) | 2026-06-11 |
 | Foundation Excellence             | v1.0      | —              | P1 + P2 complete (F1-F6, F9-F14) | 2026-06-25 |
-| 4. MAXA product patterns          | v1.0      | 0/TBD          | Unblocked; not started              | —          |
+| 4. MAXA product patterns          | v1.0      | 1/TBD          | In progress (04-01 done)            | —          |
 | 5. Figma Code Connect             | v1.0      | 0/TBD          | Not started                         | —          |
 | 6. v1.0 release prep              | v1.0      | 0/TBD          | Not started                         | —          |
 | 7. Tailwind v4 adapter            | v1.1      | —              | Cancelled — product stack has no Tailwind | —          |

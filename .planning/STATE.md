@@ -9,10 +9,10 @@ See: `.planning/PROJECT.md` (updated 2026-06-04)
 
 ## Current Position
 
-Phase: Phase 4 product patterns — ready to start 04-01 inventory + priority map.
-Plan: Start Phase 4 product patterns from the real MAXA product inventory/screenshots. Legacy/FSD migration remains a parallel gated track and still needs an explicit Igor go before product-repo migration work starts.
+Phase: Phase 4 product patterns — **in progress**. 04-01 inventory + priority map complete (2026-07-14, `.planning/04-01-pattern-inventory.md`); next is 04-02 first pattern tranche (DashboardToolbar, TemplateCardGrid, SidebarNavigation + EmptyState quick win) as documentation-first compositions.
+Plan: Build Phase 4 product patterns from the real MAXA product inventory/screenshots per the 04-01 map. Legacy/FSD migration remains a parallel gated track and still needs an explicit Igor go before product-repo migration work starts.
 Status: **40 components shipped** (all with spec, implementation, docs, tests). Package readiness hardened without entering release mode (curated `@maxa/icons`, published entrypoint checks, consumer install smoke, Vite bundler smoke, release policy, package contracts, release workflow draft). Foundation audit (`.planning/foundation-excellence-audit.md`): no P0; six P1 + eight P2. **All P1 + P2 now done:** F1-F4 (shared React behavior, `42dfd82`), F13 (PROJECT.md drift), F5+F6 (variant vocabulary glossary + Avatar/Spinner prop alignment, 2026-06-25), F9 (MultiSelect true ARIA listbox rebuild, 2026-06-25), F10-F12 + F14 (P2 cleanup batch, 2026-06-25). Also shipped along the way: React 17 support, FileInput rebuild, docs Playground tab, Button/Input family expansion, FSD coverage gap analysis, legacy/FSD migration matrix.
-Last activity: 2026-06-25 — Closed the Foundation Excellence P2 cleanup batch: DataTable sort glyphs now use curated `@maxa/icons`; Tooltip/Slider targeted branches are tested; Motion, Breakpoints, and Interactive Hierarchy docs pages exist; legacy border aliases were removed and consumers moved to canonical border tokens. Gate green: 504 UI tests, 86 token tests, typecheck 12/12, lint 7/7, audit clean, token reference fresh. Not yet committed. Versioning remains gated.
+Last activity: 2026-07-14 — Improvement sprint tracks 1-5: distribution docs aligned to dual-registry truth + `pack:smoke` in GitHub CI (PR #6); Select/MultiSelect option id sanitization + focus fix (PR #7); axe assertions 40/40 with a real ARIA-grid fix in Calendar/QuarterPicker (PR #8); MCP `list_specs`/`get_foundation_spec`/`get_pattern_spec` tools (PR #9); Phase 4 kicked off with the 04-01 pattern inventory + priority map. Versioning remains gated.
 
 Progress: [██████████] 100%
 
@@ -33,7 +33,7 @@ Progress: [██████████] 100%
 | 2. Base/action component tranche  | complete | —      | —        | ✅ Complete                        |
 | 3. Application UI component layer | complete | —      | —        | ✅ Component layer + closeout done |
 | Foundation Excellence             | —        | —      | —        | ✅ P1 + P2 complete (F1-F6, F9-F14) |
-| 4. MAXA product patterns          | 0/TBD    | —      | —        | 🟢 Unblocked; not started |
+| 4. MAXA product patterns          | 1/TBD    | —      | —        | 🟢 In progress (04-01 done) |
 | 5. Figma Code Connect             | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 6. v1.0 release prep              | 0/TBD    | —      | —        | ⏳ Not started                     |
 | 7. Tailwind v4 adapter            | —        | —      | —        | ❌ Cancelled — no Tailwind in product stack |
