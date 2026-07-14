@@ -3,6 +3,7 @@ import { z } from "zod"
 
 import { getComponentSpec, listComponents } from "./components.js"
 import { assertRepoRoot, resolveRepoRoot } from "./repo.js"
+import { getFoundationSpec, getPatternSpec, listSpecs } from "./specs.js"
 import {
   loadTokens,
   normalizeTokenName,
@@ -75,6 +76,66 @@ export function createServer(repoRoot: string = resolveRepoRoot()): McpServer {
       if (result.content === null) {
         return errorResult(
           `No spec found for "${name}". Valid names: ${result.validNames.join(", ")}`,
+        )
+      }
+      return textResult({ name: result.name, specPath: result.specPath, content: result.content })
+    },
+  )
+
+  server.registerTool(
+    "list_specs",
+    {
+      title: "List foundation/pattern/architecture specs",
+      description:
+        "List all non-component design system specs: foundations (color, spacing, typography, " +
+        "radius, shadows, motion, breakpoints, icons), patterns (e.g. interactive-hierarchy — " +
+        "the one-primary-action-per-view rule), and the package architecture contract. Use " +
+        "get_foundation_spec / get_pattern_spec to read one.",
+      annotations: READ_ONLY,
+    },
+    async () => textResult({ specs: listSpecs(repoRoot) }),
+  )
+
+  server.registerTool(
+    "get_foundation_spec",
+    {
+      title: "Get foundation spec",
+      description:
+        "Return the full markdown spec for a foundation from specs/foundations/. Name matching " +
+        'is fuzzy: case/hyphen-insensitive with a singular/plural fallback ("colors" matches ' +
+        '"color", "shadow" matches "shadows").',
+      inputSchema: { name: z.string().describe("Foundation name, e.g. 'color' or 'typography'") },
+      annotations: READ_ONLY,
+    },
+    async ({ name }) => {
+      const result = getFoundationSpec(repoRoot, name)
+      if (result.content === null) {
+        return errorResult(
+          `No foundation spec found for "${name}". Valid names: ${result.validNames.join(", ")}`,
+        )
+      }
+      return textResult({ name: result.name, specPath: result.specPath, content: result.content })
+    },
+  )
+
+  server.registerTool(
+    "get_pattern_spec",
+    {
+      title: "Get pattern spec",
+      description:
+        "Return the full markdown spec for a pattern from specs/patterns/ (e.g. " +
+        "interactive-hierarchy, toolbar-menus, variant-vocabulary). Name matching is fuzzy: " +
+        "case/hyphen-insensitive with a singular/plural fallback.",
+      inputSchema: {
+        name: z.string().describe("Pattern name, e.g. 'interactive-hierarchy'"),
+      },
+      annotations: READ_ONLY,
+    },
+    async ({ name }) => {
+      const result = getPatternSpec(repoRoot, name)
+      if (result.content === null) {
+        return errorResult(
+          `No pattern spec found for "${name}". Valid names: ${result.validNames.join(", ")}`,
         )
       }
       return textResult({ name: result.name, specPath: result.specPath, content: result.content })
