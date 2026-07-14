@@ -1,6 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs"
 import { join } from "node:path"
 
+import type { SpecLookupResult } from "./components.js"
+
 /**
  * Foundations, patterns, and architecture specs exposed to agents.
  *
@@ -85,17 +87,6 @@ export function listSpecs(repoRoot: string): SpecInfo[] {
   }
 
   return entries
-}
-
-export interface SpecLookupResult {
-  /** Canonical matched name, or null if nothing matched. */
-  name: string | null
-  /** Full markdown content when found. */
-  content: string | null
-  /** Repo-relative spec path when found. */
-  specPath: string | null
-  /** All valid spec names for this kind (for error messages). */
-  validNames: string[]
 }
 
 function lookupSpec(dir: string, pathPrefix: string, name: string): SpecLookupResult {
