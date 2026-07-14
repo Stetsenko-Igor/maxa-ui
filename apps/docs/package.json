@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint app/"
+    "lint": "eslint app/",
+    "build:pages": "GITHUB_PAGES=true next build",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@maxa/icons": "workspace:^",
@@ -22,10 +25,12 @@
     "tailwindcss": "^4.2.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "@types/node": "*",
     "@types/react": "*",
     "@types/react-dom": "*",
     "eslint-config-next": "^15.5.15",
+    "http-server": "^14.1.1",
     "typescript": "*"
   }
 }

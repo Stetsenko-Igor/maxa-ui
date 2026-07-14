@@ -1,0 +1,62 @@
+name: Visual Regression
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      update_snapshots:
+        description: "Regenerate baselines and upload them as an artifact"
+        type: boolean
+        default: false
+
+jobs:
+  visual:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Build docs static export
+        run: pnpm --filter @maxa/docs build:pages
+
+      - name: Install Playwright browser
+        run: pnpm --filter @maxa/docs exec playwright install chromium --with-deps
+
+      - name: Run visual tests
+        if: ${{ !inputs.update_snapshots }}
+        run: pnpm --filter @maxa/docs test:visual
+
+      - name: Update baselines
+        if: ${{ inputs.update_snapshots }}
+        run: pnpm --filter @maxa/docs test:visual:update
+
+      - name: Upload updated baselines
+        if: ${{ inputs.update_snapshots }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-baselines
+          path: apps/docs/e2e/__screenshots__/
+          retention-days: 7
+
+      - name: Upload diff report
+        if: ${{ failure() && !inputs.update_snapshots }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: apps/docs/playwright-report/
+          retention-days: 7
