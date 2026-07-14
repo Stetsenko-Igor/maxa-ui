@@ -22,3 +22,10 @@ export {
   type ComponentInfo,
   type SpecLookupResult,
 } from "./components.js"
+export {
+  listSpecs,
+  getFoundationSpec,
+  getPatternSpec,
+  type SpecInfo,
+  type SpecKind,
+} from "./specs.js"

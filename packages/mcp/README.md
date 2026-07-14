@@ -1,6 +1,6 @@
 # @maxa/mcp
 
-MCP (Model Context Protocol) stdio server that exposes the MAXA design system to AI agents: component specs, component status, and the full design token catalog (light + dark values) parsed from `packages/tokens/src/`.
+MCP (Model Context Protocol) stdio server that exposes the MAXA design system to AI agents: component specs, component status, foundation/pattern/architecture specs, and the full design token catalog (light + dark values) parsed from `packages/tokens/src/`.
 
 All tools are read-only. Data is loaded from the repository at server startup.
 
@@ -47,6 +47,26 @@ Lists every component known to the design system - the union of `specs/component
 Input: `{ "name": "DatePicker" }`
 
 Returns the full markdown spec. Matching is fuzzy: case-insensitive and hyphen-insensitive (`DatePicker`, `date picker`, and `date-picker` all resolve to `specs/components/date-picker.md`). Unknown names return an error listing all valid names.
+
+### `list_specs`
+
+Lists all non-component specs: foundations (`specs/foundations/*.md`), patterns (`specs/patterns/*.md`), and the package architecture contract (`specs/architecture.md`). Excluded by design: `specs/README.md`, the auto-generated `tokens-reference.md` (token tools cover it), and audit/gap reports.
+
+```json
+{ "name": "interactive-hierarchy", "kind": "pattern", "specPath": "specs/patterns/interactive-hierarchy.md", "title": "Interactive Hierarchy - Pattern Spec" }
+```
+
+### `get_foundation_spec`
+
+Input: `{ "name": "colors" }`
+
+Returns the full markdown spec from `specs/foundations/`. Matching is fuzzy: case/hyphen-insensitive with a singular/plural fallback (`colors` resolves to `color.md`, `shadow` to `shadows.md`). Unknown names return an error listing all valid names.
+
+### `get_pattern_spec`
+
+Input: `{ "name": "interactive-hierarchy" }`
+
+Returns the full markdown spec from `specs/patterns/` (`interactive-hierarchy` carries the one-primary-action-per-view rule; also `toolbar-menus`, `variant-vocabulary`). Same fuzzy matching as `get_foundation_spec`.
 
 ### `search_tokens`
 
