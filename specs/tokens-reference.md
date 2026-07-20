@@ -1631,7 +1631,7 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-warning-action: var(--color-fg-warning);/* dark: #e16d00 */
 --alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
 
-/* ── Danger ── */
+/* ── Error ── */
 --alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
 --alert-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
 --alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */

@@ -108,16 +108,16 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | `--color-bg-brand-surface` | Brand/100 | Brand/900 | Brand surface |
 | `--color-bg-brand-strong` | Brand/500 | Brand/600 | Strong brand fill |
 | `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info section bg |
-| `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info surface fill |
+| `--color-bg-info-surface` | Blue/50 | Blue/950 | Info surface fill |
 | `--color-bg-info-strong` | Blue/700 | Blue/500 | Strong info fill |
 | `--color-bg-success-subtle` | Green/50 | Green/950 | Success section bg |
-| `--color-bg-success-subtle` | Green/50 | Green/950 | Success surface fill |
+| `--color-bg-success-surface` | Green/50 | Green/950 | Success surface fill |
 | `--color-bg-success-strong` | Green/700 | Green/500 | Strong success fill |
 | `--color-bg-error-subtle` | Red/50 | Red/950 | Error section bg |
-| `--color-bg-error-subtle` | Red/50 | Red/950 | Error surface fill |
+| `--color-bg-error-surface` | Red/50 | Red/950 | Error surface fill |
 | `--color-bg-error-strong` | Red/700 | Red/500 | Strong error fill |
 | `--color-bg-warning-subtle` | Orange/50 | Yellow/950 | Warning section bg |
-| `--color-bg-warning-subtle` | Orange/50 | Yellow/950 | Warning surface fill |
+| `--color-bg-warning-surface` | Orange/50 | Yellow/950 | Warning surface fill |
 | `--color-bg-warning-strong` | Orange/600 | Orange/500 | Strong warning fill |
 
 ### Border
