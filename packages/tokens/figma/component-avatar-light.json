@@ -2,80 +2,98 @@
   "Avatar": {
     "surface": {
       "bg": {
+        "$description": "Avatar, surface: background.",
         "$value": "{Color modes/background/bg-brand-subtle}",
         "$type": "color"
       },
       "text": {
+        "$description": "Avatar, surface: text color.",
         "$value": "{Color modes/text/text-brand}",
         "$type": "color"
       },
       "border": {
+        "$description": "Avatar, surface: border.",
         "$value": "{Color modes/border/border-secondary}",
         "$type": "color"
       }
     },
     "layout": {
       "size-xs": {
+        "$description": "Avatar, layout: size xs.",
         "$value": 24,
         "$type": "number"
       },
       "size-sm": {
+        "$description": "Avatar, layout: size sm.",
         "$value": 32,
         "$type": "number"
       },
       "size-md": {
+        "$description": "Avatar, layout: size md.",
         "$value": 40,
         "$type": "number"
       },
       "size-lg": {
+        "$description": "Avatar, layout: size lg.",
         "$value": 48,
         "$type": "number"
       },
       "size-xl": {
+        "$description": "Avatar, layout: size xl.",
         "$value": 64,
         "$type": "number"
       },
       "radius-circle": {
+        "$description": "Avatar, layout: radius circle.",
         "$value": "{Radius/radius-full}",
         "$type": "number"
       },
       "radius-square": {
+        "$description": "Avatar, layout: radius square.",
         "$value": "{Radius/radius-md}",
         "$type": "number"
       },
       "status-size-md": {
+        "$description": "Avatar, layout: status size md.",
         "$value": 10,
         "$type": "number"
       },
       "group-overlap": {
+        "$description": "Avatar, layout: group overlap.",
         "$value": 10,
         "$type": "number"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Avatar, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "font-weight": {
+        "$description": "Avatar, typography: font weight.",
         "$value": "{Typography/Font weight/semibold}",
         "$type": "number"
       }
     },
     "status": {
       "online": {
+        "$description": "Avatar, status: online.",
         "$value": "{Color modes/background/bg-success-strong}",
         "$type": "color"
       },
       "offline": {
+        "$description": "Avatar, status: offline.",
         "$value": "{Color modes/background/bg-neutral-strong}",
         "$type": "color"
       },
       "busy": {
+        "$description": "Avatar, status: busy.",
         "$value": "{Color modes/background/bg-error-strong}",
         "$type": "color"
       },
       "away": {
+        "$description": "Avatar, status: away.",
         "$value": "{Color modes/background/bg-warning-strong}",
         "$type": "color"
       }

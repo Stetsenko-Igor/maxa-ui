@@ -2,10 +2,12 @@
   "DataTable": {
     "layout": {
       "controls-gap": {
+        "$description": "DataTable, layout: controls gap.",
         "$value": "var(--spacing-3)",
         "$type": "string"
       },
       "footer-gap": {
+        "$description": "DataTable, layout: footer gap.",
         "$value": "var(--spacing-3)",
         "$type": "string"
       }

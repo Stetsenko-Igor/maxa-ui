@@ -2,106 +2,130 @@
   "Dropdown Menu": {
     "surface": {
       "bg": {
+        "$description": "Dropdown Menu, surface: background.",
         "$value": "{Color modes/background/bg-float}",
         "$type": "color"
       },
       "border": {
+        "$description": "Dropdown Menu, surface: border.",
         "$value": "{Color modes/border/border-primary}",
         "$type": "color"
       }
     },
     "layout": {
       "radius": {
+        "$description": "Dropdown Menu, layout: radius.",
         "$value": "{Radius/radius-md}",
         "$type": "number"
       },
       "min-width": {
+        "$description": "Dropdown Menu, layout: min width.",
         "$value": 180,
         "$type": "number"
       },
       "padding-y": {
+        "$description": "Dropdown Menu, layout: padding y.",
         "$value": "{Spacing/spacing-xs}",
         "$type": "number"
       },
       "item-height": {
+        "$description": "Dropdown Menu, layout: item height.",
         "$value": 32,
         "$type": "number"
       },
       "item-padding-x": {
+        "$description": "Dropdown Menu, layout: item padding x.",
         "$value": "{Spacing/spacing-md}",
         "$type": "number"
       },
       "item-gap": {
+        "$description": "Dropdown Menu, layout: item gap.",
         "$value": "{Spacing/spacing-md}",
         "$type": "number"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Dropdown Menu, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "font-size": {
+        "$description": "Dropdown Menu, typography: font size.",
         "$value": "{Typography/Font size/text-sm}",
         "$type": "number"
       },
       "line-height": {
+        "$description": "Dropdown Menu, typography: line height.",
         "$value": "{Typography/Line height/text-sm}",
         "$type": "number"
       },
       "label-font-size": {
+        "$description": "Dropdown Menu, typography: label text font size.",
         "$value": "{Typography/Font size/caption-sm}",
         "$type": "number"
       },
       "label-line-height": {
+        "$description": "Dropdown Menu, typography: label text line height.",
         "$value": "{Typography/Line height/caption-sm}",
         "$type": "number"
       },
       "label-font-weight": {
+        "$description": "Dropdown Menu, typography: label text font weight.",
         "$value": "{Typography/Font weight/semibold}",
         "$type": "number"
       }
     },
     "item": {
       "text": {
+        "$description": "Dropdown Menu, item: text color.",
         "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "icon": {
+        "$description": "Dropdown Menu, item: icon color.",
         "$value": "{Color modes/foreground/fg-secondary}",
         "$type": "color"
       },
       "bg-hover": {
+        "$description": "Dropdown Menu, item: background (hover state).",
         "$value": "{Color modes/action/action-neutral-subtle-hover}",
         "$type": "color"
       },
       "bg-active": {
+        "$description": "Dropdown Menu, item: background (active state).",
         "$value": "{Color modes/action/action-neutral-subtle-active}",
         "$type": "color"
       },
       "text-disabled": {
+        "$description": "Dropdown Menu, item: text color (disabled state).",
         "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "text-destructive": {
+        "$description": "Dropdown Menu, item: text color destructive.",
         "$value": "{Color modes/text/text-error}",
         "$type": "color"
       },
       "bg-destructive-hover": {
+        "$description": "Dropdown Menu, item: background destructive (hover state).",
         "$value": "{Color modes/background/bg-error-surface}",
         "$type": "color"
       }
     },
     "support": {
       "label-text": {
+        "$description": "Dropdown Menu, support: label text text.",
         "$value": "{Color modes/text/text-tertiary}",
         "$type": "color"
       },
       "shortcut-text": {
+        "$description": "Dropdown Menu, support: shortcut text.",
         "$value": "{Color modes/text/text-tertiary}",
         "$type": "color"
       },
       "separator": {
+        "$description": "Dropdown Menu, support: separator.",
         "$value": "{Color modes/border/border-secondary}",
         "$type": "color"
       }

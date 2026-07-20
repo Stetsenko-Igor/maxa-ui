@@ -1,130 +1,162 @@
 {
   "Calendar": {
     "bg": {
+      "$description": "Calendar: background.",
       "$value": "var(--color-bg-surface)",
       "$type": "color"
     },
     "border": {
+      "$description": "Calendar: border.",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "radius": {
+      "$description": "Calendar: radius.",
       "$value": "var(--radius-md)",
       "$type": "number"
     },
     "padding": {
+      "$description": "Calendar: padding.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "gap": {
+      "$description": "Calendar: gap.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "header-gap": {
+      "$description": "Calendar: header gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "shadow": {
+      "$description": "Calendar: shadow.",
       "$value": "var(--shadow-sm)",
       "$type": "string"
     },
     "title-color": {
+      "$description": "Calendar: title text color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "title-font-size": {
+      "$description": "Calendar: title text font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "title-font-weight": {
+      "$description": "Calendar: title text font weight.",
       "$value": "var(--font-weight-semibold)",
       "$type": "string"
     },
     "weekday-color": {
+      "$description": "Calendar: weekday color.",
       "$value": "var(--color-text-tertiary)",
       "$type": "string"
     },
     "weekday-font-size": {
+      "$description": "Calendar: weekday font size.",
       "$value": "var(--text-caption-sm)",
       "$type": "number"
     },
     "weekday-height": {
+      "$description": "Calendar: weekday height.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "cell-gap": {
+      "$description": "Calendar: cell gap.",
       "$value": "var(--spacing-1)",
       "$type": "number"
     },
     "nav-size": {
+      "$description": "Calendar: nav size.",
       "$value": "var(--spacing-8)",
       "$type": "number"
     },
     "day-size": {
+      "$description": "Calendar: day size.",
       "$value": 32,
       "$type": "number"
     },
     "day-radius": {
+      "$description": "Calendar: day radius.",
       "$value": "var(--radius-xs)",
       "$type": "number"
     },
     "day-text": {
+      "$description": "Calendar: day text.",
       "$value": "var(--color-text-secondary)",
       "$type": "color"
     },
     "day-bg-hover": {
+      "$description": "Calendar: day bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "day-bg-selected": {
+      "$description": "Calendar: day bg (selected state).",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "day-text-selected": {
+      "$description": "Calendar: day text (selected state).",
       "$value": "var(--color-neutral-0)",
       "$type": "color"
     },
     "day-text-outside": {
+      "$description": "Calendar: day text outside.",
       "$value": "var(--color-text-disabled)",
       "$type": "color"
     },
     "day-text-disabled": {
+      "$description": "Calendar: day text (disabled state).",
       "$value": "var(--color-text-disabled)",
       "$type": "color"
     },
     "day-disabled-opacity": {
+      "$description": "Calendar: day disabled opacity.",
       "$value": "var(--opacity-disabled)",
       "$type": "number"
     },
     "day-bg-current": {
+      "$description": "Calendar: day bg (current state).",
       "$value": "var(--color-bg-surface)",
       "$type": "color"
     },
     "day-border-current": {
+      "$description": "Calendar: day border (current state).",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "day-text-current": {
+      "$description": "Calendar: day text (current state).",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "day-bg-range": {
+      "$description": "Calendar: day bg range.",
       "$value": "var(--color-bg-muted)",
       "$type": "color"
     },
     "presets-width": {
+      "$description": "Calendar: presets width.",
       "$value": 176,
       "$type": "number"
     },
     "range-width": {
+      "$description": "Calendar: range width.",
       "$value": 640,
       "$type": "number"
     },
     "range-footer-bg": {
+      "$description": "Calendar: range footer bg.",
       "$value": "var(--color-bg-muted)",
       "$type": "color"
     },
     "range-divider": {
+      "$description": "Calendar: range divider.",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     }

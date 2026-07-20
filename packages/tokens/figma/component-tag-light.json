@@ -3,109 +3,134 @@
     "size": {
       "sm": {
         "height": {
+          "$description": "Tag, size sm: height.",
           "$value": 20,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Tag, size sm: padding x.",
           "$value": 6,
           "$type": "number"
         },
         "gap": {
+          "$description": "Tag, size sm: gap.",
           "$value": 4,
           "$type": "number"
         },
         "radius": {
+          "$description": "Tag, size sm: radius.",
           "$value": "{Radius/radius-sm}",
           "$type": "number"
         },
         "text": {
+          "$description": "Tag, size sm: text color.",
           "$value": 12,
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Tag, size sm: icon color size.",
           "$value": 12,
           "$type": "number"
         },
         "remove-size": {
+          "$description": "Tag, size sm: remove size.",
           "$value": 12,
           "$type": "number"
         }
       },
       "md": {
         "height": {
+          "$description": "Tag, size md: height.",
           "$value": 24,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Tag, size md: padding x.",
           "$value": 8,
           "$type": "number"
         },
         "gap": {
+          "$description": "Tag, size md: gap.",
           "$value": 4,
           "$type": "number"
         },
         "radius": {
+          "$description": "Tag, size md: radius.",
           "$value": "{Radius/radius-sm}",
           "$type": "number"
         },
         "text": {
+          "$description": "Tag, size md: text color.",
           "$value": 12,
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Tag, size md: icon color size.",
           "$value": 14,
           "$type": "number"
         },
         "remove-size": {
+          "$description": "Tag, size md: remove size.",
           "$value": 14,
           "$type": "number"
         }
       },
       "lg": {
         "height": {
+          "$description": "Tag, size lg: height.",
           "$value": 28,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Tag, size lg: padding x.",
           "$value": 10,
           "$type": "number"
         },
         "gap": {
+          "$description": "Tag, size lg: gap.",
           "$value": 6,
           "$type": "number"
         },
         "radius": {
+          "$description": "Tag, size lg: radius.",
           "$value": "{Radius/radius-sm}",
           "$type": "number"
         },
         "text": {
+          "$description": "Tag, size lg: text color.",
           "$value": 14,
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Tag, size lg: icon color size.",
           "$value": 16,
           "$type": "number"
         },
         "remove-size": {
+          "$description": "Tag, size lg: remove size.",
           "$value": 16,
           "$type": "number"
         }
       }
     },
     "radius": {
+      "$description": "Tag: radius.",
       "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "font-family": {
+      "$description": "Tag: font family.",
       "$value": "{Typography/Font family/body}",
       "$type": "string"
     },
     "font-weight": {
+      "$description": "Tag: font weight.",
       "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     },
     "remove": {
       "opacity": {
+        "$description": "Tag, remove: opacity.",
         "$value": 65,
         "$type": "number"
       }

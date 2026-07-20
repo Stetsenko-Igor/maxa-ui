@@ -1,83 +1,317 @@
 {
   "Input": {
-    "bg": { "$value": "{Color modes/background/bg-surface}", "$type": "color" },
-    "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-    "filled-text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-    "placeholder": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" },
-    "icon": { "$value": "{Color modes/foreground/fg-tertiary}", "$type": "color" },
-    "icon-hover": { "$value": "{Color modes/foreground/fg-primary}", "$type": "color" },
-    "border": { "$value": "{Color modes/border/border-primary}", "$type": "color" },
-    "border-hover": { "$value": "{Color modes/border/border-secondary}", "$type": "color" },
-    "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" },
-    "focus-ring": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
-    "focus-ring-offset": { "$value": 1, "$type": "number" },
-    "focus-ring-width": { "$value": 3, "$type": "number" },
+    "bg": {
+      "$description": "Input: background.",
+      "$value": "{Color modes/background/bg-surface}",
+      "$type": "color"
+    },
+    "text": {
+      "$description": "Input: text color.",
+      "$value": "{Color modes/text/text-primary}",
+      "$type": "color"
+    },
+    "filled-text": {
+      "$description": "Input: filled text.",
+      "$value": "{Color modes/text/text-primary}",
+      "$type": "color"
+    },
+    "placeholder": {
+      "$description": "Input: placeholder text.",
+      "$value": "{Color modes/text/text-tertiary}",
+      "$type": "color"
+    },
+    "icon": {
+      "$description": "Input: icon color.",
+      "$value": "{Color modes/foreground/fg-tertiary}",
+      "$type": "color"
+    },
+    "icon-hover": {
+      "$description": "Input: icon color (hover state).",
+      "$value": "{Color modes/foreground/fg-primary}",
+      "$type": "color"
+    },
+    "border": {
+      "$description": "Input: border.",
+      "$value": "{Color modes/border/border-primary}",
+      "$type": "color"
+    },
+    "border-hover": {
+      "$description": "Input: border (hover state).",
+      "$value": "{Color modes/border/border-secondary}",
+      "$type": "color"
+    },
+    "border-focus": {
+      "$description": "Input: border (focus state).",
+      "$value": "{Color modes/border/border-focus}",
+      "$type": "color"
+    },
+    "focus-ring": {
+      "$description": "Input: focus ring.",
+      "$value": "{Color modes/action/action-primary}",
+      "$type": "color"
+    },
+    "focus-ring-offset": {
+      "$description": "Input: focus ring offset.",
+      "$value": 1,
+      "$type": "number"
+    },
+    "focus-ring-width": {
+      "$description": "Input: focus ring width.",
+      "$value": 3,
+      "$type": "number"
+    },
     "label": {
-      "text": { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
-      "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
-      "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" }
+      "text": {
+        "$description": "Input, label: text color.",
+        "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      },
+      "gap": {
+        "$description": "Input, label: gap.",
+        "$value": "{Spacing/spacing-xs}",
+        "$type": "number"
+      },
+      "weight": {
+        "$description": "Input, label: weight.",
+        "$value": "{Typography/Font weight/semibold}",
+        "$type": "string"
+      }
     },
     "hint": {
-      "text": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" }
+      "text": {
+        "$description": "Input, hint: text color.",
+        "$value": "{Color modes/text/text-tertiary}",
+        "$type": "color"
+      }
     },
     "error": {
-      "text": { "$value": "{Color modes/text/text-error}", "$type": "color" },
-      "hint": { "$value": "{Color modes/text/text-error}", "$type": "color" },
-      "border": { "$value": "{Color modes/border/border-error-strong}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-error-strong}", "$type": "color" }
+      "text": {
+        "$description": "Input, error: text color.",
+        "$value": "{Color modes/text/text-error}",
+        "$type": "color"
+      },
+      "hint": {
+        "$description": "Input, error: hint.",
+        "$value": "{Color modes/text/text-error}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Input, error: border.",
+        "$value": "{Color modes/border/border-error-strong}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Input, error: border (focus state).",
+        "$value": "{Color modes/border/border-error-strong}",
+        "$type": "color"
+      }
     },
     "success": {
-      "hint": { "$value": "{Color modes/text/text-success}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-success-active}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/action/action-success-active}", "$type": "color" }
+      "hint": {
+        "$description": "Input, success: hint.",
+        "$value": "{Color modes/text/text-success}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Input, success: border.",
+        "$value": "{Color modes/action/action-success-active}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Input, success: border (focus state).",
+        "$value": "{Color modes/action/action-success-active}",
+        "$type": "color"
+      }
     },
     "disabled": {
-      "bg": { "$value": "{Color modes/background/bg-disabled}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-tertiary}", "$type": "color" },
-      "placeholder": { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
-      "opacity": { "$value": 100, "$type": "number" }
+      "bg": {
+        "$description": "Input, disabled: background.",
+        "$value": "{Color modes/background/bg-disabled}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Input, disabled: text color.",
+        "$value": "{Color modes/text/text-tertiary}",
+        "$type": "color"
+      },
+      "placeholder": {
+        "$description": "Input, disabled: placeholder text.",
+        "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      },
+      "opacity": {
+        "$description": "Input, disabled: opacity.",
+        "$value": 100,
+        "$type": "number"
+      }
     },
     "readonly": {
-      "bg": { "$value": "{Color modes/background/bg-muted}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-secondary}", "$type": "color" }
+      "bg": {
+        "$description": "Input, readonly: background.",
+        "$value": "{Color modes/background/bg-muted}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Input, readonly: text color.",
+        "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      }
     },
     "size": {
       "sm": {
-        "height": { "$value": 28, "$type": "number" },
-        "padding-x": { "$value": 10, "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
-        "icon-size": { "$value": 14, "$type": "number" }
+        "height": {
+          "$description": "Input, size sm: height.",
+          "$value": 28,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Input, size sm: padding x.",
+          "$value": 10,
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Input, size sm: text color.",
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Input, size sm: line height.",
+          "$value": "{Typography/Line height/text-sm}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Input, size sm: radius.",
+          "$value": "{Radius/radius-xs}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Input, size sm: gap.",
+          "$value": "{Spacing/spacing-xs}",
+          "$type": "number"
+        },
+        "icon-size": {
+          "$description": "Input, size sm: icon color size.",
+          "$value": 14,
+          "$type": "number"
+        }
       },
       "md": {
-        "height": { "$value": 36, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-lg}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-sm}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
-        "icon-size": { "$value": 16, "$type": "number" }
+        "height": {
+          "$description": "Input, size md: height.",
+          "$value": 36,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Input, size md: padding x.",
+          "$value": "{Spacing/spacing-lg}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Input, size md: text color.",
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Input, size md: line height.",
+          "$value": "{Typography/Line height/text-sm}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Input, size md: radius.",
+          "$value": "{Radius/radius-xs}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Input, size md: gap.",
+          "$value": "{Spacing/spacing-sm}",
+          "$type": "number"
+        },
+        "icon-size": {
+          "$description": "Input, size md: icon color size.",
+          "$value": 16,
+          "$type": "number"
+        }
       },
       "lg": {
-        "height": { "$value": 48, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-xl}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
-        "line-height": { "$value": "{Typography/Line height/text-md}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-sm}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
-        "icon-size": { "$value": 20, "$type": "number" }
+        "height": {
+          "$description": "Input, size lg: height.",
+          "$value": 48,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Input, size lg: padding x.",
+          "$value": "{Spacing/spacing-xl}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Input, size lg: text color.",
+          "$value": "{Typography/Font size/text-md}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Input, size lg: line height.",
+          "$value": "{Typography/Line height/text-md}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Input, size lg: radius.",
+          "$value": "{Radius/radius-sm}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Input, size lg: gap.",
+          "$value": "{Spacing/spacing-md}",
+          "$type": "number"
+        },
+        "icon-size": {
+          "$description": "Input, size lg: icon color size.",
+          "$value": 20,
+          "$type": "number"
+        }
       }
     },
     "textarea": {
-      "sm": { "min-height": { "$value": 88, "$type": "number" } },
-      "md": { "min-height": { "$value": 108, "$type": "number" } },
-      "lg": { "min-height": { "$value": 128, "$type": "number" } },
-      "padding-y": { "$value": 10, "$type": "number" },
-      "line-height": { "$value": 14, "$type": "number" }
+      "sm": {
+        "min-height": {
+          "$description": "Input, textarea sm: min height.",
+          "$value": 88,
+          "$type": "number"
+        }
+      },
+      "md": {
+        "min-height": {
+          "$description": "Input, textarea md: min height.",
+          "$value": 108,
+          "$type": "number"
+        }
+      },
+      "lg": {
+        "min-height": {
+          "$description": "Input, textarea lg: min height.",
+          "$value": 128,
+          "$type": "number"
+        }
+      },
+      "padding-y": {
+        "$description": "Input, textarea: padding y.",
+        "$value": 10,
+        "$type": "number"
+      },
+      "line-height": {
+        "$description": "Input, textarea: line height.",
+        "$value": 14,
+        "$type": "number"
+      }
     },
-    "font-family": { "$value": "{Typography/Font family/body}", "$type": "string" },
-    "font-weight": { "$value": "{Typography/Font weight/regular}", "$type": "string" }
+    "font-family": {
+      "$description": "Input: font family.",
+      "$value": "{Typography/Font family/body}",
+      "$type": "string"
+    },
+    "font-weight": {
+      "$description": "Input: font weight.",
+      "$value": "{Typography/Font weight/regular}",
+      "$type": "string"
+    }
   }
 }

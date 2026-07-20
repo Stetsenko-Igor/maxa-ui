@@ -1,78 +1,97 @@
 {
   "Utility Button": {
     "size-sm": {
+      "$description": "Utility Button: size sm.",
       "$value": 28,
       "$type": "number"
     },
     "size-md": {
+      "$description": "Utility Button: size md.",
       "$value": 36,
       "$type": "number"
     },
     "size-lg": {
+      "$description": "Utility Button: size lg.",
       "$value": 44,
       "$type": "number"
     },
     "radius": {
+      "$description": "Utility Button: radius.",
       "$value": "var(--radius-xs)",
       "$type": "number"
     },
     "bg": {
+      "$description": "Utility Button: background.",
       "$value": "transparent",
       "$type": "color"
     },
     "bg-hover": {
+      "$description": "Utility Button: background (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "bg-active": {
+      "$description": "Utility Button: background (active state).",
       "$value": "var(--color-action-neutral-subtle-active)",
       "$type": "color"
     },
     "bg-disabled": {
+      "$description": "Utility Button: background (disabled state).",
       "$value": "transparent",
       "$type": "color"
     },
     "border": {
+      "$description": "Utility Button: border.",
       "$value": "transparent",
       "$type": "color"
     },
     "border-hover": {
+      "$description": "Utility Button: border (hover state).",
       "$value": "transparent",
       "$type": "color"
     },
     "border-active": {
+      "$description": "Utility Button: border (active state).",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "text": {
+      "$description": "Utility Button: text color.",
       "$value": "var(--color-fg-secondary)",
       "$type": "color"
     },
     "text-hover": {
+      "$description": "Utility Button: text color (hover state).",
       "$value": "var(--color-fg-primary)",
       "$type": "color"
     },
     "text-active": {
+      "$description": "Utility Button: text color (active state).",
       "$value": "var(--color-fg-primary)",
       "$type": "color"
     },
     "text-disabled": {
+      "$description": "Utility Button: text color (disabled state).",
       "$value": "var(--color-text-disabled)",
       "$type": "color"
     },
     "icon-sm": {
+      "$description": "Utility Button: icon color sm.",
       "$value": 14,
       "$type": "number"
     },
     "icon-md": {
+      "$description": "Utility Button: icon color md.",
       "$value": 16,
       "$type": "number"
     },
     "icon-lg": {
+      "$description": "Utility Button: icon color lg.",
       "$value": 20,
       "$type": "number"
     },
     "disabled-opacity": {
+      "$description": "Utility Button: disabled opacity.",
       "$value": 1,
       "$type": "number"
     }

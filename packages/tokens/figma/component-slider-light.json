@@ -1,78 +1,97 @@
 {
   "Slider": {
     "width": {
+      "$description": "Slider: width.",
       "$value": "100%",
       "$type": "string"
     },
     "track-height": {
+      "$description": "Slider: track height.",
       "$value": 6,
       "$type": "number"
     },
     "track-radius": {
+      "$description": "Slider: track radius.",
       "$value": "var(--radius-full)",
       "$type": "number"
     },
     "track-bg": {
+      "$description": "Slider: track bg.",
       "$value": "var(--color-bg-neutral-subtle)",
       "$type": "color"
     },
     "range-bg": {
+      "$description": "Slider: range bg.",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "thumb-size": {
+      "$description": "Slider: thumb size.",
       "$value": 20,
       "$type": "number"
     },
     "thumb-hit-area": {
+      "$description": "Slider: thumb hit area.",
       "$value": "var(--touch-target-size)",
       "$type": "number"
     },
     "thumb-bg": {
+      "$description": "Slider: thumb bg.",
       "$value": "var(--color-bg-page)",
       "$type": "color"
     },
     "thumb-border": {
+      "$description": "Slider: thumb border.",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "thumb-border-width": {
+      "$description": "Slider: thumb border width.",
       "$value": 2,
       "$type": "number"
     },
     "thumb-shadow": {
+      "$description": "Slider: thumb shadow.",
       "$value": "var(--shadow-sm)",
       "$type": "string"
     },
     "thumb-shadow-hover": {
+      "$description": "Slider: thumb shadow (hover state).",
       "$value": "var(--shadow-md)",
       "$type": "string"
     },
     "disabled-opacity": {
+      "$description": "Slider: disabled opacity.",
       "$value": 0.5,
       "$type": "number"
     },
     "label-color": {
+      "$description": "Slider: label text color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "value-color": {
+      "$description": "Slider: value color.",
       "$value": "var(--color-text-secondary)",
       "$type": "string"
     },
     "mark-color": {
+      "$description": "Slider: mark color.",
       "$value": "var(--color-text-tertiary)",
       "$type": "string"
     },
     "mark-font-size": {
+      "$description": "Slider: mark font size.",
       "$value": "var(--text-caption-sm)",
       "$type": "number"
     },
     "meta-font-size": {
+      "$description": "Slider: meta font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "meta-font-weight": {
+      "$description": "Slider: meta font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "string"
     }

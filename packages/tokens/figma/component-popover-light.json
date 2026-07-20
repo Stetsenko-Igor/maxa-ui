@@ -2,40 +2,49 @@
   "Popover": {
     "layout": {
       "radius": {
+        "$description": "Popover, layout: radius.",
         "$value": "{Radius/radius-lg}",
         "$type": "number"
       },
       "width": {
+        "$description": "Popover, layout: width.",
         "$value": 320,
         "$type": "number"
       },
       "max-width": {
+        "$description": "Popover, layout: max width.",
         "$value": 320,
         "$type": "number"
       },
       "padding-x": {
+        "$description": "Popover, layout: padding x.",
         "$value": 12,
         "$type": "number"
       },
       "padding-y": {
+        "$description": "Popover, layout: padding y.",
         "$value": 12,
         "$type": "number"
       },
       "gap": {
+        "$description": "Popover, layout: gap.",
         "$value": 8,
         "$type": "number"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Popover, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "font-size": {
+        "$description": "Popover, typography: font size.",
         "$value": 12,
         "$type": "number"
       },
       "line-height": {
+        "$description": "Popover, typography: line height.",
         "$value": 20,
         "$type": "number"
       }

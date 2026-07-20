@@ -1,162 +1,202 @@
 {
   "Drawer": {
     "overlay-bg": {
+      "$description": "Drawer: overlay bg.",
       "$value": "var(--dialog-overlay-bg)",
       "$type": "string"
     },
     "content-bg": {
+      "$description": "Drawer: content bg.",
       "$value": "var(--color-bg-float)",
       "$type": "color"
     },
     "content-border": {
+      "$description": "Drawer: content border.",
       "$value": "var(--color-border-primary)",
       "$type": "color"
     },
     "content-shadow": {
+      "$description": "Drawer: content shadow.",
       "$value": "var(--shadow-lg)",
       "$type": "string"
     },
     "content-width-sm": {
+      "$description": "Drawer: content width sm.",
       "$value": 320,
       "$type": "number"
     },
     "content-width-md": {
+      "$description": "Drawer: content width md.",
       "$value": 400,
       "$type": "number"
     },
     "content-width-lg": {
+      "$description": "Drawer: content width lg.",
       "$value": 520,
       "$type": "number"
     },
     "content-height-sm": {
+      "$description": "Drawer: content height sm.",
       "$value": 280,
       "$type": "number"
     },
     "content-height-md": {
+      "$description": "Drawer: content height md.",
       "$value": 360,
       "$type": "number"
     },
     "content-height-lg": {
+      "$description": "Drawer: content height lg.",
       "$value": 480,
       "$type": "number"
     },
     "header-padding-x": {
+      "$description": "Drawer: header padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-padding-top": {
+      "$description": "Drawer: header padding top.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-padding-bottom": {
+      "$description": "Drawer: header padding bottom.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-gap": {
+      "$description": "Drawer: header gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "header-border": {
+      "$description": "Drawer: header border.",
       "$value": "var(--color-border-primary)",
       "$type": "color"
     },
     "body-padding-x": {
+      "$description": "Drawer: body padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "body-padding-y": {
+      "$description": "Drawer: body padding y.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "body-font-size": {
+      "$description": "Drawer: body font size.",
       "$value": "var(--text-md)",
       "$type": "number"
     },
     "body-line-height": {
+      "$description": "Drawer: body line height.",
       "$value": "var(--text-md--line-height)",
       "$type": "number"
     },
     "body-font-weight": {
+      "$description": "Drawer: body font weight.",
       "$value": "var(--font-weight-regular)",
       "$type": "number"
     },
     "body-color": {
+      "$description": "Drawer: body color.",
       "$value": "var(--color-text-primary)",
       "$type": "color"
     },
     "footer-padding-x": {
+      "$description": "Drawer: footer padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "footer-padding-top": {
+      "$description": "Drawer: footer padding top.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "footer-padding-bottom": {
+      "$description": "Drawer: footer padding bottom.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "footer-gap": {
+      "$description": "Drawer: footer gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "title-color": {
+      "$description": "Drawer: title text color.",
       "$value": "var(--color-text-primary)",
       "$type": "color"
     },
     "title-font-size": {
+      "$description": "Drawer: title text font size.",
       "$value": "var(--text-heading-xs)",
       "$type": "number"
     },
     "title-line-height": {
+      "$description": "Drawer: title text line height.",
       "$value": 20,
       "$type": "number"
     },
     "title-font-weight": {
+      "$description": "Drawer: title text font weight.",
       "$value": "var(--font-weight-bold)",
       "$type": "number"
     },
     "description-color": {
+      "$description": "Drawer: description color.",
       "$value": "var(--color-text-secondary)",
       "$type": "color"
     },
     "description-font-size": {
+      "$description": "Drawer: description font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "description-line-height": {
+      "$description": "Drawer: description line height.",
       "$value": "var(--text-sm--line-height)",
       "$type": "number"
     },
     "description-font-weight": {
+      "$description": "Drawer: description font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "number"
     },
     "close-size": {
+      "$description": "Drawer: close size.",
       "$value": 48,
       "$type": "number"
     },
     "close-icon-size": {
+      "$description": "Drawer: close icon size.",
       "$value": 20,
       "$type": "number"
     },
     "close-offset": {
+      "$description": "Drawer: close offset.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "close-bg-hover": {
+      "$description": "Drawer: close bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "close-bg-active": {
+      "$description": "Drawer: close bg (active state).",
       "$value": "var(--color-action-neutral-subtle-active)",
       "$type": "color"
     },
     "close-color": {
+      "$description": "Drawer: close color.",
       "$value": "var(--color-fg-secondary)",
       "$type": "color"
     },
     "z": {
+      "$description": "Drawer: z.",
       "$value": "var(--z-modal)",
       "$type": "number"
     }

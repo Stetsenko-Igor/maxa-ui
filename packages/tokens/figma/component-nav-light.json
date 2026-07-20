@@ -1,6 +1,7 @@
 {
   "Nav": {
     "bg": {
+      "$description": "Nav: background.",
       "$value": "var(--color-neutral-950)",
       "$type": "color"
     }

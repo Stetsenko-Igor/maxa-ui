@@ -3,161 +3,199 @@
     "size": {
       "md": {
         "field-max-width": {
+          "$description": "Toggle, size md: field max width.",
           "$value": 160,
           "$type": "number"
         },
         "content-max-width": {
+          "$description": "Toggle, size md: content max width.",
           "$value": 117,
           "$type": "number"
         },
         "track-width": {
+          "$description": "Toggle, size md: track width.",
           "$value": 36,
           "$type": "number"
         },
         "track-height": {
+          "$description": "Toggle, size md: track height.",
           "$value": 20,
           "$type": "number"
         },
         "thumb-size": {
+          "$description": "Toggle, size md: thumb size.",
           "$value": 16,
           "$type": "number"
         },
         "content-gap": {
+          "$description": "Toggle, size md: content gap.",
           "$value": 8,
           "$type": "number"
         },
         "label-gap": {
+          "$description": "Toggle, size md: label text gap.",
           "$value": 8,
           "$type": "number"
         },
         "label-icon-gap": {
+          "$description": "Toggle, size md: label text icon gap.",
           "$value": 4,
           "$type": "number"
         },
         "description-gap": {
+          "$description": "Toggle, size md: description gap.",
           "$value": 2,
           "$type": "number"
         },
         "content-padding-y": {
+          "$description": "Toggle, size md: content padding y.",
           "$value": 3,
           "$type": "number"
         }
       }
     },
     "track-radius": {
+      "$description": "Toggle: track radius.",
       "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "thumb-radius": {
+      "$description": "Toggle: thumb radius.",
       "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "thumb-inset": {
+      "$description": "Toggle: thumb inset.",
       "$value": 2,
       "$type": "number"
     },
     "focus-ring": {
       "width": {
+        "$description": "Toggle, focus ring: width.",
         "$value": 3,
         "$type": "number"
       },
       "offset": {
+        "$description": "Toggle, focus ring: offset.",
         "$value": 2,
         "$type": "number"
       },
       "inner-width": {
+        "$description": "Toggle, focus ring: inner width.",
         "$value": 1,
         "$type": "number"
       }
     },
     "color": {
       "track-off": {
+        "$description": "Toggle, color: track off.",
         "$value": "#C9C9C9",
         "$type": "color"
       },
       "track-off-hover": {
+        "$description": "Toggle, color: track off (hover state).",
         "$value": "#A1A1A4",
         "$type": "color"
       },
       "track-on": {
+        "$description": "Toggle, color: track on.",
         "$value": "#0576DA",
         "$type": "color"
       },
       "track-on-hover": {
+        "$description": "Toggle, color: track on (hover state).",
         "$value": "#04549B",
         "$type": "color"
       },
       "track-disabled": {
+        "$description": "Toggle, color: track (disabled state).",
         "$value": "#E4E4E4",
         "$type": "color"
       },
       "thumb": {
+        "$description": "Toggle, color: thumb.",
         "$value": "#FAFAFA",
         "$type": "color"
       },
       "thumb-disabled": {
+        "$description": "Toggle, color: thumb (disabled state).",
         "$value": "#C9C9C9",
         "$type": "color"
       },
       "label": {
+        "$description": "Toggle, color: label text.",
         "$value": "#444445",
         "$type": "color"
       },
       "text": {
+        "$description": "Toggle, color: text color.",
         "$value": "#444445",
         "$type": "color"
       },
       "description": {
+        "$description": "Toggle, color: description.",
         "$value": "#575758",
         "$type": "color"
       },
       "label-disabled": {
+        "$description": "Toggle, color: label text (disabled state).",
         "$value": "#8C8C8E",
         "$type": "color"
       },
       "text-disabled": {
+        "$description": "Toggle, color: text color (disabled state).",
         "$value": "#C2C2C2",
         "$type": "color"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Toggle, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "label-font-size": {
+        "$description": "Toggle, typography: label text font size.",
         "$value": "{Typography/Font size/text-sm}",
         "$type": "number"
       },
       "label-line-height": {
+        "$description": "Toggle, typography: label text line height.",
         "$value": 14,
         "$type": "number"
       },
       "label-font-weight": {
+        "$description": "Toggle, typography: label text font weight.",
         "$value": "{Typography/Font weight/semibold}",
         "$type": "number"
       },
       "side-label-font-size": {
+        "$description": "Toggle, typography: side label font size.",
         "$value": "{Typography/Font size/text-sm}",
         "$type": "number"
       },
       "side-label-line-height": {
+        "$description": "Toggle, typography: side label line height.",
         "$value": 14,
         "$type": "number"
       },
       "side-label-font-weight": {
+        "$description": "Toggle, typography: side label font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "number"
       },
       "description-font-size": {
+        "$description": "Toggle, typography: description font size.",
         "$value": "{Typography/Font size/caption-sm}",
         "$type": "number"
       },
       "description-line-height": {
+        "$description": "Toggle, typography: description line height.",
         "$value": 16,
         "$type": "number"
       },
       "description-font-weight": {
+        "$description": "Toggle, typography: description font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "number"
       }

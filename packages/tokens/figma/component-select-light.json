@@ -1,246 +1,307 @@
 {
   "Select": {
     "bg": {
+      "$description": "Select: background.",
       "$value": "var(--input-bg)",
       "$type": "color"
     },
     "border": {
+      "$description": "Select: border.",
       "$value": "var(--input-border)",
       "$type": "color"
     },
     "border-hover": {
+      "$description": "Select: border (hover state).",
       "$value": "var(--input-border-hover)",
       "$type": "color"
     },
     "border-focus": {
+      "$description": "Select: border (focus state).",
       "$value": "var(--input-border-focus)",
       "$type": "color"
     },
     "error-border": {
+      "$description": "Select: error border.",
       "$value": "var(--input-error-border)",
       "$type": "color"
     },
     "focus-ring": {
+      "$description": "Select: focus ring.",
       "$value": "var(--input-focus-ring)",
       "$type": "color"
     },
     "focus-ring-offset": {
+      "$description": "Select: focus ring offset.",
       "$value": "var(--input-focus-ring-offset)",
       "$type": "number"
     },
     "focus-ring-width": {
+      "$description": "Select: focus ring width.",
       "$value": "var(--input-focus-ring-width)",
       "$type": "number"
     },
     "text": {
+      "$description": "Select: text color.",
       "$value": "var(--input-text)",
       "$type": "color"
     },
     "placeholder": {
+      "$description": "Select: placeholder text.",
       "$value": "var(--input-placeholder)",
       "$type": "color"
     },
     "icon": {
+      "$description": "Select: icon color.",
       "$value": "var(--color-fg-secondary)",
       "$type": "color"
     },
     "disabled-bg": {
+      "$description": "Select: disabled bg.",
       "$value": "var(--input-disabled-bg)",
       "$type": "color"
     },
     "disabled-text": {
+      "$description": "Select: disabled text.",
       "$value": "var(--input-disabled-text)",
       "$type": "color"
     },
     "disabled-opacity": {
+      "$description": "Select: disabled opacity.",
       "$value": "var(--input-disabled-opacity)",
       "$type": "color"
     },
     "font-family": {
+      "$description": "Select: font family.",
       "$value": "var(--input-font-family)",
       "$type": "string"
     },
     "font-weight": {
+      "$description": "Select: font weight.",
       "$value": "var(--input-font-weight)",
       "$type": "string"
     },
     "size-sm-height": {
+      "$description": "Select: size sm height.",
       "$value": "var(--input-size-sm-height)",
       "$type": "number"
     },
     "size-sm-padding-x": {
+      "$description": "Select: size sm padding x.",
       "$value": "var(--input-size-sm-padding-x)",
       "$type": "number"
     },
     "size-sm-gap": {
+      "$description": "Select: size sm gap.",
       "$value": "var(--input-size-sm-gap)",
       "$type": "number"
     },
     "size-sm-radius": {
+      "$description": "Select: size sm radius.",
       "$value": "var(--input-size-sm-radius)",
       "$type": "number"
     },
     "size-sm-text": {
+      "$description": "Select: size sm text.",
       "$value": "var(--input-size-sm-text)",
       "$type": "number"
     },
     "size-sm-line-height": {
+      "$description": "Select: size sm line height.",
       "$value": "var(--text-sm--line-height)",
       "$type": "number"
     },
     "icon-sm-size": {
+      "$description": "Select: icon color sm size.",
       "$value": "var(--input-icon-sm-size)",
       "$type": "number"
     },
     "size-md-height": {
+      "$description": "Select: size md height.",
       "$value": "var(--input-size-md-height)",
       "$type": "number"
     },
     "size-md-padding-x": {
+      "$description": "Select: size md padding x.",
       "$value": "var(--input-size-md-padding-x)",
       "$type": "number"
     },
     "size-md-gap": {
+      "$description": "Select: size md gap.",
       "$value": "var(--input-size-md-gap)",
       "$type": "number"
     },
     "size-md-radius": {
+      "$description": "Select: size md radius.",
       "$value": "var(--input-size-md-radius)",
       "$type": "number"
     },
     "size-md-text": {
+      "$description": "Select: size md text.",
       "$value": "var(--input-size-md-text)",
       "$type": "number"
     },
     "size-md-line-height": {
+      "$description": "Select: size md line height.",
       "$value": "var(--text-sm--line-height)",
       "$type": "number"
     },
     "icon-md-size": {
+      "$description": "Select: icon color md size.",
       "$value": "var(--input-icon-md-size)",
       "$type": "number"
     },
     "size-lg-height": {
+      "$description": "Select: size lg height.",
       "$value": "var(--input-size-lg-height)",
       "$type": "number"
     },
     "size-lg-padding-x": {
+      "$description": "Select: size lg padding x.",
       "$value": "var(--input-size-lg-padding-x)",
       "$type": "number"
     },
     "size-lg-gap": {
+      "$description": "Select: size lg gap.",
       "$value": "var(--input-size-lg-gap)",
       "$type": "number"
     },
     "size-lg-radius": {
+      "$description": "Select: size lg radius.",
       "$value": "var(--input-size-lg-radius)",
       "$type": "number"
     },
     "size-lg-text": {
+      "$description": "Select: size lg text.",
       "$value": "var(--input-size-lg-text)",
       "$type": "number"
     },
     "size-lg-line-height": {
+      "$description": "Select: size lg line height.",
       "$value": "var(--text-md--line-height)",
       "$type": "number"
     },
     "icon-lg-size": {
+      "$description": "Select: icon color lg size.",
       "$value": "var(--input-icon-lg-size)",
       "$type": "number"
     },
     "listbox-bg": {
+      "$description": "Select: listbox bg.",
       "$value": "var(--dropdown-menu-bg)",
       "$type": "color"
     },
     "listbox-border": {
+      "$description": "Select: listbox border.",
       "$value": "var(--dropdown-menu-border)",
       "$type": "color"
     },
     "listbox-radius": {
+      "$description": "Select: listbox radius.",
       "$value": "var(--dropdown-menu-radius)",
       "$type": "string"
     },
     "listbox-shadow": {
+      "$description": "Select: listbox shadow.",
       "$value": "var(--dropdown-menu-shadow)",
       "$type": "color"
     },
     "listbox-offset": {
+      "$description": "Select: listbox offset.",
       "$value": 4,
       "$type": "number"
     },
     "listbox-padding-y": {
+      "$description": "Select: listbox padding y.",
       "$value": "var(--dropdown-menu-padding-y)",
       "$type": "string"
     },
     "listbox-min-width": {
+      "$description": "Select: listbox min width.",
       "$value": "var(--dropdown-menu-min-width)",
       "$type": "string"
     },
     "listbox-max-height": {
+      "$description": "Select: listbox max height.",
       "$value": 240,
       "$type": "number"
     },
     "listbox-z": {
+      "$description": "Select: listbox z.",
       "$value": "var(--z-popover)",
       "$type": "string"
     },
     "option-height": {
+      "$description": "Select: option height.",
       "$value": "var(--dropdown-menu-item-height)",
       "$type": "string"
     },
     "option-padding-x": {
+      "$description": "Select: option padding x.",
       "$value": "var(--dropdown-menu-item-padding-x)",
       "$type": "string"
     },
     "option-gap": {
+      "$description": "Select: option gap.",
       "$value": "var(--dropdown-menu-item-gap)",
       "$type": "string"
     },
     "option-font-size": {
+      "$description": "Select: option font size.",
       "$value": "var(--dropdown-menu-font-size)",
       "$type": "string"
     },
     "option-font-weight": {
+      "$description": "Select: option font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "string"
     },
     "option-line-height": {
+      "$description": "Select: option line height.",
       "$value": "var(--dropdown-menu-line-height)",
       "$type": "string"
     },
     "option-text": {
+      "$description": "Select: option text.",
       "$value": "var(--dropdown-menu-item-text)",
       "$type": "color"
     },
     "option-text-hover": {
+      "$description": "Select: option text (hover state).",
       "$value": "var(--dropdown-menu-item-text-hover)",
       "$type": "color"
     },
     "option-text-selected": {
+      "$description": "Select: option text (selected state).",
       "$value": "var(--dropdown-menu-item-text-active)",
       "$type": "color"
     },
     "option-text-disabled": {
+      "$description": "Select: option text (disabled state).",
       "$value": "var(--dropdown-menu-item-text-disabled)",
       "$type": "color"
     },
     "option-bg-hover": {
+      "$description": "Select: option bg (hover state).",
       "$value": "var(--dropdown-menu-item-bg-hover)",
       "$type": "color"
     },
     "option-bg-selected": {
+      "$description": "Select: option bg (selected state).",
       "$value": "var(--dropdown-menu-item-bg-active)",
       "$type": "color"
     },
     "option-bg-selected-hover": {
+      "$description": "Select: option bg (selected hover state).",
       "$value": "var(--dropdown-menu-item-bg-active)",
       "$type": "color"
     },
     "option-check": {
+      "$description": "Select: option check.",
       "$value": "var(--color-fg-primary)",
       "$type": "string"
     },
     "option-check-size": {
+      "$description": "Select: option check size.",
       "$value": 16,
       "$type": "number"
     }

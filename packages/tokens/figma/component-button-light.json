@@ -1,149 +1,569 @@
 {
   "Button": {
     "primary": {
-      "bg": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-primary-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-primary-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-primary-hover}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, primary: background.",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, primary: background (hover state).",
+        "$value": "{Color modes/action/action-primary-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, primary: background (active state).",
+        "$value": "{Color modes/action/action-primary-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, primary: text color.",
+        "$value": "{Color modes/text/text-inverse}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, primary: border.",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, primary: border (hover state).",
+        "$value": "{Color modes/action/action-primary-hover}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, primary: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "secondary": {
-      "bg": { "$value": "{Color modes/action/action-neutral}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-neutral-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-neutral-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-neutral}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-neutral-hover}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, secondary: background.",
+        "$value": "{Color modes/action/action-neutral}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, secondary: background (hover state).",
+        "$value": "{Color modes/action/action-neutral-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, secondary: background (active state).",
+        "$value": "{Color modes/action/action-neutral-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, secondary: text color.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, secondary: border.",
+        "$value": "{Color modes/action/action-neutral}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, secondary: border (hover state).",
+        "$value": "{Color modes/action/action-neutral-hover}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, secondary: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "outline": {
-      "bg": { "$value": "{Color modes/background/bg-surface}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-neutral-subtle-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-neutral-subtle-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-      "border": { "$value": "{Color modes/border/border-primary}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/border/border-secondary}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, outline: background.",
+        "$value": "{Color modes/background/bg-surface}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, outline: background (hover state).",
+        "$value": "{Color modes/action/action-neutral-subtle-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, outline: background (active state).",
+        "$value": "{Color modes/action/action-neutral-subtle-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, outline: text color.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, outline: border.",
+        "$value": "{Color modes/border/border-primary}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, outline: border (hover state).",
+        "$value": "{Color modes/border/border-secondary}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, outline: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "ghost": {
-      "bg": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-neutral-subtle-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-neutral-subtle-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-secondary}", "$type": "color" },
-      "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, ghost: background.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, ghost: background (hover state).",
+        "$value": "{Color modes/action/action-neutral-subtle-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, ghost: background (active state).",
+        "$value": "{Color modes/action/action-neutral-subtle-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, ghost: text color.",
+        "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, ghost: border.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, ghost: border (hover state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, ghost: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "link": {
-      "bg": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "bg-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "bg-active": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "text": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
-      "text-hover": { "$value": "{Color modes/action/action-primary-hover}", "$type": "color" },
-      "text-active": { "$value": "{Color modes/action/action-primary-active}", "$type": "color" },
-      "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, link: background.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, link: background (hover state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, link: background (active state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, link: text color.",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "text-hover": {
+        "$description": "Button, link: text color (hover state).",
+        "$value": "{Color modes/action/action-primary-hover}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$description": "Button, link: text color (active state).",
+        "$value": "{Color modes/action/action-primary-active}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, link: border.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, link: border (hover state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, link: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "success": {
-      "bg": { "$value": "{Color modes/action/action-success}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-success-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-success-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-success}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-success-hover}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, success: background.",
+        "$value": "{Color modes/action/action-success}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, success: background (hover state).",
+        "$value": "{Color modes/action/action-success-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, success: background (active state).",
+        "$value": "{Color modes/action/action-success-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, success: text color.",
+        "$value": "{Color modes/text/text-inverse}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, success: border.",
+        "$value": "{Color modes/action/action-success}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, success: border (hover state).",
+        "$value": "{Color modes/action/action-success-hover}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, success: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "destructive": {
-      "bg": { "$value": "{Color modes/action/action-destructive}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-destructive-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-destructive-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-destructive}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-destructive-hover}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, destructive: background.",
+        "$value": "{Color modes/action/action-destructive}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, destructive: background (hover state).",
+        "$value": "{Color modes/action/action-destructive-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, destructive: background (active state).",
+        "$value": "{Color modes/action/action-destructive-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, destructive: text color.",
+        "$value": "{Color modes/text/text-inverse}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, destructive: border.",
+        "$value": "{Color modes/action/action-destructive}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, destructive: border (hover state).",
+        "$value": "{Color modes/action/action-destructive-hover}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, destructive: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "warning": {
-      "bg": { "$value": "{Color modes/action/action-warning}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-warning-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-warning-active}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-warning}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-warning-hover}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, warning: background.",
+        "$value": "{Color modes/action/action-warning}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, warning: background (hover state).",
+        "$value": "{Color modes/action/action-warning-hover}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, warning: background (active state).",
+        "$value": "{Color modes/action/action-warning-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, warning: text color.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, warning: border.",
+        "$value": "{Color modes/action/action-warning}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, warning: border (hover state).",
+        "$value": "{Color modes/action/action-warning-hover}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, warning: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "text": {
-      "bg": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "bg-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "bg-active": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
-      "text-hover": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
-      "text-active": { "$value": "{Color modes/action/action-primary-active}", "$type": "color" },
-      "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
+      "bg": {
+        "$description": "Button, text: background.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, text: background (hover state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, text: background (active state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, text: text color.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "text-hover": {
+        "$description": "Button, text: text color (hover state).",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$description": "Button, text: text color (active state).",
+        "$value": "{Color modes/action/action-primary-active}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, text: border.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, text: border (hover state).",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "border-focus": {
+        "$description": "Button, text: border (focus state).",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
     },
     "disabled": {
-      "opacity": { "$value": 50, "$type": "number" }
+      "opacity": {
+        "$description": "Button, disabled: opacity.",
+        "$value": 50,
+        "$type": "number"
+      }
     },
     "size": {
       "xs": {
-        "height": { "$value": 24, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-xxs}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": 14, "$type": "number" },
-        "weight": { "$value": "{Typography/Font weight/medium}", "$type": "string" },
-        "icon-size": { "$value": 12, "$type": "number" }
+        "height": {
+          "$description": "Button, size xs: height.",
+          "$value": 24,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Button, size xs: padding x.",
+          "$value": "{Spacing/spacing-sm}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size xs: gap.",
+          "$value": "{Spacing/spacing-xxs}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Button, size xs: radius.",
+          "$value": "{Radius/radius-xs}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Button, size xs: text color.",
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Button, size xs: line height.",
+          "$value": 14,
+          "$type": "number"
+        },
+        "weight": {
+          "$description": "Button, size xs: weight.",
+          "$value": "{Typography/Font weight/medium}",
+          "$type": "string"
+        },
+        "icon-size": {
+          "$description": "Button, size xs: icon color size.",
+          "$value": 12,
+          "$type": "number"
+        }
       },
       "sm": {
-        "height": { "$value": 28, "$type": "number" },
-        "padding-x": { "$value": 10, "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-xs}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": 14, "$type": "number" },
-        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
-        "icon-size": { "$value": 16, "$type": "number" }
+        "height": {
+          "$description": "Button, size sm: height.",
+          "$value": 28,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Button, size sm: padding x.",
+          "$value": 10,
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size sm: gap.",
+          "$value": "{Spacing/spacing-xs}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Button, size sm: radius.",
+          "$value": "{Radius/radius-xs}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Button, size sm: text color.",
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Button, size sm: line height.",
+          "$value": 14,
+          "$type": "number"
+        },
+        "weight": {
+          "$description": "Button, size sm: weight.",
+          "$value": "{Typography/Font weight/semibold}",
+          "$type": "string"
+        },
+        "icon-size": {
+          "$description": "Button, size sm: icon color size.",
+          "$value": 16,
+          "$type": "number"
+        }
       },
       "md": {
-        "height": { "$value": 36, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-xl}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-sm}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-xs}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-sm}", "$type": "number" },
-        "line-height": { "$value": 14, "$type": "number" },
-        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
-        "icon-size": { "$value": 16, "$type": "number" }
+        "height": {
+          "$description": "Button, size md: height.",
+          "$value": 36,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Button, size md: padding x.",
+          "$value": "{Spacing/spacing-xl}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size md: gap.",
+          "$value": "{Spacing/spacing-sm}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Button, size md: radius.",
+          "$value": "{Radius/radius-xs}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Button, size md: text color.",
+          "$value": "{Typography/Font size/text-sm}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Button, size md: line height.",
+          "$value": 14,
+          "$type": "number"
+        },
+        "weight": {
+          "$description": "Button, size md: weight.",
+          "$value": "{Typography/Font weight/semibold}",
+          "$type": "string"
+        },
+        "icon-size": {
+          "$description": "Button, size md: icon color size.",
+          "$value": 16,
+          "$type": "number"
+        }
       },
       "lg": {
-        "height": { "$value": 48, "$type": "number" },
-        "padding-x": { "$value": "{Spacing/spacing-3xl}", "$type": "number" },
-        "gap": { "$value": "{Spacing/spacing-md}", "$type": "number" },
-        "radius": { "$value": "{Radius/radius-sm}", "$type": "number" },
-        "text": { "$value": "{Typography/Font size/text-md}", "$type": "number" },
-        "line-height": { "$value": 20, "$type": "number" },
-        "weight": { "$value": "{Typography/Font weight/semibold}", "$type": "string" },
-        "icon-size": { "$value": 20, "$type": "number" }
+        "height": {
+          "$description": "Button, size lg: height.",
+          "$value": 48,
+          "$type": "number"
+        },
+        "padding-x": {
+          "$description": "Button, size lg: padding x.",
+          "$value": "{Spacing/spacing-3xl}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size lg: gap.",
+          "$value": "{Spacing/spacing-md}",
+          "$type": "number"
+        },
+        "radius": {
+          "$description": "Button, size lg: radius.",
+          "$value": "{Radius/radius-sm}",
+          "$type": "number"
+        },
+        "text": {
+          "$description": "Button, size lg: text color.",
+          "$value": "{Typography/Font size/text-md}",
+          "$type": "number"
+        },
+        "line-height": {
+          "$description": "Button, size lg: line height.",
+          "$value": 20,
+          "$type": "number"
+        },
+        "weight": {
+          "$description": "Button, size lg: weight.",
+          "$value": "{Typography/Font weight/semibold}",
+          "$type": "string"
+        },
+        "icon-size": {
+          "$description": "Button, size lg: icon color size.",
+          "$value": 20,
+          "$type": "number"
+        }
       }
     },
     "icon-only": {
       "xs": {
-        "size": { "$value": 24, "$type": "number" }
+        "size": {
+          "$description": "Button, icon only xs: size.",
+          "$value": 24,
+          "$type": "number"
+        }
       },
       "sm": {
-        "size": { "$value": 28, "$type": "number" }
+        "size": {
+          "$description": "Button, icon only sm: size.",
+          "$value": 28,
+          "$type": "number"
+        }
       },
       "md": {
-        "size": { "$value": 36, "$type": "number" }
+        "size": {
+          "$description": "Button, icon only md: size.",
+          "$value": 36,
+          "$type": "number"
+        }
       },
       "lg": {
-        "size": { "$value": 48, "$type": "number" }
+        "size": {
+          "$description": "Button, icon only lg: size.",
+          "$value": 48,
+          "$type": "number"
+        }
       }
     },
-    "font-family": { "$value": "{Typography/Font family/body}", "$type": "string" }
+    "font-family": {
+      "$description": "Button: font family.",
+      "$value": "{Typography/Font family/body}",
+      "$type": "string"
+    }
   }
 }

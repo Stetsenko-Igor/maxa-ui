@@ -1,82 +1,102 @@
 {
   "Date Picker": {
     "popover-top": {
+      "$description": "Date Picker: popover top.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "popover-z": {
+      "$description": "Date Picker: popover z.",
       "$value": "var(--z-popover)",
       "$type": "number"
     },
     "range-bg": {
+      "$description": "Date Picker: range bg.",
       "$value": "var(--color-bg-float)",
       "$type": "color"
     },
     "range-border": {
+      "$description": "Date Picker: range border.",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "range-radius": {
+      "$description": "Date Picker: range radius.",
       "$value": "var(--radius-md)",
       "$type": "number"
     },
     "range-shadow": {
+      "$description": "Date Picker: range shadow.",
       "$value": "var(--shadow-sm)",
       "$type": "string"
     },
     "range-divider": {
+      "$description": "Date Picker: range divider.",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "range-presets-width": {
+      "$description": "Date Picker: range presets width.",
       "$value": 176,
       "$type": "number"
     },
     "range-content-padding": {
+      "$description": "Date Picker: range content padding.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "range-footer-bg": {
+      "$description": "Date Picker: range footer bg.",
       "$value": "var(--color-bg-muted)",
       "$type": "color"
     },
     "range-footer-padding": {
+      "$description": "Date Picker: range footer padding.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "range-footer-gap": {
+      "$description": "Date Picker: range footer gap.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "range-input-width": {
+      "$description": "Date Picker: range input width.",
       "$value": 128,
       "$type": "number"
     },
     "preset-height": {
+      "$description": "Date Picker: preset height.",
       "$value": "var(--spacing-8)",
       "$type": "number"
     },
     "preset-padding-x": {
+      "$description": "Date Picker: preset padding x.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "preset-text": {
+      "$description": "Date Picker: preset text.",
       "$value": "var(--color-text-secondary)",
       "$type": "color"
     },
     "preset-bg-hover": {
+      "$description": "Date Picker: preset bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "preset-font-size": {
+      "$description": "Date Picker: preset font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "field-separator-color": {
+      "$description": "Date Picker: field separator color.",
       "$value": "var(--color-text-tertiary)",
       "$type": "color"
     },
     "icon-hit-area": {
+      "$description": "Date Picker: icon color hit area.",
       "$value": "var(--touch-target-size)",
       "$type": "number"
     }
