@@ -15,7 +15,7 @@ const buttonVariants = cva("maxa-button", {
       ghost:     "maxa-button--ghost",
       link:      "maxa-button--link",
       success:   "maxa-button--success",
-      danger:    "maxa-button--danger",
+      destructive: "maxa-button--destructive",
       warning:   "maxa-button--warning",
       text:      "maxa-button--text",
     },

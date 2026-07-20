@@ -23,7 +23,7 @@ const ALERT_PLAYGROUND: PlaygroundConfig = {
         { label: "info", value: "info" },
         { label: "success", value: "success" },
         { label: "warning", value: "warning" },
-        { label: "danger", value: "danger" },
+        { label: "error", value: "error" },
       ],
       default: "info",
     },
@@ -35,7 +35,7 @@ const ALERT_PLAYGROUND: PlaygroundConfig = {
   render: (v: PlaygroundValues) => (
     <div style={{ width: "100%", maxWidth: "657px" }}>
       <Alert
-        intent={v.intent as "info" | "success" | "warning" | "danger"}
+        intent={v.intent as "info" | "success" | "warning" | "error"}
         title={(v.title as string) || undefined}
         dismissible={v.dismissible as boolean}
         action={

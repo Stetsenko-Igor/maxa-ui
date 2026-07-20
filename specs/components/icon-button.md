@@ -39,7 +39,7 @@ Width = height (square). Dimensions come from `--button-icon-only-{sm,md,lg}-siz
 
 ## Variants
 
-Inherits all Button variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `danger`.
+Inherits all Button variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `destructive`.
 
 **Most common in practice:**
 - `ghost` — toolbar buttons, table-row actions, inline editor controls
@@ -81,7 +81,7 @@ Plus all `ButtonProps` except `iconOnly`, `iconLeading`, `iconTrailing`, `childr
 <IconButton
   icon={<TrashIcon />}
   aria-label="Delete item"
-  variant="danger"
+  variant="destructive"
 />
 ```
 

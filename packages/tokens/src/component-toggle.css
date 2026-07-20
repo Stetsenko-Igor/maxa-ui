@@ -58,6 +58,6 @@
   --toggle-text-color-disabled:       var(--color-text-disabled);
 
   /* ── Colors — error ───────────────────────────────────────────── */
-  --toggle-track-border-error:  var(--color-border-error);
+  --toggle-track-border-error:  var(--color-border-error-strong);
   --toggle-error-border-width:  1.5px;
 }

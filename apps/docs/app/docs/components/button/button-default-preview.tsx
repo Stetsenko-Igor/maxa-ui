@@ -16,7 +16,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
         { label: "ghost", value: "ghost" },
         { label: "link", value: "link" },
         { label: "success", value: "success" },
-        { label: "danger", value: "danger" },
+        { label: "destructive", value: "destructive" },
       ],
       default: "primary",
     },
@@ -37,7 +37,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
   ],
   render: (v: PlaygroundValues) => (
     <Button
-      variant={v.variant as "primary" | "secondary" | "outline" | "ghost" | "link" | "success" | "danger"}
+      variant={v.variant as "primary" | "secondary" | "outline" | "ghost" | "link" | "success" | "destructive"}
       size={v.size as "xs" | "sm" | "md" | "lg"}
       loading={v.loading as boolean}
       disabled={v.disabled as boolean}

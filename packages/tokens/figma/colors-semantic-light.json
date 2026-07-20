@@ -66,7 +66,7 @@
       "$value": "{Colors.Brand.500}",
       "$type": "color"
     },
-    "border-error": {
+    "border-error-strong": {
       "$value": "{Colors.Red.500}",
       "$type": "color"
     }
@@ -144,51 +144,51 @@
       "$value": "{Colors.Brand.200}",
       "$type": "color"
     },
-    "action-positive": {
+    "action-success": {
       "$value": "{Colors.Green.500}",
       "$type": "color"
     },
-    "action-positive-hover": {
+    "action-success-hover": {
       "$value": "{Colors.Green.600}",
       "$type": "color"
     },
-    "action-positive-active": {
+    "action-success-active": {
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
-    "action-positive-subtle": {
+    "action-success-subtle": {
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
-    "action-positive-subtle-hover": {
+    "action-success-subtle-hover": {
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
-    "action-positive-subtle-active": {
+    "action-success-subtle-active": {
       "$value": "{Colors.Green.100}",
       "$type": "color"
     },
-    "action-negative": {
+    "action-destructive": {
       "$value": "{Colors.Red.500}",
       "$type": "color"
     },
-    "action-negative-hover": {
+    "action-destructive-hover": {
       "$value": "{Colors.Red.600}",
       "$type": "color"
     },
-    "action-negative-active": {
+    "action-destructive-active": {
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },
-    "action-negative-subtle": {
+    "action-destructive-subtle": {
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
-    "action-negative-subtle-hover": {
+    "action-destructive-subtle-hover": {
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
-    "action-negative-subtle-active": {
+    "action-destructive-subtle-active": {
       "$value": "{Colors.Red.100}",
       "$type": "color"
     },
@@ -246,11 +246,11 @@
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
-    "fg-positive": {
+    "fg-success": {
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
-    "fg-negative": {
+    "fg-error": {
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },

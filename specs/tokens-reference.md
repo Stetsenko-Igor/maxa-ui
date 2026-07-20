@@ -288,8 +288,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-fg-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
 --color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-300) */
---color-fg-positive: var(--color-green-800);/* dark: var(--color-green-400) */
---color-fg-negative: var(--color-red-700);/* dark: var(--color-red-300) */
+--color-fg-success: var(--color-green-800);/* dark: var(--color-green-400) */
+--color-fg-error: var(--color-red-700); /* dark: var(--color-red-300) */
 --color-fg-warning: var(--color-orange-700);/* dark: var(--color-yellow-400) */
 
 /* ── Border ── */
@@ -298,14 +298,14 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-tertiary: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-border-focus: var(--color-blue-500);/* dark: var(--color-blue-400) */
 --color-border-brand: var(--color-brand-500);/* dark: var(--color-brand-400) */
---color-border-error: var(--color-red-500);/* dark: var(--color-red-500) */
+--color-border-error-strong: var(--color-red-500);/* dark: var(--color-red-500) */
 --color-border-info-strong: var(--color-blue-700);/* dark: var(--color-blue-500) */
 --color-border-info-subtle: var(--color-blue-200);
 --color-border-success-strong: var(--color-green-700);/* dark: var(--color-green-500) */
 --color-border-success-subtle: var(--color-green-300);
 --color-border-warning-strong: var(--color-orange-600);/* dark: var(--color-orange-500) */
 --color-border-warning-subtle: var(--color-orange-200);
---color-border-danger-subtle: var(--color-red-200);
+--color-border-error-subtle: var(--color-red-200);
 --color-border-neutral-strong: var(--color-neutral-700);/* dark: var(--color-neutral-500) */
 --color-border-neutral-subtle: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 
@@ -365,18 +365,18 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-hover: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-active: var(--color-brand-200);/* dark: var(--color-brand-900) */
---color-action-positive: var(--color-green-700);/* dark: var(--color-green-400) */
---color-action-positive-hover: var(--color-green-800);/* dark: var(--color-green-300) */
---color-action-positive-active: var(--color-green-900);/* dark: var(--color-green-200) */
---color-action-positive-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
---color-action-positive-subtle-hover: var(--color-green-50);/* dark: var(--color-green-950) */
---color-action-positive-subtle-active: var(--color-green-100);/* dark: var(--color-green-900) */
---color-action-negative: var(--color-red-600);/* dark: var(--color-red-400) */
---color-action-negative-hover: var(--color-red-700);/* dark: var(--color-red-300) */
---color-action-negative-active: var(--color-red-800);/* dark: var(--color-red-200) */
---color-action-negative-subtle: var(--color-red-50);/* dark: var(--color-red-950) */
---color-action-negative-subtle-hover: var(--color-red-50);/* dark: var(--color-red-950) */
---color-action-negative-subtle-active: var(--color-red-100);/* dark: var(--color-red-900) */
+--color-action-success: var(--color-green-700);/* dark: var(--color-green-400) */
+--color-action-success-hover: var(--color-green-800);/* dark: var(--color-green-300) */
+--color-action-success-active: var(--color-green-900);/* dark: var(--color-green-200) */
+--color-action-success-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
+--color-action-success-subtle-hover: var(--color-green-50);/* dark: var(--color-green-950) */
+--color-action-success-subtle-active: var(--color-green-100);/* dark: var(--color-green-900) */
+--color-action-destructive: var(--color-red-600);/* dark: var(--color-red-400) */
+--color-action-destructive-hover: var(--color-red-700);/* dark: var(--color-red-300) */
+--color-action-destructive-active: var(--color-red-800);/* dark: var(--color-red-200) */
+--color-action-destructive-subtle: var(--color-red-50);/* dark: var(--color-red-950) */
+--color-action-destructive-subtle-hover: var(--color-red-50);/* dark: var(--color-red-950) */
+--color-action-destructive-subtle-active: var(--color-red-100);/* dark: var(--color-red-900) */
 --color-action-warning: var(--color-yellow-500);/* dark: var(--color-yellow-400) */
 --color-action-warning-hover: var(--color-yellow-600);/* dark: var(--color-yellow-300) */
 --color-action-warning-active: var(--color-yellow-700);/* dark: var(--color-yellow-200) */
@@ -661,20 +661,20 @@ Source: `packages/tokens/src/component-button.css`
 --button-link-border: transparent;
 --button-link-border-hover: transparent;
 --button-link-border-focus: var(--color-border-focus);
---button-success-bg: var(--color-action-positive);
---button-success-bg-hover: var(--color-action-positive-hover);
---button-success-bg-active: var(--color-action-positive-active);
+--button-success-bg: var(--color-action-success);
+--button-success-bg-hover: var(--color-action-success-hover);
+--button-success-bg-active: var(--color-action-success-active);
 --button-success-text: var(--color-text-inverse);
---button-success-border: var(--color-action-positive);
---button-success-border-hover: var(--color-action-positive-hover);
+--button-success-border: var(--color-action-success);
+--button-success-border-hover: var(--color-action-success-hover);
 --button-success-border-focus: var(--color-border-focus);
---button-danger-bg: var(--color-action-negative);
---button-danger-bg-hover: var(--color-action-negative-hover);
---button-danger-bg-active: var(--color-action-negative-active);
---button-danger-text: var(--color-text-inverse);
---button-danger-border: var(--color-action-negative);
---button-danger-border-hover: var(--color-action-negative-hover);
---button-danger-border-focus: var(--color-border-focus);
+--button-destructive-bg: var(--color-action-destructive);
+--button-destructive-bg-hover: var(--color-action-destructive-hover);
+--button-destructive-bg-active: var(--color-action-destructive-active);
+--button-destructive-text: var(--color-text-inverse);
+--button-destructive-border: var(--color-action-destructive);
+--button-destructive-border-hover: var(--color-action-destructive-hover);
+--button-destructive-border-focus: var(--color-border-focus);
 --button-warning-bg: var(--color-action-warning);
 --button-warning-bg-hover: var(--color-action-warning-hover);
 --button-warning-bg-active: var(--color-action-warning-active);
@@ -775,7 +775,7 @@ Source: `packages/tokens/src/component-checkbox.css`
 --checkbox-border-checked-hover: #5e5e5f;
 
 /* ── Colors — error ── */
---checkbox-border-error: var(--color-border-error);
+--checkbox-border-error: var(--color-border-error-strong);
 --checkbox-bg-error-checked: #2d2d2e;
 
 /* ── Colors — disabled ── */
@@ -819,8 +819,8 @@ Source: `packages/tokens/src/component-input.css`
 --input-filled-text: var(--color-text-primary);
 
 /* ── Status: error ── */
---input-error-border: var(--color-border-error);
---input-error-border-focus: var(--color-border-error);
+--input-error-border: var(--color-border-error-strong);
+--input-error-border-focus: var(--color-border-error-strong);
 --input-error-hint: var(--color-text-error);
 --input-error-text: var(--color-text-error);
 
@@ -911,7 +911,7 @@ Source: `packages/tokens/src/component-file-input.css`
 --file-input-field-border: var(--color-border-primary);
 --file-input-field-border-hover: var(--color-border-secondary);
 --file-input-field-border-focus: var(--color-border-focus);
---file-input-field-border-error: var(--color-border-error);
+--file-input-field-border-error: var(--color-border-error-strong);
 --file-input-field-border-disabled: var(--color-border-tertiary);
 --file-input-placeholder-text: var(--color-text-tertiary);
 --file-input-filename-text: var(--color-text-primary);
@@ -1055,9 +1055,9 @@ Source: `packages/tokens/src/component-progress.css`
 --progress-height-sm: 6px;
 --progress-height-md: 8px;
 --progress-fill-brand: var(--color-action-primary);
---progress-fill-success: var(--color-action-positive);
+--progress-fill-success: var(--color-action-success);
 --progress-fill-warning: var(--color-action-warning);
---progress-fill-error: var(--color-action-negative);
+--progress-fill-error: var(--color-action-destructive);
 --progress-label-color: var(--color-text-secondary);
 --progress-value-color: var(--color-text-primary);
 --progress-font-size: var(--text-sm);
@@ -1401,7 +1401,7 @@ Source: `packages/tokens/src/component-radio.css`
 --radio-dot-color-hover: #04549b;
 
 /* ── Colors — error ── */
---radio-border-error: var(--color-border-error);
+--radio-border-error: var(--color-border-error-strong);
 --radio-bg-error-checked: transparent;
 
 /* ── Colors — disabled ── */
@@ -1554,7 +1554,7 @@ Source: `packages/tokens/src/component-toggle.css`
 --toggle-text-color-disabled: var(--color-text-disabled);
 
 /* ── Colors — error ── */
---toggle-track-border-error: var(--color-border-error);
+--toggle-track-border-error: var(--color-border-error-strong);
 --toggle-error-border-width: 1.5px;
 ```
 
@@ -1616,9 +1616,9 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-success-border: var(--color-border-success-subtle);/* dark: #006d0f */
 --alert-success-text: var(--color-text-primary);/* dark: #f4f3f3 */
 --alert-success-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-success-icon: var(--color-fg-positive);/* dark: #2bb47d */
---alert-success-strip: var(--color-fg-positive);/* dark: #2bb47d */
---alert-success-action: var(--color-fg-positive);/* dark: #2bb47d */
+--alert-success-icon: var(--color-fg-success);/* dark: #2bb47d */
+--alert-success-strip: var(--color-fg-success);/* dark: #2bb47d */
+--alert-success-action: var(--color-fg-success);/* dark: #2bb47d */
 --alert-success-action-hover: var(--color-text-success);/* dark: #62d6a2 */
 
 /* ── Warning ── */
@@ -1632,14 +1632,14 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
 
 /* ── Danger ── */
---alert-danger-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
---alert-danger-border: var(--color-border-danger-subtle);/* dark: #d71913 */
---alert-danger-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-danger-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-danger-icon: var(--color-fg-negative);/* dark: #ff755e */
---alert-danger-strip: var(--color-fg-negative);/* dark: #ff755e */
---alert-danger-action: var(--color-fg-negative);/* dark: #ff755e */
---alert-danger-action-hover: var(--color-text-error);/* dark: #ffa193 */
+--alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
+--alert-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
+--alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--alert-error-title: var(--color-text-primary);/* dark: #f4f3f3 */
+--alert-error-icon: var(--color-fg-error);/* dark: #ff755e */
+--alert-error-strip: var(--color-fg-error);/* dark: #ff755e */
+--alert-error-action: var(--color-fg-error);/* dark: #ff755e */
+--alert-error-action-hover: var(--color-text-error);/* dark: #ffa193 */
 ```
 
 ## Tooltip Component Tokens
@@ -2102,14 +2102,14 @@ Source: `packages/tokens/src/component-toast.css`
 --toast-stripe-info: var(--color-border-info-strong);
 --toast-stripe-success: var(--color-border-success-strong);
 --toast-stripe-warning: var(--color-border-warning-strong);
---toast-stripe-error: var(--color-border-error);
+--toast-stripe-error: var(--color-border-error-strong);
 
 /* ── Intent icon colors ── */
 --toast-icon-neutral: var(--color-fg-secondary);
 --toast-icon-info: var(--color-fg-info);
---toast-icon-success: var(--color-fg-positive);
+--toast-icon-success: var(--color-fg-success);
 --toast-icon-warning: var(--color-fg-warning);
---toast-icon-error: var(--color-fg-negative);
+--toast-icon-error: var(--color-fg-error);
 ```
 
 ## Datatable Component Tokens

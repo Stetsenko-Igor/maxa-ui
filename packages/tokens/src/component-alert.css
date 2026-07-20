@@ -42,9 +42,9 @@
   --alert-success-border:       var(--color-border-success-subtle);
   --alert-success-text:         var(--color-text-primary);
   --alert-success-title:        var(--color-text-primary);
-  --alert-success-icon:         var(--color-fg-positive);
-  --alert-success-strip:        var(--color-fg-positive);
-  --alert-success-action:       var(--color-fg-positive);
+  --alert-success-icon:         var(--color-fg-success);
+  --alert-success-strip:        var(--color-fg-success);
+  --alert-success-action:       var(--color-fg-success);
   --alert-success-action-hover: var(--color-text-success);
 
   /* ── Warning ───────────────────────────────────────────────────── */
@@ -58,14 +58,14 @@
   --alert-warning-action-hover: var(--color-text-warning);
 
   /* ── Danger ────────────────────────────────────────────────────── */
-  --alert-danger-bg:           var(--color-bg-error-subtle);
-  --alert-danger-border:       var(--color-border-danger-subtle);
-  --alert-danger-text:         var(--color-text-primary);
-  --alert-danger-title:        var(--color-text-primary);
-  --alert-danger-icon:         var(--color-fg-negative);
-  --alert-danger-strip:        var(--color-fg-negative);
-  --alert-danger-action:       var(--color-fg-negative);
-  --alert-danger-action-hover: var(--color-text-error);
+  --alert-error-bg:           var(--color-bg-error-subtle);
+  --alert-error-border:       var(--color-border-error-subtle);
+  --alert-error-text:         var(--color-text-primary);
+  --alert-error-title:        var(--color-text-primary);
+  --alert-error-icon:         var(--color-fg-error);
+  --alert-error-strip:        var(--color-fg-error);
+  --alert-error-action:       var(--color-fg-error);
+  --alert-error-action-hover: var(--color-text-error);
 }
 
 [data-theme="dark"] {
@@ -96,12 +96,12 @@
   --alert-warning-action:       #e16d00;
   --alert-warning-action-hover: #ff9a3c;
 
-  --alert-danger-bg:           #7b0000;
-  --alert-danger-border:       #d71913;
-  --alert-danger-text:         #f4f3f3;
-  --alert-danger-title:        #f4f3f3;
-  --alert-danger-icon:         #ff755e;
-  --alert-danger-strip:        #ff755e;
-  --alert-danger-action:       #ff755e;
-  --alert-danger-action-hover: #ffa193;
+  --alert-error-bg:           #7b0000;
+  --alert-error-border:       #d71913;
+  --alert-error-text:         #f4f3f3;
+  --alert-error-title:        #f4f3f3;
+  --alert-error-icon:         #ff755e;
+  --alert-error-strip:        #ff755e;
+  --alert-error-action:       #ff755e;
+  --alert-error-action-hover: #ffa193;
 }

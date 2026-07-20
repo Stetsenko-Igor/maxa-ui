@@ -133,7 +133,7 @@
           "$type": "color"
         }
       },
-      "danger": {
+      "error": {
         "bg": {
           "$value": "#7B0000",
           "$type": "color"

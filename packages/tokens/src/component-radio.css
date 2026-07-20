@@ -31,7 +31,7 @@
   --radio-dot-color-hover:    #04549b;
 
   /* ── Colors — error ───────────────────────────────────────────── */
-  --radio-border-error:       var(--color-border-error);
+  --radio-border-error:       var(--color-border-error-strong);
   --radio-bg-error-checked:   transparent;
 
   /* ── Colors — disabled ────────────────────────────────────────── */

@@ -17,7 +17,7 @@ const alertVariants = cva("maxa-alert", {
       info:    "maxa-alert--info",
       success: "maxa-alert--success",
       warning: "maxa-alert--warning",
-      danger:  "maxa-alert--danger",
+      error:   "maxa-alert--error",
     },
   },
   defaultVariants: {
@@ -25,7 +25,7 @@ const alertVariants = cva("maxa-alert", {
   },
 })
 
-export type AlertIntent = "info" | "success" | "warning" | "danger"
+export type AlertIntent = "info" | "success" | "warning" | "error"
 export type AlertOrientation = "horizontal" | "vertical"
 type AlertLayout = "stacked" | "inline"
 
@@ -49,14 +49,14 @@ const intentIcons: Record<AlertIntent, React.ComponentType<{ "aria-hidden"?: boo
   info: Info,
   success: CheckCircle,
   warning: Warning,
-  danger: XCircle,
+  error: XCircle,
 }
 
 const intentRole: Record<AlertIntent, "alert" | "status"> = {
   info: "status",
   success: "status",
   warning: "alert",
-  danger: "alert",
+  error: "alert",
 }
 
 const resolveLayout = (orientation: AlertOrientation | undefined, hasTitle: boolean): AlertLayout => {

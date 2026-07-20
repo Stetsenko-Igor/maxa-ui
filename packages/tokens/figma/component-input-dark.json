@@ -23,13 +23,13 @@
     "error": {
       "text": { "$value": "{Color modes/text/text-error}", "$type": "color" },
       "hint": { "$value": "{Color modes/text/text-error}", "$type": "color" },
-      "border": { "$value": "{Color modes/border/border-error}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/border/border-error}", "$type": "color" }
+      "border": { "$value": "{Color modes/border/border-error-strong}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/border/border-error-strong}", "$type": "color" }
     },
     "success": {
       "hint": { "$value": "{Color modes/text/text-success}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-positive-active}", "$type": "color" },
-      "border-focus": { "$value": "{Color modes/action/action-positive-active}", "$type": "color" }
+      "border": { "$value": "{Color modes/action/action-success-active}", "$type": "color" },
+      "border-focus": { "$value": "{Color modes/action/action-success-active}", "$type": "color" }
     },
     "disabled": {
       "bg": { "$value": "{Color modes/background/bg-disabled}", "$type": "color" },

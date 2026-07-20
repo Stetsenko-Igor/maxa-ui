@@ -35,7 +35,7 @@
   --checkbox-border-checked-hover: #5e5e5f;
 
   /* ── Colors — error ───────────────────────────────────────────── */
-  --checkbox-border-error:     var(--color-border-error);
+  --checkbox-border-error:     var(--color-border-error-strong);
   --checkbox-bg-error-checked: #2d2d2e;
 
   /* ── Colors — disabled ────────────────────────────────────────── */

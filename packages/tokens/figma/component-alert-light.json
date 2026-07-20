@@ -107,7 +107,7 @@
           "$type": "color"
         },
         "accent": {
-          "$value": "{Color modes/foreground/fg-positive}",
+          "$value": "{Color modes/foreground/fg-success}",
           "$type": "color"
         },
         "text": {
@@ -133,7 +133,7 @@
           "$type": "color"
         }
       },
-      "danger": {
+      "error": {
         "bg": {
           "$value": "{Color modes/background/bg-error-subtle}",
           "$type": "color"
@@ -143,7 +143,7 @@
           "$type": "color"
         },
         "accent": {
-          "$value": "{Color modes/foreground/fg-negative}",
+          "$value": "{Color modes/foreground/fg-error}",
           "$type": "color"
         },
         "text": {

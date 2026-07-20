@@ -48,8 +48,8 @@ export type ForegroundColorToken =
   | "on-brand"
   | "brand"
   | "info"
-  | "positive"
-  | "negative"
+  | "success"
+  | "error"
   | "warning"
 
 export type BackgroundColorToken =
@@ -85,7 +85,8 @@ export type BorderColorToken =
   | "tertiary"
   | "focus"
   | "brand"
-  | "error"
+  | "error-strong"
+  | "error-subtle"
   | "info-strong"
   | "success-strong"
   | "warning-strong"

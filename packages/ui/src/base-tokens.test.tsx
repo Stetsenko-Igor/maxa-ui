@@ -71,7 +71,8 @@ const borderTokens = [
   "tertiary",
   "focus",
   "brand",
-  "error",
+  "error-strong",
+  "error-subtle",
   "info-strong",
   "success-strong",
   "warning-strong",
@@ -102,8 +103,8 @@ const foregroundTokens = [
   "on-brand",
   "brand",
   "info",
-  "positive",
-  "negative",
+  "success",
+  "error",
   "warning",
 ] as const
 

@@ -65,7 +65,7 @@ Figma naming should remain close to React props, but designer-facing labels may 
 | Disabled state | `Disabled: true` | `disabled` |
 | Text content | `Label: Save` | children or `label` |
 | Icon slot | `Icon` instance swap | `icon={...}` |
-| Destructive intent | `Variant: Danger` | `variant="danger"` |
+| Destructive intent | `Variant: Destructive` | `variant="destructive"` |
 
 When a Figma property does not map cleanly to a React prop, prefer updating the spec first. Do not
 silently invent prop names in Code Connect templates.

@@ -45,8 +45,8 @@ Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other 
 | `--color-fg-on-brand` | Neutral/950 | Neutral/950 | Icons on `bg-brand-strong` |
 | `--color-fg-brand` | Brand/600 | Brand/400 | Brand-colored icons |
 | `--color-fg-info` | Blue/600 | Blue/400 | Informational icons |
-| `--color-fg-positive` | Green/700 | Green/400 | Success icons |
-| `--color-fg-negative` | Red/700 | Red/400 | Error/destructive icons |
+| `--color-fg-success` | Green/700 | Green/400 | Success icons |
+| `--color-fg-error` | Red/700 | Red/400 | Error/destructive icons |
 | `--color-fg-warning` | Yellow/600 | Yellow/400 | Warning icons |
 
 ### Background / Surface
@@ -108,16 +108,16 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | `--color-bg-brand-surface` | Brand/100 | Brand/900 | Brand surface |
 | `--color-bg-brand-strong` | Brand/500 | Brand/600 | Strong brand fill |
 | `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info section bg |
-| `--color-bg-info-surface` | Blue/50 | Blue/950 | Info surface fill |
+| `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info surface fill |
 | `--color-bg-info-strong` | Blue/700 | Blue/500 | Strong info fill |
 | `--color-bg-success-subtle` | Green/50 | Green/950 | Success section bg |
-| `--color-bg-success-surface` | Green/50 | Green/950 | Success surface fill |
+| `--color-bg-success-subtle` | Green/50 | Green/950 | Success surface fill |
 | `--color-bg-success-strong` | Green/700 | Green/500 | Strong success fill |
 | `--color-bg-error-subtle` | Red/50 | Red/950 | Error section bg |
-| `--color-bg-error-surface` | Red/50 | Red/950 | Error surface fill |
+| `--color-bg-error-subtle` | Red/50 | Red/950 | Error surface fill |
 | `--color-bg-error-strong` | Red/700 | Red/500 | Strong error fill |
 | `--color-bg-warning-subtle` | Orange/50 | Yellow/950 | Warning section bg |
-| `--color-bg-warning-surface` | Orange/50 | Yellow/950 | Warning surface fill |
+| `--color-bg-warning-subtle` | Orange/50 | Yellow/950 | Warning surface fill |
 | `--color-bg-warning-strong` | Orange/600 | Orange/500 | Strong warning fill |
 
 ### Border
@@ -125,11 +125,18 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
 | `--color-border-primary` | Neutral/300 | Neutral/700 | Default input, card borders |
-| `--color-border-secondary` | Neutral/400 | Neutral/800 | Stronger borders |
-| `--color-border-subtle` | Neutral/200 | Neutral/800 | Dividers, subtle separators |
+| `--color-border-secondary` | Neutral/200 | Neutral/800 | Lighter borders, subtle separators |
+| `--color-border-tertiary` | Neutral/100 | Neutral/900 | Faintest dividers |
 | `--color-border-focus` | Blue/500 | Blue/400 | Focus rings on interactive elements |
 | `--color-border-brand` | Brand/500 | Brand/400 | Brand-accented borders |
-| `--color-border-error` | Red/500 | Red/400 | Invalid input borders |
+| `--color-border-neutral-strong` / `-subtle` | Neutral/700 · Neutral/300 | Neutral/500 · Neutral/700 | Neutral status/emphasis borders |
+| `--color-border-info-strong` / `-subtle` | Blue/700 · Blue/200 | Blue/500 · Blue/200 | Info state borders |
+| `--color-border-success-strong` / `-subtle` | Green/700 · Green/300 | Green/500 · Green/300 | Success state borders |
+| `--color-border-warning-strong` / `-subtle` | Orange/600 · Orange/200 | Orange/500 · Orange/200 | Warning state borders |
+| `--color-border-error-strong` / `-subtle` | Red/500 · Red/200 | Red/500 · Red/200 | Error/invalid input borders |
+
+Every status border follows the `-strong` / `-subtle` pair; there is no bare
+`--color-border-error` (it is `--color-border-error-strong`).
 
 ### Action (interactive backgrounds)
 
@@ -140,11 +147,26 @@ Action tokens drive button and interactive element surfaces. Always use action t
 | `action/primary` | `--color-action-primary` + hover/active variants | Primary CTA, blue buttons |
 | `action/neutral` | `--color-action-neutral` + hover/active variants | Secondary / neutral buttons |
 | `action/brand` | `--color-action-brand` + hover/active variants | Brand-teal interactive elements |
-| `action/positive` | `--color-action-positive` + hover/active variants | Success/confirm actions |
-| `action/negative` | `--color-action-negative` + hover/active variants | Destructive/danger actions |
+| `action/success` | `--color-action-success` + hover/active variants | Confirm / approve actions (green) |
+| `action/destructive` | `--color-action-destructive` + hover/active variants | Destructive actions: delete, remove (red) |
 | `action/warning` | `--color-action-warning` + hover/active variants | Warning actions |
 
 Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subtle-active`.
+
+### Status vocabulary (one word per concept)
+
+Status color uses a single word set — **`info` · `success` · `warning` · `error`** — across
+every passive layer (`text`, `fg`, `border`, `bg`). The words `positive`, `negative`, and
+`danger` are **not** used for these; they were removed to end a three-way split (2026-07).
+
+The interactive **action** layer is the one exception: a destructive action button reads as
+`--color-action-destructive` (an action, not a status) and a confirm button as
+`--color-action-success`. Feedback components (Alert, Toast) stay on the status word `error`;
+only genuinely destructive *actions* (Button) use `destructive`.
+
+> **Warning hue is intentional:** status `warning` is orange (light) → yellow (dark), while the
+> interactive `--color-action-warning` is yellow in both modes. Interactive warning = yellow;
+> status/feedback warning = orange→yellow.
 
 ## Common Mistakes to Avoid
 

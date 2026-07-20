@@ -138,14 +138,14 @@ export default function ShadowsPage() {
 
       <DocsPageSection id="usage" title="Usage">
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-positive)" }}>
+          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-success)" }}>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)" }}>Do</p>
             <p style={{ margin: "4px 0 0", fontSize: "var(--text-sm)", color: "var(--color-text-secondary)", fontFamily: "var(--font-mono)" }}>
               {`--dropdown-shadow: var(--shadow-sm);`}<br />
               {`box-shadow: var(--dropdown-shadow);`}
             </p>
           </div>
-          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-negative)" }}>
+          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-destructive)" }}>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)" }}>Don&apos;t</p>
             <p style={{ margin: "4px 0 0", fontSize: "var(--text-sm)", color: "var(--color-text-secondary)", fontFamily: "var(--font-mono)" }}>
               {`box-shadow: var(--shadow-sm); /* use component token, not shadow directly */`}

@@ -30,7 +30,7 @@
   --file-input-field-border: var(--color-border-primary);
   --file-input-field-border-hover: var(--color-border-secondary);
   --file-input-field-border-focus: var(--color-border-focus);
-  --file-input-field-border-error: var(--color-border-error);
+  --file-input-field-border-error: var(--color-border-error-strong);
   --file-input-field-border-disabled: var(--color-border-tertiary);
   --file-input-placeholder-text: var(--color-text-tertiary);
   --file-input-filename-text: var(--color-text-primary);
