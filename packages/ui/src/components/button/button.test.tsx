@@ -21,8 +21,8 @@ describe("Button", () => {
     rerender(<Button variant="ghost">Test</Button>)
     expect(screen.getByRole("button")).toHaveClass("maxa-button--ghost")
 
-    rerender(<Button variant="danger">Test</Button>)
-    expect(screen.getByRole("button")).toHaveClass("maxa-button--danger")
+    rerender(<Button variant="destructive">Test</Button>)
+    expect(screen.getByRole("button")).toHaveClass("maxa-button--destructive")
   })
 
   it("applies size classes", () => {

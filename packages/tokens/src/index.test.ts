@@ -143,14 +143,14 @@ describe("semantic.css — text + border", () => {
   it("defines canonical border tokens", () => {
     for (const t of [
       "border-primary", "border-secondary", "border-tertiary", "border-focus",
-      "border-brand", "border-error", "border-info-strong", "border-info-subtle",
+      "border-brand", "border-error-strong", "border-info-strong", "border-info-subtle",
       "border-success-strong", "border-success-subtle", "border-warning-strong", "border-warning-subtle",
-      "border-danger-subtle",
+      "border-error-subtle",
       "border-neutral-strong", "border-neutral-subtle",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
-    for (const t of ["border-default", "border-brand-strong", "border-error-strong"]) {
+    for (const t of ["border-default", "border-brand-strong"]) {
       expect(css).not.toContain(`--color-${t}:`)
     }
   })
@@ -165,8 +165,8 @@ describe("semantic.css — text + border", () => {
     for (const t of [
       "fg-primary", "fg-secondary", "fg-tertiary",
       "fg-disabled", "fg-inverse", "fg-on-brand",
-      "fg-brand", "fg-info", "fg-positive",
-      "fg-negative", "fg-warning",
+      "fg-brand", "fg-info", "fg-success",
+      "fg-error", "fg-warning",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -202,10 +202,10 @@ describe("semantic.css — bg + action", () => {
       "action-neutral-subtle", "action-neutral-subtle-hover", "action-neutral-subtle-active",
       "action-brand", "action-brand-hover", "action-brand-active",
       "action-brand-subtle", "action-brand-subtle-hover", "action-brand-subtle-active",
-      "action-positive", "action-positive-hover", "action-positive-active",
-      "action-positive-subtle", "action-positive-subtle-hover", "action-positive-subtle-active",
-      "action-negative", "action-negative-hover", "action-negative-active",
-      "action-negative-subtle", "action-negative-subtle-hover", "action-negative-subtle-active",
+      "action-success", "action-success-hover", "action-success-active",
+      "action-success-subtle", "action-success-subtle-hover", "action-success-subtle-active",
+      "action-destructive", "action-destructive-hover", "action-destructive-active",
+      "action-destructive-subtle", "action-destructive-subtle-hover", "action-destructive-subtle-active",
       "action-warning", "action-warning-hover", "action-warning-active",
       "action-warning-subtle", "action-warning-subtle-hover", "action-warning-subtle-active",
     ]) {
@@ -351,13 +351,13 @@ describe("figma import bundle", () => {
     expect(light?.["Utility/fg-violet"]).toBe("{Utility/text-violet}")
     expect(light?.["Checkbox/size/md/control"]).toBe(20)
     expect(light?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
-    expect(light?.["Checkbox/color/border-error"]).toBe("var(--color-border-error)")
+    expect(light?.["Checkbox/color/border-error"]).toBe("var(--color-border-error-strong)")
     expect(light?.["Checkbox/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
     expect(light?.["Checkbox/size/sm/control"]).toBeUndefined()
     expect(light?.["Radio/size/md/control"]).toBe(20)
     expect(light?.["Radio/color/border-checked"]).toBe("#0576DA")
     expect(light?.["Radio/color/dot"]).toBe("#0576DA")
-    expect(light?.["Radio/color/border-error"]).toBe("var(--color-border-error)")
+    expect(light?.["Radio/color/border-error"]).toBe("var(--color-border-error-strong)")
     expect(light?.["Radio/typography/top-label-font-weight"]).toBe("{Typography/Font weight/semibold}")
     expect(light?.["Radio/size/sm/control"]).toBeUndefined()
     expect(light?.["Tag/size/lg/height"]).toBe(28)
@@ -375,7 +375,7 @@ describe("figma import bundle", () => {
     expect(light?.["Alert/color/info/border"]).toBe("{Color modes/border/border-secondary}")
     expect(light?.["Alert/color/info/accent"]).toBe("{Color modes/foreground/fg-info}")
     expect(light?.["Alert/color/warning/bg"]).toBe("{Color modes/background/bg-warning-subtle}")
-    expect(light?.["Alert/color/danger/accent"]).toBe("{Color modes/foreground/fg-negative}")
+    expect(light?.["Alert/color/error/accent"]).toBe("{Color modes/foreground/fg-error}")
     expect(light?.["Toggle/size/md/track-width"]).toBe(36)
     expect(light?.["Toggle/size/md/field-max-width"]).toBe(160)
     expect(light?.["Toggle/size/md/content-max-width"]).toBe(117)
@@ -404,7 +404,7 @@ describe("figma import bundle", () => {
     expect(dark?.["Alert/layout/padding-x"]).toBe(16)
     expect(dark?.["Alert/icon/size"]).toBe(20)
     expect(dark?.["Alert/color/success/bg"]).toBe("#044329")
-    expect(dark?.["Alert/color/danger/accent"]).toBe("#FF755E")
+    expect(dark?.["Alert/color/error/accent"]).toBe("#FF755E")
     expect(dark?.["Alert/color/emphasize/border"]).toBe("#545454")
     expect(dark?.["Checkbox/size/md/control"]).toBe(20)
     expect(dark?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
@@ -735,7 +735,7 @@ describe("figma component-based button tokens", () => {
       "ghost",
       "link",
       "success",
-      "danger",
+      "destructive",
       "warning",
       "text",
       "disabled",
@@ -773,11 +773,11 @@ describe("figma component-based button tokens", () => {
     expect(lightFile.Button.primary.text?.$value).toBe("{Color modes/text/text-inverse}")
   })
 
-  it("defines success and danger from positive and negative actions", () => {
-    expect(lightFile.Button.success.bg?.$value).toBe("{Color modes/action/action-positive}")
-    expect(lightFile.Button.success["bg-hover"]?.$value).toBe("{Color modes/action/action-positive-hover}")
-    expect(lightFile.Button.danger.bg?.$value).toBe("{Color modes/action/action-negative}")
-    expect(lightFile.Button.danger["bg-hover"]?.$value).toBe("{Color modes/action/action-negative-hover}")
+  it("defines success and destructive button variants from action tokens", () => {
+    expect(lightFile.Button.success.bg?.$value).toBe("{Color modes/action/action-success}")
+    expect(lightFile.Button.success["bg-hover"]?.$value).toBe("{Color modes/action/action-success-hover}")
+    expect(lightFile.Button.destructive.bg?.$value).toBe("{Color modes/action/action-destructive}")
+    expect(lightFile.Button.destructive["bg-hover"]?.$value).toBe("{Color modes/action/action-destructive-hover}")
   })
 
   it("uses one disabled opacity token for Button", () => {
@@ -787,7 +787,7 @@ describe("figma component-based button tokens", () => {
     expect(lightDisabled.opacity?.$value).toBe(50)
     expect(darkDisabled.opacity?.$value).toBe(50)
 
-    for (const variant of ["primary", "secondary", "outline", "ghost", "link", "success", "danger"]) {
+    for (const variant of ["primary", "secondary", "outline", "ghost", "link", "success", "destructive"]) {
       const tokens = lightFile.Button[variant] as Record<string, TokenLeaf>
       expect(tokens["bg-disabled"]).toBeUndefined()
       expect(tokens["text-disabled"]).toBeUndefined()
@@ -933,9 +933,9 @@ describe("figma component-based input tokens", () => {
     const readonly = lightFile.Input.readonly as Record<string, TokenLeaf>
 
     expect(error.text?.$value).toBe("{Color modes/text/text-error}")
-    expect(error.border?.$value).toBe("{Color modes/border/border-error}")
+    expect(error.border?.$value).toBe("{Color modes/border/border-error-strong}")
     expect(success.hint?.$value).toBe("{Color modes/text/text-success}")
-    expect(success.border?.$value).toBe("{Color modes/action/action-positive-active}")
+    expect(success.border?.$value).toBe("{Color modes/action/action-success-active}")
     expect(disabled.bg?.$value).toBe("{Color modes/background/bg-disabled}")
     expect(disabled.opacity?.$value).toBe(100)
     expect(readonly.bg?.$value).toBe("{Color modes/background/bg-muted}")

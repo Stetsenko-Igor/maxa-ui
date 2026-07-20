@@ -209,7 +209,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Feedback</p>
             <h2 style={title}>Alert</h2>
             <p style={description}>
-              Callout box for info, success, warning, and danger messages. Optional dismiss.
+              Callout box for info, success, warning, and error messages. Optional dismiss.
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "stretch", gap: "8px" }}>
               <Alert intent="success">Changes saved successfully.</Alert>

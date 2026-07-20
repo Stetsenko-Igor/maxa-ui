@@ -20,7 +20,7 @@ const TOC = [
 ]
 
 const ALERT_PROPS = [
-  { name: "intent", type: "'info' | 'success' | 'warning' | 'danger'", default: "'info'", description: "Visual and semantic intent. info/success → role=status; warning/danger → role=alert." },
+  { name: "intent", type: "'info' | 'success' | 'warning' | 'error'", default: "'info'", description: "Visual and semantic intent. info/success → role=status; warning/error → role=alert." },
   { name: "title", type: "ReactNode", default: undefined, description: "Bold heading. When present, switches to stacked layout (action below text). Absent → inline layout (action on right)." },
   { name: "icon", type: "ReactNode", default: "intent default", description: "Leading decorative icon, aria-hidden. Defaults to intent-specific SVG." },
   { name: "action", type: "ReactNode", default: undefined, description: "Optional call-to-action. Use <AlertAction> to get automatic intent-colored styling." },
@@ -35,7 +35,7 @@ const ALERT_ACTION_PROPS = [
   { name: "size", type: "'sm' | 'md'", default: "'sm'", description: "Button size." },
 ]
 
-const INTENTS = (["info", "success", "warning", "danger"] as const)
+const INTENTS = (["info", "success", "warning", "error"] as const)
 const col: React.CSSProperties = {
   display: "flex",
   flexDirection: "column",
@@ -84,10 +84,10 @@ export default function AlertPage() {
       <DocsSection
         id="intents"
         title="Intents — inline layout"
-        description="No title → inline layout. Text on left, dismiss/action on right. info and success use role=status (polite). warning and danger use role=alert (assertive)."
+        description="No title → inline layout. Text on left, dismiss/action on right. info and success use role=status (polite). warning and error use role=alert (assertive)."
       >
         <DocsExample title="All intents, no title">
-          <ComponentPreview code={`<Alert intent="info">Informational message.</Alert>\n<Alert intent="success">Operation completed.</Alert>\n<Alert intent="warning">Check this before continuing.</Alert>\n<Alert intent="danger">Something went wrong.</Alert>`}>
+          <ComponentPreview code={`<Alert intent="info">Informational message.</Alert>\n<Alert intent="success">Operation completed.</Alert>\n<Alert intent="warning">Check this before continuing.</Alert>\n<Alert intent="error">Something went wrong.</Alert>`}>
             <div style={col}>
               {INTENTS.map((intent) => (
                 <Alert key={intent} intent={intent}>
@@ -139,7 +139,7 @@ export default function AlertPage() {
         </DocsExample>
 
         <DocsExample title="Stacked — action below text (primary)">
-          <ComponentPreview code={`<Alert\n  intent="danger"\n  title="Session expired"\n  action={<AlertAction variant="primary">Sign in again</AlertAction>}\n>\n  Your session has timed out.\n</Alert>`}>
+          <ComponentPreview code={`<Alert\n  intent="error"\n  title="Session expired"\n  action={<AlertAction variant="primary">Sign in again</AlertAction>}\n>\n  Your session has timed out.\n</Alert>`}>
             <div style={col}>
               {INTENTS.map((intent) => (
                 <Alert
@@ -191,7 +191,7 @@ export default function AlertPage() {
                 You are using 90% of your storage. Upgrade to avoid data loss.
               </Alert>
               <Alert
-                intent="danger"
+                intent="error"
                 title="Payment failed"
                 action={<AlertAction variant="primary">Update billing</AlertAction>}
                 dismissible

@@ -20,7 +20,7 @@ const TOC = [
 const ICON_BUTTON_PROPS = [
   { name: "icon", type: "ReactNode", default: undefined, description: "Icon to display. Wrap SVG in 16×16 bounds." },
   { name: "aria-label", type: "string", default: undefined, description: "Accessible label — required since there is no visible text." },
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'", default: "'secondary'", description: "The visual style of the button." },
+  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'", default: "'secondary'", description: "The visual style of the button." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Controls height, padding, and icon bounds." },
   { name: "loading", type: "boolean", default: "false", description: "Replaces content with a spinner and disables the button." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the button. Applies 50% opacity to the whole element." },
@@ -96,12 +96,12 @@ export default function IconButtonPage() {
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="ghost" />
-<IconButton icon={<PlusIcon />} aria-label="Add" variant="danger" />`}>
+<IconButton icon={<PlusIcon />} aria-label="Add" variant="destructive" />`}>
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="ghost" />
-            <IconButton icon={<PlusIcon />} aria-label="Add" variant="danger" />
+            <IconButton icon={<PlusIcon />} aria-label="Add" variant="destructive" />
           </ComponentPreview>
         </DocsExample>
       </DocsSection>

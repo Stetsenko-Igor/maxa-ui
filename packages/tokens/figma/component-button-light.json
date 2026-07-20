@@ -48,21 +48,21 @@
       "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
     },
     "success": {
-      "bg": { "$value": "{Color modes/action/action-positive}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-positive-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-positive-active}", "$type": "color" },
+      "bg": { "$value": "{Color modes/action/action-success}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/action-success-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/action-success-active}", "$type": "color" },
       "text": { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-positive}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-positive-hover}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/action-success}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/action-success-hover}", "$type": "color" },
       "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
     },
-    "danger": {
-      "bg": { "$value": "{Color modes/action/action-negative}", "$type": "color" },
-      "bg-hover": { "$value": "{Color modes/action/action-negative-hover}", "$type": "color" },
-      "bg-active": { "$value": "{Color modes/action/action-negative-active}", "$type": "color" },
+    "destructive": {
+      "bg": { "$value": "{Color modes/action/action-destructive}", "$type": "color" },
+      "bg-hover": { "$value": "{Color modes/action/action-destructive-hover}", "$type": "color" },
+      "bg-active": { "$value": "{Color modes/action/action-destructive-active}", "$type": "color" },
       "text": { "$value": "{Color modes/text/text-inverse}", "$type": "color" },
-      "border": { "$value": "{Color modes/action/action-negative}", "$type": "color" },
-      "border-hover": { "$value": "{Color modes/action/action-negative-hover}", "$type": "color" },
+      "border": { "$value": "{Color modes/action/action-destructive}", "$type": "color" },
+      "border-hover": { "$value": "{Color modes/action/action-destructive-hover}", "$type": "color" },
       "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }
     },
     "warning": {

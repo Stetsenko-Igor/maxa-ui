@@ -15,8 +15,8 @@
   --input-filled-text:      var(--color-text-primary);
 
   /* ── Status: error ────────────────────────────────────────────── */
-  --input-error-border:       var(--color-border-error);
-  --input-error-border-focus: var(--color-border-error);
+  --input-error-border:       var(--color-border-error-strong);
+  --input-error-border-focus: var(--color-border-error-strong);
   --input-error-hint:         var(--color-text-error);
   --input-error-text:         var(--color-text-error);
 

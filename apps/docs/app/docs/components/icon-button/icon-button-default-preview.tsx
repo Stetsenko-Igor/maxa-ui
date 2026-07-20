@@ -22,7 +22,7 @@ const ICON_BUTTON_PLAYGROUND: PlaygroundConfig = {
         { label: "secondary", value: "secondary" },
         { label: "outline", value: "outline" },
         { label: "ghost", value: "ghost" },
-        { label: "danger", value: "danger" },
+        { label: "destructive", value: "destructive" },
       ],
       default: "secondary",
     },
@@ -45,7 +45,7 @@ const ICON_BUTTON_PLAYGROUND: PlaygroundConfig = {
     <IconButton
       icon={<PlusIcon />}
       aria-label={v.label as string}
-      variant={v.variant as "primary" | "secondary" | "outline" | "ghost" | "danger"}
+      variant={v.variant as "primary" | "secondary" | "outline" | "ghost" | "destructive"}
       size={v.size as "xs" | "sm" | "md" | "lg"}
       loading={v.loading as boolean}
       disabled={v.disabled as boolean}

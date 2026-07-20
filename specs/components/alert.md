@@ -35,8 +35,8 @@ Each intent maps to theme-aware component token values.
 - **Role:** `status` (polite)
 
 ### `success`
-- **Use when:** Confirming a positive, completed action.
-- **Light:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/positive`
+- **Use when:** Confirming a successful, completed action.
+- **Light:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/success`
 - **Dark:** `#044329`, `#006D0F`, `#F4F3F3`, `#2BB47D`
 - **Role:** `status` (polite)
 
@@ -46,9 +46,9 @@ Each intent maps to theme-aware component token values.
 - **Dark:** `#521D00`, `#B44E00`, `#F4F3F3`, `#E16D00`
 - **Role:** `alert` (assertive)
 
-### `danger`
+### `error`
 - **Use when:** Reporting an error, failure, or destructive consequence.
-- **Light:** `bg/error-subtle`, `border/danger-subtle`, `text/primary`, `fg/negative`
+- **Light:** `bg/error-subtle`, `border/error-subtle`, `text/primary`, `fg/error`
 - **Dark:** `#7B0000`, `#D71913`, `#F4F3F3`, `#FF755E`
 - **Role:** `alert` (assertive)
 
@@ -58,7 +58,7 @@ Each intent maps to theme-aware component token values.
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `intent` | `'info' \| 'success' \| 'warning' \| 'danger'` | `'info'` | Visual + semantic intent. |
+| `intent` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Visual + semantic intent. |
 | `title` | `ReactNode` | — | Optional bold heading line. |
 | `icon` | `ReactNode` | intent default | Leading icon, rendered `aria-hidden`. |
 | `action` | `ReactNode` | — | Custom action slot. Prefer `<AlertAction>` inside. |
@@ -73,7 +73,7 @@ All other native `div` attributes are forwarded.
 
 ## Accessibility
 
-- **Role mapping:** `danger`/`warning` → `role="alert"` + `aria-live="assertive"` (interrupts the user). `info`/`success` → `role="status"` + `aria-live="polite"` (announced when idle).
+- **Role mapping:** `error`/`warning` → `role="alert"` + `aria-live="assertive"` (interrupts the user). `info`/`success` → `role="status"` + `aria-live="polite"` (announced when idle).
 - **Override:** pass `role` to force `alert` or `status` when the default does not match the message urgency.
 - Icons are decorative (`aria-hidden`) — never rely on color/icon alone; the body text carries the meaning.
 - The dismiss button has `aria-label="Dismiss"` and `stopsPropagation` so it does not trigger parent click handlers.
@@ -122,7 +122,7 @@ import { Alert } from "@maxa/ui"
   Your changes have been saved.
 </Alert>
 
-<Alert intent="danger">
+<Alert intent="error">
   We couldn't process your payment. Please try again.
 </Alert>
 ```

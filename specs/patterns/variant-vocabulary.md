@@ -15,7 +15,7 @@ prop name follows from it.
 
 | Axis | Prop name | Means | Allowed-value shape | Examples |
 | --- | --- | --- | --- | --- |
-| **Semantic meaning** | `intent` | The color *carries meaning* about status/outcome. Changing it changes what the UI says, not just how it looks. | A small closed set of status words | `neutral \| info \| success \| warning \| danger`/`error`, plus `brand` where a brand-colored state is meaningful |
+| **Semantic meaning** | `intent` | The color *carries meaning* about status/outcome. Changing it changes what the UI says, not just how it looks. | A small closed set of status words | `neutral \| info \| success \| warning \| error`, plus `brand` where a brand-colored state is meaningful. Use **`error`** (not `danger`/`negative`) for the red status. Reserve `destructive` for *interactive destructive actions* only (e.g. a delete Button variant), never for feedback intent. |
 | **Decorative palette** | `appearance` | A named, non-semantic color treatment chosen for categorization/identity/contrast. No semantic meaning — swapping it does not change meaning. Usually the shared hue palette; a component may define its own treatment set when the shared hues do not apply (e.g. Spinner's surface-contrast set). | Shared categorical hues, or a documented component-local set | `gray \| red \| … \| rose` (badge/tag); `white \| primary \| greyscale \| inverted` (spinner) |
 | **Visual weight** | `emphasis` | How strong/loud the treatment is at a fixed meaning. | An ordinal scale | `low \| medium \| high` |
 | **Structure** | `variant` | A structural/treatment choice that is **not** about color meaning. | Component-specific structural words | button hierarchy (`primary \| secondary \| outline \| ghost \| link`), menu item (`default \| destructive`), skeleton (`text \| rect \| circle`) |
@@ -60,7 +60,7 @@ Status of every color/treatment prop on the public surface against the axes abov
 ### Button — intentional exception
 
 Button keeps a single `variant` prop that mixes structural hierarchy (`primary`,
-`secondary`, `outline`, `ghost`, `link`) with status (`success`, `danger`, `warning`).
+`secondary`, `outline`, `ghost`, `link`) with action semantics (`success`, `destructive`, `warning`).
 This matches the shadcn/Radix convention consumers expect and is governed by
 `specs/patterns/interactive-hierarchy.md` (one-primary-per-view). It is **not** split into
 `variant` + `intent`. New components must not copy this fusion; it is grandfathered for

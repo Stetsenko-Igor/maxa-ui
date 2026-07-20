@@ -56,22 +56,22 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 - No underline by default in MAXA UI — relies on color context.
 
 ### `success`
-- **Use when:** Confirming a positive/completed action (e.g. "Mark as complete", "Approve").
-- **Background:** `--button-success-bg` → `action/positive` (green)
+- **Use when:** Confirming a successful/completed action (e.g. "Mark as complete", "Approve").
+- **Background:** `--button-success-bg` → `action/success` (green)
 - **Text:** `--button-success-text` → `text/inverse`
 - Use sparingly — only when the green color meaningfully communicates the action's outcome.
 
-### `danger`
+### `destructive`
 - **Use when:** Destructive, irreversible actions (delete, remove, revoke).
-- **Background:** `--button-danger-bg` → `action/negative` (red)
-- **Text:** `--button-danger-text` → `text/inverse`
+- **Background:** `--button-destructive-bg` → `action/destructive` (red)
+- **Text:** `--button-destructive-text` → `text/inverse`
 - Always pair with a confirmation dialog for truly destructive actions.
 
 ### `warning`
 - **Use when:** Reversible cautious actions that need attention but are not destructive (e.g. publish overrides, override-defaults).
 - **Background:** `--button-warning-bg` → `action/warning` (yellow)
 - **Text:** `--button-warning-text` → `text/primary` (yellow needs dark foreground for contrast)
-- Distinct from `danger` — warning does not imply destruction.
+- Distinct from `destructive` — warning does not imply destruction.
 
 ### `text`
 - **Use when:** Inline tertiary action that should read as a control but carry no surface weight (e.g. "Cancel" in a footer, inline "Edit").
@@ -177,7 +177,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
   Save changes
 </Button>
 
-<Button variant="danger" size="sm">
+<Button variant="destructive" size="sm">
   Delete
 </Button>
 
@@ -195,7 +195,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 | `background: #0265DC` | `background: var(--button-primary-bg)` |
 | `border-radius: 4px` | `border-radius: var(--button-size-md-radius)` |
 | Using `primary` for every action | Reserve `primary` for one CTA per view |
-| White text on `success`/`danger` via `text-inverse` | Use `--button-success-text` / `--button-danger-text` |
+| White text on `success`/`destructive` via `text-inverse` | Use `--button-success-text` / `--button-destructive-text` |
 | `secondary` as outlined white button | `secondary` is a filled gray button |
 | Custom disabled styles | Use `--button-disabled-opacity: 0.5` on the element |
 
@@ -206,7 +206,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 ```
 Buttons/
 ├── Button           — text label buttons (variant + size + state + icon-leading/trailing props)
-├── Button destructive — red danger variant
+├── Button destructive — red destructive variant
 └── Icon button      — icon-only, square
 ```
 

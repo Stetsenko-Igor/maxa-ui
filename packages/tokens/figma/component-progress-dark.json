@@ -21,7 +21,7 @@
       "$type": "color"
     },
     "fill-success": {
-      "$value": "var(--color-action-positive)",
+      "$value": "var(--color-action-success)",
       "$type": "color"
     },
     "fill-warning": {
@@ -29,7 +29,7 @@
       "$type": "color"
     },
     "fill-error": {
-      "$value": "var(--color-action-negative)",
+      "$value": "var(--color-action-destructive)",
       "$type": "color"
     },
     "label-color": {

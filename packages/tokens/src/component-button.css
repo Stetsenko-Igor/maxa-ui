@@ -52,22 +52,22 @@
   --button-link-border-focus:   var(--color-border-focus);
 
   /* success */
-  --button-success-bg:           var(--color-action-positive);
-  --button-success-bg-hover:     var(--color-action-positive-hover);
-  --button-success-bg-active:    var(--color-action-positive-active);
+  --button-success-bg:           var(--color-action-success);
+  --button-success-bg-hover:     var(--color-action-success-hover);
+  --button-success-bg-active:    var(--color-action-success-active);
   --button-success-text:         var(--color-text-inverse);
-  --button-success-border:       var(--color-action-positive);
-  --button-success-border-hover: var(--color-action-positive-hover);
+  --button-success-border:       var(--color-action-success);
+  --button-success-border-hover: var(--color-action-success-hover);
   --button-success-border-focus: var(--color-border-focus);
 
   /* danger */
-  --button-danger-bg:           var(--color-action-negative);
-  --button-danger-bg-hover:     var(--color-action-negative-hover);
-  --button-danger-bg-active:    var(--color-action-negative-active);
-  --button-danger-text:         var(--color-text-inverse);
-  --button-danger-border:       var(--color-action-negative);
-  --button-danger-border-hover: var(--color-action-negative-hover);
-  --button-danger-border-focus: var(--color-border-focus);
+  --button-destructive-bg:           var(--color-action-destructive);
+  --button-destructive-bg-hover:     var(--color-action-destructive-hover);
+  --button-destructive-bg-active:    var(--color-action-destructive-active);
+  --button-destructive-text:         var(--color-text-inverse);
+  --button-destructive-border:       var(--color-action-destructive);
+  --button-destructive-border-hover: var(--color-action-destructive-hover);
+  --button-destructive-border-focus: var(--color-border-focus);
 
   /* warning */
   --button-warning-bg:           var(--color-action-warning);

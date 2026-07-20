@@ -23,7 +23,7 @@ const TOC = [
 ]
 
 const BUTTON_PROPS = [
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger' | 'warning' | 'text'", default: "'primary'", description: "Visual hierarchy." },
+  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'destructive' | 'warning' | 'text'", default: "'primary'", description: "Visual hierarchy." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Height, padding, and font size." },
   { name: "iconLeading", type: "ReactNode", default: undefined, description: "Icon before the label." },
   { name: "iconTrailing", type: "ReactNode", default: undefined, description: "Icon after the label." },
@@ -37,7 +37,7 @@ const BUTTON_PROPS = [
 const ICON_BUTTON_PROPS = [
   { name: "icon", type: "ReactNode", default: undefined, description: "Required. Icon to display." },
   { name: "aria-label", type: "string", default: undefined, description: "Required. Accessible label for screen readers." },
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'danger' | 'warning' | 'text'", default: "'secondary'", description: "Visual style." },
+  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'destructive' | 'warning' | 'text'", default: "'secondary'", description: "Visual style." },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Square size." },
   { name: "loading", type: "boolean", default: "false", description: "Shows spinner." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the button." },
@@ -124,10 +124,10 @@ export default function ButtonPage() {
         <DocsExample title="Semantic variants">
           <ComponentPreview code={`<Button variant="success">Confirm</Button>
 <Button variant="warning">Review</Button>
-<Button variant="danger">Delete</Button>`}>
+<Button variant="destructive">Delete</Button>`}>
             <Button variant="success">Confirm</Button>
             <Button variant="warning">Review</Button>
-            <Button variant="danger">Delete</Button>
+            <Button variant="destructive">Delete</Button>
           </ComponentPreview>
         </DocsExample>
       </DocsSection>
@@ -208,12 +208,12 @@ export default function ButtonPage() {
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="ghost" />
-<IconButton icon={<TrashIcon />} aria-label="Delete" variant="danger" />`}>
+<IconButton icon={<TrashIcon />} aria-label="Delete" variant="destructive" />`}>
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="ghost" />
-            <IconButton icon={<TrashIcon />} aria-label="Delete" variant="danger" />
+            <IconButton icon={<TrashIcon />} aria-label="Delete" variant="destructive" />
           </ComponentPreview>
         </DocsExample>
 

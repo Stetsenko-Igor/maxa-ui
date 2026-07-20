@@ -77,10 +77,10 @@ NO  -> navigation text?       -> link`}</code>
               <Button variant="primary">New item</Button>
             </div>
           </ComponentPreview>
-          <ComponentPreview code={`<Button variant="outline">Keep</Button>\n<Button variant="danger">Delete</Button>`}>
+          <ComponentPreview code={`<Button variant="outline">Keep</Button>\n<Button variant="destructive">Delete</Button>`}>
             <div style={{ display: "flex", gap: "8px", padding: "16px" }}>
               <Button variant="outline">Keep</Button>
-              <Button variant="danger">Delete</Button>
+              <Button variant="destructive">Delete</Button>
             </div>
           </ComponentPreview>
         </div>

@@ -16,7 +16,7 @@ describe("Alert", () => {
   })
 
   it("applies intent classes", () => {
-    const intents = ["info", "success", "warning", "danger"] as const
+    const intents = ["info", "success", "warning", "error"] as const
     intents.forEach((intent) => {
       const { unmount } = render(<Alert intent={intent}>X</Alert>)
       expect(document.querySelector(".maxa-alert")).toHaveClass(
@@ -58,13 +58,13 @@ describe("Alert", () => {
     )
   })
 
-  it("uses role=alert for warning and danger", () => {
+  it("uses role=alert for warning and error", () => {
     const { rerender } = render(<Alert intent="warning">Warn</Alert>)
     expect(document.querySelector(".maxa-alert")).toHaveAttribute(
       "role",
       "alert",
     )
-    rerender(<Alert intent="danger">Danger</Alert>)
+    rerender(<Alert intent="error">Danger</Alert>)
     expect(document.querySelector(".maxa-alert")).toHaveAttribute(
       "role",
       "alert",
@@ -72,7 +72,7 @@ describe("Alert", () => {
   })
 
   it("sets aria-live=assertive for alert role and polite for status role", () => {
-    const { rerender } = render(<Alert intent="danger">D</Alert>)
+    const { rerender } = render(<Alert intent="error">D</Alert>)
     expect(document.querySelector(".maxa-alert")).toHaveAttribute(
       "aria-live",
       "assertive",
@@ -86,7 +86,7 @@ describe("Alert", () => {
 
   it("honors a role override", () => {
     render(
-      <Alert intent="danger" role="status">
+      <Alert intent="error" role="status">
         Override
       </Alert>,
     )

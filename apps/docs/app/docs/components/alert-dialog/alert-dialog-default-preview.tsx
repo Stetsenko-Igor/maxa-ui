@@ -51,7 +51,7 @@ const ALERT_DIALOG_PLAYGROUND: PlaygroundConfig = {
           <AlertDialogCancel inline className="maxa-button maxa-button--secondary maxa-button--md">
             Cancel
           </AlertDialogCancel>
-          <Button variant="danger">{v.confirm as string}</Button>
+          <Button variant="destructive">{v.confirm as string}</Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -69,7 +69,7 @@ const ALERT_DIALOG_PLAYGROUND: PlaygroundConfig = {
       `    <AlertDialogBody>Destructive confirmation copy goes here.</AlertDialogBody>`,
       `    <AlertDialogFooter>`,
       `      <AlertDialogCancel inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</AlertDialogCancel>`,
-      `      <Button variant="danger">${v.confirm}</Button>`,
+      `      <Button variant="destructive">${v.confirm}</Button>`,
       `    </AlertDialogFooter>`,
       `  </AlertDialogContent>`,
       `</AlertDialog>`,
@@ -79,7 +79,7 @@ const ALERT_DIALOG_PLAYGROUND: PlaygroundConfig = {
 export function AlertDialogDefaultPreview() {
   return (
     <ComponentPreview
-      code={`<AlertDialog>\n  <AlertDialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Delete list</AlertDialogTrigger>\n  <AlertDialogContent>\n    <AlertDialogHeader>\n      <AlertDialogTitle>Delete List</AlertDialogTitle>\n      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>\n      <AlertDialogCancel aria-label="Close" />\n    </AlertDialogHeader>\n    <AlertDialogBody>\n      You are about to delete <strong>Interested homeowners</strong>. All audience rules and saved recipients will be removed.\n    </AlertDialogBody>\n    <AlertDialogFooter>\n      <AlertDialogCancel inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</AlertDialogCancel>\n      <Button variant="danger">Delete List</Button>\n    </AlertDialogFooter>\n  </AlertDialogContent>\n</AlertDialog>`}
+      code={`<AlertDialog>\n  <AlertDialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Delete list</AlertDialogTrigger>\n  <AlertDialogContent>\n    <AlertDialogHeader>\n      <AlertDialogTitle>Delete List</AlertDialogTitle>\n      <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>\n      <AlertDialogCancel aria-label="Close" />\n    </AlertDialogHeader>\n    <AlertDialogBody>\n      You are about to delete <strong>Interested homeowners</strong>. All audience rules and saved recipients will be removed.\n    </AlertDialogBody>\n    <AlertDialogFooter>\n      <AlertDialogCancel inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</AlertDialogCancel>\n      <Button variant="destructive">Delete List</Button>\n    </AlertDialogFooter>\n  </AlertDialogContent>\n</AlertDialog>`}
       playground={ALERT_DIALOG_PLAYGROUND}
     >
       <div style={{ padding: "32px" }}>
@@ -96,7 +96,7 @@ export function AlertDialogDefaultPreview() {
             </AlertDialogBody>
             <AlertDialogFooter>
               <AlertDialogCancel inline className="maxa-button maxa-button--secondary maxa-button--md">Cancel</AlertDialogCancel>
-              <Button variant="danger">Delete List</Button>
+              <Button variant="destructive">Delete List</Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>

@@ -38,8 +38,8 @@
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-600);
   --color-fg-info:          var(--color-blue-600);
-  --color-fg-positive:      var(--color-green-800);
-  --color-fg-negative:      var(--color-red-700);
+  --color-fg-success:      var(--color-green-800);
+  --color-fg-error:      var(--color-red-700);
   --color-fg-warning:       var(--color-orange-700);
 
   /* ── Border ─────────────────────────────────────────────────────── */
@@ -48,14 +48,14 @@
   --color-border-tertiary:       var(--color-neutral-100);
   --color-border-focus:          var(--color-blue-500);
   --color-border-brand:          var(--color-brand-500);
-  --color-border-error:          var(--color-red-500);
+  --color-border-error-strong:          var(--color-red-500);
   --color-border-info-strong:    var(--color-blue-700);
   --color-border-info-subtle:    var(--color-blue-200);
   --color-border-success-strong: var(--color-green-700);
   --color-border-success-subtle: var(--color-green-300);
   --color-border-warning-strong: var(--color-orange-600);
   --color-border-warning-subtle: var(--color-orange-200);
-  --color-border-danger-subtle:  var(--color-red-200);
+  --color-border-error-subtle:  var(--color-red-200);
   --color-border-neutral-strong: var(--color-neutral-700);
   --color-border-neutral-subtle: var(--color-neutral-300);
 
@@ -83,7 +83,7 @@
   --color-bg-success-surface:   var(--color-green-50);
   --color-bg-success-strong:    var(--color-green-700);
   --color-bg-error-subtle:      var(--color-red-50);
-  --color-bg-error-surface:     var(--color-red-50);
+  --color-bg-error-surface:      var(--color-red-50);
   --color-bg-error-strong:      var(--color-red-700);
   --color-bg-warning-subtle:    var(--color-orange-50);
   --color-bg-warning-surface:   var(--color-orange-50);
@@ -117,18 +117,18 @@
   --color-action-brand-subtle:            var(--color-brand-50);
   --color-action-brand-subtle-hover:      var(--color-brand-50);
   --color-action-brand-subtle-active:     var(--color-brand-200);
-  --color-action-positive:                var(--color-green-700);
-  --color-action-positive-hover:          var(--color-green-800);
-  --color-action-positive-active:         var(--color-green-900);
-  --color-action-positive-subtle:         var(--color-green-50);
-  --color-action-positive-subtle-hover:   var(--color-green-50);
-  --color-action-positive-subtle-active:  var(--color-green-100);
-  --color-action-negative:                var(--color-red-600);
-  --color-action-negative-hover:          var(--color-red-700);
-  --color-action-negative-active:         var(--color-red-800);
-  --color-action-negative-subtle:         var(--color-red-50);
-  --color-action-negative-subtle-hover:   var(--color-red-50);
-  --color-action-negative-subtle-active:  var(--color-red-100);
+  --color-action-success:                var(--color-green-700);
+  --color-action-success-hover:          var(--color-green-800);
+  --color-action-success-active:         var(--color-green-900);
+  --color-action-success-subtle:         var(--color-green-50);
+  --color-action-success-subtle-hover:   var(--color-green-50);
+  --color-action-success-subtle-active:  var(--color-green-100);
+  --color-action-destructive:                var(--color-red-600);
+  --color-action-destructive-hover:          var(--color-red-700);
+  --color-action-destructive-active:         var(--color-red-800);
+  --color-action-destructive-subtle:         var(--color-red-50);
+  --color-action-destructive-subtle-hover:   var(--color-red-50);
+  --color-action-destructive-subtle-active:  var(--color-red-100);
   --color-action-warning:                 var(--color-yellow-500);
   --color-action-warning-hover:           var(--color-yellow-600);
   --color-action-warning-active:          var(--color-yellow-700);
@@ -237,8 +237,8 @@
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-400);
   --color-fg-info:          var(--color-blue-300);
-  --color-fg-positive:      var(--color-green-400);
-  --color-fg-negative:      var(--color-red-300);
+  --color-fg-success:      var(--color-green-400);
+  --color-fg-error:      var(--color-red-300);
   --color-fg-warning:       var(--color-yellow-400);
 
   /* ── Border — dark ──────────────────────────────────────────────── */
@@ -247,7 +247,7 @@
   --color-border-tertiary:       var(--color-neutral-900);
   --color-border-focus:          var(--color-blue-400);
   --color-border-brand:          var(--color-brand-400);
-  --color-border-error:          var(--color-red-500);
+  --color-border-error-strong:          var(--color-red-500);
   --color-border-info-strong:    var(--color-blue-500);
   --color-border-success-strong: var(--color-green-500);
   --color-border-warning-strong: var(--color-orange-500);
@@ -278,7 +278,7 @@
   --color-bg-success-surface:   var(--color-green-950);
   --color-bg-success-strong:    var(--color-green-500);
   --color-bg-error-subtle:      var(--color-red-950);
-  --color-bg-error-surface:     var(--color-red-950);
+  --color-bg-error-surface:      var(--color-red-950);
   --color-bg-error-strong:      var(--color-red-500);
   --color-bg-warning-subtle:    var(--color-yellow-950);
   --color-bg-warning-surface:   var(--color-yellow-950);
@@ -310,18 +310,18 @@
   --color-action-brand-subtle:            var(--color-brand-950);
   --color-action-brand-subtle-hover:      var(--color-brand-950);
   --color-action-brand-subtle-active:     var(--color-brand-900);
-  --color-action-positive:                var(--color-green-400);
-  --color-action-positive-hover:          var(--color-green-300);
-  --color-action-positive-active:         var(--color-green-200);
-  --color-action-positive-subtle:         var(--color-green-950);
-  --color-action-positive-subtle-hover:   var(--color-green-950);
-  --color-action-positive-subtle-active:  var(--color-green-900);
-  --color-action-negative:                var(--color-red-400);
-  --color-action-negative-hover:          var(--color-red-300);
-  --color-action-negative-active:         var(--color-red-200);
-  --color-action-negative-subtle:         var(--color-red-950);
-  --color-action-negative-subtle-hover:   var(--color-red-950);
-  --color-action-negative-subtle-active:  var(--color-red-900);
+  --color-action-success:                var(--color-green-400);
+  --color-action-success-hover:          var(--color-green-300);
+  --color-action-success-active:         var(--color-green-200);
+  --color-action-success-subtle:         var(--color-green-950);
+  --color-action-success-subtle-hover:   var(--color-green-950);
+  --color-action-success-subtle-active:  var(--color-green-900);
+  --color-action-destructive:                var(--color-red-400);
+  --color-action-destructive-hover:          var(--color-red-300);
+  --color-action-destructive-active:         var(--color-red-200);
+  --color-action-destructive-subtle:         var(--color-red-950);
+  --color-action-destructive-subtle-hover:   var(--color-red-950);
+  --color-action-destructive-subtle-active:  var(--color-red-900);
   --color-action-warning:                 var(--color-yellow-400);
   --color-action-warning-hover:           var(--color-yellow-300);
   --color-action-warning-active:          var(--color-yellow-200);

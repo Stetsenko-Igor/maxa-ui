@@ -46,12 +46,12 @@
   --toast-stripe-info:      var(--color-border-info-strong);
   --toast-stripe-success:   var(--color-border-success-strong);
   --toast-stripe-warning:   var(--color-border-warning-strong);
-  --toast-stripe-error:     var(--color-border-error);
+  --toast-stripe-error:     var(--color-border-error-strong);
 
   /* ── Intent icon colors ─────────────────────────────────────────── */
   --toast-icon-neutral:     var(--color-fg-secondary);
   --toast-icon-info:        var(--color-fg-info);
-  --toast-icon-success:     var(--color-fg-positive);
+  --toast-icon-success:     var(--color-fg-success);
   --toast-icon-warning:     var(--color-fg-warning);
-  --toast-icon-error:       var(--color-fg-negative);
+  --toast-icon-error:       var(--color-fg-error);
 }

@@ -202,13 +202,13 @@
   --alert-action-color-hover: var(--alert-warning-action-hover);
 }
 
-.maxa-alert--danger {
-  --alert-bg:               var(--alert-danger-bg);
-  --alert-border:           var(--alert-danger-border);
-  --alert-text:             var(--alert-danger-text);
-  --alert-title-text:       var(--alert-danger-title);
-  --alert-icon:             var(--alert-danger-icon);
-  --alert-strip:            var(--alert-danger-strip);
-  --alert-action-color:     var(--alert-danger-action);
-  --alert-action-color-hover: var(--alert-danger-action-hover);
+.maxa-alert--error {
+  --alert-bg:               var(--alert-error-bg);
+  --alert-border:           var(--alert-error-border);
+  --alert-text:             var(--alert-error-text);
+  --alert-title-text:       var(--alert-error-title);
+  --alert-icon:             var(--alert-error-icon);
+  --alert-strip:            var(--alert-error-strip);
+  --alert-action-color:     var(--alert-error-action);
+  --alert-action-color-hover: var(--alert-error-action-hover);
 }

@@ -199,20 +199,20 @@
   border-color: var(--button-success-border-focus);
 }
 
-.maxa-button--danger {
-  background-color: var(--button-danger-bg);
-  color: var(--button-danger-text);
-  border-color: var(--button-danger-border);
+.maxa-button--destructive {
+  background-color: var(--button-destructive-bg);
+  color: var(--button-destructive-text);
+  border-color: var(--button-destructive-border);
 }
-.maxa-button--danger:hover {
-  background-color: var(--button-danger-bg-hover);
-  border-color: var(--button-danger-border-hover);
+.maxa-button--destructive:hover {
+  background-color: var(--button-destructive-bg-hover);
+  border-color: var(--button-destructive-border-hover);
 }
-.maxa-button--danger:active {
-  background-color: var(--button-danger-bg-active);
+.maxa-button--destructive:active {
+  background-color: var(--button-destructive-bg-active);
 }
-.maxa-button--danger:focus-visible {
-  border-color: var(--button-danger-border-focus);
+.maxa-button--destructive:focus-visible {
+  border-color: var(--button-destructive-border-focus);
 }
 
 .maxa-button--warning {

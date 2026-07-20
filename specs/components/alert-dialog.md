@@ -26,8 +26,8 @@ Alert Dialog inherits the Direct Mail modal layout from Dialog:
 - 24px header/body horizontal padding.
 - 14px/20px body text for the confirmation message.
 - 12px/14px semibold footer actions.
-- Secondary cancel and danger confirm actions must have matching button height and typography.
+- Secondary cancel and destructive confirm actions must have matching button height and typography.
 
 ## Accessibility
 
-Use clear, specific language. Always provide a cancel path and reserve danger actions for real destructive decisions.
+Use clear, specific language. Always provide a cancel path and reserve destructive actions for real destructive decisions.
