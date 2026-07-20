@@ -1,358 +1,447 @@
 {
   "Utility": {
     "bg-gray-subtle": {
+      "$description": "Utility: background gray subtle.",
       "$value": "{Colors.Gray.50}",
       "$type": "color"
     },
     "bg-gray-muted": {
+      "$description": "Utility: background gray muted.",
       "$value": "{Colors.Gray.100}",
       "$type": "color"
     },
     "bg-gray-strong": {
+      "$description": "Utility: background gray strong.",
       "$value": "{Colors.Gray.700}",
       "$type": "color"
     },
     "text-gray": {
+      "$description": "Utility: text color gray.",
       "$value": "{Colors.Gray.900}",
       "$type": "color"
     },
     "bg-red-subtle": {
+      "$description": "Utility: background red subtle.",
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
     "bg-red-muted": {
+      "$description": "Utility: background red muted.",
       "$value": "{Colors.Red.100}",
       "$type": "color"
     },
     "bg-red-strong": {
+      "$description": "Utility: background red strong.",
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "text-red": {
+      "$description": "Utility: text color red.",
       "$value": "{Colors.Red.900}",
       "$type": "color"
     },
     "fg-red": {
+      "$description": "Utility: fg red.",
       "$value": "{Utility/text-red}",
       "$type": "color"
     },
     "bg-orange-subtle": {
+      "$description": "Utility: background orange subtle.",
       "$value": "{Colors.Orange.50}",
       "$type": "color"
     },
     "bg-orange-muted": {
+      "$description": "Utility: background orange muted.",
       "$value": "{Colors.Orange.100}",
       "$type": "color"
     },
     "bg-orange-strong": {
+      "$description": "Utility: background orange strong.",
       "$value": "{Colors.Orange.700}",
       "$type": "color"
     },
     "text-orange": {
+      "$description": "Utility: text color orange.",
       "$value": "{Colors.Orange.900}",
       "$type": "color"
     },
     "fg-orange": {
+      "$description": "Utility: fg orange.",
       "$value": "{Utility/text-orange}",
       "$type": "color"
     },
     "bg-amber-subtle": {
+      "$description": "Utility: background amber subtle.",
       "$value": "{Colors.Amber.50}",
       "$type": "color"
     },
     "bg-amber-muted": {
+      "$description": "Utility: background amber muted.",
       "$value": "{Colors.Amber.100}",
       "$type": "color"
     },
     "bg-amber-strong": {
+      "$description": "Utility: background amber strong.",
       "$value": "{Colors.Amber.700}",
       "$type": "color"
     },
     "text-amber": {
+      "$description": "Utility: text color amber.",
       "$value": "{Colors.Amber.900}",
       "$type": "color"
     },
     "fg-amber": {
+      "$description": "Utility: fg amber.",
       "$value": "{Utility/text-amber}",
       "$type": "color"
     },
     "bg-yellow-subtle": {
+      "$description": "Utility: background yellow subtle.",
       "$value": "{Colors.Yellow.50}",
       "$type": "color"
     },
     "bg-yellow-muted": {
+      "$description": "Utility: background yellow muted.",
       "$value": "{Colors.Yellow.100}",
       "$type": "color"
     },
     "bg-yellow-strong": {
+      "$description": "Utility: background yellow strong.",
       "$value": "{Colors.Yellow.700}",
       "$type": "color"
     },
     "text-yellow": {
+      "$description": "Utility: text color yellow.",
       "$value": "{Colors.Yellow.900}",
       "$type": "color"
     },
     "fg-yellow": {
+      "$description": "Utility: fg yellow.",
       "$value": "{Utility/text-yellow}",
       "$type": "color"
     },
     "bg-lime-subtle": {
+      "$description": "Utility: background lime subtle.",
       "$value": "{Colors.Lime.50}",
       "$type": "color"
     },
     "bg-lime-muted": {
+      "$description": "Utility: background lime muted.",
       "$value": "{Colors.Lime.100}",
       "$type": "color"
     },
     "bg-lime-strong": {
+      "$description": "Utility: background lime strong.",
       "$value": "{Colors.Lime.700}",
       "$type": "color"
     },
     "text-lime": {
+      "$description": "Utility: text color lime.",
       "$value": "{Colors.Lime.900}",
       "$type": "color"
     },
     "fg-lime": {
+      "$description": "Utility: fg lime.",
       "$value": "{Utility/text-lime}",
       "$type": "color"
     },
     "bg-green-subtle": {
+      "$description": "Utility: background green subtle.",
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
     "bg-green-muted": {
+      "$description": "Utility: background green muted.",
       "$value": "{Colors.Green.100}",
       "$type": "color"
     },
     "bg-green-strong": {
+      "$description": "Utility: background green strong.",
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "text-green": {
+      "$description": "Utility: text color green.",
       "$value": "{Colors.Green.900}",
       "$type": "color"
     },
     "fg-green": {
+      "$description": "Utility: fg green.",
       "$value": "{Utility/text-green}",
       "$type": "color"
     },
     "bg-emerald-subtle": {
+      "$description": "Utility: background emerald subtle.",
       "$value": "{Colors.Emerald.50}",
       "$type": "color"
     },
     "bg-emerald-muted": {
+      "$description": "Utility: background emerald muted.",
       "$value": "{Colors.Emerald.100}",
       "$type": "color"
     },
     "bg-emerald-strong": {
+      "$description": "Utility: background emerald strong.",
       "$value": "{Colors.Emerald.700}",
       "$type": "color"
     },
     "text-emerald": {
+      "$description": "Utility: text color emerald.",
       "$value": "{Colors.Emerald.900}",
       "$type": "color"
     },
     "fg-emerald": {
+      "$description": "Utility: fg emerald.",
       "$value": "{Utility/text-emerald}",
       "$type": "color"
     },
     "bg-teal-subtle": {
+      "$description": "Utility: background teal subtle.",
       "$value": "{Colors.Teal.50}",
       "$type": "color"
     },
     "bg-teal-muted": {
+      "$description": "Utility: background teal muted.",
       "$value": "{Colors.Teal.100}",
       "$type": "color"
     },
     "bg-teal-strong": {
+      "$description": "Utility: background teal strong.",
       "$value": "{Colors.Teal.700}",
       "$type": "color"
     },
     "text-teal": {
+      "$description": "Utility: text color teal.",
       "$value": "{Colors.Teal.900}",
       "$type": "color"
     },
     "fg-teal": {
+      "$description": "Utility: fg teal.",
       "$value": "{Utility/text-teal}",
       "$type": "color"
     },
     "bg-cyan-subtle": {
+      "$description": "Utility: background cyan subtle.",
       "$value": "{Colors.Cyan.50}",
       "$type": "color"
     },
     "bg-cyan-muted": {
+      "$description": "Utility: background cyan muted.",
       "$value": "{Colors.Cyan.100}",
       "$type": "color"
     },
     "bg-cyan-strong": {
+      "$description": "Utility: background cyan strong.",
       "$value": "{Colors.Cyan.700}",
       "$type": "color"
     },
     "text-cyan": {
+      "$description": "Utility: text color cyan.",
       "$value": "{Colors.Cyan.900}",
       "$type": "color"
     },
     "fg-cyan": {
+      "$description": "Utility: fg cyan.",
       "$value": "{Utility/text-cyan}",
       "$type": "color"
     },
     "bg-sky-subtle": {
+      "$description": "Utility: background sky subtle.",
       "$value": "{Colors.Sky.50}",
       "$type": "color"
     },
     "bg-sky-muted": {
+      "$description": "Utility: background sky muted.",
       "$value": "{Colors.Sky.100}",
       "$type": "color"
     },
     "bg-sky-strong": {
+      "$description": "Utility: background sky strong.",
       "$value": "{Colors.Sky.700}",
       "$type": "color"
     },
     "text-sky": {
+      "$description": "Utility: text color sky.",
       "$value": "{Colors.Sky.900}",
       "$type": "color"
     },
     "fg-sky": {
+      "$description": "Utility: fg sky.",
       "$value": "{Utility/text-sky}",
       "$type": "color"
     },
     "bg-blue-subtle": {
+      "$description": "Utility: background blue subtle.",
       "$value": "{Colors.Blue.50}",
       "$type": "color"
     },
     "bg-blue-muted": {
+      "$description": "Utility: background blue muted.",
       "$value": "{Colors.Blue.100}",
       "$type": "color"
     },
     "bg-blue-strong": {
+      "$description": "Utility: background blue strong.",
       "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "text-blue": {
+      "$description": "Utility: text color blue.",
       "$value": "{Colors.Blue.900}",
       "$type": "color"
     },
     "fg-blue": {
+      "$description": "Utility: fg blue.",
       "$value": "{Utility/text-blue}",
       "$type": "color"
     },
     "bg-indigo-subtle": {
+      "$description": "Utility: background indigo subtle.",
       "$value": "{Colors.Indigo.50}",
       "$type": "color"
     },
     "bg-indigo-muted": {
+      "$description": "Utility: background indigo muted.",
       "$value": "{Colors.Indigo.100}",
       "$type": "color"
     },
     "bg-indigo-strong": {
+      "$description": "Utility: background indigo strong.",
       "$value": "{Colors.Indigo.700}",
       "$type": "color"
     },
     "text-indigo": {
+      "$description": "Utility: text color indigo.",
       "$value": "{Colors.Indigo.900}",
       "$type": "color"
     },
     "fg-indigo": {
+      "$description": "Utility: fg indigo.",
       "$value": "{Utility/text-indigo}",
       "$type": "color"
     },
     "bg-violet-subtle": {
+      "$description": "Utility: background violet subtle.",
       "$value": "{Colors.Violet.50}",
       "$type": "color"
     },
     "bg-violet-muted": {
+      "$description": "Utility: background violet muted.",
       "$value": "{Colors.Violet.100}",
       "$type": "color"
     },
     "bg-violet-strong": {
+      "$description": "Utility: background violet strong.",
       "$value": "{Colors.Violet.700}",
       "$type": "color"
     },
     "text-violet": {
+      "$description": "Utility: text color violet.",
       "$value": "{Colors.Violet.900}",
       "$type": "color"
     },
     "fg-violet": {
+      "$description": "Utility: fg violet.",
       "$value": "{Utility/text-violet}",
       "$type": "color"
     },
     "bg-purple-subtle": {
+      "$description": "Utility: background purple subtle.",
       "$value": "{Colors.Purple.50}",
       "$type": "color"
     },
     "bg-purple-muted": {
+      "$description": "Utility: background purple muted.",
       "$value": "{Colors.Purple.100}",
       "$type": "color"
     },
     "bg-purple-strong": {
+      "$description": "Utility: background purple strong.",
       "$value": "{Colors.Purple.700}",
       "$type": "color"
     },
     "text-purple": {
+      "$description": "Utility: text color purple.",
       "$value": "{Colors.Purple.900}",
       "$type": "color"
     },
     "fg-purple": {
+      "$description": "Utility: fg purple.",
       "$value": "{Utility/text-purple}",
       "$type": "color"
     },
     "bg-fuchsia-subtle": {
+      "$description": "Utility: background fuchsia subtle.",
       "$value": "{Colors.Fuchsia.50}",
       "$type": "color"
     },
     "bg-fuchsia-muted": {
+      "$description": "Utility: background fuchsia muted.",
       "$value": "{Colors.Fuchsia.100}",
       "$type": "color"
     },
     "bg-fuchsia-strong": {
+      "$description": "Utility: background fuchsia strong.",
       "$value": "{Colors.Fuchsia.700}",
       "$type": "color"
     },
     "text-fuchsia": {
+      "$description": "Utility: text color fuchsia.",
       "$value": "{Colors.Fuchsia.900}",
       "$type": "color"
     },
     "fg-fuchsia": {
+      "$description": "Utility: fg fuchsia.",
       "$value": "{Utility/text-fuchsia}",
       "$type": "color"
     },
     "bg-pink-subtle": {
+      "$description": "Utility: background pink subtle.",
       "$value": "{Colors.Pink.50}",
       "$type": "color"
     },
     "bg-pink-muted": {
+      "$description": "Utility: background pink muted.",
       "$value": "{Colors.Pink.100}",
       "$type": "color"
     },
     "bg-pink-strong": {
+      "$description": "Utility: background pink strong.",
       "$value": "{Colors.Pink.700}",
       "$type": "color"
     },
     "text-pink": {
+      "$description": "Utility: text color pink.",
       "$value": "{Colors.Pink.900}",
       "$type": "color"
     },
     "fg-pink": {
+      "$description": "Utility: fg pink.",
       "$value": "{Utility/text-pink}",
       "$type": "color"
     },
     "bg-rose-subtle": {
+      "$description": "Utility: background rose subtle.",
       "$value": "{Colors.Rose.50}",
       "$type": "color"
     },
     "bg-rose-muted": {
+      "$description": "Utility: background rose muted.",
       "$value": "{Colors.Rose.100}",
       "$type": "color"
     },
     "bg-rose-strong": {
+      "$description": "Utility: background rose strong.",
       "$value": "{Colors.Rose.700}",
       "$type": "color"
     },
     "text-rose": {
+      "$description": "Utility: text color rose.",
       "$value": "{Colors.Rose.900}",
       "$type": "color"
     },
     "fg-rose": {
+      "$description": "Utility: fg rose.",
       "$value": "{Utility/text-rose}",
       "$type": "color"
     }

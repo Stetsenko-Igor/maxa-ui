@@ -3,90 +3,111 @@
     "size": {
       "sm": {
         "height": {
+          "$description": "Badge, size sm: height.",
           "$value": 20,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Badge, size sm: padding x.",
           "$value": 6,
           "$type": "number"
         },
         "gap": {
+          "$description": "Badge, size sm: gap.",
           "$value": 4,
           "$type": "number"
         },
         "radius": {
+          "$description": "Badge, size sm: radius.",
           "$value": "{Radius/radius-full}",
           "$type": "number"
         },
         "text": {
+          "$description": "Badge, size sm: text color.",
           "$value": "{Typography/Font size/text-sm}",
           "$type": "number"
         },
         "line-height": {
+          "$description": "Badge, size sm: line height.",
           "$value": "{Typography/Line height/text-sm}",
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Badge, size sm: icon color size.",
           "$value": 12,
           "$type": "number"
         }
       },
       "md": {
         "height": {
+          "$description": "Badge, size md: height.",
           "$value": 24,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Badge, size md: padding x.",
           "$value": 8,
           "$type": "number"
         },
         "gap": {
+          "$description": "Badge, size md: gap.",
           "$value": 4,
           "$type": "number"
         },
         "radius": {
+          "$description": "Badge, size md: radius.",
           "$value": "{Radius/radius-full}",
           "$type": "number"
         },
         "text": {
+          "$description": "Badge, size md: text color.",
           "$value": "{Typography/Font size/text-sm}",
           "$type": "number"
         },
         "line-height": {
+          "$description": "Badge, size md: line height.",
           "$value": "{Typography/Line height/text-sm}",
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Badge, size md: icon color size.",
           "$value": 14,
           "$type": "number"
         }
       },
       "lg": {
         "height": {
+          "$description": "Badge, size lg: height.",
           "$value": 28,
           "$type": "number"
         },
         "padding-x": {
+          "$description": "Badge, size lg: padding x.",
           "$value": 10,
           "$type": "number"
         },
         "gap": {
+          "$description": "Badge, size lg: gap.",
           "$value": 6,
           "$type": "number"
         },
         "radius": {
+          "$description": "Badge, size lg: radius.",
           "$value": "{Radius/radius-full}",
           "$type": "number"
         },
         "text": {
+          "$description": "Badge, size lg: text color.",
           "$value": "{Typography/Font size/text-md}",
           "$type": "number"
         },
         "line-height": {
+          "$description": "Badge, size lg: line height.",
           "$value": "{Typography/Line height/text-md}",
           "$type": "number"
         },
         "icon-size": {
+          "$description": "Badge, size lg: icon color size.",
           "$value": 16,
           "$type": "number"
         }

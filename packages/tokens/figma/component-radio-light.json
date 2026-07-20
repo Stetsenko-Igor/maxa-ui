@@ -3,141 +3,174 @@
     "size": {
       "md": {
         "control": {
+          "$description": "Radio, size md: control.",
           "$value": 20,
           "$type": "number"
         },
         "dot": {
+          "$description": "Radio, size md: dot.",
           "$value": 8,
           "$type": "number"
         },
         "row-gap": {
+          "$description": "Radio, size md: row gap.",
           "$value": 8,
           "$type": "number"
         },
         "label-gap": {
+          "$description": "Radio, size md: label text gap.",
           "$value": 8,
           "$type": "number"
         },
         "content-gap": {
+          "$description": "Radio, size md: content gap.",
           "$value": 4,
           "$type": "number"
         },
         "text-padding-y": {
+          "$description": "Radio, size md: text color padding y.",
           "$value": 3,
           "$type": "number"
         }
       }
     },
     "border-width": {
+      "$description": "Radio: border width.",
       "$value": 1,
       "$type": "number"
     },
     "focus-ring": {
       "width": {
+        "$description": "Radio, focus ring: width.",
         "$value": 3.75,
         "$type": "number"
       },
       "inner-width": {
+        "$description": "Radio, focus ring: inner width.",
         "$value": 1.25,
         "$type": "number"
       }
     },
     "color": {
       "bg": {
+        "$description": "Radio, color: background.",
         "$value": "#FFFFFF",
         "$type": "color"
       },
       "border": {
+        "$description": "Radio, color: border.",
         "$value": "#A1A1A4",
         "$type": "color"
       },
       "border-hover": {
+        "$description": "Radio, color: border (hover state).",
         "$value": "#C9C9C9",
         "$type": "color"
       },
       "border-checked": {
+        "$description": "Radio, color: border (checked state).",
         "$value": "#0576DA",
         "$type": "color"
       },
       "border-checked-hover": {
+        "$description": "Radio, color: border (checked hover state).",
         "$value": "#04549B",
         "$type": "color"
       },
       "dot": {
+        "$description": "Radio, color: dot.",
         "$value": "#0576DA",
         "$type": "color"
       },
       "dot-hover": {
+        "$description": "Radio, color: dot (hover state).",
         "$value": "#04549B",
         "$type": "color"
       },
       "border-error": {
+        "$description": "Radio, color: border error.",
         "$value": "var(--color-border-error-strong)",
         "$type": "color"
       },
       "border-disabled": {
+        "$description": "Radio, color: border (disabled state).",
         "$value": "#C9C9C9",
         "$type": "color"
       },
       "dot-disabled": {
+        "$description": "Radio, color: dot (disabled state).",
         "$value": "#C9C9C9",
         "$type": "color"
       },
       "top-label": {
+        "$description": "Radio, color: top label.",
         "$value": "var(--color-text-primary)",
         "$type": "color"
       },
       "side-label": {
+        "$description": "Radio, color: side label.",
         "$value": "var(--color-text-primary)",
         "$type": "color"
       },
       "description": {
+        "$description": "Radio, color: description.",
         "$value": "var(--color-text-secondary)",
         "$type": "color"
       },
       "top-label-disabled": {
+        "$description": "Radio, color: top label (disabled state).",
         "$value": "var(--color-text-disabled)",
         "$type": "color"
       },
       "text-disabled": {
+        "$description": "Radio, color: text color (disabled state).",
         "$value": "var(--color-text-disabled)",
         "$type": "color"
       },
       "error": {
+        "$description": "Radio, color: error.",
         "$value": "var(--color-text-error)",
         "$type": "color"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Radio, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "label-font-size": {
+        "$description": "Radio, typography: label text font size.",
         "$value": "{Typography/Font size/text-sm}",
         "$type": "number"
       },
       "label-line-height": {
+        "$description": "Radio, typography: label text line height.",
         "$value": 14,
         "$type": "number"
       },
       "label-font-weight": {
+        "$description": "Radio, typography: label text font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "number"
       },
       "top-label-font-weight": {
+        "$description": "Radio, typography: top label font weight.",
         "$value": "{Typography/Font weight/semibold}",
         "$type": "number"
       },
       "description-font-size": {
+        "$description": "Radio, typography: description font size.",
         "$value": "{Typography/Font size/caption-sm}",
         "$type": "number"
       },
       "description-line-height": {
+        "$description": "Radio, typography: description line height.",
         "$value": 16,
         "$type": "number"
       },
       "description-font-weight": {
+        "$description": "Radio, typography: description font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "number"
       }

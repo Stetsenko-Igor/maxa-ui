@@ -18,6 +18,36 @@ const MIGRATIONS = {
     'Color modes/bg/brand-solid': 'Color modes/background/bg-brand-strong',
     'Color modes/bg/bg-brand-solid': 'Color modes/background/bg-brand-strong',
     'Color modes/background/bg-brand-solid': 'Color modes/background/bg-brand-strong',
+    // 2026-07 color naming resolution (Scheme B): error/success everywhere,
+    // destructive for the interactive action layer. Renames preserve Figma IDs
+    // so existing bindings survive.
+    'Color modes/foreground/fg-positive': 'Color modes/foreground/fg-success',
+    'Color modes/foreground/fg-negative': 'Color modes/foreground/fg-error',
+    'Color modes/action/action-positive': 'Color modes/action/action-success',
+    'Color modes/action/action-positive-hover': 'Color modes/action/action-success-hover',
+    'Color modes/action/action-positive-active': 'Color modes/action/action-success-active',
+    'Color modes/action/action-positive-subtle': 'Color modes/action/action-success-subtle',
+    'Color modes/action/action-positive-subtle-hover': 'Color modes/action/action-success-subtle-hover',
+    'Color modes/action/action-positive-subtle-active': 'Color modes/action/action-success-subtle-active',
+    'Color modes/action/action-negative': 'Color modes/action/action-destructive',
+    'Color modes/action/action-negative-hover': 'Color modes/action/action-destructive-hover',
+    'Color modes/action/action-negative-active': 'Color modes/action/action-destructive-active',
+    'Color modes/action/action-negative-subtle': 'Color modes/action/action-destructive-subtle',
+    'Color modes/action/action-negative-subtle-hover': 'Color modes/action/action-destructive-subtle-hover',
+    'Color modes/action/action-negative-subtle-active': 'Color modes/action/action-destructive-subtle-active',
+    'Color modes/border/border-error': 'Color modes/border/border-error-strong',
+    'Color modes/border/border-danger-subtle': 'Color modes/border/border-error-subtle',
+    'Component-based/Alert/color/danger/bg': 'Component-based/Alert/color/error/bg',
+    'Component-based/Alert/color/danger/border': 'Component-based/Alert/color/error/border',
+    'Component-based/Alert/color/danger/accent': 'Component-based/Alert/color/error/accent',
+    'Component-based/Alert/color/danger/text': 'Component-based/Alert/color/error/text',
+    'Component-based/Button/danger/bg': 'Component-based/Button/destructive/bg',
+    'Component-based/Button/danger/bg-hover': 'Component-based/Button/destructive/bg-hover',
+    'Component-based/Button/danger/bg-active': 'Component-based/Button/destructive/bg-active',
+    'Component-based/Button/danger/text': 'Component-based/Button/destructive/text',
+    'Component-based/Button/danger/border': 'Component-based/Button/destructive/border',
+    'Component-based/Button/danger/border-hover': 'Component-based/Button/destructive/border-hover',
+    'Component-based/Button/danger/border-focus': 'Component-based/Button/destructive/border-focus',
   },
   textStyles: {},
   effectStyles: {},
@@ -376,6 +406,25 @@ async function importBundle(bundle, logs, options = {}) {
 
       allVariablesByPath.set(`${collectionName}/${tokenName}`, variable);
     }
+  }
+
+  // Apply variable descriptions ("How to use this variable" in Figma). The
+  // bundle carries a mode-independent descriptions map per collection.
+  let describedCount = 0;
+  for (const [collectionName, collectionDef] of Object.entries(bundle.collections)) {
+    const descriptions = (collectionDef && collectionDef.descriptions) || {};
+    for (const [tokenName, description] of Object.entries(descriptions)) {
+      if (typeof description !== 'string' || !description.trim()) continue;
+      const variable = allVariablesByPath.get(`${collectionName}/${tokenName}`);
+      if (!variable) continue;
+      if (variable.description !== description) {
+        variable.description = description;
+        describedCount += 1;
+      }
+    }
+  }
+  if (describedCount > 0) {
+    pushLog(logs, 'info', `Applied ${describedCount} variable description(s).`);
   }
 
   if (options.removeStaleVariables) {

@@ -24,6 +24,11 @@ const bundle = {
 
 for (const [collectionName, collectionDef] of Object.entries(manifest.collections)) {
   const modes = {}
+  // Descriptions are mode-independent (a Figma variable has one description, not
+  // one per mode). Collect the first non-empty $description seen for each token
+  // path across all mode files, so authors only need to write it in one file
+  // (conventionally the light mode source).
+  const descriptions = {}
 
   for (const [modeName, files] of Object.entries(collectionDef.modes ?? {})) {
     const mergedTokens = {}
@@ -31,13 +36,14 @@ for (const [collectionName, collectionDef] of Object.entries(manifest.collection
     for (const fileName of files) {
       const filePath = path.join(figmaDir, fileName)
       const json = JSON.parse(await readFile(filePath, "utf8"))
-      flattenTokens(json, [], mergedTokens, collectionName)
+      flattenTokens(json, [], mergedTokens, collectionName, descriptions)
     }
 
     modes[modeName] = mergedTokens
   }
 
-  bundle.collections[collectionName] = { modes }
+  bundle.collections[collectionName] =
+    Object.keys(descriptions).length > 0 ? { modes, descriptions } : { modes }
 }
 
 try {
@@ -49,17 +55,21 @@ try {
 await mkdir(figmaDir, { recursive: true })
 await writeFile(outputPath, `${JSON.stringify(bundle, null, 2)}\n`)
 
-function flattenTokens(input, pathParts, output, collectionName) {
+function flattenTokens(input, pathParts, output, collectionName, descriptions) {
   for (const [key, value] of Object.entries(input)) {
     const nextPath = [...pathParts, key]
 
     if (isToken(value)) {
-      output[nextPath.join("/")] = normalizeTokenValue(value.$value, collectionName)
+      const tokenPath = nextPath.join("/")
+      output[tokenPath] = normalizeTokenValue(value.$value, collectionName)
+      if (descriptions && typeof value.$description === "string" && value.$description.trim() && !descriptions[tokenPath]) {
+        descriptions[tokenPath] = value.$description.trim()
+      }
       continue
     }
 
     if (value && typeof value === "object" && !Array.isArray(value)) {
-      flattenTokens(value, nextPath, output, collectionName)
+      flattenTokens(value, nextPath, output, collectionName, descriptions)
     }
   }
 }

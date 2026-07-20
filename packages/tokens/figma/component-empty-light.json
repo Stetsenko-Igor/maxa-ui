@@ -1,58 +1,72 @@
 {
   "Empty": {
     "gap": {
+      "$description": "Empty: gap.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "padding-sm": {
+      "$description": "Empty: padding sm.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "padding-md": {
+      "$description": "Empty: padding md.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "padding-lg": {
+      "$description": "Empty: padding lg.",
       "$value": "var(--spacing-8)",
       "$type": "number"
     },
     "icon-size-sm": {
+      "$description": "Empty: icon color size sm.",
       "$value": 32,
       "$type": "number"
     },
     "icon-size-md": {
+      "$description": "Empty: icon color size md.",
       "$value": 40,
       "$type": "number"
     },
     "icon-size-lg": {
+      "$description": "Empty: icon color size lg.",
       "$value": 48,
       "$type": "number"
     },
     "icon-bg": {
+      "$description": "Empty: icon color bg.",
       "$value": "var(--color-bg-neutral-subtle)",
       "$type": "color"
     },
     "icon-color": {
+      "$description": "Empty: icon color color.",
       "$value": "var(--color-fg-tertiary)",
       "$type": "color"
     },
     "title-color": {
+      "$description": "Empty: title text color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "description-color": {
+      "$description": "Empty: description color.",
       "$value": "var(--color-text-secondary)",
       "$type": "string"
     },
     "title-font-size": {
+      "$description": "Empty: title text font size.",
       "$value": "var(--text-md)",
       "$type": "number"
     },
     "title-font-weight": {
+      "$description": "Empty: title text font weight.",
       "$value": "var(--font-weight-semibold)",
       "$type": "string"
     },
     "description-font-size": {
+      "$description": "Empty: description font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     }

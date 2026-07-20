@@ -1,94 +1,117 @@
 {
   "Context Menu": {
     "bg": {
+      "$description": "Context Menu: background.",
       "$value": "var(--dropdown-menu-bg)",
       "$type": "color"
     },
     "border": {
+      "$description": "Context Menu: border.",
       "$value": "var(--dropdown-menu-border)",
       "$type": "color"
     },
     "radius": {
+      "$description": "Context Menu: radius.",
       "$value": "var(--dropdown-menu-radius)",
       "$type": "string"
     },
     "shadow": {
+      "$description": "Context Menu: shadow.",
       "$value": "var(--dropdown-menu-shadow)",
       "$type": "color"
     },
     "min-width": {
+      "$description": "Context Menu: min width.",
       "$value": 200,
       "$type": "number"
     },
     "max-width": {
+      "$description": "Context Menu: max width.",
       "$value": "calc(100vw - 32px)",
       "$type": "string"
     },
     "padding-y": {
+      "$description": "Context Menu: padding y.",
       "$value": "var(--dropdown-menu-padding-y)",
       "$type": "string"
     },
     "item-height": {
+      "$description": "Context Menu: item height.",
       "$value": "var(--dropdown-menu-item-height)",
       "$type": "string"
     },
     "item-padding-x": {
+      "$description": "Context Menu: item padding x.",
       "$value": "var(--dropdown-menu-item-padding-x)",
       "$type": "string"
     },
     "item-gap": {
+      "$description": "Context Menu: item gap.",
       "$value": "var(--dropdown-menu-item-gap)",
       "$type": "string"
     },
     "item-text": {
+      "$description": "Context Menu: item text.",
       "$value": "var(--dropdown-menu-item-text)",
       "$type": "color"
     },
     "item-text-hover": {
+      "$description": "Context Menu: item text (hover state).",
       "$value": "var(--dropdown-menu-item-text-hover)",
       "$type": "color"
     },
     "item-text-disabled": {
+      "$description": "Context Menu: item text (disabled state).",
       "$value": "var(--dropdown-menu-item-text-disabled)",
       "$type": "color"
     },
     "item-text-destructive": {
+      "$description": "Context Menu: item text destructive.",
       "$value": "var(--dropdown-menu-item-text-destructive)",
       "$type": "color"
     },
     "item-bg-hover": {
+      "$description": "Context Menu: item bg (hover state).",
       "$value": "var(--dropdown-menu-item-bg-hover)",
       "$type": "color"
     },
     "item-bg-active": {
+      "$description": "Context Menu: item bg (active state).",
       "$value": "var(--dropdown-menu-item-bg-active)",
       "$type": "color"
     },
     "separator": {
+      "$description": "Context Menu: separator.",
       "$value": "var(--dropdown-menu-separator)",
       "$type": "color"
     },
     "label-text": {
+      "$description": "Context Menu: label text text.",
       "$value": "var(--dropdown-menu-label-text)",
       "$type": "color"
     },
     "shortcut-text": {
+      "$description": "Context Menu: shortcut text.",
       "$value": "var(--dropdown-menu-shortcut-text)",
       "$type": "color"
     },
     "font-family": {
+      "$description": "Context Menu: font family.",
       "$value": "var(--dropdown-menu-font-family)",
       "$type": "string"
     },
     "font-size": {
+      "$description": "Context Menu: font size.",
       "$value": "var(--dropdown-menu-font-size)",
       "$type": "string"
     },
     "line-height": {
+      "$description": "Context Menu: line height.",
       "$value": "var(--dropdown-menu-line-height)",
       "$type": "string"
     },
     "z": {
+      "$description": "Context Menu: z.",
       "$value": "var(--z-dropdown)",
       "$type": "string"
     }

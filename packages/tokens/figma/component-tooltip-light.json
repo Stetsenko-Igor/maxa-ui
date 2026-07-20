@@ -2,36 +2,44 @@
   "Tooltip": {
     "layout": {
       "radius": {
+        "$description": "Tooltip, layout: radius.",
         "$value": "{Radius/radius-sm}",
         "$type": "number"
       },
       "max-width": {
+        "$description": "Tooltip, layout: max width.",
         "$value": 240,
         "$type": "number"
       },
       "padding-x": {
+        "$description": "Tooltip, layout: padding x.",
         "$value": 8,
         "$type": "number"
       },
       "padding-y": {
+        "$description": "Tooltip, layout: padding y.",
         "$value": 4,
         "$type": "number"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Tooltip, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "font-size": {
+        "$description": "Tooltip, typography: font size.",
         "$value": 12,
         "$type": "number"
       },
       "font-weight": {
+        "$description": "Tooltip, typography: font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "string"
       },
       "line-height": {
+        "$description": "Tooltip, typography: line height.",
         "$value": 16,
         "$type": "number"
       }

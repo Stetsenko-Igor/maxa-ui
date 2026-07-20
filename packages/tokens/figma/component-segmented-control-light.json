@@ -1,62 +1,77 @@
 {
   "Segmented Control": {
     "bg": {
+      "$description": "Segmented Control: background.",
       "$value": "var(--color-bg-muted)",
       "$type": "color"
     },
     "border": {
+      "$description": "Segmented Control: border.",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "radius": {
+      "$description": "Segmented Control: radius.",
       "$value": "var(--radius-md)",
       "$type": "number"
     },
     "padding": {
+      "$description": "Segmented Control: padding.",
       "$value": "var(--spacing-1)",
       "$type": "number"
     },
     "gap": {
+      "$description": "Segmented Control: gap.",
       "$value": "var(--spacing-1)",
       "$type": "number"
     },
     "item-bg": {
+      "$description": "Segmented Control: item bg.",
       "$value": "transparent",
       "$type": "color"
     },
     "item-bg-hover": {
+      "$description": "Segmented Control: item bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "item-bg-active": {
+      "$description": "Segmented Control: item bg (active state).",
       "$value": "var(--color-bg-neutral-strong)",
       "$type": "color"
     },
     "item-text": {
+      "$description": "Segmented Control: item text.",
       "$value": "var(--color-text-secondary)",
       "$type": "color"
     },
     "item-text-active": {
+      "$description": "Segmented Control: item text (active state).",
       "$value": "var(--color-text-inverse)",
       "$type": "color"
     },
     "item-radius": {
+      "$description": "Segmented Control: item radius.",
       "$value": "var(--radius-sm)",
       "$type": "number"
     },
     "item-height": {
+      "$description": "Segmented Control: item height.",
       "$value": "var(--spacing-9)",
       "$type": "number"
     },
     "item-padding-x": {
+      "$description": "Segmented Control: item padding x.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "item-font-size": {
+      "$description": "Segmented Control: item font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "item-font-weight": {
+      "$description": "Segmented Control: item font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "string"
     }

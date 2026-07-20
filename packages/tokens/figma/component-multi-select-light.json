@@ -1,138 +1,172 @@
 {
   "Multi Select": {
     "width": {
+      "$description": "Multi Select: width.",
       "$value": 320,
       "$type": "number"
     },
     "trigger-min-height-sm": {
+      "$description": "Multi Select: trigger min height sm.",
       "$value": 36,
       "$type": "number"
     },
     "trigger-min-height": {
+      "$description": "Multi Select: trigger min height.",
       "$value": 44,
       "$type": "number"
     },
     "trigger-min-height-lg": {
+      "$description": "Multi Select: trigger min height lg.",
       "$value": 48,
       "$type": "number"
     },
     "trigger-padding-x": {
+      "$description": "Multi Select: trigger padding x.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "trigger-padding-y": {
+      "$description": "Multi Select: trigger padding y.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "trigger-gap": {
+      "$description": "Multi Select: trigger gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "trigger-radius": {
+      "$description": "Multi Select: trigger radius.",
       "$value": "var(--input-size-md-radius)",
       "$type": "number"
     },
     "trigger-border": {
+      "$description": "Multi Select: trigger border.",
       "$value": "var(--input-border)",
       "$type": "color"
     },
     "trigger-border-hover": {
+      "$description": "Multi Select: trigger border (hover state).",
       "$value": "var(--input-border-hover)",
       "$type": "color"
     },
     "trigger-border-focus": {
+      "$description": "Multi Select: trigger border (focus state).",
       "$value": "var(--input-focus-ring)",
       "$type": "color"
     },
     "trigger-focus-ring-offset": {
+      "$description": "Multi Select: trigger focus ring offset.",
       "$value": "var(--input-focus-ring-offset)",
       "$type": "number"
     },
     "trigger-focus-ring-width": {
+      "$description": "Multi Select: trigger focus ring width.",
       "$value": "var(--input-focus-ring-width)",
       "$type": "number"
     },
     "trigger-bg": {
+      "$description": "Multi Select: trigger bg.",
       "$value": "var(--input-bg)",
       "$type": "color"
     },
     "trigger-text": {
+      "$description": "Multi Select: trigger text.",
       "$value": "var(--input-text)",
       "$type": "color"
     },
     "trigger-font-family": {
+      "$description": "Multi Select: trigger font family.",
       "$value": "var(--input-font-family)",
       "$type": "string"
     },
     "trigger-font-size": {
+      "$description": "Multi Select: trigger font size.",
       "$value": "var(--input-size-md-text)",
       "$type": "number"
     },
     "trigger-font-weight": {
+      "$description": "Multi Select: trigger font weight.",
       "$value": "var(--input-font-weight)",
       "$type": "string"
     },
     "trigger-line-height": {
+      "$description": "Multi Select: trigger line height.",
       "$value": "var(--text-sm--line-height)",
       "$type": "number"
     },
     "placeholder": {
+      "$description": "Multi Select: placeholder text.",
       "$value": "var(--input-placeholder)",
       "$type": "color"
     },
     "chip-bg": {
+      "$description": "Multi Select: chip bg.",
       "$value": "var(--color-bg-gray-muted)",
       "$type": "color"
     },
     "chip-text": {
+      "$description": "Multi Select: chip text.",
       "$value": "var(--color-text-primary)",
       "$type": "color"
     },
     "chip-radius": {
+      "$description": "Multi Select: chip radius.",
       "$value": "var(--radius-full)",
       "$type": "number"
     },
     "chip-gap": {
+      "$description": "Multi Select: chip gap.",
       "$value": "var(--spacing-1)",
       "$type": "number"
     },
     "chip-height": {
+      "$description": "Multi Select: chip height.",
       "$value": 28,
       "$type": "number"
     },
     "chip-padding-x": {
+      "$description": "Multi Select: chip padding x.",
       "$value": 10,
       "$type": "number"
     },
     "chip-font-size": {
+      "$description": "Multi Select: chip font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "chip-font-weight": {
+      "$description": "Multi Select: chip font weight.",
       "$value": "var(--font-weight-semibold)",
       "$type": "string"
     },
     "chip-line-height": {
+      "$description": "Multi Select: chip line height.",
       "$value": 14,
       "$type": "number"
     },
     "chip-remove-size": {
+      "$description": "Multi Select: chip remove size.",
       "$value": 18,
       "$type": "number"
     },
     "chip-remove-icon-size": {
+      "$description": "Multi Select: chip remove icon size.",
       "$value": 12,
       "$type": "number"
     },
     "chip-remove-bg-hover": {
+      "$description": "Multi Select: chip remove bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "chevron-size": {
+      "$description": "Multi Select: chevron size.",
       "$value": 16,
       "$type": "number"
     },
     "listbox-max-height": {
+      "$description": "Multi Select: listbox max height.",
       "$value": 240,
       "$type": "number"
     }

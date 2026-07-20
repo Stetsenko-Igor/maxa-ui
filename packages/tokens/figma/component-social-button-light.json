@@ -1,138 +1,172 @@
 {
   "Social Button": {
     "min-width": {
+      "$description": "Social Button: min width.",
       "$value": 198,
       "$type": "number"
     },
     "linkedin-min-width": {
+      "$description": "Social Button: linkedin min width.",
       "$value": 209,
       "$type": "number"
     },
     "height-sm": {
+      "$description": "Social Button: height sm.",
       "$value": 32,
       "$type": "number"
     },
     "height": {
+      "$description": "Social Button: height.",
       "$value": 40,
       "$type": "number"
     },
     "height-lg": {
+      "$description": "Social Button: height lg.",
       "$value": "var(--button-size-lg-height)",
       "$type": "number"
     },
     "padding-x-sm": {
+      "$description": "Social Button: padding x sm.",
       "$value": "var(--button-size-sm-padding-x)",
       "$type": "number"
     },
     "padding-x": {
+      "$description": "Social Button: padding x.",
       "$value": "var(--button-size-md-padding-x)",
       "$type": "number"
     },
     "padding-x-lg": {
+      "$description": "Social Button: padding x lg.",
       "$value": "var(--button-size-lg-padding-x)",
       "$type": "number"
     },
     "gap-sm": {
+      "$description": "Social Button: gap sm.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "gap": {
+      "$description": "Social Button: gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "gap-lg": {
+      "$description": "Social Button: gap lg.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "radius": {
+      "$description": "Social Button: radius.",
       "$value": "var(--radius-md)",
       "$type": "number"
     },
     "border": {
+      "$description": "Social Button: border.",
       "$value": "var(--color-border-primary)",
       "$type": "color"
     },
     "border-hover": {
+      "$description": "Social Button: border (hover state).",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "border-active": {
+      "$description": "Social Button: border (active state).",
       "$value": "var(--color-border-secondary)",
       "$type": "color"
     },
     "border-focus": {
+      "$description": "Social Button: border (focus state).",
       "$value": "#c7e5f0",
       "$type": "color"
     },
     "bg": {
+      "$description": "Social Button: background.",
       "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "bg-hover": {
+      "$description": "Social Button: background (hover state).",
       "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "bg-active": {
+      "$description": "Social Button: background (active state).",
       "$value": "var(--button-outline-bg)",
       "$type": "color"
     },
     "text": {
+      "$description": "Social Button: text color.",
       "$value": "var(--color-text-primary)",
       "$type": "color"
     },
     "shadow": {
+      "$description": "Social Button: shadow.",
       "$value": "var(--shadow-sm)",
       "$type": "shadow"
     },
     "shadow-hover": {
+      "$description": "Social Button: shadow (hover state).",
       "$value": "var(--shadow-sm)",
       "$type": "shadow"
     },
     "shadow-focus": {
+      "$description": "Social Button: shadow (focus state).",
       "$value": "0 0 0 3px var(--social-button-border-focus)",
       "$type": "shadow"
     },
     "font-size-sm": {
+      "$description": "Social Button: font size sm.",
       "$value": "var(--button-size-sm-text)",
       "$type": "number"
     },
     "font-size": {
+      "$description": "Social Button: font size.",
       "$value": "var(--button-size-md-text)",
       "$type": "number"
     },
     "font-size-lg": {
+      "$description": "Social Button: font size lg.",
       "$value": "var(--button-size-lg-text)",
       "$type": "number"
     },
     "line-height-sm": {
+      "$description": "Social Button: line height sm.",
       "$value": "var(--button-size-sm-line-height)",
       "$type": "number"
     },
     "line-height": {
+      "$description": "Social Button: line height.",
       "$value": "var(--button-size-md-line-height)",
       "$type": "number"
     },
     "line-height-lg": {
+      "$description": "Social Button: line height lg.",
       "$value": "var(--button-size-lg-line-height)",
       "$type": "number"
     },
     "font-weight": {
+      "$description": "Social Button: font weight.",
       "$value": "var(--button-size-md-weight)",
       "$type": "string"
     },
     "icon-size-sm": {
+      "$description": "Social Button: icon color size sm.",
       "$value": 16,
       "$type": "number"
     },
     "icon-size": {
+      "$description": "Social Button: icon color size.",
       "$value": 16,
       "$type": "number"
     },
     "icon-size-lg": {
+      "$description": "Social Button: icon color size lg.",
       "$value": 20,
       "$type": "number"
     },
     "disabled-opacity": {
+      "$description": "Social Button: disabled opacity.",
       "$value": "var(--opacity-disabled)",
       "$type": "number"
     }

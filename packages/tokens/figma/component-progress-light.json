@@ -1,50 +1,62 @@
 {
   "Progress": {
     "bg": {
+      "$description": "Progress: background.",
       "$value": "var(--color-bg-neutral-subtle)",
       "$type": "color"
     },
     "radius": {
+      "$description": "Progress: radius.",
       "$value": "var(--radius-full)",
       "$type": "number"
     },
     "height-sm": {
+      "$description": "Progress: height sm.",
       "$value": 6,
       "$type": "number"
     },
     "height-md": {
+      "$description": "Progress: height md.",
       "$value": 8,
       "$type": "number"
     },
     "fill-brand": {
+      "$description": "Progress: fill brand.",
       "$value": "var(--color-action-primary)",
       "$type": "color"
     },
     "fill-success": {
+      "$description": "Progress: fill success.",
       "$value": "var(--color-action-success)",
       "$type": "color"
     },
     "fill-warning": {
+      "$description": "Progress: fill warning.",
       "$value": "var(--color-action-warning)",
       "$type": "color"
     },
     "fill-error": {
+      "$description": "Progress: fill error.",
       "$value": "var(--color-action-destructive)",
       "$type": "color"
     },
     "label-color": {
+      "$description": "Progress: label text color.",
       "$value": "var(--color-text-secondary)",
       "$type": "string"
     },
     "value-color": {
+      "$description": "Progress: value color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "font-size": {
+      "$description": "Progress: font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "font-weight": {
+      "$description": "Progress: font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "string"
     }

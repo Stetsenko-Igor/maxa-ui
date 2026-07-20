@@ -2,78 +2,95 @@
   "Alert": {
     "layout": {
       "radius": {
+        "$description": "Alert, layout: radius.",
         "$value": "{Radius/radius-md}",
         "$type": "number"
       },
       "padding-x": {
+        "$description": "Alert, layout: padding x.",
         "$value": 16,
         "$type": "number"
       },
       "padding-y": {
+        "$description": "Alert, layout: padding y.",
         "$value": 16,
         "$type": "number"
       },
       "gap": {
+        "$description": "Alert, layout: gap.",
         "$value": 8,
         "$type": "number"
       },
       "content-gap": {
+        "$description": "Alert, layout: content gap.",
         "$value": 4,
         "$type": "number"
       },
       "action-gap": {
+        "$description": "Alert, layout: action gap.",
         "$value": 8,
         "$type": "number"
       }
     },
     "strip": {
       "width": {
+        "$description": "Alert, strip: width.",
         "$value": 4,
         "$type": "number"
       }
     },
     "icon": {
       "size": {
+        "$description": "Alert, icon: size.",
         "$value": 20,
         "$type": "number"
       }
     },
     "dismiss": {
       "size": {
+        "$description": "Alert, dismiss: size.",
         "$value": 32,
         "$type": "number"
       },
       "opacity": {
+        "$description": "Alert, dismiss: opacity.",
         "$value": 65,
         "$type": "number"
       }
     },
     "typography": {
       "font-family": {
+        "$description": "Alert, typography: font family.",
         "$value": "{Typography/Font family/body}",
         "$type": "string"
       },
       "font-size": {
+        "$description": "Alert, typography: font size.",
         "$value": "{Typography/Font size/text-md}",
         "$type": "string"
       },
       "line-height": {
+        "$description": "Alert, typography: line height.",
         "$value": "{Typography/Line height/text-md}",
         "$type": "string"
       },
       "font-weight": {
+        "$description": "Alert, typography: font weight.",
         "$value": "{Typography/Font weight/medium}",
         "$type": "string"
       },
       "title-size": {
+        "$description": "Alert, typography: title text size.",
         "$value": "{Typography/Font size/text-lg}",
         "$type": "string"
       },
       "title-line-height": {
+        "$description": "Alert, typography: title text line height.",
         "$value": "{Typography/Line height/text-lg}",
         "$type": "string"
       },
       "title-weight": {
+        "$description": "Alert, typography: title text weight.",
         "$value": "{Typography/Font weight/bold}",
         "$type": "string"
       }
@@ -81,108 +98,132 @@
     "color": {
       "info": {
         "bg": {
+          "$description": "Alert, color info: background.",
           "$value": "{Color modes/background/bg-info-subtle}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color info: border.",
           "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color info: accent.",
           "$value": "{Color modes/foreground/fg-info}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color info: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "success": {
         "bg": {
+          "$description": "Alert, color success: background.",
           "$value": "{Color modes/background/bg-success-subtle}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color success: border.",
           "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color success: accent.",
           "$value": "{Color modes/foreground/fg-success}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color success: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "warning": {
         "bg": {
+          "$description": "Alert, color warning: background.",
           "$value": "{Color modes/background/bg-warning-subtle}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color warning: border.",
           "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color warning: accent.",
           "$value": "{Color modes/foreground/fg-warning}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color warning: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "error": {
         "bg": {
+          "$description": "Alert, color error: background.",
           "$value": "{Color modes/background/bg-error-subtle}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color error: border.",
           "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color error: accent.",
           "$value": "{Color modes/foreground/fg-error}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color error: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "neutral": {
         "bg": {
+          "$description": "Alert, color neutral: background.",
           "$value": "{Color modes/background/bg-neutral-subtle}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color neutral: border.",
           "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color neutral: accent.",
           "$value": "{Color modes/foreground/fg-secondary}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color neutral: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "emphasize": {
         "bg": {
+          "$description": "Alert, color emphasize: background.",
           "$value": "{Color modes/background/bg-neutral-strong}",
           "$type": "color"
         },
         "border": {
+          "$description": "Alert, color emphasize: border.",
           "$value": "{Color modes/border/border-primary}",
           "$type": "color"
         },
         "accent": {
+          "$description": "Alert, color emphasize: accent.",
           "$value": "{Color modes/foreground/fg-inverse}",
           "$type": "color"
         },
         "text": {
+          "$description": "Alert, color emphasize: text color.",
           "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }

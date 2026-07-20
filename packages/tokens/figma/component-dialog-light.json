@@ -1,154 +1,192 @@
 {
   "Dialog": {
     "overlay-bg": {
+      "$description": "Dialog: overlay bg.",
       "$value": "rgba(0, 0, 0, 0.72)",
       "$type": "color"
     },
     "content-bg": {
+      "$description": "Dialog: content bg.",
       "$value": "var(--color-bg-float)",
       "$type": "color"
     },
     "content-border": {
+      "$description": "Dialog: content border.",
       "$value": "var(--color-border-primary)",
       "$type": "color"
     },
     "content-radius": {
+      "$description": "Dialog: content radius.",
       "$value": "var(--radius-md)",
       "$type": "number"
     },
     "content-shadow": {
+      "$description": "Dialog: content shadow.",
       "$value": "4px 4px 8px rgba(106, 106, 106, 0.1)",
       "$type": "color"
     },
     "content-width-sm": {
+      "$description": "Dialog: content width sm.",
       "$value": 360,
       "$type": "number"
     },
     "content-width-md": {
+      "$description": "Dialog: content width md.",
       "$value": 500,
       "$type": "number"
     },
     "content-width-lg": {
+      "$description": "Dialog: content width lg.",
       "$value": 604,
       "$type": "number"
     },
     "header-padding-x": {
+      "$description": "Dialog: header padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-padding-top": {
+      "$description": "Dialog: header padding top.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-padding-bottom": {
+      "$description": "Dialog: header padding bottom.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "header-gap": {
+      "$description": "Dialog: header gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "header-border": {
+      "$description": "Dialog: header border.",
       "$value": "var(--color-border-primary)",
       "$type": "color"
     },
     "body-padding-x": {
+      "$description": "Dialog: body padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "body-padding-y": {
+      "$description": "Dialog: body padding y.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "body-font-size": {
+      "$description": "Dialog: body font size.",
       "$value": "var(--text-md)",
       "$type": "number"
     },
     "body-line-height": {
+      "$description": "Dialog: body line height.",
       "$value": "var(--text-md--line-height)",
       "$type": "number"
     },
     "body-font-weight": {
+      "$description": "Dialog: body font weight.",
       "$value": "var(--font-weight-regular)",
       "$type": "string"
     },
     "body-color": {
+      "$description": "Dialog: body color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "footer-padding-x": {
+      "$description": "Dialog: footer padding x.",
       "$value": "var(--spacing-6)",
       "$type": "number"
     },
     "footer-padding-top": {
+      "$description": "Dialog: footer padding top.",
       "$value": "var(--spacing-3)",
       "$type": "number"
     },
     "footer-padding-bottom": {
+      "$description": "Dialog: footer padding bottom.",
       "$value": "var(--spacing-4)",
       "$type": "number"
     },
     "title-color": {
+      "$description": "Dialog: title text color.",
       "$value": "var(--color-text-primary)",
       "$type": "string"
     },
     "title-font-size": {
+      "$description": "Dialog: title text font size.",
       "$value": "var(--text-heading-xs)",
       "$type": "number"
     },
     "title-line-height": {
+      "$description": "Dialog: title text line height.",
       "$value": 20,
       "$type": "number"
     },
     "title-font-weight": {
+      "$description": "Dialog: title text font weight.",
       "$value": "var(--font-weight-bold)",
       "$type": "string"
     },
     "description-color": {
+      "$description": "Dialog: description color.",
       "$value": "var(--color-text-secondary)",
       "$type": "string"
     },
     "description-font-size": {
+      "$description": "Dialog: description font size.",
       "$value": "var(--text-sm)",
       "$type": "number"
     },
     "description-line-height": {
+      "$description": "Dialog: description line height.",
       "$value": "var(--text-sm--line-height)",
       "$type": "number"
     },
     "description-font-weight": {
+      "$description": "Dialog: description font weight.",
       "$value": "var(--font-weight-medium)",
       "$type": "string"
     },
     "close-size": {
+      "$description": "Dialog: close size.",
       "$value": 48,
       "$type": "number"
     },
     "close-icon-size": {
+      "$description": "Dialog: close icon size.",
       "$value": 20,
       "$type": "number"
     },
     "close-offset": {
+      "$description": "Dialog: close offset.",
       "$value": "var(--spacing-3)",
       "$type": "string"
     },
     "close-bg-hover": {
+      "$description": "Dialog: close bg (hover state).",
       "$value": "var(--color-action-neutral-subtle-hover)",
       "$type": "color"
     },
     "close-bg-active": {
+      "$description": "Dialog: close bg (active state).",
       "$value": "var(--color-action-neutral-subtle-active)",
       "$type": "color"
     },
     "close-color": {
+      "$description": "Dialog: close color.",
       "$value": "var(--color-fg-secondary)",
       "$type": "string"
     },
     "footer-gap": {
+      "$description": "Dialog: footer gap.",
       "$value": "var(--spacing-2)",
       "$type": "number"
     },
     "z": {
+      "$description": "Dialog: z.",
       "$value": "var(--z-modal)",
       "$type": "string"
     }

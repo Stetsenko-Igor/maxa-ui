@@ -1,390 +1,485 @@
 {
   "text": {
     "text-primary": {
+      "$description": "Main body text and headings.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "text-secondary": {
+      "$description": "Supporting text and labels.",
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "text-tertiary": {
+      "$description": "Captions, metadata, placeholder text.",
       "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "text-disabled": {
+      "$description": "Disabled form labels.",
       "$value": "{Colors.Neutral.400}",
       "$type": "color"
     },
     "text-inverse": {
+      "$description": "Text on dark or colored surfaces.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "text-on-brand": {
+      "$description": "Dark text on strong brand fill.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "text-brand": {
+      "$description": "Brand-colored labels and links.",
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
     "text-success": {
+      "$description": "Success message text.",
       "$value": "{Colors.Green.900}",
       "$type": "color"
     },
     "text-warning": {
+      "$description": "Warning message text.",
       "$value": "{Colors.Orange.900}",
       "$type": "color"
     },
     "text-error": {
+      "$description": "Error and validation message text.",
       "$value": "{Colors.Red.900}",
       "$type": "color"
     },
     "text-info": {
+      "$description": "Informational copy text.",
       "$value": "{Colors.Blue.900}",
       "$type": "color"
     }
   },
   "border": {
     "border-primary": {
+      "$description": "Default input and card borders.",
       "$value": "{Colors.Neutral.300}",
       "$type": "color"
     },
     "border-secondary": {
+      "$description": "Lighter borders and subtle separators.",
       "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
     "border-tertiary": {
+      "$description": "Faintest dividers.",
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "border-focus": {
+      "$description": "Focus rings on interactive elements.",
       "$value": "{Colors.Blue.500}",
       "$type": "color"
     },
     "border-brand": {
+      "$description": "Brand-accented borders.",
       "$value": "{Colors.Brand.500}",
       "$type": "color"
     },
     "border-error-strong": {
+      "$description": "Error/invalid input border.",
       "$value": "{Colors.Red.500}",
       "$type": "color"
     }
   },
   "action": {
     "action-primary": {
+      "$description": "Primary CTA background (blue).",
       "$value": "{Colors.Blue.500}",
       "$type": "color"
     },
     "action-primary-hover": {
+      "$description": "Primary CTA background, hover state.",
       "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "action-primary-active": {
+      "$description": "Primary CTA background, active state.",
       "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "action-primary-subtle": {
+      "$description": "Low-emphasis primary action fill.",
       "$value": "{Colors.Blue.50}",
       "$type": "color"
     },
     "action-primary-subtle-hover": {
+      "$description": "Low-emphasis primary action fill, hover state.",
       "$value": "{Colors.Blue.50}",
       "$type": "color"
     },
     "action-primary-subtle-active": {
+      "$description": "Low-emphasis primary action fill, active state.",
       "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
     "action-neutral": {
+      "$description": "Secondary/neutral button background.",
       "$value": "{Colors.Neutral.300}",
       "$type": "color"
     },
     "action-neutral-hover": {
+      "$description": "Neutral button background, hover state.",
       "$value": "{Colors.Neutral.400}",
       "$type": "color"
     },
     "action-neutral-active": {
+      "$description": "Neutral button background, active state.",
       "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
     "action-neutral-subtle": {
+      "$description": "Low-emphasis neutral action fill.",
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "action-neutral-subtle-hover": {
+      "$description": "Low-emphasis neutral action fill, hover state.",
       "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
     "action-neutral-subtle-active": {
+      "$description": "Low-emphasis neutral action fill, active state.",
       "$value": "{Colors.Neutral.300}",
       "$type": "color"
     },
     "action-brand": {
+      "$description": "Brand-teal interactive background.",
       "$value": "{Colors.Brand.500}",
       "$type": "color"
     },
     "action-brand-hover": {
+      "$description": "Brand-teal interactive background, hover state.",
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
     "action-brand-active": {
+      "$description": "Brand-teal interactive background, active state.",
       "$value": "{Colors.Brand.700}",
       "$type": "color"
     },
     "action-brand-subtle": {
+      "$description": "Low-emphasis brand action fill.",
       "$value": "{Colors.Brand.50}",
       "$type": "color"
     },
     "action-brand-subtle-hover": {
+      "$description": "Low-emphasis brand action fill, hover state.",
       "$value": "{Colors.Brand.50}",
       "$type": "color"
     },
     "action-brand-subtle-active": {
+      "$description": "Low-emphasis brand action fill, active state.",
       "$value": "{Colors.Brand.200}",
       "$type": "color"
     },
     "action-success": {
+      "$description": "Confirm/approve action background (green).",
       "$value": "{Colors.Green.500}",
       "$type": "color"
     },
     "action-success-hover": {
+      "$description": "Confirm action background, hover state.",
       "$value": "{Colors.Green.600}",
       "$type": "color"
     },
     "action-success-active": {
+      "$description": "Confirm action background, active state.",
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "action-success-subtle": {
+      "$description": "Low-emphasis confirm action fill.",
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
     "action-success-subtle-hover": {
+      "$description": "Low-emphasis confirm action fill, hover state.",
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
     "action-success-subtle-active": {
+      "$description": "Low-emphasis confirm action fill, active state.",
       "$value": "{Colors.Green.100}",
       "$type": "color"
     },
     "action-destructive": {
+      "$description": "Destructive action background (red).",
       "$value": "{Colors.Red.500}",
       "$type": "color"
     },
     "action-destructive-hover": {
+      "$description": "Destructive action background, hover state.",
       "$value": "{Colors.Red.600}",
       "$type": "color"
     },
     "action-destructive-active": {
+      "$description": "Destructive action background, active state.",
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "action-destructive-subtle": {
+      "$description": "Low-emphasis destructive action fill.",
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
     "action-destructive-subtle-hover": {
+      "$description": "Low-emphasis destructive action fill, hover state.",
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
     "action-destructive-subtle-active": {
+      "$description": "Low-emphasis destructive action fill, active state.",
       "$value": "{Colors.Red.100}",
       "$type": "color"
     },
     "action-warning": {
+      "$description": "Warning action background (yellow).",
       "$value": "{Colors.Yellow.500}",
       "$type": "color"
     },
     "action-warning-hover": {
+      "$description": "Warning action background, hover state.",
       "$value": "{Colors.Yellow.600}",
       "$type": "color"
     },
     "action-warning-active": {
+      "$description": "Warning action background, active state.",
       "$value": "{Colors.Yellow.700}",
       "$type": "color"
     },
     "action-warning-subtle": {
+      "$description": "Low-emphasis warning action fill.",
       "$value": "{Colors.Yellow.50}",
       "$type": "color"
     },
     "action-warning-subtle-hover": {
+      "$description": "Low-emphasis warning action fill, hover state.",
       "$value": "{Colors.Yellow.50}",
       "$type": "color"
     },
     "action-warning-subtle-active": {
+      "$description": "Low-emphasis warning action fill, active state.",
       "$value": "{Colors.Yellow.100}",
       "$type": "color"
     }
   },
   "foreground": {
     "fg-primary": {
+      "$description": "Highest-emphasis icons and foreground marks.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "fg-secondary": {
+      "$description": "Supporting icons.",
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "fg-tertiary": {
+      "$description": "Low-emphasis icons and subtle controls.",
       "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "fg-disabled": {
+      "$description": "Disabled icons.",
       "$value": "{Colors.Neutral.400}",
       "$type": "color"
     },
     "fg-inverse": {
+      "$description": "Icons on dark or inverted surfaces.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "fg-on-brand": {
+      "$description": "Icons on strong brand fill.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "fg-brand": {
+      "$description": "Brand-colored icons.",
       "$value": "{Colors.Brand.600}",
       "$type": "color"
     },
     "fg-success": {
+      "$description": "Success icons.",
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "fg-error": {
+      "$description": "Error and destructive icons.",
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "fg-warning": {
+      "$description": "Warning icons.",
       "$value": "{Colors.Yellow.600}",
       "$type": "color"
     },
     "fg-info": {
+      "$description": "Informational icons.",
       "$value": "{Colors.Blue.600}",
       "$type": "color"
     }
   },
   "background": {
     "bg-page": {
+      "$description": "Lowest layer: the page/viewport canvas.",
       "$value": "{Colors.Neutral.50}",
       "$type": "color"
     },
     "bg-surface": {
+      "$description": "Default raised surface: cards, inputs, modals, sidebars.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "bg-float": {
+      "$description": "Floating surfaces above regular surfaces: dropdowns, popovers, tooltips.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "bg-muted": {
+      "$description": "Recessed zones: code blocks, wells, table fill.",
       "$value": "{Colors.Neutral.25}",
       "$type": "color"
     },
     "bg-disabled": {
+      "$description": "Disabled input and control backgrounds.",
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "bg-overlay": {
+      "$description": "Modal and drawer scrim.",
       "$value": "{Colors.Neutral (alpha).Black.50}",
       "$type": "color"
     },
     "bg-inverse": {
+      "$description": "Inverted dark surface on light theme.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "bg-brand-subtle": {
+      "$description": "Brand-tinted section background.",
       "$value": "{Colors.Brand.50}",
       "$type": "color"
     },
     "bg-brand-surface": {
+      "$description": "Brand surface fill.",
       "$value": "{Colors.Brand.100}",
       "$type": "color"
     },
     "bg-brand-muted": {
+      "$description": "Slightly stronger brand fill.",
       "$value": "{Colors.Brand.200}",
       "$type": "color"
     },
     "bg-brand-strong": {
+      "$description": "Strong brand fill.",
       "$value": "{Colors.Brand.500}",
       "$type": "color"
     },
     "bg-success-subtle": {
+      "$description": "Low-emphasis success surface fill.",
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
     "bg-success-surface": {
+      "$description": "Success surface fill.",
       "$value": "{Colors.Green.50}",
       "$type": "color"
     },
     "bg-success-strong": {
+      "$description": "Strong success fill.",
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "bg-warning-subtle": {
+      "$description": "Low-emphasis warning surface fill.",
       "$value": "{Colors.Orange.50}",
       "$type": "color"
     },
     "bg-warning-surface": {
+      "$description": "Warning surface fill.",
       "$value": "{Colors.Orange.50}",
       "$type": "color"
     },
     "bg-warning-strong": {
+      "$description": "Strong warning fill.",
       "$value": "{Colors.Orange.600}",
       "$type": "color"
     },
     "bg-error-subtle": {
+      "$description": "Low-emphasis error surface fill.",
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
     "bg-error-surface": {
+      "$description": "Error surface fill.",
       "$value": "{Colors.Red.50}",
       "$type": "color"
     },
     "bg-error-strong": {
+      "$description": "Strong error fill.",
       "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "bg-info-subtle": {
+      "$description": "Low-emphasis info surface fill.",
       "$value": "{Colors.Blue.50}",
       "$type": "color"
     },
     "bg-info-surface": {
+      "$description": "Info surface fill.",
       "$value": "{Colors.Blue.50}",
       "$type": "color"
     },
     "bg-info-strong": {
+      "$description": "Strong info fill.",
       "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "bg-neutral-subtle": {
+      "$description": "Subtle neutral section background.",
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "bg-neutral-surface": {
+      "$description": "Neutral surface fill.",
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "bg-neutral-strong": {
+      "$description": "Strong neutral fill (inverse).",
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "bg-neutral-muted": {
+      "$description": "Slightly stronger neutral fill.",
       "$value": "{Colors.Neutral.200}",
       "$type": "color"
     },
     "bg-info-muted": {
+      "$description": "Slightly stronger info fill.",
       "$value": "{Colors.Blue.100}",
       "$type": "color"
     },
     "bg-success-muted": {
+      "$description": "Slightly stronger success fill.",
       "$value": "{Colors.Green.100}",
       "$type": "color"
     },
     "bg-warning-muted": {
+      "$description": "Slightly stronger warning fill.",
       "$value": "{Colors.Orange.100}",
       "$type": "color"
     },
     "bg-error-muted": {
+      "$description": "Slightly stronger error fill.",
       "$value": "{Colors.Red.100}",
       "$type": "color"
     }

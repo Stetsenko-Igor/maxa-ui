@@ -720,10 +720,15 @@ describe("figma component-based button tokens", () => {
   }
 
   it("keeps light and dark token names aligned", () => {
+    // $description is authored on the light source only (mode-independent), so
+    // ignore it when comparing light/dark structure.
+    const keysWithoutDescription = (obj: Record<string, unknown>) =>
+      Object.keys(obj ?? {}).filter((k) => k !== "$description")
+
     expect(Object.keys(lightFile.Button)).toEqual(Object.keys(darkFile.Button))
 
     for (const key of Object.keys(lightFile.Button)) {
-      expect(Object.keys(lightFile.Button[key] ?? {})).toEqual(Object.keys(darkFile.Button[key] ?? {}))
+      expect(keysWithoutDescription(lightFile.Button[key])).toEqual(keysWithoutDescription(darkFile.Button[key]))
     }
   })
 
