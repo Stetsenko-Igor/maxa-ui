@@ -4,12 +4,12 @@
       "info": {
         "bg": {
           "$description": "Alert info background. Change both themes here; Component-based aliases this variable.",
-          "$value": "{Color modes/background/bg-info-subtle}",
+          "$value": "#E0F2FF",
           "$type": "color"
         },
         "border": {
           "$description": "Alert info border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-info-subtle}",
           "$type": "color"
         },
         "accent": {
@@ -19,7 +19,7 @@
         },
         "text": {
           "$description": "Alert info body and title text.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "#1B1A1A",
           "$type": "color"
         },
         "action": {
@@ -41,27 +41,27 @@
         },
         "border": {
           "$description": "Alert success border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-success-subtle}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert success icon and accent stripe.",
-          "$value": "{Color modes/foreground/fg-success}",
+          "$value": "{Colors.Green.800}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert success body and title text.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "#1B1A1A",
           "$type": "color"
         },
         "action": {
           "$description": "Alert success action color.",
-          "$value": "{Color modes/foreground/fg-success}",
+          "$value": "{Colors.Green.800}",
           "$type": "color"
         },
         "action-hover": {
           "$description": "Alert success action hover color.",
-          "$value": "{Color modes/text/text-success}",
+          "$value": "{Colors.Green.800}",
           "$type": "color"
         }
       },
@@ -73,27 +73,27 @@
         },
         "border": {
           "$description": "Alert warning border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-warning-subtle}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert warning icon and accent stripe.",
-          "$value": "{Color modes/foreground/fg-warning}",
+          "$value": "{Colors.Orange.700}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert warning body and title text.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "#1B1A1A",
           "$type": "color"
         },
         "action": {
           "$description": "Alert warning action color.",
-          "$value": "{Color modes/foreground/fg-warning}",
+          "$value": "{Colors.Orange.700}",
           "$type": "color"
         },
         "action-hover": {
           "$description": "Alert warning action hover color.",
-          "$value": "{Color modes/text/text-warning}",
+          "$value": "{Colors.Orange.700}",
           "$type": "color"
         }
       },
@@ -105,7 +105,7 @@
         },
         "border": {
           "$description": "Alert error border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-error-subtle}",
           "$type": "color"
         },
         "accent": {
@@ -115,7 +115,7 @@
         },
         "text": {
           "$description": "Alert error body and title text.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "#1B1A1A",
           "$type": "color"
         },
         "action": {
@@ -125,7 +125,7 @@
         },
         "action-hover": {
           "$description": "Alert error action hover color.",
-          "$value": "{Color modes/text/text-error}",
+          "$value": "{Colors.Red.700}",
           "$type": "color"
         }
       },

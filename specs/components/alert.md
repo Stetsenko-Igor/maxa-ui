@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its component tokens alias semantic intent roles in both themes; the `Color modes` collection resolves those roles to the appropriate Light or Dark primitives.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based` tokens alias theme-aware Alert roles in `Color modes`; those roles reuse shared aliases where they match and preserve approved component-specific values where exact visual parity requires them.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -94,14 +94,14 @@ All other native `div` attributes are forwarded.
 
 ### Info intent (example, light mode)
 ```css
---alert-info-bg:     var(--color-bg-info-subtle);
---alert-info-border: var(--color-border-info-subtle);
---alert-info-text:   var(--color-text-primary);
---alert-info-title:  var(--color-text-primary);
---alert-info-icon:   var(--color-fg-info);
+--alert-info-bg:     var(--color-alert-info-bg);
+--alert-info-border: var(--color-alert-info-border);
+--alert-info-text:   var(--color-alert-info-text);
+--alert-info-title:  var(--color-alert-info-text);
+--alert-info-icon:   var(--color-alert-info-accent);
 ```
 
-Dark mode keeps the same component aliases and resolves them through the Dark values in `Color modes`.
+The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through the approved bespoke dark palette in `Color modes`.
 
 ---
 
@@ -129,7 +129,7 @@ import { Alert } from "@maxa/ui"
 
 | ❌ Wrong | ✅ Correct |
 |---------|-----------|
-| `background: #EFF6FF` | `background: var(--alert-info-bg)` |
+| `background: #E0F2FF` | `background: var(--alert-info-bg)` |
 | `border-radius: 8px` | `border-radius: var(--alert-radius)` |
 | Color/icon as the only signal | Always include descriptive body text |
 | `role="alert"` on a passive `info` message | Let role derive from intent, or pass `role="status"` |

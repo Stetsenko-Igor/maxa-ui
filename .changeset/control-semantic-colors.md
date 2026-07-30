@@ -20,4 +20,5 @@ The Figma token schema now keeps theme switching only in `Color modes`. `Compone
 has one `Default` mode, all 1,026 component variables keep stable IDs, and every component
 COLOR value is an alias. Alert retains the published dark palette through dedicated
 theme-aware roles, while Dialog, Dropdown Menu, and the extended utility palette follow the
-same single-switch architecture.
+same single-switch architecture. Alert Light retains the deployed Netlify palette, including
+intent-colored borders, and Alert Dark retains its existing bespoke palette.

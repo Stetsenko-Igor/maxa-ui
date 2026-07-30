@@ -466,27 +466,27 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Theme-aware component color roles ── */
 --color-alert-info-bg: var(--color-bg-info-subtle);/* dark: #003877 */
---color-alert-info-border: var(--color-border-secondary);/* dark: #0059c2 */
+--color-alert-info-border: var(--color-border-info-subtle);/* dark: #0059c2 */
 --color-alert-info-accent: var(--color-fg-info);/* dark: #54a3f6 */
---color-alert-info-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-info-text: #1b1a1a;       /* dark: #f4f3f3 */
 --color-alert-info-action: var(--color-action-primary);/* dark: #54a3f6 */
 --color-alert-info-action-hover: var(--color-action-primary-hover);/* dark: #8bc4ff */
 --color-alert-success-bg: var(--color-bg-success-subtle);/* dark: #044329 */
---color-alert-success-border: var(--color-border-secondary);/* dark: #006d0f */
+--color-alert-success-border: var(--color-border-success-subtle);/* dark: #006d0f */
 --color-alert-success-accent: var(--color-fg-success);/* dark: #2bb47d */
---color-alert-success-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-success-text: #1b1a1a;    /* dark: #f4f3f3 */
 --color-alert-success-action: var(--color-fg-success);/* dark: #2bb47d */
 --color-alert-success-action-hover: var(--color-text-success);/* dark: #62d6a2 */
 --color-alert-warning-bg: var(--color-bg-warning-subtle);/* dark: #521d00 */
---color-alert-warning-border: var(--color-border-secondary);/* dark: #b44e00 */
+--color-alert-warning-border: var(--color-border-warning-subtle);/* dark: #b44e00 */
 --color-alert-warning-accent: var(--color-fg-warning);/* dark: #e16d00 */
---color-alert-warning-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-warning-text: #1b1a1a;    /* dark: #f4f3f3 */
 --color-alert-warning-action: var(--color-fg-warning);/* dark: #e16d00 */
 --color-alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
 --color-alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
---color-alert-error-border: var(--color-border-secondary);/* dark: #d71913 */
+--color-alert-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
 --color-alert-error-accent: var(--color-fg-error);/* dark: #ff755e */
---color-alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-error-text: #1b1a1a;      /* dark: #f4f3f3 */
 --color-alert-error-action: var(--color-fg-error);/* dark: #ff755e */
 --color-alert-error-action-hover: var(--color-text-error);/* dark: #ffa193 */
 --color-alert-neutral-bg: var(--color-bg-neutral-subtle);/* dark: #2d2d2e */

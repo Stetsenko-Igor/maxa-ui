@@ -223,27 +223,27 @@
   /* Components alias these stable roles. Theme switching stays solely in */
   /* Color modes instead of being duplicated in Component-based.          */
   --color-alert-info-bg:           var(--color-bg-info-subtle);
-  --color-alert-info-border:       var(--color-border-secondary);
+  --color-alert-info-border:       var(--color-border-info-subtle);
   --color-alert-info-accent:       var(--color-fg-info);
-  --color-alert-info-text:         var(--color-text-primary);
+  --color-alert-info-text:         #1b1a1a;
   --color-alert-info-action:       var(--color-action-primary);
   --color-alert-info-action-hover: var(--color-action-primary-hover);
   --color-alert-success-bg:           var(--color-bg-success-subtle);
-  --color-alert-success-border:       var(--color-border-secondary);
+  --color-alert-success-border:       var(--color-border-success-subtle);
   --color-alert-success-accent:       var(--color-fg-success);
-  --color-alert-success-text:         var(--color-text-primary);
+  --color-alert-success-text:         #1b1a1a;
   --color-alert-success-action:       var(--color-fg-success);
   --color-alert-success-action-hover: var(--color-text-success);
   --color-alert-warning-bg:           var(--color-bg-warning-subtle);
-  --color-alert-warning-border:       var(--color-border-secondary);
+  --color-alert-warning-border:       var(--color-border-warning-subtle);
   --color-alert-warning-accent:       var(--color-fg-warning);
-  --color-alert-warning-text:         var(--color-text-primary);
+  --color-alert-warning-text:         #1b1a1a;
   --color-alert-warning-action:       var(--color-fg-warning);
   --color-alert-warning-action-hover: var(--color-text-warning);
   --color-alert-error-bg:           var(--color-bg-error-subtle);
-  --color-alert-error-border:       var(--color-border-secondary);
+  --color-alert-error-border:       var(--color-border-error-subtle);
   --color-alert-error-accent:       var(--color-fg-error);
-  --color-alert-error-text:         var(--color-text-primary);
+  --color-alert-error-text:         #1b1a1a;
   --color-alert-error-action:       var(--color-fg-error);
   --color-alert-error-action-hover: var(--color-text-error);
   --color-alert-neutral-bg:         var(--color-bg-neutral-subtle);

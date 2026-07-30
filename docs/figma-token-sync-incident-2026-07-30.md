@@ -66,9 +66,18 @@ Importer v11 now performs typed preflight, resolves known CSS references, assign
 
 ## Alert visual parity
 
-The published Alert dark theme uses a bespoke palette. Replacing it with the nearest shared semantic colors changed the visual result and was therefore incorrect.
+The published Alert uses an established palette in both themes. Replacing it with the nearest shared semantic colors changed the visual result and was therefore incorrect. The repaired component roles preserve the deployed Netlify appearance without reintroducing a second Component-based mode.
 
-The repaired Color modes roles preserve the published values:
+Published Light values:
+
+| Intent | Background | Border | Accent | Text |
+| --- | --- | --- | --- | --- |
+| Info | `#E0F2FF` | `#96CEFD` | `#0054B6` | `#1B1A1A` |
+| Success | `#F0FDF4` | `#86EFAC` | `#166534` | `#1B1A1A` |
+| Warning | `#FFF7ED` | `#FED7AA` | `#C2410C` | `#1B1A1A` |
+| Error | `#FEF2F2` | `#FECACA` | `#B91C1C` | `#1B1A1A` |
+
+Published Dark values:
 
 | Intent | Background | Border | Accent | Text |
 | --- | --- | --- | --- | --- |
