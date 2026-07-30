@@ -255,7 +255,7 @@
   --color-border-neutral-subtle: var(--color-neutral-700);
 
   /* ── Background — dark (surface elevation) ──────────────────────── */
-  --color-bg-page:              var(--color-neutral-1000);   /* #0D0D0D — darkest page canvas */
+  --color-bg-page:              var(--color-neutral-950);    /* #1A1919 — darkest page canvas */
   --color-bg-surface:           var(--color-neutral-900);    /* #2A2A2B — raised surface */
   --color-bg-float:             var(--color-neutral-800);    /* #444445 — floating surface */
   --color-bg-muted:             var(--color-neutral-975);    /* #161616 — recessed zone */

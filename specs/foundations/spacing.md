@@ -9,7 +9,7 @@ Primitives/Spacing/4 (16px) = 16
     ↓
 spacing-xl = 16px
     ↓
-Layout/Stack/default = spacing-xl (used by designers in Auto layout)
+Layout/V-stack/default = spacing-xl (used by designers in Auto layout)
 ```
 
 **Rule:** In code, use CSS spacing variables. Never hardcode `px` values that exist in the scale.
@@ -40,23 +40,23 @@ Layout/Stack/default = spacing-xl (used by designers in Auto layout)
 
 Layout tokens express usage intent. They are responsive — values differ per breakpoint.
 
-### Stack (vertical spacing between elements)
+### V-stack (vertical spacing between elements)
 
 | Token | Desktop | Tablet | Mobile | When to use |
 |-------|---------|--------|--------|------------|
-| `Stack/tight` | 4px | 4px | 4px | Between closely related items (icon+label) |
-| `Stack/text` | 12px | 12px | 12px | Between lines of text, list items |
-| `Stack/default` | 16px | 16px | 16px | Default vertical gap between elements |
-| `Stack/group` | 24px | 24px | 24px | Between groups of related content |
-| `Stack/section` | 80px | 64px | 48px | Between major page sections |
+| `V-stack/tight` | 4px | 4px | 4px | Between closely related items (icon+label) |
+| `V-stack/text` | 12px | 12px | 12px | Between lines of text, list items |
+| `V-stack/default` | 16px | 16px | 16px | Default vertical gap between elements |
+| `V-stack/group` | 24px | 24px | 24px | Between groups of related content |
+| `V-stack/section` | 80px | 64px | 48px | Between major page sections |
 
-### Inline (horizontal spacing between elements)
+### H-stack (horizontal spacing between elements)
 
 | Token | Desktop | Tablet | Mobile | When to use |
 |-------|---------|--------|--------|------------|
-| `Inline/tight` | 8px | 8px | 8px | Between icon and adjacent label |
-| `Inline/default` | 12px | 12px | 12px | Default horizontal gap |
-| `Inline/group` | 16px | 16px | 16px | Between grouped inline items |
+| `H-stack/tight` | 8px | 8px | 8px | Between icon and adjacent label |
+| `H-stack/default` | 12px | 12px | 12px | Default horizontal gap |
+| `H-stack/group` | 16px | 16px | 16px | Between grouped inline items |
 
 ### Container / Grid
 

@@ -19,3 +19,6 @@ test-results/
 # Local npm auth / registry selection (holds tokens) — see .npmrc.example
 .npmrc
 playwright-report/
+
+# Figma variable exports (temporary diff artifacts, not source of truth)
+docs/figma-exports/
