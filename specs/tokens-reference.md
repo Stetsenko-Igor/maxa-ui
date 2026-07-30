@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1709
+Total tokens: 1710
 
 ## Primitives
 
@@ -43,6 +43,7 @@ Source: `packages/tokens/src/primitives.css`
 /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
 --color-blue-50: #E0F2FF;
 --color-blue-100: #DBEAFE;
+--color-blue-150: #C7E5F0;
 --color-blue-200: #96CEFD;
 --color-blue-300: #59A7F6;
 --color-blue-400: #147AF3;
@@ -499,7 +500,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-overlay-strong: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */
 --color-action-menu-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
 --color-action-menu-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
---color-border-focus-soft: #c7e5f0;
+--color-border-focus-soft: var(--color-blue-150);
 --color-fg-on-inverse-muted: rgba(255, 255, 255, 0.45);
 ```
 

@@ -254,7 +254,7 @@
   --color-bg-overlay-strong:       rgba(27, 26, 26, 0.5);
   --color-action-menu-hover:       var(--color-action-neutral-subtle-hover);
   --color-action-menu-active:      var(--color-action-neutral-subtle-active);
-  --color-border-focus-soft:       #c7e5f0;
+  --color-border-focus-soft:       var(--color-blue-150);
   --color-fg-on-inverse-muted:     rgba(255, 255, 255, 0.45);
 }
 

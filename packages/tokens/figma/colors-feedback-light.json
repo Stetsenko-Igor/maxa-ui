@@ -180,7 +180,7 @@
   "border": {
     "border-focus-soft": {
       "$description": "Soft focus border for low-contrast controls.",
-      "$value": "#C7E5F0",
+      "$value": "{Colors.Blue.150}",
       "$type": "color"
     }
   },

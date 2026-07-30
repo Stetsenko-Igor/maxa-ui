@@ -56,7 +56,7 @@
     }
   },
   "border": {
-    "border-focus-soft": { "$value": "#C7E5F0", "$type": "color" }
+    "border-focus-soft": { "$value": "{Colors.Blue.150}", "$type": "color" }
   },
   "foreground": {
     "fg-on-inverse-muted": { "$value": "#FFFFFF73", "$type": "color" }

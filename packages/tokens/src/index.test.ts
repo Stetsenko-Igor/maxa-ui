@@ -122,6 +122,10 @@ describe("primitives.css — gray", () => {
       }
     }
   })
+
+  it("defines the exact soft-focus blue primitive", () => {
+    expect(css).toContain("--color-blue-150: #C7E5F0;")
+  })
 })
 
 // ── semantic.css — text + border ──────────────────────────────────────────
@@ -494,6 +498,8 @@ describe("figma import bundle", () => {
     expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
+    expect(light?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
+    expect(dark?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
     expect(Object.keys(light ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
     expect(Object.keys(dark ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
     expect(light?.["feedback/info/bg"]).toBe("#E0F2FF")

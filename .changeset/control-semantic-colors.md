@@ -27,3 +27,6 @@ Removed the duplicate `Color modes/component/*` namespace. `Component-based` now
 reusable feedback and support semantics. Alert Neutral and Emphasize use dedicated feedback roles
 that resolve to the current primitive values without coupling the component to shared surface or
 page semantics.
+
+`border-focus-soft` now aliases the exact `Colors/Blue/150` primitive in both color modes instead
+of storing the same raw hex value twice. Its resolved color remains `#C7E5F0`.

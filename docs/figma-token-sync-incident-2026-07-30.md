@@ -11,7 +11,7 @@ The repository and the live `[MAXA] Foundation` Figma file now use one theme swi
 Live Figma validation after the migration:
 
 - 8 collections
-- 1,631 variables
+- 1,632 variables
 - 230 variables in `Color modes`
 - 1,026 variables in `Component-based`
 - 0 missing `Component-based / Default` values
@@ -21,9 +21,9 @@ Live Figma validation after the migration:
 
 The generated repository bundle contains the same collection counts and mode structure:
 
-- 1,631 variables
-- 1,949 per-mode values
-- 1,268 alias values
+- 1,632 variables
+- 1,950 per-mode values
+- 1,270 alias values
 - 0 unresolved CSS expressions
 
 ## Where colors are changed now
@@ -45,6 +45,10 @@ Neutral and Emphasize use dedicated feedback roles so shared background-token ch
 
 - `Component-based/Alert/color/neutral/bg` → `Color modes/feedback/neutral/bg` → `Primitives/Colors/Base/White` in Light and `Primitives/Colors/Neutral/900` in Dark
 - `Component-based/Alert/color/emphasize/bg` → `Color modes/feedback/emphasize/bg` → `Primitives/Colors/Neutral/50` in Light and `Primitives/Colors/Neutral/950` in Dark
+
+The shared soft-focus border keeps its exact deployed color through an explicit primitive:
+
+- `Color modes/border/border-focus-soft` → `Primitives/Colors/Blue/150` (`#C7E5F0`) in both modes
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 

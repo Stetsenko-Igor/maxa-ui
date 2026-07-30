@@ -857,6 +857,11 @@
         "$value": "#DBEAFE",
         "$type": "color"
       },
+      "150": {
+        "$description": "Exact soft-focus blue used by low-contrast control borders.",
+        "$value": "#C7E5F0",
+        "$type": "color"
+      },
       "200": {
         "$value": "#96CEFD",
         "$type": "color"
