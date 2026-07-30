@@ -2,8 +2,8 @@
 /* Alert (callout): contextual feedback box with left accent strip.       */
 /* Four intents: info/success/warning/danger. Two layouts:                */
 /* inline (no title — horizontal) and stacked (with title — vertical).    */
-/* Light mode uses semantic intent surfaces. Dark mode mirrors the Figma */
-/* reusable Alert surface: muted dark panels and restrained intent color. */
+/* Both themes resolve through semantic Color modes; component tokens never */
+/* carry theme-specific raw colors.                                       */
 
 :root {
   /* ── Shared layout ─────────────────────────────────────────────── */
@@ -66,42 +66,4 @@
   --alert-error-strip:        var(--color-fg-error);
   --alert-error-action:       var(--color-fg-error);
   --alert-error-action-hover: var(--color-text-error);
-}
-
-[data-theme="dark"] {
-  --alert-info-bg:           #003877;
-  --alert-info-border:       #0059c2;
-  --alert-info-text:         #f4f3f3;
-  --alert-info-title:        #f4f3f3;
-  --alert-info-icon:         #54a3f6;
-  --alert-info-strip:        #54a3f6;
-  --alert-info-action:       #54a3f6;
-  --alert-info-action-hover: #8bc4ff;
-
-  --alert-success-bg:           #044329;
-  --alert-success-border:       #006d0f;
-  --alert-success-text:         #f4f3f3;
-  --alert-success-title:        #f4f3f3;
-  --alert-success-icon:         #2bb47d;
-  --alert-success-strip:        #2bb47d;
-  --alert-success-action:       #2bb47d;
-  --alert-success-action-hover: #62d6a2;
-
-  --alert-warning-bg:           #521d00;
-  --alert-warning-border:       #b44e00;
-  --alert-warning-text:         #f4f3f3;
-  --alert-warning-title:        #f4f3f3;
-  --alert-warning-icon:         #e16d00;
-  --alert-warning-strip:        #e16d00;
-  --alert-warning-action:       #e16d00;
-  --alert-warning-action-hover: #ff9a3c;
-
-  --alert-error-bg:           #7b0000;
-  --alert-error-border:       #d71913;
-  --alert-error-text:         #f4f3f3;
-  --alert-error-title:        #f4f3f3;
-  --alert-error-icon:         #ff755e;
-  --alert-error-strip:        #ff755e;
-  --alert-error-action:       #ff755e;
-  --alert-error-action-hover: #ffa193;
 }

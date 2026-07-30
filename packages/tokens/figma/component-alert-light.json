@@ -104,7 +104,7 @@
         },
         "border": {
           "$description": "Alert, color info: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-info-subtle}",
           "$type": "color"
         },
         "accent": {
@@ -126,7 +126,7 @@
         },
         "border": {
           "$description": "Alert, color success: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-success-subtle}",
           "$type": "color"
         },
         "accent": {
@@ -148,7 +148,7 @@
         },
         "border": {
           "$description": "Alert, color warning: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-warning-subtle}",
           "$type": "color"
         },
         "accent": {
@@ -170,7 +170,7 @@
         },
         "border": {
           "$description": "Alert, color error: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/border/border-error-subtle}",
           "$type": "color"
         },
         "accent": {

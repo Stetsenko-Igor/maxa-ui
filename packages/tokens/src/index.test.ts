@@ -473,10 +473,31 @@ describe("figma import bundle", () => {
     expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
+    expect(light?.["border/border-info-subtle"]).toBe("{Colors.Blue.200}")
+    expect(dark?.["border/border-info-subtle"]).toBe("{Colors.Blue.200}")
+    expect(light?.["border/border-success-subtle"]).toBe("{Colors.Green.300}")
+    expect(dark?.["border/border-success-subtle"]).toBe("{Colors.Green.300}")
+    expect(light?.["border/border-warning-subtle"]).toBe("{Colors.Orange.200}")
+    expect(dark?.["border/border-warning-subtle"]).toBe("{Colors.Orange.200}")
+    expect(light?.["border/border-error-subtle"]).toBe("{Colors.Red.200}")
+    expect(dark?.["border/border-error-subtle"]).toBe("{Colors.Red.200}")
     expect(componentLight?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
     expect(componentDark?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
     expect(componentLight?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
     expect(componentLight?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
+  })
+
+  it("keeps every Alert color value aliased to Color modes in both themes", () => {
+    const component = bundle.collections["Component-based"]
+    const light = component?.modes.Light ?? {}
+    const dark = component?.modes.Dark ?? {}
+    const alertColorNames = Object.keys(light).filter((name) => name.startsWith("Alert/color/"))
+
+    expect(alertColorNames).toHaveLength(24)
+    for (const name of alertColorNames) {
+      expect(light[name], `Light ${name}`).toMatch(/^\{Color modes\//)
+      expect(dark[name], `Dark ${name}`).toMatch(/^\{Color modes\//)
+    }
   })
 
   it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Dropdown Menu, Divider, and Utility component tokens", () => {
@@ -516,7 +537,7 @@ describe("figma import bundle", () => {
     expect(light?.["Alert/typography/font-size"]).toBe("{Typography/Font size/text-md}")
     expect(light?.["Alert/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
     expect(light?.["Alert/color/info/bg"]).toBe("{Color modes/background/bg-info-subtle}")
-    expect(light?.["Alert/color/info/border"]).toBe("{Color modes/border/border-secondary}")
+    expect(light?.["Alert/color/info/border"]).toBe("{Color modes/border/border-info-subtle}")
     expect(light?.["Alert/color/info/accent"]).toBe("{Color modes/foreground/fg-info}")
     expect(light?.["Alert/color/warning/bg"]).toBe("{Color modes/background/bg-warning-subtle}")
     expect(light?.["Alert/color/error/accent"]).toBe("{Color modes/foreground/fg-error}")
@@ -550,9 +571,9 @@ describe("figma import bundle", () => {
     expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
     expect(dark?.["Alert/layout/padding-x"]).toBe(16)
     expect(dark?.["Alert/icon/size"]).toBe(20)
-    expect(dark?.["Alert/color/success/bg"]).toBe("#044329")
-    expect(dark?.["Alert/color/error/accent"]).toBe("#FF755E")
-    expect(dark?.["Alert/color/emphasize/border"]).toBe("#545454")
+    expect(dark?.["Alert/color/success/bg"]).toBe("{Color modes/background/bg-success-subtle}")
+    expect(dark?.["Alert/color/error/accent"]).toBe("{Color modes/foreground/fg-error}")
+    expect(dark?.["Alert/color/emphasize/border"]).toBe("{Color modes/border/border-primary}")
     expect(dark?.["Checkbox/size/md/control"]).toBe(20)
     expect(dark?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
     expect(dark?.["Radio/size/md/dot"]).toBe(8)

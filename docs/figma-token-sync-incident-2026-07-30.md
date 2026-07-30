@@ -2,14 +2,14 @@
 
 ## Outcome
 
-The repository bundle and the live `[MAXA] Foundation` Figma file are reconciled. A read-only comparison of all 1,504 variables reports zero differences in variable type, per-mode value, or alias target.
+The repository bundle and the live `[MAXA] Foundation` Figma file are reconciled. A read-only comparison of the original 1,504 variables reported zero differences in variable type, per-mode value, or alias target. After the Alert follow-up, the 28-variable delta was validated separately: 24 existing Alert variables retain their IDs and resolve through semantic aliases in both modes, while 4 new semantic border variables resolve to primitives.
 
 The generated bundle now contains:
 
 - 8 collections
-- 1,504 variables
-- 2,721 per-mode values
-- 1,774 real aliases
+- 1,508 variables
+- 2,729 per-mode values
+- 1,806 real aliases
 - 0 unresolved CSS expressions
 
 ## What happened
@@ -35,8 +35,9 @@ The repair:
 - recreated 116 stale wrong-type variables with explicit Figma types and scopes;
 - removed 12 shadow pseudo-variables that belong as Effect Styles, not text variables;
 - restored 58 per-mode alias bindings on 29 existing variables;
-- restored 24 bespoke Alert dark-mode color values that had defaulted to white;
-- preserved 1,026 variables in `Component-based` and brought `Color modes` to 103 variables.
+- replaced 24 bespoke Alert dark-mode literals with semantic aliases while preserving the existing Alert variable IDs;
+- added 4 missing semantic subtle-border variables for info, success, warning, and error;
+- preserved 1,026 variables in `Component-based` and brought `Color modes` to 107 variables.
 
 Recreated variables receive new Figma IDs by definition. The local consumer scan was therefore a required safety gate. Consumers in other Figma files cannot be inspected from the Foundation file API; publishing the repaired library remains an explicit manual action in Figma.
 
@@ -63,6 +64,8 @@ MAXA Token Importer v10 now:
 - handles transparent, RGB, RGBA, literals, and aliases consistently.
 
 The token audit and test suite now validate the final generated artifact, not only the raw source JSON.
+
+An exact Figma-to-bundle match is necessary but not sufficient when the bundle itself can encode an architectural violation. A focused regression test now requires every `Alert/color/*` value in both modes to be a `Color modes` alias, preventing raw component-level color literals from returning.
 
 ## Review of Claude's changes today
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. It uses component-level tokens with light and dark theme values: light mode follows semantic intent surfaces, while dark mode mirrors the Figma reusable Alert surface with muted dark panels, restrained intent borders, a left accent strip, and calm intent icons.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its component tokens alias semantic intent roles in both themes; the `Color modes` collection resolves those roles to the appropriate Light or Dark primitives.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -30,26 +30,22 @@ Each intent maps to theme-aware component token values.
 
 ### `info`
 - **Use when:** Neutral, helpful context or tips.
-- **Light:** `bg/info-subtle`, `border/info-subtle`, `text/primary`, `fg/info`
-- **Dark:** `#003877`, `#0059C2`, `#F4F3F3`, `#54A3F6`
+- **Tokens:** `bg/info-subtle`, `border/info-subtle`, `text/primary`, `fg/info`
 - **Role:** `status` (polite)
 
 ### `success`
 - **Use when:** Confirming a successful, completed action.
-- **Light:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/success`
-- **Dark:** `#044329`, `#006D0F`, `#F4F3F3`, `#2BB47D`
+- **Tokens:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/success`
 - **Role:** `status` (polite)
 
 ### `warning`
 - **Use when:** Cautioning the user about a potential issue or required attention.
-- **Light:** `bg/warning-subtle`, `border/warning-subtle`, `text/primary`, `fg/warning`
-- **Dark:** `#521D00`, `#B44E00`, `#F4F3F3`, `#E16D00`
+- **Tokens:** `bg/warning-subtle`, `border/warning-subtle`, `text/primary`, `fg/warning`
 - **Role:** `alert` (assertive)
 
 ### `error`
 - **Use when:** Reporting an error, failure, or destructive consequence.
-- **Light:** `bg/error-subtle`, `border/error-subtle`, `text/primary`, `fg/error`
-- **Dark:** `#7B0000`, `#D71913`, `#F4F3F3`, `#FF755E`
+- **Tokens:** `bg/error-subtle`, `border/error-subtle`, `text/primary`, `fg/error`
 - **Role:** `alert` (assertive)
 
 ---
@@ -105,7 +101,7 @@ All other native `div` attributes are forwarded.
 --alert-info-icon:   var(--color-fg-info);
 ```
 
-Dark mode overrides these component tokens under `[data-theme="dark"]` with the Figma dark Alert values.
+Dark mode keeps the same component aliases and resolves them through the Dark values in `Color modes`.
 
 ---
 

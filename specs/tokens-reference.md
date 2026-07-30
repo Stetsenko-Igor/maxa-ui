@@ -1611,44 +1611,44 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-title-weight: var(--font-weight-bold);
 
 /* ── Info ── */
---alert-info-bg: var(--color-bg-info-subtle);/* dark: #003877 */
---alert-info-border: var(--color-border-info-subtle);/* dark: #0059c2 */
---alert-info-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-info-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-info-icon: var(--color-fg-info);/* dark: #54a3f6 */
---alert-info-strip: var(--color-fg-info);/* dark: #54a3f6 */
---alert-info-action: var(--color-action-primary);/* dark: #54a3f6 */
---alert-info-action-hover: var(--color-action-primary-hover);/* dark: #8bc4ff */
+--alert-info-bg: var(--color-bg-info-subtle);
+--alert-info-border: var(--color-border-info-subtle);
+--alert-info-text: var(--color-text-primary);
+--alert-info-title: var(--color-text-primary);
+--alert-info-icon: var(--color-fg-info);
+--alert-info-strip: var(--color-fg-info);
+--alert-info-action: var(--color-action-primary);
+--alert-info-action-hover: var(--color-action-primary-hover);
 
 /* ── Success ── */
---alert-success-bg: var(--color-bg-success-subtle);/* dark: #044329 */
---alert-success-border: var(--color-border-success-subtle);/* dark: #006d0f */
---alert-success-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-success-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-success-icon: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-strip: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-action: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-action-hover: var(--color-text-success);/* dark: #62d6a2 */
+--alert-success-bg: var(--color-bg-success-subtle);
+--alert-success-border: var(--color-border-success-subtle);
+--alert-success-text: var(--color-text-primary);
+--alert-success-title: var(--color-text-primary);
+--alert-success-icon: var(--color-fg-success);
+--alert-success-strip: var(--color-fg-success);
+--alert-success-action: var(--color-fg-success);
+--alert-success-action-hover: var(--color-text-success);
 
 /* ── Warning ── */
---alert-warning-bg: var(--color-bg-warning-subtle);/* dark: #521d00 */
---alert-warning-border: var(--color-border-warning-subtle);/* dark: #b44e00 */
---alert-warning-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-warning-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-warning-icon: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-strip: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-action: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
+--alert-warning-bg: var(--color-bg-warning-subtle);
+--alert-warning-border: var(--color-border-warning-subtle);
+--alert-warning-text: var(--color-text-primary);
+--alert-warning-title: var(--color-text-primary);
+--alert-warning-icon: var(--color-fg-warning);
+--alert-warning-strip: var(--color-fg-warning);
+--alert-warning-action: var(--color-fg-warning);
+--alert-warning-action-hover: var(--color-text-warning);
 
 /* ── Error ── */
---alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
---alert-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
---alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-error-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-error-icon: var(--color-fg-error);/* dark: #ff755e */
---alert-error-strip: var(--color-fg-error);/* dark: #ff755e */
---alert-error-action: var(--color-fg-error);/* dark: #ff755e */
---alert-error-action-hover: var(--color-text-error);/* dark: #ffa193 */
+--alert-error-bg: var(--color-bg-error-subtle);
+--alert-error-border: var(--color-border-error-subtle);
+--alert-error-text: var(--color-text-primary);
+--alert-error-title: var(--color-text-primary);
+--alert-error-icon: var(--color-fg-error);
+--alert-error-strip: var(--color-fg-error);
+--alert-error-action: var(--color-fg-error);
+--alert-error-action-hover: var(--color-text-error);
 ```
 
 ## Tooltip Component Tokens

@@ -87,9 +87,19 @@
       "$value": "{Colors.Red.500}",
       "$type": "color"
     },
+    "border-error-subtle": {
+      "$description": "Subtle error border for low-emphasis feedback surfaces.",
+      "$value": "{Colors.Red.200}",
+      "$type": "color"
+    },
     "border-info-strong": {
       "$description": "Strong informational border and accent stripe.",
       "$value": "{Colors.Blue.700}",
+      "$type": "color"
+    },
+    "border-info-subtle": {
+      "$description": "Subtle informational border for low-emphasis feedback surfaces.",
+      "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
     "border-success-strong": {
@@ -97,9 +107,19 @@
       "$value": "{Colors.Green.700}",
       "$type": "color"
     },
+    "border-success-subtle": {
+      "$description": "Subtle success border for low-emphasis feedback surfaces.",
+      "$value": "{Colors.Green.300}",
+      "$type": "color"
+    },
     "border-warning-strong": {
       "$description": "Strong warning border and accent stripe.",
       "$value": "{Colors.Orange.600}",
+      "$type": "color"
+    },
+    "border-warning-subtle": {
+      "$description": "Subtle warning border for low-emphasis feedback surfaces.",
+      "$value": "{Colors.Orange.200}",
       "$type": "color"
     }
   },

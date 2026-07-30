@@ -70,16 +70,32 @@
       "$value": "{Colors.Red.400}",
       "$type": "color"
     },
+    "border-error-subtle": {
+      "$value": "{Colors.Red.200}",
+      "$type": "color"
+    },
     "border-info-strong": {
       "$value": "{Colors.Blue.500}",
+      "$type": "color"
+    },
+    "border-info-subtle": {
+      "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
     "border-success-strong": {
       "$value": "{Colors.Green.500}",
       "$type": "color"
     },
+    "border-success-subtle": {
+      "$value": "{Colors.Green.300}",
+      "$type": "color"
+    },
     "border-warning-strong": {
       "$value": "{Colors.Orange.500}",
+      "$type": "color"
+    },
+    "border-warning-subtle": {
+      "$value": "{Colors.Orange.200}",
       "$type": "color"
     }
   },
