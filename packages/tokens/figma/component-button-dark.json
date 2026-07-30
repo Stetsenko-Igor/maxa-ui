@@ -43,6 +43,9 @@
       "text": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
       "text-hover": { "$value": "{Color modes/action/action-primary-hover}", "$type": "color" },
       "text-active": { "$value": "{Color modes/action/action-primary-active}", "$type": "color" },
+      "fg": { "$value": "{Color modes/action/action-primary}", "$type": "color" },
+      "fg-hover": { "$value": "{Color modes/action/action-primary-hover}", "$type": "color" },
+      "fg-active": { "$value": "{Color modes/action/action-primary-active}", "$type": "color" },
       "border": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
       "border-hover": { "$value": "{Primitives/Colors/Base/Transparent}", "$type": "color" },
       "border-focus": { "$value": "{Color modes/border/border-focus}", "$type": "color" }

@@ -10,18 +10,18 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/primary/border-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
   'Button/primary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/secondary/bg': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/secondary/bg-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
-  'Button/secondary/bg-active': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
+  'Button/secondary/bg-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
+  'Button/secondary/bg-active': { r: 140 / 255, g: 140 / 255, b: 142 / 255 },
   'Button/secondary/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/secondary/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/secondary/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
+  'Button/secondary/border-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
   'Button/secondary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/outline/bg': { r: 252 / 255, g: 252 / 255, b: 252 / 255 },
   'Button/outline/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
   'Button/outline/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/outline/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/outline/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
+  'Button/outline/border-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
   'Button/outline/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/ghost/bg': { r: 1, g: 1, b: 1, a: 0 },
   'Button/ghost/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
@@ -36,16 +36,26 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/link/text': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/link/text-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
   'Button/link/text-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
+  'Button/link/fg': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
+  'Button/link/fg-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
+  'Button/link/fg-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
   'Button/link/border': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/border-hover': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/danger/bg': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
-  'Button/danger/bg-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
-  'Button/danger/bg-active': { r: 185 / 255, g: 28 / 255, b: 28 / 255 },
-  'Button/danger/text': { r: 1, g: 1, b: 1 },
-  'Button/danger/border': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
-  'Button/danger/border-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
-  'Button/danger/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
+  'Button/success/bg': { r: 34 / 255, g: 197 / 255, b: 94 / 255 },
+  'Button/success/bg-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
+  'Button/success/bg-active': { r: 21 / 255, g: 128 / 255, b: 61 / 255 },
+  'Button/success/text': { r: 1, g: 1, b: 1 },
+  'Button/success/border': { r: 34 / 255, g: 197 / 255, b: 94 / 255 },
+  'Button/success/border-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
+  'Button/success/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
+  'Button/destructive/bg': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
+  'Button/destructive/bg-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
+  'Button/destructive/bg-active': { r: 185 / 255, g: 28 / 255, b: 28 / 255 },
+  'Button/destructive/text': { r: 1, g: 1, b: 1 },
+  'Button/destructive/border': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
+  'Button/destructive/border-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
+  'Button/destructive/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
 };
 
 figma.ui.onmessage = async (msg) => {
@@ -200,7 +210,7 @@ function analyzeComponent(component, options) {
   const sizeCandidate = detectSize(component, parsedProperties);
   const stateCandidate = detectState(component.name, parsedProperties);
   const familyCandidate = detectFamily(component, visibleTextLayers, iconCandidates, parsedProperties, options);
-  const variantCandidate = detectVariant(component.name, surfaceLayer, parsedProperties);
+  const variantCandidate = detectVariant(component.name, surfaceLayer, parsedProperties, options);
   const legacyDependencies = detectLegacyDependencies(component, surfaceLayer, visibleTextLayers);
   const warnings = [];
 
@@ -208,7 +218,7 @@ function analyzeComponent(component, options) {
   if (familyCandidate !== 'Buttons/Icon button' && visibleTextLayers.length === 0) warnings.push('No clear label layer found.');
   if (visibleTextLayers.length > 1) warnings.push('Multiple text layers found.');
   if (iconCandidates.length > 2) warnings.push('Multiple icon candidates found.');
-  if (!sizeCandidate) warnings.push('Size does not match sm, md, or lg.');
+  if (!sizeCandidate) warnings.push('Size does not match xs, sm, md, or lg.');
   if (familyCandidate === 'Buttons/Icon button' && visibleTextLayers.length > 0) warnings.push('Icon-only candidate still contains visible text.');
 
   const confidence = scoreConfidence({
@@ -267,14 +277,14 @@ function detectFamily(component, textLayers, iconCandidates, parsedProperties, o
   const isSquare = Math.abs(component.width - component.height) <= 4;
   const justIcon = isTruthyVariantValue(getVariantProperty(parsedProperties, ['just icon', 'icon only', 'icon-only']));
 
-  if (name.includes('danger') || name.includes('destructive') || name.includes('error')) {
-    return 'Buttons/Button destructive';
-  }
   if (justIcon) {
     return 'Buttons/Icon button';
   }
   if (!hasText && isSquare) {
     return 'Buttons/Icon button';
+  }
+  if (name.includes('negative') || name.includes('danger') || name.includes('destructive') || name.includes('error')) {
+    return 'Buttons/Button destructive';
   }
   if (hasText) {
     return 'Buttons/Button';
@@ -285,19 +295,15 @@ function detectFamily(component, textLayers, iconCandidates, parsedProperties, o
   return 'unknown';
 }
 
-function detectVariant(name, surfaceLayer, parsedProperties) {
+function detectVariant(name, surfaceLayer, parsedProperties, options) {
+  const manualVariant = normalizeTargetVariant(options && options.targetFamily);
+  if (manualVariant) return manualVariant;
+
   const propertyVariant = normalizeVariant(getVariantProperty(parsedProperties, ['type', 'variant', 'style']));
   if (propertyVariant) return propertyVariant;
 
   const source = `${name} ${getPaintKeywords(surfaceLayer)}`.toLowerCase();
-  if (source.includes('primary')) return 'primary';
-  if (source.includes('secondary')) return 'secondary';
-  if (source.includes('outline')) return 'outline';
-  if (source.includes('ghost')) return 'ghost';
-  if (source.includes('link')) return 'link';
-  if (source.includes('danger') || source.includes('destructive') || source.includes('error')) return 'danger';
-  if (source.includes('success') || source.includes('positive')) return 'success';
-  return 'unknown';
+  return normalizeVariant(source) || 'unknown';
 }
 
 function detectSize(component, parsedProperties) {
@@ -305,8 +311,9 @@ function detectSize(component, parsedProperties) {
   if (propertySize) return propertySize;
 
   const height = Math.round(component.height);
-  if (height === 32) return 'sm';
-  if (height === 40) return 'md';
+  if (height === 24) return 'xs';
+  if (height === 28 || height === 32) return 'sm';
+  if (height === 36 || height === 40) return 'md';
   if (height === 48) return 'lg';
   return null;
 }
@@ -319,7 +326,8 @@ function detectState(name, parsedProperties) {
   if (source.includes('disabled')) return 'disabled';
   if (source.includes('loading')) return 'loading';
   if (source.includes('hover')) return 'hover';
-  if (source.includes('active') || source.includes('pressed')) return 'active';
+  if (source.includes('selected')) return 'selected';
+  if (source.includes('active') || source.includes('pressed')) return 'pressed';
   if (source.includes('focus') || source.includes('focused')) return 'focus';
   return 'default';
 }
@@ -330,7 +338,7 @@ function detectSurfaceLayer(component) {
     candidates.push({ node: component, depth: 0 });
   }
   collectSurfaceCandidates(component, 0, candidates);
-  if (!candidates.length) return null;
+  if (!candidates.length) return component && 'fills' in component ? component : null;
 
   candidates.sort((a, b) => scoreSurfaceCandidate(b.node, component, b.depth) - scoreSurfaceCandidate(a.node, component, a.depth));
   return candidates[0].node || null;
@@ -556,6 +564,7 @@ function isLikelyIconNode(node) {
 }
 
 function describeNode(node) {
+  if (!node) return null;
   return {
     id: node.id,
     name: node.name,
@@ -656,20 +665,19 @@ function normalizeVariant(value) {
   if (source.includes('outline')) return 'outline';
   if (source.includes('ghost')) return 'ghost';
   if (source.includes('link')) return 'link';
-  if (source.includes('danger') || source.includes('destructive') || source.includes('error')) return 'danger';
+  if (source.includes('negative') || source.includes('danger') || source.includes('destructive') || source.includes('error')) return 'destructive';
   if (source.includes('success') || source.includes('positive')) return 'success';
+  if (source.includes('warning')) return 'warning';
   return '';
 }
 
 function normalizeSize(value) {
   const source = String(value || '').toLowerCase();
   if (!source) return '';
-  if (source === 's' || source.includes('small')) return 'sm';
-  if (source === 'm' || source.includes('medium')) return 'md';
-  if (source === 'l' || source.includes('large')) return 'lg';
-  if (source.includes('sm')) return 'sm';
-  if (source.includes('md')) return 'md';
-  if (source.includes('lg')) return 'lg';
+  if (source === 'xs' || source.includes('xtra small') || source.includes('extra small') || source.includes('x-small')) return 'xs';
+  if (source === 's' || source === 'sm' || source.includes('small')) return 'sm';
+  if (source === 'm' || source === 'md' || source.includes('medium')) return 'md';
+  if (source === 'l' || source === 'lg' || source.includes('large')) return 'lg';
   return '';
 }
 
@@ -679,7 +687,8 @@ function normalizeState(value) {
   if (source.includes('disabled')) return 'disabled';
   if (source.includes('loading')) return 'loading';
   if (source.includes('hover')) return 'hover';
-  if (source.includes('active') || source.includes('pressed')) return 'active';
+  if (source.includes('selected')) return 'selected';
+  if (source.includes('active') || source.includes('pressed')) return 'pressed';
   if (source.includes('focus')) return 'focus';
   if (source.includes('default')) return 'default';
   return '';
@@ -697,14 +706,23 @@ function normalizeTargetFamily(value) {
     case 'outline':
     case 'ghost':
     case 'link':
+    case 'success':
+    case 'positive':
       return 'Buttons/Button';
     case 'destructive':
+    case 'negative':
       return 'Buttons/Button destructive';
     case 'icon-button':
       return 'Buttons/Icon button';
     default:
       return '';
   }
+}
+
+function normalizeTargetVariant(value) {
+  const source = String(value || '').toLowerCase();
+  if (source === 'auto-detect' || source === 'icon-button') return '';
+  return normalizeVariant(source);
 }
 
 function votesToSummary(voteMap) {
@@ -715,7 +733,8 @@ function votesToSummary(voteMap) {
 
 function buildMappingPreview(input) {
   const variant = normalizePreviewVariant(input.familyCandidate, input.variantCandidate);
-  const stateSuffix = getStateSuffix(input.stateCandidate);
+  const backgroundSuffix = getBackgroundStateSuffix(input.stateCandidate);
+  const borderSuffix = getBorderStateSuffix(input.stateCandidate);
   const size = input.sizeCandidate;
   const isIconFamily = input.familyCandidate === 'Buttons/Icon button';
   const result = {
@@ -736,7 +755,7 @@ function buildMappingPreview(input) {
       id: 'label-text',
       role: 'label',
       sourceNode: describeNode(input.labelLayer),
-      token: `Button/${variant}/text`,
+      token: getLabelToken(variant, input.stateCandidate),
     });
     result.assignments.push({
       id: 'label-font-family',
@@ -746,25 +765,27 @@ function buildMappingPreview(input) {
     });
   }
 
-  result.assignments.push({
-    id: 'surface-bg',
-    role: 'surface',
-    sourceNode: describeNode(input.surfaceLayer),
-    token: `Button/${variant}/bg${stateSuffix}`,
-  });
-
-  if (input.borderLayer) {
+  if (input.surfaceLayer) {
+    result.assignments.push({
+      id: 'surface-bg',
+      role: 'surface',
+      sourceNode: describeNode(input.surfaceLayer),
+      token: `Button/${variant}/bg${backgroundSuffix}`,
+    });
     result.assignments.push({
       id: 'surface-border',
       role: 'border',
-      sourceNode: describeNode(input.borderLayer),
-      token: `Button/${variant}/border${stateSuffix === '-focus' ? '-focus' : stateSuffix}`,
+      sourceNode: describeNode(input.borderLayer || input.surfaceLayer),
+      token: `Button/${variant}/border${borderSuffix}`,
     });
+    if (!input.borderLayer) {
+      result.notes.push('No existing border layer detected; Apply will add a token-bound stroke to the button surface.');
+    }
   } else {
-    result.notes.push('No border layer detected.');
+    result.notes.push('No surface layer detected.');
   }
 
-  if (input.stateCandidate === 'disabled') {
+  if (input.stateCandidate === 'disabled' || input.stateCandidate === 'loading') {
     result.assignments.push({
       id: 'disabled-opacity',
       role: 'disabled',
@@ -781,6 +802,7 @@ function buildMappingPreview(input) {
         sourceNode: describeNode(input.surfaceLayer),
         token: `Button/icon-only/${size}/size`,
       });
+      result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
     } else {
       result.assignments.push({ id: `size-${size}-height`, role: 'height', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/height` });
       result.assignments.push({ id: `size-${size}-padding-x`, role: 'padding-x', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/padding-x` });
@@ -791,9 +813,12 @@ function buildMappingPreview(input) {
         result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
         result.assignments.push({ id: `size-${size}-weight`, role: 'weight', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/weight` });
       }
-      if (input.leadingIconLayer || input.trailingIconLayer) {
-        result.assignments.push({ id: `size-${size}-icon-size`, role: 'icon-size', sourceNode: describeNode(input.leadingIconLayer || input.trailingIconLayer), token: `Button/size/${size}/icon-size` });
-      }
+    }
+    if (input.leadingIconLayer) {
+      result.assignments.push({ id: `size-${size}-leading-icon-size`, role: 'icon-size', sourceNode: describeNode(input.leadingIconLayer), token: `Button/size/${size}/icon-size` });
+    }
+    if (input.trailingIconLayer) {
+      result.assignments.push({ id: `size-${size}-trailing-icon-size`, role: 'icon-size', sourceNode: describeNode(input.trailingIconLayer), token: `Button/size/${size}/icon-size` });
     }
   } else {
     result.notes.push('Size mapping is not available yet.');
@@ -805,7 +830,7 @@ function buildMappingPreview(input) {
         id: 'leading-icon-color',
         role: 'leading-icon',
         sourceNode: describeNode(input.leadingIconLayer),
-        token: `Button/${variant}/text`,
+        token: getIconToken(variant, input.stateCandidate),
       });
     }
     if (input.trailingIconLayer) {
@@ -813,10 +838,12 @@ function buildMappingPreview(input) {
         id: 'trailing-icon-color',
         role: 'trailing-icon',
         sourceNode: describeNode(input.trailingIconLayer),
-        token: `Button/${variant}/text`,
+        token: getIconToken(variant, input.stateCandidate),
       });
     }
-    result.notes.push('Icon layers are detected and should use the same semantic foreground as the button label unless a dedicated icon token is introduced later.');
+    result.notes.push(variant === 'link'
+      ? 'Link icons use the dedicated Button/link/fg state tokens.'
+      : 'Icon layers use the same semantic foreground token as the button label.');
   }
 
   return result;
@@ -947,7 +974,9 @@ async function resolveLibraryTokensForAnalyses(analyses) {
     }
 
     if (figma.teamLibrary && typeof figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync === 'function') {
-      const libraryCollections = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync();
+      const libraryCollections = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
+        .slice()
+        .sort((a, b) => getLibraryCollectionPriority(a) - getLibraryCollectionPriority(b));
       for (const collection of libraryCollections) {
         let variables = [];
         let collectionError = null;
@@ -1014,6 +1043,15 @@ async function resolveLibraryTokensForAnalyses(analyses) {
     emptyResult.reason = error && error.message ? error.message : String(error);
     return emptyResult;
   }
+}
+
+function getLibraryCollectionPriority(collection) {
+  const name = normalizeLibraryTokenName(collection && collection.name);
+  const libraryName = normalizeLibraryTokenName(collection && collection.libraryName);
+  if (name === 'component-based' && libraryName.includes('maxa')) return 0;
+  if (name === 'component-based') return 1;
+  if (libraryName.includes('maxa')) return 2;
+  return 3;
 }
 
 function collectUniqueTargetTokens(analyses) {
@@ -1173,6 +1211,31 @@ function collectComponentNodes(node, results) {
   }
 }
 
+async function loadFontsForComponents(components, errors) {
+  const fontsByKey = new Map();
+
+  for (const component of components || []) {
+    const textNodes = findNodes(component, (node) => node.type === 'TEXT' && isVisibleNode(node));
+    for (const textNode of textNodes) {
+      const fontNames = textNode.fontName === figma.mixed
+        ? textNode.getStyledTextSegments(['fontName']).map((segment) => segment.fontName)
+        : [textNode.fontName];
+      for (const fontName of fontNames) {
+        if (!fontName || !fontName.family || !fontName.style) continue;
+        fontsByKey.set(`${fontName.family}\u0000${fontName.style}`, fontName);
+      }
+    }
+  }
+
+  await Promise.all(Array.from(fontsByKey.values()).map(async (fontName) => {
+    try {
+      await figma.loadFontAsync(fontName);
+    } catch (error) {
+      errors && errors.push(`font load failed for ${fontName.family} ${fontName.style}: ${error && error.message ? error.message : String(error)}`);
+    }
+  }));
+}
+
 async function applyMapping(options, selectionMap) {
   const analysisResult = await analyzeSelection(options || {});
   const sourceNodes = new Map();
@@ -1185,6 +1248,10 @@ async function applyMapping(options, selectionMap) {
   let importedLibraryVariables = 0;
   const missingTokens = new Set();
   const bindingErrors = [];
+  const variableCache = new Map();
+  const importedVariableKeys = new Set();
+
+  await loadFontsForComponents(Array.from(sourceNodes.values()), bindingErrors);
 
   const componentAnalyses = analysisResult.flatComponentAnalyses
     || (analysisResult.analyses || []).filter((a) => a.kind === 'COMPONENT');
@@ -1211,6 +1278,8 @@ async function applyMapping(options, selectionMap) {
       importedLibraryVariables: 0,
       missingTokens: missingTokens,
       bindingErrors: bindingErrors,
+      variableCache: variableCache,
+      importedVariableKeys: importedVariableKeys,
     };
     const changedCount = await applyAssignmentsToNode(sourceNode, analysis, selectedAssignments, analysisResult.libraryResolution, counters);
     if (changedCount > 0) {
@@ -1297,6 +1366,10 @@ async function applyAssignmentsToNode(node, analysis, assignments, libraryResolu
 }
 
 async function resolveVariableForToken(token, libraryResolution, counters) {
+  if (counters.variableCache && counters.variableCache.has(token)) {
+    return counters.variableCache.get(token);
+  }
+
   const resolution = libraryResolution && libraryResolution.tokenMap
     ? libraryResolution.tokenMap[token]
     : null;
@@ -1304,11 +1377,16 @@ async function resolveVariableForToken(token, libraryResolution, counters) {
   if (resolution && resolution.status === 'resolved') {
     const importedVariable = await importResolvedVariable(resolution);
     if (importedVariable) {
-      if (resolution.source === 'library') counters.importedLibraryVariables += 1;
+      if (counters.variableCache) counters.variableCache.set(token, importedVariable);
+      if (resolution.source === 'library' && (!counters.importedVariableKeys || !counters.importedVariableKeys.has(resolution.variableKey))) {
+        counters.importedLibraryVariables += 1;
+        if (counters.importedVariableKeys) counters.importedVariableKeys.add(resolution.variableKey);
+      }
       return importedVariable;
     }
   }
 
+  if (counters.variableCache) counters.variableCache.set(token, null);
   return null;
 }
 
@@ -1379,7 +1457,9 @@ async function applyAssignmentBinding(input) {
     return bindFontStyle(input.labelNode, input.variable, input.bindingErrors);
   }
   if (role === 'icon-size') {
-    return bindIconSize(input.leadingIcon || input.trailingIcon, input.variable);
+    const sourceId = input.assignment.sourceNode && input.assignment.sourceNode.id;
+    const iconNode = sourceId ? await figma.getNodeByIdAsync(sourceId) : null;
+    return bindIconSize(iconNode, input.variable);
   }
   if (role === 'size') {
     return bindIconSize(input.surface || input.node, input.variable);
@@ -1765,23 +1845,54 @@ async function ensurePreviewFonts() {
 }
 
 function normalizePreviewVariant(familyCandidate, variantCandidate) {
-  if (familyCandidate === 'Buttons/Button destructive') return 'danger';
+  if (familyCandidate === 'Buttons/Button destructive') return 'destructive';
   if (variantCandidate && variantCandidate !== 'unknown') return variantCandidate;
   if (familyCandidate === 'Buttons/Icon button') return 'secondary';
   return '';
 }
 
-function getStateSuffix(state) {
+function isActiveState(state) {
+  return state === 'pressed' || state === 'selected' || state === 'active';
+}
+
+function getBackgroundStateSuffix(state) {
+  if (isActiveState(state)) return '-active';
   switch (state) {
     case 'hover':
       return '-hover';
-    case 'active':
-      return '-active';
+    default:
+      return '';
+  }
+}
+
+function getBorderStateSuffix(state) {
+  switch (state) {
+    case 'hover':
+      return '-hover';
     case 'focus':
       return '-focus';
     default:
       return '';
   }
+}
+
+function getForegroundStateSuffix(state) {
+  if (isActiveState(state)) return '-active';
+  return state === 'hover' ? '-hover' : '';
+}
+
+function getLabelToken(variant, state) {
+  const suffix = variant === 'link' || variant === 'text'
+    ? getForegroundStateSuffix(state)
+    : '';
+  return `Button/${variant}/text${suffix}`;
+}
+
+function getIconToken(variant, state) {
+  if (variant === 'link') {
+    return `Button/link/fg${getForegroundStateSuffix(state)}`;
+  }
+  return getLabelToken(variant, state);
 }
 
 function countSelectedAssignments(selectionMap) {
@@ -1814,7 +1925,7 @@ function rgbToKeyword(color) {
   const r = Math.round(color.r * 255);
   const g = Math.round(color.g * 255);
   const b = Math.round(color.b * 255);
-  if (r > 180 && g < 120 && b < 120) return 'danger';
+  if (r > 180 && g < 120 && b < 120) return 'destructive';
   if (b > 180 && r < 120) return 'primary';
   if (g > 150 && r < 160) return 'success';
   if (Math.abs(r - g) < 10 && Math.abs(g - b) < 10) return 'secondary';

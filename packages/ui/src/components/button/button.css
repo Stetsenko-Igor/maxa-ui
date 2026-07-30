@@ -179,6 +179,15 @@
 .maxa-button--link:active {
   color: var(--button-link-text-active);
 }
+.maxa-button--link .maxa-button__icon {
+  color: var(--button-link-fg);
+}
+.maxa-button--link:hover .maxa-button__icon {
+  color: var(--button-link-fg-hover);
+}
+.maxa-button--link:active .maxa-button__icon {
+  color: var(--button-link-fg-active);
+}
 .maxa-button--link:focus-visible {
   border-color: var(--button-link-border-focus);
 }

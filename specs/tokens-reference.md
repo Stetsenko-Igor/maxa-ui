@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1668
+Total tokens: 1671
 
 ## Primitives
 
@@ -354,8 +354,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-primary-subtle-hover: var(--color-blue-50);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-active: var(--color-blue-200);/* dark: var(--color-blue-900) */
 --color-action-neutral: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
---color-action-neutral-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
---color-action-neutral-active: var(--color-neutral-500);/* dark: var(--color-neutral-700) */
+--color-action-neutral-hover: var(--color-neutral-500);/* dark: var(--color-neutral-600) */
+--color-action-neutral-active: var(--color-neutral-600);/* dark: var(--color-neutral-500) */
 --color-action-neutral-subtle: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-action-neutral-subtle-hover: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
 --color-action-neutral-subtle-active: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
@@ -658,6 +658,9 @@ Source: `packages/tokens/src/component-button.css`
 --button-link-text: var(--color-action-primary);
 --button-link-text-hover: var(--color-action-primary-hover);
 --button-link-text-active: var(--color-action-primary-active);
+--button-link-fg: var(--color-action-primary);
+--button-link-fg-hover: var(--color-action-primary-hover);
+--button-link-fg-active: var(--color-action-primary-active);
 --button-link-border: transparent;
 --button-link-border-hover: transparent;
 --button-link-border-focus: var(--color-border-focus);

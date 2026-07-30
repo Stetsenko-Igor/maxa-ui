@@ -156,7 +156,7 @@ describe("semantic.css — text + border", () => {
   })
 
   it("has dark mode section with text-primary override", () => {
-    const darkIdx = css.indexOf('[data-theme="dark"]')
+    const darkIdx = css.indexOf('\n[data-theme="dark"] {')
     expect(darkIdx).toBeGreaterThan(-1)
     expect(css.slice(darkIdx)).toContain("--color-text-primary:")
   })
@@ -216,6 +216,17 @@ describe("semantic.css — bg + action", () => {
   it("maps CSS action primary to blue, not brand", () => {
     expect(css).toContain("--color-action-primary:                 var(--color-blue-500);")
     expect(css).not.toContain("--color-action-primary-normal:")
+  })
+
+  it("maps neutral hover and active states to the published Figma values", () => {
+    const darkIdx = css.indexOf('\n[data-theme="dark"] {')
+    const light = css.slice(0, darkIdx)
+    const dark = css.slice(darkIdx)
+
+    expect(light).toContain("--color-action-neutral-hover:           var(--color-neutral-500);")
+    expect(light).toContain("--color-action-neutral-active:          var(--color-neutral-600);")
+    expect(dark).toContain("--color-action-neutral-hover:           var(--color-neutral-600);")
+    expect(dark).toContain("--color-action-neutral-active:          var(--color-neutral-500);")
   })
 
   it("does not redefine bg-nav in semantic layer (moved to component-nav.css)", () => {
@@ -329,6 +340,16 @@ describe("figma import bundle", () => {
     expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
   })
 
+  it("matches the published neutral action aliases in both color modes", () => {
+    const light = bundle.collections["Color modes"]?.modes.Light
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+
+    expect(light?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.500}")
+    expect(light?.["action/action-neutral-active"]).toBe("{Colors.Neutral.600}")
+    expect(dark?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.600}")
+    expect(dark?.["action/action-neutral-active"]).toBe("{Colors.Neutral.500}")
+  })
+
   it("includes shadow effect styles for Figma", () => {
     expect(bundle.effects?.shadows?.Shadows?.Light?.xs).toBeDefined()
     expect(bundle.effects?.shadows?.Shadows?.Light?.["3xl"]).toHaveLength(2)
@@ -351,13 +372,13 @@ describe("figma import bundle", () => {
     expect(light?.["Utility/fg-violet"]).toBe("{Utility/text-violet}")
     expect(light?.["Checkbox/size/md/control"]).toBe(20)
     expect(light?.["Checkbox/color/bg-checked"]).toBe("#2D2D2E")
-    expect(light?.["Checkbox/color/border-error"]).toBe("var(--color-border-error-strong)")
+    expect(light?.["Checkbox/color/border-error"]).toBe("{Color modes/border/border-error-strong}")
     expect(light?.["Checkbox/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
     expect(light?.["Checkbox/size/sm/control"]).toBeUndefined()
     expect(light?.["Radio/size/md/control"]).toBe(20)
     expect(light?.["Radio/color/border-checked"]).toBe("#0576DA")
     expect(light?.["Radio/color/dot"]).toBe("#0576DA")
-    expect(light?.["Radio/color/border-error"]).toBe("var(--color-border-error-strong)")
+    expect(light?.["Radio/color/border-error"]).toBe("{Color modes/border/border-error-strong}")
     expect(light?.["Radio/typography/top-label-font-weight"]).toBe("{Typography/Font weight/semibold}")
     expect(light?.["Radio/size/sm/control"]).toBeUndefined()
     expect(light?.["Tag/size/lg/height"]).toBe(28)
@@ -399,6 +420,9 @@ describe("figma import bundle", () => {
     expect(light?.["Dropdown Menu/layout/min-width"]).toBe(180)
     expect(light?.["Dropdown Menu/layout/item-height"]).toBe(32)
     expect(light?.["Dropdown Menu/item/text-destructive"]).toBe("{Color modes/text/text-error}")
+    expect(light?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
+    expect(light?.["Button/link/fg-hover"]).toBe("{Color modes/action/action-primary-hover}")
+    expect(light?.["Button/link/fg-active"]).toBe("{Color modes/action/action-primary-active}")
     expect(light?.["Divider/size"]).toBe(1)
     expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
     expect(dark?.["Alert/layout/padding-x"]).toBe(16)
@@ -423,6 +447,9 @@ describe("figma import bundle", () => {
     expect(dark?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
     expect(dark?.["Dropdown Menu/layout/min-width"]).toBe(180)
     expect(dark?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-neutral-hover}")
+    expect(dark?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
+    expect(dark?.["Button/link/fg-hover"]).toBe("{Color modes/action/action-primary-hover}")
+    expect(dark?.["Button/link/fg-active"]).toBe("{Color modes/action/action-primary-active}")
     expect(dark?.["Divider/size"]).toBe(1)
     expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")

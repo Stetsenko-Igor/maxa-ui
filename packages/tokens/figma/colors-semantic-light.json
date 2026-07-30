@@ -126,12 +126,12 @@
     },
     "action-neutral-hover": {
       "$description": "Neutral button background, hover state.",
-      "$value": "{Colors.Neutral.400}",
+      "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
     "action-neutral-active": {
       "$description": "Neutral button background, active state.",
-      "$value": "{Colors.Neutral.500}",
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "action-neutral-subtle": {

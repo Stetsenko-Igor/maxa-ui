@@ -1,6 +1,9 @@
-# MAXA Token Importer v6
+# MAXA Token Importer v7
 
 This version:
+- exports all local variable collections/modes as a bundle in the same shape as
+  `import-bundle.json`, so changes made directly in Figma can be diffed against
+  the repo (see "Exporting Figma changes back to code" below)
 - imports collections, modes, values and aliases
 - supports dot-notation aliases through `aliasDefaults`
 - creates text styles from `Typography`
@@ -41,6 +44,21 @@ Shadow behavior:
   - `Shadows/xs` through `Shadows/3xl`
 - shadow effects are not Figma variables; they are effect styles because Figma variables do not represent a complete reusable shadow stack
 - dark-mode elevation should usually be handled with surfaces, borders, overlays, or opacity instead of a parallel `Shadows dark/*` style group
+
+Exporting Figma changes back to code:
+
+- If you change variable values directly in Figma (not through this plugin's import), click
+  **Export variables**. This reads every local variable collection/mode and downloads
+  `maxa-figma-export-<date>.json` in the same shape `import-bundle.json` already uses —
+  aliases are re-emitted as `{Collection/path}` strings, descriptions are included.
+- Hand that file to Claude. It runs `node packages/tokens/scripts/diff-figma-export.mjs
+  <exported-file>` against the repo's current `import-bundle.json` and prints a plain
+  changelist (`token: OLD -> NEW`, plus anything added/removed). This is read-only — nothing
+  is written automatically.
+- Review the changelist, then Claude applies the confirmed changes to the actual source files
+  (`packages/tokens/src/*.css`, `packages/tokens/figma/component-*.json`), regenerates
+  `import-bundle.json`, and runs the usual token audit before committing. The exported file
+  itself is never treated as a new source of truth — it's a detection aid.
 
 Migration safety:
 

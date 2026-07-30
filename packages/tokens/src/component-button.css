@@ -47,6 +47,9 @@
   --button-link-text:           var(--color-action-primary);
   --button-link-text-hover:     var(--color-action-primary-hover);
   --button-link-text-active:    var(--color-action-primary-active);
+  --button-link-fg:             var(--color-action-primary);
+  --button-link-fg-hover:       var(--color-action-primary-hover);
+  --button-link-fg-active:      var(--color-action-primary-active);
   --button-link-border:         transparent;
   --button-link-border-hover:   transparent;
   --button-link-border-focus:   var(--color-border-focus);
