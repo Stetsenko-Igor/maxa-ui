@@ -185,7 +185,7 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
   - `ghost` uses transparent base/border and neutral subtle hover/active
   - `link` stays transparent and uses `action/primary` for text
   - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
-  - source files: `component-button-light.json`, `component-button-dark.json`
+  - source file: `component-button.json`; theme differences resolve through the `Color modes` collection
 - Deferred Button decisions:
   - dedicated foreground tokens for filled status buttons, such as `text/on-primary`, `text/on-success`, `text/on-danger`
   - future Effects collection for focus ring/elevation

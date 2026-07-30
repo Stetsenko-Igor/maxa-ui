@@ -143,9 +143,8 @@ describe("semantic.css — text + border", () => {
   it("defines canonical border tokens", () => {
     for (const t of [
       "border-primary", "border-secondary", "border-tertiary", "border-focus",
-      "border-brand", "border-error-strong", "border-info-strong", "border-info-subtle",
+      "border-brand", "border-error-strong", "border-error-subtle", "border-info-strong", "border-info-subtle",
       "border-success-strong", "border-success-subtle", "border-warning-strong", "border-warning-subtle",
-      "border-error-subtle",
       "border-neutral-strong", "border-neutral-subtle",
     ]) {
       expect(css).toContain(`--color-${t}:`)
@@ -232,6 +231,20 @@ describe("semantic.css — bg + action", () => {
   it("does not redefine bg-nav in semantic layer (moved to component-nav.css)", () => {
     expect(css).not.toContain("--color-bg-nav:")
   })
+
+  it("keeps published Alert colors in theme-aware semantic roles", () => {
+    const darkIdx = css.indexOf('\n[data-theme="dark"] {')
+    const light = css.slice(0, darkIdx)
+    const dark = css.slice(darkIdx)
+
+    expect(light).toContain("--color-alert-info-bg:           var(--color-bg-info-subtle);")
+    expect(light).toContain("--color-alert-info-border:       var(--color-border-secondary);")
+    expect(dark).toContain("--color-alert-info-bg:           #003877;")
+    expect(dark).toContain("--color-alert-success-bg:           #044329;")
+    expect(dark).toContain("--color-alert-warning-bg:           #521d00;")
+    expect(dark).toContain("--color-alert-error-bg:           #7b0000;")
+    expect(dark).toContain("--color-dialog-overlay-bg:        rgba(0, 0, 0, 0.72);")
+  })
 })
 
 // ── component-nav.css ─────────────────────────────────────────────────────
@@ -294,20 +307,15 @@ describe("figma manifest", () => {
     expect(manifest.collections.Layout?.modes.Mobile).toEqual(["layout-mobile.json"])
   })
 
-  it("includes Component-based collection", () => {
-    const light = manifest.collections["Component-based"]?.modes.Light ?? []
-    const dark = manifest.collections["Component-based"]?.modes.Dark ?? []
-    expect(light.length).toBeGreaterThan(14)
-    expect(dark.length).toBe(light.length)
-    expect(light).toContain("component-button-light.json")
-    expect(light).toContain("component-select-light.json")
-    expect(light).toContain("component-social-button-light.json")
-    expect(dark).toContain("component-button-dark.json")
-    expect(dark).toContain("component-select-dark.json")
-    expect(dark).toContain("component-social-button-dark.json")
-    expect(light.map((file) => file.replace("-light.json", ""))).toEqual(
-      dark.map((file) => file.replace("-dark.json", "")),
-    )
+  it("gives Component-based one mode-neutral Default source set", () => {
+    const modes = manifest.collections["Component-based"]?.modes ?? {}
+    const files = modes.Default ?? []
+    expect(Object.keys(modes)).toEqual(["Default"])
+    expect(files.length).toBeGreaterThan(14)
+    expect(files).toContain("component-button.json")
+    expect(files).toContain("component-select.json")
+    expect(files).toContain("component-social-button.json")
+    expect(files.some((file) => /-(?:light|dark)\.json$/.test(file))).toBe(false)
   })
 
   it("includes unified Primitives collection", () => {
@@ -315,8 +323,16 @@ describe("figma manifest", () => {
   })
 
   it("uses Color modes collection naming", () => {
-    expect(manifest.collections["Color modes"]?.modes.Light).toEqual(["colors-semantic-light.json"])
-    expect(manifest.collections["Color modes"]?.modes.Dark).toEqual(["colors-semantic-dark.json"])
+    expect(manifest.collections["Color modes"]?.modes.Light).toEqual([
+      "colors-semantic-light.json",
+      "colors-component-light.json",
+      "colors-utility-light.json",
+    ])
+    expect(manifest.collections["Color modes"]?.modes.Dark).toEqual([
+      "colors-semantic-dark.json",
+      "colors-component-dark.json",
+      "colors-utility-dark.json",
+    ])
   })
 
   it("does not keep deprecated Containers collection", () => {
@@ -448,24 +464,23 @@ describe("figma import bundle", () => {
   })
 
   it("uses real cross-component aliases and excludes effects from variables", () => {
-    const light = bundle.collections["Component-based"]?.modes.Light
+    const component = bundle.collections["Component-based"]?.modes.Default
 
-    expect(light?.["Select/bg"]).toBe("{Component-based/Input/bg}")
-    expect(light?.["Context Menu/bg"]).toBe("{Component-based/Dropdown Menu/surface/bg}")
-    expect(light?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
-    expect(light?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
-    expect(light?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
-    expect(light?.["Calendar/shadow"]).toBeUndefined()
-    expect(light?.["Context Menu/shadow"]).toBeUndefined()
-    expect(light?.["Social Button/shadow-focus"]).toBeUndefined()
-    expect(light?.["Toast/shadow"]).toBeUndefined()
+    expect(component?.["Select/bg"]).toBe("{Component-based/Input/bg}")
+    expect(component?.["Context Menu/bg"]).toBe("{Component-based/Dropdown Menu/surface/bg}")
+    expect(component?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
+    expect(component?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
+    expect(component?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
+    expect(component?.["Calendar/shadow"]).toBeUndefined()
+    expect(component?.["Context Menu/shadow"]).toBeUndefined()
+    expect(component?.["Social Button/shadow-focus"]).toBeUndefined()
+    expect(component?.["Toast/shadow"]).toBeUndefined()
   })
 
-  it("keeps shared control, status-border, and gray-muted semantics in Color modes", () => {
+  it("keeps all theme-dependent component colors in Color modes", () => {
     const light = bundle.collections["Color modes"]?.modes.Light
     const dark = bundle.collections["Color modes"]?.modes.Dark
-    const componentLight = bundle.collections["Component-based"]?.modes.Light
-    const componentDark = bundle.collections["Component-based"]?.modes.Dark
+    const component = bundle.collections["Component-based"]?.modes.Default
 
     expect(light?.["control/control-idle"]).toBe("{Colors.Neutral.500}")
     expect(dark?.["control/control-idle"]).toBe("{Colors.Neutral.600}")
@@ -473,130 +488,59 @@ describe("figma import bundle", () => {
     expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
-    expect(light?.["border/border-info-subtle"]).toBe("{Colors.Blue.200}")
-    expect(dark?.["border/border-info-subtle"]).toBe("{Colors.Blue.200}")
-    expect(light?.["border/border-success-subtle"]).toBe("{Colors.Green.300}")
-    expect(dark?.["border/border-success-subtle"]).toBe("{Colors.Green.300}")
-    expect(light?.["border/border-warning-subtle"]).toBe("{Colors.Orange.200}")
-    expect(dark?.["border/border-warning-subtle"]).toBe("{Colors.Orange.200}")
-    expect(light?.["border/border-error-subtle"]).toBe("{Colors.Red.200}")
-    expect(dark?.["border/border-error-subtle"]).toBe("{Colors.Red.200}")
-    expect(componentLight?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
-    expect(componentDark?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
-    expect(componentLight?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
-    expect(componentLight?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
+    expect(light?.["component/alert/info/bg"]).toBe("{Color modes/background/bg-info-subtle}")
+    expect(light?.["component/alert/info/border"]).toBe("{Color modes/border/border-secondary}")
+    expect(dark?.["component/alert/info/bg"]).toBe("#003877")
+    expect(dark?.["component/alert/info/border"]).toBe("#0059C2")
+    expect(dark?.["component/alert/error/accent"]).toBe("#FF755E")
+    expect(light?.["component/dialog/overlay-bg"]).toBe("rgba(27, 26, 26, 0.5)")
+    expect(dark?.["component/dialog/overlay-bg"]).toBe("rgba(0, 0, 0, 0.72)")
+    expect(light?.["component/dropdown-menu/item-bg-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
+    expect(dark?.["component/dropdown-menu/item-bg-hover"]).toBe("{Color modes/action/action-neutral-hover}")
+    expect(light?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
+    expect(dark?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.900}")
+    expect(component?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
+    expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
+    expect(component?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
+    expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/component/alert/info/bg}")
+    expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/component/dialog/overlay-bg}")
+    expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/component/dropdown-menu/item-bg-hover}")
+    expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
   })
 
-  it("keeps every Alert color value aliased to Color modes in both themes", () => {
+  it("gives Component-based one Default mode and no raw color values", () => {
     const component = bundle.collections["Component-based"]
-    const light = component?.modes.Light ?? {}
-    const dark = component?.modes.Dark ?? {}
-    const alertColorNames = Object.keys(light).filter((name) => name.startsWith("Alert/color/"))
+    const values = component?.modes.Default ?? {}
 
+    expect(Object.keys(component?.modes ?? {})).toEqual(["Default"])
+    const alertColorNames = Object.keys(values).filter((name) => name.startsWith("Alert/color/"))
     expect(alertColorNames).toHaveLength(24)
-    for (const name of alertColorNames) {
-      expect(light[name], `Light ${name}`).toMatch(/^\{Color modes\//)
-      expect(dark[name], `Dark ${name}`).toMatch(/^\{Color modes\//)
+    for (const [name, type] of Object.entries(component?.types ?? {})) {
+      if (type === "COLOR") expect(values[name], name).toMatch(/^\{[^}]+\}$/)
     }
   })
 
   it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Dropdown Menu, Divider, and Utility component tokens", () => {
-    const light = bundle.collections["Component-based"]?.modes.Light
-    const dark = bundle.collections["Component-based"]?.modes.Dark
+    const component = bundle.collections["Component-based"]?.modes.Default
 
-    expect(light?.["Badge/size/lg/height"]).toBe(28)
-    expect(light?.["Badge/size/sm/text"]).toBe("{Typography/Font size/text-sm}")
-    expect(light?.["Badge/size/sm/line-height"]).toBe("{Typography/Line height/text-sm}")
-    expect(light?.["Badge/size/lg/text"]).toBe("{Typography/Font size/text-md}")
-    expect(light?.["Badge/size/lg/line-height"]).toBe("{Typography/Line height/text-md}")
-    expect(light?.["Badge/fg-neutral"]).toBeUndefined()
-    expect(light?.["Utility/fg-neutral"]).toBeUndefined()
-    expect(light?.["Utility/fg-info"]).toBeUndefined()
-    expect(light?.["Utility/fg-inverse"]).toBeUndefined()
-    expect(light?.["Utility/fg-violet"]).toBe("{Utility/text-violet}")
-    expect(light?.["Checkbox/size/md/control"]).toBe(20)
-    expect(light?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
-    expect(light?.["Checkbox/color/border-error"]).toBe("{Color modes/border/border-error-strong}")
-    expect(light?.["Checkbox/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
-    expect(light?.["Checkbox/size/sm/control"]).toBeUndefined()
-    expect(light?.["Radio/size/md/control"]).toBe(20)
-    expect(light?.["Radio/color/border-checked"]).toBe("{Color modes/action/action-primary}")
-    expect(light?.["Radio/color/dot"]).toBe("{Color modes/action/action-primary}")
-    expect(light?.["Radio/color/border-error"]).toBe("{Color modes/border/border-error-strong}")
-    expect(light?.["Radio/typography/top-label-font-weight"]).toBe("{Typography/Font weight/semibold}")
-    expect(light?.["Radio/size/sm/control"]).toBeUndefined()
-    expect(light?.["Tag/size/lg/height"]).toBe(28)
-    expect(light?.["Avatar/layout/size-md"]).toBe(40)
-    expect(light?.["Avatar/status/online"]).toBe("{Color modes/background/bg-success-strong}")
-    expect(light?.["Tag/radius"]).toBe("{Radius/radius-sm}")
-    expect(light?.["Tag/appearance/violet/medium/bg"]).toBeUndefined()
-    expect(light?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
-    expect(light?.["Alert/layout/padding-x"]).toBe(16)
-    expect(light?.["Alert/strip/width"]).toBe(4)
-    expect(light?.["Alert/icon/size"]).toBe(20)
-    expect(light?.["Alert/typography/font-size"]).toBe("{Typography/Font size/text-md}")
-    expect(light?.["Alert/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
-    expect(light?.["Alert/color/info/bg"]).toBe("{Color modes/background/bg-info-subtle}")
-    expect(light?.["Alert/color/info/border"]).toBe("{Color modes/border/border-info-subtle}")
-    expect(light?.["Alert/color/info/accent"]).toBe("{Color modes/foreground/fg-info}")
-    expect(light?.["Alert/color/warning/bg"]).toBe("{Color modes/background/bg-warning-subtle}")
-    expect(light?.["Alert/color/error/accent"]).toBe("{Color modes/foreground/fg-error}")
-    expect(light?.["Toggle/size/md/track-width"]).toBe(36)
-    expect(light?.["Toggle/size/md/field-max-width"]).toBe(160)
-    expect(light?.["Toggle/size/md/content-max-width"]).toBe(117)
-    expect(light?.["Toggle/size/md/content-gap"]).toBe(8)
-    expect(light?.["Toggle/track-radius"]).toBe("{Radius/radius-full}")
-    expect(light?.["Toggle/focus-ring/inner-width"]).toBe(1)
-    expect(light?.["Toggle/color/track-on"]).toBe("{Color modes/action/action-primary}")
-    expect(light?.["Toggle/color/track-on-hover"]).toBe("{Color modes/action/action-primary-hover}")
-    expect(light?.["Toggle/color/text"]).toBe("#444445")
-    expect(light?.["Toggle/color/description"]).toBe("#575758")
-    expect(light?.["Toggle/typography/label-font-size"]).toBe("{Typography/Font size/text-sm}")
-    expect(light?.["Toggle/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
-    expect(light?.["Toggle/size/sm/track-width"]).toBeUndefined()
-    expect(light?.["Toggle/size/lg/track-width"]).toBeUndefined()
-    expect(light?.["Tooltip/layout/max-width"]).toBe(240)
-    expect(light?.["Tooltip/typography/font-weight"]).toBe("{Typography/Font weight/medium}")
-    expect(light?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
-    expect(light?.["Popover/layout/width"]).toBe(320)
-    expect(light?.["Popover/typography/font-family"]).toBe("{Typography/Font family/body}")
-    expect(light?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
-    expect(light?.["Dropdown Menu/layout/min-width"]).toBe(180)
-    expect(light?.["Dropdown Menu/layout/item-height"]).toBe(32)
-    expect(light?.["Dropdown Menu/item/text-destructive"]).toBe("{Color modes/text/text-error}")
-    expect(light?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
-    expect(light?.["Button/link/fg-hover"]).toBe("{Color modes/action/action-primary-hover}")
-    expect(light?.["Button/link/fg-active"]).toBe("{Color modes/action/action-primary-active}")
-    expect(light?.["Divider/size"]).toBe(1)
-    expect(dark?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
-    expect(dark?.["Alert/layout/padding-x"]).toBe(16)
-    expect(dark?.["Alert/icon/size"]).toBe(20)
-    expect(dark?.["Alert/color/success/bg"]).toBe("{Color modes/background/bg-success-subtle}")
-    expect(dark?.["Alert/color/error/accent"]).toBe("{Color modes/foreground/fg-error}")
-    expect(dark?.["Alert/color/emphasize/border"]).toBe("{Color modes/border/border-primary}")
-    expect(dark?.["Checkbox/size/md/control"]).toBe(20)
-    expect(dark?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
-    expect(dark?.["Radio/size/md/dot"]).toBe(8)
-    expect(dark?.["Avatar/layout/size-md"]).toBe(40)
-    expect(dark?.["Avatar/status/busy"]).toBe("{Color modes/background/bg-error-strong}")
-    expect(dark?.["Radio/color/dot-hover"]).toBe("{Color modes/action/action-primary-hover}")
-    expect(dark?.["Toggle/color/track-on"]).toBe("{Color modes/action/action-primary}")
-    expect(dark?.["Toggle/size/md/track-width"]).toBe(36)
-    expect(dark?.["Toggle/size/md/field-max-width"]).toBe(160)
-    expect(dark?.["Toggle/typography/side-label-font-weight"]).toBe("{Typography/Font weight/medium}")
-    expect(dark?.["Toggle/size/sm/track-width"]).toBeUndefined()
-    expect(dark?.["Tooltip/layout/max-width"]).toBe(240)
-    expect(dark?.["Popover/layout/radius"]).toBe("{Radius/radius-lg}")
-    expect(dark?.["Popover/layout/width"]).toBe(320)
-    expect(dark?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
-    expect(dark?.["Dropdown Menu/layout/min-width"]).toBe(180)
-    expect(dark?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-neutral-hover}")
-    expect(dark?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
-    expect(dark?.["Button/link/fg-hover"]).toBe("{Color modes/action/action-primary-hover}")
-    expect(dark?.["Button/link/fg-active"]).toBe("{Color modes/action/action-primary-active}")
-    expect(dark?.["Divider/size"]).toBe(1)
-    expect(light?.["Utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
-    expect(light?.["Utility/text-violet"]).toBe("{Colors.Violet.900}")
+    expect(component?.["Badge/size/lg/height"]).toBe(28)
+    expect(component?.["Checkbox/size/md/control"]).toBe(20)
+    expect(component?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
+    expect(component?.["Radio/color/dot"]).toBe("{Color modes/action/action-primary}")
+    expect(component?.["Tag/radius"]).toBe("{Radius/radius-sm}")
+    expect(component?.["Avatar/layout/size-md"]).toBe(40)
+    expect(component?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
+    expect(component?.["Alert/color/error/accent"]).toBe("{Color modes/component/alert/error/accent}")
+    expect(component?.["Toggle/size/md/track-width"]).toBe(36)
+    expect(component?.["Toggle/color/track-on"]).toBe("{Color modes/action/action-primary}")
+    expect(component?.["Toggle/color/text"]).toBe("{Color modes/text/text-primary}")
+    expect(component?.["Toggle/color/description"]).toBe("{Color modes/text/text-secondary}")
+    expect(component?.["Tooltip/layout/max-width"]).toBe(240)
+    expect(component?.["Popover/layout/width"]).toBe(320)
+    expect(component?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
+    expect(component?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
+    expect(component?.["Divider/size"]).toBe(1)
+    expect(component?.["Utility/text-violet"]).toBe("{Color modes/utility/text-violet}")
   })
 })
 
@@ -869,11 +813,7 @@ describe("figma component-based button tokens", () => {
   type TokenTree = TokenLeaf | Record<string, TokenLeaf | TokenTree>
 
   const lightFile = JSON.parse(
-    readFileSync(join(root, "figma/component-button-light.json"), "utf-8"),
-  ) as ButtonTokens
-
-  const darkFile = JSON.parse(
-    readFileSync(join(root, "figma/component-button-dark.json"), "utf-8"),
+    readFileSync(join(root, "figma/component-button.json"), "utf-8"),
   ) as ButtonTokens
 
   function collectTokenValues(node: TokenTree, values: string[] = []) {
@@ -889,19 +829,6 @@ describe("figma component-based button tokens", () => {
 
     return values
   }
-
-  it("keeps light and dark token names aligned", () => {
-    // $description is authored on the light source only (mode-independent), so
-    // ignore it when comparing light/dark structure.
-    const keysWithoutDescription = (obj: Record<string, unknown>) =>
-      Object.keys(obj ?? {}).filter((k) => k !== "$description")
-
-    expect(Object.keys(lightFile.Button)).toEqual(Object.keys(darkFile.Button))
-
-    for (const key of Object.keys(lightFile.Button)) {
-      expect(keysWithoutDescription(lightFile.Button[key])).toEqual(keysWithoutDescription(darkFile.Button[key]))
-    }
-  })
 
   it("defines approved Button variants", () => {
     expect(Object.keys(lightFile.Button)).toEqual([
@@ -923,14 +850,10 @@ describe("figma component-based button tokens", () => {
 
   it("aliases Button font family to body typography", () => {
     expect(lightFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
-    expect(darkFile.Button["font-family"]?.$value).toBe("{Typography/Font family/body}")
   })
 
   it("uses current semantic color alias paths for Button variables", () => {
-    const aliases = [
-      ...collectTokenValues(lightFile),
-      ...collectTokenValues(darkFile),
-    ].filter((value) => value.startsWith("{Color modes/"))
+    const aliases = collectTokenValues(lightFile).filter((value) => value.startsWith("{Color modes/"))
 
     expect(aliases.length).toBeGreaterThan(0)
     expect(aliases).not.toContain("{Color modes/action/primary}")
@@ -958,10 +881,8 @@ describe("figma component-based button tokens", () => {
 
   it("uses one disabled opacity token for Button", () => {
     const lightDisabled = lightFile.Button.disabled as Record<string, TokenLeaf>
-    const darkDisabled = darkFile.Button.disabled as Record<string, TokenLeaf>
 
     expect(lightDisabled.opacity?.$value).toBe(50)
-    expect(darkDisabled.opacity?.$value).toBe(50)
 
     for (const variant of ["primary", "secondary", "outline", "ghost", "link", "success", "destructive"]) {
       const tokens = lightFile.Button[variant] as Record<string, TokenLeaf>
@@ -1011,11 +932,7 @@ describe("figma component-based input tokens", () => {
   }
 
   const lightFile = JSON.parse(
-    readFileSync(join(root, "figma/component-input-light.json"), "utf-8"),
-  ) as InputTokens
-
-  const darkFile = JSON.parse(
-    readFileSync(join(root, "figma/component-input-dark.json"), "utf-8"),
+    readFileSync(join(root, "figma/component-input.json"), "utf-8"),
   ) as InputTokens
 
   function collectTokenValues(node: TokenTree, values: string[] = []) {
@@ -1031,26 +948,6 @@ describe("figma component-based input tokens", () => {
 
     return values
   }
-
-  function collectTokenPaths(node: TokenTree, prefix = "", paths: string[] = []) {
-    if (!node || typeof node !== "object") return paths
-    if ("$value" in node) {
-      paths.push(prefix)
-      return paths
-    }
-
-    for (const [key, value] of Object.entries(node)) {
-      collectTokenPaths(value as TokenTree, prefix ? `${prefix}/${key}` : key, paths)
-    }
-
-    return paths
-  }
-
-  it("keeps light and dark token paths aligned", () => {
-    expect(collectTokenPaths(lightFile.Input as TokenTree)).toEqual(
-      collectTokenPaths(darkFile.Input as TokenTree),
-    )
-  })
 
   it("defines the core Input anatomy for Figma components", () => {
     expect(Object.keys(lightFile.Input)).toEqual([
@@ -1080,10 +977,7 @@ describe("figma component-based input tokens", () => {
   })
 
   it("uses current semantic color alias paths for Input variables", () => {
-    const aliases = [
-      ...collectTokenValues(lightFile as TokenTree),
-      ...collectTokenValues(darkFile as TokenTree),
-    ].filter((value) => value.startsWith("{Color modes/"))
+    const aliases = collectTokenValues(lightFile as TokenTree).filter((value) => value.startsWith("{Color modes/"))
 
     expect(aliases.length).toBeGreaterThan(0)
     expect(aliases).not.toContain("{Color modes/bg/surface}")
@@ -1154,17 +1048,23 @@ describe("figma component-based input tokens", () => {
 describe("figma component-based utility tokens", () => {
   type TokenLeaf = { $value: number | string; $type: string; $description?: string }
   type TokenTree = TokenLeaf | Record<string, TokenLeaf | TokenTree>
-  type UtilityTokens = {
+  type ComponentUtilityTokens = {
     Utility: Record<string, TokenLeaf | Record<string, TokenLeaf | TokenTree>>
   }
+  type ColorUtilityTokens = {
+    utility: Record<string, TokenLeaf | Record<string, TokenLeaf | TokenTree>>
+  }
+
+  const componentFile = JSON.parse(
+    readFileSync(join(root, "figma/component-utility.json"), "utf-8"),
+  ) as ComponentUtilityTokens
 
   const lightFile = JSON.parse(
-    readFileSync(join(root, "figma/component-utility-light.json"), "utf-8"),
-  ) as UtilityTokens
-
+    readFileSync(join(root, "figma/colors-utility-light.json"), "utf-8"),
+  ) as ColorUtilityTokens
   const darkFile = JSON.parse(
-    readFileSync(join(root, "figma/component-utility-dark.json"), "utf-8"),
-  ) as UtilityTokens
+    readFileSync(join(root, "figma/colors-utility-dark.json"), "utf-8"),
+  ) as ColorUtilityTokens
 
   function collectTokenPaths(node: TokenTree, prefix = "", paths: string[] = []) {
     if (!node || typeof node !== "object") return paths
@@ -1180,18 +1080,19 @@ describe("figma component-based utility tokens", () => {
     return paths
   }
 
-  // Regression test for the 2026-07-30 bug: component-utility-dark.json was
-  // missing all 18 bg-{hue}-strong keys (the CSS source doesn't redeclare them
-  // in dark mode since the value is unchanged across themes, but Figma
-  // variables have no such cascade — every mode needs an explicit value, or
-  // Figma defaults the unset mode to white).
-  it("keeps light and dark token paths aligned (every hue must define every tier)", () => {
-    expect(collectTokenPaths(lightFile.Utility as TokenTree).sort()).toEqual(
-      collectTokenPaths(darkFile.Utility as TokenTree).sort(),
+  it("keeps utility Light and Dark paths aligned in Color modes", () => {
+    expect(collectTokenPaths(lightFile.utility as TokenTree).sort()).toEqual(
+      collectTokenPaths(darkFile.utility as TokenTree).sort(),
     )
   })
 
-  it("defines bg-{hue}-strong for dark mode matching light (unchanged across themes)", () => {
+  it("keeps Component-based utility IDs as stable aliases to Color modes", () => {
+    for (const [name, token] of Object.entries(componentFile.Utility)) {
+      expect((token as TokenLeaf).$value, name).toBe(`{Color modes/utility/${name}}`)
+    }
+  })
+
+  it("defines bg-{hue}-strong in both Color modes", () => {
     const hues = [
       "gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald",
       "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia",
@@ -1199,9 +1100,9 @@ describe("figma component-based utility tokens", () => {
     ]
     for (const hue of hues) {
       const key = `bg-${hue}-strong`
-      expect(darkFile.Utility[key]).toBeDefined()
-      expect((darkFile.Utility[key] as TokenLeaf).$value).toBe(
-        (lightFile.Utility[key] as TokenLeaf).$value,
+      expect(darkFile.utility[key]).toBeDefined()
+      expect((darkFile.utility[key] as TokenLeaf).$value).toBe(
+        (lightFile.utility[key] as TokenLeaf).$value,
       )
     }
   })

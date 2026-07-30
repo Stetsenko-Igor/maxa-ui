@@ -22,7 +22,7 @@
     },
     "item-bg": {
       "$description": "Pagination: item bg.",
-      "$value": "transparent",
+      "$value": "{Colors.Base.Transparent}",
       "$type": "color"
     },
     "item-bg-hover": {
@@ -47,7 +47,7 @@
     },
     "item-border": {
       "$description": "Pagination: item border.",
-      "$value": "transparent",
+      "$value": "{Colors.Base.Transparent}",
       "$type": "color"
     },
     "item-border-active": {

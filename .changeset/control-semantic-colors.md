@@ -15,3 +15,9 @@ per theme. Neutral idle/checked states use four new tokens added to the semantic
 `--color-control-checked-hover`), values snapped to the nearest existing primitive step (no
 new colors introduced). All three components previously rendered identically in light and
 dark; they now get real theme-adapted colors for the first time.
+
+The Figma token schema now keeps theme switching only in `Color modes`. `Component-based`
+has one `Default` mode, all 1,026 component variables keep stable IDs, and every component
+COLOR value is an alias. Alert retains the published dark palette through dedicated
+theme-aware roles, while Dialog, Dropdown Menu, and the extended utility palette follow the
+same single-switch architecture.

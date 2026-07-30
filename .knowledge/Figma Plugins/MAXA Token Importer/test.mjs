@@ -31,6 +31,10 @@ function loadPlugin() {
           addMode(modeName) {
             this.modes.push({ modeId: `mode-${nextId++}`, name: modeName })
           },
+          removeMode(modeId) {
+            const index = this.modes.findIndex((item) => item.modeId === modeId)
+            if (index !== -1) this.modes.splice(index, 1)
+          },
         }
         collections.push(collection)
         return collection
@@ -136,6 +140,24 @@ test("import creates forward alias variables before assigning their values", asy
   assert.equal(source.resolvedType, "COLOR")
   assert.equal(JSON.stringify(source.scopes), JSON.stringify(["ALL_FILLS"]))
   assert.deepEqual(source.valuesByMode[lightMode.modeId], { type: "VARIABLE_ALIAS", id: target.id })
+})
+
+test("exact mode sync collapses Component-based Light/Dark to Default without recreating variables", async () => {
+  const { validateBundle, importBundle, variables, collections } = loadPlugin()
+  validateBundle(validBundle)
+  await importBundle(validBundle, [])
+
+  const beforeIds = variables.map((variable) => variable.id)
+  const exactBundle = structuredClone(validBundle)
+  exactBundle.collections["Component-based"].modes = {
+    Default: structuredClone(validBundle.collections["Component-based"].modes.Light),
+  }
+  validateBundle(exactBundle)
+  await importBundle(exactBundle, [], { removeStaleModes: true })
+
+  const componentCollection = collections.find((item) => item.name === "Component-based")
+  assert.deepEqual(componentCollection.modes.map((mode) => mode.name), ["Default"])
+  assert.deepEqual(variables.map((variable) => variable.id), beforeIds)
 })
 
 test("existing-state preflight rejects wrong types before import unless recreation is explicit", async () => {

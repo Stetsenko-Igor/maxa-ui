@@ -5,7 +5,7 @@
 The MAXA Button is a multi-variant interactive element. It uses component-level tokens that alias semantic tokens. All styling decisions are expressed through tokens — never hardcoded values.
 
 **Component package:** `@maxa/ui` → `Button`
-**Token source:** `packages/tokens/figma/component-button-light.json` + `component-button-dark.json`
+**Token source:** `packages/tokens/figma/component-button.json`
 **Pattern:** `forwardRef + cva + Slot (Radix)`
 
 ---
@@ -218,7 +218,6 @@ Buttons/
 
 ## Source files
 
-- Token JSON: `packages/tokens/figma/component-button-light.json`
-- Token JSON: `packages/tokens/figma/component-button-dark.json`
-- Figma collection: `Component-based Tokens` → `Button/*`
+- Token JSON: `packages/tokens/figma/component-button.json`
+- Figma collection: `Component-based` / `Default` → `Button/*`
 - React component: `packages/ui/src/components/button/` (reference pattern)

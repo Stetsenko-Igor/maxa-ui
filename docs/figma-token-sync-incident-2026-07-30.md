@@ -1,96 +1,141 @@
-# Figma token sync incident — 2026-07-30
+# Figma token architecture repair — 2026-07-30
 
 ## Outcome
 
-The repository bundle and the live `[MAXA] Foundation` Figma file are reconciled. A read-only comparison of the original 1,504 variables reported zero differences in variable type, per-mode value, or alias target. After the Alert follow-up, the 28-variable delta was validated separately: 24 existing Alert variables retain their IDs and resolve through semantic aliases in both modes, while 4 new semantic border variables resolve to primitives.
+The repository and the live `[MAXA] Foundation` Figma file now use one theme switch:
 
-The generated bundle now contains:
+- `Primitives`: one `Value` mode
+- `Color modes`: `Light` and `Dark`
+- `Component-based`: one `Default` mode
+
+Live Figma validation after the migration:
 
 - 8 collections
-- 1,508 variables
-- 2,729 per-mode values
-- 1,806 real aliases
+- 1,634 variables
+- 233 variables in `Color modes`
+- 1,026 variables in `Component-based`
+- 0 missing `Component-based / Default` values
+- 0 raw Component-based COLOR values
+- 0 literal CSS `var(--...)` strings in Component-based
+- all 1,026 Component-based variable IDs preserved
+
+The generated repository bundle contains the same collection counts and mode structure:
+
+- 1,634 variables
+- 1,955 per-mode values
+- 1,265 alias values
 - 0 unresolved CSS expressions
 
-## What happened
+## Where colors are changed now
 
-The component Figma JSON used both Figma alias syntax (`{Collection/path}`) and CSS syntax (`var(--token)`). The bundle generator only converted part of the CSS references and discarded declared token types. The importer then inferred every remaining non-hex string as a Figma `STRING`, so text such as `var(--dropdown-menu-bg)` was stored literally instead of becoming a variable alias.
+Theme selection belongs only to `Color modes`.
 
-CSS and Figma also have different mode behavior. CSS can inherit an unchanged light value into a dark selector through the cascade; a Figma variable collection requires an explicit value for every mode. Missing dark values therefore appeared as Figma defaults, including white.
+- Shared semantic roles: `colors-semantic-light.json` and `colors-semantic-dark.json`
+- Theme-aware component roles: `colors-component-light.json` and `colors-component-dark.json`
+- Extended hue roles: `colors-utility-light.json` and `colors-utility-dark.json`
+- Stable component aliases and layout/typography values: mode-neutral `component-*.json` files
 
-The importer compounded the problem in two ways:
+For example:
 
-1. It used the first mode to decide whether a variable was literal or aliased, so mixed tokens such as an aliased light value plus a bespoke dark literal were only partially assigned.
-2. It looked up existing variables by the desired type, so a stale `STRING` variable was invisible when the same path needed to become `COLOR` or `FLOAT`. Creating the replacement then failed with a duplicate-name error.
+`Component-based/Alert/color/info/bg`
+→ `Color modes/component/alert/info/bg`
+→ a Light semantic alias or the approved Dark color
 
-Seeing the same alias label in both Light and Dark columns is not itself an error. A component token should normally reference the same semantic variable in both modes; the semantic variable resolves to a different primitive in each mode. Literal `var(--...)` text, a wrong Figma type, an unresolved alias, or a missing per-mode value is an error.
+Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 
-## Live Figma repair
+## Why two Component-based modes existed
 
-The migration was preceded by a read-only consumer scan. No variable aliases, node bindings, or style bindings in the Foundation file referenced the variables that required destructive type replacement.
+This was not introduced only in the live Figma file and was not created today.
 
-The repair:
+- Commit `f85bb91` (2026-04-23) introduced the component token collection with separate Button Light/Dark JSON files.
+- Commit `0b6e67e` (2026-05-31) renamed the collection to `Component-based` and moved the extended utility palette into it, while retaining both modes.
 
-- created 8 missing semantic color variables;
-- recreated 116 stale wrong-type variables with explicit Figma types and scopes;
-- removed 12 shadow pseudo-variables that belong as Effect Styles, not text variables;
-- restored 58 per-mode alias bindings on 29 existing variables;
-- replaced 24 bespoke Alert dark-mode literals with semantic aliases while preserving the existing Alert variable IDs;
-- added 4 missing semantic subtle-border variables for info, success, warning, and error;
-- preserved 1,026 variables in `Component-based` and brought `Color modes` to 107 variables.
+That design was workable but redundant. Most component values referenced the same semantic alias in both modes; the real theme difference already lived in `Color modes`. Before this repair, 969 of 1,026 Component-based variables had identical Light/Dark values. The remaining differences were concentrated in Utility, Dialog overlay, and two Dropdown Menu states.
 
-Recreated variables receive new Figma IDs by definition. The local consumer scan was therefore a required safety gate. Consumers in other Figma files cannot be inspected from the Foundation file API; publishing the repaired library remains an explicit manual action in Figma.
+## Why values appeared as text
+
+The component JSON mixed Figma alias syntax (`{Collection/path}`) with CSS syntax (`var(--token)`). The old bundle generator converted only part of the CSS references and discarded some declared token types. The importer then created remaining expressions as Figma `STRING` variables.
+
+The importer also previously:
+
+1. assigned mixed alias/literal values based on the first mode;
+2. failed safely when a stale variable existed with the wrong type;
+3. could add and rename modes but could not remove stale modes.
+
+Importer v11 now performs typed preflight, resolves known CSS references, assigns every mode independently, and can remove modes missing from the source bundle.
+
+## Alert visual parity
+
+The published Alert dark theme uses a bespoke palette. Replacing it with the nearest shared semantic colors changed the visual result and was therefore incorrect.
+
+The repaired Color modes roles preserve the published values:
+
+| Intent | Background | Border | Accent | Text |
+| --- | --- | --- | --- | --- |
+| Info | `#003877` | `#0059C2` | `#54A3F6` | `#F4F3F3` |
+| Success | `#044329` | `#006D0F` | `#2BB47D` | `#F4F3F3` |
+| Warning | `#521D00` | `#B44E00` | `#E16D00` | `#F4F3F3` |
+| Error | `#7B0000` | `#D71913` | `#FF755E` | `#F4F3F3` |
+
+Neutral and Emphasize values are also preserved exactly. Alert component variables now alias these theme-aware Color modes roles in the single Default mode.
+
+## Live Figma migration safety
+
+Before mutation, the Foundation file was scanned for mode and variable consumers:
+
+- no node explicitly applied `Component-based / Dark`;
+- 12 Alert layers directly referenced four `border-*-subtle` compatibility variables;
+- those four variables were retained to avoid breaking existing node bindings;
+- no component masters or test components were edited during this migration.
+
+Because named version-history creation is unavailable in the current Figma plugin runtime, a rollback snapshot was stored locally at:
+
+`/private/tmp/maxa-foundation-restore-2026-07-30/`
+
+The migration then:
+
+- created 37 theme-aware component roles in `Color modes`;
+- created 89 extended utility roles in `Color modes`;
+- rebound 131 existing Component-based variables without recreating them;
+- renamed `Component-based / Light` to `Default`, preserving mode ID `14:0`;
+- removed the redundant `Component-based / Dark` mode;
+- preserved all 1,026 Component-based variable IDs.
 
 ## Repository safeguards
 
-`build-figma-import-bundle.mjs` now:
+`build-figma-import-bundle.mjs` now rejects:
 
-- preserves explicit token types and scopes;
-- resolves the known cross-component references;
-- converts supported CSS references to Figma aliases;
-- resolves Figma-compatible scalar values such as opacity, touch target, spacing, and z-index;
-- excludes shadow tokens from Variables;
-- rejects missing modes, unresolved aliases, alias cycles, unsupported CSS expressions, and type drift;
-- supports `--check` so CI fails when the committed bundle is stale.
+- any Component-based mode structure other than one `Default` mode;
+- legacy `component-*-light.json` and `component-*-dark.json` sources;
+- raw Component-based COLOR values;
+- missing modes, unresolved aliases, alias cycles, type drift, and unsupported CSS expressions.
 
-MAXA Token Importer v10 now:
-
-- accepts only the generated import bundle shape;
-- runs a complete, non-mutating preflight before import;
-- creates all typed variables before assigning aliases, so forward references are safe;
-- processes each token/mode value independently;
-- keeps wrong-type recreation disabled unless the user explicitly enables it;
-- exports types and scopes as well as values;
-- handles transparent, RGB, RGBA, literals, and aliases consistently.
-
-The token audit and test suite now validate the final generated artifact, not only the raw source JSON.
-
-An exact Figma-to-bundle match is necessary but not sufficient when the bundle itself can encode an architectural violation. A focused regression test now requires every `Alert/color/*` value in both modes to be a `Color modes` alias, preventing raw component-level color literals from returning.
+MAXA Token Importer v11 adds explicit stale-mode cleanup. A regression test verifies that Light/Dark collapses to Default without recreating variables.
 
 ## Review of Claude's changes today
 
 ### PR #16 — partial CSS-reference conversion and export/diff workflow
 
-Correct direction: it identified the literal `var(--...)` failure, converted many semantic and primitive references, fixed cross-collection alias export, and introduced a useful read-only Figma export/diff workflow.
+Correct direction: it identified literal `var(--...)` values, fixed several alias conversions, and introduced a useful read-only Figma export/diff workflow.
 
-Gap: the converter intentionally left cross-component, scalar, z-index, opacity, and shadow references unresolved. The generated bundle was still accepted even though it contained CSS expressions and incomplete type information. Tests verified the known partial result instead of making unresolved expressions a build failure.
+Gap: unresolved cross-component/scalar references and incomplete type information were still allowed into the generated bundle. The current builder makes those conditions build failures.
 
 ### PR #17 — confirmed manual primitive, semantic, and Layout edits
 
-Correct. The confirmed primitive values, dark `bg-page` alias, and Layout naming changes were applied to code. The diff workflow still contained representation noise, which made manual filtering necessary.
+Correct. Confirmed primitive values, the dark `bg-page` alias, and Layout naming changes were applied to code.
 
 ### PR #18 — missing Utility dark-mode values
 
-Correct. It identified the CSS-cascade/Figma-mode mismatch and added explicit dark values plus light/dark key-parity tests. This was an important regression guard.
+Correct diagnosis for the old two-mode architecture: Figma has no CSS cascade, so every mode needed an explicit value. The cleaner repair moves those theme differences into `Color modes` and keeps Component-based Utility IDs as single-mode aliases.
 
 ### PR #19 — stale-type recreation and per-mode assignment
 
-The per-mode assignment fix was correct and is retained. Automatic deletion and recreation of every wrong-type variable was too destructive without a preflight, consumer scan, and explicit user opt-in. v10 keeps recreation behind a checkbox and validates the complete bundle before making changes.
+Per-mode assignment was correct and is retained. Wrong-type recreation is now guarded by preflight and explicit opt-in because recreating a variable changes its ID.
 
-### PR #20 — semantic control colors
+### PR #20 — semantic control colors and Alert follow-up
 
-The CSS direction was correct: Checkbox, Radio, and Toggle now use semantic control roles and gain real dark-mode behavior. The Figma JSON initially bypassed those new semantic variables by pointing component tokens directly at primitives. The repaired source and live library now use `Color modes/control/*` aliases, preserving the intended component → semantic → primitive chain.
+Checkbox, Radio, and Toggle correctly moved toward semantic control roles. The first Alert follow-up removed raw colors but mapped them to approximate shared roles, changing the published dark appearance. The final repair keeps the clean alias chain while preserving the exact Alert palette in theme-aware Color modes roles.
 
-## Required publishing step
+## Publishing
 
-The Foundation file is repaired but library publishing is controlled by Figma. Open the Foundation file, review the pending library changes, and publish them so consuming files receive the new variables and replacement IDs.
+The Foundation file contains unpublished library changes. Publishing remains a manual Figma action. The repository branch and PR must be reviewed and pushed before using **Load latest from GitHub** in the importer; the importer URL intentionally reads `main`.

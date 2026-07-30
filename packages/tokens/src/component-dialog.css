@@ -1,7 +1,7 @@
 /* Dialog and AlertDialog component tokens */
 
 :root {
-  --dialog-overlay-bg: rgba(27, 26, 26, 0.5);
+  --dialog-overlay-bg: var(--color-dialog-overlay-bg);
   --dialog-content-bg: var(--color-bg-float);
   --dialog-content-border: var(--color-border-primary);
   --dialog-content-radius: var(--radius-md);
@@ -39,8 +39,4 @@
   --dialog-close-color: var(--color-fg-secondary);
   --dialog-footer-gap: var(--spacing-2);
   --dialog-z: var(--z-modal);
-}
-
-[data-theme="dark"] {
-  --dialog-overlay-bg: rgba(0, 0, 0, 0.72);
 }

@@ -28,9 +28,10 @@ Recommended workflow:
 
 1. Import the latest `packages/tokens/figma/import-bundle.json` with MAXA Token Importer.
 2. Keep **Remove stale variables during import** off for migration passes unless you are intentionally cleaning old variables.
-3. Make sure the Figma file has access to `🟠 [MAXA] Foundation` and its `Component-based` variable collection.
-4. Select Button components or component sets.
-5. Run `Analyze selection`, review confidence and warnings, then run `Apply mapping`.
+3. Keep **Remove stale collection modes** on so `Component-based` remains a single `Default` mode.
+4. Make sure the Figma file has access to `🟠 [MAXA] Foundation` and its `Component-based` variable collection.
+5. Select Button components or component sets.
+6. Run `Analyze selection`, review confidence and warnings, then run `Apply mapping`.
 
 Validation:
 

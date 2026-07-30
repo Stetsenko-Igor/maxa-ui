@@ -55,7 +55,7 @@
   --color-border-success-subtle: var(--color-green-300);
   --color-border-warning-strong: var(--color-orange-600);
   --color-border-warning-subtle: var(--color-orange-200);
-  --color-border-error-subtle:  var(--color-red-200);
+  --color-border-error-subtle:   var(--color-red-200);
   --color-border-neutral-strong: var(--color-neutral-700);
   --color-border-neutral-subtle: var(--color-neutral-300);
 
@@ -218,6 +218,47 @@
   --color-control-idle-hover:     var(--color-neutral-400);
   --color-control-checked:        var(--color-neutral-900);
   --color-control-checked-hover:  var(--color-neutral-700);
+
+  /* ── Theme-aware component color roles ────────────────────────────── */
+  /* Components alias these stable roles. Theme switching stays solely in */
+  /* Color modes instead of being duplicated in Component-based.          */
+  --color-alert-info-bg:           var(--color-bg-info-subtle);
+  --color-alert-info-border:       var(--color-border-secondary);
+  --color-alert-info-accent:       var(--color-fg-info);
+  --color-alert-info-text:         var(--color-text-primary);
+  --color-alert-info-action:       var(--color-action-primary);
+  --color-alert-info-action-hover: var(--color-action-primary-hover);
+  --color-alert-success-bg:           var(--color-bg-success-subtle);
+  --color-alert-success-border:       var(--color-border-secondary);
+  --color-alert-success-accent:       var(--color-fg-success);
+  --color-alert-success-text:         var(--color-text-primary);
+  --color-alert-success-action:       var(--color-fg-success);
+  --color-alert-success-action-hover: var(--color-text-success);
+  --color-alert-warning-bg:           var(--color-bg-warning-subtle);
+  --color-alert-warning-border:       var(--color-border-secondary);
+  --color-alert-warning-accent:       var(--color-fg-warning);
+  --color-alert-warning-text:         var(--color-text-primary);
+  --color-alert-warning-action:       var(--color-fg-warning);
+  --color-alert-warning-action-hover: var(--color-text-warning);
+  --color-alert-error-bg:           var(--color-bg-error-subtle);
+  --color-alert-error-border:       var(--color-border-secondary);
+  --color-alert-error-accent:       var(--color-fg-error);
+  --color-alert-error-text:         var(--color-text-primary);
+  --color-alert-error-action:       var(--color-fg-error);
+  --color-alert-error-action-hover: var(--color-text-error);
+  --color-alert-neutral-bg:         var(--color-bg-neutral-subtle);
+  --color-alert-neutral-border:     var(--color-border-secondary);
+  --color-alert-neutral-accent:     var(--color-fg-secondary);
+  --color-alert-neutral-text:       var(--color-text-primary);
+  --color-alert-emphasize-bg:       var(--color-bg-neutral-strong);
+  --color-alert-emphasize-border:   var(--color-border-primary);
+  --color-alert-emphasize-accent:   var(--color-fg-inverse);
+  --color-alert-emphasize-text:     var(--color-text-inverse);
+  --color-dialog-overlay-bg:        rgba(27, 26, 26, 0.5);
+  --color-dropdown-menu-item-bg-hover:  var(--color-action-neutral-subtle-hover);
+  --color-dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);
+  --color-social-button-border-focus: #c7e5f0;
+  --color-spinner-white-track:        rgba(255, 255, 255, 0.45);
 }
 
 [data-theme="dark"] {
@@ -414,4 +455,41 @@
   --color-control-idle-hover:     var(--color-neutral-700);
   --color-control-checked:        var(--color-neutral-200);
   --color-control-checked-hover:  var(--color-neutral-400);
+
+  /* ── Theme-aware component color roles — dark ───────────────────── */
+  --color-alert-info-bg:           #003877;
+  --color-alert-info-border:       #0059c2;
+  --color-alert-info-accent:       #54a3f6;
+  --color-alert-info-text:         #f4f3f3;
+  --color-alert-info-action:       #54a3f6;
+  --color-alert-info-action-hover: #8bc4ff;
+  --color-alert-success-bg:           #044329;
+  --color-alert-success-border:       #006d0f;
+  --color-alert-success-accent:       #2bb47d;
+  --color-alert-success-text:         #f4f3f3;
+  --color-alert-success-action:       #2bb47d;
+  --color-alert-success-action-hover: #62d6a2;
+  --color-alert-warning-bg:           #521d00;
+  --color-alert-warning-border:       #b44e00;
+  --color-alert-warning-accent:       #e16d00;
+  --color-alert-warning-text:         #f4f3f3;
+  --color-alert-warning-action:       #e16d00;
+  --color-alert-warning-action-hover: #ff9a3c;
+  --color-alert-error-bg:           #7b0000;
+  --color-alert-error-border:       #d71913;
+  --color-alert-error-accent:       #ff755e;
+  --color-alert-error-text:         #f4f3f3;
+  --color-alert-error-action:       #ff755e;
+  --color-alert-error-action-hover: #ffa193;
+  --color-alert-neutral-bg:         #2d2d2e;
+  --color-alert-neutral-border:     #545454;
+  --color-alert-neutral-accent:     #b7b7b7;
+  --color-alert-neutral-text:       #f4f3f3;
+  --color-alert-emphasize-bg:       #292929;
+  --color-alert-emphasize-border:   #545454;
+  --color-alert-emphasize-accent:   #b7b7b7;
+  --color-alert-emphasize-text:     #f4f3f3;
+  --color-dialog-overlay-bg:        rgba(0, 0, 0, 0.72);
+  --color-dropdown-menu-item-bg-hover:  var(--color-action-neutral-hover);
+  --color-dropdown-menu-item-bg-active: var(--color-action-neutral-active);
 }

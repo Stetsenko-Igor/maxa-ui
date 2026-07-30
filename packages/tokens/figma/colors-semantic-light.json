@@ -88,7 +88,7 @@
       "$type": "color"
     },
     "border-error-subtle": {
-      "$description": "Subtle error border for low-emphasis feedback surfaces.",
+      "$description": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
       "$value": "{Colors.Red.200}",
       "$type": "color"
     },
@@ -98,7 +98,7 @@
       "$type": "color"
     },
     "border-info-subtle": {
-      "$description": "Subtle informational border for low-emphasis feedback surfaces.",
+      "$description": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
       "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
@@ -108,7 +108,7 @@
       "$type": "color"
     },
     "border-success-subtle": {
-      "$description": "Subtle success border for low-emphasis feedback surfaces.",
+      "$description": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
       "$value": "{Colors.Green.300}",
       "$type": "color"
     },
@@ -118,7 +118,7 @@
       "$type": "color"
     },
     "border-warning-subtle": {
-      "$description": "Subtle warning border for low-emphasis feedback surfaces.",
+      "$description": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
       "$value": "{Colors.Orange.200}",
       "$type": "color"
     }

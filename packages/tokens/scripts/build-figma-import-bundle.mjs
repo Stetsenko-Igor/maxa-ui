@@ -171,6 +171,14 @@ const BARE_TEXT_SIZE_SUFFIXES = new Set(["sm", "md", "lg"])
 
 
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"))
+const componentModes = manifest.collections?.["Component-based"]?.modes ?? {}
+if (JSON.stringify(Object.keys(componentModes)) !== JSON.stringify(["Default"])) {
+  throw new Error('Component-based must have exactly one mode named "Default". Put every Light/Dark value in Color modes.')
+}
+const legacyComponentFiles = Object.values(componentModes).flat().filter((fileName) => /-(?:light|dark)\.json$/.test(fileName))
+if (legacyComponentFiles.length > 0) {
+  throw new Error(`Component-based uses legacy theme-specific files: ${legacyComponentFiles.join(", ")}`)
+}
 const bundle = {
   aliasDefaults,
   collections: {},
@@ -412,6 +420,17 @@ function finalizeBundle(outputBundle) {
     delete collection.declaredTypes
   }
 
+  const componentCollection = outputBundle.collections["Component-based"]
+  const componentTokens = componentCollection?.modes?.Default ?? {}
+  const rawComponentColors = Object.entries(componentTokens)
+    .filter(([tokenName, value]) => componentCollection.types[tokenName] === "COLOR" && !isAliasValue(value))
+    .map(([tokenName]) => tokenName)
+  if (rawComponentColors.length > 0) {
+    throw new Error(
+      `Component-based COLOR variables must alias Primitives or Color modes; found literals at:\n${rawComponentColors.join("\n")}`,
+    )
+  }
+
   const invalidValues = []
   for (const [collectionName, collection] of Object.entries(outputBundle.collections)) {
     for (const [modeName, tokens] of Object.entries(collection.modes)) {
@@ -483,6 +502,17 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (group === "text") return ["TEXT_FILL"]
     if (group === "border") return ["STROKE_COLOR"]
     if (group === "action" || group === "control") return ["ALL_FILLS", "STROKE_COLOR"]
+    if (group === "utility") {
+      if (/^utility\/text-/.test(lower)) return ["TEXT_FILL"]
+      if (/^utility\/fg-/.test(lower)) return ["SHAPE_FILL"]
+      return ["ALL_FILLS"]
+    }
+    if (group === "component") {
+      if (/(^|\/)(border|separator)(\/|$)|border-|focus-ring/.test(lower)) return ["STROKE_COLOR"]
+      if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower)) return ["TEXT_FILL"]
+      if (/(icon|accent|mark|dot|fg|foreground)/.test(lower)) return ["SHAPE_FILL"]
+      return ["ALL_FILLS"]
+    }
     return ["ALL_FILLS"]
   }
 

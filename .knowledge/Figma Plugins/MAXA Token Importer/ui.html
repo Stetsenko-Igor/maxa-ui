@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Token Importer v10</title>
+  <title>MAXA Token Importer v11</title>
   <style>
     html { height: 100%; }
     body {
@@ -77,7 +77,7 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Token Importer v10</h1>
+  <h1>MAXA Token Importer v11</h1>
   <p>Choose or drag the generated `import-bundle.json`. A full type, mode, alias, cycle, and CSS-expression preflight runs before Figma is changed.</p>
   <div class="dropzone" id="dropzone">
     Drop the generated `packages/tokens/figma/import-bundle.json` here.
@@ -96,6 +96,13 @@
         <span>Delete variables from imported collections when they exist in Figma but are missing from the bundle.</span>
       </span>
     </label>
+    <label class="option" for="removeStaleModes">
+      <input id="removeStaleModes" type="checkbox" checked />
+      <span>
+        <strong>Remove stale collection modes</strong>
+        <span>Required for exact schema sync. Removes modes that are no longer present in the bundle.</span>
+      </span>
+    </label>
     <label class="option" for="recreateWrongTypes">
       <input id="recreateWrongTypes" type="checkbox" />
       <span>
@@ -108,7 +115,7 @@
       <button class="secondary" id="exportBtn">Export variables</button>
       <button class="secondary" id="closeBtn">Close</button>
     </div>
-    <div class="log" id="log">Ready. UI loaded: v10.</div>
+    <div class="log" id="log">Ready. UI loaded: v11.</div>
   </div>
   <script>
     const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
@@ -121,9 +128,10 @@
     const dropzone = document.getElementById('dropzone');
     const input = document.getElementById('jsonInput');
     const removeStaleVariablesInput = document.getElementById('removeStaleVariables');
+    const removeStaleModesInput = document.getElementById('removeStaleModes');
     const recreateWrongTypesInput = document.getElementById('recreateWrongTypes');
     const log = document.getElementById('log');
-    let currentLogs = ['Ready. UI loaded: v10.'];
+    let currentLogs = ['Ready. UI loaded: v11.'];
     let isImporting = false;
 
     function setLog(lines) {
@@ -147,6 +155,7 @@
       fileInput.disabled = nextValue;
       input.disabled = nextValue;
       removeStaleVariablesInput.disabled = nextValue;
+      removeStaleModesInput.disabled = nextValue;
       recreateWrongTypesInput.disabled = nextValue;
     }
 
@@ -204,6 +213,7 @@
           payload: input.value,
           options: {
             removeStaleVariables: removeStaleVariablesInput.checked,
+            removeStaleModes: removeStaleModesInput.checked,
             recreateWrongTypes: recreateWrongTypesInput.checked,
           },
         },

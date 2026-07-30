@@ -92,8 +92,7 @@ function flattenTokenPaths(value, prefix = '', result = new Set()) {
   return result;
 }
 
-const lightTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/component-button-light.json'), 'utf8')));
-const darkTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/component-button-dark.json'), 'utf8')));
+const componentTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/component-button.json'), 'utf8')));
 const types = ['Primary', 'Secondary', '𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline', 'Positive', 'Negative', 'Link', 'Ghost'];
 const sizes = ['L - Large', 'M - Medium', 'S - Small', 'XS - Xtra Small'];
 const states = ['Default', 'Pressed', 'Focus', 'Hover', 'Selected', 'Loading', 'Disabled'];
@@ -128,8 +127,7 @@ for (const type of types) {
 
 assert.equal(variantCount, 1372);
 for (const token of generatedTokens) {
-  assert.ok(lightTokens.has(token), `Light token is missing: ${token}`);
-  assert.ok(darkTokens.has(token), `Dark token is missing: ${token}`);
+  assert.ok(componentTokens.has(token), `Component token is missing: ${token}`);
   assert.ok(!token.includes('/danger/'), `Legacy danger token generated: ${token}`);
   assert.ok(!token.endsWith('bg-focus'), `Nonexistent focus background generated: ${token}`);
   assert.ok(!token.endsWith('border-active'), `Nonexistent active border generated: ${token}`);

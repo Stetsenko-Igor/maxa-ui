@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1675
+Total tokens: 1712
 
 ## Primitives
 
@@ -463,6 +463,45 @@ Source: `packages/tokens/src/semantic.css`
 --color-control-idle-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
 --color-control-checked: var(--color-neutral-900);/* dark: var(--color-neutral-200) */
 --color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
+
+/* ── Theme-aware component color roles ── */
+--color-alert-info-bg: var(--color-bg-info-subtle);/* dark: #003877 */
+--color-alert-info-border: var(--color-border-secondary);/* dark: #0059c2 */
+--color-alert-info-accent: var(--color-fg-info);/* dark: #54a3f6 */
+--color-alert-info-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-info-action: var(--color-action-primary);/* dark: #54a3f6 */
+--color-alert-info-action-hover: var(--color-action-primary-hover);/* dark: #8bc4ff */
+--color-alert-success-bg: var(--color-bg-success-subtle);/* dark: #044329 */
+--color-alert-success-border: var(--color-border-secondary);/* dark: #006d0f */
+--color-alert-success-accent: var(--color-fg-success);/* dark: #2bb47d */
+--color-alert-success-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-success-action: var(--color-fg-success);/* dark: #2bb47d */
+--color-alert-success-action-hover: var(--color-text-success);/* dark: #62d6a2 */
+--color-alert-warning-bg: var(--color-bg-warning-subtle);/* dark: #521d00 */
+--color-alert-warning-border: var(--color-border-secondary);/* dark: #b44e00 */
+--color-alert-warning-accent: var(--color-fg-warning);/* dark: #e16d00 */
+--color-alert-warning-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-warning-action: var(--color-fg-warning);/* dark: #e16d00 */
+--color-alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
+--color-alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
+--color-alert-error-border: var(--color-border-secondary);/* dark: #d71913 */
+--color-alert-error-accent: var(--color-fg-error);/* dark: #ff755e */
+--color-alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-error-action: var(--color-fg-error);/* dark: #ff755e */
+--color-alert-error-action-hover: var(--color-text-error);/* dark: #ffa193 */
+--color-alert-neutral-bg: var(--color-bg-neutral-subtle);/* dark: #2d2d2e */
+--color-alert-neutral-border: var(--color-border-secondary);/* dark: #545454 */
+--color-alert-neutral-accent: var(--color-fg-secondary);/* dark: #b7b7b7 */
+--color-alert-neutral-text: var(--color-text-primary);/* dark: #f4f3f3 */
+--color-alert-emphasize-bg: var(--color-bg-neutral-strong);/* dark: #292929 */
+--color-alert-emphasize-border: var(--color-border-primary);/* dark: #545454 */
+--color-alert-emphasize-accent: var(--color-fg-inverse);/* dark: #b7b7b7 */
+--color-alert-emphasize-text: var(--color-text-inverse);/* dark: #f4f3f3 */
+--color-dialog-overlay-bg: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */
+--color-dropdown-menu-item-bg-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
+--color-dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
+--color-social-button-border-focus: #c7e5f0;
+--color-spinner-white-track: rgba(255, 255, 255, 0.45);
 ```
 
 ## Dimensions (Spacing, Radius, Z-index, Breakpoints)
@@ -1030,7 +1069,7 @@ Source: `packages/tokens/src/component-spinner.css`
 --spinner-color: var(--spinner-primary-color);/* dark: var(--spinner-primary-color) */
 --spinner-track-color: var(--color-border-secondary);/* dark: var(--color-border-secondary) */
 --spinner-white-color: var(--color-neutral-0);
---spinner-white-track-color: color-mix(in srgb, var(--color-neutral-0) 45%, transparent);
+--spinner-white-track-color: var(--color-spinner-white-track);
 --spinner-primary-color: var(--color-action-primary);/* dark: var(--color-action-primary) */
 --spinner-greyscale-color: var(--color-fg-secondary);/* dark: var(--color-fg-secondary) */
 --spinner-inverted-color: var(--color-text-primary);
@@ -1611,44 +1650,44 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-title-weight: var(--font-weight-bold);
 
 /* ── Info ── */
---alert-info-bg: var(--color-bg-info-subtle);
---alert-info-border: var(--color-border-info-subtle);
---alert-info-text: var(--color-text-primary);
---alert-info-title: var(--color-text-primary);
---alert-info-icon: var(--color-fg-info);
---alert-info-strip: var(--color-fg-info);
---alert-info-action: var(--color-action-primary);
---alert-info-action-hover: var(--color-action-primary-hover);
+--alert-info-bg: var(--color-alert-info-bg);
+--alert-info-border: var(--color-alert-info-border);
+--alert-info-text: var(--color-alert-info-text);
+--alert-info-title: var(--color-alert-info-text);
+--alert-info-icon: var(--color-alert-info-accent);
+--alert-info-strip: var(--color-alert-info-accent);
+--alert-info-action: var(--color-alert-info-action);
+--alert-info-action-hover: var(--color-alert-info-action-hover);
 
 /* ── Success ── */
---alert-success-bg: var(--color-bg-success-subtle);
---alert-success-border: var(--color-border-success-subtle);
---alert-success-text: var(--color-text-primary);
---alert-success-title: var(--color-text-primary);
---alert-success-icon: var(--color-fg-success);
---alert-success-strip: var(--color-fg-success);
---alert-success-action: var(--color-fg-success);
---alert-success-action-hover: var(--color-text-success);
+--alert-success-bg: var(--color-alert-success-bg);
+--alert-success-border: var(--color-alert-success-border);
+--alert-success-text: var(--color-alert-success-text);
+--alert-success-title: var(--color-alert-success-text);
+--alert-success-icon: var(--color-alert-success-accent);
+--alert-success-strip: var(--color-alert-success-accent);
+--alert-success-action: var(--color-alert-success-action);
+--alert-success-action-hover: var(--color-alert-success-action-hover);
 
 /* ── Warning ── */
---alert-warning-bg: var(--color-bg-warning-subtle);
---alert-warning-border: var(--color-border-warning-subtle);
---alert-warning-text: var(--color-text-primary);
---alert-warning-title: var(--color-text-primary);
---alert-warning-icon: var(--color-fg-warning);
---alert-warning-strip: var(--color-fg-warning);
---alert-warning-action: var(--color-fg-warning);
---alert-warning-action-hover: var(--color-text-warning);
+--alert-warning-bg: var(--color-alert-warning-bg);
+--alert-warning-border: var(--color-alert-warning-border);
+--alert-warning-text: var(--color-alert-warning-text);
+--alert-warning-title: var(--color-alert-warning-text);
+--alert-warning-icon: var(--color-alert-warning-accent);
+--alert-warning-strip: var(--color-alert-warning-accent);
+--alert-warning-action: var(--color-alert-warning-action);
+--alert-warning-action-hover: var(--color-alert-warning-action-hover);
 
 /* ── Error ── */
---alert-error-bg: var(--color-bg-error-subtle);
---alert-error-border: var(--color-border-error-subtle);
---alert-error-text: var(--color-text-primary);
---alert-error-title: var(--color-text-primary);
---alert-error-icon: var(--color-fg-error);
---alert-error-strip: var(--color-fg-error);
---alert-error-action: var(--color-fg-error);
---alert-error-action-hover: var(--color-text-error);
+--alert-error-bg: var(--color-alert-error-bg);
+--alert-error-border: var(--color-alert-error-border);
+--alert-error-text: var(--color-alert-error-text);
+--alert-error-title: var(--color-alert-error-text);
+--alert-error-icon: var(--color-alert-error-accent);
+--alert-error-strip: var(--color-alert-error-accent);
+--alert-error-action: var(--color-alert-error-action);
+--alert-error-action-hover: var(--color-alert-error-action-hover);
 ```
 
 ## Tooltip Component Tokens
@@ -1746,8 +1785,8 @@ Source: `packages/tokens/src/component-dropdown-menu.css`
 --dropdown-menu-item-text-hover: var(--color-text-primary);
 --dropdown-menu-item-text-active: var(--color-text-primary);
 --dropdown-menu-item-icon: var(--color-fg-secondary);
---dropdown-menu-item-bg-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
---dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
+--dropdown-menu-item-bg-hover: var(--color-dropdown-menu-item-bg-hover);
+--dropdown-menu-item-bg-active: var(--color-dropdown-menu-item-bg-active);
 --dropdown-menu-item-meta-text: var(--color-text-tertiary);
 --dropdown-menu-item-text-disabled: var(--color-text-disabled);
 --dropdown-menu-item-text-destructive: var(--color-text-error);
@@ -1772,7 +1811,7 @@ Source: `packages/tokens/src/component-dropdown-menu.css`
 Source: `packages/tokens/src/component-dialog.css`
 
 ```css
---dialog-overlay-bg: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */
+--dialog-overlay-bg: var(--color-dialog-overlay-bg);
 --dialog-content-bg: var(--color-bg-float);
 --dialog-content-border: var(--color-border-primary);
 --dialog-content-radius: var(--radius-md);
@@ -2024,7 +2063,7 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-border: var(--color-border-primary);
 --social-button-border-hover: var(--color-border-secondary);
 --social-button-border-active: var(--color-border-secondary);
---social-button-border-focus: #c7e5f0;
+--social-button-border-focus: var(--color-social-button-border-focus);
 --social-button-bg: var(--button-outline-bg);
 --social-button-bg-hover: var(--button-outline-bg);
 --social-button-bg-active: var(--button-outline-bg);

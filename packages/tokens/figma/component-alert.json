@@ -99,132 +99,132 @@
       "info": {
         "bg": {
           "$description": "Alert, color info: background.",
-          "$value": "{Color modes/background/bg-info-subtle}",
+          "$value": "{Color modes/component/alert/info/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color info: border.",
-          "$value": "{Color modes/border/border-info-subtle}",
+          "$value": "{Color modes/component/alert/info/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color info: accent.",
-          "$value": "{Color modes/foreground/fg-info}",
+          "$value": "{Color modes/component/alert/info/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color info: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/component/alert/info/text}",
           "$type": "color"
         }
       },
       "success": {
         "bg": {
           "$description": "Alert, color success: background.",
-          "$value": "{Color modes/background/bg-success-subtle}",
+          "$value": "{Color modes/component/alert/success/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color success: border.",
-          "$value": "{Color modes/border/border-success-subtle}",
+          "$value": "{Color modes/component/alert/success/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color success: accent.",
-          "$value": "{Color modes/foreground/fg-success}",
+          "$value": "{Color modes/component/alert/success/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color success: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/component/alert/success/text}",
           "$type": "color"
         }
       },
       "warning": {
         "bg": {
           "$description": "Alert, color warning: background.",
-          "$value": "{Color modes/background/bg-warning-subtle}",
+          "$value": "{Color modes/component/alert/warning/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color warning: border.",
-          "$value": "{Color modes/border/border-warning-subtle}",
+          "$value": "{Color modes/component/alert/warning/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color warning: accent.",
-          "$value": "{Color modes/foreground/fg-warning}",
+          "$value": "{Color modes/component/alert/warning/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color warning: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/component/alert/warning/text}",
           "$type": "color"
         }
       },
       "error": {
         "bg": {
           "$description": "Alert, color error: background.",
-          "$value": "{Color modes/background/bg-error-subtle}",
+          "$value": "{Color modes/component/alert/error/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color error: border.",
-          "$value": "{Color modes/border/border-error-subtle}",
+          "$value": "{Color modes/component/alert/error/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color error: accent.",
-          "$value": "{Color modes/foreground/fg-error}",
+          "$value": "{Color modes/component/alert/error/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color error: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/component/alert/error/text}",
           "$type": "color"
         }
       },
       "neutral": {
         "bg": {
           "$description": "Alert, color neutral: background.",
-          "$value": "{Color modes/background/bg-neutral-subtle}",
+          "$value": "{Color modes/component/alert/neutral/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color neutral: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/component/alert/neutral/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color neutral: accent.",
-          "$value": "{Color modes/foreground/fg-secondary}",
+          "$value": "{Color modes/component/alert/neutral/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/component/alert/neutral/text}",
           "$type": "color"
         }
       },
       "emphasize": {
         "bg": {
           "$description": "Alert, color emphasize: background.",
-          "$value": "{Color modes/background/bg-neutral-strong}",
+          "$value": "{Color modes/component/alert/emphasize/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color emphasize: border.",
-          "$value": "{Color modes/border/border-primary}",
+          "$value": "{Color modes/component/alert/emphasize/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color emphasize: accent.",
-          "$value": "{Color modes/foreground/fg-inverse}",
+          "$value": "{Color modes/component/alert/emphasize/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/text/text-inverse}",
+          "$value": "{Color modes/component/alert/emphasize/text}",
           "$type": "color"
         }
       }

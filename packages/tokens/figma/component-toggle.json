@@ -114,7 +114,7 @@
       },
       "thumb": {
         "$description": "Toggle, color: thumb.",
-        "$value": "#FAFAFA",
+        "$value": "{Color modes/background/bg-surface}",
         "$type": "color"
       },
       "thumb-disabled": {
@@ -124,27 +124,27 @@
       },
       "label": {
         "$description": "Toggle, color: label text.",
-        "$value": "#444445",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "text": {
         "$description": "Toggle, color: text color.",
-        "$value": "#444445",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "description": {
         "$description": "Toggle, color: description.",
-        "$value": "#575758",
+        "$value": "{Color modes/text/text-secondary}",
         "$type": "color"
       },
       "label-disabled": {
         "$description": "Toggle, color: label text (disabled state).",
-        "$value": "#8C8C8E",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "text-disabled": {
         "$description": "Toggle, color: text color (disabled state).",
-        "$value": "#C2C2C2",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       }
     },

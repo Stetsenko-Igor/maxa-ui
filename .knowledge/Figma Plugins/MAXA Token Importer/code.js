@@ -209,6 +209,7 @@ figma.ui.onmessage = async (msg) => {
       const bundle = parseBundle(msg.payload);
       const options = {
         removeStaleVariables: Boolean(msg.options && msg.options.removeStaleVariables),
+        removeStaleModes: Boolean(msg.options && msg.options.removeStaleModes),
         recreateWrongTypes: Boolean(msg.options && msg.options.recreateWrongTypes),
       };
       const preflight = validateBundle(bundle);
@@ -220,6 +221,11 @@ figma.ui.onmessage = async (msg) => {
         pushLog(logs, 'warn', 'Stale variable cleanup is enabled. Variables missing from the bundle will be removed from imported collections.');
       } else {
         pushLog(logs, 'info', 'Stale variable cleanup is disabled. Existing variables missing from the bundle will be kept.');
+      }
+      if (options.removeStaleModes) {
+        pushLog(logs, 'warn', 'Stale mode cleanup is enabled. Collection modes missing from the bundle will be removed.');
+      } else {
+        pushLog(logs, 'info', 'Stale mode cleanup is disabled. Existing modes missing from the bundle will be kept.');
       }
       if (options.recreateWrongTypes) {
         pushLog(logs, 'warn', 'Wrong-type recreation is enabled. Affected variable IDs will change.');
@@ -600,7 +606,7 @@ async function importBundle(bundle, logs, options = {}) {
     if (modeNames.length === 0) continue;
 
     const collection = await getOrCreateCollection(collectionName, logs);
-    await syncModes(collection, modeNames, logs);
+    await syncModes(collection, modeNames, logs, options.removeStaleModes);
     collectionByName.set(collectionName, collection);
 
     const firstModeName = modeNames[0];
@@ -880,13 +886,26 @@ async function getOrCreateCollection(name, logs) {
   return created;
 }
 
-async function syncModes(collection, desiredModeNames, logs) {
+async function syncModes(collection, desiredModeNames, logs, removeStaleModes = false) {
   if (desiredModeNames.length > 0 && collection.modes.length > 0 && collection.modes[0].name !== desiredModeNames[0]) {
     collection.renameMode(collection.modes[0].modeId, desiredModeNames[0]);
+    pushLog(logs, 'info', `Renamed the first mode in "${collection.name}" to "${desiredModeNames[0]}".`);
   }
   const refreshedNames = collection.modes.map((m) => m.name);
   for (const modeName of desiredModeNames) {
-    if (!refreshedNames.includes(modeName)) collection.addMode(modeName);
+    if (!refreshedNames.includes(modeName)) {
+      collection.addMode(modeName);
+      pushLog(logs, 'info', `Added mode "${modeName}" to "${collection.name}".`);
+    }
+  }
+
+  if (removeStaleModes) {
+    const desired = new Set(desiredModeNames);
+    const staleModes = collection.modes.filter((mode) => !desired.has(mode.name));
+    for (const mode of staleModes) {
+      collection.removeMode(mode.modeId);
+      pushLog(logs, 'warn', `Removed stale mode "${mode.name}" from "${collection.name}".`);
+    }
   }
 }
 

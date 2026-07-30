@@ -1,5 +1,5 @@
 {
-  "Utility": {
+  "utility": {
     "bg-gray-subtle": {
       "$value": "{Colors.Gray.950}",
       "$type": "color"
@@ -35,7 +35,7 @@
       "$type": "color"
     },
     "fg-red": {
-      "$value": "{Utility/text-red}",
+      "$value": "{Color modes/utility/text-red}",
       "$type": "color"
     },
     "bg-orange-subtle": {
@@ -56,7 +56,7 @@
       "$type": "color"
     },
     "fg-orange": {
-      "$value": "{Utility/text-orange}",
+      "$value": "{Color modes/utility/text-orange}",
       "$type": "color"
     },
     "bg-amber-subtle": {
@@ -77,7 +77,7 @@
       "$type": "color"
     },
     "fg-amber": {
-      "$value": "{Utility/text-amber}",
+      "$value": "{Color modes/utility/text-amber}",
       "$type": "color"
     },
     "bg-yellow-subtle": {
@@ -98,7 +98,7 @@
       "$type": "color"
     },
     "fg-yellow": {
-      "$value": "{Utility/text-yellow}",
+      "$value": "{Color modes/utility/text-yellow}",
       "$type": "color"
     },
     "bg-lime-subtle": {
@@ -119,7 +119,7 @@
       "$type": "color"
     },
     "fg-lime": {
-      "$value": "{Utility/text-lime}",
+      "$value": "{Color modes/utility/text-lime}",
       "$type": "color"
     },
     "bg-green-subtle": {
@@ -140,7 +140,7 @@
       "$type": "color"
     },
     "fg-green": {
-      "$value": "{Utility/text-green}",
+      "$value": "{Color modes/utility/text-green}",
       "$type": "color"
     },
     "bg-emerald-subtle": {
@@ -161,7 +161,7 @@
       "$type": "color"
     },
     "fg-emerald": {
-      "$value": "{Utility/text-emerald}",
+      "$value": "{Color modes/utility/text-emerald}",
       "$type": "color"
     },
     "bg-teal-subtle": {
@@ -182,7 +182,7 @@
       "$type": "color"
     },
     "fg-teal": {
-      "$value": "{Utility/text-teal}",
+      "$value": "{Color modes/utility/text-teal}",
       "$type": "color"
     },
     "bg-cyan-subtle": {
@@ -203,7 +203,7 @@
       "$type": "color"
     },
     "fg-cyan": {
-      "$value": "{Utility/text-cyan}",
+      "$value": "{Color modes/utility/text-cyan}",
       "$type": "color"
     },
     "bg-sky-subtle": {
@@ -224,7 +224,7 @@
       "$type": "color"
     },
     "fg-sky": {
-      "$value": "{Utility/text-sky}",
+      "$value": "{Color modes/utility/text-sky}",
       "$type": "color"
     },
     "bg-blue-subtle": {
@@ -245,7 +245,7 @@
       "$type": "color"
     },
     "fg-blue": {
-      "$value": "{Utility/text-blue}",
+      "$value": "{Color modes/utility/text-blue}",
       "$type": "color"
     },
     "bg-indigo-subtle": {
@@ -266,7 +266,7 @@
       "$type": "color"
     },
     "fg-indigo": {
-      "$value": "{Utility/text-indigo}",
+      "$value": "{Color modes/utility/text-indigo}",
       "$type": "color"
     },
     "bg-violet-subtle": {
@@ -287,7 +287,7 @@
       "$type": "color"
     },
     "fg-violet": {
-      "$value": "{Utility/text-violet}",
+      "$value": "{Color modes/utility/text-violet}",
       "$type": "color"
     },
     "bg-purple-subtle": {
@@ -308,7 +308,7 @@
       "$type": "color"
     },
     "fg-purple": {
-      "$value": "{Utility/text-purple}",
+      "$value": "{Color modes/utility/text-purple}",
       "$type": "color"
     },
     "bg-fuchsia-subtle": {
@@ -329,7 +329,7 @@
       "$type": "color"
     },
     "fg-fuchsia": {
-      "$value": "{Utility/text-fuchsia}",
+      "$value": "{Color modes/utility/text-fuchsia}",
       "$type": "color"
     },
     "bg-pink-subtle": {
@@ -350,7 +350,7 @@
       "$type": "color"
     },
     "fg-pink": {
-      "$value": "{Utility/text-pink}",
+      "$value": "{Color modes/utility/text-pink}",
       "$type": "color"
     },
     "bg-rose-subtle": {
@@ -371,7 +371,7 @@
       "$type": "color"
     },
     "fg-rose": {
-      "$value": "{Utility/text-rose}",
+      "$value": "{Color modes/utility/text-rose}",
       "$type": "color"
     }
   }

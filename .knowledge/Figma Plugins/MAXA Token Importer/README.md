@@ -1,4 +1,4 @@
-# MAXA Token Importer v10
+# MAXA Token Importer v11
 
 This version:
 - exports all local variable collections/modes as a bundle in the same shape as
@@ -19,6 +19,7 @@ This version:
 - keeps the import result log visible without scrolling
 - can optionally load the latest pushed `packages/tokens/figma/import-bundle.json` from GitHub
 - can optionally remove stale variables during import when **Remove stale variables during import** is checked
+- can remove stale collection modes during exact schema sync; this is enabled by default so a one-mode `Component-based` collection does not retain an obsolete `Dark` mode
 - can explicitly recreate stale wrong-type variables when **Recreate wrong-type variables** is checked; this is off by default because IDs change
 
 Example alias defaults:
@@ -39,6 +40,7 @@ Expected input:
 - published workflow: click **Load latest from GitHub** to fetch the last pushed bundle:
   - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - cleanup workflow: enable **Remove stale variables during import** only when the bundle should become the source of truth for the imported collections
+- mode cleanup workflow: keep **Remove stale collection modes** enabled when the manifest intentionally removes or renames modes
 - type-repair workflow: enable **Recreate wrong-type variables** only after reviewing the ID-change warning; normal value and alias updates preserve IDs
 
 Shadow behavior:
