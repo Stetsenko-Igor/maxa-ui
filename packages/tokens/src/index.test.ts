@@ -335,7 +335,7 @@ describe("figma import bundle", () => {
 
   it("maps Layout short spacing aliases to the Spacing collection", () => {
     expect(bundle.aliasDefaults.Layout).toBe("Spacing")
-    expect(bundle.collections.Layout?.modes.Desktop?.["Stack/tight"]).toBe("{Spacing/spacing-xs}")
+    expect(bundle.collections.Layout?.modes.Desktop?.["V-stack/tight"]).toBe("{Spacing/spacing-xs}")
     expect(bundle.collections.Layout?.modes.Desktop?.["Container/padding"]).toBe("{Spacing/spacing-4xl}")
     expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
   })
@@ -632,17 +632,17 @@ describe("figma layout tokens", () => {
 
   it("defines shared stack and inline aliases across modes", () => {
     for (const file of [desktopLayoutFile, tabletLayoutFile, mobileLayoutFile]) {
-      expect(file["Stack/tight"]?.$value).toBe("{spacing-xs}")
-      expect(file["Stack/default"]?.$value).toBe("{spacing-xl}")
-      expect(file["Stack/group"]?.$value).toBe("{spacing-3xl}")
-      expect(file["Inline/default"]?.$value).toBe("{spacing-lg}")
+      expect(file["V-stack/tight"]?.$value).toBe("{spacing-xs}")
+      expect(file["V-stack/default"]?.$value).toBe("{spacing-xl}")
+      expect(file["V-stack/group"]?.$value).toBe("{spacing-3xl}")
+      expect(file["H-stack/default"]?.$value).toBe("{spacing-lg}")
     }
   })
 
   it("uses responsive values for section spacing and container padding", () => {
-    expect(desktopLayoutFile["Stack/section"]?.$value).toBe("{spacing-8xl}")
-    expect(tabletLayoutFile["Stack/section"]?.$value).toBe("{spacing-7xl}")
-    expect(mobileLayoutFile["Stack/section"]?.$value).toBe("{spacing-6xl}")
+    expect(desktopLayoutFile["V-stack/section"]?.$value).toBe("{spacing-8xl}")
+    expect(tabletLayoutFile["V-stack/section"]?.$value).toBe("{spacing-7xl}")
+    expect(mobileLayoutFile["V-stack/section"]?.$value).toBe("{spacing-6xl}")
 
     expect(desktopLayoutFile["Container/padding"]?.$value).toBe("{spacing-4xl}")
     expect(tabletLayoutFile["Container/padding"]?.$value).toBe("{spacing-3xl}")
@@ -657,10 +657,10 @@ describe("figma layout tokens", () => {
   })
 
   it("documents layout token intent", () => {
-    expect(desktopLayoutFile["Stack/default"]?.$description).toBe(
+    expect(desktopLayoutFile["V-stack/default"]?.$description).toBe(
       "Default vertical gap for component internals. Alias: spacing-xl.",
     )
-    expect(desktopLayoutFile["Stack/tight"]?.$description).toBe(
+    expect(desktopLayoutFile["V-stack/tight"]?.$description).toBe(
       "Dense vertical gap for tightly related elements. Alias: spacing-xs.",
     )
     expect(mobileLayoutFile["Container/padding"]?.$description).toBe(

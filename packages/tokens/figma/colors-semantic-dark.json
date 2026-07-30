@@ -265,7 +265,7 @@
   },
   "background": {
     "bg-page": {
-      "$value": "{Colors.Neutral.1000}",
+      "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "bg-surface": {

@@ -28,7 +28,7 @@ Source: `packages/tokens/src/primitives.css`
 --color-neutral-25: #F8F8F8;
 --color-neutral-50: #F5F6FA;
 --color-neutral-100: #F4F3F3;
---color-neutral-200: #E9EAEF;
+--color-neutral-200: #EDEDED;
 --color-neutral-300: #E4E4E4;
 --color-neutral-400: #D7D5D5;
 --color-neutral-500: #A1A1A4;
@@ -36,7 +36,7 @@ Source: `packages/tokens/src/primitives.css`
 --color-neutral-700: #6B6B6D;
 --color-neutral-800: #444445;
 --color-neutral-900: #2A2A2B;
---color-neutral-950: #1B1A1A;
+--color-neutral-950: #1A1919;
 --color-neutral-975: #161616;
 --color-neutral-1000: #0D0D0D;
 
@@ -310,7 +310,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-neutral-subtle: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 
 /* ── Background — surface elevation ── */
---color-bg-page: var(--color-neutral-50);/* #F5F6FA — gray canvas | dark: var(--color-neutral-1000) */
+--color-bg-page: var(--color-neutral-50);/* #F5F6FA — gray canvas | dark: var(--color-neutral-950) */
 --color-bg-surface: var(--color-base-white);/* #FFFFFF — raised surfaces | dark: var(--color-neutral-900) */
 --color-bg-float: var(--color-base-white);/* #FFFFFF — floating surfaces | dark: var(--color-neutral-800) */
 --color-bg-muted: var(--color-neutral-25);/* #F8F8F8 — recessed zones | dark: var(--color-neutral-975) */

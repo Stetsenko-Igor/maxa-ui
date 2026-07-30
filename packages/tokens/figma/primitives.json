@@ -28,7 +28,7 @@
         "$type": "color"
       },
       "200": {
-        "$value": "#E9EAEF",
+        "$value": "#EDEDED",
         "$type": "color"
       },
       "300": {
@@ -60,7 +60,7 @@
         "$type": "color"
       },
       "950": {
-        "$value": "#1B1A1A",
+        "$value": "#1A1919",
         "$type": "color"
       },
       "975": {
@@ -1247,15 +1247,15 @@
       "$type": "number",
       "$description": "Primitive spacing step 40 (160px)."
     },
-    "0․5 (2px)": {
+    "0\u20245 (2px)": {
       "$value": 2,
       "$type": "number",
-      "$description": "Primitive spacing step 0․5 (2px)."
+      "$description": "Primitive spacing step 0\u20245 (2px)."
     },
-    "1․5 (6px)": {
+    "1\u20245 (6px)": {
       "$value": 6,
       "$type": "number",
-      "$description": "Primitive spacing step 1․5 (6px)."
+      "$description": "Primitive spacing step 1\u20245 (6px)."
     }
   }
 }
