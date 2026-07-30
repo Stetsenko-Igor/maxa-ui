@@ -209,15 +209,25 @@ figma.ui.onmessage = async (msg) => {
       const bundle = parseBundle(msg.payload);
       const options = {
         removeStaleVariables: Boolean(msg.options && msg.options.removeStaleVariables),
+        recreateWrongTypes: Boolean(msg.options && msg.options.recreateWrongTypes),
       };
+      const preflight = validateBundle(bundle);
+      const existingState = await validateExistingVariableState(bundle, options);
       pushLog(logs, 'info', `Bundle parsed. Collections: ${Object.keys(bundle.collections).length}.`);
+      pushLog(logs, 'success', `Preflight passed: ${preflight.variableCount} typed variables, ${preflight.aliasCount} alias values, ${preflight.modeValueCount} mode values.`);
+      pushLog(logs, 'success', `Existing-state preflight passed: ${existingState.wrongTypeCount} wrong-type variable(s) require recreation.`);
       if (options.removeStaleVariables) {
         pushLog(logs, 'warn', 'Stale variable cleanup is enabled. Variables missing from the bundle will be removed from imported collections.');
       } else {
         pushLog(logs, 'info', 'Stale variable cleanup is disabled. Existing variables missing from the bundle will be kept.');
       }
+      if (options.recreateWrongTypes) {
+        pushLog(logs, 'warn', 'Wrong-type recreation is enabled. Affected variable IDs will change.');
+      } else {
+        pushLog(logs, 'info', 'Wrong-type recreation is disabled. Import will stop if a stale variable has the wrong type.');
+      }
       await applyMigrations(MIGRATIONS, logs);
-      await importBundle(bundle, logs, options);
+      await importBundle(bundle, logs, { ...options, existingStateValidated: true });
       await createTypographyStyles(bundle, logs);
       await createShadowEffectStyles(bundle, logs);
       pushLog(logs, 'success', 'Import finished successfully.');
@@ -269,6 +279,8 @@ async function exportVariablesAsBundle(logs) {
   for (const collection of collections) {
     const modes = {};
     const descriptions = {};
+    const types = {};
+    const scopes = {};
     const collectionVariables = allVariables.filter((v) => v.variableCollectionId === collection.id);
 
     for (const mode of collection.modes) {
@@ -284,14 +296,16 @@ async function exportVariablesAsBundle(logs) {
     }
 
     for (const variable of collectionVariables) {
+      types[variable.name] = variable.resolvedType;
+      scopes[variable.name] = [...variable.scopes];
       if (variable.description && variable.description.trim()) {
         descriptions[variable.name] = variable.description.trim();
       }
     }
 
     bundle.collections[collection.name] = Object.keys(descriptions).length > 0
-      ? { modes, descriptions }
-      : { modes };
+      ? { modes, descriptions, types, scopes }
+      : { modes, types, scopes };
 
     pushLog(logs, 'info', `Exported "${collection.name}": ${collectionVariables.length} variable(s), ${collection.modes.length} mode(s).`);
   }
@@ -332,6 +346,164 @@ function parseBundle(input) {
     throw new Error('Invalid bundle shape. Expected: { "collections": { ... } }');
   }
   return parsed;
+}
+
+function validateBundle(bundle) {
+  const validTypes = new Set(['BOOLEAN', 'COLOR', 'FLOAT', 'STRING']);
+  const validScopes = new Set([
+    'ALL_SCOPES', 'TEXT_CONTENT', 'CORNER_RADIUS', 'WIDTH_HEIGHT', 'GAP',
+    'ALL_FILLS', 'FRAME_FILL', 'SHAPE_FILL', 'TEXT_FILL', 'STROKE_COLOR',
+    'STROKE_FLOAT', 'EFFECT_FLOAT', 'EFFECT_COLOR', 'OPACITY', 'FONT_FAMILY',
+    'FONT_STYLE', 'FONT_WEIGHT', 'FONT_SIZE', 'LINE_HEIGHT', 'LETTER_SPACING',
+    'PARAGRAPH_SPACING', 'PARAGRAPH_INDENT',
+  ]);
+  const tokenPaths = new Set();
+  let variableCount = 0;
+  let aliasCount = 0;
+  let modeValueCount = 0;
+
+  for (const [collectionName, collectionDef] of Object.entries(bundle.collections || {})) {
+    const modeEntries = Object.entries((collectionDef && collectionDef.modes) || {});
+    if (!modeEntries.length) throw new Error(`Preflight: collection "${collectionName}" has no modes.`);
+
+    const expectedNames = Object.keys(modeEntries[0][1] || {}).sort();
+    if (!expectedNames.length) throw new Error(`Preflight: collection "${collectionName}" has no variables.`);
+
+    for (const [modeName, modeTokens] of modeEntries) {
+      const actualNames = Object.keys(modeTokens || {}).sort();
+      if (JSON.stringify(actualNames) !== JSON.stringify(expectedNames)) {
+        throw new Error(`Preflight: collection "${collectionName}" mode "${modeName}" has a different token set.`);
+      }
+    }
+
+    for (const tokenName of expectedNames) {
+      const resolvedType = collectionDef.types && collectionDef.types[tokenName];
+      if (!validTypes.has(resolvedType)) {
+        throw new Error(`Preflight: Missing resolved type for "${collectionName}/${tokenName}".`);
+      }
+      const scopes = collectionDef.scopes && collectionDef.scopes[tokenName];
+      if (!Array.isArray(scopes) || scopes.some((scope) => !validScopes.has(scope))) {
+        throw new Error(`Preflight: Missing or invalid scopes for "${collectionName}/${tokenName}".`);
+      }
+      tokenPaths.add(`${collectionName}/${tokenName}`);
+      variableCount += 1;
+    }
+  }
+
+  const aliasEdges = new Map();
+  for (const [collectionName, collectionDef] of Object.entries(bundle.collections || {})) {
+    for (const [modeName, modeTokens] of Object.entries(collectionDef.modes || {})) {
+      for (const [tokenName, value] of Object.entries(modeTokens || {})) {
+        const sourcePath = `${collectionName}/${tokenName}`;
+        const resolvedType = collectionDef.types[tokenName];
+        modeValueCount += 1;
+
+        if (typeof value === 'string' && /(?:var\(--|color-mix\(|\b(?:px|rem)\b)/.test(value)) {
+          throw new Error(`Preflight: CSS expression cannot be a Figma variable value at "${sourcePath}" [${modeName}]: ${value}`);
+        }
+
+        if (isAlias(value)) {
+          const targetPath = parseAliasPath(bundle, collectionName, value);
+          if (!tokenPaths.has(targetPath)) {
+            throw new Error(`Preflight: Alias target not found for "${sourcePath}" [${modeName}] -> "${targetPath}".`);
+          }
+          const targetParts = parseVariablePath(targetPath);
+          const targetType = bundle.collections[targetParts.collectionName].types[targetParts.variableName];
+          if (targetType !== resolvedType) {
+            throw new Error(`Preflight: Alias type mismatch for "${sourcePath}" (${resolvedType}) -> "${targetPath}" (${targetType}).`);
+          }
+          if (!aliasEdges.has(sourcePath)) aliasEdges.set(sourcePath, new Set());
+          aliasEdges.get(sourcePath).add(targetPath);
+          aliasCount += 1;
+          continue;
+        }
+
+        if (!isLiteralCompatibleWithType(resolvedType, value)) {
+          throw new Error(`Preflight: Invalid ${resolvedType} literal at "${sourcePath}" [${modeName}]: ${String(value)}`);
+        }
+      }
+    }
+  }
+
+  const visiting = new Set();
+  const visited = new Set();
+  const visit = (path) => {
+    if (visiting.has(path)) throw new Error(`Preflight: Circular variable alias detected at "${path}".`);
+    if (visited.has(path)) return;
+    visiting.add(path);
+    for (const target of aliasEdges.get(path) || []) visit(target);
+    visiting.delete(path);
+    visited.add(path);
+  };
+  for (const path of tokenPaths) visit(path);
+
+  return { variableCount, aliasCount, modeValueCount };
+}
+
+function isLiteralCompatibleWithType(type, value) {
+  if (type === 'FLOAT') return typeof value === 'number' && Number.isFinite(value);
+  if (type === 'BOOLEAN') return typeof value === 'boolean';
+  if (type === 'STRING') return typeof value === 'string';
+  if (type === 'COLOR') return typeof value === 'string' && isColor(value);
+  return false;
+}
+
+async function validateExistingVariableState(bundle, options = {}) {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const variables = await figma.variables.getLocalVariablesAsync();
+  const collectionNameById = new Map(collections.map((collection) => [collection.id, collection.name]));
+  const desiredTypes = new Map();
+
+  for (const [collectionName, collectionDef] of Object.entries(bundle.collections || {})) {
+    for (const [tokenName, type] of Object.entries(collectionDef.types || {})) {
+      desiredTypes.set(`${collectionName}/${tokenName}`, type);
+    }
+  }
+
+  const wrongTypes = [];
+  for (const variable of variables) {
+    const collectionName = collectionNameById.get(variable.variableCollectionId);
+    if (!collectionName) continue;
+    const path = `${collectionName}/${variable.name}`;
+    const desiredType = desiredTypes.get(path);
+    if (desiredType && desiredType !== variable.resolvedType) {
+      wrongTypes.push({ variable, path, desiredType });
+    }
+  }
+
+  if (wrongTypes.length && !options.recreateWrongTypes) {
+    const sample = wrongTypes.slice(0, 5)
+      .map(({ path, variable, desiredType }) => `${path}: ${variable.resolvedType} -> ${desiredType}`)
+      .join(', ');
+    throw new Error(
+      `Existing-state preflight: ${wrongTypes.length} variable(s) have the wrong type (${sample}). ` +
+      'Enable "Recreate wrong-type variables" only after reviewing the ID-change warning.',
+    );
+  }
+
+  if (wrongTypes.length) {
+    const wrongIds = new Set(wrongTypes.map(({ variable }) => variable.id));
+    const unmanagedConsumers = [];
+    for (const variable of variables) {
+      const collectionName = collectionNameById.get(variable.variableCollectionId);
+      const consumerPath = collectionName ? `${collectionName}/${variable.name}` : variable.id;
+      if (desiredTypes.has(consumerPath)) continue;
+      for (const value of Object.values(variable.valuesByMode || {})) {
+        if (value && value.type === 'VARIABLE_ALIAS' && wrongIds.has(value.id)) {
+          unmanagedConsumers.push(consumerPath);
+          break;
+        }
+      }
+    }
+    if (unmanagedConsumers.length) {
+      throw new Error(
+        `Existing-state preflight: wrong-type variables are referenced by ${unmanagedConsumers.length} unmanaged local variable(s): ` +
+        `${unmanagedConsumers.slice(0, 5).join(', ')}. Rebind them before recreation.`,
+      );
+    }
+  }
+
+  return { wrongTypeCount: wrongTypes.length };
 }
 
 async function applyMigrations(migrations, logs) {
@@ -414,85 +586,62 @@ async function migrateStyles(kind, styles, styleMigrations, logs) {
 }
 
 async function importBundle(bundle, logs, options = {}) {
+  if (!options.existingStateValidated) await validateExistingVariableState(bundle, options);
+
   const allVariablesByPath = new Map();
   const desiredTokenNamesByCollection = new Map();
+  const collectionByName = new Map();
 
+  // Phase 1: create every collection and every typed variable before assigning
+  // any values. This makes forward and cross-component aliases deterministic
+  // instead of depending on manifest/token ordering.
   for (const [collectionName, collectionDef] of Object.entries(bundle.collections)) {
     const modeNames = Object.keys((collectionDef && collectionDef.modes) || {});
     if (modeNames.length === 0) continue;
 
     const collection = await getOrCreateCollection(collectionName, logs);
     await syncModes(collection, modeNames, logs);
+    collectionByName.set(collectionName, collection);
 
     const firstModeName = modeNames[0];
     const firstModeTokens = collectionDef.modes[firstModeName] || {};
     desiredTokenNamesByCollection.set(collectionName, new Set(Object.keys(firstModeTokens)));
-    pushLog(logs, 'info', `Importing base values for "${collectionName}".`);
+    pushLog(logs, 'info', `Preparing typed variables for "${collectionName}".`);
 
-    for (const [tokenName, tokenValue] of Object.entries(firstModeTokens)) {
-      if (isAlias(tokenValue)) continue;
-
-      const resolvedType = inferVariableType(tokenValue);
-      if (!resolvedType) {
-        pushLog(logs, 'warn', `Skipped unsupported token "${collectionName}/${tokenName}".`);
-        continue;
-      }
-
-      const variable = await getOrCreateVariable(collection, tokenName, resolvedType, logs);
-      const modeMap = getModeNameToId(collection);
-
-      for (const [modeName, modeTokens] of Object.entries(collectionDef.modes)) {
-        const modeId = modeMap.get(modeName);
-        if (!modeId) continue;
-        const value = modeTokens[tokenName];
-        if (value === undefined || isAlias(value)) continue;
-        variable.setValueForMode(modeId, normalizeValue(resolvedType, value));
-      }
-
+    for (const tokenName of Object.keys(firstModeTokens)) {
+      const resolvedType = collectionDef.types[tokenName];
+      const variable = await getOrCreateVariable(collection, tokenName, resolvedType, logs, options);
+      variable.scopes = [...collectionDef.scopes[tokenName]];
       allVariablesByPath.set(`${collectionName}/${tokenName}`, variable);
     }
   }
 
+  // Phase 2: with the complete variable map available, assign literals and
+  // aliases independently for every mode.
   for (const [collectionName, collectionDef] of Object.entries(bundle.collections)) {
-    const modeNames = Object.keys((collectionDef && collectionDef.modes) || {});
-    if (modeNames.length === 0) continue;
+    const collection = collectionByName.get(collectionName);
+    if (!collection) continue;
+    const modeMap = getModeNameToId(collection);
+    pushLog(logs, 'info', `Assigning mode values for "${collectionName}".`);
 
-    const collection = await getOrCreateCollection(collectionName, logs);
-    const firstModeTokens = collectionDef.modes[modeNames[0]] || {};
-    pushLog(logs, 'info', `Resolving aliases for "${collectionName}".`);
-
-    for (const [tokenName, tokenValue] of Object.entries(firstModeTokens)) {
-      if (!isAlias(tokenValue)) continue;
-
-      const variableTargetPath = parseAliasPath(bundle, collectionName, tokenValue);
-      const target = allVariablesByPath.get(variableTargetPath);
-
-      if (!target) {
-        pushLog(logs, 'error', `Alias target not found for "${collectionName}/${tokenName}" -> "${tokenValue}"`);
-        continue;
-      }
-
-      const variable = await getOrCreateVariable(collection, tokenName, target.resolvedType, logs);
-      const modeMap = getModeNameToId(collection);
+    for (const tokenName of Object.keys(Object.values(collectionDef.modes)[0] || {})) {
+      const variable = allVariablesByPath.get(`${collectionName}/${tokenName}`);
+      const resolvedType = collectionDef.types[tokenName];
 
       for (const [modeName, modeTokens] of Object.entries(collectionDef.modes)) {
         const modeId = modeMap.get(modeName);
-        if (!modeId) continue;
+        if (!modeId) throw new Error(`Mode "${modeName}" was not created in "${collectionName}".`);
 
         const rawValue = modeTokens[tokenName];
-        if (!isAlias(rawValue)) continue;
-
-        const modeAliasPath = parseAliasPath(bundle, collectionName, rawValue);
-        const modeTarget = allVariablesByPath.get(modeAliasPath);
-        if (!modeTarget) {
-          pushLog(logs, 'error', `Alias target not found for "${collectionName}/${tokenName}" in mode "${modeName}" -> "${rawValue}"`);
-          continue;
+        if (isAlias(rawValue)) {
+          const aliasPath = parseAliasPath(bundle, collectionName, rawValue);
+          const target = allVariablesByPath.get(aliasPath);
+          if (!target) throw new Error(`Alias target disappeared after preflight: "${aliasPath}".`);
+          variable.setValueForMode(modeId, figma.variables.createVariableAlias(target));
+        } else {
+          variable.setValueForMode(modeId, normalizeValue(resolvedType, rawValue));
         }
-
-        variable.setValueForMode(modeId, figma.variables.createVariableAlias(modeTarget));
       }
-
-      allVariablesByPath.set(`${collectionName}/${tokenName}`, variable);
     }
   }
 
@@ -517,7 +666,7 @@ async function importBundle(bundle, logs, options = {}) {
 
   if (options.removeStaleVariables) {
     for (const [collectionName, desiredNames] of desiredTokenNamesByCollection.entries()) {
-      const collection = await getOrCreateCollection(collectionName, logs);
+      const collection = collectionByName.get(collectionName);
       await removeStaleVariables(collection, desiredNames, logs);
     }
   } else {
@@ -747,10 +896,24 @@ function getModeNameToId(collection) {
   return map;
 }
 
-async function getOrCreateVariable(collection, name, type, logs) {
-  const localVariables = await figma.variables.getLocalVariablesAsync(type);
+async function getOrCreateVariable(collection, name, type, logs, options = {}) {
+  const localVariables = await figma.variables.getLocalVariablesAsync();
   const existing = localVariables.find((v) => v.variableCollectionId === collection.id && v.name === name);
-  if (existing) return existing;
+  if (existing && existing.resolvedType === type) return existing;
+
+  if (existing && !options.recreateWrongTypes) {
+    throw new Error(
+      `Variable "${collection.name}/${name}" is ${existing.resolvedType}, but the bundle requires ${type}. ` +
+      'Enable "Recreate wrong-type variables" after reviewing the ID-change warning.',
+    );
+  }
+
+  if (existing) {
+    const oldId = existing.id;
+    existing.remove();
+    pushLog(logs, 'warn', `Removed wrong-type variable "${collection.name}/${name}" (${existing.resolvedType}, id ${oldId}).`);
+  }
+
   const created = figma.variables.createVariable(name, collection, type);
   pushLog(logs, 'info', `Created variable "${collection.name}/${name}".`);
   return created;
@@ -795,18 +958,8 @@ async function removeStaleVariables(collection, desiredNames, logs) {
   }
 }
 
-function inferVariableType(value) {
-  if (typeof value === 'number') return 'FLOAT';
-  if (typeof value === 'boolean') return 'BOOLEAN';
-  if (typeof value === 'string') {
-    if (isColor(value)) return 'COLOR';
-    return 'STRING';
-  }
-  return null;
-}
-
 function normalizeValue(type, value) {
-  if (type === 'COLOR') return hexToRgba(value);
+  if (type === 'COLOR') return colorToRgba(value);
   return value;
 }
 
@@ -840,7 +993,26 @@ function parseAliasPath(bundle, currentCollectionName, value) {
 }
 
 function isColor(value) {
-  return typeof value === 'string' && /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(value.trim());
+  if (typeof value !== 'string') return false;
+  const normalized = value.trim();
+  return /^#([0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.test(normalized) ||
+    /^rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?(?:\s*,\s*(?:0|1|0?\.\d+))?\s*\)$/.test(normalized) ||
+    normalized === 'transparent';
+}
+
+function colorToRgba(value) {
+  const normalized = value.trim();
+  if (normalized === 'transparent') return { r: 0, g: 0, b: 0, a: 0 };
+  if (normalized.startsWith('#')) return hexToRgba(normalized);
+
+  const match = /^rgba?\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)(?:\s*,\s*(0|1|0?\.\d+))?\s*\)$/.exec(normalized);
+  if (!match) throw new Error(`Unsupported color literal: ${value}`);
+  return {
+    r: Number(match[1]) / 255,
+    g: Number(match[2]) / 255,
+    b: Number(match[3]) / 255,
+    a: match[4] === undefined ? 1 : Number(match[4]),
+  };
 }
 
 function hexToRgba(hex) {

@@ -86,6 +86,21 @@
       "$description": "Error/invalid input border.",
       "$value": "{Colors.Red.500}",
       "$type": "color"
+    },
+    "border-info-strong": {
+      "$description": "Strong informational border and accent stripe.",
+      "$value": "{Colors.Blue.700}",
+      "$type": "color"
+    },
+    "border-success-strong": {
+      "$description": "Strong success border and accent stripe.",
+      "$value": "{Colors.Green.700}",
+      "$type": "color"
+    },
+    "border-warning-strong": {
+      "$description": "Strong warning border and accent stripe.",
+      "$value": "{Colors.Orange.600}",
+      "$type": "color"
     }
   },
   "action": {
@@ -348,6 +363,11 @@
       "$value": "{Colors.Neutral.25}",
       "$type": "color"
     },
+    "bg-gray-muted": {
+      "$description": "Gray chip and utility fill that follows the active color mode.",
+      "$value": "{Colors.Gray.100}",
+      "$type": "color"
+    },
     "bg-disabled": {
       "$description": "Disabled input and control backgrounds.",
       "$value": "{Colors.Neutral.100}",
@@ -481,6 +501,28 @@
     "bg-error-muted": {
       "$description": "Slightly stronger error fill.",
       "$value": "{Colors.Red.100}",
+      "$type": "color"
+    }
+  },
+  "control": {
+    "control-idle": {
+      "$description": "Default border or track for unchecked controls.",
+      "$value": "{Colors.Neutral.500}",
+      "$type": "color"
+    },
+    "control-idle-hover": {
+      "$description": "Hover border or track for unchecked controls.",
+      "$value": "{Colors.Neutral.400}",
+      "$type": "color"
+    },
+    "control-checked": {
+      "$description": "Checked control fill or border.",
+      "$value": "{Colors.Neutral.900}",
+      "$type": "color"
+    },
+    "control-checked-hover": {
+      "$description": "Checked control fill or border on hover.",
+      "$value": "{Colors.Neutral.700}",
       "$type": "color"
     }
   }

@@ -59,12 +59,12 @@
       },
       "border": {
         "$description": "Radio, color: border.",
-        "$value": "{Colors.Neutral.500}",
+        "$value": "var(--color-control-idle)",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Radio, color: border (hover state).",
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "border-checked": {
@@ -94,12 +94,12 @@
       },
       "border-disabled": {
         "$description": "Radio, color: border (disabled state).",
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "dot-disabled": {
         "$description": "Radio, color: dot (disabled state).",
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "top-label": {

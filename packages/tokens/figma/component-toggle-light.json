@@ -89,12 +89,12 @@
     "color": {
       "track-off": {
         "$description": "Toggle, color: track off.",
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "track-off-hover": {
         "$description": "Toggle, color: track off (hover state).",
-        "$value": "{Colors.Neutral.500}",
+        "$value": "var(--color-control-idle)",
         "$type": "color"
       },
       "track-on": {
@@ -119,7 +119,7 @@
       },
       "thumb-disabled": {
         "$description": "Toggle, color: thumb (disabled state).",
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "label": {

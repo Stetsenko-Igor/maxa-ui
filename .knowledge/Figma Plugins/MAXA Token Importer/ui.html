@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Token Importer v6</title>
+  <title>MAXA Token Importer v10</title>
   <style>
     html { height: 100%; }
     body {
@@ -77,10 +77,10 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Token Importer v6</h1>
-  <p>Fast local workflow: choose or drag `import-bundle.json` from `packages/tokens/figma`, then import. GitHub loading is optional for the last pushed bundle.</p>
+  <h1>MAXA Token Importer v10</h1>
+  <p>Choose or drag the generated `import-bundle.json`. A full type, mode, alias, cycle, and CSS-expression preflight runs before Figma is changed.</p>
   <div class="dropzone" id="dropzone">
-    Drop `import-bundle.json` here, or drop `manifest.json` together with the referenced token files.
+    Drop the generated `packages/tokens/figma/import-bundle.json` here.
     <div class="row">
       <button class="secondary" id="loadLatestBtn" type="button">Load latest from GitHub</button>
       <button class="secondary" id="chooseFilesBtn" type="button">Choose files</button>
@@ -96,12 +96,19 @@
         <span>Delete variables from imported collections when they exist in Figma but are missing from the bundle.</span>
       </span>
     </label>
+    <label class="option" for="recreateWrongTypes">
+      <input id="recreateWrongTypes" type="checkbox" />
+      <span>
+        <strong>Recreate wrong-type variables</strong>
+        <span>Required only for stale STRING placeholders. This changes affected variable IDs; leave off for normal imports.</span>
+      </span>
+    </label>
     <div class="row">
       <button class="primary" id="importBtn">Import tokens + styles</button>
       <button class="secondary" id="exportBtn">Export variables</button>
       <button class="secondary" id="closeBtn">Close</button>
     </div>
-    <div class="log" id="log">Ready. UI loaded: v6.</div>
+    <div class="log" id="log">Ready. UI loaded: v10.</div>
   </div>
   <script>
     const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
@@ -114,13 +121,9 @@
     const dropzone = document.getElementById('dropzone');
     const input = document.getElementById('jsonInput');
     const removeStaleVariablesInput = document.getElementById('removeStaleVariables');
+    const recreateWrongTypesInput = document.getElementById('recreateWrongTypes');
     const log = document.getElementById('log');
-    const aliasDefaults = {
-      Spacing: 'Primitives',
-      'Color modes': 'Primitives',
-      Layout: 'Spacing',
-    };
-    let currentLogs = ['Ready. UI loaded: v6.'];
+    let currentLogs = ['Ready. UI loaded: v10.'];
     let isImporting = false;
 
     function setLog(lines) {
@@ -144,6 +147,7 @@
       fileInput.disabled = nextValue;
       input.disabled = nextValue;
       removeStaleVariablesInput.disabled = nextValue;
+      recreateWrongTypesInput.disabled = nextValue;
     }
 
     async function loadLatestBundleFromGitHub() {
@@ -200,14 +204,16 @@
           payload: input.value,
           options: {
             removeStaleVariables: removeStaleVariablesInput.checked,
+            recreateWrongTypes: recreateWrongTypesInput.checked,
           },
         },
       }, '*');
       setLog([
         'Import started...',
-        removeStaleVariablesInput.checked
-          ? 'Processing collections, aliases, stale cleanup, and text styles...'
-          : 'Processing collections, aliases, and text styles. Stale cleanup is disabled...',
+        'Running preflight before any Figma changes...',
+        recreateWrongTypesInput.checked
+          ? 'Wrong-type recreation is enabled; affected variable IDs may change.'
+          : 'Wrong-type recreation is disabled.',
       ]);
     };
 
@@ -283,78 +289,10 @@
         byName.set(file.name, JSON.parse(await file.text()));
       }
 
-      if (byName.has('import-bundle.json')) {
-        return byName.get('import-bundle.json');
+      if (!byName.has('import-bundle.json')) {
+        throw new Error('Use the generated import-bundle.json. Raw manifest/token files are not accepted because they have not passed repository preflight.');
       }
-
-      if (!byName.has('manifest.json')) {
-        throw new Error('Drop either `import-bundle.json`, or `manifest.json` together with the token JSON files.');
-      }
-
-      const manifest = byName.get('manifest.json');
-      if (!manifest || typeof manifest !== 'object' || !manifest.collections) {
-        throw new Error('Invalid manifest.json file.');
-      }
-
-      const bundle = { aliasDefaults, collections: {} };
-
-      for (const [collectionName, collectionDef] of Object.entries(manifest.collections)) {
-        const modes = {};
-
-        for (const [modeName, fileNames] of Object.entries((collectionDef && collectionDef.modes) || {})) {
-          const mergedTokens = {};
-
-          for (const fileName of fileNames || []) {
-            const json = byName.get(fileName);
-            if (!json) {
-              throw new Error(`Missing file "${fileName}" referenced by manifest.json.`);
-            }
-            flattenTokens(json, [], mergedTokens, collectionName);
-          }
-
-          modes[modeName] = mergedTokens;
-        }
-
-        bundle.collections[collectionName] = { modes };
-      }
-
-      return bundle;
-    }
-
-    function flattenTokens(input, pathParts, output, collectionName) {
-      for (const [key, value] of Object.entries(input || {})) {
-        const nextPath = [...pathParts, key];
-
-        if (isToken(value)) {
-          output[nextPath.join('/')] = normalizeTokenValue(value.$value, collectionName);
-          continue;
-        }
-
-        if (value && typeof value === 'object' && !Array.isArray(value)) {
-          flattenTokens(value, nextPath, output, collectionName);
-        }
-      }
-    }
-
-    function isToken(value) {
-      return Boolean(value && typeof value === 'object' && '$value' in value && '$type' in value);
-    }
-
-    function normalizeTokenValue(rawValue, collectionName) {
-      if (typeof rawValue !== 'string') return rawValue;
-      if (!rawValue.startsWith('{') || !rawValue.endsWith('}')) return rawValue;
-
-      const inner = rawValue.slice(1, -1).trim();
-
-      if (collectionName === 'Layout' && inner.startsWith('spacing-')) {
-        return `{Spacing/${inner}}`;
-      }
-
-      if (collectionName === 'Containers' && !inner.includes('/') && !inner.includes('.')) {
-        return `{Spacing/${inner}}`;
-      }
-
-      return rawValue;
+      return byName.get('import-bundle.json');
     }
 
     window.onmessage = (event) => {

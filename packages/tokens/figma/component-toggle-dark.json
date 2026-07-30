@@ -72,11 +72,11 @@
     },
     "color": {
       "track-off": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "track-off-hover": {
-        "$value": "{Colors.Neutral.600}",
+        "$value": "var(--color-control-idle)",
         "$type": "color"
       },
       "track-on": {
@@ -96,7 +96,7 @@
         "$type": "color"
       },
       "thumb-disabled": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "label": {

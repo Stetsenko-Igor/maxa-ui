@@ -35,6 +35,7 @@
   "scripts": {
     "build": "node ../../scripts/clean-package-dist.mjs packages/tokens && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/tokens",
     "figma:bundle": "node ./scripts/build-figma-import-bundle.mjs",
+    "figma:bundle:check": "node ./scripts/build-figma-import-bundle.mjs --check",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run"

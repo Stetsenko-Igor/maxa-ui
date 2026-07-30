@@ -48,11 +48,11 @@
         "$type": "color"
       },
       "border": {
-        "$value": "{Colors.Neutral.600}",
+        "$value": "var(--color-control-idle)",
         "$type": "color"
       },
       "border-hover": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "border-checked": {
@@ -76,11 +76,11 @@
         "$type": "color"
       },
       "border-disabled": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "dot-disabled": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "top-label": {

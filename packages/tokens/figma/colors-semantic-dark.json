@@ -69,6 +69,18 @@
     "border-error-strong": {
       "$value": "{Colors.Red.400}",
       "$type": "color"
+    },
+    "border-info-strong": {
+      "$value": "{Colors.Blue.500}",
+      "$type": "color"
+    },
+    "border-success-strong": {
+      "$value": "{Colors.Green.500}",
+      "$type": "color"
+    },
+    "border-warning-strong": {
+      "$value": "{Colors.Orange.500}",
+      "$type": "color"
     }
   },
   "action": {
@@ -280,6 +292,10 @@
       "$value": "{Colors.Neutral.975}",
       "$type": "color"
     },
+    "bg-gray-muted": {
+      "$value": "{Colors.Gray.900}",
+      "$type": "color"
+    },
     "bg-disabled": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
@@ -386,6 +402,24 @@
     },
     "bg-error-muted": {
       "$value": "{Colors.Red.900}",
+      "$type": "color"
+    }
+  },
+  "control": {
+    "control-idle": {
+      "$value": "{Colors.Neutral.600}",
+      "$type": "color"
+    },
+    "control-idle-hover": {
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
+    },
+    "control-checked": {
+      "$value": "{Colors.Neutral.200}",
+      "$type": "color"
+    },
+    "control-checked-hover": {
+      "$value": "{Colors.Neutral.400}",
       "$type": "color"
     }
   }

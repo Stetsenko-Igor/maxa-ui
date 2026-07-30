@@ -329,8 +329,29 @@ describe("figma import bundle", () => {
     readFileSync(join(root, "figma/import-bundle.json"), "utf-8"),
   ) as {
     aliasDefaults: Record<string, string>
-    collections: Record<string, { modes: Record<string, Record<string, number | string>> }>
+    collections: Record<string, {
+      modes: Record<string, Record<string, number | string | boolean>>
+      types?: Record<string, "BOOLEAN" | "COLOR" | "FLOAT" | "STRING">
+      scopes?: Record<string, string[]>
+    }>
     effects?: { shadows?: Record<string, Record<string, Record<string, unknown[]>>> }
+  }
+
+  function resolveAliasPath(collectionName: string, value: string): string {
+    const inner = value.trim().slice(1, -1).trim()
+    const slashIndex = inner.indexOf("/")
+    if (slashIndex !== -1) {
+      if (bundle.collections[inner.slice(0, slashIndex)]) return inner
+      return `${collectionName}/${inner}`
+    }
+
+    if (inner.includes(".")) {
+      const defaultCollection = bundle.aliasDefaults[collectionName]
+      return `${defaultCollection}/${inner.replace(/\./g, "/")}`
+    }
+
+    const defaultCollection = bundle.aliasDefaults[collectionName]
+    return defaultCollection ? `${defaultCollection}/${inner}` : `${collectionName}/${inner}`
   }
 
   it("maps Layout short spacing aliases to the Spacing collection", () => {
@@ -356,6 +377,108 @@ describe("figma import bundle", () => {
     expect(bundle.effects?.shadows?.Shadows?.Dark).toBeUndefined()
   })
 
+  it("contains no CSS expressions masquerading as Figma variable values", () => {
+    const invalid: string[] = []
+
+    for (const [collectionName, collection] of Object.entries(bundle.collections)) {
+      for (const [modeName, tokens] of Object.entries(collection.modes)) {
+        for (const [tokenName, value] of Object.entries(tokens)) {
+          if (typeof value === "string" && /(?:var\(--|color-mix\(|\b(?:px|rem)\b)/.test(value)) {
+            invalid.push(`${collectionName}/${tokenName} [${modeName}] = ${value}`)
+          }
+        }
+      }
+    }
+
+    expect(invalid).toEqual([])
+  })
+
+  it("resolves every alias to a token present in the bundle", () => {
+    const missing: string[] = []
+
+    for (const [collectionName, collection] of Object.entries(bundle.collections)) {
+      for (const [modeName, tokens] of Object.entries(collection.modes)) {
+        for (const [tokenName, value] of Object.entries(tokens)) {
+          if (typeof value !== "string" || !/^\{[^}]+\}$/.test(value.trim())) continue
+          const targetPath = resolveAliasPath(collectionName, value)
+          const targetSlash = targetPath.indexOf("/")
+          const targetCollectionName = targetPath.slice(0, targetSlash)
+          const targetTokenName = targetPath.slice(targetSlash + 1)
+          const targetCollection = bundle.collections[targetCollectionName]
+          const targetExists = targetCollection && Object.values(targetCollection.modes)
+            .some((targetTokens) => targetTokens[targetTokenName] !== undefined)
+          if (!targetExists) missing.push(`${collectionName}/${tokenName} [${modeName}] -> ${targetPath}`)
+        }
+      }
+    }
+
+    expect(missing).toEqual([])
+  })
+
+  it("carries an explicit Figma resolved type for every variable", () => {
+    const missing: string[] = []
+
+    for (const [collectionName, collection] of Object.entries(bundle.collections)) {
+      const tokenNames = new Set(Object.values(collection.modes).flatMap((tokens) => Object.keys(tokens)))
+      for (const tokenName of tokenNames) {
+        if (!collection.types?.[tokenName]) missing.push(`${collectionName}/${tokenName}`)
+      }
+    }
+
+    expect(missing).toEqual([])
+    expect(bundle.collections["Component-based"]?.types?.["Select/bg"]).toBe("COLOR")
+    expect(bundle.collections["Component-based"]?.types?.["Select/size-md-height"]).toBe("FLOAT")
+  })
+
+  it("carries explicit picker scopes for every variable", () => {
+    const missing: string[] = []
+
+    for (const [collectionName, collection] of Object.entries(bundle.collections)) {
+      for (const tokenName of Object.keys(collection.types ?? {})) {
+        if (!Array.isArray(collection.scopes?.[tokenName])) missing.push(`${collectionName}/${tokenName}`)
+      }
+    }
+
+    expect(missing).toEqual([])
+    expect(bundle.collections["Color modes"]?.scopes?.["text/text-primary"]).toEqual(["TEXT_FILL"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual(["STROKE_COLOR"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual(["WIDTH_HEIGHT"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Context Menu/z"]).toEqual([])
+  })
+
+  it("uses real cross-component aliases and excludes effects from variables", () => {
+    const light = bundle.collections["Component-based"]?.modes.Light
+
+    expect(light?.["Select/bg"]).toBe("{Component-based/Input/bg}")
+    expect(light?.["Context Menu/bg"]).toBe("{Component-based/Dropdown Menu/surface/bg}")
+    expect(light?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
+    expect(light?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
+    expect(light?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
+    expect(light?.["Calendar/shadow"]).toBeUndefined()
+    expect(light?.["Context Menu/shadow"]).toBeUndefined()
+    expect(light?.["Social Button/shadow-focus"]).toBeUndefined()
+    expect(light?.["Toast/shadow"]).toBeUndefined()
+  })
+
+  it("keeps shared control, status-border, and gray-muted semantics in Color modes", () => {
+    const light = bundle.collections["Color modes"]?.modes.Light
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+    const componentLight = bundle.collections["Component-based"]?.modes.Light
+    const componentDark = bundle.collections["Component-based"]?.modes.Dark
+
+    expect(light?.["control/control-idle"]).toBe("{Colors.Neutral.500}")
+    expect(dark?.["control/control-idle"]).toBe("{Colors.Neutral.600}")
+    expect(light?.["background/bg-gray-muted"]).toBe("{Colors.Gray.100}")
+    expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
+    expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
+    expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
+    expect(componentLight?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
+    expect(componentDark?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
+    expect(componentLight?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
+    expect(componentLight?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
+  })
+
   it("includes Checkbox, Radio, Badge, Tag, Alert, Toggle, Tooltip, Popover, Dropdown Menu, Divider, and Utility component tokens", () => {
     const light = bundle.collections["Component-based"]?.modes.Light
     const dark = bundle.collections["Component-based"]?.modes.Dark
@@ -371,7 +494,7 @@ describe("figma import bundle", () => {
     expect(light?.["Utility/fg-inverse"]).toBeUndefined()
     expect(light?.["Utility/fg-violet"]).toBe("{Utility/text-violet}")
     expect(light?.["Checkbox/size/md/control"]).toBe(20)
-    expect(light?.["Checkbox/color/bg-checked"]).toBe("{Colors.Neutral.900}")
+    expect(light?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
     expect(light?.["Checkbox/color/border-error"]).toBe("{Color modes/border/border-error-strong}")
     expect(light?.["Checkbox/typography/description-font-size"]).toBe("{Typography/Font size/caption-sm}")
     expect(light?.["Checkbox/size/sm/control"]).toBeUndefined()
@@ -431,7 +554,7 @@ describe("figma import bundle", () => {
     expect(dark?.["Alert/color/error/accent"]).toBe("#FF755E")
     expect(dark?.["Alert/color/emphasize/border"]).toBe("#545454")
     expect(dark?.["Checkbox/size/md/control"]).toBe(20)
-    expect(dark?.["Checkbox/color/bg-checked"]).toBe("{Colors.Neutral.200}")
+    expect(dark?.["Checkbox/color/bg-checked"]).toBe("{Color modes/control/control-checked}")
     expect(dark?.["Radio/size/md/dot"]).toBe(8)
     expect(dark?.["Avatar/layout/size-md"]).toBe(40)
     expect(dark?.["Avatar/status/busy"]).toBe("{Color modes/background/bg-error-strong}")

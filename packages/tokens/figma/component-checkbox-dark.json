@@ -60,19 +60,19 @@
         "$type": "color"
       },
       "border": {
-        "$value": "{Colors.Neutral.600}",
+        "$value": "var(--color-control-idle)",
         "$type": "color"
       },
       "border-hover": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "bg-checked": {
-        "$value": "{Colors.Neutral.200}",
+        "$value": "var(--color-control-checked)",
         "$type": "color"
       },
       "bg-checked-hover": {
-        "$value": "{Colors.Neutral.400}",
+        "$value": "var(--color-control-checked-hover)",
         "$type": "color"
       },
       "mark": {
@@ -84,11 +84,11 @@
         "$type": "color"
       },
       "border-disabled": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "bg-disabled-checked": {
-        "$value": "{Colors.Neutral.700}",
+        "$value": "var(--color-control-idle-hover)",
         "$type": "color"
       },
       "top-label": {

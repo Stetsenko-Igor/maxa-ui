@@ -86,6 +86,7 @@ const FIGMA_COLOR_GROUP_PREFIXES = {
   background: 'bg-',
   border: 'border-',
   action: 'action-',
+  control: 'control-',
 };
 
 const FIGMA_BACKGROUND_INTENTS = ['brand', 'neutral', 'info', 'success', 'warning', 'error'];
@@ -553,6 +554,95 @@ function scanFigmaSemanticColorNaming() {
   return violations;
 }
 
+function scanFigmaImportBundleIntegrity() {
+  const violations = [];
+  const bundlePath = join(FIGMA_DIR, 'import-bundle.json');
+  let bundle;
+  try {
+    bundle = JSON.parse(readFileSync(bundlePath, 'utf8'));
+  } catch {
+    return [{
+      file: relative(ROOT, bundlePath),
+      line: 0,
+      type: 'figma-bundle-invalid',
+      value: 'import-bundle.json',
+      hint: 'Regenerate it with pnpm figma:bundle',
+    }];
+  }
+
+  const tokenPaths = new Set();
+  for (const [collectionName, collection] of Object.entries(bundle.collections ?? {})) {
+    const modeEntries = Object.entries(collection.modes ?? {});
+    const expected = Object.keys(modeEntries[0]?.[1] ?? {}).sort();
+    for (const [modeName, tokens] of modeEntries.slice(1)) {
+      if (JSON.stringify(Object.keys(tokens).sort()) !== JSON.stringify(expected)) {
+        violations.push({
+          file: relative(ROOT, bundlePath), line: 0, type: 'figma-bundle-mode-drift',
+          value: `${collectionName}/${modeName}`,
+          hint: 'Every mode in a collection must contain the same variable names',
+        });
+      }
+    }
+    for (const tokenName of expected) {
+      tokenPaths.add(`${collectionName}/${tokenName}`);
+      if (!['BOOLEAN', 'COLOR', 'FLOAT', 'STRING'].includes(collection.types?.[tokenName])) {
+        violations.push({
+          file: relative(ROOT, bundlePath), line: 0, type: 'figma-bundle-missing-type',
+          value: `${collectionName}/${tokenName}`,
+          hint: 'Regenerate the bundle; every variable requires an explicit resolved Figma type',
+        });
+      }
+      if (!Array.isArray(collection.scopes?.[tokenName])) {
+        violations.push({
+          file: relative(ROOT, bundlePath), line: 0, type: 'figma-bundle-missing-scopes',
+          value: `${collectionName}/${tokenName}`,
+          hint: 'Regenerate the bundle; every variable requires explicit Figma picker scopes',
+        });
+      }
+    }
+  }
+
+  function aliasPath(collectionName, value) {
+    const inner = value.trim().slice(1, -1).trim();
+    const slashIndex = inner.indexOf('/');
+    if (slashIndex !== -1) {
+      const maybeCollection = inner.slice(0, slashIndex);
+      if (bundle.collections[maybeCollection]) return inner;
+      return `${collectionName}/${inner}`;
+    }
+    if (inner.includes('.')) {
+      return `${bundle.aliasDefaults?.[collectionName]}/${inner.replace(/\./g, '/')}`;
+    }
+    return `${bundle.aliasDefaults?.[collectionName] ?? collectionName}/${inner}`;
+  }
+
+  for (const [collectionName, collection] of Object.entries(bundle.collections ?? {})) {
+    for (const [modeName, tokens] of Object.entries(collection.modes ?? {})) {
+      for (const [tokenName, value] of Object.entries(tokens)) {
+        if (typeof value === 'string' && /(?:var\(--|color-mix\(|\b(?:px|rem)\b)/.test(value)) {
+          violations.push({
+            file: relative(ROOT, bundlePath), line: 0, type: 'figma-bundle-css-expression',
+            value: `${collectionName}/${tokenName} [${modeName}] = ${value}`,
+            hint: 'Convert CSS expressions to Figma aliases/literals or represent shadows as Effect Styles',
+          });
+        }
+        if (typeof value === 'string' && /^\{[^}]+\}$/.test(value.trim())) {
+          const target = aliasPath(collectionName, value);
+          if (!tokenPaths.has(target)) {
+            violations.push({
+              file: relative(ROOT, bundlePath), line: 0, type: 'figma-bundle-unresolved-alias',
+              value: `${collectionName}/${tokenName} [${modeName}] -> ${target}`,
+              hint: 'Define the alias target or correct the token mapping before import',
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return violations;
+}
+
 // ── Run all checks ──────────────────────────────────────────────────────────
 const cssFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
 const sourceFiles = SCAN_DIRS.flatMap(d => collectSourceFiles(join(ROOT, d)));
@@ -565,6 +655,7 @@ const violations = [
   ...scanFigmaAliasResolution(),
   ...scanFigmaTokenTypeSanity(),
   ...scanFigmaSemanticColorNaming(),
+  ...scanFigmaImportBundleIntegrity(),
 ];
 
 if (violations.length === 0) {
