@@ -429,19 +429,30 @@ async function importBundle(bundle, logs, options = {}) {
     desiredTokenNamesByCollection.set(collectionName, new Set(Object.keys(firstModeTokens)));
     pushLog(logs, 'info', `Importing base values for "${collectionName}".`);
 
-    for (const [tokenName, tokenValue] of Object.entries(firstModeTokens)) {
-      if (isAlias(tokenValue)) continue;
+    const modeMap = getModeNameToId(collection);
 
-      const resolvedType = inferVariableType(tokenValue);
+    // A token can legitimately be a literal in one mode and an alias in another
+    // (e.g. a component with a bespoke hand-picked dark color but a semantic
+    // alias in light). Each mode is handled on its own terms below rather than
+    // gating the whole token on what the first mode happens to be — otherwise
+    // the literal-mode side never gets a value and Figma defaults it to white.
+    for (const tokenName of Object.keys(firstModeTokens)) {
+      const modeEntries = Object.entries(collectionDef.modes);
+      const literalEntry = modeEntries.find(([, modeTokens]) => {
+        const v = modeTokens[tokenName];
+        return v !== undefined && !isAlias(v);
+      });
+      if (!literalEntry) continue; // all-alias token; handled in the alias pass below
+
+      const resolvedType = inferVariableType(literalEntry[1][tokenName]);
       if (!resolvedType) {
         pushLog(logs, 'warn', `Skipped unsupported token "${collectionName}/${tokenName}".`);
         continue;
       }
 
       const variable = await getOrCreateVariable(collection, tokenName, resolvedType, logs);
-      const modeMap = getModeNameToId(collection);
 
-      for (const [modeName, modeTokens] of Object.entries(collectionDef.modes)) {
+      for (const [modeName, modeTokens] of modeEntries) {
         const modeId = modeMap.get(modeName);
         if (!modeId) continue;
         const value = modeTokens[tokenName];
@@ -461,21 +472,29 @@ async function importBundle(bundle, logs, options = {}) {
     const firstModeTokens = collectionDef.modes[modeNames[0]] || {};
     pushLog(logs, 'info', `Resolving aliases for "${collectionName}".`);
 
-    for (const [tokenName, tokenValue] of Object.entries(firstModeTokens)) {
-      if (!isAlias(tokenValue)) continue;
+    const modeMap = getModeNameToId(collection);
 
-      const variableTargetPath = parseAliasPath(bundle, collectionName, tokenValue);
+    for (const tokenName of Object.keys(firstModeTokens)) {
+      const modeEntries = Object.entries(collectionDef.modes);
+      const aliasEntry = modeEntries.find(([, modeTokens]) => isAlias(modeTokens[tokenName]));
+      if (!aliasEntry) continue; // no mode has an alias for this token; nothing to resolve
+
+      const [, aliasModeTokens] = aliasEntry;
+      const variableTargetPath = parseAliasPath(bundle, collectionName, aliasModeTokens[tokenName]);
       const target = allVariablesByPath.get(variableTargetPath);
 
       if (!target) {
-        pushLog(logs, 'error', `Alias target not found for "${collectionName}/${tokenName}" -> "${tokenValue}"`);
+        pushLog(logs, 'error', `Alias target not found for "${collectionName}/${tokenName}" -> "${aliasModeTokens[tokenName]}"`);
         continue;
       }
 
-      const variable = await getOrCreateVariable(collection, tokenName, target.resolvedType, logs);
-      const modeMap = getModeNameToId(collection);
+      // Reuse the variable created in the literal pass above if this token also
+      // has a literal value in another mode; otherwise create it fresh here.
+      const variable =
+        allVariablesByPath.get(`${collectionName}/${tokenName}`) ||
+        (await getOrCreateVariable(collection, tokenName, target.resolvedType, logs));
 
-      for (const [modeName, modeTokens] of Object.entries(collectionDef.modes)) {
+      for (const [modeName, modeTokens] of modeEntries) {
         const modeId = modeMap.get(modeName);
         if (!modeId) continue;
 

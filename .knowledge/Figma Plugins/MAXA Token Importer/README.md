@@ -1,6 +1,10 @@
-# MAXA Token Importer v8
+# MAXA Token Importer v9
 
 This version:
+- fixes a token whose modes mix literal values and aliases (e.g. Alert's dark colors are
+  bespoke literal hex while light aliases into `Color modes`) importing the literal-mode
+  side as blank/white — each mode is now resolved independently instead of the whole token
+  being gated on what the first mode happens to be
 - fixes "duplicate variable name" import errors caused by a variable already existing
   under the wrong type (e.g. a stale literal `var(--x)` STRING placeholder from before
   a token was fixed to a real color/float alias) — the importer now recreates it with
