@@ -1,6 +1,10 @@
-# MAXA Token Importer v7
+# MAXA Token Importer v8
 
 This version:
+- fixes "duplicate variable name" import errors caused by a variable already existing
+  under the wrong type (e.g. a stale literal `var(--x)` STRING placeholder from before
+  a token was fixed to a real color/float alias) — the importer now recreates it with
+  the correct type instead of failing
 - exports all local variable collections/modes as a bundle in the same shape as
   `import-bundle.json`, so changes made directly in Figma can be diffed against
   the repo (see "Exporting Figma changes back to code" below)

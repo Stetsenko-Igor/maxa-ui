@@ -748,9 +748,25 @@ function getModeNameToId(collection) {
 }
 
 async function getOrCreateVariable(collection, name, type, logs) {
-  const localVariables = await figma.variables.getLocalVariablesAsync(type);
+  // Look up by name across ALL types, not just `type` — a variable can already
+  // exist under the wrong resolved type (e.g. a stale literal `var(--x)` STRING
+  // placeholder from before it was fixed to a real COLOR/FLOAT alias). Filtering
+  // the lookup by `type` would miss it and then fail with "duplicate variable
+  // name" when trying to create a second variable under the same name.
+  const localVariables = await figma.variables.getLocalVariablesAsync();
   const existing = localVariables.find((v) => v.variableCollectionId === collection.id && v.name === name);
-  if (existing) return existing;
+
+  if (existing && existing.resolvedType === type) return existing;
+
+  if (existing) {
+    pushLog(
+      logs,
+      'warn',
+      `Recreated "${collection.name}/${name}" as ${type} (was ${existing.resolvedType}, stale placeholder).`,
+    );
+    existing.remove();
+  }
+
   const created = figma.variables.createVariable(name, collection, type);
   pushLog(logs, 'info', `Created variable "${collection.name}/${name}".`);
   return created;
