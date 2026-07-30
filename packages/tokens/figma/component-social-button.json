@@ -77,7 +77,7 @@
     },
     "border-focus": {
       "$description": "Social Button: border (focus state).",
-      "$value": "{Color modes/component/social-button/border-focus}",
+      "$value": "{Color modes/border/border-focus-soft}",
       "$type": "color"
     },
     "bg": {

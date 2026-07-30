@@ -17,7 +17,7 @@
     },
     "white-track-color": {
       "$description": "Spinner: white track color.",
-      "$value": "{Color modes/component/spinner/white-track-color}",
+      "$value": "{Color modes/foreground/fg-on-inverse-muted}",
       "$type": "color"
     },
     "primary-color": {

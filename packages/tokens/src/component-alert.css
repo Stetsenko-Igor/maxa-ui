@@ -28,42 +28,42 @@
   --alert-title-weight:     var(--font-weight-bold);
 
   /* ── Info ──────────────────────────────────────────────────────── */
-  --alert-info-bg:           var(--color-alert-info-bg);
-  --alert-info-border:       var(--color-alert-info-border);
-  --alert-info-text:         var(--color-alert-info-text);
-  --alert-info-title:        var(--color-alert-info-text);
-  --alert-info-icon:         var(--color-alert-info-accent);
-  --alert-info-strip:        var(--color-alert-info-accent);
-  --alert-info-action:       var(--color-alert-info-action);
-  --alert-info-action-hover: var(--color-alert-info-action-hover);
+  --alert-info-bg:           var(--color-feedback-info-bg);
+  --alert-info-border:       var(--color-feedback-info-border);
+  --alert-info-text:         var(--color-feedback-text);
+  --alert-info-title:        var(--color-feedback-text);
+  --alert-info-icon:         var(--color-feedback-info-accent);
+  --alert-info-strip:        var(--color-feedback-info-accent);
+  --alert-info-action:       var(--color-feedback-info-action);
+  --alert-info-action-hover: var(--color-feedback-info-action-hover);
 
   /* ── Success ───────────────────────────────────────────────────── */
-  --alert-success-bg:           var(--color-alert-success-bg);
-  --alert-success-border:       var(--color-alert-success-border);
-  --alert-success-text:         var(--color-alert-success-text);
-  --alert-success-title:        var(--color-alert-success-text);
-  --alert-success-icon:         var(--color-alert-success-accent);
-  --alert-success-strip:        var(--color-alert-success-accent);
-  --alert-success-action:       var(--color-alert-success-action);
-  --alert-success-action-hover: var(--color-alert-success-action-hover);
+  --alert-success-bg:           var(--color-feedback-success-bg);
+  --alert-success-border:       var(--color-feedback-success-border);
+  --alert-success-text:         var(--color-feedback-text);
+  --alert-success-title:        var(--color-feedback-text);
+  --alert-success-icon:         var(--color-feedback-success-accent);
+  --alert-success-strip:        var(--color-feedback-success-accent);
+  --alert-success-action:       var(--color-feedback-success-action);
+  --alert-success-action-hover: var(--color-feedback-success-action-hover);
 
   /* ── Warning ───────────────────────────────────────────────────── */
-  --alert-warning-bg:           var(--color-alert-warning-bg);
-  --alert-warning-border:       var(--color-alert-warning-border);
-  --alert-warning-text:         var(--color-alert-warning-text);
-  --alert-warning-title:        var(--color-alert-warning-text);
-  --alert-warning-icon:         var(--color-alert-warning-accent);
-  --alert-warning-strip:        var(--color-alert-warning-accent);
-  --alert-warning-action:       var(--color-alert-warning-action);
-  --alert-warning-action-hover: var(--color-alert-warning-action-hover);
+  --alert-warning-bg:           var(--color-feedback-warning-bg);
+  --alert-warning-border:       var(--color-feedback-warning-border);
+  --alert-warning-text:         var(--color-feedback-text);
+  --alert-warning-title:        var(--color-feedback-text);
+  --alert-warning-icon:         var(--color-feedback-warning-accent);
+  --alert-warning-strip:        var(--color-feedback-warning-accent);
+  --alert-warning-action:       var(--color-feedback-warning-action);
+  --alert-warning-action-hover: var(--color-feedback-warning-action-hover);
 
   /* ── Error ────────────────────────────────────────────────────── */
-  --alert-error-bg:           var(--color-alert-error-bg);
-  --alert-error-border:       var(--color-alert-error-border);
-  --alert-error-text:         var(--color-alert-error-text);
-  --alert-error-title:        var(--color-alert-error-text);
-  --alert-error-icon:         var(--color-alert-error-accent);
-  --alert-error-strip:        var(--color-alert-error-accent);
-  --alert-error-action:       var(--color-alert-error-action);
-  --alert-error-action-hover: var(--color-alert-error-action-hover);
+  --alert-error-bg:           var(--color-feedback-error-bg);
+  --alert-error-border:       var(--color-feedback-error-border);
+  --alert-error-text:         var(--color-feedback-text);
+  --alert-error-title:        var(--color-feedback-text);
+  --alert-error-icon:         var(--color-feedback-error-accent);
+  --alert-error-strip:        var(--color-feedback-error-accent);
+  --alert-error-action:       var(--color-feedback-error-action);
+  --alert-error-action-hover: var(--color-feedback-error-action-hover);
 }

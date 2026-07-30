@@ -1,0 +1,150 @@
+{
+  "feedback": {
+    "text": {
+      "$description": "Text used on intent feedback surfaces.",
+      "$value": "#1B1A1A",
+      "$type": "color"
+    },
+    "info": {
+      "bg": {
+        "$description": "Info feedback background.",
+        "$value": "#E0F2FF",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Info feedback border.",
+        "$value": "{Color modes/border/border-info-subtle}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Info feedback icon and accent stripe.",
+        "$value": "{Color modes/foreground/fg-info}",
+        "$type": "color"
+      },
+      "action": {
+        "$description": "Info feedback action color.",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Info feedback action hover color.",
+        "$value": "{Color modes/action/action-primary-hover}",
+        "$type": "color"
+      }
+    },
+    "success": {
+      "bg": {
+        "$description": "Success feedback background.",
+        "$value": "{Color modes/background/bg-success-subtle}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Success feedback border.",
+        "$value": "{Color modes/border/border-success-subtle}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Success feedback icon and accent stripe.",
+        "$value": "{Colors.Green.800}",
+        "$type": "color"
+      },
+      "action": {
+        "$description": "Success feedback action color.",
+        "$value": "{Colors.Green.800}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Success feedback action hover color.",
+        "$value": "{Colors.Green.800}",
+        "$type": "color"
+      }
+    },
+    "warning": {
+      "bg": {
+        "$description": "Warning feedback background.",
+        "$value": "{Color modes/background/bg-warning-subtle}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Warning feedback border.",
+        "$value": "{Color modes/border/border-warning-subtle}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Warning feedback icon and accent stripe.",
+        "$value": "{Colors.Orange.700}",
+        "$type": "color"
+      },
+      "action": {
+        "$description": "Warning feedback action color.",
+        "$value": "{Colors.Orange.700}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Warning feedback action hover color.",
+        "$value": "{Colors.Orange.700}",
+        "$type": "color"
+      }
+    },
+    "error": {
+      "bg": {
+        "$description": "Error feedback background.",
+        "$value": "{Color modes/background/bg-error-subtle}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Error feedback border.",
+        "$value": "{Color modes/border/border-error-subtle}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Error feedback icon and accent stripe.",
+        "$value": "{Color modes/foreground/fg-error}",
+        "$type": "color"
+      },
+      "action": {
+        "$description": "Error feedback action color.",
+        "$value": "{Color modes/foreground/fg-error}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Error feedback action hover color.",
+        "$value": "{Colors.Red.700}",
+        "$type": "color"
+      }
+    }
+  },
+  "background": {
+    "bg-overlay-strong": {
+      "$description": "High-emphasis modal overlay.",
+      "$value": "rgba(27, 26, 26, 0.5)",
+      "$type": "color"
+    }
+  },
+  "action": {
+    "action-menu-hover": {
+      "$description": "Menu item hover background.",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
+      "$type": "color"
+    },
+    "action-menu-active": {
+      "$description": "Menu item active background.",
+      "$value": "{Color modes/action/action-neutral-subtle-active}",
+      "$type": "color"
+    }
+  },
+  "border": {
+    "border-focus-soft": {
+      "$description": "Soft focus border for low-contrast controls.",
+      "$value": "#C7E5F0",
+      "$type": "color"
+    }
+  },
+  "foreground": {
+    "fg-on-inverse-muted": {
+      "$description": "Muted foreground used over inverse surfaces.",
+      "$value": "#FFFFFF73",
+      "$type": "color"
+    }
+  }
+}

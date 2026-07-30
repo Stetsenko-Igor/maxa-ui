@@ -2,7 +2,7 @@
   "Dialog": {
     "overlay-bg": {
       "$description": "Dialog: overlay bg.",
-      "$value": "{Color modes/component/dialog/overlay-bg}",
+      "$value": "{Color modes/background/bg-overlay-strong}",
       "$type": "color"
     },
     "content-bg": {

@@ -43,7 +43,7 @@ This order keeps aliases resolvable during import:
 - Change raw palette or spacing scale only in `primitives.json`.
 - Change semantic spacing intent only in `spacing.json`.
 - Change shared semantic light/dark colors in `colors-semantic-light.json` and `colors-semantic-dark.json`.
-- Change theme-aware component roles in `colors-component-light.json` and `colors-component-dark.json`.
+- Change reusable feedback and component-support semantics in `colors-feedback-light.json` and `colors-feedback-dark.json`.
 - Change extended hue roles in `colors-utility-light.json` and `colors-utility-dark.json`.
 - Keep descriptions durable. Prefer intent and alias references over repeating raw values.
 - Keep semantic names stable. Prefer updating primitive targets before renaming semantic tokens.
@@ -65,6 +65,7 @@ This order keeps aliases resolvable during import:
 - `Typography` now carries responsive foundation data through `Desktop`, `Tablet`, and `Mobile` modes.
 - Font families and weights stay consistent across modes; sizes and line heights adapt per viewport.
 - `Color modes` is the source of truth for light and dark semantic behavior.
+- Do not create a `component/*` namespace in `Color modes`; component names belong only in `Component-based`.
 - `Layout` owns designer-facing layout spacing. Do not reintroduce side-padding tokens in separate layout collections.
 - `Component-based` has one `Default` mode. Never add Light/Dark modes there; theme-aware values belong in `Color modes`.
 
@@ -113,7 +114,9 @@ Examples:
 - `text/text-primary` in `Color modes / Light` -> `Primitives/Colors/Neutral/950`
 - `text/text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
 - `Button/primary/bg` -> `Color modes/action/action-primary`
-- `Alert/color/info/bg` -> `Color modes/component/alert/info/bg`
+- `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
+- `Alert/color/neutral/bg` -> `Color modes/background/bg-surface`
+- `Alert/color/emphasize/bg` -> `Color modes/background/bg-page`
 - `Utility/bg-violet-muted` -> `Color modes/utility/bg-violet-muted`
 - `Button/link/bg` -> `Primitives/Colors/Base/Transparent`
 - `Button/size/md/padding-x` -> `Spacing/spacing-xl`

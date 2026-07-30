@@ -89,12 +89,12 @@
       },
       "bg-hover": {
         "$description": "Dropdown Menu, item: background (hover state).",
-        "$value": "{Color modes/component/dropdown-menu/item-bg-hover}",
+        "$value": "{Color modes/action/action-menu-hover}",
         "$type": "color"
       },
       "bg-active": {
         "$description": "Dropdown Menu, item: background (active state).",
-        "$value": "{Color modes/component/dropdown-menu/item-bg-active}",
+        "$value": "{Color modes/action/action-menu-active}",
         "$type": "color"
       },
       "text-disabled": {

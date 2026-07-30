@@ -232,22 +232,22 @@ describe("semantic.css — bg + action", () => {
     expect(css).not.toContain("--color-bg-nav:")
   })
 
-  it("keeps published Alert colors in theme-aware semantic roles", () => {
+  it("keeps published Alert colors in reusable feedback roles", () => {
     const darkIdx = css.indexOf('\n[data-theme="dark"] {')
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-alert-info-bg:           var(--color-bg-info-subtle);")
-    expect(light).toContain("--color-alert-info-border:       var(--color-border-info-subtle);")
-    expect(light).toContain("--color-alert-success-border:       var(--color-border-success-subtle);")
-    expect(light).toContain("--color-alert-warning-border:       var(--color-border-warning-subtle);")
-    expect(light).toContain("--color-alert-error-border:       var(--color-border-error-subtle);")
-    expect(light).toContain("--color-alert-info-text:         #1b1a1a;")
-    expect(dark).toContain("--color-alert-info-bg:           #003877;")
-    expect(dark).toContain("--color-alert-success-bg:           #044329;")
-    expect(dark).toContain("--color-alert-warning-bg:           #521d00;")
-    expect(dark).toContain("--color-alert-error-bg:           #7b0000;")
-    expect(dark).toContain("--color-dialog-overlay-bg:        rgba(0, 0, 0, 0.72);")
+    expect(light).toContain("--color-feedback-info-bg:             #e0f2ff;")
+    expect(light).toContain("--color-feedback-info-border:         var(--color-border-info-subtle);")
+    expect(light).toContain("--color-feedback-success-border:      var(--color-border-success-subtle);")
+    expect(light).toContain("--color-feedback-warning-border:      var(--color-border-warning-subtle);")
+    expect(light).toContain("--color-feedback-error-border:        var(--color-border-error-subtle);")
+    expect(light).toContain("--color-feedback-text:                #1b1a1a;")
+    expect(dark).toContain("--color-feedback-info-bg:             #003877;")
+    expect(dark).toContain("--color-feedback-success-bg:          #044329;")
+    expect(dark).toContain("--color-feedback-warning-bg:          #521d00;")
+    expect(dark).toContain("--color-feedback-error-bg:            #7b0000;")
+    expect(dark).toContain("--color-bg-overlay-strong:       rgba(0, 0, 0, 0.72);")
   })
 })
 
@@ -329,12 +329,12 @@ describe("figma manifest", () => {
   it("uses Color modes collection naming", () => {
     expect(manifest.collections["Color modes"]?.modes.Light).toEqual([
       "colors-semantic-light.json",
-      "colors-component-light.json",
+      "colors-feedback-light.json",
       "colors-utility-light.json",
     ])
     expect(manifest.collections["Color modes"]?.modes.Dark).toEqual([
       "colors-semantic-dark.json",
-      "colors-component-dark.json",
+      "colors-feedback-dark.json",
       "colors-utility-dark.json",
     ])
   })
@@ -461,6 +461,8 @@ describe("figma import bundle", () => {
 
     expect(missing).toEqual([])
     expect(bundle.collections["Color modes"]?.scopes?.["text/text-primary"]).toEqual(["TEXT_FILL"])
+    expect(bundle.collections["Color modes"]?.scopes?.["feedback/text"]).toEqual(["TEXT_FILL"])
+    expect(bundle.collections["Color modes"]?.scopes?.["feedback/info/border"]).toEqual(["STROKE_COLOR"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual(["STROKE_COLOR"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual(["WIDTH_HEIGHT"])
@@ -481,7 +483,7 @@ describe("figma import bundle", () => {
     expect(component?.["Toast/shadow"]).toBeUndefined()
   })
 
-  it("keeps all theme-dependent component colors in Color modes", () => {
+  it("keeps theme behavior in semantic Color modes without a duplicate component namespace", () => {
     const light = bundle.collections["Color modes"]?.modes.Light
     const dark = bundle.collections["Color modes"]?.modes.Dark
     const component = bundle.collections["Component-based"]?.modes.Default
@@ -492,29 +494,33 @@ describe("figma import bundle", () => {
     expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
-    expect(light?.["component/alert/info/bg"]).toBe("#E0F2FF")
-    expect(light?.["component/alert/info/border"]).toBe("{Color modes/border/border-info-subtle}")
-    expect(light?.["component/alert/success/border"]).toBe("{Color modes/border/border-success-subtle}")
-    expect(light?.["component/alert/warning/border"]).toBe("{Color modes/border/border-warning-subtle}")
-    expect(light?.["component/alert/error/border"]).toBe("{Color modes/border/border-error-subtle}")
-    expect(light?.["component/alert/success/accent"]).toBe("{Colors.Green.800}")
-    expect(light?.["component/alert/warning/accent"]).toBe("{Colors.Orange.700}")
-    expect(light?.["component/alert/info/text"]).toBe("#1B1A1A")
-    expect(dark?.["component/alert/info/bg"]).toBe("#003877")
-    expect(dark?.["component/alert/info/border"]).toBe("#0059C2")
-    expect(dark?.["component/alert/error/accent"]).toBe("#FF755E")
-    expect(light?.["component/dialog/overlay-bg"]).toBe("rgba(27, 26, 26, 0.5)")
-    expect(dark?.["component/dialog/overlay-bg"]).toBe("rgba(0, 0, 0, 0.72)")
-    expect(light?.["component/dropdown-menu/item-bg-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
-    expect(dark?.["component/dropdown-menu/item-bg-hover"]).toBe("{Color modes/action/action-neutral-hover}")
+    expect(Object.keys(light ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
+    expect(Object.keys(dark ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
+    expect(light?.["feedback/info/bg"]).toBe("#E0F2FF")
+    expect(light?.["feedback/info/border"]).toBe("{Color modes/border/border-info-subtle}")
+    expect(light?.["feedback/success/border"]).toBe("{Color modes/border/border-success-subtle}")
+    expect(light?.["feedback/warning/border"]).toBe("{Color modes/border/border-warning-subtle}")
+    expect(light?.["feedback/error/border"]).toBe("{Color modes/border/border-error-subtle}")
+    expect(light?.["feedback/success/accent"]).toBe("{Colors.Green.800}")
+    expect(light?.["feedback/warning/accent"]).toBe("{Colors.Orange.700}")
+    expect(light?.["feedback/text"]).toBe("#1B1A1A")
+    expect(dark?.["feedback/info/bg"]).toBe("#003877")
+    expect(dark?.["feedback/info/border"]).toBe("#0059C2")
+    expect(dark?.["feedback/error/accent"]).toBe("#FF755E")
+    expect(light?.["background/bg-overlay-strong"]).toBe("rgba(27, 26, 26, 0.5)")
+    expect(dark?.["background/bg-overlay-strong"]).toBe("rgba(0, 0, 0, 0.72)")
+    expect(light?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
+    expect(dark?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-hover}")
     expect(light?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(dark?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.900}")
     expect(component?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
     expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
     expect(component?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
-    expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/component/alert/info/bg}")
-    expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/component/dialog/overlay-bg}")
-    expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/component/dropdown-menu/item-bg-hover}")
+    expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
+    expect(component?.["Alert/color/neutral/bg"]).toBe("{Color modes/background/bg-surface}")
+    expect(component?.["Alert/color/emphasize/bg"]).toBe("{Color modes/background/bg-page}")
+    expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
+    expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
   })
 
@@ -540,7 +546,7 @@ describe("figma import bundle", () => {
     expect(component?.["Tag/radius"]).toBe("{Radius/radius-sm}")
     expect(component?.["Avatar/layout/size-md"]).toBe(40)
     expect(component?.["Alert/layout/radius"]).toBe("{Radius/radius-md}")
-    expect(component?.["Alert/color/error/accent"]).toBe("{Color modes/component/alert/error/accent}")
+    expect(component?.["Alert/color/error/accent"]).toBe("{Color modes/feedback/error/accent}")
     expect(component?.["Toggle/size/md/track-width"]).toBe(36)
     expect(component?.["Toggle/color/track-on"]).toBe("{Color modes/action/action-primary}")
     expect(component?.["Toggle/color/text"]).toBe("{Color modes/text/text-primary}")

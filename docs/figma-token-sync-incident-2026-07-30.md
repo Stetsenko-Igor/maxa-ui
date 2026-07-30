@@ -11,8 +11,8 @@ The repository and the live `[MAXA] Foundation` Figma file now use one theme swi
 Live Figma validation after the migration:
 
 - 8 collections
-- 1,634 variables
-- 233 variables in `Color modes`
+- 1,623 variables
+- 222 variables in `Color modes`
 - 1,026 variables in `Component-based`
 - 0 missing `Component-based / Default` values
 - 0 raw Component-based COLOR values
@@ -21,9 +21,9 @@ Live Figma validation after the migration:
 
 The generated repository bundle contains the same collection counts and mode structure:
 
-- 1,634 variables
-- 1,955 per-mode values
-- 1,265 alias values
+- 1,623 variables
+- 1,933 per-mode values
+- 1,252 alias values
 - 0 unresolved CSS expressions
 
 ## Where colors are changed now
@@ -31,15 +31,20 @@ The generated repository bundle contains the same collection counts and mode str
 Theme selection belongs only to `Color modes`.
 
 - Shared semantic roles: `colors-semantic-light.json` and `colors-semantic-dark.json`
-- Theme-aware component roles: `colors-component-light.json` and `colors-component-dark.json`
+- Reusable feedback and component-support roles: `colors-feedback-light.json` and `colors-feedback-dark.json`
 - Extended hue roles: `colors-utility-light.json` and `colors-utility-dark.json`
 - Stable component aliases and layout/typography values: mode-neutral `component-*.json` files
 
 For example:
 
 `Component-based/Alert/color/info/bg`
-→ `Color modes/component/alert/info/bg`
+→ `Color modes/feedback/info/bg`
 → a Light semantic alias or the approved Dark color
+
+Neutral and Emphasize do not need dedicated feedback roles:
+
+- `Component-based/Alert/color/neutral/bg` → `Color modes/background/bg-surface`
+- `Component-based/Alert/color/emphasize/bg` → `Color modes/background/bg-page`
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 
@@ -86,7 +91,12 @@ Published Dark values:
 | Warning | `#521D00` | `#B44E00` | `#E16D00` | `#F4F3F3` |
 | Error | `#7B0000` | `#D71913` | `#FF755E` | `#F4F3F3` |
 
-Neutral and Emphasize values are also preserved exactly. Alert component variables now alias these theme-aware Color modes roles in the single Default mode.
+The four feedback intents preserve their approved values exactly. Neutral and Emphasize now intentionally reuse the shared background semantics requested for the product:
+
+- Neutral background aliases `background/bg-surface` (`#FFFFFF` in Light and `#2A2A2B` in Dark);
+- Emphasize background aliases `background/bg-page` (`#F5F6FA` in Light and `#1A1919` in Dark).
+
+Alert component variables expose these roles through the single `Component-based / Default` mode.
 
 ## Live Figma migration safety
 
@@ -95,7 +105,8 @@ Before mutation, the Foundation file was scanned for mode and variable consumers
 - no node explicitly applied `Component-based / Dark`;
 - 12 Alert layers directly referenced four `border-*-subtle` compatibility variables;
 - those four variables were retained to avoid breaking existing node bindings;
-- no component masters or test components were edited during this migration.
+- the duplicate `Color modes/component/*` variables were consumed only by two local Alert sets: one Light set and one Dark set, with 12 variants each;
+- a third Alert set linked to external library variables did not consume the duplicate namespace and was left untouched.
 
 Because named version-history creation is unavailable in the current Figma plugin runtime, a rollback snapshot was stored locally at:
 
@@ -103,12 +114,16 @@ Because named version-history creation is unavailable in the current Figma plugi
 
 The migration then:
 
-- created 37 theme-aware component roles in `Color modes`;
+- replaced 37 duplicate `Color modes/component/*` variables with 26 reusable semantic feedback and support roles;
 - created 89 extended utility roles in `Color modes`;
 - rebound 131 existing Component-based variables without recreating them;
 - renamed `Component-based / Light` to `Default`, preserving mode ID `14:0`;
 - removed the redundant `Component-based / Dark` mode;
-- preserved all 1,026 Component-based variable IDs.
+- preserved all 1,026 Component-based variable IDs;
+- rebound only the color properties of the 24 local Alert variants to `Component-based/Alert` variables, including root fills, borders, accent vectors, and text;
+- deleted the 37 duplicate variables only after a scan of all eight pages reported zero alias consumers and zero canvas consumers.
+
+No Alert structure, layout, content, component properties, or variants were changed.
 
 ## Repository safeguards
 
@@ -120,6 +135,8 @@ The migration then:
 - missing modes, unresolved aliases, alias cycles, type drift, and unsupported CSS expressions.
 
 MAXA Token Importer v11 adds explicit stale-mode cleanup. A regression test verifies that Light/Dark collapses to Default without recreating variables.
+
+The bundle builder also rejects any future `component/*` namespace inside `Color modes`, so component names remain exclusively in `Component-based`.
 
 ## Review of Claude's changes today
 

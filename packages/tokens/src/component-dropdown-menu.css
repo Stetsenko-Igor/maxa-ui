@@ -40,8 +40,8 @@
   --dropdown-menu-item-text-hover: var(--color-text-primary);
   --dropdown-menu-item-text-active: var(--color-text-primary);
   --dropdown-menu-item-icon: var(--color-fg-secondary);
-  --dropdown-menu-item-bg-hover: var(--color-dropdown-menu-item-bg-hover);
-  --dropdown-menu-item-bg-active: var(--color-dropdown-menu-item-bg-active);
+  --dropdown-menu-item-bg-hover: var(--color-action-menu-hover);
+  --dropdown-menu-item-bg-active: var(--color-action-menu-active);
   --dropdown-menu-item-meta-text: var(--color-text-tertiary);
   --dropdown-menu-item-text-disabled: var(--color-text-disabled);
   --dropdown-menu-item-text-destructive: var(--color-text-error);

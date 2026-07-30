@@ -33,12 +33,12 @@
       "modes": {
         "Light": [
           "colors-semantic-light.json",
-          "colors-component-light.json",
+          "colors-feedback-light.json",
           "colors-utility-light.json"
         ],
         "Dark": [
           "colors-semantic-dark.json",
-          "colors-component-dark.json",
+          "colors-feedback-dark.json",
           "colors-utility-dark.json"
         ]
       }

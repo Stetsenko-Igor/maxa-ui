@@ -1,0 +1,52 @@
+{
+  "feedback": {
+    "text": { "$value": "#F4F3F3", "$type": "color" },
+    "info": {
+      "bg": { "$value": "#003877", "$type": "color" },
+      "border": { "$value": "#0059C2", "$type": "color" },
+      "accent": { "$value": "#54A3F6", "$type": "color" },
+      "action": { "$value": "#54A3F6", "$type": "color" },
+      "action-hover": { "$value": "#8BC4FF", "$type": "color" }
+    },
+    "success": {
+      "bg": { "$value": "#044329", "$type": "color" },
+      "border": { "$value": "#006D0F", "$type": "color" },
+      "accent": { "$value": "#2BB47D", "$type": "color" },
+      "action": { "$value": "#2BB47D", "$type": "color" },
+      "action-hover": { "$value": "#62D6A2", "$type": "color" }
+    },
+    "warning": {
+      "bg": { "$value": "#521D00", "$type": "color" },
+      "border": { "$value": "#B44E00", "$type": "color" },
+      "accent": { "$value": "#E16D00", "$type": "color" },
+      "action": { "$value": "#E16D00", "$type": "color" },
+      "action-hover": { "$value": "#FF9A3C", "$type": "color" }
+    },
+    "error": {
+      "bg": { "$value": "#7B0000", "$type": "color" },
+      "border": { "$value": "#D71913", "$type": "color" },
+      "accent": { "$value": "#FF755E", "$type": "color" },
+      "action": { "$value": "#FF755E", "$type": "color" },
+      "action-hover": { "$value": "#FFA193", "$type": "color" }
+    }
+  },
+  "background": {
+    "bg-overlay-strong": { "$value": "rgba(0, 0, 0, 0.72)", "$type": "color" }
+  },
+  "action": {
+    "action-menu-hover": {
+      "$value": "{Color modes/action/action-neutral-hover}",
+      "$type": "color"
+    },
+    "action-menu-active": {
+      "$value": "{Color modes/action/action-neutral-active}",
+      "$type": "color"
+    }
+  },
+  "border": {
+    "border-focus-soft": { "$value": "#C7E5F0", "$type": "color" }
+  },
+  "foreground": {
+    "fg-on-inverse-muted": { "$value": "#FFFFFF73", "$type": "color" }
+  }
+}

@@ -1252,43 +1252,32 @@
           "control/control-idle-hover": "{Colors.Neutral.400}",
           "control/control-checked": "{Colors.Neutral.900}",
           "control/control-checked-hover": "{Colors.Neutral.700}",
-          "component/alert/info/bg": "#E0F2FF",
-          "component/alert/info/border": "{Color modes/border/border-info-subtle}",
-          "component/alert/info/accent": "{Color modes/foreground/fg-info}",
-          "component/alert/info/text": "#1B1A1A",
-          "component/alert/info/action": "{Color modes/action/action-primary}",
-          "component/alert/info/action-hover": "{Color modes/action/action-primary-hover}",
-          "component/alert/success/bg": "{Color modes/background/bg-success-subtle}",
-          "component/alert/success/border": "{Color modes/border/border-success-subtle}",
-          "component/alert/success/accent": "{Colors.Green.800}",
-          "component/alert/success/text": "#1B1A1A",
-          "component/alert/success/action": "{Colors.Green.800}",
-          "component/alert/success/action-hover": "{Colors.Green.800}",
-          "component/alert/warning/bg": "{Color modes/background/bg-warning-subtle}",
-          "component/alert/warning/border": "{Color modes/border/border-warning-subtle}",
-          "component/alert/warning/accent": "{Colors.Orange.700}",
-          "component/alert/warning/text": "#1B1A1A",
-          "component/alert/warning/action": "{Colors.Orange.700}",
-          "component/alert/warning/action-hover": "{Colors.Orange.700}",
-          "component/alert/error/bg": "{Color modes/background/bg-error-subtle}",
-          "component/alert/error/border": "{Color modes/border/border-error-subtle}",
-          "component/alert/error/accent": "{Color modes/foreground/fg-error}",
-          "component/alert/error/text": "#1B1A1A",
-          "component/alert/error/action": "{Color modes/foreground/fg-error}",
-          "component/alert/error/action-hover": "{Colors.Red.700}",
-          "component/alert/neutral/bg": "{Color modes/background/bg-neutral-subtle}",
-          "component/alert/neutral/border": "{Color modes/border/border-secondary}",
-          "component/alert/neutral/accent": "{Color modes/foreground/fg-secondary}",
-          "component/alert/neutral/text": "{Color modes/text/text-primary}",
-          "component/alert/emphasize/bg": "{Color modes/background/bg-neutral-strong}",
-          "component/alert/emphasize/border": "{Color modes/border/border-primary}",
-          "component/alert/emphasize/accent": "{Color modes/foreground/fg-inverse}",
-          "component/alert/emphasize/text": "{Color modes/text/text-inverse}",
-          "component/dialog/overlay-bg": "rgba(27, 26, 26, 0.5)",
-          "component/dropdown-menu/item-bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
-          "component/dropdown-menu/item-bg-active": "{Color modes/action/action-neutral-subtle-active}",
-          "component/social-button/border-focus": "#C7E5F0",
-          "component/spinner/white-track-color": "#FFFFFF73",
+          "feedback/text": "#1B1A1A",
+          "feedback/info/bg": "#E0F2FF",
+          "feedback/info/border": "{Color modes/border/border-info-subtle}",
+          "feedback/info/accent": "{Color modes/foreground/fg-info}",
+          "feedback/info/action": "{Color modes/action/action-primary}",
+          "feedback/info/action-hover": "{Color modes/action/action-primary-hover}",
+          "feedback/success/bg": "{Color modes/background/bg-success-subtle}",
+          "feedback/success/border": "{Color modes/border/border-success-subtle}",
+          "feedback/success/accent": "{Colors.Green.800}",
+          "feedback/success/action": "{Colors.Green.800}",
+          "feedback/success/action-hover": "{Colors.Green.800}",
+          "feedback/warning/bg": "{Color modes/background/bg-warning-subtle}",
+          "feedback/warning/border": "{Color modes/border/border-warning-subtle}",
+          "feedback/warning/accent": "{Colors.Orange.700}",
+          "feedback/warning/action": "{Colors.Orange.700}",
+          "feedback/warning/action-hover": "{Colors.Orange.700}",
+          "feedback/error/bg": "{Color modes/background/bg-error-subtle}",
+          "feedback/error/border": "{Color modes/border/border-error-subtle}",
+          "feedback/error/accent": "{Color modes/foreground/fg-error}",
+          "feedback/error/action": "{Color modes/foreground/fg-error}",
+          "feedback/error/action-hover": "{Colors.Red.700}",
+          "background/bg-overlay-strong": "rgba(27, 26, 26, 0.5)",
+          "action/action-menu-hover": "{Color modes/action/action-neutral-subtle-hover}",
+          "action/action-menu-active": "{Color modes/action/action-neutral-subtle-active}",
+          "border/border-focus-soft": "#C7E5F0",
+          "foreground/fg-on-inverse-muted": "#FFFFFF73",
           "utility/bg-gray-subtle": "{Colors.Gray.50}",
           "utility/bg-gray-muted": "{Colors.Gray.100}",
           "utility/bg-gray-strong": "{Colors.Gray.700}",
@@ -1487,43 +1476,32 @@
           "control/control-idle-hover": "{Colors.Neutral.700}",
           "control/control-checked": "{Colors.Neutral.200}",
           "control/control-checked-hover": "{Colors.Neutral.400}",
-          "component/alert/info/bg": "#003877",
-          "component/alert/info/border": "#0059C2",
-          "component/alert/info/accent": "#54A3F6",
-          "component/alert/info/text": "#F4F3F3",
-          "component/alert/info/action": "#54A3F6",
-          "component/alert/info/action-hover": "#8BC4FF",
-          "component/alert/success/bg": "#044329",
-          "component/alert/success/border": "#006D0F",
-          "component/alert/success/accent": "#2BB47D",
-          "component/alert/success/text": "#F4F3F3",
-          "component/alert/success/action": "#2BB47D",
-          "component/alert/success/action-hover": "#62D6A2",
-          "component/alert/warning/bg": "#521D00",
-          "component/alert/warning/border": "#B44E00",
-          "component/alert/warning/accent": "#E16D00",
-          "component/alert/warning/text": "#F4F3F3",
-          "component/alert/warning/action": "#E16D00",
-          "component/alert/warning/action-hover": "#FF9A3C",
-          "component/alert/error/bg": "#7B0000",
-          "component/alert/error/border": "#D71913",
-          "component/alert/error/accent": "#FF755E",
-          "component/alert/error/text": "#F4F3F3",
-          "component/alert/error/action": "#FF755E",
-          "component/alert/error/action-hover": "#FFA193",
-          "component/alert/neutral/bg": "#2D2D2E",
-          "component/alert/neutral/border": "#545454",
-          "component/alert/neutral/accent": "#B7B7B7",
-          "component/alert/neutral/text": "#F4F3F3",
-          "component/alert/emphasize/bg": "#292929",
-          "component/alert/emphasize/border": "#545454",
-          "component/alert/emphasize/accent": "#B7B7B7",
-          "component/alert/emphasize/text": "#F4F3F3",
-          "component/dialog/overlay-bg": "rgba(0, 0, 0, 0.72)",
-          "component/dropdown-menu/item-bg-hover": "{Color modes/action/action-neutral-hover}",
-          "component/dropdown-menu/item-bg-active": "{Color modes/action/action-neutral-active}",
-          "component/social-button/border-focus": "#C7E5F0",
-          "component/spinner/white-track-color": "#FFFFFF73",
+          "feedback/text": "#F4F3F3",
+          "feedback/info/bg": "#003877",
+          "feedback/info/border": "#0059C2",
+          "feedback/info/accent": "#54A3F6",
+          "feedback/info/action": "#54A3F6",
+          "feedback/info/action-hover": "#8BC4FF",
+          "feedback/success/bg": "#044329",
+          "feedback/success/border": "#006D0F",
+          "feedback/success/accent": "#2BB47D",
+          "feedback/success/action": "#2BB47D",
+          "feedback/success/action-hover": "#62D6A2",
+          "feedback/warning/bg": "#521D00",
+          "feedback/warning/border": "#B44E00",
+          "feedback/warning/accent": "#E16D00",
+          "feedback/warning/action": "#E16D00",
+          "feedback/warning/action-hover": "#FF9A3C",
+          "feedback/error/bg": "#7B0000",
+          "feedback/error/border": "#D71913",
+          "feedback/error/accent": "#FF755E",
+          "feedback/error/action": "#FF755E",
+          "feedback/error/action-hover": "#FFA193",
+          "background/bg-overlay-strong": "rgba(0, 0, 0, 0.72)",
+          "action/action-menu-hover": "{Color modes/action/action-neutral-hover}",
+          "action/action-menu-active": "{Color modes/action/action-neutral-active}",
+          "border/border-focus-soft": "#C7E5F0",
+          "foreground/fg-on-inverse-muted": "#FFFFFF73",
           "utility/bg-gray-subtle": "{Colors.Gray.950}",
           "utility/bg-gray-muted": "{Colors.Gray.900}",
           "utility/bg-gray-strong": "{Colors.Gray.700}",
@@ -1723,43 +1701,32 @@
         "control/control-idle-hover": "Hover border or track for unchecked controls.",
         "control/control-checked": "Checked control fill or border.",
         "control/control-checked-hover": "Checked control fill or border on hover.",
-        "component/alert/info/bg": "Alert info background. Change both themes here; Component-based aliases this variable.",
-        "component/alert/info/border": "Alert info border.",
-        "component/alert/info/accent": "Alert info icon and accent stripe.",
-        "component/alert/info/text": "Alert info body and title text.",
-        "component/alert/info/action": "Alert info action color.",
-        "component/alert/info/action-hover": "Alert info action hover color.",
-        "component/alert/success/bg": "Alert success background.",
-        "component/alert/success/border": "Alert success border.",
-        "component/alert/success/accent": "Alert success icon and accent stripe.",
-        "component/alert/success/text": "Alert success body and title text.",
-        "component/alert/success/action": "Alert success action color.",
-        "component/alert/success/action-hover": "Alert success action hover color.",
-        "component/alert/warning/bg": "Alert warning background.",
-        "component/alert/warning/border": "Alert warning border.",
-        "component/alert/warning/accent": "Alert warning icon and accent stripe.",
-        "component/alert/warning/text": "Alert warning body and title text.",
-        "component/alert/warning/action": "Alert warning action color.",
-        "component/alert/warning/action-hover": "Alert warning action hover color.",
-        "component/alert/error/bg": "Alert error background.",
-        "component/alert/error/border": "Alert error border.",
-        "component/alert/error/accent": "Alert error icon and accent stripe.",
-        "component/alert/error/text": "Alert error body and title text.",
-        "component/alert/error/action": "Alert error action color.",
-        "component/alert/error/action-hover": "Alert error action hover color.",
-        "component/alert/neutral/bg": "Alert neutral background.",
-        "component/alert/neutral/border": "Alert neutral border.",
-        "component/alert/neutral/accent": "Alert neutral accent.",
-        "component/alert/neutral/text": "Alert neutral text.",
-        "component/alert/emphasize/bg": "Alert emphasize background.",
-        "component/alert/emphasize/border": "Alert emphasize border.",
-        "component/alert/emphasize/accent": "Alert emphasize accent.",
-        "component/alert/emphasize/text": "Alert emphasize text.",
-        "component/dialog/overlay-bg": "Dialog overlay. Theme switching is controlled only by Color modes.",
-        "component/dropdown-menu/item-bg-hover": "Dropdown menu item hover background.",
-        "component/dropdown-menu/item-bg-active": "Dropdown menu item active background.",
-        "component/social-button/border-focus": "Social button focus border.",
-        "component/spinner/white-track-color": "Spinner track on a white or inverse surface at 45% opacity.",
+        "feedback/text": "Text used on intent feedback surfaces.",
+        "feedback/info/bg": "Info feedback background.",
+        "feedback/info/border": "Info feedback border.",
+        "feedback/info/accent": "Info feedback icon and accent stripe.",
+        "feedback/info/action": "Info feedback action color.",
+        "feedback/info/action-hover": "Info feedback action hover color.",
+        "feedback/success/bg": "Success feedback background.",
+        "feedback/success/border": "Success feedback border.",
+        "feedback/success/accent": "Success feedback icon and accent stripe.",
+        "feedback/success/action": "Success feedback action color.",
+        "feedback/success/action-hover": "Success feedback action hover color.",
+        "feedback/warning/bg": "Warning feedback background.",
+        "feedback/warning/border": "Warning feedback border.",
+        "feedback/warning/accent": "Warning feedback icon and accent stripe.",
+        "feedback/warning/action": "Warning feedback action color.",
+        "feedback/warning/action-hover": "Warning feedback action hover color.",
+        "feedback/error/bg": "Error feedback background.",
+        "feedback/error/border": "Error feedback border.",
+        "feedback/error/accent": "Error feedback icon and accent stripe.",
+        "feedback/error/action": "Error feedback action color.",
+        "feedback/error/action-hover": "Error feedback action hover color.",
+        "background/bg-overlay-strong": "High-emphasis modal overlay.",
+        "action/action-menu-hover": "Menu item hover background.",
+        "action/action-menu-active": "Menu item active background.",
+        "border/border-focus-soft": "Soft focus border for low-contrast controls.",
+        "foreground/fg-on-inverse-muted": "Muted foreground used over inverse surfaces.",
         "utility/bg-gray-subtle": "Utility: background gray subtle.",
         "utility/bg-gray-muted": "Utility: background gray muted.",
         "utility/bg-gray-strong": "Utility: background gray strong.",
@@ -1958,43 +1925,32 @@
         "control/control-idle-hover": "COLOR",
         "control/control-checked": "COLOR",
         "control/control-checked-hover": "COLOR",
-        "component/alert/info/bg": "COLOR",
-        "component/alert/info/border": "COLOR",
-        "component/alert/info/accent": "COLOR",
-        "component/alert/info/text": "COLOR",
-        "component/alert/info/action": "COLOR",
-        "component/alert/info/action-hover": "COLOR",
-        "component/alert/success/bg": "COLOR",
-        "component/alert/success/border": "COLOR",
-        "component/alert/success/accent": "COLOR",
-        "component/alert/success/text": "COLOR",
-        "component/alert/success/action": "COLOR",
-        "component/alert/success/action-hover": "COLOR",
-        "component/alert/warning/bg": "COLOR",
-        "component/alert/warning/border": "COLOR",
-        "component/alert/warning/accent": "COLOR",
-        "component/alert/warning/text": "COLOR",
-        "component/alert/warning/action": "COLOR",
-        "component/alert/warning/action-hover": "COLOR",
-        "component/alert/error/bg": "COLOR",
-        "component/alert/error/border": "COLOR",
-        "component/alert/error/accent": "COLOR",
-        "component/alert/error/text": "COLOR",
-        "component/alert/error/action": "COLOR",
-        "component/alert/error/action-hover": "COLOR",
-        "component/alert/neutral/bg": "COLOR",
-        "component/alert/neutral/border": "COLOR",
-        "component/alert/neutral/accent": "COLOR",
-        "component/alert/neutral/text": "COLOR",
-        "component/alert/emphasize/bg": "COLOR",
-        "component/alert/emphasize/border": "COLOR",
-        "component/alert/emphasize/accent": "COLOR",
-        "component/alert/emphasize/text": "COLOR",
-        "component/dialog/overlay-bg": "COLOR",
-        "component/dropdown-menu/item-bg-hover": "COLOR",
-        "component/dropdown-menu/item-bg-active": "COLOR",
-        "component/social-button/border-focus": "COLOR",
-        "component/spinner/white-track-color": "COLOR",
+        "feedback/text": "COLOR",
+        "feedback/info/bg": "COLOR",
+        "feedback/info/border": "COLOR",
+        "feedback/info/accent": "COLOR",
+        "feedback/info/action": "COLOR",
+        "feedback/info/action-hover": "COLOR",
+        "feedback/success/bg": "COLOR",
+        "feedback/success/border": "COLOR",
+        "feedback/success/accent": "COLOR",
+        "feedback/success/action": "COLOR",
+        "feedback/success/action-hover": "COLOR",
+        "feedback/warning/bg": "COLOR",
+        "feedback/warning/border": "COLOR",
+        "feedback/warning/accent": "COLOR",
+        "feedback/warning/action": "COLOR",
+        "feedback/warning/action-hover": "COLOR",
+        "feedback/error/bg": "COLOR",
+        "feedback/error/border": "COLOR",
+        "feedback/error/accent": "COLOR",
+        "feedback/error/action": "COLOR",
+        "feedback/error/action-hover": "COLOR",
+        "background/bg-overlay-strong": "COLOR",
+        "action/action-menu-hover": "COLOR",
+        "action/action-menu-active": "COLOR",
+        "border/border-focus-soft": "COLOR",
+        "foreground/fg-on-inverse-muted": "COLOR",
         "utility/bg-gray-subtle": "COLOR",
         "utility/bg-gray-muted": "COLOR",
         "utility/bg-gray-strong": "COLOR",
@@ -2447,115 +2403,84 @@
           "ALL_FILLS",
           "STROKE_COLOR"
         ],
-        "component/alert/info/bg": [
-          "ALL_FILLS"
-        ],
-        "component/alert/info/border": [
-          "STROKE_COLOR"
-        ],
-        "component/alert/info/accent": [
-          "SHAPE_FILL"
-        ],
-        "component/alert/info/text": [
+        "feedback/text": [
           "TEXT_FILL"
         ],
-        "component/alert/info/action": [
+        "feedback/info/bg": [
           "ALL_FILLS"
         ],
-        "component/alert/info/action-hover": [
-          "ALL_FILLS"
-        ],
-        "component/alert/success/bg": [
-          "ALL_FILLS"
-        ],
-        "component/alert/success/border": [
+        "feedback/info/border": [
           "STROKE_COLOR"
         ],
-        "component/alert/success/accent": [
+        "feedback/info/accent": [
           "SHAPE_FILL"
         ],
-        "component/alert/success/text": [
-          "TEXT_FILL"
-        ],
-        "component/alert/success/action": [
+        "feedback/info/action": [
           "ALL_FILLS"
         ],
-        "component/alert/success/action-hover": [
+        "feedback/info/action-hover": [
           "ALL_FILLS"
         ],
-        "component/alert/warning/bg": [
+        "feedback/success/bg": [
           "ALL_FILLS"
         ],
-        "component/alert/warning/border": [
+        "feedback/success/border": [
           "STROKE_COLOR"
         ],
-        "component/alert/warning/accent": [
+        "feedback/success/accent": [
           "SHAPE_FILL"
         ],
-        "component/alert/warning/text": [
-          "TEXT_FILL"
-        ],
-        "component/alert/warning/action": [
+        "feedback/success/action": [
           "ALL_FILLS"
         ],
-        "component/alert/warning/action-hover": [
+        "feedback/success/action-hover": [
           "ALL_FILLS"
         ],
-        "component/alert/error/bg": [
+        "feedback/warning/bg": [
           "ALL_FILLS"
         ],
-        "component/alert/error/border": [
+        "feedback/warning/border": [
           "STROKE_COLOR"
         ],
-        "component/alert/error/accent": [
+        "feedback/warning/accent": [
           "SHAPE_FILL"
         ],
-        "component/alert/error/text": [
-          "TEXT_FILL"
-        ],
-        "component/alert/error/action": [
+        "feedback/warning/action": [
           "ALL_FILLS"
         ],
-        "component/alert/error/action-hover": [
+        "feedback/warning/action-hover": [
           "ALL_FILLS"
         ],
-        "component/alert/neutral/bg": [
+        "feedback/error/bg": [
           "ALL_FILLS"
         ],
-        "component/alert/neutral/border": [
+        "feedback/error/border": [
           "STROKE_COLOR"
         ],
-        "component/alert/neutral/accent": [
+        "feedback/error/accent": [
           "SHAPE_FILL"
         ],
-        "component/alert/neutral/text": [
-          "TEXT_FILL"
-        ],
-        "component/alert/emphasize/bg": [
+        "feedback/error/action": [
           "ALL_FILLS"
         ],
-        "component/alert/emphasize/border": [
+        "feedback/error/action-hover": [
+          "ALL_FILLS"
+        ],
+        "background/bg-overlay-strong": [
+          "ALL_FILLS"
+        ],
+        "action/action-menu-hover": [
+          "ALL_FILLS",
           "STROKE_COLOR"
         ],
-        "component/alert/emphasize/accent": [
-          "SHAPE_FILL"
-        ],
-        "component/alert/emphasize/text": [
-          "TEXT_FILL"
-        ],
-        "component/dialog/overlay-bg": [
-          "ALL_FILLS"
-        ],
-        "component/dropdown-menu/item-bg-hover": [
-          "ALL_FILLS"
-        ],
-        "component/dropdown-menu/item-bg-active": [
-          "ALL_FILLS"
-        ],
-        "component/social-button/border-focus": [
+        "action/action-menu-active": [
+          "ALL_FILLS",
           "STROKE_COLOR"
         ],
-        "component/spinner/white-track-color": [
+        "border/border-focus-soft": [
+          "STROKE_COLOR"
+        ],
+        "foreground/fg-on-inverse-muted": [
           "ALL_FILLS"
         ],
         "utility/bg-gray-subtle": [
@@ -3197,30 +3122,30 @@
           "Alert/typography/title-size": "{Typography/Font size/text-lg}",
           "Alert/typography/title-line-height": "{Typography/Line height/text-lg}",
           "Alert/typography/title-weight": "{Typography/Font weight/bold}",
-          "Alert/color/info/bg": "{Color modes/component/alert/info/bg}",
-          "Alert/color/info/border": "{Color modes/component/alert/info/border}",
-          "Alert/color/info/accent": "{Color modes/component/alert/info/accent}",
-          "Alert/color/info/text": "{Color modes/component/alert/info/text}",
-          "Alert/color/success/bg": "{Color modes/component/alert/success/bg}",
-          "Alert/color/success/border": "{Color modes/component/alert/success/border}",
-          "Alert/color/success/accent": "{Color modes/component/alert/success/accent}",
-          "Alert/color/success/text": "{Color modes/component/alert/success/text}",
-          "Alert/color/warning/bg": "{Color modes/component/alert/warning/bg}",
-          "Alert/color/warning/border": "{Color modes/component/alert/warning/border}",
-          "Alert/color/warning/accent": "{Color modes/component/alert/warning/accent}",
-          "Alert/color/warning/text": "{Color modes/component/alert/warning/text}",
-          "Alert/color/error/bg": "{Color modes/component/alert/error/bg}",
-          "Alert/color/error/border": "{Color modes/component/alert/error/border}",
-          "Alert/color/error/accent": "{Color modes/component/alert/error/accent}",
-          "Alert/color/error/text": "{Color modes/component/alert/error/text}",
-          "Alert/color/neutral/bg": "{Color modes/component/alert/neutral/bg}",
-          "Alert/color/neutral/border": "{Color modes/component/alert/neutral/border}",
-          "Alert/color/neutral/accent": "{Color modes/component/alert/neutral/accent}",
-          "Alert/color/neutral/text": "{Color modes/component/alert/neutral/text}",
-          "Alert/color/emphasize/bg": "{Color modes/component/alert/emphasize/bg}",
-          "Alert/color/emphasize/border": "{Color modes/component/alert/emphasize/border}",
-          "Alert/color/emphasize/accent": "{Color modes/component/alert/emphasize/accent}",
-          "Alert/color/emphasize/text": "{Color modes/component/alert/emphasize/text}",
+          "Alert/color/info/bg": "{Color modes/feedback/info/bg}",
+          "Alert/color/info/border": "{Color modes/feedback/info/border}",
+          "Alert/color/info/accent": "{Color modes/feedback/info/accent}",
+          "Alert/color/info/text": "{Color modes/feedback/text}",
+          "Alert/color/success/bg": "{Color modes/feedback/success/bg}",
+          "Alert/color/success/border": "{Color modes/feedback/success/border}",
+          "Alert/color/success/accent": "{Color modes/feedback/success/accent}",
+          "Alert/color/success/text": "{Color modes/feedback/text}",
+          "Alert/color/warning/bg": "{Color modes/feedback/warning/bg}",
+          "Alert/color/warning/border": "{Color modes/feedback/warning/border}",
+          "Alert/color/warning/accent": "{Color modes/feedback/warning/accent}",
+          "Alert/color/warning/text": "{Color modes/feedback/text}",
+          "Alert/color/error/bg": "{Color modes/feedback/error/bg}",
+          "Alert/color/error/border": "{Color modes/feedback/error/border}",
+          "Alert/color/error/accent": "{Color modes/feedback/error/accent}",
+          "Alert/color/error/text": "{Color modes/feedback/text}",
+          "Alert/color/neutral/bg": "{Color modes/background/bg-surface}",
+          "Alert/color/neutral/border": "{Color modes/border/border-secondary}",
+          "Alert/color/neutral/accent": "{Color modes/foreground/fg-secondary}",
+          "Alert/color/neutral/text": "{Color modes/text/text-primary}",
+          "Alert/color/emphasize/bg": "{Color modes/background/bg-page}",
+          "Alert/color/emphasize/border": "{Color modes/border/border-primary}",
+          "Alert/color/emphasize/accent": "{Color modes/foreground/fg-secondary}",
+          "Alert/color/emphasize/text": "{Color modes/text/text-primary}",
           "Avatar/surface/bg": "{Color modes/background/bg-brand-subtle}",
           "Avatar/surface/text": "{Color modes/text/text-brand}",
           "Avatar/surface/border": "{Color modes/border/border-secondary}",
@@ -3488,7 +3413,7 @@
           "Date Picker/preset-font-size": "{Typography/Font size/text-sm}",
           "Date Picker/field-separator-color": "{Color modes/text/text-tertiary}",
           "Date Picker/icon-hit-area": 44,
-          "Dialog/overlay-bg": "{Color modes/component/dialog/overlay-bg}",
+          "Dialog/overlay-bg": "{Color modes/background/bg-overlay-strong}",
           "Dialog/content-bg": "{Color modes/background/bg-float}",
           "Dialog/content-border": "{Color modes/border/border-primary}",
           "Dialog/content-radius": "{Radius/radius-md}",
@@ -3582,8 +3507,8 @@
           "Dropdown Menu/typography/label-font-weight": "{Typography/Font weight/semibold}",
           "Dropdown Menu/item/text": "{Color modes/text/text-primary}",
           "Dropdown Menu/item/icon": "{Color modes/foreground/fg-secondary}",
-          "Dropdown Menu/item/bg-hover": "{Color modes/component/dropdown-menu/item-bg-hover}",
-          "Dropdown Menu/item/bg-active": "{Color modes/component/dropdown-menu/item-bg-active}",
+          "Dropdown Menu/item/bg-hover": "{Color modes/action/action-menu-hover}",
+          "Dropdown Menu/item/bg-active": "{Color modes/action/action-menu-active}",
           "Dropdown Menu/item/text-disabled": "{Color modes/text/text-disabled}",
           "Dropdown Menu/item/text-destructive": "{Color modes/text/text-error}",
           "Dropdown Menu/item/bg-destructive-hover": "{Color modes/background/bg-error-surface}",
@@ -3927,7 +3852,7 @@
           "Social Button/border": "{Color modes/border/border-primary}",
           "Social Button/border-hover": "{Color modes/border/border-secondary}",
           "Social Button/border-active": "{Color modes/border/border-secondary}",
-          "Social Button/border-focus": "{Color modes/component/social-button/border-focus}",
+          "Social Button/border-focus": "{Color modes/border/border-focus-soft}",
           "Social Button/bg": "{Component-based/Button/outline/bg}",
           "Social Button/bg-hover": "{Component-based/Button/outline/bg}",
           "Social Button/bg-active": "{Component-based/Button/outline/bg}",
@@ -3946,7 +3871,7 @@
           "Spinner/color": "{Component-based/Spinner/primary-color}",
           "Spinner/track-color": "{Color modes/border/border-secondary}",
           "Spinner/white-color": "{Colors.Base.White}",
-          "Spinner/white-track-color": "{Color modes/component/spinner/white-track-color}",
+          "Spinner/white-track-color": "{Color modes/foreground/fg-on-inverse-muted}",
           "Spinner/primary-color": "{Color modes/action/action-primary}",
           "Spinner/greyscale-color": "{Color modes/foreground/fg-secondary}",
           "Spinner/inverted-color": "{Color modes/text/text-primary}",

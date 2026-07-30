@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based` tokens alias theme-aware Alert roles in `Color modes`; those roles reuse shared aliases where they match and preserve approved component-specific values where exact visual parity requires them.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based/Alert` tokens alias reusable `feedback`, `background`, `border`, `foreground`, and `text` roles in `Color modes`. Component names exist only in `Component-based`.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -94,11 +94,11 @@ All other native `div` attributes are forwarded.
 
 ### Info intent (example, light mode)
 ```css
---alert-info-bg:     var(--color-alert-info-bg);
---alert-info-border: var(--color-alert-info-border);
---alert-info-text:   var(--color-alert-info-text);
---alert-info-title:  var(--color-alert-info-text);
---alert-info-icon:   var(--color-alert-info-accent);
+--alert-info-bg:     var(--color-feedback-info-bg);
+--alert-info-border: var(--color-feedback-info-border);
+--alert-info-text:   var(--color-feedback-text);
+--alert-info-title:  var(--color-feedback-text);
+--alert-info-icon:   var(--color-feedback-info-accent);
 ```
 
 The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through the approved bespoke dark palette in `Color modes`.

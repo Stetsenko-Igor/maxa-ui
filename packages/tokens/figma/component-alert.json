@@ -99,132 +99,132 @@
       "info": {
         "bg": {
           "$description": "Alert, color info: background.",
-          "$value": "{Color modes/component/alert/info/bg}",
+          "$value": "{Color modes/feedback/info/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color info: border.",
-          "$value": "{Color modes/component/alert/info/border}",
+          "$value": "{Color modes/feedback/info/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color info: accent.",
-          "$value": "{Color modes/component/alert/info/accent}",
+          "$value": "{Color modes/feedback/info/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color info: text color.",
-          "$value": "{Color modes/component/alert/info/text}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
       "success": {
         "bg": {
           "$description": "Alert, color success: background.",
-          "$value": "{Color modes/component/alert/success/bg}",
+          "$value": "{Color modes/feedback/success/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color success: border.",
-          "$value": "{Color modes/component/alert/success/border}",
+          "$value": "{Color modes/feedback/success/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color success: accent.",
-          "$value": "{Color modes/component/alert/success/accent}",
+          "$value": "{Color modes/feedback/success/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color success: text color.",
-          "$value": "{Color modes/component/alert/success/text}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
       "warning": {
         "bg": {
           "$description": "Alert, color warning: background.",
-          "$value": "{Color modes/component/alert/warning/bg}",
+          "$value": "{Color modes/feedback/warning/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color warning: border.",
-          "$value": "{Color modes/component/alert/warning/border}",
+          "$value": "{Color modes/feedback/warning/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color warning: accent.",
-          "$value": "{Color modes/component/alert/warning/accent}",
+          "$value": "{Color modes/feedback/warning/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color warning: text color.",
-          "$value": "{Color modes/component/alert/warning/text}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
       "error": {
         "bg": {
           "$description": "Alert, color error: background.",
-          "$value": "{Color modes/component/alert/error/bg}",
+          "$value": "{Color modes/feedback/error/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color error: border.",
-          "$value": "{Color modes/component/alert/error/border}",
+          "$value": "{Color modes/feedback/error/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color error: accent.",
-          "$value": "{Color modes/component/alert/error/accent}",
+          "$value": "{Color modes/feedback/error/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color error: text color.",
-          "$value": "{Color modes/component/alert/error/text}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
       "neutral": {
         "bg": {
           "$description": "Alert, color neutral: background.",
-          "$value": "{Color modes/component/alert/neutral/bg}",
+          "$value": "{Color modes/background/bg-surface}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color neutral: border.",
-          "$value": "{Color modes/component/alert/neutral/border}",
+          "$value": "{Color modes/border/border-secondary}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color neutral: accent.",
-          "$value": "{Color modes/component/alert/neutral/accent}",
+          "$value": "{Color modes/foreground/fg-secondary}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/component/alert/neutral/text}",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       },
       "emphasize": {
         "bg": {
           "$description": "Alert, color emphasize: background.",
-          "$value": "{Color modes/component/alert/emphasize/bg}",
+          "$value": "{Color modes/background/bg-page}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color emphasize: border.",
-          "$value": "{Color modes/component/alert/emphasize/border}",
+          "$value": "{Color modes/border/border-primary}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color emphasize: accent.",
-          "$value": "{Color modes/component/alert/emphasize/accent}",
+          "$value": "{Color modes/foreground/fg-secondary}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/component/alert/emphasize/text}",
+          "$value": "{Color modes/text/text-primary}",
           "$type": "color"
         }
       }

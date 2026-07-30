@@ -22,3 +22,7 @@ COLOR value is an alias. Alert retains the published dark palette through dedica
 theme-aware roles, while Dialog, Dropdown Menu, and the extended utility palette follow the
 same single-switch architecture. Alert Light retains the deployed Netlify palette, including
 intent-colored borders, and Alert Dark retains its existing bespoke palette.
+
+Removed the duplicate `Color modes/component/*` namespace. `Component-based` now points to
+reusable feedback and support semantics; Alert Neutral uses `bg-surface`, while Emphasize uses
+`bg-page`.

@@ -431,6 +431,15 @@ function finalizeBundle(outputBundle) {
     )
   }
 
+  const colorModesCollection = outputBundle.collections["Color modes"]
+  const duplicateComponentRoles = Object.keys(colorModesCollection?.modes?.Light ?? {})
+    .filter((tokenName) => tokenName.startsWith("component/"))
+  if (duplicateComponentRoles.length > 0) {
+    throw new Error(
+      `Color modes must contain semantic roles, not a duplicate component namespace; found:\n${duplicateComponentRoles.join("\n")}`,
+    )
+  }
+
   const invalidValues = []
   for (const [collectionName, collection] of Object.entries(outputBundle.collections)) {
     for (const [modeName, tokens] of Object.entries(collection.modes)) {
@@ -502,15 +511,15 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (group === "text") return ["TEXT_FILL"]
     if (group === "border") return ["STROKE_COLOR"]
     if (group === "action" || group === "control") return ["ALL_FILLS", "STROKE_COLOR"]
+    if (group === "feedback") {
+      if (lower === "feedback/text") return ["TEXT_FILL"]
+      if (lower.endsWith("/border")) return ["STROKE_COLOR"]
+      if (lower.endsWith("/accent")) return ["SHAPE_FILL"]
+      return ["ALL_FILLS"]
+    }
     if (group === "utility") {
       if (/^utility\/text-/.test(lower)) return ["TEXT_FILL"]
       if (/^utility\/fg-/.test(lower)) return ["SHAPE_FILL"]
-      return ["ALL_FILLS"]
-    }
-    if (group === "component") {
-      if (/(^|\/)(border|separator)(\/|$)|border-|focus-ring/.test(lower)) return ["STROKE_COLOR"]
-      if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower)) return ["TEXT_FILL"]
-      if (/(icon|accent|mark|dot|fg|foreground)/.test(lower)) return ["SHAPE_FILL"]
       return ["ALL_FILLS"]
     }
     return ["ALL_FILLS"]
