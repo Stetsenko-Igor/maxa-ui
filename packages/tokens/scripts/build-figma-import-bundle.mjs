@@ -181,7 +181,11 @@ function convertCssVarToAlias(rawValue) {
     // Not a semantic group -> treat as a raw primitive palette reference, e.g.
     // "neutral-0" -> Primitives collection, "Colors/Neutral/0" (dot notation
     // resolves via aliasDefaults, matching how colors-semantic-*.json already
-    // references primitives).
+    // references primitives). Assumes a single-word scale name (matches every
+    // primitive actually referenced this way today: neutral-0, neutral-950).
+    // Multi-word scale groups in primitives.json (e.g. "Neutral (alpha)") are
+    // NOT reachable from a CSS var() name and would need a lookup table if a
+    // component ever needs to alias one directly.
     const primitiveMatch = /^([a-z]+)-(.+)$/.exec(rest)
     if (!primitiveMatch) return null
     const scale = primitiveMatch[1][0].toUpperCase() + primitiveMatch[1].slice(1)

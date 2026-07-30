@@ -258,6 +258,11 @@ async function exportVariablesAsBundle(logs) {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
   const allVariables = await figma.variables.getLocalVariablesAsync();
   const variableById = new Map(allVariables.map((v) => [v.id, v]));
+  // Aliases can point to a variable in a DIFFERENT collection than the one
+  // being exported (e.g. a Component-based token aliasing a Color modes
+  // token) — the emitted "{Collection/name}" must use the TARGET variable's
+  // own collection, not the collection currently being iterated.
+  const collectionNameById = new Map(collections.map((c) => [c.id, c.name]));
 
   const bundle = { collections: {} };
 
@@ -272,7 +277,7 @@ async function exportVariablesAsBundle(logs) {
       for (const variable of collectionVariables) {
         const raw = variable.valuesByMode[mode.modeId];
         if (raw === undefined) continue;
-        tokens[variable.name] = serializeVariableValue(raw, variable, variableById, collection.name);
+        tokens[variable.name] = serializeVariableValue(raw, variable, variableById, collectionNameById);
       }
 
       modes[mode.name] = tokens;
@@ -294,11 +299,13 @@ async function exportVariablesAsBundle(logs) {
   return bundle;
 }
 
-function serializeVariableValue(raw, variable, variableById, collectionName) {
+function serializeVariableValue(raw, variable, variableById, collectionNameById) {
   if (raw && typeof raw === 'object' && raw.type === 'VARIABLE_ALIAS') {
     const target = variableById.get(raw.id);
     if (!target) return null;
-    return `{${collectionName}/${target.name}}`;
+    const targetCollectionName = collectionNameById.get(target.variableCollectionId);
+    if (!targetCollectionName) return null;
+    return `{${targetCollectionName}/${target.name}}`;
   }
 
   if (variable.resolvedType === 'COLOR' && raw && typeof raw === 'object') {
