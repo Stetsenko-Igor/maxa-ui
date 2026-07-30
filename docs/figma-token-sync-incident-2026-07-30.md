@@ -105,8 +105,9 @@ Before mutation, the Foundation file was scanned for mode and variable consumers
 - no node explicitly applied `Component-based / Dark`;
 - 12 Alert layers directly referenced four `border-*-subtle` compatibility variables;
 - those four variables were retained to avoid breaking existing node bindings;
-- the duplicate `Color modes/component/*` variables were consumed only by two local Alert sets: one Light set and one Dark set, with 12 variants each;
-- a third Alert set linked to external library variables did not consume the duplicate namespace and was left untouched.
+- the duplicate `Color modes/component/*` variables were consumed only by two local Alert test sets: one Light set and one Dark set, with 12 variants each;
+- these page-level test components are compatibility fixtures, not the production Alert source of truth;
+- a third test set linked to external library variables did not consume the duplicate namespace and was left untouched.
 
 Because named version-history creation is unavailable in the current Figma plugin runtime, a rollback snapshot was stored locally at:
 
@@ -120,10 +121,10 @@ The migration then:
 - renamed `Component-based / Light` to `Default`, preserving mode ID `14:0`;
 - removed the redundant `Component-based / Dark` mode;
 - preserved all 1,026 Component-based variable IDs;
-- rebound only the color properties of the 24 local Alert variants to `Component-based/Alert` variables, including root fills, borders, accent vectors, and text;
+- rebound only the color properties of the 24 local Alert test variants to `Component-based/Alert` variables, including root fills, borders, accent vectors, and text;
 - deleted the 37 duplicate variables only after a scan of all eight pages reported zero alias consumers and zero canvas consumers.
 
-No Alert structure, layout, content, component properties, or variants were changed.
+No Alert structure, layout, content, component properties, or variants were changed. The test page is not used to define or validate the production Alert component; the token files and variable alias graph are the source of truth for this migration.
 
 ## Repository safeguards
 
