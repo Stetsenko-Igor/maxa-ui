@@ -8,6 +8,11 @@
       "$value": "{Colors.Gray.900}",
       "$type": "color"
     },
+    "bg-gray-strong": {
+      "$description": "Utility: background gray strong.",
+      "$value": "{Colors.Gray.700}",
+      "$type": "color"
+    },
     "text-gray": {
       "$value": "{Colors.Gray.300}",
       "$type": "color"
@@ -18,6 +23,11 @@
     },
     "bg-red-muted": {
       "$value": "{Colors.Red.900}",
+      "$type": "color"
+    },
+    "bg-red-strong": {
+      "$description": "Utility: background red strong.",
+      "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "text-red": {
@@ -36,6 +46,11 @@
       "$value": "{Colors.Orange.900}",
       "$type": "color"
     },
+    "bg-orange-strong": {
+      "$description": "Utility: background orange strong.",
+      "$value": "{Colors.Orange.700}",
+      "$type": "color"
+    },
     "text-orange": {
       "$value": "{Colors.Orange.300}",
       "$type": "color"
@@ -50,6 +65,11 @@
     },
     "bg-amber-muted": {
       "$value": "{Colors.Amber.900}",
+      "$type": "color"
+    },
+    "bg-amber-strong": {
+      "$description": "Utility: background amber strong.",
+      "$value": "{Colors.Amber.700}",
       "$type": "color"
     },
     "text-amber": {
@@ -68,6 +88,11 @@
       "$value": "{Colors.Yellow.900}",
       "$type": "color"
     },
+    "bg-yellow-strong": {
+      "$description": "Utility: background yellow strong.",
+      "$value": "{Colors.Yellow.700}",
+      "$type": "color"
+    },
     "text-yellow": {
       "$value": "{Colors.Yellow.300}",
       "$type": "color"
@@ -82,6 +107,11 @@
     },
     "bg-lime-muted": {
       "$value": "{Colors.Lime.900}",
+      "$type": "color"
+    },
+    "bg-lime-strong": {
+      "$description": "Utility: background lime strong.",
+      "$value": "{Colors.Lime.700}",
       "$type": "color"
     },
     "text-lime": {
@@ -100,6 +130,11 @@
       "$value": "{Colors.Green.900}",
       "$type": "color"
     },
+    "bg-green-strong": {
+      "$description": "Utility: background green strong.",
+      "$value": "{Colors.Green.700}",
+      "$type": "color"
+    },
     "text-green": {
       "$value": "{Colors.Green.300}",
       "$type": "color"
@@ -114,6 +149,11 @@
     },
     "bg-emerald-muted": {
       "$value": "{Colors.Emerald.900}",
+      "$type": "color"
+    },
+    "bg-emerald-strong": {
+      "$description": "Utility: background emerald strong.",
+      "$value": "{Colors.Emerald.700}",
       "$type": "color"
     },
     "text-emerald": {
@@ -132,6 +172,11 @@
       "$value": "{Colors.Teal.900}",
       "$type": "color"
     },
+    "bg-teal-strong": {
+      "$description": "Utility: background teal strong.",
+      "$value": "{Colors.Teal.700}",
+      "$type": "color"
+    },
     "text-teal": {
       "$value": "{Colors.Teal.300}",
       "$type": "color"
@@ -146,6 +191,11 @@
     },
     "bg-cyan-muted": {
       "$value": "{Colors.Cyan.900}",
+      "$type": "color"
+    },
+    "bg-cyan-strong": {
+      "$description": "Utility: background cyan strong.",
+      "$value": "{Colors.Cyan.700}",
       "$type": "color"
     },
     "text-cyan": {
@@ -164,6 +214,11 @@
       "$value": "{Colors.Sky.900}",
       "$type": "color"
     },
+    "bg-sky-strong": {
+      "$description": "Utility: background sky strong.",
+      "$value": "{Colors.Sky.700}",
+      "$type": "color"
+    },
     "text-sky": {
       "$value": "{Colors.Sky.300}",
       "$type": "color"
@@ -178,6 +233,11 @@
     },
     "bg-blue-muted": {
       "$value": "{Colors.Blue.900}",
+      "$type": "color"
+    },
+    "bg-blue-strong": {
+      "$description": "Utility: background blue strong.",
+      "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "text-blue": {
@@ -196,6 +256,11 @@
       "$value": "{Colors.Indigo.900}",
       "$type": "color"
     },
+    "bg-indigo-strong": {
+      "$description": "Utility: background indigo strong.",
+      "$value": "{Colors.Indigo.700}",
+      "$type": "color"
+    },
     "text-indigo": {
       "$value": "{Colors.Indigo.300}",
       "$type": "color"
@@ -210,6 +275,11 @@
     },
     "bg-violet-muted": {
       "$value": "{Colors.Violet.900}",
+      "$type": "color"
+    },
+    "bg-violet-strong": {
+      "$description": "Utility: background violet strong.",
+      "$value": "{Colors.Violet.700}",
       "$type": "color"
     },
     "text-violet": {
@@ -228,6 +298,11 @@
       "$value": "{Colors.Purple.900}",
       "$type": "color"
     },
+    "bg-purple-strong": {
+      "$description": "Utility: background purple strong.",
+      "$value": "{Colors.Purple.700}",
+      "$type": "color"
+    },
     "text-purple": {
       "$value": "{Colors.Purple.300}",
       "$type": "color"
@@ -242,6 +317,11 @@
     },
     "bg-fuchsia-muted": {
       "$value": "{Colors.Fuchsia.900}",
+      "$type": "color"
+    },
+    "bg-fuchsia-strong": {
+      "$description": "Utility: background fuchsia strong.",
+      "$value": "{Colors.Fuchsia.700}",
       "$type": "color"
     },
     "text-fuchsia": {
@@ -260,6 +340,11 @@
       "$value": "{Colors.Pink.900}",
       "$type": "color"
     },
+    "bg-pink-strong": {
+      "$description": "Utility: background pink strong.",
+      "$value": "{Colors.Pink.700}",
+      "$type": "color"
+    },
     "text-pink": {
       "$value": "{Colors.Pink.300}",
       "$type": "color"
@@ -274,6 +359,11 @@
     },
     "bg-rose-muted": {
       "$value": "{Colors.Rose.900}",
+      "$type": "color"
+    },
+    "bg-rose-strong": {
+      "$description": "Utility: background rose strong.",
+      "$value": "{Colors.Rose.700}",
       "$type": "color"
     },
     "text-rose": {
