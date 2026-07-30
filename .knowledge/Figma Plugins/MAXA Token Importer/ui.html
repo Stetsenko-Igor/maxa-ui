@@ -98,6 +98,7 @@
     </label>
     <div class="row">
       <button class="primary" id="importBtn">Import tokens + styles</button>
+      <button class="secondary" id="exportBtn">Export variables</button>
       <button class="secondary" id="closeBtn">Close</button>
     </div>
     <div class="log" id="log">Ready. UI loaded: v6.</div>
@@ -105,6 +106,7 @@
   <script>
     const BUNDLE_URL = 'https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json';
     const importBtn = document.getElementById('importBtn');
+    const exportBtn = document.getElementById('exportBtn');
     const closeBtn = document.getElementById('closeBtn');
     const loadLatestBtn = document.getElementById('loadLatestBtn');
     const chooseFilesBtn = document.getElementById('chooseFilesBtn');
@@ -208,6 +210,28 @@
           : 'Processing collections, aliases, and text styles. Stale cleanup is disabled...',
       ]);
     };
+
+    let isExporting = false;
+
+    exportBtn.onclick = () => {
+      if (isExporting) return;
+      isExporting = true;
+      exportBtn.disabled = true;
+      parent.postMessage({ pluginMessage: { type: 'export-variables' } }, '*');
+      setLog(['Export started...', 'Reading local variable collections...']);
+    };
+
+    function downloadJson(filename, data) {
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
 
     closeBtn.onclick = () => {
       parent.postMessage({ pluginMessage: { type: 'close-plugin' } }, '*');
@@ -344,6 +368,17 @@
         setImporting(false);
         const lines = (message.logs || []).map((item) => `[${item.level}] ${item.text}`);
         setLog(lines.length ? lines : ['Done.']);
+      }
+      if (message.type === 'export-result') {
+        isExporting = false;
+        exportBtn.disabled = false;
+        const lines = (message.logs || []).map((item) => `[${item.level}] ${item.text}`);
+        setLog(lines.length ? lines : ['Done.']);
+        if (message.ok && message.bundle) {
+          const stamp = new Date().toISOString().slice(0, 10);
+          downloadJson(`maxa-figma-export-${stamp}.json`, message.bundle);
+          appendLog(`[info] Downloaded maxa-figma-export-${stamp}.json — hand this to Claude to diff against the repo (packages/tokens/scripts/diff-figma-export.mjs).`);
+        }
       }
     };
   </script>

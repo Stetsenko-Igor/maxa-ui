@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Button Migration v1</title>
+  <title>MAXA Button Migration v2</title>
   <style>
     html { height: 100%; }
     body {
@@ -271,12 +271,12 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Button Migration v1</h1>
-  <p>Analyze selected Button components first. You can keep detection automatic or constrain analysis to one Button family. Apply is intentionally deferred until the analysis path is validated on real samples.</p>
+  <h1>MAXA Button Migration v2</h1>
+  <p>Analyze selected Button components first. Keep detection automatic or force one Button type, review the token mapping, then apply bindings from the MAXA Foundation library.</p>
 
   <div class="panel">
     <div class="field">
-      <label for="targetFamily">Target family</label>
+      <label for="targetFamily">Target Button type</label>
       <select id="targetFamily">
         <option value="auto-detect">Auto-detect</option>
         <option value="primary">Primary</option>
@@ -284,6 +284,7 @@
         <option value="outline">Outline</option>
         <option value="ghost">Ghost</option>
         <option value="link">Link</option>
+        <option value="success">Success / Positive</option>
         <option value="destructive">Destructive</option>
         <option value="icon-button">Icon button</option>
       </select>
@@ -292,21 +293,21 @@
       <input id="normalizeLayerNames" type="checkbox" disabled />
       <span>
         <strong>Normalize layer names</strong>
-        <span>Planned for Apply. Disabled in v1 analyze-only build.</span>
+        <span>Reserved for a future structural cleanup pass.</span>
       </span>
     </label>
     <label class="option" for="normalizeProperties">
       <input id="normalizeProperties" type="checkbox" disabled />
       <span>
         <strong>Normalize component properties</strong>
-        <span>Planned for Apply. Disabled in v1 analyze-only build.</span>
+        <span>Reserved for a future structural cleanup pass.</span>
       </span>
     </label>
     <label class="option" for="skipLowConfidence">
       <input id="skipLowConfidence" type="checkbox" checked disabled />
       <span>
         <strong>Skip low-confidence items</strong>
-        <span>Will be used later during Apply.</span>
+        <span>Review warnings before applying mappings to ambiguous legacy components.</span>
       </span>
     </label>
     <div class="toolbar">

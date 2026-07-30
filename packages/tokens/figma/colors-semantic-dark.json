@@ -101,11 +101,11 @@
       "$type": "color"
     },
     "action-neutral-hover": {
-      "$value": "{Colors.Neutral.700}",
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "action-neutral-active": {
-      "$value": "{Colors.Neutral.600}",
+      "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
     "action-neutral-subtle": {

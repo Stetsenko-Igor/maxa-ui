@@ -53,6 +53,8 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 - **Background:** transparent, no border
 - **Text:** `--button-link-text` → `action/primary` (blue)
 - **Hover text:** `--button-link-text-hover` → `action/primary-hover`
+- **Icon foreground:** `--button-link-fg` → `action/primary`
+- **Hover/active icon foreground:** `--button-link-fg-hover` / `--button-link-fg-active`
 - No underline by default in MAXA UI — relies on color context.
 
 ### `success`

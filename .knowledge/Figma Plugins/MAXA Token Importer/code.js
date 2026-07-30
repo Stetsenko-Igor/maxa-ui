@@ -228,10 +228,98 @@ figma.ui.onmessage = async (msg) => {
     }
   }
 
+  if (msg.type === 'export-variables') {
+    const logs = [];
+    try {
+      const bundle = await exportVariablesAsBundle(logs);
+      pushLog(logs, 'success', 'Export finished successfully.');
+      figma.ui.postMessage({ type: 'export-result', ok: true, logs, bundle });
+    } catch (error) {
+      pushLog(logs, 'error', error && error.message ? error.message : String(error));
+      figma.ui.postMessage({ type: 'export-result', ok: false, logs });
+    }
+  }
+
   if (msg.type === 'close-plugin') {
     figma.closePlugin();
   }
 };
+
+/**
+ * Reads every local variable collection/mode/variable and serializes it into
+ * the SAME shape import-bundle.json uses: { collections: { <Name>: { modes: {
+ * <Mode>: { "group/token-name": value } }, descriptions: { "group/token-name":
+ * text } } } }. Aliases are re-emitted as "{Collection/group/token-name}"
+ * strings, matching the alias syntax the importer already parses (parseAliasPath).
+ *
+ * This is read-only: it never calls any figma.variables.* setter or creator.
+ */
+async function exportVariablesAsBundle(logs) {
+  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const allVariables = await figma.variables.getLocalVariablesAsync();
+  const variableById = new Map(allVariables.map((v) => [v.id, v]));
+  // Aliases can point to a variable in a DIFFERENT collection than the one
+  // being exported (e.g. a Component-based token aliasing a Color modes
+  // token) — the emitted "{Collection/name}" must use the TARGET variable's
+  // own collection, not the collection currently being iterated.
+  const collectionNameById = new Map(collections.map((c) => [c.id, c.name]));
+
+  const bundle = { collections: {} };
+
+  for (const collection of collections) {
+    const modes = {};
+    const descriptions = {};
+    const collectionVariables = allVariables.filter((v) => v.variableCollectionId === collection.id);
+
+    for (const mode of collection.modes) {
+      const tokens = {};
+
+      for (const variable of collectionVariables) {
+        const raw = variable.valuesByMode[mode.modeId];
+        if (raw === undefined) continue;
+        tokens[variable.name] = serializeVariableValue(raw, variable, variableById, collectionNameById);
+      }
+
+      modes[mode.name] = tokens;
+    }
+
+    for (const variable of collectionVariables) {
+      if (variable.description && variable.description.trim()) {
+        descriptions[variable.name] = variable.description.trim();
+      }
+    }
+
+    bundle.collections[collection.name] = Object.keys(descriptions).length > 0
+      ? { modes, descriptions }
+      : { modes };
+
+    pushLog(logs, 'info', `Exported "${collection.name}": ${collectionVariables.length} variable(s), ${collection.modes.length} mode(s).`);
+  }
+
+  return bundle;
+}
+
+function serializeVariableValue(raw, variable, variableById, collectionNameById) {
+  if (raw && typeof raw === 'object' && raw.type === 'VARIABLE_ALIAS') {
+    const target = variableById.get(raw.id);
+    if (!target) return null;
+    const targetCollectionName = collectionNameById.get(target.variableCollectionId);
+    if (!targetCollectionName) return null;
+    return `{${targetCollectionName}/${target.name}}`;
+  }
+
+  if (variable.resolvedType === 'COLOR' && raw && typeof raw === 'object') {
+    return rgbaToHex(raw);
+  }
+
+  return raw;
+}
+
+function rgbaToHex({ r, g, b, a }) {
+  const toByte = (channel) => Math.round(channel * 255).toString(16).padStart(2, '0');
+  const hex = `#${toByte(r)}${toByte(g)}${toByte(b)}`;
+  return a < 1 ? `${hex}${toByte(a)}` : hex;
+}
 
 function parseBundle(input) {
   let parsed;

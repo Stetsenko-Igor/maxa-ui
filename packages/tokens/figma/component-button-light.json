@@ -179,6 +179,21 @@
         "$value": "{Color modes/action/action-primary-active}",
         "$type": "color"
       },
+      "fg": {
+        "$description": "Button, link: foreground icon color.",
+        "$value": "{Color modes/action/action-primary}",
+        "$type": "color"
+      },
+      "fg-hover": {
+        "$description": "Button, link: foreground icon color (hover state).",
+        "$value": "{Color modes/action/action-primary-hover}",
+        "$type": "color"
+      },
+      "fg-active": {
+        "$description": "Button, link: foreground icon color (active state).",
+        "$value": "{Color modes/action/action-primary-active}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, link: border.",
         "$value": "{Primitives/Colors/Base/Transparent}",
