@@ -1273,6 +1273,14 @@
           "feedback/error/accent": "{Color modes/foreground/fg-error}",
           "feedback/error/action": "{Color modes/foreground/fg-error}",
           "feedback/error/action-hover": "{Colors.Red.700}",
+          "feedback/neutral/bg": "{Colors.Base.White}",
+          "feedback/neutral/border": "{Colors.Neutral.200}",
+          "feedback/neutral/accent": "{Colors.Neutral.800}",
+          "feedback/neutral/text": "{Colors.Neutral.950}",
+          "feedback/emphasize/bg": "{Colors.Neutral.50}",
+          "feedback/emphasize/border": "{Colors.Neutral.300}",
+          "feedback/emphasize/accent": "{Colors.Neutral.800}",
+          "feedback/emphasize/text": "{Colors.Neutral.950}",
           "background/bg-overlay-strong": "rgba(27, 26, 26, 0.5)",
           "action/action-menu-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-subtle-active}",
@@ -1497,6 +1505,14 @@
           "feedback/error/accent": "#FF755E",
           "feedback/error/action": "#FF755E",
           "feedback/error/action-hover": "#FFA193",
+          "feedback/neutral/bg": "{Colors.Neutral.900}",
+          "feedback/neutral/border": "{Colors.Neutral.800}",
+          "feedback/neutral/accent": "{Colors.Neutral.200}",
+          "feedback/neutral/text": "{Colors.Neutral.100}",
+          "feedback/emphasize/bg": "{Colors.Neutral.950}",
+          "feedback/emphasize/border": "{Colors.Neutral.700}",
+          "feedback/emphasize/accent": "{Colors.Neutral.200}",
+          "feedback/emphasize/text": "{Colors.Neutral.100}",
           "background/bg-overlay-strong": "rgba(0, 0, 0, 0.72)",
           "action/action-menu-hover": "{Color modes/action/action-neutral-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-active}",
@@ -1722,6 +1738,14 @@
         "feedback/error/accent": "Error feedback icon and accent stripe.",
         "feedback/error/action": "Error feedback action color.",
         "feedback/error/action-hover": "Error feedback action hover color.",
+        "feedback/neutral/bg": "Neutral feedback background, isolated from shared surface semantics.",
+        "feedback/neutral/border": "Neutral feedback border.",
+        "feedback/neutral/accent": "Neutral feedback icon and accent stripe.",
+        "feedback/neutral/text": "Neutral feedback text.",
+        "feedback/emphasize/bg": "Emphasized feedback background, isolated from shared page semantics.",
+        "feedback/emphasize/border": "Emphasized feedback border.",
+        "feedback/emphasize/accent": "Emphasized feedback icon and accent stripe.",
+        "feedback/emphasize/text": "Emphasized feedback text.",
         "background/bg-overlay-strong": "High-emphasis modal overlay.",
         "action/action-menu-hover": "Menu item hover background.",
         "action/action-menu-active": "Menu item active background.",
@@ -1946,6 +1970,14 @@
         "feedback/error/accent": "COLOR",
         "feedback/error/action": "COLOR",
         "feedback/error/action-hover": "COLOR",
+        "feedback/neutral/bg": "COLOR",
+        "feedback/neutral/border": "COLOR",
+        "feedback/neutral/accent": "COLOR",
+        "feedback/neutral/text": "COLOR",
+        "feedback/emphasize/bg": "COLOR",
+        "feedback/emphasize/border": "COLOR",
+        "feedback/emphasize/accent": "COLOR",
+        "feedback/emphasize/text": "COLOR",
         "background/bg-overlay-strong": "COLOR",
         "action/action-menu-hover": "COLOR",
         "action/action-menu-active": "COLOR",
@@ -2464,6 +2496,30 @@
           "ALL_FILLS"
         ],
         "feedback/error/action-hover": [
+          "ALL_FILLS"
+        ],
+        "feedback/neutral/bg": [
+          "ALL_FILLS"
+        ],
+        "feedback/neutral/border": [
+          "STROKE_COLOR"
+        ],
+        "feedback/neutral/accent": [
+          "SHAPE_FILL"
+        ],
+        "feedback/neutral/text": [
+          "ALL_FILLS"
+        ],
+        "feedback/emphasize/bg": [
+          "ALL_FILLS"
+        ],
+        "feedback/emphasize/border": [
+          "STROKE_COLOR"
+        ],
+        "feedback/emphasize/accent": [
+          "SHAPE_FILL"
+        ],
+        "feedback/emphasize/text": [
           "ALL_FILLS"
         ],
         "background/bg-overlay-strong": [
@@ -3138,14 +3194,14 @@
           "Alert/color/error/border": "{Color modes/feedback/error/border}",
           "Alert/color/error/accent": "{Color modes/feedback/error/accent}",
           "Alert/color/error/text": "{Color modes/feedback/text}",
-          "Alert/color/neutral/bg": "{Color modes/background/bg-surface}",
-          "Alert/color/neutral/border": "{Color modes/border/border-secondary}",
-          "Alert/color/neutral/accent": "{Color modes/foreground/fg-secondary}",
-          "Alert/color/neutral/text": "{Color modes/text/text-primary}",
-          "Alert/color/emphasize/bg": "{Color modes/background/bg-page}",
-          "Alert/color/emphasize/border": "{Color modes/border/border-primary}",
-          "Alert/color/emphasize/accent": "{Color modes/foreground/fg-secondary}",
-          "Alert/color/emphasize/text": "{Color modes/text/text-primary}",
+          "Alert/color/neutral/bg": "{Color modes/feedback/neutral/bg}",
+          "Alert/color/neutral/border": "{Color modes/feedback/neutral/border}",
+          "Alert/color/neutral/accent": "{Color modes/feedback/neutral/accent}",
+          "Alert/color/neutral/text": "{Color modes/feedback/neutral/text}",
+          "Alert/color/emphasize/bg": "{Color modes/feedback/emphasize/bg}",
+          "Alert/color/emphasize/border": "{Color modes/feedback/emphasize/border}",
+          "Alert/color/emphasize/accent": "{Color modes/feedback/emphasize/accent}",
+          "Alert/color/emphasize/text": "{Color modes/feedback/emphasize/text}",
           "Avatar/surface/bg": "{Color modes/background/bg-brand-subtle}",
           "Avatar/surface/text": "{Color modes/text/text-brand}",
           "Avatar/surface/border": "{Color modes/border/border-secondary}",

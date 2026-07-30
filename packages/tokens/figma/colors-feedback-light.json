@@ -112,6 +112,50 @@
         "$value": "{Colors.Red.700}",
         "$type": "color"
       }
+    },
+    "neutral": {
+      "bg": {
+        "$description": "Neutral feedback background, isolated from shared surface semantics.",
+        "$value": "{Colors.Base.White}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Neutral feedback border.",
+        "$value": "{Colors.Neutral.200}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Neutral feedback icon and accent stripe.",
+        "$value": "{Colors.Neutral.800}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Neutral feedback text.",
+        "$value": "{Colors.Neutral.950}",
+        "$type": "color"
+      }
+    },
+    "emphasize": {
+      "bg": {
+        "$description": "Emphasized feedback background, isolated from shared page semantics.",
+        "$value": "{Colors.Neutral.50}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Emphasized feedback border.",
+        "$value": "{Colors.Neutral.300}",
+        "$type": "color"
+      },
+      "accent": {
+        "$description": "Emphasized feedback icon and accent stripe.",
+        "$value": "{Colors.Neutral.800}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Emphasized feedback text.",
+        "$value": "{Colors.Neutral.950}",
+        "$type": "color"
+      }
     }
   },
   "background": {

@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1701
+Total tokens: 1709
 
 ## Primitives
 
@@ -486,6 +486,14 @@ Source: `packages/tokens/src/semantic.css`
 --color-feedback-error-accent: var(--color-fg-error);/* dark: #ff755e */
 --color-feedback-error-action: var(--color-fg-error);/* dark: #ff755e */
 --color-feedback-error-action-hover: var(--color-red-700);/* dark: #ffa193 */
+--color-feedback-neutral-bg: var(--color-white);/* dark: var(--color-neutral-900) */
+--color-feedback-neutral-border: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
+--color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
+--color-feedback-neutral-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+--color-feedback-emphasize-bg: var(--color-neutral-50);/* dark: var(--color-neutral-950) */
+--color-feedback-emphasize-border: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
+--color-feedback-emphasize-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
+--color-feedback-emphasize-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
 
 /* ── Shared component support roles ── */
 --color-bg-overlay-strong: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */

@@ -28,6 +28,18 @@
       "accent": { "$value": "#FF755E", "$type": "color" },
       "action": { "$value": "#FF755E", "$type": "color" },
       "action-hover": { "$value": "#FFA193", "$type": "color" }
+    },
+    "neutral": {
+      "bg": { "$value": "{Colors.Neutral.900}", "$type": "color" },
+      "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
+      "accent": { "$value": "{Colors.Neutral.200}", "$type": "color" },
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
+    },
+    "emphasize": {
+      "bg": { "$value": "{Colors.Neutral.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Neutral.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Neutral.200}", "$type": "color" },
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
     }
   },
   "background": {

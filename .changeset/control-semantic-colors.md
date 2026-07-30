@@ -24,5 +24,6 @@ same single-switch architecture. Alert Light retains the deployed Netlify palett
 intent-colored borders, and Alert Dark retains its existing bespoke palette.
 
 Removed the duplicate `Color modes/component/*` namespace. `Component-based` now points to
-reusable feedback and support semantics; Alert Neutral uses `bg-surface`, while Emphasize uses
-`bg-page`.
+reusable feedback and support semantics. Alert Neutral and Emphasize use dedicated feedback roles
+that resolve to the current primitive values without coupling the component to shared surface or
+page semantics.

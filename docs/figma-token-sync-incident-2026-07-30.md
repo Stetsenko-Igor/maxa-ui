@@ -11,8 +11,8 @@ The repository and the live `[MAXA] Foundation` Figma file now use one theme swi
 Live Figma validation after the migration:
 
 - 8 collections
-- 1,623 variables
-- 222 variables in `Color modes`
+- 1,631 variables
+- 230 variables in `Color modes`
 - 1,026 variables in `Component-based`
 - 0 missing `Component-based / Default` values
 - 0 raw Component-based COLOR values
@@ -21,9 +21,9 @@ Live Figma validation after the migration:
 
 The generated repository bundle contains the same collection counts and mode structure:
 
-- 1,623 variables
-- 1,933 per-mode values
-- 1,252 alias values
+- 1,631 variables
+- 1,949 per-mode values
+- 1,268 alias values
 - 0 unresolved CSS expressions
 
 ## Where colors are changed now
@@ -41,10 +41,10 @@ For example:
 → `Color modes/feedback/info/bg`
 → a Light semantic alias or the approved Dark color
 
-Neutral and Emphasize do not need dedicated feedback roles:
+Neutral and Emphasize use dedicated feedback roles so shared background-token changes cannot accidentally restyle Alert:
 
-- `Component-based/Alert/color/neutral/bg` → `Color modes/background/bg-surface`
-- `Component-based/Alert/color/emphasize/bg` → `Color modes/background/bg-page`
+- `Component-based/Alert/color/neutral/bg` → `Color modes/feedback/neutral/bg` → `Primitives/Colors/Base/White` in Light and `Primitives/Colors/Neutral/900` in Dark
+- `Component-based/Alert/color/emphasize/bg` → `Color modes/feedback/emphasize/bg` → `Primitives/Colors/Neutral/50` in Light and `Primitives/Colors/Neutral/950` in Dark
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 
@@ -91,10 +91,12 @@ Published Dark values:
 | Warning | `#521D00` | `#B44E00` | `#E16D00` | `#F4F3F3` |
 | Error | `#7B0000` | `#D71913` | `#FF755E` | `#F4F3F3` |
 
-The four feedback intents preserve their approved values exactly. Neutral and Emphasize now intentionally reuse the shared background semantics requested for the product:
+The four intent feedback roles preserve their approved values exactly. Neutral and Emphasize preserve their current appearance through dedicated reusable feedback roles:
 
-- Neutral background aliases `background/bg-surface` (`#FFFFFF` in Light and `#2A2A2B` in Dark);
-- Emphasize background aliases `background/bg-page` (`#F5F6FA` in Light and `#1A1919` in Dark).
+- Neutral background resolves directly from primitives to `#FFFFFF` in Light and `#2A2A2B` in Dark;
+- Emphasize background resolves directly from primitives to `#F5F6FA` in Light and `#1A1919` in Dark.
+
+This deliberately avoids transitive coupling to `background/bg-surface` and `background/bg-page`.
 
 Alert component variables expose these roles through the single `Component-based / Default` mode.
 
@@ -115,7 +117,7 @@ Because named version-history creation is unavailable in the current Figma plugi
 
 The migration then:
 
-- replaced 37 duplicate `Color modes/component/*` variables with 26 reusable semantic feedback and support roles;
+- replaced 37 duplicate `Color modes/component/*` variables with 34 reusable semantic feedback and support roles;
 - created 89 extended utility roles in `Color modes`;
 - rebound 131 existing Component-based variables without recreating them;
 - renamed `Component-based / Light` to `Default`, preserving mode ID `14:0`;

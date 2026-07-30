@@ -517,8 +517,17 @@ describe("figma import bundle", () => {
     expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
     expect(component?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
     expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
-    expect(component?.["Alert/color/neutral/bg"]).toBe("{Color modes/background/bg-surface}")
-    expect(component?.["Alert/color/emphasize/bg"]).toBe("{Color modes/background/bg-page}")
+    expect(light?.["feedback/neutral/bg"]).toBe("{Colors.Base.White}")
+    expect(dark?.["feedback/neutral/bg"]).toBe("{Colors.Neutral.900}")
+    expect(light?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.50}")
+    expect(dark?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.950}")
+    for (const intent of ["neutral", "emphasize"]) {
+      for (const role of ["bg", "border", "accent", "text"]) {
+        expect(component?.[`Alert/color/${intent}/${role}`]).toBe(
+          `{Color modes/feedback/${intent}/${role}}`,
+        )
+      }
+    }
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
     expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based/Alert` tokens alias reusable `feedback`, `background`, `border`, `foreground`, and `text` roles in `Color modes`. Component names exist only in `Component-based`.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based/Alert` tokens alias reusable `feedback` roles in `Color modes`. Neutral and Emphasize feedback roles resolve directly to primitives so shared surface and page semantics can evolve without restyling Alert. Component names exist only in `Component-based`.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`

@@ -115,8 +115,8 @@ Examples:
 - `text/text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
 - `Button/primary/bg` -> `Color modes/action/action-primary`
 - `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
-- `Alert/color/neutral/bg` -> `Color modes/background/bg-surface`
-- `Alert/color/emphasize/bg` -> `Color modes/background/bg-page`
+- `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg` -> `Primitives/Colors/Base/White` in Light
+- `Alert/color/emphasize/bg` -> `Color modes/feedback/emphasize/bg` -> `Primitives/Colors/Neutral/50` in Light
 - `Utility/bg-violet-muted` -> `Color modes/utility/bg-violet-muted`
 - `Button/link/bg` -> `Primitives/Colors/Base/Transparent`
 - `Button/size/md/padding-x` -> `Spacing/spacing-xl`

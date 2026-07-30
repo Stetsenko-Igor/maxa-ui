@@ -187,44 +187,44 @@
       "neutral": {
         "bg": {
           "$description": "Alert, color neutral: background.",
-          "$value": "{Color modes/background/bg-surface}",
+          "$value": "{Color modes/feedback/neutral/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color neutral: border.",
-          "$value": "{Color modes/border/border-secondary}",
+          "$value": "{Color modes/feedback/neutral/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color neutral: accent.",
-          "$value": "{Color modes/foreground/fg-secondary}",
+          "$value": "{Color modes/feedback/neutral/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/neutral/text}",
           "$type": "color"
         }
       },
       "emphasize": {
         "bg": {
           "$description": "Alert, color emphasize: background.",
-          "$value": "{Color modes/background/bg-page}",
+          "$value": "{Color modes/feedback/emphasize/bg}",
           "$type": "color"
         },
         "border": {
           "$description": "Alert, color emphasize: border.",
-          "$value": "{Color modes/border/border-primary}",
+          "$value": "{Color modes/feedback/emphasize/border}",
           "$type": "color"
         },
         "accent": {
           "$description": "Alert, color emphasize: accent.",
-          "$value": "{Color modes/foreground/fg-secondary}",
+          "$value": "{Color modes/feedback/emphasize/accent}",
           "$type": "color"
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/emphasize/text}",
           "$type": "color"
         }
       }
