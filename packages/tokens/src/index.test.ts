@@ -1007,6 +1007,62 @@ describe("figma component-based input tokens", () => {
   })
 })
 
+describe("figma component-based utility tokens", () => {
+  type TokenLeaf = { $value: number | string; $type: string; $description?: string }
+  type TokenTree = TokenLeaf | Record<string, TokenLeaf | TokenTree>
+  type UtilityTokens = {
+    Utility: Record<string, TokenLeaf | Record<string, TokenLeaf | TokenTree>>
+  }
+
+  const lightFile = JSON.parse(
+    readFileSync(join(root, "figma/component-utility-light.json"), "utf-8"),
+  ) as UtilityTokens
+
+  const darkFile = JSON.parse(
+    readFileSync(join(root, "figma/component-utility-dark.json"), "utf-8"),
+  ) as UtilityTokens
+
+  function collectTokenPaths(node: TokenTree, prefix = "", paths: string[] = []) {
+    if (!node || typeof node !== "object") return paths
+    if ("$value" in node) {
+      paths.push(prefix)
+      return paths
+    }
+
+    for (const [key, value] of Object.entries(node)) {
+      collectTokenPaths(value as TokenTree, prefix ? `${prefix}/${key}` : key, paths)
+    }
+
+    return paths
+  }
+
+  // Regression test for the 2026-07-30 bug: component-utility-dark.json was
+  // missing all 18 bg-{hue}-strong keys (the CSS source doesn't redeclare them
+  // in dark mode since the value is unchanged across themes, but Figma
+  // variables have no such cascade — every mode needs an explicit value, or
+  // Figma defaults the unset mode to white).
+  it("keeps light and dark token paths aligned (every hue must define every tier)", () => {
+    expect(collectTokenPaths(lightFile.Utility as TokenTree).sort()).toEqual(
+      collectTokenPaths(darkFile.Utility as TokenTree).sort(),
+    )
+  })
+
+  it("defines bg-{hue}-strong for dark mode matching light (unchanged across themes)", () => {
+    const hues = [
+      "gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald",
+      "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia",
+      "pink", "rose",
+    ]
+    for (const hue of hues) {
+      const key = `bg-${hue}-strong`
+      expect(darkFile.Utility[key]).toBeDefined()
+      expect((darkFile.Utility[key] as TokenLeaf).$value).toBe(
+        (lightFile.Utility[key] as TokenLeaf).$value,
+      )
+    }
+  })
+})
+
 // ── typography.css ─────────────────────────────────────────────────────────
 
 describe("typography.css — font families", () => {
