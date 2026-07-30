@@ -56,27 +56,27 @@
     },
     "color": {
       "bg": {
-        "$value": "#FFFFFF",
+        "$value": "var(--color-bg-surface)",
         "$type": "color"
       },
       "border": {
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.600}",
         "$type": "color"
       },
       "border-hover": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "bg-checked": {
-        "$value": "#2D2D2E",
+        "$value": "{Colors.Neutral.200}",
         "$type": "color"
       },
       "bg-checked-hover": {
-        "$value": "#5E5E5F",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "mark": {
-        "$value": "#FFFFFF",
+        "$value": "var(--color-fg-inverse)",
         "$type": "color"
       },
       "border-error": {
@@ -84,11 +84,11 @@
         "$type": "color"
       },
       "border-disabled": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "bg-disabled-checked": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "top-label": {

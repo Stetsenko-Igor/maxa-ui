@@ -54,37 +54,37 @@
     "color": {
       "bg": {
         "$description": "Radio, color: background.",
-        "$value": "#FFFFFF",
+        "$value": "var(--color-bg-surface)",
         "$type": "color"
       },
       "border": {
         "$description": "Radio, color: border.",
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.500}",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Radio, color: border (hover state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "border-checked": {
         "$description": "Radio, color: border (checked state).",
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "border-checked-hover": {
         "$description": "Radio, color: border (checked hover state).",
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "dot": {
         "$description": "Radio, color: dot.",
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "dot-hover": {
         "$description": "Radio, color: dot (hover state).",
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "border-error": {
@@ -94,12 +94,12 @@
       },
       "border-disabled": {
         "$description": "Radio, color: border (disabled state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "dot-disabled": {
         "$description": "Radio, color: dot (disabled state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "top-label": {

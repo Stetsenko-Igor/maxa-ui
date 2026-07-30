@@ -72,23 +72,23 @@
     },
     "color": {
       "track-off": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "track-off-hover": {
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.600}",
         "$type": "color"
       },
       "track-on": {
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "track-on-hover": {
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "track-disabled": {
-        "$value": "#E4E4E4",
+        "$value": "var(--color-action-neutral)",
         "$type": "color"
       },
       "thumb": {
@@ -96,7 +96,7 @@
         "$type": "color"
       },
       "thumb-disabled": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "label": {

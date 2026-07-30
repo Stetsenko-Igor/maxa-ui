@@ -44,31 +44,31 @@
     },
     "color": {
       "bg": {
-        "$value": "#FFFFFF",
+        "$value": "var(--color-bg-surface)",
         "$type": "color"
       },
       "border": {
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.600}",
         "$type": "color"
       },
       "border-hover": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "border-checked": {
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "border-checked-hover": {
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "dot": {
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "dot-hover": {
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "border-error": {
@@ -76,11 +76,11 @@
         "$type": "color"
       },
       "border-disabled": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "dot-disabled": {
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "top-label": {

@@ -212,6 +212,12 @@
   --color-bg-rose-muted:    var(--color-rose-100);
   --color-bg-rose-strong:   var(--color-rose-700);
   --color-text-rose:        var(--color-rose-900);
+
+  /* ── Control — form-control idle/checked states (Checkbox/Radio/Toggle) ── */
+  --color-control-idle:           var(--color-neutral-500);
+  --color-control-idle-hover:     var(--color-neutral-400);
+  --color-control-checked:        var(--color-neutral-900);
+  --color-control-checked-hover:  var(--color-neutral-700);
 }
 
 [data-theme="dark"] {
@@ -402,4 +408,10 @@
   --color-bg-rose-muted:    var(--color-rose-900);
   /* --color-bg-rose-strong unchanged: rose-700 same in light + dark */
   --color-text-rose:        var(--color-rose-300);
+
+  /* ── Control — dark ───────────────────────────────────────────────── */
+  --color-control-idle:           var(--color-neutral-600);
+  --color-control-idle-hover:     var(--color-neutral-700);
+  --color-control-checked:        var(--color-neutral-200);
+  --color-control-checked-hover:  var(--color-neutral-400);
 }

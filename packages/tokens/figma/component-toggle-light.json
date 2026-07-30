@@ -89,27 +89,27 @@
     "color": {
       "track-off": {
         "$description": "Toggle, color: track off.",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "track-off-hover": {
         "$description": "Toggle, color: track off (hover state).",
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.500}",
         "$type": "color"
       },
       "track-on": {
         "$description": "Toggle, color: track on.",
-        "$value": "#0576DA",
+        "$value": "var(--color-action-primary)",
         "$type": "color"
       },
       "track-on-hover": {
         "$description": "Toggle, color: track on (hover state).",
-        "$value": "#04549B",
+        "$value": "var(--color-action-primary-hover)",
         "$type": "color"
       },
       "track-disabled": {
         "$description": "Toggle, color: track (disabled state).",
-        "$value": "#E4E4E4",
+        "$value": "var(--color-action-neutral)",
         "$type": "color"
       },
       "thumb": {
@@ -119,7 +119,7 @@
       },
       "thumb-disabled": {
         "$description": "Toggle, color: thumb (disabled state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "label": {

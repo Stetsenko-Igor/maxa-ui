@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1671
+Total tokens: 1675
 
 ## Primitives
 
@@ -457,6 +457,12 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-rose-muted: var(--color-rose-100);/* dark: var(--color-rose-900) */
 --color-bg-rose-strong: var(--color-rose-700);
 --color-text-rose: var(--color-rose-900);/* dark: var(--color-rose-300) */
+
+/* ── Control — form-control idle/checked states (Checkbox/Radio/Toggle) ── */
+--color-control-idle: var(--color-neutral-500);/* dark: var(--color-neutral-600) */
+--color-control-idle-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
+--color-control-checked: var(--color-neutral-900);/* dark: var(--color-neutral-200) */
+--color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
 ```
 
 ## Dimensions (Spacing, Radius, Z-index, Breakpoints)
@@ -765,27 +771,27 @@ Source: `packages/tokens/src/component-checkbox.css`
 
 /* ── Colors — default state ── */
 --checkbox-bg: var(--color-bg-surface);
---checkbox-border: #a1a1a4;
---checkbox-border-hover: #c9c9c9;
---checkbox-border-focus: #0b73cb;
+--checkbox-border: var(--color-control-idle);
+--checkbox-border-hover: var(--color-control-idle-hover);
+--checkbox-border-focus: var(--color-border-focus);
 --checkbox-focus-ring-inner-color: var(--color-bg-surface);
---checkbox-mark-color: #ffffff;
+--checkbox-mark-color: var(--color-fg-inverse);
 
 /* ── Colors — checked / indeterminate ── */
---checkbox-bg-checked: #2d2d2e;
---checkbox-bg-checked-hover: #5e5e5f;
---checkbox-border-checked: #2d2d2e;
---checkbox-border-checked-hover: #5e5e5f;
+--checkbox-bg-checked: var(--color-control-checked);
+--checkbox-bg-checked-hover: var(--color-control-checked-hover);
+--checkbox-border-checked: var(--color-control-checked);
+--checkbox-border-checked-hover: var(--color-control-checked-hover);
 
 /* ── Colors — error ── */
 --checkbox-border-error: var(--color-border-error-strong);
---checkbox-bg-error-checked: #2d2d2e;
+--checkbox-bg-error-checked: var(--color-control-checked);
 
 /* ── Colors — disabled ── */
 --checkbox-bg-disabled: transparent;
---checkbox-bg-disabled-checked: #c9c9c9;
---checkbox-border-disabled: #c9c9c9;
---checkbox-mark-disabled: #ffffff;
+--checkbox-bg-disabled-checked: var(--color-control-idle-hover);
+--checkbox-border-disabled: var(--color-control-idle-hover);
+--checkbox-mark-disabled: var(--color-fg-inverse);
 
 /* ── Label / helper ── */
 --checkbox-font-family: var(--font-body);
@@ -1391,17 +1397,17 @@ Source: `packages/tokens/src/component-radio.css`
 
 /* ── Colors — default state ── */
 --radio-bg: var(--color-bg-surface);
---radio-border: #a1a1a4;
---radio-border-hover: #c9c9c9;
---radio-border-focus: #0b73cb;
+--radio-border: var(--color-control-idle);
+--radio-border-hover: var(--color-control-idle-hover);
+--radio-border-focus: var(--color-border-focus);
 --radio-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — checked ── */
 --radio-bg-checked: transparent;
---radio-border-checked: #0576da;
---radio-border-checked-hover: #04549b;
---radio-dot-color: #0576da;
---radio-dot-color-hover: #04549b;
+--radio-border-checked: var(--color-action-primary);
+--radio-border-checked-hover: var(--color-action-primary-hover);
+--radio-dot-color: var(--color-action-primary);
+--radio-dot-color-hover: var(--color-action-primary-hover);
 
 /* ── Colors — error ── */
 --radio-border-error: var(--color-border-error-strong);
@@ -1409,8 +1415,8 @@ Source: `packages/tokens/src/component-radio.css`
 
 /* ── Colors — disabled ── */
 --radio-bg-disabled: transparent;
---radio-border-disabled: #c9c9c9;
---radio-dot-disabled: #c9c9c9;
+--radio-border-disabled: var(--color-control-idle-hover);
+--radio-dot-disabled: var(--color-control-idle-hover);
 
 /* ── Label / helper ── */
 --radio-font-family: var(--font-body);
@@ -1529,15 +1535,15 @@ Source: `packages/tokens/src/component-toggle.css`
 --toggle-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — track ── */
---toggle-track-bg-off: #c9c9c9;
---toggle-track-bg-off-hover: #a1a1a4;
---toggle-track-bg-on: #0576da;
---toggle-track-bg-on-hover: #04549b;
---toggle-track-bg-disabled: #e4e4e4;
+--toggle-track-bg-off: var(--color-control-idle-hover);
+--toggle-track-bg-off-hover: var(--color-control-idle);
+--toggle-track-bg-on: var(--color-action-primary);
+--toggle-track-bg-on-hover: var(--color-action-primary-hover);
+--toggle-track-bg-disabled: var(--color-action-neutral);
 
 /* ── Colors — thumb ── */
 --toggle-thumb-bg: var(--color-bg-surface);
---toggle-thumb-bg-disabled: #c9c9c9;
+--toggle-thumb-bg-disabled: var(--color-control-idle-hover);
 
 /* ── Text ── */
 --toggle-font-family: var(--font-body);

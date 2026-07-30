@@ -30,15 +30,15 @@
   --toggle-focus-ring-inner-color: var(--color-bg-surface);
 
   /* ── Colors — track ───────────────────────────────────────────── */
-  --toggle-track-bg-off:        #c9c9c9;
-  --toggle-track-bg-off-hover:  #a1a1a4;
-  --toggle-track-bg-on:         #0576da;
-  --toggle-track-bg-on-hover:   #04549b;
-  --toggle-track-bg-disabled:   #e4e4e4;
+  --toggle-track-bg-off:        var(--color-control-idle-hover);
+  --toggle-track-bg-off-hover:  var(--color-control-idle);
+  --toggle-track-bg-on:         var(--color-action-primary);
+  --toggle-track-bg-on-hover:   var(--color-action-primary-hover);
+  --toggle-track-bg-disabled:   var(--color-action-neutral);
 
   /* ── Colors — thumb ───────────────────────────────────────────── */
   --toggle-thumb-bg:            var(--color-bg-surface);
-  --toggle-thumb-bg-disabled:   #c9c9c9;
+  --toggle-thumb-bg-disabled:   var(--color-control-idle-hover);
 
   /* ── Text ─────────────────────────────────────────────────────── */
   --toggle-font-family:               var(--font-body);

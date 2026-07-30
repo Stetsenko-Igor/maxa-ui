@@ -69,32 +69,32 @@
     "color": {
       "bg": {
         "$description": "Checkbox, color: background.",
-        "$value": "#FFFFFF",
+        "$value": "var(--color-bg-surface)",
         "$type": "color"
       },
       "border": {
         "$description": "Checkbox, color: border.",
-        "$value": "#A1A1A4",
+        "$value": "{Colors.Neutral.500}",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Checkbox, color: border (hover state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "bg-checked": {
         "$description": "Checkbox, color: background (checked state).",
-        "$value": "#2D2D2E",
+        "$value": "{Colors.Neutral.900}",
         "$type": "color"
       },
       "bg-checked-hover": {
         "$description": "Checkbox, color: background (checked hover state).",
-        "$value": "#5E5E5F",
+        "$value": "{Colors.Neutral.700}",
         "$type": "color"
       },
       "mark": {
         "$description": "Checkbox, color: mark.",
-        "$value": "#FFFFFF",
+        "$value": "var(--color-fg-inverse)",
         "$type": "color"
       },
       "border-error": {
@@ -104,12 +104,12 @@
       },
       "border-disabled": {
         "$description": "Checkbox, color: border (disabled state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "bg-disabled-checked": {
         "$description": "Checkbox, color: background (disabled checked state).",
-        "$value": "#C9C9C9",
+        "$value": "{Colors.Neutral.400}",
         "$type": "color"
       },
       "top-label": {
