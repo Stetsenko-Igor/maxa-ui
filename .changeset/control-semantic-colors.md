@@ -38,3 +38,15 @@ Moved the exact deployed Dark Alert palette into 16 `Colors/Status/*` reference 
 added `Colors/Base/Ink` for the Light feedback text value. All 58 Light/Dark `feedback/*` values
 are now aliases, with no visual color changes. The bundle builder rejects future raw feedback
 colors so the semantic layer cannot regress to literal hex values.
+
+The export diff tool now compares the full variable contract — values, types, scopes, and
+descriptions — with representation-aware normalization: rgba()/hex8 equivalence after
+Figma's 8-bit channel quantization, `[]` vs `["ALL_SCOPES"]` scope serialization, alias
+path styles, and whitespace-trimmed descriptions. A collection missing from an export is
+now reported instead of silently skipped.
+
+The last four raw semantic colors moved behind three new alpha primitives
+(`Colors/Neutral (alpha)/Ink/50`, `Black/72`, `White/45`): `bg-overlay-strong` and
+`fg-on-inverse-muted` now alias them in both themes with byte-identical resolved colors.
+The bundle build now rejects any raw COLOR literal anywhere in Color modes, and stale
+compatibility wording was removed from eight border/feedback descriptions.

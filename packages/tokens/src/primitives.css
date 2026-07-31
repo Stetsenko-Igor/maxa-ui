@@ -113,6 +113,11 @@
   --color-status-error-300:   #FF755E;
   --color-status-error-200:   #FFA193;
 
+  /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ─────────── */
+  --color-neutral-alpha-ink-50:   #1B1A1A80;
+  --color-neutral-alpha-black-72: #000000B8;
+  --color-neutral-alpha-white-45: #FFFFFF73;
+
   /* ── Extended decorative palette — Tailwind v4 defaults ─────────── */
   /* Used by Badge/Tag appearance prop for user-defined color labels.   */
   /* No invented values — all standard Tailwind hex.                   */

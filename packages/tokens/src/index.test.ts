@@ -252,7 +252,7 @@ describe("semantic.css — bg + action", () => {
     expect(dark).toContain("--color-feedback-success-bg:          var(--color-status-success-950);")
     expect(dark).toContain("--color-feedback-warning-bg:          var(--color-status-warning-950);")
     expect(dark).toContain("--color-feedback-error-bg:            var(--color-status-error-950);")
-    expect(dark).toContain("--color-bg-overlay-strong:       rgba(0, 0, 0, 0.72);")
+    expect(dark).toContain("--color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);")
   })
 })
 
@@ -523,8 +523,8 @@ describe("figma import bundle", () => {
         }
       }
     }
-    expect(light?.["background/bg-overlay-strong"]).toBe("rgba(27, 26, 26, 0.5)")
-    expect(dark?.["background/bg-overlay-strong"]).toBe("rgba(0, 0, 0, 0.72)")
+    expect(light?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Ink.50}")
+    expect(dark?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Black.72}")
     expect(light?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
     expect(dark?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-hover}")
     expect(light?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
@@ -588,6 +588,58 @@ describe("figma import bundle", () => {
       expect(dark?.[`feedback/${intent}/action`]).toBe(
         `{Colors.Status.${primitiveName}.300}`,
       )
+    }
+  })
+
+  it("keeps every Color modes COLOR value as an alias — no raw literals in any group", () => {
+    const colorModes = bundle.collections["Color modes"]
+    for (const [modeName, values] of Object.entries(colorModes?.modes ?? {})) {
+      for (const [name, value] of Object.entries(values)) {
+        if (colorModes?.types?.[name] === "COLOR") {
+          expect(value, `${name} [${modeName}]`).toMatch(/^\{[^}]+\}$/)
+        }
+      }
+    }
+  })
+
+  it("routes overlay and inverse-muted roles through the exact alpha primitives", () => {
+    const colorModes = bundle.collections["Color modes"]?.modes
+    expect(colorModes?.Light["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Ink.50}")
+    expect(colorModes?.Dark["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Black.72}")
+    expect(colorModes?.Light["foreground/fg-on-inverse-muted"]).toBe("{Colors.Neutral (alpha).White.45}")
+    expect(colorModes?.Dark["foreground/fg-on-inverse-muted"]).toBe("{Colors.Neutral (alpha).White.45}")
+
+    const primitives = bundle.collections.Primitives?.modes.Value
+    expect(primitives?.["Colors/Neutral (alpha)/Ink/50"]).toBe("#1B1A1A80")
+    expect(primitives?.["Colors/Neutral (alpha)/Black/72"]).toBe("#000000B8")
+    expect(primitives?.["Colors/Neutral (alpha)/White/45"]).toBe("#FFFFFF73")
+  })
+
+  it("adds no unused alpha primitives beyond the three required ones", () => {
+    const primitives = bundle.collections.Primitives?.modes.Value ?? {}
+    const alphaLeaves = Object.keys(primitives).filter((name) =>
+      name.startsWith("Colors/Neutral (alpha)/"),
+    )
+    const decades = ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"]
+    const expected = [
+      "Colors/Neutral (alpha)/Ink/50",
+      ...decades.map((s) => `Colors/Neutral (alpha)/White/${s}`),
+      "Colors/Neutral (alpha)/White/45",
+      ...decades.map((s) => `Colors/Neutral (alpha)/Black/${s}`),
+      "Colors/Neutral (alpha)/Black/72",
+    ]
+    expect(alphaLeaves.sort()).toEqual(expected.sort())
+
+    // Each of the three new primitives must actually be consumed.
+    const allValues = Object.values(bundle.collections)
+      .flatMap((collection) => Object.values(collection.modes))
+      .flatMap((tokens) => Object.values(tokens))
+    for (const target of [
+      "{Colors.Neutral (alpha).Ink.50}",
+      "{Colors.Neutral (alpha).Black.72}",
+      "{Colors.Neutral (alpha).White.45}",
+    ]) {
+      expect(allValues, `expected a consumer of ${target}`).toContain(target)
     }
   })
 

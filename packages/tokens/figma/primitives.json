@@ -168,6 +168,12 @@
       }
     },
     "Neutral (alpha)": {
+      "Ink": {
+        "50": {
+          "$value": "#1B1A1A80",
+          "$type": "color"
+        }
+      },
       "White": {
         "10": {
           "$value": "#FFFFFF1A",
@@ -183,6 +189,10 @@
         },
         "40": {
           "$value": "#FFFFFF66",
+          "$type": "color"
+        },
+        "45": {
+          "$value": "#FFFFFF73",
           "$type": "color"
         },
         "50": {
@@ -237,6 +247,10 @@
         },
         "70": {
           "$value": "#000000B3",
+          "$type": "color"
+        },
+        "72": {
+          "$value": "#000000B8",
           "$type": "color"
         },
         "80": {
@@ -1347,15 +1361,15 @@
       "$type": "number",
       "$description": "Primitive spacing step 40 (160px)."
     },
-    "0\u20245 (2px)": {
+    "0․5 (2px)": {
       "$value": 2,
       "$type": "number",
-      "$description": "Primitive spacing step 0\u20245 (2px)."
+      "$description": "Primitive spacing step 0․5 (2px)."
     },
-    "1\u20245 (6px)": {
+    "1․5 (6px)": {
       "$value": 6,
       "$type": "number",
-      "$description": "Primitive spacing step 1\u20245 (6px)."
+      "$description": "Primitive spacing step 1․5 (6px)."
     }
   }
 }

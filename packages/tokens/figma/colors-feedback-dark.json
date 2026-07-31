@@ -43,7 +43,7 @@
     }
   },
   "background": {
-    "bg-overlay-strong": { "$value": "rgba(0, 0, 0, 0.72)", "$type": "color" }
+    "bg-overlay-strong": { "$value": "{Colors.Neutral (alpha).Black.72}", "$type": "color" }
   },
   "action": {
     "action-menu-hover": {
@@ -59,6 +59,6 @@
     "border-focus-soft": { "$value": "{Colors.Blue.150}", "$type": "color" }
   },
   "foreground": {
-    "fg-on-inverse-muted": { "$value": "#FFFFFF73", "$type": "color" }
+    "fg-on-inverse-muted": { "$value": "{Colors.Neutral (alpha).White.45}", "$type": "color" }
   }
 }

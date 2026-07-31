@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1727
+Total tokens: 1730
 
 ## Primitives
 
@@ -116,6 +116,11 @@ Source: `packages/tokens/src/primitives.css`
 --color-status-error-700: #D71913;
 --color-status-error-300: #FF755E;
 --color-status-error-200: #FFA193;
+
+/* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
+--color-neutral-alpha-ink-50: #1B1A1A80;
+--color-neutral-alpha-black-72: #000000B8;
+--color-neutral-alpha-white-45: #FFFFFF73;
 
 /* ── Extended decorative palette — Tailwind v4 defaults ── */
 --color-gray-50: #f9fafb;
@@ -516,11 +521,11 @@ Source: `packages/tokens/src/semantic.css`
 --color-feedback-emphasize-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
 
 /* ── Shared component support roles ── */
---color-bg-overlay-strong: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */
+--color-bg-overlay-strong: var(--color-neutral-alpha-ink-50);/* dark: var(--color-neutral-alpha-black-72) */
 --color-action-menu-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
 --color-action-menu-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
 --color-border-focus-soft: var(--color-blue-150);
---color-fg-on-inverse-muted: rgba(255, 255, 255, 0.45);
+--color-fg-on-inverse-muted: var(--color-neutral-alpha-white-45);
 ```
 
 ## Dimensions (Spacing, Radius, Z-index, Breakpoints)

@@ -262,10 +262,12 @@
           "Colors/Status/Error/300": "#FF755E",
           "Colors/Status/Error/700": "#D71913",
           "Colors/Status/Error/950": "#7B0000",
+          "Colors/Neutral (alpha)/Ink/50": "#1B1A1A80",
           "Colors/Neutral (alpha)/White/10": "#FFFFFF1A",
           "Colors/Neutral (alpha)/White/20": "#FFFFFF33",
           "Colors/Neutral (alpha)/White/30": "#FFFFFF4D",
           "Colors/Neutral (alpha)/White/40": "#FFFFFF66",
+          "Colors/Neutral (alpha)/White/45": "#FFFFFF73",
           "Colors/Neutral (alpha)/White/50": "#FFFFFF80",
           "Colors/Neutral (alpha)/White/60": "#FFFFFF99",
           "Colors/Neutral (alpha)/White/70": "#FFFFFFB3",
@@ -279,6 +281,7 @@
           "Colors/Neutral (alpha)/Black/50": "#00000080",
           "Colors/Neutral (alpha)/Black/60": "#00000099",
           "Colors/Neutral (alpha)/Black/70": "#000000B3",
+          "Colors/Neutral (alpha)/Black/72": "#000000B8",
           "Colors/Neutral (alpha)/Black/80": "#000000CC",
           "Colors/Neutral (alpha)/Black/90": "#000000E6",
           "Colors/Neutral (alpha)/Black/100": "#000000FF",
@@ -616,10 +619,12 @@
         "Colors/Status/Error/300": "COLOR",
         "Colors/Status/Error/700": "COLOR",
         "Colors/Status/Error/950": "COLOR",
+        "Colors/Neutral (alpha)/Ink/50": "COLOR",
         "Colors/Neutral (alpha)/White/10": "COLOR",
         "Colors/Neutral (alpha)/White/20": "COLOR",
         "Colors/Neutral (alpha)/White/30": "COLOR",
         "Colors/Neutral (alpha)/White/40": "COLOR",
+        "Colors/Neutral (alpha)/White/45": "COLOR",
         "Colors/Neutral (alpha)/White/50": "COLOR",
         "Colors/Neutral (alpha)/White/60": "COLOR",
         "Colors/Neutral (alpha)/White/70": "COLOR",
@@ -633,6 +638,7 @@
         "Colors/Neutral (alpha)/Black/50": "COLOR",
         "Colors/Neutral (alpha)/Black/60": "COLOR",
         "Colors/Neutral (alpha)/Black/70": "COLOR",
+        "Colors/Neutral (alpha)/Black/72": "COLOR",
         "Colors/Neutral (alpha)/Black/80": "COLOR",
         "Colors/Neutral (alpha)/Black/90": "COLOR",
         "Colors/Neutral (alpha)/Black/100": "COLOR",
@@ -932,10 +938,12 @@
         "Colors/Status/Error/300": [],
         "Colors/Status/Error/700": [],
         "Colors/Status/Error/950": [],
+        "Colors/Neutral (alpha)/Ink/50": [],
         "Colors/Neutral (alpha)/White/10": [],
         "Colors/Neutral (alpha)/White/20": [],
         "Colors/Neutral (alpha)/White/30": [],
         "Colors/Neutral (alpha)/White/40": [],
+        "Colors/Neutral (alpha)/White/45": [],
         "Colors/Neutral (alpha)/White/50": [],
         "Colors/Neutral (alpha)/White/60": [],
         "Colors/Neutral (alpha)/White/70": [],
@@ -949,6 +957,7 @@
         "Colors/Neutral (alpha)/Black/50": [],
         "Colors/Neutral (alpha)/Black/60": [],
         "Colors/Neutral (alpha)/Black/70": [],
+        "Colors/Neutral (alpha)/Black/72": [],
         "Colors/Neutral (alpha)/Black/80": [],
         "Colors/Neutral (alpha)/Black/90": [],
         "Colors/Neutral (alpha)/Black/100": [],
@@ -1353,11 +1362,11 @@
           "feedback/emphasize/border": "{Colors.Neutral.300}",
           "feedback/emphasize/accent": "{Colors.Neutral.800}",
           "feedback/emphasize/text": "{Colors.Neutral.950}",
-          "background/bg-overlay-strong": "rgba(27, 26, 26, 0.5)",
+          "background/bg-overlay-strong": "{Colors.Neutral (alpha).Ink.50}",
           "action/action-menu-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-subtle-active}",
           "border/border-focus-soft": "{Colors.Blue.150}",
-          "foreground/fg-on-inverse-muted": "#FFFFFF73",
+          "foreground/fg-on-inverse-muted": "{Colors.Neutral (alpha).White.45}",
           "utility/bg-gray-subtle": "{Colors.Gray.50}",
           "utility/bg-gray-muted": "{Colors.Gray.100}",
           "utility/bg-gray-strong": "{Colors.Gray.700}",
@@ -1585,11 +1594,11 @@
           "feedback/emphasize/border": "{Colors.Neutral.700}",
           "feedback/emphasize/accent": "{Colors.Neutral.200}",
           "feedback/emphasize/text": "{Colors.Neutral.100}",
-          "background/bg-overlay-strong": "rgba(0, 0, 0, 0.72)",
+          "background/bg-overlay-strong": "{Colors.Neutral (alpha).Black.72}",
           "action/action-menu-hover": "{Color modes/action/action-neutral-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-active}",
           "border/border-focus-soft": "{Colors.Blue.150}",
-          "foreground/fg-on-inverse-muted": "#FFFFFF73",
+          "foreground/fg-on-inverse-muted": "{Colors.Neutral (alpha).White.45}",
           "utility/bg-gray-subtle": "{Colors.Gray.950}",
           "utility/bg-gray-muted": "{Colors.Gray.900}",
           "utility/bg-gray-strong": "{Colors.Gray.700}",
@@ -1699,13 +1708,13 @@
         "border/border-focus": "Focus rings on interactive elements.",
         "border/border-brand": "Brand-accented borders.",
         "border/border-error-strong": "Error/invalid input border.",
-        "border/border-error-subtle": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
+        "border/border-error-subtle": "Subtle error border for low-emphasis feedback surfaces.",
         "border/border-info-strong": "Strong informational border and accent stripe.",
-        "border/border-info-subtle": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
+        "border/border-info-subtle": "Subtle informational border for low-emphasis feedback surfaces.",
         "border/border-success-strong": "Strong success border and accent stripe.",
-        "border/border-success-subtle": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
+        "border/border-success-subtle": "Subtle success border for low-emphasis feedback surfaces.",
         "border/border-warning-strong": "Strong warning border and accent stripe.",
-        "border/border-warning-subtle": "Compatibility role used by existing Alert layers; theme-independent until those bindings are migrated.",
+        "border/border-warning-subtle": "Subtle warning border for low-emphasis feedback surfaces.",
         "action/action-primary": "Primary CTA background (blue).",
         "action/action-primary-hover": "Primary CTA background, hover state.",
         "action/action-primary-active": "Primary CTA background, active state.",
@@ -1810,12 +1819,12 @@
         "feedback/error/accent": "Error feedback icon and accent stripe.",
         "feedback/error/action": "Error feedback action color.",
         "feedback/error/action-hover": "Error feedback action hover color.",
-        "feedback/neutral/bg": "Neutral feedback background, isolated from shared surface semantics.",
-        "feedback/neutral/border": "Neutral feedback border.",
+        "feedback/neutral/bg": "Neutral feedback background isolated from shared surface semantics.",
+        "feedback/neutral/border": "Neutral feedback border isolated from shared border semantics.",
         "feedback/neutral/accent": "Neutral feedback icon and accent stripe.",
         "feedback/neutral/text": "Neutral feedback text.",
-        "feedback/emphasize/bg": "Emphasized feedback background, isolated from shared page semantics.",
-        "feedback/emphasize/border": "Emphasized feedback border.",
+        "feedback/emphasize/bg": "Emphasized feedback background isolated from shared page semantics.",
+        "feedback/emphasize/border": "Emphasized feedback border isolated from shared border semantics.",
         "feedback/emphasize/accent": "Emphasized feedback icon and accent stripe.",
         "feedback/emphasize/text": "Emphasized feedback text.",
         "background/bg-overlay-strong": "High-emphasis modal overlay.",
@@ -2580,7 +2589,7 @@
           "SHAPE_FILL"
         ],
         "feedback/neutral/text": [
-          "ALL_FILLS"
+          "TEXT_FILL"
         ],
         "feedback/emphasize/bg": [
           "ALL_FILLS"
@@ -2592,7 +2601,7 @@
           "SHAPE_FILL"
         ],
         "feedback/emphasize/text": [
-          "ALL_FILLS"
+          "TEXT_FILL"
         ],
         "background/bg-overlay-strong": [
           "ALL_FILLS"
@@ -2609,7 +2618,7 @@
           "STROKE_COLOR"
         ],
         "foreground/fg-on-inverse-muted": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "utility/bg-gray-subtle": [
           "ALL_FILLS"

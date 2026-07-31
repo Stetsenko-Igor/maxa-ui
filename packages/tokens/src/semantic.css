@@ -251,11 +251,11 @@
   --color-feedback-emphasize-text:      var(--color-neutral-950);
 
   /* ── Shared component support roles ──────────────────────────────── */
-  --color-bg-overlay-strong:       rgba(27, 26, 26, 0.5);
+  --color-bg-overlay-strong:       var(--color-neutral-alpha-ink-50);
   --color-action-menu-hover:       var(--color-action-neutral-subtle-hover);
   --color-action-menu-active:      var(--color-action-neutral-subtle-active);
   --color-border-focus-soft:       var(--color-blue-150);
-  --color-fg-on-inverse-muted:     rgba(255, 255, 255, 0.45);
+  --color-fg-on-inverse-muted:     var(--color-neutral-alpha-white-45);
 }
 
 [data-theme="dark"] {
@@ -485,7 +485,7 @@
   --color-feedback-emphasize-text:      var(--color-neutral-100);
 
   /* ── Shared component support roles — dark ──────────────────────── */
-  --color-bg-overlay-strong:       rgba(0, 0, 0, 0.72);
+  --color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);
   --color-action-menu-hover:       var(--color-action-neutral-hover);
   --color-action-menu-active:      var(--color-action-neutral-active);
 }

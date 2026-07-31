@@ -115,12 +115,12 @@
     },
     "neutral": {
       "bg": {
-        "$description": "Neutral feedback background, isolated from shared surface semantics.",
+        "$description": "Neutral feedback background isolated from shared surface semantics.",
         "$value": "{Colors.Base.White}",
         "$type": "color"
       },
       "border": {
-        "$description": "Neutral feedback border.",
+        "$description": "Neutral feedback border isolated from shared border semantics.",
         "$value": "{Colors.Neutral.200}",
         "$type": "color"
       },
@@ -137,12 +137,12 @@
     },
     "emphasize": {
       "bg": {
-        "$description": "Emphasized feedback background, isolated from shared page semantics.",
+        "$description": "Emphasized feedback background isolated from shared page semantics.",
         "$value": "{Colors.Neutral.50}",
         "$type": "color"
       },
       "border": {
-        "$description": "Emphasized feedback border.",
+        "$description": "Emphasized feedback border isolated from shared border semantics.",
         "$value": "{Colors.Neutral.300}",
         "$type": "color"
       },
@@ -161,7 +161,7 @@
   "background": {
     "bg-overlay-strong": {
       "$description": "High-emphasis modal overlay.",
-      "$value": "rgba(27, 26, 26, 0.5)",
+      "$value": "{Colors.Neutral (alpha).Ink.50}",
       "$type": "color"
     }
   },
@@ -187,7 +187,7 @@
   "foreground": {
     "fg-on-inverse-muted": {
       "$description": "Muted foreground used over inverse surfaces.",
-      "$value": "#FFFFFF73",
+      "$value": "{Colors.Neutral (alpha).White.45}",
       "$type": "color"
     }
   }

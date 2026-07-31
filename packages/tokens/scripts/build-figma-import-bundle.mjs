@@ -440,21 +440,20 @@ function finalizeBundle(outputBundle) {
     )
   }
 
-  const rawFeedbackColors = []
+  // Every COLOR value in Color modes — all groups, not only feedback — must
+  // be a real alias. A raw literal here bypasses the Primitives layer and
+  // silently reintroduces the drift this architecture exists to prevent.
+  const rawColorModeColors = []
   for (const [modeName, tokens] of Object.entries(colorModesCollection?.modes ?? {})) {
     for (const [tokenName, value] of Object.entries(tokens)) {
-      if (
-        tokenName.startsWith("feedback/")
-        && colorModesCollection.types[tokenName] === "COLOR"
-        && !isAliasValue(value)
-      ) {
-        rawFeedbackColors.push(`${tokenName} [${modeName}]`)
+      if (colorModesCollection.types[tokenName] === "COLOR" && !isAliasValue(value)) {
+        rawColorModeColors.push(`${tokenName} [${modeName}] = ${JSON.stringify(value)}`)
       }
     }
   }
-  if (rawFeedbackColors.length > 0) {
+  if (rawColorModeColors.length > 0) {
     throw new Error(
-      `Color modes feedback colors must alias exact reference primitives; found literals at:\n${rawFeedbackColors.join("\n")}`,
+      `Color modes COLOR variables must alias Primitives (or another semantic role); found literals at:\n${rawColorModeColors.join("\n")}`,
     )
   }
 
@@ -547,8 +546,16 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (group === "action" || group === "control") return ["ALL_FILLS", "STROKE_COLOR"]
     if (group === "feedback") {
       if (lower === "feedback/text") return ["TEXT_FILL"]
+      if (lower.endsWith("/text")) return ["TEXT_FILL"]
       if (lower.endsWith("/border")) return ["STROKE_COLOR"]
       if (lower.endsWith("/accent")) return ["SHAPE_FILL"]
+      return ["ALL_FILLS"]
+    }
+    if (group === "foreground") {
+      // Matches live Figma usage: this role decorates non-text shapes on
+      // inverse surfaces. Exact rule only — other foreground roles keep
+      // ALL_FILLS until repository usage proves a narrower scope.
+      if (lower === "foreground/fg-on-inverse-muted") return ["SHAPE_FILL"]
       return ["ALL_FILLS"]
     }
     if (group === "utility") {
