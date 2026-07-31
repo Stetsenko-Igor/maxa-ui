@@ -97,6 +97,14 @@
     "border-warning-subtle": {
       "$value": "{Colors.Orange.200}",
       "$type": "color"
+    },
+    "border-neutral-strong": {
+      "$value": "{Colors.Neutral.500}",
+      "$type": "color"
+    },
+    "border-neutral-subtle": {
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
     }
   },
   "action": {
@@ -308,10 +316,6 @@
       "$value": "{Colors.Neutral.975}",
       "$type": "color"
     },
-    "bg-gray-muted": {
-      "$value": "{Colors.Gray.900}",
-      "$type": "color"
-    },
     "bg-disabled": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
@@ -392,8 +396,12 @@
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "bg-neutral-surface": {
-      "$value": "{Colors.Neutral.800}",
+    "bg-neutral-on-subtle": {
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
+    },
+    "bg-neutral-on-muted": {
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "bg-neutral-strong": {

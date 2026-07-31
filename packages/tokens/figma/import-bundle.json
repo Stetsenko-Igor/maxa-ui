@@ -1186,6 +1186,8 @@
           "border/border-success-subtle": "{Colors.Green.300}",
           "border/border-warning-strong": "{Colors.Orange.600}",
           "border/border-warning-subtle": "{Colors.Orange.200}",
+          "border/border-neutral-strong": "{Colors.Neutral.700}",
+          "border/border-neutral-subtle": "{Colors.Neutral.300}",
           "action/action-primary": "{Colors.Blue.500}",
           "action/action-primary-hover": "{Colors.Blue.600}",
           "action/action-primary-active": "{Colors.Blue.700}",
@@ -1237,7 +1239,6 @@
           "background/bg-surface": "{Colors.Base.White}",
           "background/bg-float": "{Colors.Base.White}",
           "background/bg-muted": "{Colors.Neutral.25}",
-          "background/bg-gray-muted": "{Colors.Gray.100}",
           "background/bg-disabled": "{Colors.Neutral.100}",
           "background/bg-overlay": "{Colors.Neutral (alpha).Black.50}",
           "background/bg-inverse": "{Colors.Neutral.950}",
@@ -1258,7 +1259,8 @@
           "background/bg-info-surface": "{Colors.Blue.50}",
           "background/bg-info-strong": "{Colors.Blue.700}",
           "background/bg-neutral-subtle": "{Colors.Neutral.100}",
-          "background/bg-neutral-surface": "{Colors.Neutral.100}",
+          "background/bg-neutral-on-subtle": "{Colors.Neutral.200}",
+          "background/bg-neutral-on-muted": "{Colors.Neutral.300}",
           "background/bg-neutral-strong": "{Colors.Neutral.800}",
           "background/bg-neutral-muted": "{Colors.Neutral.200}",
           "background/bg-info-muted": "{Colors.Blue.100}",
@@ -1418,6 +1420,8 @@
           "border/border-success-subtle": "{Colors.Green.300}",
           "border/border-warning-strong": "{Colors.Orange.500}",
           "border/border-warning-subtle": "{Colors.Orange.200}",
+          "border/border-neutral-strong": "{Colors.Neutral.500}",
+          "border/border-neutral-subtle": "{Colors.Neutral.700}",
           "action/action-primary": "{Colors.Blue.400}",
           "action/action-primary-hover": "{Colors.Blue.300}",
           "action/action-primary-active": "{Colors.Blue.200}",
@@ -1469,7 +1473,6 @@
           "background/bg-surface": "{Colors.Neutral.900}",
           "background/bg-float": "{Colors.Neutral.800}",
           "background/bg-muted": "{Colors.Neutral.975}",
-          "background/bg-gray-muted": "{Colors.Gray.900}",
           "background/bg-disabled": "{Colors.Neutral.800}",
           "background/bg-overlay": "{Colors.Neutral (alpha).Black.70}",
           "background/bg-inverse": "{Colors.Neutral.950}",
@@ -1490,7 +1493,8 @@
           "background/bg-info-surface": "{Colors.Blue.950}",
           "background/bg-info-strong": "{Colors.Blue.500}",
           "background/bg-neutral-subtle": "{Colors.Neutral.800}",
-          "background/bg-neutral-surface": "{Colors.Neutral.800}",
+          "background/bg-neutral-on-subtle": "{Colors.Neutral.700}",
+          "background/bg-neutral-on-muted": "{Colors.Neutral.600}",
           "background/bg-neutral-strong": "{Colors.Neutral.400}",
           "background/bg-neutral-muted": "{Colors.Neutral.700}",
           "background/bg-info-muted": "{Colors.Blue.900}",
@@ -1651,6 +1655,8 @@
         "border/border-success-subtle": "Subtle success border for low-emphasis feedback surfaces.",
         "border/border-warning-strong": "Strong warning border and accent stripe.",
         "border/border-warning-subtle": "Subtle warning border for low-emphasis feedback surfaces.",
+        "border/border-neutral-strong": "High-emphasis neutral outline.",
+        "border/border-neutral-subtle": "Low-emphasis neutral outline.",
         "action/action-primary": "Primary CTA background (blue).",
         "action/action-primary-hover": "Primary CTA background, hover state.",
         "action/action-primary-active": "Primary CTA background, active state.",
@@ -1702,7 +1708,6 @@
         "background/bg-surface": "Default raised surface: cards, inputs, modals, sidebars.",
         "background/bg-float": "Floating surfaces above regular surfaces: dropdowns, popovers, tooltips.",
         "background/bg-muted": "Recessed zones: code blocks, wells, table fill.",
-        "background/bg-gray-muted": "Gray chip and utility fill that follows the active color mode.",
         "background/bg-disabled": "Disabled input and control backgrounds.",
         "background/bg-overlay": "Modal and drawer scrim.",
         "background/bg-inverse": "Inverted dark surface on light theme.",
@@ -1723,7 +1728,8 @@
         "background/bg-info-surface": "Info surface fill.",
         "background/bg-info-strong": "Strong info fill.",
         "background/bg-neutral-subtle": "Subtle neutral section background.",
-        "background/bg-neutral-surface": "Neutral surface fill.",
+        "background/bg-neutral-on-subtle": "Neutral fill placed on a subtle neutral background.",
+        "background/bg-neutral-on-muted": "Neutral fill one step above muted, used for table headers and wells.",
         "background/bg-neutral-strong": "Strong neutral fill (inverse).",
         "background/bg-neutral-muted": "Slightly stronger neutral fill.",
         "background/bg-info-muted": "Slightly stronger info fill.",
@@ -1883,6 +1889,8 @@
         "border/border-success-subtle": "COLOR",
         "border/border-warning-strong": "COLOR",
         "border/border-warning-subtle": "COLOR",
+        "border/border-neutral-strong": "COLOR",
+        "border/border-neutral-subtle": "COLOR",
         "action/action-primary": "COLOR",
         "action/action-primary-hover": "COLOR",
         "action/action-primary-active": "COLOR",
@@ -1934,7 +1942,6 @@
         "background/bg-surface": "COLOR",
         "background/bg-float": "COLOR",
         "background/bg-muted": "COLOR",
-        "background/bg-gray-muted": "COLOR",
         "background/bg-disabled": "COLOR",
         "background/bg-overlay": "COLOR",
         "background/bg-inverse": "COLOR",
@@ -1955,7 +1962,8 @@
         "background/bg-info-surface": "COLOR",
         "background/bg-info-strong": "COLOR",
         "background/bg-neutral-subtle": "COLOR",
-        "background/bg-neutral-surface": "COLOR",
+        "background/bg-neutral-on-subtle": "COLOR",
+        "background/bg-neutral-on-muted": "COLOR",
         "background/bg-neutral-strong": "COLOR",
         "background/bg-neutral-muted": "COLOR",
         "background/bg-info-muted": "COLOR",
@@ -2163,6 +2171,12 @@
         "border/border-warning-subtle": [
           "STROKE_COLOR"
         ],
+        "border/border-neutral-strong": [
+          "STROKE_COLOR"
+        ],
+        "border/border-neutral-subtle": [
+          "STROKE_COLOR"
+        ],
         "action/action-primary": [
           "ALL_FILLS",
           "STROKE_COLOR"
@@ -2352,9 +2366,6 @@
         "background/bg-muted": [
           "ALL_FILLS"
         ],
-        "background/bg-gray-muted": [
-          "ALL_FILLS"
-        ],
         "background/bg-disabled": [
           "ALL_FILLS"
         ],
@@ -2415,7 +2426,10 @@
         "background/bg-neutral-subtle": [
           "ALL_FILLS"
         ],
-        "background/bg-neutral-surface": [
+        "background/bg-neutral-on-subtle": [
+          "ALL_FILLS"
+        ],
+        "background/bg-neutral-on-muted": [
           "ALL_FILLS"
         ],
         "background/bg-neutral-strong": [
@@ -3737,7 +3751,7 @@
           "Multi Select/trigger-font-weight": "{Component-based/Input/font-weight}",
           "Multi Select/trigger-line-height": "{Typography/Line height/text-sm}",
           "Multi Select/placeholder": "{Component-based/Input/placeholder}",
-          "Multi Select/chip-bg": "{Color modes/background/bg-gray-muted}",
+          "Multi Select/chip-bg": "{Color modes/utility/bg-gray-muted}",
           "Multi Select/chip-text": "{Color modes/text/text-primary}",
           "Multi Select/chip-radius": "{Radius/radius-full}",
           "Multi Select/chip-gap": "{Spacing/spacing-xs}",
@@ -3970,7 +3984,7 @@
           "Table/font-family": "{Typography/Font family/body}",
           "Table/font-size": "{Typography/Font size/text-sm}",
           "Table/line-height": "{Typography/Line height/text-sm}",
-          "Table/header-bg": "{Color modes/background/bg-muted}",
+          "Table/header-bg": "{Color modes/background/bg-neutral-on-muted}",
           "Table/header-text": "{Color modes/text/text-tertiary}",
           "Table/header-font-size": "{Typography/Font size/caption-sm}",
           "Table/header-line-height": "{Typography/Line height/caption-sm}",

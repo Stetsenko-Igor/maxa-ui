@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1714
+Total tokens: 1715
 
 ## Primitives
 
@@ -328,6 +328,7 @@ Source: `packages/tokens/src/semantic.css`
 /* ── Background — status/intent (orthogonal to elevation) ── */
 --color-bg-neutral-subtle: var(--color-neutral-100);/* dark: var(--color-neutral-800) */
 --color-bg-neutral-on-subtle: var(--color-neutral-200);/* dark: var(--color-neutral-700) */
+--color-bg-neutral-on-muted: var(--color-neutral-300);/* dark: var(--color-neutral-600) */
 --color-bg-neutral-strong: var(--color-neutral-800);/* dark: var(--color-neutral-400) */
 --color-bg-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-bg-brand-surface: var(--color-brand-100);/* dark: var(--color-brand-900) */
@@ -1204,7 +1205,7 @@ Source: `packages/tokens/src/component-table.css`
 --table-font-family: var(--font-body);
 --table-font-size: var(--text-sm);
 --table-line-height: var(--text-sm--line-height);
---table-header-bg: var(--color-bg-muted);/* dark: var(--color-bg-muted) */
+--table-header-bg: var(--color-bg-neutral-on-muted);/* dark: var(--color-bg-neutral-on-muted) */
 --table-header-text: var(--color-text-primary);
 --table-header-font-size: var(--text-sm);
 --table-header-line-height: var(--text-sm--line-height);

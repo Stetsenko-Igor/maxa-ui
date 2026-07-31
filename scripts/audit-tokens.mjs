@@ -91,6 +91,9 @@ const FIGMA_COLOR_GROUP_PREFIXES = {
 
 const FIGMA_BACKGROUND_INTENTS = ['brand', 'neutral', 'info', 'success', 'warning', 'error'];
 const FIGMA_BACKGROUND_INTENT_SUFFIXES = ['subtle', 'surface', 'strong', 'muted'];
+// The neutral intent uses the reconciled ladder vocabulary instead of the
+// intent-surface duplicate (bg-neutral-surface was renamed to bg-neutral-on-subtle).
+const FIGMA_BACKGROUND_NEUTRAL_SUFFIXES = ['subtle', 'on-subtle', 'muted', 'on-muted', 'strong'];
 const FIGMA_LEGACY_COLOR_GROUPS = new Set(['fg', 'bg']);
 
 function collectFiles(dir, extensions) {
@@ -500,9 +503,10 @@ function scanFigmaSemanticColorNaming() {
 
     const background = json.background || {};
     for (const intent of FIGMA_BACKGROUND_INTENTS) {
-      const expected = new Set(
-        FIGMA_BACKGROUND_INTENT_SUFFIXES.map((suffix) => `bg-${intent}-${suffix}`),
-      );
+      const suffixes = intent === 'neutral'
+        ? FIGMA_BACKGROUND_NEUTRAL_SUFFIXES
+        : FIGMA_BACKGROUND_INTENT_SUFFIXES;
+      const expected = new Set(suffixes.map((suffix) => `bg-${intent}-${suffix}`));
       const actual = Object.keys(background).filter((tokenName) => {
         return tokenName === `bg-${intent}` || tokenName.startsWith(`bg-${intent}-`);
       });
@@ -514,7 +518,7 @@ function scanFigmaSemanticColorNaming() {
             line: lineOf(content, `"${tokenName}"`),
             type: 'figma-background-intent-name',
             value: `background/${tokenName}`,
-            hint: `Use only bg-${intent}-subtle, bg-${intent}-surface, and bg-${intent}-strong`,
+            hint: `Use only ${suffixes.map((s) => `bg-${intent}-${s}`).join(', ')}`,
           });
         }
       }
@@ -526,7 +530,7 @@ function scanFigmaSemanticColorNaming() {
             line: 0,
             type: 'figma-background-intent-missing',
             value: `background/${tokenName}`,
-            hint: `Background intent "${intent}" must include subtle, surface, and strong tokens`,
+            hint: `Background intent "${intent}" must include ${suffixes.join(', ')} tokens`,
           });
         }
       }

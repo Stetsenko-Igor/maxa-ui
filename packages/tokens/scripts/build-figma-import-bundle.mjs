@@ -32,6 +32,21 @@ const SEMANTIC_COLOR_GROUPS = {
   control: "control",
 }
 
+// Decorative hue families (Badge/Tag appearance) live in Color modes/utility,
+// not in the semantic background/text groups. Without this, a CSS reference
+// like var(--color-bg-gray-muted) lands in `background/` and duplicates the
+// utility variable.
+const UTILITY_HUES = new Set([
+  "gray", "slate", "zinc", "stone", "red", "orange", "amber", "yellow", "lime",
+  "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet",
+  "purple", "fuchsia", "pink", "rose",
+])
+
+function utilityHueAlias(rest) {
+  const m = /^(?:bg|text|fg)-([a-z]+)(?:-|$)/.exec(rest)
+  return m && UTILITY_HUES.has(m[1]) ? `{Color modes/utility/${rest}}` : null
+}
+
 // CSS component custom properties that already have a canonical variable in
 // the Component-based collection. Figma does not evaluate CSS var() calls, so
 // cross-component references must be emitted as real Figma aliases.
@@ -310,7 +325,7 @@ function convertCssVarToAlias(rawValue) {
     const rest = name.slice("color-".length)
     for (const [prefix, figmaGroup] of Object.entries(SEMANTIC_COLOR_GROUPS)) {
       if (rest === prefix || rest.startsWith(`${prefix}-`)) {
-        return `{Color modes/${figmaGroup}/${rest}}`
+        return utilityHueAlias(rest) ?? `{Color modes/${figmaGroup}/${rest}}`
       }
     }
     // Not a semantic group -> treat as a raw primitive palette reference, e.g.
