@@ -121,6 +121,16 @@
       "$description": "Subtle warning border for low-emphasis feedback surfaces.",
       "$value": "{Colors.Orange.200}",
       "$type": "color"
+    },
+    "border-neutral-strong": {
+      "$description": "High-emphasis neutral outline.",
+      "$value": "{Colors.Neutral.700}",
+      "$type": "color"
+    },
+    "border-neutral-subtle": {
+      "$description": "Low-emphasis neutral outline.",
+      "$value": "{Colors.Neutral.300}",
+      "$type": "color"
     }
   },
   "action": {
@@ -383,11 +393,6 @@
       "$value": "{Colors.Neutral.25}",
       "$type": "color"
     },
-    "bg-gray-muted": {
-      "$description": "Gray chip and utility fill that follows the active color mode.",
-      "$value": "{Colors.Gray.100}",
-      "$type": "color"
-    },
     "bg-disabled": {
       "$description": "Disabled input and control backgrounds.",
       "$value": "{Colors.Neutral.100}",
@@ -488,9 +493,14 @@
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
-    "bg-neutral-surface": {
-      "$description": "Neutral surface fill.",
-      "$value": "{Colors.Neutral.100}",
+    "bg-neutral-on-subtle": {
+      "$description": "Neutral fill placed on a subtle neutral background.",
+      "$value": "{Colors.Neutral.200}",
+      "$type": "color"
+    },
+    "bg-neutral-on-muted": {
+      "$description": "Neutral fill one step above muted, used for table headers and wells.",
+      "$value": "{Colors.Neutral.300}",
       "$type": "color"
     },
     "bg-neutral-strong": {

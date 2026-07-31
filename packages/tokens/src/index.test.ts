@@ -508,8 +508,10 @@ describe("figma import bundle", () => {
 
     expect(light?.["control/control-idle"]).toBe("{Colors.Neutral.500}")
     expect(dark?.["control/control-idle"]).toBe("{Colors.Neutral.600}")
-    expect(light?.["background/bg-gray-muted"]).toBe("{Colors.Gray.100}")
-    expect(dark?.["background/bg-gray-muted"]).toBe("{Colors.Gray.900}")
+    // The gray hue family lives in utility, never in the background group.
+    expect(light?.["background/bg-gray-muted"]).toBeUndefined()
+    expect(light?.["utility/bg-gray-muted"]).toBe("{Colors.Gray.100}")
+    expect(dark?.["utility/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
     expect(light?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
@@ -547,7 +549,7 @@ describe("figma import bundle", () => {
     expect(light?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(dark?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.900}")
     expect(component?.["Checkbox/color/border"]).toBe("{Color modes/control/control-idle}")
-    expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/background/bg-gray-muted}")
+    expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/utility/bg-gray-muted}")
     expect(component?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
     expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
     expect(light?.["feedback/neutral/bg"]).toBe("{Colors.Base.White}")
@@ -703,6 +705,82 @@ describe("figma import bundle", () => {
     ]) {
       expect(allValues, `expected a consumer of ${target}`).toContain(target)
     }
+  })
+
+  it("keeps the neutral background ladder aligned across CSS and Figma", () => {
+    const light = bundle.collections["Color modes"]?.modes.Light
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+    const css = readFileSync(join(root, "src/semantic.css"), "utf-8")
+
+    // The reconciled ladder: subtle → on-subtle → muted → on-muted → strong.
+    expect(light?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.200}")
+    expect(dark?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.700}")
+    expect(light?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.300}")
+    expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.600}")
+    expect(css).toContain("--color-bg-neutral-on-subtle: var(--color-neutral-200)")
+    expect(css).toContain("--color-bg-neutral-on-muted:  var(--color-neutral-300)")
+
+    // The dead duplicate must not exist anywhere.
+    expect(light?.["background/bg-neutral-surface"]).toBeUndefined()
+    expect(css).not.toContain("--color-bg-neutral-surface")
+
+    // Table header consumes the new step.
+    const tableCss = readFileSync(join(root, "src/component-table.css"), "utf-8")
+    expect(tableCss).toContain("--table-header-bg: var(--color-bg-neutral-on-muted)")
+    expect(bundle.collections["Component-based"]?.modes.Default["Table/header-bg"]).toBe(
+      "{Color modes/background/bg-neutral-on-muted}",
+    )
+  })
+
+  it("keeps CSS and Figma Color modes vocabularies in bidirectional name parity", () => {
+    // The blind spot this closes: the export↔bundle diff compares two files
+    // generated from the same figma/*.json sources, so a CSS-vs-Figma naming
+    // divergence (like bg-neutral-surface vs bg-neutral-on-subtle) was
+    // invisible until a human noticed. This asserts name parity directly.
+    const css = readFileSync(join(root, "src/semantic.css"), "utf-8")
+    const cssNames = new Set([...css.matchAll(/(--color-[\w-]+)\s*:/g)].map((m) => m[1]))
+    const lightTokens = bundle.collections["Color modes"]?.modes.Light ?? {}
+
+    const HUES =
+      "gray|slate|zinc|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose"
+    const groups: Array<[string, string]> = [
+      ["text", "text"],
+      ["border", "border"],
+      ["action", "action"],
+      ["fg", "foreground"],
+      ["bg", "background"],
+      ["control", "control"],
+    ]
+
+    for (const [cssPrefix, figmaGroup] of groups) {
+      const figmaKeys = new Set(
+        Object.keys(lightTokens)
+          .filter((k) => k.startsWith(`${figmaGroup}/`))
+          .map((k) => k.slice(figmaGroup.length + 1)),
+      )
+      const hueRe = new RegExp(`^${cssPrefix}-(${HUES})(-|$)`)
+      const cssKeys = new Set(
+        [...cssNames]
+          .map((n) => n.slice("--color-".length))
+          .filter((rest) => rest === cssPrefix || rest.startsWith(`${cssPrefix}-`))
+          // Decorative hue families live in Color modes/utility, not here.
+          .filter((rest) => !(["bg", "text"].includes(cssPrefix) && hueRe.test(rest))),
+      )
+      expect([...cssKeys].filter((k) => !figmaKeys.has(k)).sort(), `${cssPrefix}: CSS-only names`).toEqual([])
+      expect([...figmaKeys].filter((k) => !cssKeys.has(k)).sort(), `${figmaGroup}: Figma-only names`).toEqual([])
+    }
+
+    // Feedback maps with the group prefix folded into the CSS name.
+    const figmaFeedback = new Set(
+      Object.keys(lightTokens)
+        .filter((k) => k.startsWith("feedback/"))
+        .map((k) => `feedback-${k.slice("feedback/".length).replace(/\//g, "-")}`),
+    )
+    const cssFeedback = new Set(
+      [...cssNames].filter((n) => n.startsWith("--color-feedback")).map((n) => n.slice("--color-".length)),
+    )
+    expect([...cssFeedback].filter((k) => !figmaFeedback.has(k)).sort()).toEqual([])
+    expect([...figmaFeedback].filter((k) => !cssFeedback.has(k)).sort()).toEqual([])
   })
 
   it("gives Component-based one Default mode and no raw color values", () => {

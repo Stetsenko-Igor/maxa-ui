@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
+import tokenData from "./tokens.generated.json"
 
 export const metadata: Metadata = { title: "Colors — MAXA UI" }
 const TOC = [
@@ -8,35 +9,63 @@ const TOC = [
   { href: "#foreground", label: "Foreground" },
   { href: "#action", label: "Action" },
   { href: "#background", label: "Background" },
+  { href: "#control", label: "Control" },
+  { href: "#feedback", label: "Feedback" },
   { href: "#text", label: "Text" },
   { href: "#border", label: "Border" },
 ]
 
-type NeutralStep = {
-  step: string
-  variable: string
-  hex: string
-  light: string[]
-  dark: string[]
+/*
+ * Token lists and hex values come from tokens.generated.json — emitted by
+ * scripts/generate-tokens-reference.mjs from the CSS source, and guarded by
+ * `pnpm tokens:reference:check`. Only the usage prose below is hand-written;
+ * a token missing a usage entry still renders (with an empty description),
+ * so coverage can never silently drift.
+ */
+type GeneratedToken = {
+  name: string
+  lightValue?: string
+  darkValue: string | null
+  lightHex?: string
+  darkHex?: string
 }
 
-const NEUTRAL_SCALE: NeutralStep[] = [
-  { step: "0",    variable: "--color-base-white", hex: "#FFFFFF",  light: ["bg/surface", "bg/float"],                         dark: [] },
-  { step: "25",   variable: "--color-neutral-25",    hex: "#F8F8F8",  light: ["bg/muted"],                                      dark: [] },
-  { step: "50",   variable: "--color-neutral-50",    hex: "#F5F6FA",  light: ["bg/page"],                                       dark: [] },
-  { step: "100",  variable: "--color-neutral-100",   hex: "#F4F3F3",  light: ["border/tertiary", "bg/disabled", "bg/neutral-subtle"], dark: [] },
-  { step: "200",  variable: "--color-neutral-200",   hex: "#E9EAEF",  light: ["border/secondary", "bg/neutral-on-subtle"],      dark: [] },
-  { step: "300",  variable: "--color-neutral-300",   hex: "#E4E4E4",  light: ["border/primary", "action/neutral"],              dark: [] },
-  { step: "400",  variable: "--color-neutral-400",   hex: "#D7D5D5",  light: ["text/disabled", "action/neutral-hover"],         dark: [] },
-  { step: "500",  variable: "--color-neutral-500",   hex: "#A1A1A4",  light: ["action/neutral-active"],                         dark: ["text/tertiary", "border/neutral-strong"] },
-  { step: "600",  variable: "--color-neutral-600",   hex: "#8C8C8E",  light: ["text/tertiary"],                                 dark: ["action/neutral-active"] },
-  { step: "700",  variable: "--color-neutral-700",   hex: "#6B6B6D",  light: [],                                                dark: ["border/primary", "text/disabled", "action/neutral-hover"] },
-  { step: "800",  variable: "--color-neutral-800",   hex: "#444445",  light: ["text/secondary", "bg/neutral-strong"],           dark: ["border/secondary", "bg/float", "bg/neutral-subtle", "action/neutral"] },
-  { step: "900",  variable: "--color-neutral-900",   hex: "#2A2A2B",  light: [],                                                dark: ["bg/surface", "border/tertiary"] },
-  { step: "950",  variable: "--color-neutral-950",   hex: "#1B1A1A",  light: ["text/primary", "bg/inverse", "nav-bg"],          dark: ["bg/inverse", "nav-bg"] },
-  { step: "975",  variable: "--color-neutral-975",   hex: "#161616",  light: [],                                                dark: ["bg/muted"] },
-  { step: "1000", variable: "--color-neutral-1000",  hex: "#0D0D0D",  light: [],                                                dark: ["bg/page"] },
-]
+function labelFor(name: string, prefix: string): string {
+  return name
+    .slice(prefix.length)
+    .split("-")
+    .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+    .join(" ")
+}
+
+/* Editorial usage tags for the neutral-scale table (semantic roles per step). */
+const NEUTRAL_USAGE: Record<string, { light: string[]; dark: string[] }> = {
+  "--color-base-white":   { light: ["bg/surface", "bg/float"], dark: [] },
+  "--color-neutral-25":   { light: ["bg/muted"], dark: [] },
+  "--color-neutral-50":   { light: ["bg/page"], dark: [] },
+  "--color-neutral-100":  { light: ["border/tertiary", "bg/disabled", "bg/neutral-subtle"], dark: [] },
+  "--color-neutral-200":  { light: ["border/secondary", "bg/neutral-on-subtle", "bg/neutral-muted"], dark: [] },
+  "--color-neutral-300":  { light: ["border/primary", "action/neutral", "bg/neutral-on-muted"], dark: [] },
+  "--color-neutral-400":  { light: ["text/disabled", "action/neutral-hover"], dark: ["bg/neutral-strong"] },
+  "--color-neutral-500":  { light: ["action/neutral-active"], dark: ["text/tertiary", "border/neutral-strong"] },
+  "--color-neutral-600":  { light: ["text/tertiary"], dark: ["action/neutral-active", "bg/neutral-on-muted"] },
+  "--color-neutral-700":  { light: [], dark: ["border/primary", "text/disabled", "bg/neutral-on-subtle", "bg/neutral-muted"] },
+  "--color-neutral-800":  { light: ["text/secondary", "bg/neutral-strong"], dark: ["border/secondary", "bg/float", "bg/neutral-subtle"] },
+  "--color-neutral-900":  { light: [], dark: ["bg/surface", "border/tertiary"] },
+  "--color-neutral-950":  { light: ["text/primary", "bg/inverse"], dark: ["bg/inverse", "bg/page"] },
+  "--color-neutral-975":  { light: [], dark: ["bg/muted"] },
+  "--color-neutral-1000": { light: [], dark: [] },
+}
+
+const NEUTRAL_SCALE = tokenData.neutralScale
+  .filter((t: GeneratedToken) => t.name !== "--color-base-ink" && t.name !== "--color-base-black")
+  .map((t: GeneratedToken) => ({
+    step: t.name === "--color-base-white" ? "0" : t.name.replace("--color-neutral-", ""),
+    variable: t.name,
+    hex: t.lightHex ?? "",
+    light: NEUTRAL_USAGE[t.name]?.light ?? [],
+    dark: NEUTRAL_USAGE[t.name]?.dark ?? [],
+  }))
 
 function UsageTag({ label, mode }: { label: string; mode: "light" | "dark" }) {
   return (
@@ -62,129 +91,150 @@ type TokenItem = {
   label: string
   token: string
   usage: string
+  lightHex?: string | undefined
+  darkHex?: string | undefined
 }
 
-function Swatch({ label, token, usage, textDark: _textDark = false }: TokenItem & { textDark?: boolean }) {
+function HexPair({ lightHex, darkHex }: { lightHex?: string | undefined; darkHex?: string | undefined }) {
+  if (!lightHex) return null
+  const same = !darkHex || darkHex === lightHex
+  return (
+    <p style={{ margin: "4px 0 0", fontSize: "var(--text-caption-sm)", fontFamily: "var(--font-mono)", color: "var(--color-text-tertiary)" }}>
+      {same ? lightHex : `${lightHex} · dark ${darkHex}`}
+    </p>
+  )
+}
+
+function Swatch({ label, token, usage, lightHex, darkHex }: TokenItem) {
   return (
     <div style={{ borderRadius: "var(--radius-md)", overflow: "hidden", border: "1px solid var(--color-border-tertiary)" }}>
       <div style={{ height: "56px", background: `var(${token})` }} />
       <div style={{ padding: "8px 10px", background: "var(--color-bg-page)" }}>
         <p style={{ margin: 0, fontSize: "var(--text-sm)", fontWeight: "var(--font-weight-medium)", color: "var(--color-text-primary)" }}>{label}</p>
         <p style={{ margin: "2px 0 0", fontSize: "var(--text-caption-sm)", fontFamily: "var(--font-mono)", color: "var(--color-text-tertiary)" }}>{token}</p>
+        <HexPair lightHex={lightHex} darkHex={darkHex} />
         <p style={{ margin: "6px 0 0", fontSize: "var(--text-caption-sm)", color: "var(--color-text-secondary)", lineHeight: 1.35 }}>{usage}</p>
       </div>
     </div>
   )
 }
 
-const ACTION_GROUPS: TokenItem[] = [
-  { label: "Primary", token: "--color-action-primary", usage: "Primary interactive fill, default state." },
-  { label: "Primary Hover", token: "--color-action-primary-hover", usage: "Primary interactive fill on hover." },
-  { label: "Primary Active", token: "--color-action-primary-active", usage: "Primary interactive fill while pressed." },
-  { label: "Primary Subtle", token: "--color-action-primary-subtle", usage: "Low-emphasis primary actions and selected fills." },
-  { label: "Primary Subtle Hover", token: "--color-action-primary-subtle-hover", usage: "Low-emphasis primary action hover." },
-  { label: "Primary Subtle Active", token: "--color-action-primary-subtle-active", usage: "Low-emphasis primary action pressed state." },
-  { label: "Neutral", token: "--color-action-neutral", usage: "Neutral controls, secondary buttons, toggles." },
-  { label: "Neutral Hover", token: "--color-action-neutral-hover", usage: "Neutral control hover state." },
-  { label: "Neutral Active", token: "--color-action-neutral-active", usage: "Neutral control pressed state." },
-  { label: "Neutral Subtle", token: "--color-action-neutral-subtle", usage: "Quiet neutral controls and selected rows." },
-  { label: "Neutral Subtle Hover", token: "--color-action-neutral-subtle-hover", usage: "Quiet neutral control hover state." },
-  { label: "Neutral Subtle Active", token: "--color-action-neutral-subtle-active", usage: "Quiet neutral control pressed state." },
-  { label: "Brand", token: "--color-action-brand", usage: "Brand actions and branded confirmation fills." },
-  { label: "Brand Hover", token: "--color-action-brand-hover", usage: "Brand action hover state." },
-  { label: "Brand Active", token: "--color-action-brand-active", usage: "Brand action pressed state." },
-  { label: "Brand Subtle", token: "--color-action-brand-subtle", usage: "Low-emphasis brand action background." },
-  { label: "Brand Subtle Hover", token: "--color-action-brand-subtle-hover", usage: "Low-emphasis brand action hover." },
-  { label: "Brand Subtle Active", token: "--color-action-brand-subtle-active", usage: "Low-emphasis brand action pressed state." },
-  { label: "Success", token: "--color-action-success", usage: "Confirm / success action fill." },
-  { label: "Success Hover", token: "--color-action-success-hover", usage: "Success action hover state." },
-  { label: "Success Active", token: "--color-action-success-active", usage: "Success action pressed state." },
-  { label: "Success Subtle", token: "--color-action-success-subtle", usage: "Low-emphasis success action background." },
-  { label: "Success Subtle Hover", token: "--color-action-success-subtle-hover", usage: "Low-emphasis success action hover." },
-  { label: "Success Subtle Active", token: "--color-action-success-subtle-active", usage: "Low-emphasis success action pressed state." },
-  { label: "Destructive", token: "--color-action-destructive", usage: "Destructive action fill." },
-  { label: "Destructive Hover", token: "--color-action-destructive-hover", usage: "Destructive action hover state." },
-  { label: "Destructive Active", token: "--color-action-destructive-active", usage: "Destructive action pressed state." },
-  { label: "Destructive Subtle", token: "--color-action-destructive-subtle", usage: "Low-emphasis destructive action background." },
-  { label: "Destructive Subtle Hover", token: "--color-action-destructive-subtle-hover", usage: "Low-emphasis destructive action hover." },
-  { label: "Destructive Subtle Active", token: "--color-action-destructive-subtle-active", usage: "Low-emphasis destructive action pressed state." },
-  { label: "Warning", token: "--color-action-warning", usage: "Warning or caution action fill." },
-  { label: "Warning Hover", token: "--color-action-warning-hover", usage: "Warning action hover state." },
-  { label: "Warning Active", token: "--color-action-warning-active", usage: "Warning action pressed state." },
-  { label: "Warning Subtle", token: "--color-action-warning-subtle", usage: "Low-emphasis warning action background." },
-  { label: "Warning Subtle Hover", token: "--color-action-warning-subtle-hover", usage: "Low-emphasis warning action hover." },
-  { label: "Warning Subtle Active", token: "--color-action-warning-subtle-active", usage: "Low-emphasis warning action pressed state." },
-]
+/* Hand-written usage prose per token. Lists themselves come from the
+ * generated data — a new token renders even before prose is added here. */
+const USAGE: Record<string, string> = {
+  "--color-action-primary": "Primary interactive fill, default state.",
+  "--color-action-primary-hover": "Primary interactive fill on hover.",
+  "--color-action-primary-active": "Primary interactive fill while pressed.",
+  "--color-action-primary-subtle": "Low-emphasis primary actions and selected fills.",
+  "--color-action-primary-subtle-hover": "Low-emphasis primary action hover.",
+  "--color-action-primary-subtle-active": "Low-emphasis primary action pressed state.",
+  "--color-action-neutral": "Neutral controls, secondary buttons, toggles.",
+  "--color-action-neutral-hover": "Neutral control hover state.",
+  "--color-action-neutral-active": "Neutral control pressed state.",
+  "--color-action-neutral-subtle": "Quiet neutral controls and selected rows.",
+  "--color-action-neutral-subtle-hover": "Quiet neutral control hover state.",
+  "--color-action-neutral-subtle-active": "Quiet neutral control pressed state.",
+  "--color-action-brand": "Brand actions and branded confirmation fills.",
+  "--color-action-brand-hover": "Brand action hover state.",
+  "--color-action-brand-active": "Brand action pressed state.",
+  "--color-action-brand-subtle": "Low-emphasis brand action background.",
+  "--color-action-brand-subtle-hover": "Low-emphasis brand action hover.",
+  "--color-action-brand-subtle-active": "Low-emphasis brand action pressed state.",
+  "--color-action-success": "Confirm / success action fill.",
+  "--color-action-success-hover": "Success action hover state.",
+  "--color-action-success-active": "Success action pressed state.",
+  "--color-action-success-subtle": "Low-emphasis success action background.",
+  "--color-action-success-subtle-hover": "Low-emphasis success action hover.",
+  "--color-action-success-subtle-active": "Low-emphasis success action pressed state.",
+  "--color-action-destructive": "Destructive action fill.",
+  "--color-action-destructive-hover": "Destructive action hover state.",
+  "--color-action-destructive-active": "Destructive action pressed state.",
+  "--color-action-destructive-subtle": "Low-emphasis destructive action background.",
+  "--color-action-destructive-subtle-hover": "Low-emphasis destructive action hover.",
+  "--color-action-destructive-subtle-active": "Low-emphasis destructive action pressed state.",
+  "--color-action-warning": "Warning or caution action fill.",
+  "--color-action-warning-hover": "Warning action hover state.",
+  "--color-action-warning-active": "Warning action pressed state.",
+  "--color-action-warning-subtle": "Low-emphasis warning action background.",
+  "--color-action-warning-subtle-hover": "Low-emphasis warning action hover.",
+  "--color-action-warning-subtle-active": "Low-emphasis warning action pressed state.",
+  "--color-bg-page": "App canvas and lowest page layer.",
+  "--color-bg-surface": "Raised surfaces: cards, inputs, modals, tables.",
+  "--color-bg-float": "Floating surfaces: dropdowns, popovers, tooltips.",
+  "--color-bg-muted": "Quiet recessed zones, code blocks, wells.",
+  "--color-bg-overlay": "Modal scrims and blocking overlays.",
+  "--color-bg-inverse": "High-contrast inverse blocks.",
+  "--color-bg-disabled": "Disabled backgrounds and inactive fills.",
+  "--color-bg-neutral-subtle": "Neutral badges, tags, soft status fills.",
+  "--color-bg-neutral-on-subtle": "Elements placed on neutral subtle backgrounds.",
+  "--color-bg-neutral-strong": "Strong neutral badges and emphasis fills.",
+  "--color-bg-brand-subtle": "Soft brand badges, highlights, callouts.",
+  "--color-bg-brand-surface": "Brand-tinted panels and selected containers.",
+  "--color-bg-brand-strong": "Strong brand badges and emphasis fills.",
+  "--color-bg-info-subtle": "Soft informational badges and alerts.",
+  "--color-bg-info-surface": "Info panels and alert surfaces.",
+  "--color-bg-info-strong": "Strong informational badges.",
+  "--color-bg-success-subtle": "Soft success badges and alerts.",
+  "--color-bg-success-surface": "Success panels and alert surfaces.",
+  "--color-bg-success-strong": "Strong success badges.",
+  "--color-bg-error-subtle": "Soft error badges and alerts.",
+  "--color-bg-error-surface": "Error panels and alert surfaces.",
+  "--color-bg-error-strong": "Strong error badges.",
+  "--color-bg-warning-subtle": "Soft warning badges and alerts.",
+  "--color-bg-warning-surface": "Warning panels and alert surfaces.",
+  "--color-bg-warning-strong": "Strong warning badges.",
+  "--color-fg-primary": "Primary icons and SVG strokes.",
+  "--color-fg-secondary": "Supporting icons and quiet controls.",
+  "--color-fg-tertiary": "Subtle icons, placeholders, metadata icons.",
+  "--color-fg-disabled": "Disabled icons and inactive glyphs.",
+  "--color-fg-inverse": "Icons on inverse backgrounds.",
+  "--color-fg-on-brand": "Icons on brand-filled controls.",
+  "--color-fg-brand": "Brand icons and accent glyphs.",
+  "--color-fg-info": "Informational icons.",
+  "--color-fg-success": "Success icons.",
+  "--color-fg-error": "Error and destructive icons.",
+  "--color-fg-warning": "Warning and caution icons.",
+  "--color-text-primary": "Main copy, headings, important labels.",
+  "--color-text-secondary": "Supporting copy and secondary labels.",
+  "--color-text-tertiary": "Captions, metadata, helper text.",
+  "--color-text-disabled": "Disabled text and unavailable values.",
+  "--color-text-inverse": "Text on inverse backgrounds.",
+  "--color-text-on-brand": "Text on brand-filled actions.",
+  "--color-text-brand": "Brand text links and accents.",
+  "--color-text-info": "Informational message text.",
+  "--color-text-success": "Success message text.",
+  "--color-text-error": "Error and destructive message text.",
+  "--color-text-warning": "Warning and caution message text.",
+  "--color-border-primary": "Default component outlines and dividers.",
+  "--color-border-secondary": "Lower-emphasis separators and nested outlines.",
+  "--color-border-tertiary": "Subtle separators and quiet outlines.",
+  "--color-border-focus": "Keyboard focus rings and focused inputs.",
+  "--color-border-brand": "Brand-selected component outlines.",
+  "--color-border-error-strong": "Invalid inputs and error boundaries.",
+  "--color-border-info-strong": "Strong informational borders.",
+  "--color-border-success-strong": "Strong success borders and validation states.",
+  "--color-border-warning-strong": "Strong warning borders.",
+  "--color-border-neutral-strong": "High-emphasis neutral outlines.",
+  "--color-border-neutral-subtle": "Low-emphasis neutral outlines.",
+}
 
-const BG_GROUPS: TokenItem[] = [
-  { label: "Page", token: "--color-bg-page", usage: "App canvas and lowest page layer." },
-  { label: "Surface", token: "--color-bg-surface", usage: "Raised surfaces: cards, inputs, modals, tables." },
-  { label: "Float", token: "--color-bg-float", usage: "Floating surfaces: dropdowns, popovers, tooltips." },
-  { label: "Muted", token: "--color-bg-muted", usage: "Quiet recessed zones, code blocks, wells." },
-  { label: "Overlay", token: "--color-bg-overlay", usage: "Modal scrims and blocking overlays." },
-  { label: "Inverse", token: "--color-bg-inverse", usage: "High-contrast inverse blocks." },
-  { label: "Disabled", token: "--color-bg-disabled", usage: "Disabled backgrounds and inactive fills." },
-  { label: "Neutral Subtle", token: "--color-bg-neutral-subtle", usage: "Neutral badges, tags, soft status fills." },
-  { label: "Neutral On Subtle", token: "--color-bg-neutral-on-subtle", usage: "Elements placed on neutral subtle backgrounds." },
-  { label: "Neutral Strong", token: "--color-bg-neutral-strong", usage: "Strong neutral badges and emphasis fills." },
-  { label: "Brand Subtle", token: "--color-bg-brand-subtle", usage: "Soft brand badges, highlights, callouts." },
-  { label: "Brand Surface", token: "--color-bg-brand-surface", usage: "Brand-tinted panels and selected containers." },
-  { label: "Brand Strong", token: "--color-bg-brand-strong", usage: "Strong brand badges and emphasis fills." },
-  { label: "Info Subtle", token: "--color-bg-info-subtle", usage: "Soft informational badges and alerts." },
-  { label: "Info Surface", token: "--color-bg-info-surface", usage: "Info panels and alert surfaces." },
-  { label: "Info Strong", token: "--color-bg-info-strong", usage: "Strong informational badges." },
-  { label: "Success Subtle", token: "--color-bg-success-subtle", usage: "Soft success badges and alerts." },
-  { label: "Success Surface", token: "--color-bg-success-surface", usage: "Success panels and alert surfaces." },
-  { label: "Success Strong", token: "--color-bg-success-strong", usage: "Strong success badges." },
-  { label: "Error Subtle", token: "--color-bg-error-subtle", usage: "Soft error badges and alerts." },
-  { label: "Error Surface", token: "--color-bg-error-surface", usage: "Error panels and alert surfaces." },
-  { label: "Error Strong", token: "--color-bg-error-strong", usage: "Strong error badges." },
-  { label: "Warning Subtle", token: "--color-bg-warning-subtle", usage: "Soft warning badges and alerts." },
-  { label: "Warning Surface", token: "--color-bg-warning-surface", usage: "Warning panels and alert surfaces." },
-  { label: "Warning Strong", token: "--color-bg-warning-strong", usage: "Strong warning badges." },
-]
+function buildGroup(tokens: GeneratedToken[], prefix: string): TokenItem[] {
+  return tokens.map((t) => ({
+    label: labelFor(t.name, prefix),
+    token: t.name,
+    usage: USAGE[t.name] ?? "",
+    lightHex: t.lightHex,
+    darkHex: t.darkHex,
+  }))
+}
 
-const FG_GROUPS: TokenItem[] = [
-  { label: "Primary", token: "--color-fg-primary", usage: "Primary icons and SVG strokes." },
-  { label: "Secondary", token: "--color-fg-secondary", usage: "Supporting icons and quiet controls." },
-  { label: "Tertiary", token: "--color-fg-tertiary", usage: "Subtle icons, placeholders, metadata icons." },
-  { label: "Disabled", token: "--color-fg-disabled", usage: "Disabled icons and inactive glyphs." },
-  { label: "Inverse", token: "--color-fg-inverse", usage: "Icons on inverse backgrounds." },
-  { label: "On Brand", token: "--color-fg-on-brand", usage: "Icons on brand-filled controls." },
-  { label: "Brand", token: "--color-fg-brand", usage: "Brand icons and accent glyphs." },
-  { label: "Info", token: "--color-fg-info", usage: "Informational icons." },
-  { label: "Success", token: "--color-fg-success", usage: "Success icons." },
-  { label: "Destructive", token: "--color-fg-error", usage: "Error and destructive icons." },
-  { label: "Warning", token: "--color-fg-warning", usage: "Warning and caution icons." },
-]
-
-const TEXT_GROUPS: TokenItem[] = [
-  { label: "Primary", token: "--color-text-primary", usage: "Main copy, headings, important labels." },
-  { label: "Secondary", token: "--color-text-secondary", usage: "Supporting copy and secondary labels." },
-  { label: "Tertiary", token: "--color-text-tertiary", usage: "Captions, metadata, helper text." },
-  { label: "Disabled", token: "--color-text-disabled", usage: "Disabled text and unavailable values." },
-  { label: "Inverse", token: "--color-text-inverse", usage: "Text on inverse backgrounds." },
-  { label: "On Brand", token: "--color-text-on-brand", usage: "Text on brand-filled actions." },
-  { label: "Brand", token: "--color-text-brand", usage: "Brand text links and accents." },
-  { label: "Info", token: "--color-text-info", usage: "Informational message text." },
-  { label: "Success", token: "--color-text-success", usage: "Success message text." },
-  { label: "Error", token: "--color-text-error", usage: "Error and destructive message text." },
-  { label: "Warning", token: "--color-text-warning", usage: "Warning and caution message text." },
-]
-
-const BORDER_GROUPS: TokenItem[] = [
-  { label: "Primary", token: "--color-border-primary", usage: "Default component outlines and dividers." },
-  { label: "Secondary", token: "--color-border-secondary", usage: "Lower-emphasis separators and nested outlines." },
-  { label: "Tertiary", token: "--color-border-tertiary", usage: "Subtle separators and quiet outlines." },
-  { label: "Focus", token: "--color-border-focus", usage: "Keyboard focus rings and focused inputs." },
-  { label: "Brand", token: "--color-border-brand", usage: "Brand-selected component outlines." },
-  { label: "Error", token: "--color-border-error-strong", usage: "Invalid inputs and error boundaries." },
-  { label: "Info Strong", token: "--color-border-info-strong", usage: "Strong informational borders." },
-  { label: "Success Strong", token: "--color-border-success-strong", usage: "Strong success borders and validation states." },
-  { label: "Warning Strong", token: "--color-border-warning-strong", usage: "Strong warning borders." },
-  { label: "Neutral Strong", token: "--color-border-neutral-strong", usage: "High-emphasis neutral outlines." },
-  { label: "Neutral Subtle", token: "--color-border-neutral-subtle", usage: "Low-emphasis neutral outlines." },
-]
+const ACTION_GROUPS = buildGroup(tokenData.groups.action, "--color-action-")
+const BG_GROUPS = buildGroup(tokenData.groups.background, "--color-bg-")
+const FG_GROUPS = buildGroup(tokenData.groups.foreground, "--color-fg-")
+const TEXT_GROUPS = buildGroup(tokenData.groups.text, "--color-text-")
+const BORDER_GROUPS = buildGroup(tokenData.groups.border, "--color-border-")
+const CONTROL_GROUPS = buildGroup(tokenData.groups.control, "--color-control-")
+const FEEDBACK_GROUPS = buildGroup(tokenData.groups.feedback, "--color-feedback-")
 
 /* ─── Annotation diagram data ─── */
 type AnnotationLabel = {
@@ -501,6 +551,18 @@ export default function ColorsPage() {
       <DocsPageSection id="background" title="Background" description="Surface elevation tokens plus status and intent backgrounds. Surface tokens describe where the layer sits; intent tokens describe the message or state.">
       <div style={swatchGridStyle}>
         {BG_GROUPS.map(s => <Swatch key={s.token} {...s} />)}
+      </div>
+      </DocsPageSection>
+
+      <DocsPageSection id="control" title="Control" description="Idle and checked states for form controls: Checkbox, Radio, Toggle.">
+      <div style={swatchGridStyle}>
+        {CONTROL_GROUPS.map(s => <Swatch key={s.token} {...s} />)}
+      </div>
+      </DocsPageSection>
+
+      <DocsPageSection id="feedback" title="Feedback" description="Alert and feedback-surface roles: intent backgrounds, borders, accents, and action colors that keep the published Alert appearance stable.">
+      <div style={swatchGridStyle}>
+        {FEEDBACK_GROUPS.map(s => <Swatch key={s.token} {...s} />)}
       </div>
       </DocsPageSection>
 

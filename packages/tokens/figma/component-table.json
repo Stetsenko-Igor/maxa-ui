@@ -42,7 +42,7 @@
     },
     "header-bg": {
       "$description": "Table: header bg.",
-      "$value": "var(--color-bg-muted)",
+      "$value": "var(--color-bg-neutral-on-muted)",
       "$type": "color"
     },
     "header-text": {
