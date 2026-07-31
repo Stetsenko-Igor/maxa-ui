@@ -472,7 +472,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
 
 /* ── Feedback — reusable intent surfaces ── */
---color-feedback-text: var(--color-base-ink);/* dark: var(--color-neutral-100) */
+--color-feedback-text: var(--color-text-primary);/* dark: var(--color-text-primary) */
 --color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-blue-800) */
 --color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-blue-600) */
 --color-feedback-info-accent: var(--color-blue-500);/* dark: var(--color-blue-300) */
