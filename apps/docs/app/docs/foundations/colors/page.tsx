@@ -44,12 +44,12 @@ const NEUTRAL_USAGE: Record<string, { light: string[]; dark: string[] }> = {
   "--color-neutral-25":   { light: ["bg/muted"], dark: [] },
   "--color-neutral-50":   { light: ["bg/page"], dark: [] },
   "--color-neutral-100":  { light: ["border/tertiary", "bg/disabled", "bg/neutral-subtle"], dark: [] },
-  "--color-neutral-200":  { light: ["border/secondary", "bg/neutral-on-subtle", "bg/neutral-muted"], dark: [] },
+  "--color-neutral-200":  { light: ["border/secondary", "bg/neutral-muted"], dark: [] },
   "--color-neutral-300":  { light: ["border/primary", "action/neutral", "bg/neutral-on-muted"], dark: [] },
   "--color-neutral-400":  { light: ["text/disabled", "action/neutral-hover"], dark: ["bg/neutral-strong"] },
   "--color-neutral-500":  { light: ["action/neutral-active"], dark: ["text/tertiary", "border/neutral-strong"] },
   "--color-neutral-600":  { light: ["text/tertiary"], dark: ["action/neutral-active", "bg/neutral-on-muted"] },
-  "--color-neutral-700":  { light: [], dark: ["border/primary", "text/disabled", "bg/neutral-on-subtle", "bg/neutral-muted"] },
+  "--color-neutral-700":  { light: [], dark: ["border/primary", "text/disabled", "bg/neutral-muted"] },
   "--color-neutral-800":  { light: ["text/secondary", "bg/neutral-strong"], dark: ["border/secondary", "bg/float", "bg/neutral-subtle"] },
   "--color-neutral-900":  { light: [], dark: ["bg/surface", "border/tertiary"] },
   "--color-neutral-950":  { light: ["text/primary", "bg/inverse"], dark: ["bg/inverse", "bg/page"] },
@@ -167,7 +167,6 @@ const USAGE: Record<string, string> = {
   "--color-bg-disabled": "Disabled backgrounds and inactive fills.",
   "--color-bg-neutral-surface": "Lowest neutral surface tint, one step below subtle.",
   "--color-bg-neutral-subtle": "Neutral badges, tags, soft status fills.",
-  "--color-bg-neutral-on-subtle": "Elements placed on neutral subtle backgrounds.",
   "--color-bg-neutral-strong": "Strong neutral badges and emphasis fills.",
   "--color-bg-brand-subtle": "Soft brand badges, highlights, callouts.",
   "--color-bg-brand-surface": "Brand-tinted panels and selected containers.",
@@ -217,6 +216,10 @@ const USAGE: Record<string, string> = {
   "--color-border-warning-strong": "Strong warning borders.",
   "--color-border-neutral-strong": "High-emphasis neutral outlines.",
   "--color-border-neutral-subtle": "Low-emphasis neutral outlines.",
+  "--color-feedback-neutral-action": "Neutral feedback action link and button color.",
+  "--color-feedback-neutral-action-hover": "Neutral feedback action hover color.",
+  "--color-feedback-emphasize-action": "Emphasized feedback action link and button color.",
+  "--color-feedback-emphasize-action-hover": "Emphasized feedback action hover color.",
 }
 
 function buildGroup(tokens: GeneratedToken[], prefix: string): TokenItem[] {

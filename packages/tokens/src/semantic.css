@@ -71,7 +71,6 @@
   /* ── Background — status/intent (orthogonal to elevation) ──────── */
   --color-bg-neutral-surface:   var(--color-neutral-50);
   --color-bg-neutral-subtle:    var(--color-neutral-100);
-  --color-bg-neutral-on-subtle: var(--color-neutral-200);
   --color-bg-neutral-on-muted:  var(--color-neutral-300);
   --color-bg-neutral-strong:    var(--color-neutral-800);
   --color-bg-brand-subtle:     var(--color-brand-50);
@@ -247,10 +246,14 @@
   --color-feedback-neutral-border:      var(--color-neutral-400);
   --color-feedback-neutral-accent:      var(--color-neutral-800);
   --color-feedback-neutral-text:        var(--color-neutral-950);
+  --color-feedback-neutral-action:      var(--color-action-primary);
+  --color-feedback-neutral-action-hover: var(--color-action-primary-hover);
   --color-feedback-emphasize-bg:        var(--color-neutral-50);
   --color-feedback-emphasize-border:    var(--color-neutral-400);
   --color-feedback-emphasize-accent:    var(--color-neutral-800);
   --color-feedback-emphasize-text:      var(--color-neutral-950);
+  --color-feedback-emphasize-action:    var(--color-action-primary);
+  --color-feedback-emphasize-action-hover: var(--color-action-primary-hover);
 
   /* ── Shared component support roles ──────────────────────────────── */
   --color-bg-overlay-strong:       var(--color-neutral-alpha-ink-50);
@@ -312,7 +315,6 @@
   /* ── Background — status/intent (dark) ──────────────────────────── */
   --color-bg-neutral-surface:   var(--color-neutral-900);
   --color-bg-neutral-subtle:    var(--color-neutral-800);
-  --color-bg-neutral-on-subtle: var(--color-neutral-700);
   --color-bg-neutral-on-muted:  var(--color-neutral-600);
   --color-bg-neutral-strong:    var(--color-neutral-400);
   --color-bg-brand-subtle:     var(--color-brand-950);
@@ -483,10 +485,14 @@
   --color-feedback-neutral-border:      var(--color-neutral-800);
   --color-feedback-neutral-accent:      var(--color-neutral-500);
   --color-feedback-neutral-text:        var(--color-neutral-100);
+  --color-feedback-neutral-action:      var(--color-blue-400);
+  --color-feedback-neutral-action-hover: var(--color-blue-300);
   --color-feedback-emphasize-bg:        var(--color-neutral-950);
   --color-feedback-emphasize-border:    var(--color-neutral-800);
   --color-feedback-emphasize-accent:    var(--color-neutral-500);
   --color-feedback-emphasize-text:      var(--color-neutral-100);
+  --color-feedback-emphasize-action:    var(--color-blue-400);
+  --color-feedback-emphasize-action-hover: var(--color-blue-300);
 
   /* ── Shared component support roles — dark ──────────────────────── */
   --color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);

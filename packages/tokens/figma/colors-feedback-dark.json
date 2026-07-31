@@ -33,13 +33,17 @@
       "bg": { "$value": "{Colors.Neutral.900}", "$type": "color" },
       "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
       "accent": { "$value": "{Colors.Neutral.500}", "$type": "color" },
-      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
+      "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     },
     "emphasize": {
       "bg": { "$value": "{Colors.Neutral.950}", "$type": "color" },
       "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
       "accent": { "$value": "{Colors.Neutral.500}", "$type": "color" },
-      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
+      "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     }
   },
   "background": {

@@ -45,6 +45,11 @@
       "$value": "var(--color-bg-neutral-on-muted)",
       "$type": "color"
     },
+    "fg": {
+      "$description": "Table: icons and secondary foreground.",
+      "$value": "var(--color-fg-secondary)",
+      "$type": "color"
+    },
     "header-text": {
       "$description": "Table: header text.",
       "$value": "var(--color-text-tertiary)",

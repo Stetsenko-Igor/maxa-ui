@@ -498,11 +498,6 @@
       "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
-    "bg-neutral-on-subtle": {
-      "$description": "Neutral fill placed on a subtle neutral background.",
-      "$value": "{Colors.Neutral.200}",
-      "$type": "color"
-    },
     "bg-neutral-on-muted": {
       "$description": "Neutral fill one step above muted, used for table headers and wells.",
       "$value": "{Colors.Neutral.300}",

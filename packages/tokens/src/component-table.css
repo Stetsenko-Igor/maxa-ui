@@ -11,6 +11,7 @@
   --table-line-height: var(--text-sm--line-height);
 
   --table-header-bg: var(--color-bg-neutral-on-muted);
+  --table-fg: var(--color-fg-secondary);
   --table-header-text: var(--color-text-primary);
   --table-header-font-size: var(--text-sm);
   --table-header-line-height: var(--text-sm--line-height);

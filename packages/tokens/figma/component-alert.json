@@ -244,6 +244,16 @@
           "$description": "Alert, color neutral: text color.",
           "$value": "{Color modes/text/text-primary}",
           "$type": "color"
+        },
+        "action": {
+          "$description": "Alert, color neutral: action.",
+          "$value": "{Color modes/feedback/neutral/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color neutral: action (hover state).",
+          "$value": "{Color modes/feedback/neutral/action-hover}",
+          "$type": "color"
         }
       },
       "emphasize": {
@@ -265,6 +275,16 @@
         "text": {
           "$description": "Alert, color emphasize: text color.",
           "$value": "{Color modes/text/text-primary}",
+          "$type": "color"
+        },
+        "action": {
+          "$description": "Alert, color emphasize: action.",
+          "$value": "{Color modes/feedback/emphasize/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color emphasize: action (hover state).",
+          "$value": "{Color modes/feedback/emphasize/action-hover}",
           "$type": "color"
         }
       }

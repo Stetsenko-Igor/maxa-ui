@@ -1260,7 +1260,6 @@
           "background/bg-info-strong": "{Colors.Blue.700}",
           "background/bg-neutral-surface": "{Colors.Neutral.50}",
           "background/bg-neutral-subtle": "{Colors.Neutral.100}",
-          "background/bg-neutral-on-subtle": "{Colors.Neutral.200}",
           "background/bg-neutral-on-muted": "{Colors.Neutral.300}",
           "background/bg-neutral-strong": "{Colors.Neutral.800}",
           "background/bg-neutral-muted": "{Colors.Neutral.200}",
@@ -1297,10 +1296,14 @@
           "feedback/neutral/border": "{Colors.Neutral.400}",
           "feedback/neutral/accent": "{Colors.Neutral.800}",
           "feedback/neutral/text": "{Colors.Neutral.950}",
+          "feedback/neutral/action": "{Colors.Blue.500}",
+          "feedback/neutral/action-hover": "{Colors.Blue.600}",
           "feedback/emphasize/bg": "{Colors.Neutral.50}",
           "feedback/emphasize/border": "{Colors.Neutral.400}",
           "feedback/emphasize/accent": "{Colors.Neutral.800}",
           "feedback/emphasize/text": "{Colors.Neutral.950}",
+          "feedback/emphasize/action": "{Colors.Blue.500}",
+          "feedback/emphasize/action-hover": "{Colors.Blue.600}",
           "background/bg-overlay-strong": "{Colors.Neutral (alpha).Ink.50}",
           "action/action-menu-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-subtle-active}",
@@ -1495,7 +1498,6 @@
           "background/bg-info-strong": "{Colors.Blue.500}",
           "background/bg-neutral-surface": "{Colors.Neutral.900}",
           "background/bg-neutral-subtle": "{Colors.Neutral.800}",
-          "background/bg-neutral-on-subtle": "{Colors.Neutral.700}",
           "background/bg-neutral-on-muted": "{Colors.Neutral.600}",
           "background/bg-neutral-strong": "{Colors.Neutral.400}",
           "background/bg-neutral-muted": "{Colors.Neutral.700}",
@@ -1532,10 +1534,14 @@
           "feedback/neutral/border": "{Colors.Neutral.800}",
           "feedback/neutral/accent": "{Colors.Neutral.500}",
           "feedback/neutral/text": "{Colors.Neutral.100}",
+          "feedback/neutral/action": "{Colors.Blue.400}",
+          "feedback/neutral/action-hover": "{Colors.Blue.300}",
           "feedback/emphasize/bg": "{Colors.Neutral.950}",
           "feedback/emphasize/border": "{Colors.Neutral.800}",
           "feedback/emphasize/accent": "{Colors.Neutral.500}",
           "feedback/emphasize/text": "{Colors.Neutral.100}",
+          "feedback/emphasize/action": "{Colors.Blue.400}",
+          "feedback/emphasize/action-hover": "{Colors.Blue.300}",
           "background/bg-overlay-strong": "{Colors.Neutral (alpha).Black.72}",
           "action/action-menu-hover": "{Color modes/action/action-neutral-hover}",
           "action/action-menu-active": "{Color modes/action/action-neutral-active}",
@@ -1731,7 +1737,6 @@
         "background/bg-info-strong": "Strong info fill.",
         "background/bg-neutral-surface": "Lowest neutral surface tint, one step below subtle.",
         "background/bg-neutral-subtle": "Subtle neutral section background.",
-        "background/bg-neutral-on-subtle": "Neutral fill placed on a subtle neutral background.",
         "background/bg-neutral-on-muted": "Neutral fill one step above muted, used for table headers and wells.",
         "background/bg-neutral-strong": "Strong neutral fill (inverse).",
         "background/bg-neutral-muted": "Slightly stronger neutral fill.",
@@ -1768,10 +1773,14 @@
         "feedback/neutral/border": "Neutral feedback border isolated from shared border semantics.",
         "feedback/neutral/accent": "Neutral feedback icon and accent stripe.",
         "feedback/neutral/text": "Neutral feedback text.",
+        "feedback/neutral/action": "Neutral feedback action link and button color.",
+        "feedback/neutral/action-hover": "Neutral feedback action hover color.",
         "feedback/emphasize/bg": "Emphasized feedback background isolated from shared page semantics.",
         "feedback/emphasize/border": "Emphasized feedback border isolated from shared border semantics.",
         "feedback/emphasize/accent": "Emphasized feedback icon and accent stripe.",
         "feedback/emphasize/text": "Emphasized feedback text.",
+        "feedback/emphasize/action": "Emphasize feedback action link and button color.",
+        "feedback/emphasize/action-hover": "Emphasize feedback action hover color.",
         "background/bg-overlay-strong": "High-emphasis modal overlay.",
         "action/action-menu-hover": "Menu item hover background.",
         "action/action-menu-active": "Menu item active background.",
@@ -1966,7 +1975,6 @@
         "background/bg-info-strong": "COLOR",
         "background/bg-neutral-surface": "COLOR",
         "background/bg-neutral-subtle": "COLOR",
-        "background/bg-neutral-on-subtle": "COLOR",
         "background/bg-neutral-on-muted": "COLOR",
         "background/bg-neutral-strong": "COLOR",
         "background/bg-neutral-muted": "COLOR",
@@ -2003,10 +2011,14 @@
         "feedback/neutral/border": "COLOR",
         "feedback/neutral/accent": "COLOR",
         "feedback/neutral/text": "COLOR",
+        "feedback/neutral/action": "COLOR",
+        "feedback/neutral/action-hover": "COLOR",
         "feedback/emphasize/bg": "COLOR",
         "feedback/emphasize/border": "COLOR",
         "feedback/emphasize/accent": "COLOR",
         "feedback/emphasize/text": "COLOR",
+        "feedback/emphasize/action": "COLOR",
+        "feedback/emphasize/action-hover": "COLOR",
         "background/bg-overlay-strong": "COLOR",
         "action/action-menu-hover": "COLOR",
         "action/action-menu-active": "COLOR",
@@ -2433,9 +2445,6 @@
         "background/bg-neutral-subtle": [
           "ALL_FILLS"
         ],
-        "background/bg-neutral-on-subtle": [
-          "ALL_FILLS"
-        ],
         "background/bg-neutral-on-muted": [
           "ALL_FILLS"
         ],
@@ -2548,6 +2557,12 @@
         "feedback/neutral/text": [
           "TEXT_FILL"
         ],
+        "feedback/neutral/action": [
+          "ALL_FILLS"
+        ],
+        "feedback/neutral/action-hover": [
+          "ALL_FILLS"
+        ],
         "feedback/emphasize/bg": [
           "ALL_FILLS"
         ],
@@ -2559,6 +2574,12 @@
         ],
         "feedback/emphasize/text": [
           "TEXT_FILL"
+        ],
+        "feedback/emphasize/action": [
+          "ALL_FILLS"
+        ],
+        "feedback/emphasize/action-hover": [
+          "ALL_FILLS"
         ],
         "background/bg-overlay-strong": [
           "ALL_FILLS"
@@ -3244,10 +3265,14 @@
           "Alert/color/neutral/border": "{Color modes/feedback/neutral/border}",
           "Alert/color/neutral/accent": "{Color modes/feedback/neutral/accent}",
           "Alert/color/neutral/text": "{Color modes/text/text-primary}",
+          "Alert/color/neutral/action": "{Color modes/feedback/neutral/action}",
+          "Alert/color/neutral/action-hover": "{Color modes/feedback/neutral/action-hover}",
           "Alert/color/emphasize/bg": "{Color modes/feedback/emphasize/bg}",
           "Alert/color/emphasize/border": "{Color modes/feedback/emphasize/border}",
           "Alert/color/emphasize/accent": "{Color modes/feedback/emphasize/accent}",
           "Alert/color/emphasize/text": "{Color modes/text/text-primary}",
+          "Alert/color/emphasize/action": "{Color modes/feedback/emphasize/action}",
+          "Alert/color/emphasize/action-hover": "{Color modes/feedback/emphasize/action-hover}",
           "Avatar/surface/bg": "{Color modes/background/bg-brand-subtle}",
           "Avatar/surface/text": "{Color modes/text/text-brand}",
           "Avatar/surface/border": "{Color modes/border/border-secondary}",
@@ -3992,6 +4017,7 @@
           "Table/font-size": "{Typography/Font size/text-sm}",
           "Table/line-height": "{Typography/Line height/text-sm}",
           "Table/header-bg": "{Color modes/background/bg-neutral-on-muted}",
+          "Table/fg": "{Color modes/foreground/fg-secondary}",
           "Table/header-text": "{Color modes/text/text-tertiary}",
           "Table/header-font-size": "{Typography/Font size/caption-sm}",
           "Table/header-line-height": "{Typography/Line height/caption-sm}",
@@ -4281,10 +4307,14 @@
         "Alert/color/neutral/border": "Alert, color neutral: border.",
         "Alert/color/neutral/accent": "Alert, color neutral: accent.",
         "Alert/color/neutral/text": "Alert, color neutral: text color.",
+        "Alert/color/neutral/action": "Alert, color neutral: action.",
+        "Alert/color/neutral/action-hover": "Alert, color neutral: action (hover state).",
         "Alert/color/emphasize/bg": "Alert, color emphasize: background.",
         "Alert/color/emphasize/border": "Alert, color emphasize: border.",
         "Alert/color/emphasize/accent": "Alert, color emphasize: accent.",
         "Alert/color/emphasize/text": "Alert, color emphasize: text color.",
+        "Alert/color/emphasize/action": "Alert, color emphasize: action.",
+        "Alert/color/emphasize/action-hover": "Alert, color emphasize: action (hover state).",
         "Avatar/surface/bg": "Avatar, surface: background.",
         "Avatar/surface/text": "Avatar, surface: text color.",
         "Avatar/surface/border": "Avatar, surface: border.",
@@ -5029,6 +5059,7 @@
         "Table/font-size": "Table: font size.",
         "Table/line-height": "Table: line height.",
         "Table/header-bg": "Table: header bg.",
+        "Table/fg": "Table: icons and secondary foreground.",
         "Table/header-text": "Table: header text.",
         "Table/header-font-size": "Table: header font size.",
         "Table/header-line-height": "Table: header line height.",
@@ -5317,10 +5348,14 @@
         "Alert/color/neutral/border": "COLOR",
         "Alert/color/neutral/accent": "COLOR",
         "Alert/color/neutral/text": "COLOR",
+        "Alert/color/neutral/action": "COLOR",
+        "Alert/color/neutral/action-hover": "COLOR",
         "Alert/color/emphasize/bg": "COLOR",
         "Alert/color/emphasize/border": "COLOR",
         "Alert/color/emphasize/accent": "COLOR",
         "Alert/color/emphasize/text": "COLOR",
+        "Alert/color/emphasize/action": "COLOR",
+        "Alert/color/emphasize/action-hover": "COLOR",
         "Avatar/surface/bg": "COLOR",
         "Avatar/surface/text": "COLOR",
         "Avatar/surface/border": "COLOR",
@@ -6065,6 +6100,7 @@
         "Table/font-size": "FLOAT",
         "Table/line-height": "FLOAT",
         "Table/header-bg": "COLOR",
+        "Table/fg": "COLOR",
         "Table/header-text": "COLOR",
         "Table/header-font-size": "FLOAT",
         "Table/header-line-height": "FLOAT",
@@ -6441,6 +6477,12 @@
         "Alert/color/neutral/text": [
           "TEXT_FILL"
         ],
+        "Alert/color/neutral/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/neutral/action-hover": [
+          "ALL_FILLS"
+        ],
         "Alert/color/emphasize/bg": [
           "ALL_FILLS"
         ],
@@ -6452,6 +6494,12 @@
         ],
         "Alert/color/emphasize/text": [
           "TEXT_FILL"
+        ],
+        "Alert/color/emphasize/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/emphasize/action-hover": [
+          "ALL_FILLS"
         ],
         "Avatar/surface/bg": [
           "ALL_FILLS"
@@ -8670,6 +8718,9 @@
         ],
         "Table/header-bg": [
           "ALL_FILLS"
+        ],
+        "Table/fg": [
+          "SHAPE_FILL"
         ],
         "Table/header-text": [
           "TEXT_FILL"

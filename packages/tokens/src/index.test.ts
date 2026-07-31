@@ -184,7 +184,7 @@ describe("semantic.css — bg + action", () => {
   it("defines all background tokens", () => {
     for (const t of [
       "bg-page", "bg-surface", "bg-float", "bg-muted",
-      "bg-neutral-subtle", "bg-neutral-on-subtle", "bg-neutral-strong",
+      "bg-neutral-surface", "bg-neutral-subtle", "bg-neutral-on-muted", "bg-neutral-strong",
       "bg-disabled", "bg-overlay", "bg-inverse",
       "bg-brand-subtle", "bg-brand-surface", "bg-brand-strong",
       "bg-info-subtle", "bg-info-surface",
@@ -712,15 +712,16 @@ describe("figma import bundle", () => {
     const dark = bundle.collections["Color modes"]?.modes.Dark
     const css = readFileSync(join(root, "src/semantic.css"), "utf-8")
 
-    // The reconciled ladder: surface → subtle → on-subtle → muted → on-muted → strong.
+    // The reconciled ladder: surface → subtle → muted → on-muted → strong.
     expect(light?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.50}")
     expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.900}")
-    expect(light?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.200}")
-    expect(dark?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.700}")
+    expect(light?.["background/bg-neutral-on-subtle"]).toBeUndefined()
+    expect(light?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.200}")
+    expect(dark?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.700}")
     expect(light?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.300}")
     expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.600}")
     expect(css).toContain("--color-bg-neutral-surface:   var(--color-neutral-50)")
-    expect(css).toContain("--color-bg-neutral-on-subtle: var(--color-neutral-200)")
+    expect(css).not.toContain("--color-bg-neutral-on-subtle")
     expect(css).toContain("--color-bg-neutral-on-muted:  var(--color-neutral-300)")
 
     // Table header consumes the new step.
@@ -787,8 +788,9 @@ describe("figma import bundle", () => {
     const values = component?.modes.Default ?? {}
 
     expect(Object.keys(component?.modes ?? {})).toEqual(["Default"])
+    // 6 intents × (bg, border, accent, text, action, action-hover) = 36.
     const alertColorNames = Object.keys(values).filter((name) => name.startsWith("Alert/color/"))
-    expect(alertColorNames).toHaveLength(32)
+    expect(alertColorNames).toHaveLength(36)
     for (const [name, type] of Object.entries(component?.types ?? {})) {
       if (type === "COLOR") expect(values[name], name).toMatch(/^\{[^}]+\}$/)
     }
