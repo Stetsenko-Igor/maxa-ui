@@ -6,13 +6,25 @@
 // Read-only: prints a changelist, never writes anything. Igor reviews the
 // output and tells Claude which changes to apply to the source CSS/JSON.
 //
+// Compared per collection: mode presence, token presence, per-mode values,
+// and the mode-independent metadata maps (types, scopes, descriptions).
+//
 // Representation differences are normalized away so only real edits surface:
 //   - alias style: `{Colors.Neutral.900}` (dot shorthand), `{Utility/x}`
 //     (same-collection path), and `{Primitives/Colors/Neutral/900}` (full
 //     path) canonicalize to the same target — mirrors the importer's
 //     parseAliasPath rules exactly;
-//   - hex case and redundant alpha: `#2d2d2e` == `#2D2D2E` == `#2D2D2EFF`;
+//   - CSS color literals: `rgba(27, 26, 26, 0.5)` == `#1B1A1A80` after the
+//     same 8-bit channel quantization the plugin exporter applies
+//     (Math.round(channel * 255)); hex case and redundant FF alpha ignored;
+//   - scope arrays: order/duplicates ignored; `[]` == `["ALL_SCOPES"]`
+//     because the Figma API serializes unrestricted scopes as ALL_SCOPES;
+//   - descriptions: surrounding whitespace ignored;
 //   - float drift in numbers (Figma rounds some resolved values).
+//
+// Aliases are compared by target path only — an alias is never resolved to
+// the color it happens to produce, so rebinding to a different primitive is
+// always reported even when the resolved color is identical.
 //
 // Mode-set differences (e.g. an export that still carries the legacy
 // Component-based Light/Dark split vs the repo's single Default mode) are
@@ -70,21 +82,61 @@ export function normalizeHex(value) {
   return alpha && alpha !== "FF" ? `#${rgb}${alpha}` : `#${rgb}`
 }
 
+/**
+ * Canonicalizes a CSS color literal (#RRGGBB, #RRGGBBAA, rgb(), rgba()) to
+ * uppercase #RRGGBB / #RRGGBBAA using the plugin exporter's 8-bit channel
+ * quantization (Math.round(channel * 255) for the alpha). Redundant FF alpha
+ * is stripped. Non-color strings are returned trimmed and unchanged.
+ */
+export function normalizeCssColor(value) {
+  const trimmed = value.trim()
+
+  if (/^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$/.test(trimmed)) return normalizeHex(trimmed)
+
+  const m = /^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)\s*(?:,\s*([\d.]+)\s*)?\)$/.exec(trimmed)
+  if (!m) return trimmed
+
+  const toHexByte = (n) => Math.round(n).toString(16).padStart(2, "0").toUpperCase()
+  const r = toHexByte(Number(m[1]))
+  const g = toHexByte(Number(m[2]))
+  const b = toHexByte(Number(m[3]))
+  const alpha = m[4] === undefined ? 1 : Number(m[4])
+  const a = toHexByte(alpha * 255)
+  return a === "FF" ? `#${r}${g}${b}` : `#${r}${g}${b}${a}`
+}
+
+/**
+ * Canonicalizes a Figma scope array: sorted, deduplicated; `[]` and
+ * `["ALL_SCOPES"]` collapse to the same form because the Figma API
+ * serializes unrestricted scopes as ALL_SCOPES.
+ */
+export function normalizeScopes(scopes) {
+  const unique = [...new Set(scopes ?? [])].sort()
+  if (unique.length === 0) return ["ALL_SCOPES"]
+  return unique
+}
+
 function isAlias(value) {
   return typeof value === "string" && /^\{[^}]+\}$/.test(value.trim())
 }
 
-function isHex(value) {
-  return typeof value === "string" && /^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$/.test(value.trim())
+function isCssColor(value) {
+  if (typeof value !== "string") return false
+  const trimmed = value.trim()
+  return (
+    /^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$/.test(trimmed) ||
+    /^rgba?\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*(?:,\s*[\d.]+\s*)?\)$/.test(trimmed)
+  )
 }
 
 /**
  * Reduces a raw token value to a comparison key. Each side normalizes against
- * its own bundle (aliasDefaults may differ between export and repo).
+ * its own bundle (aliasDefaults may differ between export and repo). Aliases
+ * compare by canonical target path — never by their resolved color.
  */
 export function normalizeValue(bundle, collectionName, value, knownCollections) {
   if (isAlias(value)) return `alias:${canonicalizeAliasPath(bundle, collectionName, value, knownCollections)}`
-  if (isHex(value)) return `hex:${normalizeHex(value)}`
+  if (isCssColor(value)) return `color:${normalizeCssColor(value)}`
   return value
 }
 
@@ -104,9 +156,15 @@ export function valuesEquivalent(exportedCtx, currentCtx, knownCollections) {
 
 /**
  * Diffs two bundles into a structured report:
- * { collections: [{ name, modeNotes: [..], lines: [..] }], totalChanges }
+ * {
+ *   collections: [{ name, modeNotes, lines, typeLines, scopeLines, descriptionLines }],
+ *   counts: { collections, modes, values, types, scopes, descriptions },
+ *   totalChanges,
+ * }
  * Modes present on only one side become a single structural note; token-level
- * comparison runs only over modes both sides share.
+ * value comparison runs only over modes both sides share. Metadata maps
+ * (types/scopes/descriptions) are mode-independent and compared for every
+ * token present on both sides.
  */
 export function diffBundles(exported, current) {
   const collectionNames = new Set([
@@ -117,7 +175,11 @@ export function diffBundles(exported, current) {
   // valid on either side canonicalizes identically on both.
   const knownCollections = collectionNames
 
-  const report = { collections: [], totalChanges: 0 }
+  const report = {
+    collections: [],
+    counts: { collections: 0, modes: 0, values: 0, types: 0, scopes: 0, descriptions: 0 },
+    totalChanges: 0,
+  }
 
   for (const collectionName of [...collectionNames].sort()) {
     const exportedCollection = exported.collections?.[collectionName]
@@ -128,11 +190,27 @@ export function diffBundles(exported, current) {
         name: collectionName,
         modeNotes: ["new collection in Figma — not in the repo"],
         lines: [],
+        typeLines: [],
+        scopeLines: [],
+        descriptionLines: [],
       })
-      report.totalChanges += 1
+      report.counts.collections += 1
       continue
     }
-    if (!exportedCollection) continue // not present in the export, skip
+    if (!exportedCollection) {
+      // The plugin exports every local collection, so an absent one means it
+      // is genuinely missing from the Figma file — never skip silently.
+      report.collections.push({
+        name: collectionName,
+        modeNotes: ["collection exists in the repo but is MISSING from the Figma export"],
+        lines: [],
+        typeLines: [],
+        scopeLines: [],
+        descriptionLines: [],
+      })
+      report.counts.collections += 1
+      continue
+    }
 
     const exportedModes = Object.keys(exportedCollection.modes ?? {})
     const currentModes = Object.keys(currentCollection.modes ?? {})
@@ -183,12 +261,58 @@ export function diffBundles(exported, current) {
       }
     }
 
-    if (lines.length > 0 || modeNotes.length > 0) {
-      report.collections.push({ name: collectionName, modeNotes, lines })
-      report.totalChanges += lines.length + modeNotes.length
+    // Mode-independent metadata. Only tokens present on both sides are
+    // compared — a token missing entirely from one side is already reported
+    // as NEW/REMOVED above.
+    const exportedFirstMode = exportedCollection.modes?.[exportedModes[0]] ?? {}
+    const currentFirstMode = currentCollection.modes?.[currentModes[0]] ?? {}
+    const sharedTokens = Object.keys(currentFirstMode).filter((t) => t in exportedFirstMode)
+
+    const typeLines = []
+    const scopeLines = []
+    const descriptionLines = []
+
+    for (const tokenName of [...sharedTokens].sort()) {
+      const exportedType = exportedCollection.types?.[tokenName]
+      const currentType = currentCollection.types?.[tokenName]
+      if (exportedType !== undefined && currentType !== undefined && exportedType !== currentType) {
+        typeLines.push(`  ~ ${tokenName}: type ${JSON.stringify(currentType)} -> ${JSON.stringify(exportedType)}`)
+      }
+
+      const exportedScopes = exportedCollection.scopes?.[tokenName]
+      const currentScopes = currentCollection.scopes?.[tokenName]
+      if (exportedScopes !== undefined && currentScopes !== undefined) {
+        const eNorm = normalizeScopes(exportedScopes)
+        const cNorm = normalizeScopes(currentScopes)
+        if (JSON.stringify(eNorm) !== JSON.stringify(cNorm)) {
+          scopeLines.push(
+            `  ~ ${tokenName}: scopes ${JSON.stringify(currentScopes)} -> ${JSON.stringify(exportedScopes)}`,
+          )
+        }
+      }
+
+      const exportedDescription = (exportedCollection.descriptions?.[tokenName] ?? "").trim()
+      const currentDescription = (currentCollection.descriptions?.[tokenName] ?? "").trim()
+      if (exportedDescription !== currentDescription) {
+        descriptionLines.push(
+          `  ~ ${tokenName}: description ${JSON.stringify(currentDescription)} -> ${JSON.stringify(exportedDescription)}`,
+        )
+      }
+    }
+
+    const changeCount =
+      modeNotes.length + lines.length + typeLines.length + scopeLines.length + descriptionLines.length
+    if (changeCount > 0) {
+      report.collections.push({ name: collectionName, modeNotes, lines, typeLines, scopeLines, descriptionLines })
+      report.counts.modes += modeNotes.length
+      report.counts.values += lines.length
+      report.counts.types += typeLines.length
+      report.counts.scopes += scopeLines.length
+      report.counts.descriptions += descriptionLines.length
     }
   }
 
+  report.totalChanges = Object.values(report.counts).reduce((a, b) => a + b, 0)
   return report
 }
 
@@ -211,13 +335,22 @@ async function main() {
 
   const report = diffBundles(exported, current)
 
-  for (const { name, modeNotes, lines } of report.collections) {
-    console.log(`\n## ${name} (${modeNotes.length + lines.length} change(s))`)
+  for (const { name, modeNotes, lines, typeLines, scopeLines, descriptionLines } of report.collections) {
+    const count = modeNotes.length + lines.length + typeLines.length + scopeLines.length + descriptionLines.length
+    console.log(`\n## ${name} (${count} change(s))`)
     for (const note of modeNotes) console.log(`  ! ${note}`)
     if (lines.length > 0) console.log(lines.join("\n"))
+    if (typeLines.length > 0) console.log(typeLines.join("\n"))
+    if (scopeLines.length > 0) console.log(scopeLines.join("\n"))
+    if (descriptionLines.length > 0) console.log(descriptionLines.join("\n"))
   }
 
-  console.log(`\n${report.totalChanges} total change(s).`)
+  const { counts } = report
+  console.log(
+    `\n${report.totalChanges} total change(s): ` +
+      `${counts.collections} collection, ${counts.modes} mode, ${counts.values} value, ` +
+      `${counts.types} type, ${counts.scopes} scope, ${counts.descriptions} description.`,
+  )
   if (report.totalChanges === 0) {
     console.log("No differences — Figma and the repo agree.")
   }
