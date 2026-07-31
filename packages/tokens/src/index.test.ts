@@ -236,7 +236,7 @@ describe("semantic.css — bg + action", () => {
     expect(css).not.toContain("--color-bg-nav:")
   })
 
-  it("keeps published Alert colors in reusable feedback roles", () => {
+  it("routes Alert feedback through the canonical primitive palettes", () => {
     const darkIdx = css.indexOf('\n[data-theme="dark"] {')
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
@@ -248,10 +248,11 @@ describe("semantic.css — bg + action", () => {
     expect(light).toContain("--color-feedback-error-border:        var(--color-red-200);")
     expect(light).toContain("--color-feedback-text:                var(--color-base-ink);")
     expect(dark).toContain("--color-feedback-text:                var(--color-neutral-100);")
-    expect(dark).toContain("--color-feedback-info-bg:             var(--color-status-info-950);")
-    expect(dark).toContain("--color-feedback-success-bg:          var(--color-status-success-950);")
-    expect(dark).toContain("--color-feedback-warning-bg:          var(--color-status-warning-950);")
-    expect(dark).toContain("--color-feedback-error-bg:            var(--color-status-error-950);")
+    expect(dark).toContain("--color-feedback-info-bg:             var(--color-blue-950);")
+    expect(dark).toContain("--color-feedback-success-bg:          var(--color-green-950);")
+    expect(dark).toContain("--color-feedback-warning-bg:          var(--color-yellow-950);")
+    expect(dark).toContain("--color-feedback-error-bg:            var(--color-red-950);")
+    expect(css).not.toContain("--color-status-")
     expect(dark).toContain("--color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);")
   })
 })
@@ -513,9 +514,9 @@ describe("figma import bundle", () => {
     expect(light?.["feedback/warning/accent"]).toBe("{Colors.Orange.700}")
     expect(light?.["feedback/text"]).toBe("{Colors.Base.Ink}")
     expect(dark?.["feedback/text"]).toBe("{Colors.Neutral.100}")
-    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Status.Info.950}")
-    expect(dark?.["feedback/info/border"]).toBe("{Colors.Status.Info.700}")
-    expect(dark?.["feedback/error/accent"]).toBe("{Colors.Status.Error.300}")
+    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.950}")
+    expect(dark?.["feedback/info/border"]).toBe("{Colors.Blue.500}")
+    expect(dark?.["feedback/error/accent"]).toBe("{Colors.Red.400}")
     for (const mode of [light, dark]) {
       for (const [name, value] of Object.entries(mode ?? {})) {
         if (name.startsWith("feedback/")) {
@@ -549,7 +550,7 @@ describe("figma import bundle", () => {
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
   })
 
-  it("keeps every feedback color as an alias while preserving the exact dark palette", () => {
+  it("keeps every feedback color on canonical primitives without a duplicate Status palette", () => {
     const colorModes = bundle.collections["Color modes"]
     for (const [modeName, values] of Object.entries(colorModes?.modes ?? {})) {
       for (const [name, value] of Object.entries(values)) {
@@ -561,33 +562,33 @@ describe("figma import bundle", () => {
 
     const primitives = bundle.collections.Primitives?.modes.Value
     expect(primitives?.["Colors/Base/Ink"]).toBe("#1B1A1A")
-    expect(primitives?.["Colors/Status/Info/950"]).toBe("#003877")
-    expect(primitives?.["Colors/Status/Info/700"]).toBe("#0059C2")
-    expect(primitives?.["Colors/Status/Info/300"]).toBe("#54A3F6")
-    expect(primitives?.["Colors/Status/Info/200"]).toBe("#8BC4FF")
-    expect(primitives?.["Colors/Status/Success/950"]).toBe("#044329")
-    expect(primitives?.["Colors/Status/Success/700"]).toBe("#006D0F")
-    expect(primitives?.["Colors/Status/Success/300"]).toBe("#2BB47D")
-    expect(primitives?.["Colors/Status/Success/200"]).toBe("#62D6A2")
-    expect(primitives?.["Colors/Status/Warning/950"]).toBe("#521D00")
-    expect(primitives?.["Colors/Status/Warning/700"]).toBe("#B44E00")
-    expect(primitives?.["Colors/Status/Warning/300"]).toBe("#E16D00")
-    expect(primitives?.["Colors/Status/Warning/200"]).toBe("#FF9A3C")
-    expect(primitives?.["Colors/Status/Error/950"]).toBe("#7B0000")
-    expect(primitives?.["Colors/Status/Error/700"]).toBe("#D71913")
-    expect(primitives?.["Colors/Status/Error/300"]).toBe("#FF755E")
-    expect(primitives?.["Colors/Status/Error/200"]).toBe("#FFA193")
+    expect(Object.keys(primitives ?? {}).some((name) => name.startsWith("Colors/Status/"))).toBe(false)
 
-    const dark = colorModes?.modes.Dark
-    for (const [intent, primitiveName] of [
-      ["info", "Info"],
-      ["success", "Success"],
-      ["warning", "Warning"],
-      ["error", "Error"],
-    ]) {
-      expect(dark?.[`feedback/${intent}/action`]).toBe(
-        `{Colors.Status.${primitiveName}.300}`,
-      )
+    const expectedDarkAliases = {
+      "feedback/info/bg": "{Colors.Blue.950}",
+      "feedback/info/border": "{Colors.Blue.500}",
+      "feedback/info/accent": "{Colors.Blue.400}",
+      "feedback/info/action": "{Colors.Blue.400}",
+      "feedback/info/action-hover": "{Colors.Blue.300}",
+      "feedback/success/bg": "{Colors.Green.950}",
+      "feedback/success/border": "{Colors.Green.500}",
+      "feedback/success/accent": "{Colors.Green.400}",
+      "feedback/success/action": "{Colors.Green.400}",
+      "feedback/success/action-hover": "{Colors.Green.300}",
+      "feedback/warning/bg": "{Colors.Yellow.950}",
+      "feedback/warning/border": "{Colors.Orange.500}",
+      "feedback/warning/accent": "{Colors.Yellow.400}",
+      "feedback/warning/action": "{Colors.Yellow.400}",
+      "feedback/warning/action-hover": "{Colors.Yellow.300}",
+      "feedback/error/bg": "{Colors.Red.950}",
+      "feedback/error/border": "{Colors.Red.400}",
+      "feedback/error/accent": "{Colors.Red.400}",
+      "feedback/error/action": "{Colors.Red.400}",
+      "feedback/error/action-hover": "{Colors.Red.300}",
+    }
+    const dark = colorModes?.modes.Dark ?? {}
+    for (const [tokenName, expectedAlias] of Object.entries(expectedDarkAliases)) {
+      expect(dark[tokenName]).toBe(expectedAlias)
     }
   })
 

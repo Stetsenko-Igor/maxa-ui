@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1730
+Total tokens: 1714
 
 ## Primitives
 
@@ -98,24 +98,6 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-800: #9a3412;
 --color-orange-900: #7c2d12;
 --color-orange-950: #431407;
-
-/* ── Exact feedback reference palettes — Figma: Colors/Status/* ── */
---color-status-info-950: #003877;
---color-status-info-700: #0059C2;
---color-status-info-300: #54A3F6;
---color-status-info-200: #8BC4FF;
---color-status-success-950: #044329;
---color-status-success-700: #006D0F;
---color-status-success-300: #2BB47D;
---color-status-success-200: #62D6A2;
---color-status-warning-950: #521D00;
---color-status-warning-700: #B44E00;
---color-status-warning-300: #E16D00;
---color-status-warning-200: #FF9A3C;
---color-status-error-950: #7B0000;
---color-status-error-700: #D71913;
---color-status-error-300: #FF755E;
---color-status-error-200: #FFA193;
 
 /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
 --color-neutral-alpha-ink-50: #1B1A1A80;
@@ -491,26 +473,26 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Feedback — reusable intent surfaces ── */
 --color-feedback-text: var(--color-base-ink);/* dark: var(--color-neutral-100) */
---color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-status-info-950) */
---color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-status-info-700) */
---color-feedback-info-accent: var(--color-blue-600);/* dark: var(--color-status-info-300) */
---color-feedback-info-action: var(--color-blue-500);/* dark: var(--color-status-info-300) */
---color-feedback-info-action-hover: var(--color-blue-600);/* dark: var(--color-status-info-200) */
---color-feedback-success-bg: var(--color-green-50);/* dark: var(--color-status-success-950) */
---color-feedback-success-border: var(--color-green-300);/* dark: var(--color-status-success-700) */
---color-feedback-success-accent: var(--color-green-800);/* dark: var(--color-status-success-300) */
---color-feedback-success-action: var(--color-green-800);/* dark: var(--color-status-success-300) */
---color-feedback-success-action-hover: var(--color-green-800);/* dark: var(--color-status-success-200) */
---color-feedback-warning-bg: var(--color-orange-50);/* dark: var(--color-status-warning-950) */
---color-feedback-warning-border: var(--color-orange-200);/* dark: var(--color-status-warning-700) */
---color-feedback-warning-accent: var(--color-orange-700);/* dark: var(--color-status-warning-300) */
---color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-status-warning-300) */
---color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-status-warning-200) */
---color-feedback-error-bg: var(--color-red-50);/* dark: var(--color-status-error-950) */
---color-feedback-error-border: var(--color-red-200);/* dark: var(--color-status-error-700) */
---color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-status-error-300) */
---color-feedback-error-action: var(--color-red-700);/* dark: var(--color-status-error-300) */
---color-feedback-error-action-hover: var(--color-red-700);/* dark: var(--color-status-error-200) */
+--color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-blue-950) */
+--color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-blue-500) */
+--color-feedback-info-accent: var(--color-blue-600);/* dark: var(--color-blue-400) */
+--color-feedback-info-action: var(--color-blue-500);/* dark: var(--color-blue-400) */
+--color-feedback-info-action-hover: var(--color-blue-600);/* dark: var(--color-blue-300) */
+--color-feedback-success-bg: var(--color-green-50);/* dark: var(--color-green-950) */
+--color-feedback-success-border: var(--color-green-300);/* dark: var(--color-green-500) */
+--color-feedback-success-accent: var(--color-green-800);/* dark: var(--color-green-400) */
+--color-feedback-success-action: var(--color-green-800);/* dark: var(--color-green-400) */
+--color-feedback-success-action-hover: var(--color-green-800);/* dark: var(--color-green-300) */
+--color-feedback-warning-bg: var(--color-orange-50);/* dark: var(--color-yellow-950) */
+--color-feedback-warning-border: var(--color-orange-200);/* dark: var(--color-orange-500) */
+--color-feedback-warning-accent: var(--color-orange-700);/* dark: var(--color-yellow-400) */
+--color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-yellow-400) */
+--color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-yellow-300) */
+--color-feedback-error-bg: var(--color-red-50);/* dark: var(--color-red-950) */
+--color-feedback-error-border: var(--color-red-200);/* dark: var(--color-red-400) */
+--color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-red-400) */
+--color-feedback-error-action: var(--color-red-700);/* dark: var(--color-red-400) */
+--color-feedback-error-action-hover: var(--color-red-700);/* dark: var(--color-red-300) */
 --color-feedback-neutral-bg: var(--color-white);/* dark: var(--color-neutral-900) */
 --color-feedback-neutral-border: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
 --color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
