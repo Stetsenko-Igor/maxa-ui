@@ -3198,18 +3198,26 @@
           "Alert/color/info/bg": "{Color modes/feedback/info/bg}",
           "Alert/color/info/border": "{Color modes/feedback/info/border}",
           "Alert/color/info/accent": "{Color modes/feedback/info/accent}",
+          "Alert/color/info/action": "{Color modes/feedback/info/action}",
+          "Alert/color/info/action-hover": "{Color modes/feedback/info/action-hover}",
           "Alert/color/info/text": "{Color modes/feedback/text}",
           "Alert/color/success/bg": "{Color modes/feedback/success/bg}",
           "Alert/color/success/border": "{Color modes/feedback/success/border}",
           "Alert/color/success/accent": "{Color modes/feedback/success/accent}",
+          "Alert/color/success/action": "{Color modes/feedback/success/action}",
+          "Alert/color/success/action-hover": "{Color modes/feedback/success/action-hover}",
           "Alert/color/success/text": "{Color modes/feedback/text}",
           "Alert/color/warning/bg": "{Color modes/feedback/warning/bg}",
           "Alert/color/warning/border": "{Color modes/feedback/warning/border}",
           "Alert/color/warning/accent": "{Color modes/feedback/warning/accent}",
+          "Alert/color/warning/action": "{Color modes/feedback/warning/action}",
+          "Alert/color/warning/action-hover": "{Color modes/feedback/warning/action-hover}",
           "Alert/color/warning/text": "{Color modes/feedback/text}",
           "Alert/color/error/bg": "{Color modes/feedback/error/bg}",
           "Alert/color/error/border": "{Color modes/feedback/error/border}",
           "Alert/color/error/accent": "{Color modes/feedback/error/accent}",
+          "Alert/color/error/action": "{Color modes/feedback/error/action}",
+          "Alert/color/error/action-hover": "{Color modes/feedback/error/action-hover}",
           "Alert/color/error/text": "{Color modes/feedback/text}",
           "Alert/color/neutral/bg": "{Color modes/feedback/neutral/bg}",
           "Alert/color/neutral/border": "{Color modes/feedback/neutral/border}",
@@ -4227,18 +4235,26 @@
         "Alert/color/info/bg": "Alert, color info: background.",
         "Alert/color/info/border": "Alert, color info: border.",
         "Alert/color/info/accent": "Alert, color info: accent.",
+        "Alert/color/info/action": "Alert, color info: action.",
+        "Alert/color/info/action-hover": "Alert, color info: action hover.",
         "Alert/color/info/text": "Alert, color info: text color.",
         "Alert/color/success/bg": "Alert, color success: background.",
         "Alert/color/success/border": "Alert, color success: border.",
         "Alert/color/success/accent": "Alert, color success: accent.",
+        "Alert/color/success/action": "Alert, color success: action.",
+        "Alert/color/success/action-hover": "Alert, color success: action hover.",
         "Alert/color/success/text": "Alert, color success: text color.",
         "Alert/color/warning/bg": "Alert, color warning: background.",
         "Alert/color/warning/border": "Alert, color warning: border.",
         "Alert/color/warning/accent": "Alert, color warning: accent.",
+        "Alert/color/warning/action": "Alert, color warning: action.",
+        "Alert/color/warning/action-hover": "Alert, color warning: action hover.",
         "Alert/color/warning/text": "Alert, color warning: text color.",
         "Alert/color/error/bg": "Alert, color error: background.",
         "Alert/color/error/border": "Alert, color error: border.",
         "Alert/color/error/accent": "Alert, color error: accent.",
+        "Alert/color/error/action": "Alert, color error: action.",
+        "Alert/color/error/action-hover": "Alert, color error: action hover.",
         "Alert/color/error/text": "Alert, color error: text color.",
         "Alert/color/neutral/bg": "Alert, color neutral: background.",
         "Alert/color/neutral/border": "Alert, color neutral: border.",
@@ -5255,18 +5271,26 @@
         "Alert/color/info/bg": "COLOR",
         "Alert/color/info/border": "COLOR",
         "Alert/color/info/accent": "COLOR",
+        "Alert/color/info/action": "COLOR",
+        "Alert/color/info/action-hover": "COLOR",
         "Alert/color/info/text": "COLOR",
         "Alert/color/success/bg": "COLOR",
         "Alert/color/success/border": "COLOR",
         "Alert/color/success/accent": "COLOR",
+        "Alert/color/success/action": "COLOR",
+        "Alert/color/success/action-hover": "COLOR",
         "Alert/color/success/text": "COLOR",
         "Alert/color/warning/bg": "COLOR",
         "Alert/color/warning/border": "COLOR",
         "Alert/color/warning/accent": "COLOR",
+        "Alert/color/warning/action": "COLOR",
+        "Alert/color/warning/action-hover": "COLOR",
         "Alert/color/warning/text": "COLOR",
         "Alert/color/error/bg": "COLOR",
         "Alert/color/error/border": "COLOR",
         "Alert/color/error/accent": "COLOR",
+        "Alert/color/error/action": "COLOR",
+        "Alert/color/error/action-hover": "COLOR",
         "Alert/color/error/text": "COLOR",
         "Alert/color/neutral/bg": "COLOR",
         "Alert/color/neutral/border": "COLOR",
@@ -6321,6 +6345,12 @@
         "Alert/color/info/accent": [
           "ALL_FILLS"
         ],
+        "Alert/color/info/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/info/action-hover": [
+          "ALL_FILLS"
+        ],
         "Alert/color/info/text": [
           "TEXT_FILL"
         ],
@@ -6331,6 +6361,12 @@
           "STROKE_COLOR"
         ],
         "Alert/color/success/accent": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/success/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/success/action-hover": [
           "ALL_FILLS"
         ],
         "Alert/color/success/text": [
@@ -6345,6 +6381,12 @@
         "Alert/color/warning/accent": [
           "ALL_FILLS"
         ],
+        "Alert/color/warning/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/warning/action-hover": [
+          "ALL_FILLS"
+        ],
         "Alert/color/warning/text": [
           "TEXT_FILL"
         ],
@@ -6355,6 +6397,12 @@
           "STROKE_COLOR"
         ],
         "Alert/color/error/accent": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/error/action": [
+          "ALL_FILLS"
+        ],
+        "Alert/color/error/action-hover": [
           "ALL_FILLS"
         ],
         "Alert/color/error/text": [

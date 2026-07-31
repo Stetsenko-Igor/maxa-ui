@@ -115,6 +115,8 @@ Examples:
 - `text/text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
 - `Button/primary/bg` -> `Color modes/action/action-primary`
 - `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
+- `Alert/color/info/action` -> `Color modes/feedback/info/action`
+- `Alert/color/info/action-hover` -> `Color modes/feedback/info/action-hover`
 - `Alert/color/info/bg` in Dark -> `Color modes/feedback/info/bg` -> `Primitives/Colors/Blue/800`
 - every `Color modes/feedback/*` COLOR value must alias `Primitives` directly; raw values and semantic-to-semantic chains fail the bundle build
 - `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg` -> `Primitives/Colors/Base/White` in Light

@@ -471,6 +471,7 @@ describe("figma import bundle", () => {
     expect(bundle.collections["Color modes"]?.scopes?.["feedback/info/border"]).toEqual(["STROKE_COLOR"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual(["STROKE_COLOR"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/info/action"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual(["WIDTH_HEIGHT"])
     expect(bundle.collections["Component-based"]?.scopes?.["Context Menu/z"]).toEqual([])
   })
@@ -483,6 +484,14 @@ describe("figma import bundle", () => {
     expect(component?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
     expect(component?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
     expect(component?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
+    for (const intent of ["info", "success", "warning", "error"]) {
+      expect(component?.[`Alert/color/${intent}/action`]).toBe(
+        `{Color modes/feedback/${intent}/action}`,
+      )
+      expect(component?.[`Alert/color/${intent}/action-hover`]).toBe(
+        `{Color modes/feedback/${intent}/action-hover}`,
+      )
+    }
     expect(component?.["Calendar/shadow"]).toBeUndefined()
     expect(component?.["Context Menu/shadow"]).toBeUndefined()
     expect(component?.["Social Button/shadow-focus"]).toBeUndefined()
@@ -694,7 +703,7 @@ describe("figma import bundle", () => {
 
     expect(Object.keys(component?.modes ?? {})).toEqual(["Default"])
     const alertColorNames = Object.keys(values).filter((name) => name.startsWith("Alert/color/"))
-    expect(alertColorNames).toHaveLength(24)
+    expect(alertColorNames).toHaveLength(32)
     for (const [name, type] of Object.entries(component?.types ?? {})) {
       if (type === "COLOR") expect(values[name], name).toMatch(/^\{[^}]+\}$/)
     }
