@@ -33,3 +33,8 @@ of storing the same raw hex value twice. Its resolved color remains `#C7E5F0`.
 
 Aligned Figma `Colors/Blue/50` with the deployed CSS primitive (`#E0F2FF`) and routed the Light
 Alert info background through that primitive instead of duplicating its hex value.
+
+Moved the exact deployed Dark Alert palette into 16 `Colors/Status/*` reference primitives and
+added `Colors/Base/Ink` for the Light feedback text value. All 58 Light/Dark `feedback/*` values
+are now aliases, with no visual color changes. The bundle builder rejects future raw feedback
+colors so the semantic layer cannot regress to literal hex values.

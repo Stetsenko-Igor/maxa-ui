@@ -11,19 +11,20 @@ The repository and the live `[MAXA] Foundation` Figma file now use one theme swi
 Live Figma validation after the migration:
 
 - 8 collections
-- 1,632 variables
+- 1,649 variables
 - 230 variables in `Color modes`
 - 1,026 variables in `Component-based`
 - 0 missing `Component-based / Default` values
 - 0 raw Component-based COLOR values
+- 0 raw `Color modes/feedback/*` COLOR values
 - 0 literal CSS `var(--...)` strings in Component-based
 - all 1,026 Component-based variable IDs preserved
 
 The generated repository bundle contains the same collection counts and mode structure:
 
-- 1,632 variables
-- 1,950 per-mode values
-- 1,271 alias values
+- 1,649 variables
+- 1,967 per-mode values
+- 1,293 alias values
 - 0 unresolved CSS expressions
 
 ## Where colors are changed now
@@ -39,7 +40,7 @@ For example:
 
 `Component-based/Alert/color/info/bg`
 → `Color modes/feedback/info/bg`
-→ a Light semantic alias or the approved Dark color
+→ an exact Light or Dark reference primitive alias
 
 Neutral and Emphasize use dedicated feedback roles so shared background-token changes cannot accidentally restyle Alert:
 
@@ -55,7 +56,12 @@ The Light info background now also resolves through the deployed primitive value
 - `Color modes/feedback/info/bg` → `Primitives/Colors/Blue/50` (`#E0F2FF`)
 
 The Figma primitive previously stored `#EFF6FF`, while the CSS source and deployed Netlify build
-used `#E0F2FF`. Updating the primitive closes that drift for all five Light semantic consumers.
+used `#E0F2FF`. Updating the primitive closes that drift for all six Light semantic consumers.
+
+The approved Dark feedback palette is stored once under `Primitives/Colors/Status/*`. Every
+`Color modes/feedback/*` value is an alias; shared action colors alias their matching feedback
+accent role. This preserves the exact deployed hex values without duplicating raw colors in the
+semantic layer.
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 
@@ -136,6 +142,9 @@ The migration then:
 - preserved all 1,026 Component-based variable IDs;
 - rebound only the color properties of the 24 local Alert test variants to `Component-based/Alert` variables, including root fills, borders, accent vectors, and text;
 - deleted the 37 duplicate variables only after a scan of all eight pages reported zero alias consumers and zero canvas consumers.
+- created 17 exact feedback reference primitives and replaced 22 raw feedback mode values with aliases;
+- preserved all 29 `Color modes/feedback` variable IDs and verified all 58 Light/Dark values are aliases;
+- verified the 22 migrated values resolve byte-for-byte to the pre-migration Alert palette.
 
 No Alert structure, layout, content, component properties, or variants were changed. The test page is not used to define or validate the production Alert component; the token files and variable alias graph are the source of truth for this migration.
 
@@ -146,6 +155,7 @@ No Alert structure, layout, content, component properties, or variants were chan
 - any Component-based mode structure other than one `Default` mode;
 - legacy `component-*-light.json` and `component-*-dark.json` sources;
 - raw Component-based COLOR values;
+- raw `Color modes/feedback/*` COLOR values;
 - missing modes, unresolved aliases, alias cycles, type drift, and unsupported CSS expressions.
 
 MAXA Token Importer v11 adds explicit stale-mode cleanup. A regression test verifies that Light/Dark collapses to Default without recreating variables.

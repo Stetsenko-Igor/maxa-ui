@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1710
+Total tokens: 1727
 
 ## Primitives
 
@@ -19,6 +19,7 @@ Source: `packages/tokens/src/primitives.css`
 /* ── Base — Figma: Colors/Base/* ── */
 --color-base-white: #ffffff;
 --color-base-black: #000000;
+--color-base-ink: #1B1A1A;
 --color-transparent: transparent;
 --color-white: var(--color-base-white);
 --color-black: var(--color-base-black);
@@ -97,6 +98,24 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-800: #9a3412;
 --color-orange-900: #7c2d12;
 --color-orange-950: #431407;
+
+/* ── Exact feedback reference palettes — Figma: Colors/Status/* ── */
+--color-status-info-950: #003877;
+--color-status-info-700: #0059C2;
+--color-status-info-300: #54A3F6;
+--color-status-info-200: #8BC4FF;
+--color-status-success-950: #044329;
+--color-status-success-700: #006D0F;
+--color-status-success-300: #2BB47D;
+--color-status-success-200: #62D6A2;
+--color-status-warning-950: #521D00;
+--color-status-warning-700: #B44E00;
+--color-status-warning-300: #E16D00;
+--color-status-warning-200: #FF9A3C;
+--color-status-error-950: #7B0000;
+--color-status-error-700: #D71913;
+--color-status-error-300: #FF755E;
+--color-status-error-200: #FFA193;
 
 /* ── Extended decorative palette — Tailwind v4 defaults ── */
 --color-gray-50: #f9fafb;
@@ -466,27 +485,27 @@ Source: `packages/tokens/src/semantic.css`
 --color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
 
 /* ── Feedback — reusable intent surfaces ── */
---color-feedback-text: #1b1a1a;         /* dark: #f4f3f3 */
---color-feedback-info-bg: var(--color-blue-50);/* dark: #003877 */
---color-feedback-info-border: var(--color-border-info-subtle);/* dark: #0059c2 */
---color-feedback-info-accent: var(--color-fg-info);/* dark: #54a3f6 */
---color-feedback-info-action: var(--color-action-primary);/* dark: #54a3f6 */
---color-feedback-info-action-hover: var(--color-action-primary-hover);/* dark: #8bc4ff */
---color-feedback-success-bg: var(--color-bg-success-subtle);/* dark: #044329 */
---color-feedback-success-border: var(--color-border-success-subtle);/* dark: #006d0f */
---color-feedback-success-accent: var(--color-green-800);/* dark: #2bb47d */
---color-feedback-success-action: var(--color-green-800);/* dark: #2bb47d */
---color-feedback-success-action-hover: var(--color-green-800);/* dark: #62d6a2 */
---color-feedback-warning-bg: var(--color-bg-warning-subtle);/* dark: #521d00 */
---color-feedback-warning-border: var(--color-border-warning-subtle);/* dark: #b44e00 */
---color-feedback-warning-accent: var(--color-orange-700);/* dark: #e16d00 */
---color-feedback-warning-action: var(--color-orange-700);/* dark: #e16d00 */
---color-feedback-warning-action-hover: var(--color-orange-700);/* dark: #ff9a3c */
---color-feedback-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
---color-feedback-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
---color-feedback-error-accent: var(--color-fg-error);/* dark: #ff755e */
---color-feedback-error-action: var(--color-fg-error);/* dark: #ff755e */
---color-feedback-error-action-hover: var(--color-red-700);/* dark: #ffa193 */
+--color-feedback-text: var(--color-base-ink);/* dark: var(--color-neutral-100) */
+--color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-status-info-950) */
+--color-feedback-info-border: var(--color-border-info-subtle);/* dark: var(--color-status-info-700) */
+--color-feedback-info-accent: var(--color-fg-info);/* dark: var(--color-status-info-300) */
+--color-feedback-info-action: var(--color-action-primary);/* dark: var(--color-feedback-info-accent) */
+--color-feedback-info-action-hover: var(--color-action-primary-hover);/* dark: var(--color-status-info-200) */
+--color-feedback-success-bg: var(--color-bg-success-subtle);/* dark: var(--color-status-success-950) */
+--color-feedback-success-border: var(--color-border-success-subtle);/* dark: var(--color-status-success-700) */
+--color-feedback-success-accent: var(--color-green-800);/* dark: var(--color-status-success-300) */
+--color-feedback-success-action: var(--color-green-800);/* dark: var(--color-feedback-success-accent) */
+--color-feedback-success-action-hover: var(--color-green-800);/* dark: var(--color-status-success-200) */
+--color-feedback-warning-bg: var(--color-bg-warning-subtle);/* dark: var(--color-status-warning-950) */
+--color-feedback-warning-border: var(--color-border-warning-subtle);/* dark: var(--color-status-warning-700) */
+--color-feedback-warning-accent: var(--color-orange-700);/* dark: var(--color-status-warning-300) */
+--color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-feedback-warning-accent) */
+--color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-status-warning-200) */
+--color-feedback-error-bg: var(--color-bg-error-subtle);/* dark: var(--color-status-error-950) */
+--color-feedback-error-border: var(--color-border-error-subtle);/* dark: var(--color-status-error-700) */
+--color-feedback-error-accent: var(--color-fg-error);/* dark: var(--color-status-error-300) */
+--color-feedback-error-action: var(--color-fg-error);/* dark: var(--color-feedback-error-accent) */
+--color-feedback-error-action-hover: var(--color-red-700);/* dark: var(--color-status-error-200) */
 --color-feedback-neutral-bg: var(--color-white);/* dark: var(--color-neutral-900) */
 --color-feedback-neutral-border: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
 --color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */

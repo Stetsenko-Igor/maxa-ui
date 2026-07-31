@@ -440,6 +440,24 @@ function finalizeBundle(outputBundle) {
     )
   }
 
+  const rawFeedbackColors = []
+  for (const [modeName, tokens] of Object.entries(colorModesCollection?.modes ?? {})) {
+    for (const [tokenName, value] of Object.entries(tokens)) {
+      if (
+        tokenName.startsWith("feedback/")
+        && colorModesCollection.types[tokenName] === "COLOR"
+        && !isAliasValue(value)
+      ) {
+        rawFeedbackColors.push(`${tokenName} [${modeName}]`)
+      }
+    }
+  }
+  if (rawFeedbackColors.length > 0) {
+    throw new Error(
+      `Color modes feedback colors must alias exact reference primitives or semantic roles; found literals at:\n${rawFeedbackColors.join("\n")}`,
+    )
+  }
+
   const invalidValues = []
   for (const [collectionName, collection] of Object.entries(outputBundle.collections)) {
     for (const [modeName, tokens] of Object.entries(collection.modes)) {

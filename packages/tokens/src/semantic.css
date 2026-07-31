@@ -220,7 +220,7 @@
   --color-control-checked-hover:  var(--color-neutral-700);
 
   /* ── Feedback — reusable intent surfaces ──────────────────────────── */
-  --color-feedback-text:                #1b1a1a;
+  --color-feedback-text:                var(--color-base-ink);
   --color-feedback-info-bg:             var(--color-blue-50);
   --color-feedback-info-border:         var(--color-border-info-subtle);
   --color-feedback-info-accent:         var(--color-fg-info);
@@ -454,27 +454,27 @@
   --color-control-checked-hover:  var(--color-neutral-400);
 
   /* ── Feedback — dark ─────────────────────────────────────────────── */
-  --color-feedback-text:                #f4f3f3;
-  --color-feedback-info-bg:             #003877;
-  --color-feedback-info-border:         #0059c2;
-  --color-feedback-info-accent:         #54a3f6;
-  --color-feedback-info-action:         #54a3f6;
-  --color-feedback-info-action-hover:   #8bc4ff;
-  --color-feedback-success-bg:          #044329;
-  --color-feedback-success-border:      #006d0f;
-  --color-feedback-success-accent:      #2bb47d;
-  --color-feedback-success-action:      #2bb47d;
-  --color-feedback-success-action-hover: #62d6a2;
-  --color-feedback-warning-bg:          #521d00;
-  --color-feedback-warning-border:      #b44e00;
-  --color-feedback-warning-accent:      #e16d00;
-  --color-feedback-warning-action:      #e16d00;
-  --color-feedback-warning-action-hover: #ff9a3c;
-  --color-feedback-error-bg:            #7b0000;
-  --color-feedback-error-border:        #d71913;
-  --color-feedback-error-accent:        #ff755e;
-  --color-feedback-error-action:        #ff755e;
-  --color-feedback-error-action-hover:  #ffa193;
+  --color-feedback-text:                var(--color-neutral-100);
+  --color-feedback-info-bg:             var(--color-status-info-950);
+  --color-feedback-info-border:         var(--color-status-info-700);
+  --color-feedback-info-accent:         var(--color-status-info-300);
+  --color-feedback-info-action:         var(--color-feedback-info-accent);
+  --color-feedback-info-action-hover:   var(--color-status-info-200);
+  --color-feedback-success-bg:          var(--color-status-success-950);
+  --color-feedback-success-border:      var(--color-status-success-700);
+  --color-feedback-success-accent:      var(--color-status-success-300);
+  --color-feedback-success-action:      var(--color-feedback-success-accent);
+  --color-feedback-success-action-hover: var(--color-status-success-200);
+  --color-feedback-warning-bg:          var(--color-status-warning-950);
+  --color-feedback-warning-border:      var(--color-status-warning-700);
+  --color-feedback-warning-accent:      var(--color-status-warning-300);
+  --color-feedback-warning-action:      var(--color-feedback-warning-accent);
+  --color-feedback-warning-action-hover: var(--color-status-warning-200);
+  --color-feedback-error-bg:            var(--color-status-error-950);
+  --color-feedback-error-border:        var(--color-status-error-700);
+  --color-feedback-error-accent:        var(--color-status-error-300);
+  --color-feedback-error-action:        var(--color-feedback-error-accent);
+  --color-feedback-error-action-hover:  var(--color-status-error-200);
   --color-feedback-neutral-bg:          var(--color-neutral-900);
   --color-feedback-neutral-border:      var(--color-neutral-800);
   --color-feedback-neutral-accent:      var(--color-neutral-200);
