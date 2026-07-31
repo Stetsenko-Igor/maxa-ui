@@ -454,7 +454,23 @@ function finalizeBundle(outputBundle) {
   }
   if (rawFeedbackColors.length > 0) {
     throw new Error(
-      `Color modes feedback colors must alias exact reference primitives or semantic roles; found literals at:\n${rawFeedbackColors.join("\n")}`,
+      `Color modes feedback colors must alias exact reference primitives; found literals at:\n${rawFeedbackColors.join("\n")}`,
+    )
+  }
+
+  const indirectFeedbackAliases = []
+  for (const [modeName, tokens] of Object.entries(colorModesCollection?.modes ?? {})) {
+    for (const [tokenName, value] of Object.entries(tokens)) {
+      if (!tokenName.startsWith("feedback/") || !isAliasValue(value)) continue
+      const target = parseBundleAlias(outputBundle, "Color modes", value)
+      if (target.collectionName !== "Primitives") {
+        indirectFeedbackAliases.push(`${tokenName} [${modeName}] -> ${target.collectionName}/${target.tokenName}`)
+      }
+    }
+  }
+  if (indirectFeedbackAliases.length > 0) {
+    throw new Error(
+      `Color modes feedback colors must alias Primitives directly; found semantic-to-semantic chains at:\n${indirectFeedbackAliases.join("\n")}`,
     )
   }
 

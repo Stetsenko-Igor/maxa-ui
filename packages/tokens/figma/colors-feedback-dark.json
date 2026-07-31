@@ -5,28 +5,28 @@
       "bg": { "$value": "{Colors.Status.Info.950}", "$type": "color" },
       "border": { "$value": "{Colors.Status.Info.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
-      "action": { "$value": "{Color modes/feedback/info/accent}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Status.Info.200}", "$type": "color" }
     },
     "success": {
       "bg": { "$value": "{Colors.Status.Success.950}", "$type": "color" },
       "border": { "$value": "{Colors.Status.Success.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
-      "action": { "$value": "{Color modes/feedback/success/accent}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Status.Success.200}", "$type": "color" }
     },
     "warning": {
       "bg": { "$value": "{Colors.Status.Warning.950}", "$type": "color" },
       "border": { "$value": "{Colors.Status.Warning.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
-      "action": { "$value": "{Color modes/feedback/warning/accent}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Status.Warning.200}", "$type": "color" }
     },
     "error": {
       "bg": { "$value": "{Colors.Status.Error.950}", "$type": "color" },
       "border": { "$value": "{Colors.Status.Error.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
-      "action": { "$value": "{Color modes/feedback/error/accent}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Status.Error.200}", "$type": "color" }
     },
     "neutral": {
