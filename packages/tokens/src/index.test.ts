@@ -712,17 +712,16 @@ describe("figma import bundle", () => {
     const dark = bundle.collections["Color modes"]?.modes.Dark
     const css = readFileSync(join(root, "src/semantic.css"), "utf-8")
 
-    // The reconciled ladder: subtle → on-subtle → muted → on-muted → strong.
+    // The reconciled ladder: surface → subtle → on-subtle → muted → on-muted → strong.
+    expect(light?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.50}")
+    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.900}")
     expect(light?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.200}")
     expect(dark?.["background/bg-neutral-on-subtle"]).toBe("{Colors.Neutral.700}")
     expect(light?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.300}")
     expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.600}")
+    expect(css).toContain("--color-bg-neutral-surface:   var(--color-neutral-50)")
     expect(css).toContain("--color-bg-neutral-on-subtle: var(--color-neutral-200)")
     expect(css).toContain("--color-bg-neutral-on-muted:  var(--color-neutral-300)")
-
-    // The dead duplicate must not exist anywhere.
-    expect(light?.["background/bg-neutral-surface"]).toBeUndefined()
-    expect(css).not.toContain("--color-bg-neutral-surface")
 
     // Table header consumes the new step.
     const tableCss = readFileSync(join(root, "src/component-table.css"), "utf-8")

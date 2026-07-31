@@ -69,6 +69,7 @@
   --color-bg-disabled:          var(--color-neutral-100);
 
   /* ── Background — status/intent (orthogonal to elevation) ──────── */
+  --color-bg-neutral-surface:   var(--color-neutral-50);
   --color-bg-neutral-subtle:    var(--color-neutral-100);
   --color-bg-neutral-on-subtle: var(--color-neutral-200);
   --color-bg-neutral-on-muted:  var(--color-neutral-300);
@@ -309,6 +310,7 @@
   --color-bg-disabled:          var(--color-neutral-800);
 
   /* ── Background — status/intent (dark) ──────────────────────────── */
+  --color-bg-neutral-surface:   var(--color-neutral-900);
   --color-bg-neutral-subtle:    var(--color-neutral-800);
   --color-bg-neutral-on-subtle: var(--color-neutral-700);
   --color-bg-neutral-on-muted:  var(--color-neutral-600);

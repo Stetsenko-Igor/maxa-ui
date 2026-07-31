@@ -1258,6 +1258,7 @@
           "background/bg-info-subtle": "{Colors.Blue.50}",
           "background/bg-info-surface": "{Colors.Blue.50}",
           "background/bg-info-strong": "{Colors.Blue.700}",
+          "background/bg-neutral-surface": "{Colors.Neutral.50}",
           "background/bg-neutral-subtle": "{Colors.Neutral.100}",
           "background/bg-neutral-on-subtle": "{Colors.Neutral.200}",
           "background/bg-neutral-on-muted": "{Colors.Neutral.300}",
@@ -1492,6 +1493,7 @@
           "background/bg-info-subtle": "{Colors.Blue.950}",
           "background/bg-info-surface": "{Colors.Blue.950}",
           "background/bg-info-strong": "{Colors.Blue.500}",
+          "background/bg-neutral-surface": "{Colors.Neutral.900}",
           "background/bg-neutral-subtle": "{Colors.Neutral.800}",
           "background/bg-neutral-on-subtle": "{Colors.Neutral.700}",
           "background/bg-neutral-on-muted": "{Colors.Neutral.600}",
@@ -1727,6 +1729,7 @@
         "background/bg-info-subtle": "Low-emphasis info surface fill.",
         "background/bg-info-surface": "Info surface fill.",
         "background/bg-info-strong": "Strong info fill.",
+        "background/bg-neutral-surface": "Lowest neutral surface tint, one step below subtle.",
         "background/bg-neutral-subtle": "Subtle neutral section background.",
         "background/bg-neutral-on-subtle": "Neutral fill placed on a subtle neutral background.",
         "background/bg-neutral-on-muted": "Neutral fill one step above muted, used for table headers and wells.",
@@ -1961,6 +1964,7 @@
         "background/bg-info-subtle": "COLOR",
         "background/bg-info-surface": "COLOR",
         "background/bg-info-strong": "COLOR",
+        "background/bg-neutral-surface": "COLOR",
         "background/bg-neutral-subtle": "COLOR",
         "background/bg-neutral-on-subtle": "COLOR",
         "background/bg-neutral-on-muted": "COLOR",
@@ -2421,6 +2425,9 @@
           "ALL_FILLS"
         ],
         "background/bg-info-strong": [
+          "ALL_FILLS"
+        ],
+        "background/bg-neutral-surface": [
           "ALL_FILLS"
         ],
         "background/bg-neutral-subtle": [
