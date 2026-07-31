@@ -787,8 +787,9 @@ describe("figma import bundle", () => {
     const values = component?.modes.Default ?? {}
 
     expect(Object.keys(component?.modes ?? {})).toEqual(["Default"])
+    // 6 intents × (bg, border, accent, text, action, action-hover) = 36.
     const alertColorNames = Object.keys(values).filter((name) => name.startsWith("Alert/color/"))
-    expect(alertColorNames).toHaveLength(32)
+    expect(alertColorNames).toHaveLength(36)
     for (const [name, type] of Object.entries(component?.types ?? {})) {
       if (type === "COLOR") expect(values[name], name).toMatch(/^\{[^}]+\}$/)
     }

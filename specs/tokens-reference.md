@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1716
+Total tokens: 1721
 
 ## Primitives
 
@@ -499,10 +499,14 @@ Source: `packages/tokens/src/semantic.css`
 --color-feedback-neutral-border: var(--color-neutral-400);/* dark: var(--color-neutral-800) */
 --color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-500) */
 --color-feedback-neutral-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+--color-feedback-neutral-action: var(--color-action-primary);/* dark: var(--color-blue-400) */
+--color-feedback-neutral-action-hover: var(--color-action-primary-hover);/* dark: var(--color-blue-300) */
 --color-feedback-emphasize-bg: var(--color-neutral-50);/* dark: var(--color-neutral-950) */
 --color-feedback-emphasize-border: var(--color-neutral-400);/* dark: var(--color-neutral-800) */
 --color-feedback-emphasize-accent: var(--color-neutral-800);/* dark: var(--color-neutral-500) */
 --color-feedback-emphasize-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+--color-feedback-emphasize-action: var(--color-action-primary);/* dark: var(--color-blue-400) */
+--color-feedback-emphasize-action-hover: var(--color-action-primary-hover);/* dark: var(--color-blue-300) */
 
 /* ── Shared component support roles ── */
 --color-bg-overlay-strong: var(--color-neutral-alpha-ink-50);/* dark: var(--color-neutral-alpha-black-72) */
@@ -1207,6 +1211,7 @@ Source: `packages/tokens/src/component-table.css`
 --table-font-size: var(--text-sm);
 --table-line-height: var(--text-sm--line-height);
 --table-header-bg: var(--color-bg-neutral-on-muted);/* dark: var(--color-bg-neutral-on-muted) */
+--table-fg: var(--color-fg-secondary);
 --table-header-text: var(--color-text-primary);
 --table-header-font-size: var(--text-sm);
 --table-header-line-height: var(--text-sm--line-height);

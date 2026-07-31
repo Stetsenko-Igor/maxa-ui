@@ -133,6 +133,16 @@
         "$description": "Neutral feedback text.",
         "$value": "{Colors.Neutral.950}",
         "$type": "color"
+      },
+      "action": {
+        "$description": "Neutral feedback action link and button color.",
+        "$value": "{Colors.Blue.500}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Neutral feedback action hover color.",
+        "$value": "{Colors.Blue.600}",
+        "$type": "color"
       }
     },
     "emphasize": {
@@ -154,6 +164,16 @@
       "text": {
         "$description": "Emphasized feedback text.",
         "$value": "{Colors.Neutral.950}",
+        "$type": "color"
+      },
+      "action": {
+        "$description": "Emphasize feedback action link and button color.",
+        "$value": "{Colors.Blue.500}",
+        "$type": "color"
+      },
+      "action-hover": {
+        "$description": "Emphasize feedback action hover color.",
+        "$value": "{Colors.Blue.600}",
         "$type": "color"
       }
     }

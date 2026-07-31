@@ -217,6 +217,10 @@ const USAGE: Record<string, string> = {
   "--color-border-warning-strong": "Strong warning borders.",
   "--color-border-neutral-strong": "High-emphasis neutral outlines.",
   "--color-border-neutral-subtle": "Low-emphasis neutral outlines.",
+  "--color-feedback-neutral-action": "Neutral feedback action link and button color.",
+  "--color-feedback-neutral-action-hover": "Neutral feedback action hover color.",
+  "--color-feedback-emphasize-action": "Emphasized feedback action link and button color.",
+  "--color-feedback-emphasize-action-hover": "Emphasized feedback action hover color.",
 }
 
 function buildGroup(tokens: GeneratedToken[], prefix: string): TokenItem[] {

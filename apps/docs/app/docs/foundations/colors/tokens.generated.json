@@ -1123,6 +1123,20 @@
         "darkHex": "#F4F3F3"
       },
       {
+        "name": "--color-feedback-neutral-action",
+        "lightValue": "var(--color-action-primary)",
+        "darkValue": "var(--color-blue-400)",
+        "lightHex": "#0265DC",
+        "darkHex": "#147AF3"
+      },
+      {
+        "name": "--color-feedback-neutral-action-hover",
+        "lightValue": "var(--color-action-primary-hover)",
+        "darkValue": "var(--color-blue-300)",
+        "lightHex": "#0054B6",
+        "darkHex": "#59A7F6"
+      },
+      {
         "name": "--color-feedback-emphasize-bg",
         "lightValue": "var(--color-neutral-50)",
         "darkValue": "var(--color-neutral-950)",
@@ -1149,6 +1163,20 @@
         "darkValue": "var(--color-neutral-100)",
         "lightHex": "#1A1919",
         "darkHex": "#F4F3F3"
+      },
+      {
+        "name": "--color-feedback-emphasize-action",
+        "lightValue": "var(--color-action-primary)",
+        "darkValue": "var(--color-blue-400)",
+        "lightHex": "#0265DC",
+        "darkHex": "#147AF3"
+      },
+      {
+        "name": "--color-feedback-emphasize-action-hover",
+        "lightValue": "var(--color-action-primary-hover)",
+        "darkValue": "var(--color-blue-300)",
+        "lightHex": "#0054B6",
+        "darkHex": "#59A7F6"
       }
     ]
   }
