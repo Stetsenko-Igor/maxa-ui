@@ -44,6 +44,32 @@ for (const name of COMPONENT_PAGES) {
   })
 }
 
+// --- Form controls in both themes ---
+//
+// Checkbox/Radio/Toggle colors were migrated from hardcoded hex to semantic
+// control/action tokens (PR #20) and gained real dark-mode values for the
+// first time. These screenshots pin both themes so any token-layer change
+// that shifts control rendering is caught.
+
+const FORM_CONTROL_PAGES = ["checkbox", "radio", "toggle"]
+
+for (const name of FORM_CONTROL_PAGES) {
+  test(`component: ${name} default preview (light)`, async ({ page }) => {
+    await gotoStable(page, `/docs/components/${name}.html`)
+    const preview = previews(page).first()
+    await expect(preview).toBeVisible()
+    await expect(preview).toHaveScreenshot(`component-${name}-light.png`)
+  })
+
+  test(`component: ${name} default preview (dark)`, async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("maxa-theme", "dark"))
+    await gotoStable(page, `/docs/components/${name}.html`)
+    const preview = previews(page).first()
+    await expect(preview).toBeVisible()
+    await expect(preview).toHaveScreenshot(`component-${name}-dark.png`)
+  })
+}
+
 // --- Overlay open states (portal content, screenshot the viewport) ---
 
 test("overlay: dropdown-menu open", async ({ page }) => {
