@@ -393,15 +393,15 @@
       "$type": "color"
     },
     "bg-neutral-surface": {
-      "$value": "{Colors.Neutral.900}",
+      "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "bg-neutral-subtle": {
-      "$value": "{Colors.Neutral.800}",
+      "$value": "{Colors.Neutral.900}",
       "$type": "color"
     },
     "bg-neutral-on-muted": {
-      "$value": "{Colors.Neutral.600}",
+      "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
     "bg-neutral-strong": {
@@ -409,7 +409,7 @@
       "$type": "color"
     },
     "bg-neutral-muted": {
-      "$value": "{Colors.Neutral.700}",
+      "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
     "bg-info-muted": {

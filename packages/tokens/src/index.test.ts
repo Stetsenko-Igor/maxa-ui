@@ -714,21 +714,21 @@ describe("figma import bundle", () => {
 
     // The reconciled ladder: surface → subtle → muted → on-muted → strong.
     expect(light?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.50}")
-    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.900}")
+    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.950}")
     expect(light?.["background/bg-neutral-on-subtle"]).toBeUndefined()
     expect(light?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.200}")
-    expect(dark?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.700}")
+    expect(dark?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.800}")
     expect(light?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.300}")
-    expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.600}")
+    expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.700}")
     expect(css).toContain("--color-bg-neutral-surface:   var(--color-neutral-50)")
     expect(css).not.toContain("--color-bg-neutral-on-subtle")
     expect(css).toContain("--color-bg-neutral-on-muted:  var(--color-neutral-300)")
 
     // Table header consumes the new step.
     const tableCss = readFileSync(join(root, "src/component-table.css"), "utf-8")
-    expect(tableCss).toContain("--table-header-bg: var(--color-bg-neutral-on-muted)")
+    expect(tableCss).toContain("--table-header-bg: var(--color-bg-neutral-muted)")
     expect(bundle.collections["Component-based"]?.modes.Default["Table/header-bg"]).toBe(
-      "{Color modes/background/bg-neutral-on-muted}",
+      "{Color modes/background/bg-neutral-muted}",
     )
   })
 

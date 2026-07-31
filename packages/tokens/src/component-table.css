@@ -10,9 +10,9 @@
   --table-font-size: var(--text-sm);
   --table-line-height: var(--text-sm--line-height);
 
-  --table-header-bg: var(--color-bg-neutral-on-muted);
+  --table-header-bg: var(--color-bg-neutral-muted);
   --table-fg: var(--color-fg-secondary);
-  --table-header-text: var(--color-text-primary);
+  --table-header-text: var(--color-text-secondary);
   --table-header-font-size: var(--text-sm);
   --table-header-line-height: var(--text-sm--line-height);
   --table-header-font-weight: var(--font-weight-semibold);
@@ -89,7 +89,7 @@
 }
 
 [data-theme="dark"] {
-  --table-header-bg: var(--color-bg-neutral-on-muted);
+  --table-header-bg: var(--color-bg-neutral-muted);
   --table-row-bg-subdued: var(--color-bg-muted);
   --table-row-bg-selected: var(--color-action-primary-subtle);
   --table-row-bg-selected-hover: var(--color-action-primary-subtle-hover);
