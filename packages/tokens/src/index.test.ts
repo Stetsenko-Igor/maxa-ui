@@ -246,8 +246,8 @@ describe("semantic.css — bg + action", () => {
     expect(light).toContain("--color-feedback-success-border:      var(--color-green-400);")
     expect(light).toContain("--color-feedback-warning-border:      var(--color-orange-300);")
     expect(light).toContain("--color-feedback-error-border:        var(--color-red-300);")
-    expect(light).toContain("--color-feedback-text:                var(--color-base-ink);")
-    expect(dark).toContain("--color-feedback-text:                var(--color-neutral-100);")
+    expect(light).toContain("--color-feedback-text:                var(--color-text-primary);")
+    expect(dark).toContain("--color-feedback-text:                var(--color-text-primary);")
     expect(dark).toContain("--color-feedback-info-bg:             var(--color-blue-800);")
     expect(dark).toContain("--color-feedback-success-bg:          var(--color-green-900);")
     expect(dark).toContain("--color-feedback-warning-bg:          var(--color-orange-900);")
@@ -493,7 +493,7 @@ describe("figma import bundle", () => {
       )
     }
     for (const intent of ["info", "success", "warning", "error", "neutral", "emphasize"]) {
-      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-inverse}")
+      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-primary}")
     }
     expect(component?.["Calendar/shadow"]).toBeUndefined()
     expect(component?.["Context Menu/shadow"]).toBeUndefined()
@@ -524,15 +524,19 @@ describe("figma import bundle", () => {
     expect(light?.["feedback/error/border"]).toBe("{Colors.Red.300}")
     expect(light?.["feedback/success/accent"]).toBe("{Colors.Green.700}")
     expect(light?.["feedback/warning/accent"]).toBe("{Colors.Orange.700}")
-    expect(light?.["feedback/text"]).toBe("{Colors.Base.Ink}")
-    expect(dark?.["feedback/text"]).toBe("{Colors.Neutral.100}")
+    expect(light?.["feedback/text"]).toBe("{Color modes/text/text-primary}")
+    expect(dark?.["feedback/text"]).toBe("{Color modes/text/text-primary}")
     expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.800}")
     expect(dark?.["feedback/info/border"]).toBe("{Colors.Blue.600}")
     expect(dark?.["feedback/error/accent"]).toBe("{Colors.Red.400}")
     for (const mode of [light, dark]) {
       for (const [name, value] of Object.entries(mode ?? {})) {
         if (name.startsWith("feedback/")) {
-          expect(value).toMatch(/^\{Colors\./)
+          if (name === "feedback/text") {
+            expect(value).toBe("{Color modes/text/text-primary}")
+          } else {
+            expect(value).toMatch(/^\{Colors\./)
+          }
         }
       }
     }
@@ -556,7 +560,7 @@ describe("figma import bundle", () => {
           `{Color modes/feedback/${intent}/${role}}`,
         )
       }
-      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-inverse}")
+      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-primary}")
     }
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
     expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
@@ -578,7 +582,7 @@ describe("figma import bundle", () => {
     expect(Object.keys(primitives ?? {}).some((name) => name.startsWith("Colors/Status/"))).toBe(false)
 
     const expectedLightAliases = {
-      "feedback/text": "{Colors.Base.Ink}",
+      "feedback/text": "{Color modes/text/text-primary}",
       "feedback/info/bg": "{Colors.Blue.50}",
       "feedback/info/border": "{Colors.Blue.200}",
       "feedback/info/accent": "{Colors.Blue.500}",
@@ -609,7 +613,7 @@ describe("figma import bundle", () => {
       "feedback/emphasize/text": "{Colors.Neutral.950}",
     }
     const expectedDarkAliases = {
-      "feedback/text": "{Colors.Neutral.100}",
+      "feedback/text": "{Color modes/text/text-primary}",
       "feedback/info/bg": "{Colors.Blue.800}",
       "feedback/info/border": "{Colors.Blue.600}",
       "feedback/info/accent": "{Colors.Blue.300}",

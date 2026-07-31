@@ -11,5 +11,5 @@ Add eight `Component-based/Alert/color/*/action` and `action-hover` aliases for 
 Warning, and Error so Figma Alert buttons can bind to stable component tokens while resolving
 theme changes through `Color modes`.
 
-Route all `Component-based/Alert/color/*/text` aliases through `Color modes/text/text-inverse`
-to match the filled Button text role used for Alert actions in Figma.
+Route Alert text aliases through `Color modes/text/text-primary` so Alert body and title text
+stay on the normal readable text role while Alert action colors remain separate.

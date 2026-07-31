@@ -1,6 +1,6 @@
 {
   "feedback": {
-    "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
+    "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
     "info": {
       "bg": { "$value": "{Colors.Blue.800}", "$type": "color" },
       "border": { "$value": "{Colors.Blue.600}", "$type": "color" },

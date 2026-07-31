@@ -2,7 +2,7 @@
   "feedback": {
     "text": {
       "$description": "Text used on intent feedback surfaces.",
-      "$value": "{Colors.Base.Ink}",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "info": {

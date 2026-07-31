@@ -117,9 +117,9 @@ Examples:
 - `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
 - `Alert/color/info/action` -> `Color modes/feedback/info/action`
 - `Alert/color/info/action-hover` -> `Color modes/feedback/info/action-hover`
-- `Alert/color/info/text` -> `Color modes/text/text-inverse`
+- `Alert/color/info/text` -> `Color modes/text/text-primary`
 - `Alert/color/info/bg` in Dark -> `Color modes/feedback/info/bg` -> `Primitives/Colors/Blue/800`
-- every `Color modes/feedback/*` COLOR value must alias `Primitives` directly; raw values and semantic-to-semantic chains fail the bundle build
+- every intent-specific `Color modes/feedback/*` COLOR value aliases `Primitives` directly; `feedback/text` reuses `text/text-primary`
 - `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg` -> `Primitives/Colors/Base/White` in Light
 - `Alert/color/emphasize/bg` -> `Color modes/feedback/emphasize/bg` -> `Primitives/Colors/Neutral/50` in Light
 - `Utility/bg-violet-muted` -> `Color modes/utility/bg-violet-muted`

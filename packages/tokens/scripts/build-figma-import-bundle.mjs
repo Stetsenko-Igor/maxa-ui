@@ -462,14 +462,18 @@ function finalizeBundle(outputBundle) {
     for (const [tokenName, value] of Object.entries(tokens)) {
       if (!tokenName.startsWith("feedback/") || !isAliasValue(value)) continue
       const target = parseBundleAlias(outputBundle, "Color modes", value)
-      if (target.collectionName !== "Primitives") {
+      const isSharedFeedbackText =
+        tokenName === "feedback/text" &&
+        target.collectionName === "Color modes" &&
+        target.tokenName === "text/text-primary"
+      if (target.collectionName !== "Primitives" && !isSharedFeedbackText) {
         indirectFeedbackAliases.push(`${tokenName} [${modeName}] -> ${target.collectionName}/${target.tokenName}`)
       }
     }
   }
   if (indirectFeedbackAliases.length > 0) {
     throw new Error(
-      `Color modes feedback colors must alias Primitives directly; found semantic-to-semantic chains at:\n${indirectFeedbackAliases.join("\n")}`,
+      `Color modes feedback colors must alias Primitives directly, except feedback/text -> text/text-primary; found semantic-to-semantic chains at:\n${indirectFeedbackAliases.join("\n")}`,
     )
   }
 
