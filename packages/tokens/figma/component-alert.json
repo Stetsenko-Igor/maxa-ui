@@ -124,7 +124,7 @@
         },
         "text": {
           "$description": "Alert, color info: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -156,7 +156,7 @@
         },
         "text": {
           "$description": "Alert, color success: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -188,7 +188,7 @@
         },
         "text": {
           "$description": "Alert, color warning: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -220,7 +220,7 @@
         },
         "text": {
           "$description": "Alert, color error: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -242,7 +242,7 @@
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/feedback/neutral/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -264,7 +264,7 @@
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/feedback/emphasize/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       }

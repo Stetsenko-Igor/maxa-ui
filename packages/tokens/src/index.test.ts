@@ -492,6 +492,9 @@ describe("figma import bundle", () => {
         `{Color modes/feedback/${intent}/action-hover}`,
       )
     }
+    for (const intent of ["info", "success", "warning", "error", "neutral", "emphasize"]) {
+      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-inverse}")
+    }
     expect(component?.["Calendar/shadow"]).toBeUndefined()
     expect(component?.["Context Menu/shadow"]).toBeUndefined()
     expect(component?.["Social Button/shadow-focus"]).toBeUndefined()
@@ -548,11 +551,12 @@ describe("figma import bundle", () => {
     expect(light?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.50}")
     expect(dark?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.950}")
     for (const intent of ["neutral", "emphasize"]) {
-      for (const role of ["bg", "border", "accent", "text"]) {
+      for (const role of ["bg", "border", "accent"]) {
         expect(component?.[`Alert/color/${intent}/${role}`]).toBe(
           `{Color modes/feedback/${intent}/${role}}`,
         )
       }
+      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-inverse}")
     }
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
     expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
