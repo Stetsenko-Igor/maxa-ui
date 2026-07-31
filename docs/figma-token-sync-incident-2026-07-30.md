@@ -40,7 +40,7 @@ For example:
 
 `Component-based/Alert/color/info/bg`
 → `Color modes/feedback/info/bg`
-→ an exact Light or Dark reference primitive alias
+→ a canonical Light or Dark primitive alias
 
 Neutral and Emphasize use dedicated feedback roles so shared background-token changes cannot accidentally restyle Alert:
 
@@ -58,10 +58,10 @@ The Light info background now also resolves through the deployed primitive value
 The Figma primitive previously stored `#EFF6FF`, while the CSS source and deployed Netlify build
 used `#E0F2FF`. Updating the primitive closes that drift for all six Light semantic consumers.
 
-The approved Dark feedback palette is stored once under `Primitives/Colors/Status/*`. Every
-`Color modes/feedback/*` value is an alias; shared action colors alias their matching feedback
-accent role. This preserves the exact deployed hex values without duplicating raw colors in the
-semantic layer.
+Every `Color modes/feedback/*` value is an alias to the canonical primitive palettes. Dark
+feedback reuses Blue, Green, Yellow/Orange, and Red instead of introducing a parallel
+`Primitives/Colors/Status/*` family. The semantic layer therefore stays free of both raw colors
+and feedback-specific primitive duplicates.
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 
@@ -185,6 +185,11 @@ Per-mode assignment was correct and is retained. Wrong-type recreation is now gu
 ### PR #20 — semantic control colors and Alert follow-up
 
 Checkbox, Radio, and Toggle correctly moved toward semantic control roles. The first Alert follow-up removed raw colors but mapped them to approximate shared roles, changing the published dark appearance. The final repair keeps the clean alias chain while preserving the exact Alert palette in theme-aware Color modes roles.
+
+The subsequent primitive cleanup intentionally maps Dark feedback roles to the canonical Blue,
+Green, Yellow/Orange, and Red palettes. This removes the duplicate `Colors/Status/*` family;
+the resolved Dark Alert colors change slightly, while verified text and non-text contrast remain
+above the required thresholds.
 
 ## Publishing
 

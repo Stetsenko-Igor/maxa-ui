@@ -18,10 +18,11 @@ dark; they now get real theme-adapted colors for the first time.
 
 The Figma token schema now keeps theme switching only in `Color modes`. `Component-based`
 has one `Default` mode, all 1,026 component variables keep stable IDs, and every component
-COLOR value is an alias. Alert retains the published dark palette through dedicated
-theme-aware roles, while Dialog, Dropdown Menu, and the extended utility palette follow the
-same single-switch architecture. Alert Light retains the deployed Netlify palette, including
-intent-colored borders, and Alert Dark retains its existing bespoke palette.
+COLOR value is an alias. Alert keeps dedicated theme-aware roles, while Dialog, Dropdown Menu,
+and the extended utility palette follow the same single-switch architecture. Alert Light retains
+the deployed Netlify palette, including intent-colored borders. Alert Dark now uses the same
+canonical primitive palettes as the rest of the semantic color system instead of maintaining a
+separate feedback-only palette.
 
 Removed the duplicate `Color modes/component/*` namespace. `Component-based` now points to
 reusable feedback and support semantics. Alert Neutral and Emphasize use dedicated feedback roles
@@ -34,10 +35,11 @@ of storing the same raw hex value twice. Its resolved color remains `#C7E5F0`.
 Aligned Figma `Colors/Blue/50` with the deployed CSS primitive (`#E0F2FF`) and routed the Light
 Alert info background through that primitive instead of duplicating its hex value.
 
-Moved the exact deployed Dark Alert palette into 16 `Colors/Status/*` reference primitives and
-added `Colors/Base/Ink` for the Light feedback text value. All 58 Light/Dark `feedback/*` values
-are now aliases, with no visual color changes. The bundle builder rejects future raw feedback
-colors so the semantic layer cannot regress to literal hex values.
+Added `Colors/Base/Ink` for the Light feedback text value and routed all 58 Light/Dark
+`feedback/*` values directly to canonical primitives. Dark feedback reuses the existing
+Blue, Green, Yellow/Orange, and Red palettes; no duplicate `Colors/Status/*` reference family
+is retained. The bundle builder rejects future raw feedback colors so the semantic layer
+cannot regress to literal hex values.
 
 The export diff tool now compares the full variable contract — values, types, scopes, and
 descriptions — with representation-aware normalization: rgba()/hex8 equivalence after

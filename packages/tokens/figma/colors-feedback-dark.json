@@ -2,32 +2,32 @@
   "feedback": {
     "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
     "info": {
-      "bg": { "$value": "{Colors.Status.Info.950}", "$type": "color" },
-      "border": { "$value": "{Colors.Status.Info.700}", "$type": "color" },
-      "accent": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
-      "action": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
-      "action-hover": { "$value": "{Colors.Status.Info.200}", "$type": "color" }
+      "bg": { "$value": "{Colors.Blue.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Blue.500}", "$type": "color" },
+      "accent": { "$value": "{Colors.Blue.400}", "$type": "color" },
+      "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     },
     "success": {
-      "bg": { "$value": "{Colors.Status.Success.950}", "$type": "color" },
-      "border": { "$value": "{Colors.Status.Success.700}", "$type": "color" },
-      "accent": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
-      "action": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
-      "action-hover": { "$value": "{Colors.Status.Success.200}", "$type": "color" }
+      "bg": { "$value": "{Colors.Green.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Green.500}", "$type": "color" },
+      "accent": { "$value": "{Colors.Green.400}", "$type": "color" },
+      "action": { "$value": "{Colors.Green.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Green.300}", "$type": "color" }
     },
     "warning": {
-      "bg": { "$value": "{Colors.Status.Warning.950}", "$type": "color" },
-      "border": { "$value": "{Colors.Status.Warning.700}", "$type": "color" },
-      "accent": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
-      "action": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
-      "action-hover": { "$value": "{Colors.Status.Warning.200}", "$type": "color" }
+      "bg": { "$value": "{Colors.Yellow.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Orange.500}", "$type": "color" },
+      "accent": { "$value": "{Colors.Yellow.400}", "$type": "color" },
+      "action": { "$value": "{Colors.Yellow.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Yellow.300}", "$type": "color" }
     },
     "error": {
-      "bg": { "$value": "{Colors.Status.Error.950}", "$type": "color" },
-      "border": { "$value": "{Colors.Status.Error.700}", "$type": "color" },
-      "accent": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
-      "action": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
-      "action-hover": { "$value": "{Colors.Status.Error.200}", "$type": "color" }
+      "bg": { "$value": "{Colors.Red.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Red.400}", "$type": "color" },
+      "accent": { "$value": "{Colors.Red.400}", "$type": "color" },
+      "action": { "$value": "{Colors.Red.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Red.300}", "$type": "color" }
     },
     "neutral": {
       "bg": { "$value": "{Colors.Neutral.900}", "$type": "color" },

@@ -101,7 +101,7 @@ All other native `div` attributes are forwarded.
 --alert-info-icon:   var(--color-feedback-info-accent);
 ```
 
-The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through the approved bespoke palette in `Color modes`; those semantic roles alias exact `Primitives/Colors/Status/*` references rather than storing raw colors.
+The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through `Color modes`; those semantic roles alias the canonical Blue, Green, Yellow/Orange, and Red primitives rather than storing raw colors or maintaining a parallel feedback-only primitive palette.
 
 ---
 

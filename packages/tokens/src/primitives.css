@@ -92,27 +92,6 @@
   --color-orange-900: #7c2d12;
   --color-orange-950: #431407;
 
-  /* ── Exact feedback reference palettes — Figma: Colors/Status/* ── */
-  --color-status-info-950:    #003877;
-  --color-status-info-700:    #0059C2;
-  --color-status-info-300:    #54A3F6;
-  --color-status-info-200:    #8BC4FF;
-
-  --color-status-success-950: #044329;
-  --color-status-success-700: #006D0F;
-  --color-status-success-300: #2BB47D;
-  --color-status-success-200: #62D6A2;
-
-  --color-status-warning-950: #521D00;
-  --color-status-warning-700: #B44E00;
-  --color-status-warning-300: #E16D00;
-  --color-status-warning-200: #FF9A3C;
-
-  --color-status-error-950:   #7B0000;
-  --color-status-error-700:   #D71913;
-  --color-status-error-300:   #FF755E;
-  --color-status-error-200:   #FFA193;
-
   /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ─────────── */
   --color-neutral-alpha-ink-50:   #1B1A1A80;
   --color-neutral-alpha-black-72: #000000B8;

@@ -50,8 +50,8 @@ describe("canonicalizeAliasPath", () => {
     expect(canonicalizeAliasPath(repoBundle, "Color modes", "{Colors.Neutral.900}")).toBe(
       "Primitives/Colors/Neutral/900",
     )
-    expect(canonicalizeAliasPath(repoBundle, "Component-based", "{Colors.Status.Info.950}")).toBe(
-      "Primitives/Colors/Status/Info/950",
+    expect(canonicalizeAliasPath(repoBundle, "Component-based", "{Colors.Blue.950}")).toBe(
+      "Primitives/Colors/Blue/950",
     )
   })
 
