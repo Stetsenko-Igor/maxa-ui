@@ -112,9 +112,19 @@
           "$value": "{Color modes/feedback/info/accent}",
           "$type": "color"
         },
+        "action": {
+          "$description": "Alert, color info: action.",
+          "$value": "{Color modes/feedback/info/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color info: action hover.",
+          "$value": "{Color modes/feedback/info/action-hover}",
+          "$type": "color"
+        },
         "text": {
           "$description": "Alert, color info: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -134,9 +144,19 @@
           "$value": "{Color modes/feedback/success/accent}",
           "$type": "color"
         },
+        "action": {
+          "$description": "Alert, color success: action.",
+          "$value": "{Color modes/feedback/success/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color success: action hover.",
+          "$value": "{Color modes/feedback/success/action-hover}",
+          "$type": "color"
+        },
         "text": {
           "$description": "Alert, color success: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -156,9 +176,19 @@
           "$value": "{Color modes/feedback/warning/accent}",
           "$type": "color"
         },
+        "action": {
+          "$description": "Alert, color warning: action.",
+          "$value": "{Color modes/feedback/warning/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color warning: action hover.",
+          "$value": "{Color modes/feedback/warning/action-hover}",
+          "$type": "color"
+        },
         "text": {
           "$description": "Alert, color warning: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -178,9 +208,19 @@
           "$value": "{Color modes/feedback/error/accent}",
           "$type": "color"
         },
+        "action": {
+          "$description": "Alert, color error: action.",
+          "$value": "{Color modes/feedback/error/action}",
+          "$type": "color"
+        },
+        "action-hover": {
+          "$description": "Alert, color error: action hover.",
+          "$value": "{Color modes/feedback/error/action-hover}",
+          "$type": "color"
+        },
         "text": {
           "$description": "Alert, color error: text color.",
-          "$value": "{Color modes/feedback/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -202,7 +242,7 @@
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/feedback/neutral/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       },
@@ -224,7 +264,7 @@
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/feedback/emphasize/text}",
+          "$value": "{Color modes/text/text-inverse}",
           "$type": "color"
         }
       }

@@ -99,9 +99,16 @@ All other native `div` attributes are forwarded.
 --alert-info-text:   var(--color-feedback-text);
 --alert-info-title:  var(--color-feedback-text);
 --alert-info-icon:   var(--color-feedback-info-accent);
+--alert-info-action: var(--color-feedback-info-action);
+--alert-info-action-hover: var(--color-feedback-info-action-hover);
 ```
 
 The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through `Color modes`; those semantic roles alias the canonical Blue, Green, Yellow/Orange, and Red primitives rather than storing raw colors or maintaining a parallel feedback-only primitive palette.
+
+Figma exposes matching `Component-based/Alert/color/{intent}/action` and `action-hover`
+variables for Info, Success, Warning, and Error. Bind Alert button fills or foregrounds to
+these component variables rather than directly to `Color modes` so the component layer remains
+the stable assignment surface.
 
 ---
 
