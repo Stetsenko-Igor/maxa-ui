@@ -165,6 +165,7 @@ const USAGE: Record<string, string> = {
   "--color-bg-overlay": "Modal scrims and blocking overlays.",
   "--color-bg-inverse": "High-contrast inverse blocks.",
   "--color-bg-disabled": "Disabled backgrounds and inactive fills.",
+  "--color-bg-neutral-surface": "Lowest neutral surface tint, one step below subtle.",
   "--color-bg-neutral-subtle": "Neutral badges, tags, soft status fills.",
   "--color-bg-neutral-on-subtle": "Elements placed on neutral subtle backgrounds.",
   "--color-bg-neutral-strong": "Strong neutral badges and emphasis fills.",

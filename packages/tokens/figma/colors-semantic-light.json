@@ -488,6 +488,11 @@
       "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
+    "bg-neutral-surface": {
+      "$description": "Lowest neutral surface tint, one step below subtle.",
+      "$value": "{Colors.Neutral.50}",
+      "$type": "color"
+    },
     "bg-neutral-subtle": {
       "$description": "Subtle neutral section background.",
       "$value": "{Colors.Neutral.100}",

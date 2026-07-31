@@ -392,6 +392,10 @@
       "$value": "{Colors.Blue.500}",
       "$type": "color"
     },
+    "bg-neutral-surface": {
+      "$value": "{Colors.Neutral.900}",
+      "$type": "color"
+    },
     "bg-neutral-subtle": {
       "$value": "{Colors.Neutral.800}",
       "$type": "color"

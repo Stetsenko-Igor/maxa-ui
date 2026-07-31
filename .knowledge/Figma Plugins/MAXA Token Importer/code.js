@@ -37,10 +37,6 @@ const MIGRATIONS = {
     'Color modes/action/action-negative-subtle-active': 'Color modes/action/action-destructive-subtle-active',
     'Color modes/border/border-error': 'Color modes/border/border-error-strong',
     'Color modes/border/border-danger-subtle': 'Color modes/border/border-error-subtle',
-    // 2026-07 neutral ladder reconciliation: Figma's bg-neutral-surface was a
-    // dead duplicate of bg-neutral-subtle; the CSS vocabulary (on-subtle) wins.
-    // Rename in place so the Figma variable ID and node bindings survive.
-    'Color modes/background/bg-neutral-surface': 'Color modes/background/bg-neutral-on-subtle',
     'Component-based/Alert/color/danger/bg': 'Component-based/Alert/color/error/bg',
     'Component-based/Alert/color/danger/border': 'Component-based/Alert/color/error/border',
     'Component-based/Alert/color/danger/accent': 'Component-based/Alert/color/error/accent',
