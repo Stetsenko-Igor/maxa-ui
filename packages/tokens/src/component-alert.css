@@ -2,8 +2,8 @@
 /* Alert (callout): contextual feedback box with left accent strip.       */
 /* Four intents: info/success/warning/danger. Two layouts:                */
 /* inline (no title — horizontal) and stacked (with title — vertical).    */
-/* Light mode uses semantic intent surfaces. Dark mode mirrors the Figma */
-/* reusable Alert surface: muted dark panels and restrained intent color. */
+/* Both themes resolve through semantic Color modes; component tokens never */
+/* carry theme-specific raw colors.                                       */
 
 :root {
   /* ── Shared layout ─────────────────────────────────────────────── */
@@ -28,80 +28,42 @@
   --alert-title-weight:     var(--font-weight-bold);
 
   /* ── Info ──────────────────────────────────────────────────────── */
-  --alert-info-bg:           var(--color-bg-info-subtle);
-  --alert-info-border:       var(--color-border-info-subtle);
-  --alert-info-text:         var(--color-text-primary);
-  --alert-info-title:        var(--color-text-primary);
-  --alert-info-icon:         var(--color-fg-info);
-  --alert-info-strip:        var(--color-fg-info);
-  --alert-info-action:       var(--color-action-primary);
-  --alert-info-action-hover: var(--color-action-primary-hover);
+  --alert-info-bg:           var(--color-feedback-info-bg);
+  --alert-info-border:       var(--color-feedback-info-border);
+  --alert-info-text:         var(--color-feedback-text);
+  --alert-info-title:        var(--color-feedback-text);
+  --alert-info-icon:         var(--color-feedback-info-accent);
+  --alert-info-strip:        var(--color-feedback-info-accent);
+  --alert-info-action:       var(--color-feedback-info-action);
+  --alert-info-action-hover: var(--color-feedback-info-action-hover);
 
   /* ── Success ───────────────────────────────────────────────────── */
-  --alert-success-bg:           var(--color-bg-success-subtle);
-  --alert-success-border:       var(--color-border-success-subtle);
-  --alert-success-text:         var(--color-text-primary);
-  --alert-success-title:        var(--color-text-primary);
-  --alert-success-icon:         var(--color-fg-success);
-  --alert-success-strip:        var(--color-fg-success);
-  --alert-success-action:       var(--color-fg-success);
-  --alert-success-action-hover: var(--color-text-success);
+  --alert-success-bg:           var(--color-feedback-success-bg);
+  --alert-success-border:       var(--color-feedback-success-border);
+  --alert-success-text:         var(--color-feedback-text);
+  --alert-success-title:        var(--color-feedback-text);
+  --alert-success-icon:         var(--color-feedback-success-accent);
+  --alert-success-strip:        var(--color-feedback-success-accent);
+  --alert-success-action:       var(--color-feedback-success-action);
+  --alert-success-action-hover: var(--color-feedback-success-action-hover);
 
   /* ── Warning ───────────────────────────────────────────────────── */
-  --alert-warning-bg:           var(--color-bg-warning-subtle);
-  --alert-warning-border:       var(--color-border-warning-subtle);
-  --alert-warning-text:         var(--color-text-primary);
-  --alert-warning-title:        var(--color-text-primary);
-  --alert-warning-icon:         var(--color-fg-warning);
-  --alert-warning-strip:        var(--color-fg-warning);
-  --alert-warning-action:       var(--color-fg-warning);
-  --alert-warning-action-hover: var(--color-text-warning);
+  --alert-warning-bg:           var(--color-feedback-warning-bg);
+  --alert-warning-border:       var(--color-feedback-warning-border);
+  --alert-warning-text:         var(--color-feedback-text);
+  --alert-warning-title:        var(--color-feedback-text);
+  --alert-warning-icon:         var(--color-feedback-warning-accent);
+  --alert-warning-strip:        var(--color-feedback-warning-accent);
+  --alert-warning-action:       var(--color-feedback-warning-action);
+  --alert-warning-action-hover: var(--color-feedback-warning-action-hover);
 
   /* ── Error ────────────────────────────────────────────────────── */
-  --alert-error-bg:           var(--color-bg-error-subtle);
-  --alert-error-border:       var(--color-border-error-subtle);
-  --alert-error-text:         var(--color-text-primary);
-  --alert-error-title:        var(--color-text-primary);
-  --alert-error-icon:         var(--color-fg-error);
-  --alert-error-strip:        var(--color-fg-error);
-  --alert-error-action:       var(--color-fg-error);
-  --alert-error-action-hover: var(--color-text-error);
-}
-
-[data-theme="dark"] {
-  --alert-info-bg:           #003877;
-  --alert-info-border:       #0059c2;
-  --alert-info-text:         #f4f3f3;
-  --alert-info-title:        #f4f3f3;
-  --alert-info-icon:         #54a3f6;
-  --alert-info-strip:        #54a3f6;
-  --alert-info-action:       #54a3f6;
-  --alert-info-action-hover: #8bc4ff;
-
-  --alert-success-bg:           #044329;
-  --alert-success-border:       #006d0f;
-  --alert-success-text:         #f4f3f3;
-  --alert-success-title:        #f4f3f3;
-  --alert-success-icon:         #2bb47d;
-  --alert-success-strip:        #2bb47d;
-  --alert-success-action:       #2bb47d;
-  --alert-success-action-hover: #62d6a2;
-
-  --alert-warning-bg:           #521d00;
-  --alert-warning-border:       #b44e00;
-  --alert-warning-text:         #f4f3f3;
-  --alert-warning-title:        #f4f3f3;
-  --alert-warning-icon:         #e16d00;
-  --alert-warning-strip:        #e16d00;
-  --alert-warning-action:       #e16d00;
-  --alert-warning-action-hover: #ff9a3c;
-
-  --alert-error-bg:           #7b0000;
-  --alert-error-border:       #d71913;
-  --alert-error-text:         #f4f3f3;
-  --alert-error-title:        #f4f3f3;
-  --alert-error-icon:         #ff755e;
-  --alert-error-strip:        #ff755e;
-  --alert-error-action:       #ff755e;
-  --alert-error-action-hover: #ffa193;
+  --alert-error-bg:           var(--color-feedback-error-bg);
+  --alert-error-border:       var(--color-feedback-error-border);
+  --alert-error-text:         var(--color-feedback-text);
+  --alert-error-title:        var(--color-feedback-text);
+  --alert-error-icon:         var(--color-feedback-error-accent);
+  --alert-error-strip:        var(--color-feedback-error-accent);
+  --alert-error-action:       var(--color-feedback-error-action);
+  --alert-error-action-hover: var(--color-feedback-error-action-hover);
 }

@@ -4,7 +4,7 @@
   --spinner-color: var(--spinner-primary-color);
   --spinner-track-color: var(--color-border-secondary);
   --spinner-white-color: var(--color-neutral-0);
-  --spinner-white-track-color: color-mix(in srgb, var(--color-neutral-0) 45%, transparent);
+  --spinner-white-track-color: var(--color-fg-on-inverse-muted);
   --spinner-primary-color: var(--color-action-primary);
   --spinner-greyscale-color: var(--color-fg-secondary);
   --spinner-inverted-color: var(--color-text-primary);

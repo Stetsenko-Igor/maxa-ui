@@ -6,6 +6,7 @@
   /* ── Base — Figma: Colors/Base/* ────────────────────────────────── */
   --color-base-white:  #ffffff;
   --color-base-black:  #000000;
+  --color-base-ink:    #1B1A1A;
   --color-transparent: transparent;
 
   /* Legacy aliases — kept for Tailwind utilities */
@@ -32,6 +33,7 @@
   /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
   --color-blue-50:  #E0F2FF;
   --color-blue-100: #DBEAFE;
+  --color-blue-150: #C7E5F0;
   --color-blue-200: #96CEFD;
   --color-blue-300: #59A7F6;
   --color-blue-400: #147AF3;
@@ -89,6 +91,32 @@
   --color-orange-800: #9a3412;
   --color-orange-900: #7c2d12;
   --color-orange-950: #431407;
+
+  /* ── Exact feedback reference palettes — Figma: Colors/Status/* ── */
+  --color-status-info-950:    #003877;
+  --color-status-info-700:    #0059C2;
+  --color-status-info-300:    #54A3F6;
+  --color-status-info-200:    #8BC4FF;
+
+  --color-status-success-950: #044329;
+  --color-status-success-700: #006D0F;
+  --color-status-success-300: #2BB47D;
+  --color-status-success-200: #62D6A2;
+
+  --color-status-warning-950: #521D00;
+  --color-status-warning-700: #B44E00;
+  --color-status-warning-300: #E16D00;
+  --color-status-warning-200: #FF9A3C;
+
+  --color-status-error-950:   #7B0000;
+  --color-status-error-700:   #D71913;
+  --color-status-error-300:   #FF755E;
+  --color-status-error-200:   #FFA193;
+
+  /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ─────────── */
+  --color-neutral-alpha-ink-50:   #1B1A1A80;
+  --color-neutral-alpha-black-72: #000000B8;
+  --color-neutral-alpha-white-45: #FFFFFF73;
 
   /* ── Extended decorative palette — Tailwind v4 defaults ─────────── */
   /* Used by Badge/Tag appearance prop for user-defined color labels.   */

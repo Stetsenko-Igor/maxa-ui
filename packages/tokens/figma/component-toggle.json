@@ -1,0 +1,204 @@
+{
+  "Toggle": {
+    "size": {
+      "md": {
+        "field-max-width": {
+          "$description": "Toggle, size md: field max width.",
+          "$value": 160,
+          "$type": "number"
+        },
+        "content-max-width": {
+          "$description": "Toggle, size md: content max width.",
+          "$value": 117,
+          "$type": "number"
+        },
+        "track-width": {
+          "$description": "Toggle, size md: track width.",
+          "$value": 36,
+          "$type": "number"
+        },
+        "track-height": {
+          "$description": "Toggle, size md: track height.",
+          "$value": 20,
+          "$type": "number"
+        },
+        "thumb-size": {
+          "$description": "Toggle, size md: thumb size.",
+          "$value": 16,
+          "$type": "number"
+        },
+        "content-gap": {
+          "$description": "Toggle, size md: content gap.",
+          "$value": 8,
+          "$type": "number"
+        },
+        "label-gap": {
+          "$description": "Toggle, size md: label text gap.",
+          "$value": 8,
+          "$type": "number"
+        },
+        "label-icon-gap": {
+          "$description": "Toggle, size md: label text icon gap.",
+          "$value": 4,
+          "$type": "number"
+        },
+        "description-gap": {
+          "$description": "Toggle, size md: description gap.",
+          "$value": 2,
+          "$type": "number"
+        },
+        "content-padding-y": {
+          "$description": "Toggle, size md: content padding y.",
+          "$value": 3,
+          "$type": "number"
+        }
+      }
+    },
+    "track-radius": {
+      "$description": "Toggle: track radius.",
+      "$value": "{Radius/radius-full}",
+      "$type": "number"
+    },
+    "thumb-radius": {
+      "$description": "Toggle: thumb radius.",
+      "$value": "{Radius/radius-full}",
+      "$type": "number"
+    },
+    "thumb-inset": {
+      "$description": "Toggle: thumb inset.",
+      "$value": 2,
+      "$type": "number"
+    },
+    "focus-ring": {
+      "width": {
+        "$description": "Toggle, focus ring: width.",
+        "$value": 3,
+        "$type": "number"
+      },
+      "offset": {
+        "$description": "Toggle, focus ring: offset.",
+        "$value": 2,
+        "$type": "number"
+      },
+      "inner-width": {
+        "$description": "Toggle, focus ring: inner width.",
+        "$value": 1,
+        "$type": "number"
+      }
+    },
+    "color": {
+      "track-off": {
+        "$description": "Toggle, color: track off.",
+        "$value": "var(--color-control-idle-hover)",
+        "$type": "color"
+      },
+      "track-off-hover": {
+        "$description": "Toggle, color: track off (hover state).",
+        "$value": "var(--color-control-idle)",
+        "$type": "color"
+      },
+      "track-on": {
+        "$description": "Toggle, color: track on.",
+        "$value": "var(--color-action-primary)",
+        "$type": "color"
+      },
+      "track-on-hover": {
+        "$description": "Toggle, color: track on (hover state).",
+        "$value": "var(--color-action-primary-hover)",
+        "$type": "color"
+      },
+      "track-disabled": {
+        "$description": "Toggle, color: track (disabled state).",
+        "$value": "var(--color-action-neutral)",
+        "$type": "color"
+      },
+      "thumb": {
+        "$description": "Toggle, color: thumb.",
+        "$value": "{Color modes/background/bg-surface}",
+        "$type": "color"
+      },
+      "thumb-disabled": {
+        "$description": "Toggle, color: thumb (disabled state).",
+        "$value": "var(--color-control-idle-hover)",
+        "$type": "color"
+      },
+      "label": {
+        "$description": "Toggle, color: label text.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Toggle, color: text color.",
+        "$value": "{Color modes/text/text-primary}",
+        "$type": "color"
+      },
+      "description": {
+        "$description": "Toggle, color: description.",
+        "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      },
+      "label-disabled": {
+        "$description": "Toggle, color: label text (disabled state).",
+        "$value": "{Color modes/text/text-disabled}",
+        "$type": "color"
+      },
+      "text-disabled": {
+        "$description": "Toggle, color: text color (disabled state).",
+        "$value": "{Color modes/text/text-disabled}",
+        "$type": "color"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$description": "Toggle, typography: font family.",
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "label-font-size": {
+        "$description": "Toggle, typography: label text font size.",
+        "$value": "{Typography/Font size/text-sm}",
+        "$type": "number"
+      },
+      "label-line-height": {
+        "$description": "Toggle, typography: label text line height.",
+        "$value": 14,
+        "$type": "number"
+      },
+      "label-font-weight": {
+        "$description": "Toggle, typography: label text font weight.",
+        "$value": "{Typography/Font weight/semibold}",
+        "$type": "number"
+      },
+      "side-label-font-size": {
+        "$description": "Toggle, typography: side label font size.",
+        "$value": "{Typography/Font size/text-sm}",
+        "$type": "number"
+      },
+      "side-label-line-height": {
+        "$description": "Toggle, typography: side label line height.",
+        "$value": 14,
+        "$type": "number"
+      },
+      "side-label-font-weight": {
+        "$description": "Toggle, typography: side label font weight.",
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "number"
+      },
+      "description-font-size": {
+        "$description": "Toggle, typography: description font size.",
+        "$value": "{Typography/Font size/caption-sm}",
+        "$type": "number"
+      },
+      "description-line-height": {
+        "$description": "Toggle, typography: description line height.",
+        "$value": 16,
+        "$type": "number"
+      },
+      "description-font-weight": {
+        "$description": "Toggle, typography: description font weight.",
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "number"
+      }
+    }
+  }
+}

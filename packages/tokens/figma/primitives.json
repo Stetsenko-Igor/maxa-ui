@@ -9,6 +9,11 @@
         "$value": "#000000",
         "$type": "color"
       },
+      "Ink": {
+        "$description": "Exact dark text reference used on light feedback surfaces.",
+        "$value": "#1B1A1A",
+        "$type": "color"
+      },
       "Transparent": {
         "$value": "#00000000",
         "$type": "color"
@@ -72,7 +77,103 @@
         "$type": "color"
       }
     },
+    "Status": {
+      "Info": {
+        "950": {
+          "$description": "Dark feedback info background reference.",
+          "$value": "#003877",
+          "$type": "color"
+        },
+        "700": {
+          "$description": "Dark feedback info border reference.",
+          "$value": "#0059C2",
+          "$type": "color"
+        },
+        "300": {
+          "$description": "Dark feedback info accent reference.",
+          "$value": "#54A3F6",
+          "$type": "color"
+        },
+        "200": {
+          "$description": "Dark feedback info hover reference.",
+          "$value": "#8BC4FF",
+          "$type": "color"
+        }
+      },
+      "Success": {
+        "950": {
+          "$description": "Dark feedback success background reference.",
+          "$value": "#044329",
+          "$type": "color"
+        },
+        "700": {
+          "$description": "Dark feedback success border reference.",
+          "$value": "#006D0F",
+          "$type": "color"
+        },
+        "300": {
+          "$description": "Dark feedback success accent reference.",
+          "$value": "#2BB47D",
+          "$type": "color"
+        },
+        "200": {
+          "$description": "Dark feedback success hover reference.",
+          "$value": "#62D6A2",
+          "$type": "color"
+        }
+      },
+      "Warning": {
+        "950": {
+          "$description": "Dark feedback warning background reference.",
+          "$value": "#521D00",
+          "$type": "color"
+        },
+        "700": {
+          "$description": "Dark feedback warning border reference.",
+          "$value": "#B44E00",
+          "$type": "color"
+        },
+        "300": {
+          "$description": "Dark feedback warning accent reference.",
+          "$value": "#E16D00",
+          "$type": "color"
+        },
+        "200": {
+          "$description": "Dark feedback warning hover reference.",
+          "$value": "#FF9A3C",
+          "$type": "color"
+        }
+      },
+      "Error": {
+        "950": {
+          "$description": "Dark feedback error background reference.",
+          "$value": "#7B0000",
+          "$type": "color"
+        },
+        "700": {
+          "$description": "Dark feedback error border reference.",
+          "$value": "#D71913",
+          "$type": "color"
+        },
+        "300": {
+          "$description": "Dark feedback error accent reference.",
+          "$value": "#FF755E",
+          "$type": "color"
+        },
+        "200": {
+          "$description": "Dark feedback error hover reference.",
+          "$value": "#FFA193",
+          "$type": "color"
+        }
+      }
+    },
     "Neutral (alpha)": {
+      "Ink": {
+        "50": {
+          "$value": "#1B1A1A80",
+          "$type": "color"
+        }
+      },
       "White": {
         "10": {
           "$value": "#FFFFFF1A",
@@ -88,6 +189,10 @@
         },
         "40": {
           "$value": "#FFFFFF66",
+          "$type": "color"
+        },
+        "45": {
+          "$value": "#FFFFFF73",
           "$type": "color"
         },
         "50": {
@@ -142,6 +247,10 @@
         },
         "70": {
           "$value": "#000000B3",
+          "$type": "color"
+        },
+        "72": {
+          "$value": "#000000B8",
           "$type": "color"
         },
         "80": {
@@ -850,11 +959,16 @@
     },
     "Blue": {
       "50": {
-        "$value": "#EFF6FF",
+        "$value": "#E0F2FF",
         "$type": "color"
       },
       "100": {
         "$value": "#DBEAFE",
+        "$type": "color"
+      },
+      "150": {
+        "$description": "Exact soft-focus blue used by low-contrast control borders.",
+        "$value": "#C7E5F0",
         "$type": "color"
       },
       "200": {
@@ -1247,15 +1361,15 @@
       "$type": "number",
       "$description": "Primitive spacing step 40 (160px)."
     },
-    "0\u20245 (2px)": {
+    "0․5 (2px)": {
       "$value": 2,
       "$type": "number",
-      "$description": "Primitive spacing step 0\u20245 (2px)."
+      "$description": "Primitive spacing step 0․5 (2px)."
     },
-    "1\u20245 (6px)": {
+    "1․5 (6px)": {
       "$value": 6,
       "$type": "number",
-      "$description": "Primitive spacing step 1\u20245 (6px)."
+      "$description": "Primitive spacing step 1․5 (6px)."
     }
   }
 }

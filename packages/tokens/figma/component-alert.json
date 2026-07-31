@@ -1,0 +1,233 @@
+{
+  "Alert": {
+    "layout": {
+      "radius": {
+        "$description": "Alert, layout: radius.",
+        "$value": "{Radius/radius-md}",
+        "$type": "number"
+      },
+      "padding-x": {
+        "$description": "Alert, layout: padding x.",
+        "$value": 16,
+        "$type": "number"
+      },
+      "padding-y": {
+        "$description": "Alert, layout: padding y.",
+        "$value": 16,
+        "$type": "number"
+      },
+      "gap": {
+        "$description": "Alert, layout: gap.",
+        "$value": 8,
+        "$type": "number"
+      },
+      "content-gap": {
+        "$description": "Alert, layout: content gap.",
+        "$value": 4,
+        "$type": "number"
+      },
+      "action-gap": {
+        "$description": "Alert, layout: action gap.",
+        "$value": 8,
+        "$type": "number"
+      }
+    },
+    "strip": {
+      "width": {
+        "$description": "Alert, strip: width.",
+        "$value": 4,
+        "$type": "number"
+      }
+    },
+    "icon": {
+      "size": {
+        "$description": "Alert, icon: size.",
+        "$value": 20,
+        "$type": "number"
+      }
+    },
+    "dismiss": {
+      "size": {
+        "$description": "Alert, dismiss: size.",
+        "$value": 32,
+        "$type": "number"
+      },
+      "opacity": {
+        "$description": "Alert, dismiss: opacity.",
+        "$value": 65,
+        "$type": "number"
+      }
+    },
+    "typography": {
+      "font-family": {
+        "$description": "Alert, typography: font family.",
+        "$value": "{Typography/Font family/body}",
+        "$type": "string"
+      },
+      "font-size": {
+        "$description": "Alert, typography: font size.",
+        "$value": "{Typography/Font size/text-md}",
+        "$type": "string"
+      },
+      "line-height": {
+        "$description": "Alert, typography: line height.",
+        "$value": "{Typography/Line height/text-md}",
+        "$type": "string"
+      },
+      "font-weight": {
+        "$description": "Alert, typography: font weight.",
+        "$value": "{Typography/Font weight/medium}",
+        "$type": "string"
+      },
+      "title-size": {
+        "$description": "Alert, typography: title text size.",
+        "$value": "{Typography/Font size/text-lg}",
+        "$type": "string"
+      },
+      "title-line-height": {
+        "$description": "Alert, typography: title text line height.",
+        "$value": "{Typography/Line height/text-lg}",
+        "$type": "string"
+      },
+      "title-weight": {
+        "$description": "Alert, typography: title text weight.",
+        "$value": "{Typography/Font weight/bold}",
+        "$type": "string"
+      }
+    },
+    "color": {
+      "info": {
+        "bg": {
+          "$description": "Alert, color info: background.",
+          "$value": "{Color modes/feedback/info/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color info: border.",
+          "$value": "{Color modes/feedback/info/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color info: accent.",
+          "$value": "{Color modes/feedback/info/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color info: text color.",
+          "$value": "{Color modes/feedback/text}",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "bg": {
+          "$description": "Alert, color success: background.",
+          "$value": "{Color modes/feedback/success/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color success: border.",
+          "$value": "{Color modes/feedback/success/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color success: accent.",
+          "$value": "{Color modes/feedback/success/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color success: text color.",
+          "$value": "{Color modes/feedback/text}",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$description": "Alert, color warning: background.",
+          "$value": "{Color modes/feedback/warning/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color warning: border.",
+          "$value": "{Color modes/feedback/warning/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color warning: accent.",
+          "$value": "{Color modes/feedback/warning/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color warning: text color.",
+          "$value": "{Color modes/feedback/text}",
+          "$type": "color"
+        }
+      },
+      "error": {
+        "bg": {
+          "$description": "Alert, color error: background.",
+          "$value": "{Color modes/feedback/error/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color error: border.",
+          "$value": "{Color modes/feedback/error/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color error: accent.",
+          "$value": "{Color modes/feedback/error/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color error: text color.",
+          "$value": "{Color modes/feedback/text}",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$description": "Alert, color neutral: background.",
+          "$value": "{Color modes/feedback/neutral/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color neutral: border.",
+          "$value": "{Color modes/feedback/neutral/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color neutral: accent.",
+          "$value": "{Color modes/feedback/neutral/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color neutral: text color.",
+          "$value": "{Color modes/feedback/neutral/text}",
+          "$type": "color"
+        }
+      },
+      "emphasize": {
+        "bg": {
+          "$description": "Alert, color emphasize: background.",
+          "$value": "{Color modes/feedback/emphasize/bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$description": "Alert, color emphasize: border.",
+          "$value": "{Color modes/feedback/emphasize/border}",
+          "$type": "color"
+        },
+        "accent": {
+          "$description": "Alert, color emphasize: accent.",
+          "$value": "{Color modes/feedback/emphasize/accent}",
+          "$type": "color"
+        },
+        "text": {
+          "$description": "Alert, color emphasize: text color.",
+          "$value": "{Color modes/feedback/emphasize/text}",
+          "$type": "color"
+        }
+      }
+    }
+  }
+}

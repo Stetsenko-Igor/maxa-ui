@@ -457,7 +457,7 @@ Current Button direction:
 - `ghost` uses transparent base/border and neutral subtle hover/active
 - `link` stays transparent and uses `action/primary` for text
 - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
-- Button v1 source files are `component-button-light.json` and `component-button-dark.json`
+- Button v1 source file is `component-button.json`; theme differences live in `Color modes`
 - Figma component structure should be split by semantic family instead of one oversized Button set
 - current preferred Figma structure:
   - `Buttons/Button`
@@ -484,7 +484,7 @@ Deferred Button decisions:
 
 Current Input direction:
 
-- source files are `component-input-light.json` and `component-input-dark.json`
+- source file is `component-input.json`
 - Figma paths use `Input/...`, for example `Input/bg`, `Input/border-focus`, `Input/size/md/height`
 - Input has explicit disabled and readonly tokens instead of opacity-only behavior
 - Input includes label, hint, error, success, icon, focus-ring, size, textarea, and typography tokens

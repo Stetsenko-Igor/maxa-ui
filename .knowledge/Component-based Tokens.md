@@ -101,10 +101,9 @@ CSS projection should use lowercase hyphenated names:
 
 Button v1 is approved and prepared in:
 
-- `packages/tokens/figma/component-button-light.json`
-- `packages/tokens/figma/component-button-dark.json`
+- `packages/tokens/figma/component-button.json`
 
-The `Component-based Tokens` Figma collection uses `Light` and `Dark` modes so component color aliases can stay aligned with `Color modes`.
+The `Component-based` Figma collection uses one `Default` mode. Component color aliases point to `Color modes`, which owns the only Light/Dark switch.
 
 Approved variants:
 
@@ -323,8 +322,7 @@ Button/icon-only/lg/size
 
 Input v1 is prepared in:
 
-- `packages/tokens/figma/component-input-light.json`
-- `packages/tokens/figma/component-input-dark.json`
+- `packages/tokens/figma/component-input.json`
 
 The initial Input layer is component-token-first. It gives Figma a stable variable surface before the actual Input component set is rebuilt.
 

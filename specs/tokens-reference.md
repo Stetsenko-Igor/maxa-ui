@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1671
+Total tokens: 1730
 
 ## Primitives
 
@@ -19,6 +19,7 @@ Source: `packages/tokens/src/primitives.css`
 /* ── Base — Figma: Colors/Base/* ── */
 --color-base-white: #ffffff;
 --color-base-black: #000000;
+--color-base-ink: #1B1A1A;
 --color-transparent: transparent;
 --color-white: var(--color-base-white);
 --color-black: var(--color-base-black);
@@ -43,6 +44,7 @@ Source: `packages/tokens/src/primitives.css`
 /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
 --color-blue-50: #E0F2FF;
 --color-blue-100: #DBEAFE;
+--color-blue-150: #C7E5F0;
 --color-blue-200: #96CEFD;
 --color-blue-300: #59A7F6;
 --color-blue-400: #147AF3;
@@ -96,6 +98,29 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-800: #9a3412;
 --color-orange-900: #7c2d12;
 --color-orange-950: #431407;
+
+/* ── Exact feedback reference palettes — Figma: Colors/Status/* ── */
+--color-status-info-950: #003877;
+--color-status-info-700: #0059C2;
+--color-status-info-300: #54A3F6;
+--color-status-info-200: #8BC4FF;
+--color-status-success-950: #044329;
+--color-status-success-700: #006D0F;
+--color-status-success-300: #2BB47D;
+--color-status-success-200: #62D6A2;
+--color-status-warning-950: #521D00;
+--color-status-warning-700: #B44E00;
+--color-status-warning-300: #E16D00;
+--color-status-warning-200: #FF9A3C;
+--color-status-error-950: #7B0000;
+--color-status-error-700: #D71913;
+--color-status-error-300: #FF755E;
+--color-status-error-200: #FFA193;
+
+/* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
+--color-neutral-alpha-ink-50: #1B1A1A80;
+--color-neutral-alpha-black-72: #000000B8;
+--color-neutral-alpha-white-45: #FFFFFF73;
 
 /* ── Extended decorative palette — Tailwind v4 defaults ── */
 --color-gray-50: #f9fafb;
@@ -457,6 +482,50 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-rose-muted: var(--color-rose-100);/* dark: var(--color-rose-900) */
 --color-bg-rose-strong: var(--color-rose-700);
 --color-text-rose: var(--color-rose-900);/* dark: var(--color-rose-300) */
+
+/* ── Control — form-control idle/checked states (Checkbox/Radio/Toggle) ── */
+--color-control-idle: var(--color-neutral-500);/* dark: var(--color-neutral-600) */
+--color-control-idle-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
+--color-control-checked: var(--color-neutral-900);/* dark: var(--color-neutral-200) */
+--color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
+
+/* ── Feedback — reusable intent surfaces ── */
+--color-feedback-text: var(--color-base-ink);/* dark: var(--color-neutral-100) */
+--color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-status-info-950) */
+--color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-status-info-700) */
+--color-feedback-info-accent: var(--color-blue-600);/* dark: var(--color-status-info-300) */
+--color-feedback-info-action: var(--color-blue-500);/* dark: var(--color-status-info-300) */
+--color-feedback-info-action-hover: var(--color-blue-600);/* dark: var(--color-status-info-200) */
+--color-feedback-success-bg: var(--color-green-50);/* dark: var(--color-status-success-950) */
+--color-feedback-success-border: var(--color-green-300);/* dark: var(--color-status-success-700) */
+--color-feedback-success-accent: var(--color-green-800);/* dark: var(--color-status-success-300) */
+--color-feedback-success-action: var(--color-green-800);/* dark: var(--color-status-success-300) */
+--color-feedback-success-action-hover: var(--color-green-800);/* dark: var(--color-status-success-200) */
+--color-feedback-warning-bg: var(--color-orange-50);/* dark: var(--color-status-warning-950) */
+--color-feedback-warning-border: var(--color-orange-200);/* dark: var(--color-status-warning-700) */
+--color-feedback-warning-accent: var(--color-orange-700);/* dark: var(--color-status-warning-300) */
+--color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-status-warning-300) */
+--color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-status-warning-200) */
+--color-feedback-error-bg: var(--color-red-50);/* dark: var(--color-status-error-950) */
+--color-feedback-error-border: var(--color-red-200);/* dark: var(--color-status-error-700) */
+--color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-status-error-300) */
+--color-feedback-error-action: var(--color-red-700);/* dark: var(--color-status-error-300) */
+--color-feedback-error-action-hover: var(--color-red-700);/* dark: var(--color-status-error-200) */
+--color-feedback-neutral-bg: var(--color-white);/* dark: var(--color-neutral-900) */
+--color-feedback-neutral-border: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
+--color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
+--color-feedback-neutral-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+--color-feedback-emphasize-bg: var(--color-neutral-50);/* dark: var(--color-neutral-950) */
+--color-feedback-emphasize-border: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
+--color-feedback-emphasize-accent: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
+--color-feedback-emphasize-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+
+/* ── Shared component support roles ── */
+--color-bg-overlay-strong: var(--color-neutral-alpha-ink-50);/* dark: var(--color-neutral-alpha-black-72) */
+--color-action-menu-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
+--color-action-menu-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
+--color-border-focus-soft: var(--color-blue-150);
+--color-fg-on-inverse-muted: var(--color-neutral-alpha-white-45);
 ```
 
 ## Dimensions (Spacing, Radius, Z-index, Breakpoints)
@@ -765,27 +834,27 @@ Source: `packages/tokens/src/component-checkbox.css`
 
 /* ── Colors — default state ── */
 --checkbox-bg: var(--color-bg-surface);
---checkbox-border: #a1a1a4;
---checkbox-border-hover: #c9c9c9;
---checkbox-border-focus: #0b73cb;
+--checkbox-border: var(--color-control-idle);
+--checkbox-border-hover: var(--color-control-idle-hover);
+--checkbox-border-focus: var(--color-border-focus);
 --checkbox-focus-ring-inner-color: var(--color-bg-surface);
---checkbox-mark-color: #ffffff;
+--checkbox-mark-color: var(--color-fg-inverse);
 
 /* ── Colors — checked / indeterminate ── */
---checkbox-bg-checked: #2d2d2e;
---checkbox-bg-checked-hover: #5e5e5f;
---checkbox-border-checked: #2d2d2e;
---checkbox-border-checked-hover: #5e5e5f;
+--checkbox-bg-checked: var(--color-control-checked);
+--checkbox-bg-checked-hover: var(--color-control-checked-hover);
+--checkbox-border-checked: var(--color-control-checked);
+--checkbox-border-checked-hover: var(--color-control-checked-hover);
 
 /* ── Colors — error ── */
 --checkbox-border-error: var(--color-border-error-strong);
---checkbox-bg-error-checked: #2d2d2e;
+--checkbox-bg-error-checked: var(--color-control-checked);
 
 /* ── Colors — disabled ── */
 --checkbox-bg-disabled: transparent;
---checkbox-bg-disabled-checked: #c9c9c9;
---checkbox-border-disabled: #c9c9c9;
---checkbox-mark-disabled: #ffffff;
+--checkbox-bg-disabled-checked: var(--color-control-idle-hover);
+--checkbox-border-disabled: var(--color-control-idle-hover);
+--checkbox-mark-disabled: var(--color-fg-inverse);
 
 /* ── Label / helper ── */
 --checkbox-font-family: var(--font-body);
@@ -1024,7 +1093,7 @@ Source: `packages/tokens/src/component-spinner.css`
 --spinner-color: var(--spinner-primary-color);/* dark: var(--spinner-primary-color) */
 --spinner-track-color: var(--color-border-secondary);/* dark: var(--color-border-secondary) */
 --spinner-white-color: var(--color-neutral-0);
---spinner-white-track-color: color-mix(in srgb, var(--color-neutral-0) 45%, transparent);
+--spinner-white-track-color: var(--color-fg-on-inverse-muted);
 --spinner-primary-color: var(--color-action-primary);/* dark: var(--color-action-primary) */
 --spinner-greyscale-color: var(--color-fg-secondary);/* dark: var(--color-fg-secondary) */
 --spinner-inverted-color: var(--color-text-primary);
@@ -1391,17 +1460,17 @@ Source: `packages/tokens/src/component-radio.css`
 
 /* ── Colors — default state ── */
 --radio-bg: var(--color-bg-surface);
---radio-border: #a1a1a4;
---radio-border-hover: #c9c9c9;
---radio-border-focus: #0b73cb;
+--radio-border: var(--color-control-idle);
+--radio-border-hover: var(--color-control-idle-hover);
+--radio-border-focus: var(--color-border-focus);
 --radio-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — checked ── */
 --radio-bg-checked: transparent;
---radio-border-checked: #0576da;
---radio-border-checked-hover: #04549b;
---radio-dot-color: #0576da;
---radio-dot-color-hover: #04549b;
+--radio-border-checked: var(--color-action-primary);
+--radio-border-checked-hover: var(--color-action-primary-hover);
+--radio-dot-color: var(--color-action-primary);
+--radio-dot-color-hover: var(--color-action-primary-hover);
 
 /* ── Colors — error ── */
 --radio-border-error: var(--color-border-error-strong);
@@ -1409,8 +1478,8 @@ Source: `packages/tokens/src/component-radio.css`
 
 /* ── Colors — disabled ── */
 --radio-bg-disabled: transparent;
---radio-border-disabled: #c9c9c9;
---radio-dot-disabled: #c9c9c9;
+--radio-border-disabled: var(--color-control-idle-hover);
+--radio-dot-disabled: var(--color-control-idle-hover);
 
 /* ── Label / helper ── */
 --radio-font-family: var(--font-body);
@@ -1529,15 +1598,15 @@ Source: `packages/tokens/src/component-toggle.css`
 --toggle-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — track ── */
---toggle-track-bg-off: #c9c9c9;
---toggle-track-bg-off-hover: #a1a1a4;
---toggle-track-bg-on: #0576da;
---toggle-track-bg-on-hover: #04549b;
---toggle-track-bg-disabled: #e4e4e4;
+--toggle-track-bg-off: var(--color-control-idle-hover);
+--toggle-track-bg-off-hover: var(--color-control-idle);
+--toggle-track-bg-on: var(--color-action-primary);
+--toggle-track-bg-on-hover: var(--color-action-primary-hover);
+--toggle-track-bg-disabled: var(--color-action-neutral);
 
 /* ── Colors — thumb ── */
 --toggle-thumb-bg: var(--color-bg-surface);
---toggle-thumb-bg-disabled: #c9c9c9;
+--toggle-thumb-bg-disabled: var(--color-control-idle-hover);
 
 /* ── Text ── */
 --toggle-font-family: var(--font-body);
@@ -1605,44 +1674,44 @@ Source: `packages/tokens/src/component-alert.css`
 --alert-title-weight: var(--font-weight-bold);
 
 /* ── Info ── */
---alert-info-bg: var(--color-bg-info-subtle);/* dark: #003877 */
---alert-info-border: var(--color-border-info-subtle);/* dark: #0059c2 */
---alert-info-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-info-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-info-icon: var(--color-fg-info);/* dark: #54a3f6 */
---alert-info-strip: var(--color-fg-info);/* dark: #54a3f6 */
---alert-info-action: var(--color-action-primary);/* dark: #54a3f6 */
---alert-info-action-hover: var(--color-action-primary-hover);/* dark: #8bc4ff */
+--alert-info-bg: var(--color-feedback-info-bg);
+--alert-info-border: var(--color-feedback-info-border);
+--alert-info-text: var(--color-feedback-text);
+--alert-info-title: var(--color-feedback-text);
+--alert-info-icon: var(--color-feedback-info-accent);
+--alert-info-strip: var(--color-feedback-info-accent);
+--alert-info-action: var(--color-feedback-info-action);
+--alert-info-action-hover: var(--color-feedback-info-action-hover);
 
 /* ── Success ── */
---alert-success-bg: var(--color-bg-success-subtle);/* dark: #044329 */
---alert-success-border: var(--color-border-success-subtle);/* dark: #006d0f */
---alert-success-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-success-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-success-icon: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-strip: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-action: var(--color-fg-success);/* dark: #2bb47d */
---alert-success-action-hover: var(--color-text-success);/* dark: #62d6a2 */
+--alert-success-bg: var(--color-feedback-success-bg);
+--alert-success-border: var(--color-feedback-success-border);
+--alert-success-text: var(--color-feedback-text);
+--alert-success-title: var(--color-feedback-text);
+--alert-success-icon: var(--color-feedback-success-accent);
+--alert-success-strip: var(--color-feedback-success-accent);
+--alert-success-action: var(--color-feedback-success-action);
+--alert-success-action-hover: var(--color-feedback-success-action-hover);
 
 /* ── Warning ── */
---alert-warning-bg: var(--color-bg-warning-subtle);/* dark: #521d00 */
---alert-warning-border: var(--color-border-warning-subtle);/* dark: #b44e00 */
---alert-warning-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-warning-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-warning-icon: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-strip: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-action: var(--color-fg-warning);/* dark: #e16d00 */
---alert-warning-action-hover: var(--color-text-warning);/* dark: #ff9a3c */
+--alert-warning-bg: var(--color-feedback-warning-bg);
+--alert-warning-border: var(--color-feedback-warning-border);
+--alert-warning-text: var(--color-feedback-text);
+--alert-warning-title: var(--color-feedback-text);
+--alert-warning-icon: var(--color-feedback-warning-accent);
+--alert-warning-strip: var(--color-feedback-warning-accent);
+--alert-warning-action: var(--color-feedback-warning-action);
+--alert-warning-action-hover: var(--color-feedback-warning-action-hover);
 
 /* ── Error ── */
---alert-error-bg: var(--color-bg-error-subtle);/* dark: #7b0000 */
---alert-error-border: var(--color-border-error-subtle);/* dark: #d71913 */
---alert-error-text: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-error-title: var(--color-text-primary);/* dark: #f4f3f3 */
---alert-error-icon: var(--color-fg-error);/* dark: #ff755e */
---alert-error-strip: var(--color-fg-error);/* dark: #ff755e */
---alert-error-action: var(--color-fg-error);/* dark: #ff755e */
---alert-error-action-hover: var(--color-text-error);/* dark: #ffa193 */
+--alert-error-bg: var(--color-feedback-error-bg);
+--alert-error-border: var(--color-feedback-error-border);
+--alert-error-text: var(--color-feedback-text);
+--alert-error-title: var(--color-feedback-text);
+--alert-error-icon: var(--color-feedback-error-accent);
+--alert-error-strip: var(--color-feedback-error-accent);
+--alert-error-action: var(--color-feedback-error-action);
+--alert-error-action-hover: var(--color-feedback-error-action-hover);
 ```
 
 ## Tooltip Component Tokens
@@ -1740,8 +1809,8 @@ Source: `packages/tokens/src/component-dropdown-menu.css`
 --dropdown-menu-item-text-hover: var(--color-text-primary);
 --dropdown-menu-item-text-active: var(--color-text-primary);
 --dropdown-menu-item-icon: var(--color-fg-secondary);
---dropdown-menu-item-bg-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-hover) */
---dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
+--dropdown-menu-item-bg-hover: var(--color-action-menu-hover);
+--dropdown-menu-item-bg-active: var(--color-action-menu-active);
 --dropdown-menu-item-meta-text: var(--color-text-tertiary);
 --dropdown-menu-item-text-disabled: var(--color-text-disabled);
 --dropdown-menu-item-text-destructive: var(--color-text-error);
@@ -1766,7 +1835,7 @@ Source: `packages/tokens/src/component-dropdown-menu.css`
 Source: `packages/tokens/src/component-dialog.css`
 
 ```css
---dialog-overlay-bg: rgba(27, 26, 26, 0.5);/* dark: rgba(0, 0, 0, 0.72) */
+--dialog-overlay-bg: var(--color-bg-overlay-strong);
 --dialog-content-bg: var(--color-bg-float);
 --dialog-content-border: var(--color-border-primary);
 --dialog-content-radius: var(--radius-md);
@@ -2018,7 +2087,7 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-border: var(--color-border-primary);
 --social-button-border-hover: var(--color-border-secondary);
 --social-button-border-active: var(--color-border-secondary);
---social-button-border-focus: #c7e5f0;
+--social-button-border-focus: var(--color-border-focus-soft);
 --social-button-bg: var(--button-outline-bg);
 --social-button-bg-hover: var(--button-outline-bg);
 --social-button-bg-active: var(--button-outline-bg);

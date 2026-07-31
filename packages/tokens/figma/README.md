@@ -14,12 +14,10 @@ This folder contains the import-ready token source for the MAXA design system.
   Foundation radius scale.
 - `Typography`
   Responsive typography tokens with `Desktop`, `Tablet`, and `Mobile` modes.
-- `Containers`
-  Semantic container paddings and max width.
 - `Breakpoints`
   Semantic viewport names with legacy frontend aliases in descriptions.
 - `Component-based`
-  Component-level aliases such as Button variants, states, sizes, typography, and icon-only sizes.
+  Component-level aliases such as Button variants, states, sizes, typography, and icon-only sizes. This collection has one mode, `Default`.
 
 ## Import Order
 
@@ -37,7 +35,6 @@ Import collections in this order when creating or refreshing a Figma variables f
 This order keeps aliases resolvable during import:
 
 - `Spacing` depends on `Primitives/Spacing`
-- `Containers` depends on `Spacing`
 - `Color modes` depends on color primitives
 - `Component-based` depends on `Color modes`, `Spacing`, `Radius`, `Typography`, and `Primitives`
 
@@ -45,7 +42,9 @@ This order keeps aliases resolvable during import:
 
 - Change raw palette or spacing scale only in `primitives.json`.
 - Change semantic spacing intent only in `spacing.json`.
-- Change semantic light/dark usage colors only in `colors-semantic-light.json` and `colors-semantic-dark.json`.
+- Change shared semantic light/dark colors in `colors-semantic-light.json` and `colors-semantic-dark.json`.
+- Change reusable feedback and component-support semantics in `colors-feedback-light.json` and `colors-feedback-dark.json`.
+- Change extended hue roles in `colors-utility-light.json` and `colors-utility-dark.json`.
 - Keep descriptions durable. Prefer intent and alias references over repeating raw values.
 - Keep semantic names stable. Prefer updating primitive targets before renaming semantic tokens.
 - Component-based tokens should alias foundation/semantic tokens wherever possible.
@@ -66,13 +65,15 @@ This order keeps aliases resolvable during import:
 - `Typography` now carries responsive foundation data through `Desktop`, `Tablet`, and `Mobile` modes.
 - Font families and weights stay consistent across modes; sizes and line heights adapt per viewport.
 - `Color modes` is the source of truth for light and dark semantic behavior.
+- Do not create a `component/*` namespace in `Color modes`; component names belong only in `Component-based`.
 - `Layout` owns designer-facing layout spacing. Do not reintroduce side-padding tokens in separate layout collections.
-- `Component-based` currently starts with Button and uses `Light` / `Dark` modes.
+- `Component-based` has one `Default` mode. Never add Light/Dark modes there; theme-aware values belong in `Color modes`.
 
 ## Validation Checklist
 
 - Aliases resolve without missing references during Figma import.
-- `Color modes` light and dark files expose identical token names.
+- All `Color modes` light and dark source pairs expose identical token names.
+- `Component-based` exposes exactly one mode named `Default`, and every component COLOR variable is an alias.
 - `Spacing`, `Layout`, `Component-based`, and `Breakpoints` descriptions remain useful without duplicating computed values.
 - Semantic token names match code-facing names where possible.
 - Component token aliases resolve across collections.
@@ -113,6 +114,12 @@ Examples:
 - `text/text-primary` in `Color modes / Light` -> `Primitives/Colors/Neutral/950`
 - `text/text-primary` in `Color modes / Dark` -> `Primitives/Colors/Neutral/100`
 - `Button/primary/bg` -> `Color modes/action/action-primary`
+- `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
+- `Alert/color/info/bg` in Dark -> `Color modes/feedback/info/bg` -> `Primitives/Colors/Status/Info/950`
+- every `Color modes/feedback/*` COLOR value must alias `Primitives` directly; raw values and semantic-to-semantic chains fail the bundle build
+- `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg` -> `Primitives/Colors/Base/White` in Light
+- `Alert/color/emphasize/bg` -> `Color modes/feedback/emphasize/bg` -> `Primitives/Colors/Neutral/50` in Light
+- `Utility/bg-violet-muted` -> `Color modes/utility/bg-violet-muted`
 - `Button/link/bg` -> `Primitives/Colors/Base/Transparent`
 - `Button/size/md/padding-x` -> `Spacing/spacing-xl`
 
@@ -195,8 +202,9 @@ That gives the same result as Untitled UI, but keeps the system maintainable whe
 
 ## Figma-only token groups (no CSS counterpart)
 
-The `utility` group (`component-utility-light.json` / `component-utility-dark.json`)
-is an **intentional Figma-only token group**. It has **no** matching
+The Component-based `Utility/*` wrapper (`component-utility.json`) is an
+**intentional Figma-only token group**. It preserves stable component variable IDs and aliases
+theme-aware values in `colors-utility-light.json` / `colors-utility-dark.json`. It has **no** matching
 `packages/tokens/src/component-utility.css` file and is not a UI component.
 
 Because it exists only on the Figma side, the CSS↔JSON parity / drift check

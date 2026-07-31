@@ -1,0 +1,64 @@
+{
+  "feedback": {
+    "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
+    "info": {
+      "bg": { "$value": "{Colors.Status.Info.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Status.Info.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Info.300}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Status.Info.200}", "$type": "color" }
+    },
+    "success": {
+      "bg": { "$value": "{Colors.Status.Success.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Status.Success.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Success.300}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Status.Success.200}", "$type": "color" }
+    },
+    "warning": {
+      "bg": { "$value": "{Colors.Status.Warning.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Status.Warning.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Warning.300}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Status.Warning.200}", "$type": "color" }
+    },
+    "error": {
+      "bg": { "$value": "{Colors.Status.Error.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Status.Error.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
+      "action": { "$value": "{Colors.Status.Error.300}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Status.Error.200}", "$type": "color" }
+    },
+    "neutral": {
+      "bg": { "$value": "{Colors.Neutral.900}", "$type": "color" },
+      "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
+      "accent": { "$value": "{Colors.Neutral.200}", "$type": "color" },
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
+    },
+    "emphasize": {
+      "bg": { "$value": "{Colors.Neutral.950}", "$type": "color" },
+      "border": { "$value": "{Colors.Neutral.700}", "$type": "color" },
+      "accent": { "$value": "{Colors.Neutral.200}", "$type": "color" },
+      "text": { "$value": "{Colors.Neutral.100}", "$type": "color" }
+    }
+  },
+  "background": {
+    "bg-overlay-strong": { "$value": "{Colors.Neutral (alpha).Black.72}", "$type": "color" }
+  },
+  "action": {
+    "action-menu-hover": {
+      "$value": "{Color modes/action/action-neutral-hover}",
+      "$type": "color"
+    },
+    "action-menu-active": {
+      "$value": "{Color modes/action/action-neutral-active}",
+      "$type": "color"
+    }
+  },
+  "border": {
+    "border-focus-soft": { "$value": "{Colors.Blue.150}", "$type": "color" }
+  },
+  "foreground": {
+    "fg-on-inverse-muted": { "$value": "{Colors.Neutral (alpha).White.45}", "$type": "color" }
+  }
+}

@@ -40,8 +40,8 @@
   --dropdown-menu-item-text-hover: var(--color-text-primary);
   --dropdown-menu-item-text-active: var(--color-text-primary);
   --dropdown-menu-item-icon: var(--color-fg-secondary);
-  --dropdown-menu-item-bg-hover: var(--color-action-neutral-subtle-hover);
-  --dropdown-menu-item-bg-active: var(--color-action-neutral-subtle-active);
+  --dropdown-menu-item-bg-hover: var(--color-action-menu-hover);
+  --dropdown-menu-item-bg-active: var(--color-action-menu-active);
   --dropdown-menu-item-meta-text: var(--color-text-tertiary);
   --dropdown-menu-item-text-disabled: var(--color-text-disabled);
   --dropdown-menu-item-text-destructive: var(--color-text-error);
@@ -59,9 +59,4 @@
   --dropdown-menu-shortcut-text: var(--color-text-tertiary);
   --dropdown-menu-separator: var(--color-border-secondary);
   --dropdown-menu-focus-ring: var(--color-border-focus);
-}
-
-[data-theme="dark"] {
-  --dropdown-menu-item-bg-hover: var(--color-action-neutral-hover);
-  --dropdown-menu-item-bg-active: var(--color-action-neutral-active);
 }

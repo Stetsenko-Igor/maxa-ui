@@ -1,10 +1,13 @@
-# MAXA Token Importer v7
+# MAXA Token Importer v11
 
 This version:
 - exports all local variable collections/modes as a bundle in the same shape as
   `import-bundle.json`, so changes made directly in Figma can be diffed against
   the repo (see "Exporting Figma changes back to code" below)
 - imports collections, modes, values and aliases
+- requires explicit resolved Figma types from the generated bundle
+- validates mode parity, alias targets/types, alias cycles, and CSS expressions before the first mutation
+- creates every typed variable before assigning values, so forward and cross-component aliases are order-independent
 - supports dot-notation aliases through `aliasDefaults`
 - creates text styles from `Typography`
 - creates shadow effect styles from `effects.shadows`
@@ -12,10 +15,12 @@ This version:
 - removes legacy `Typography/*` text styles after migrating to top-level typography groups
 - removes legacy `Shadows dark/*` effect styles
 - binds text styles to typography variables when available
-- accepts drag-and-drop token files from `packages/tokens/figma`
+- accepts the generated `packages/tokens/figma/import-bundle.json`
 - keeps the import result log visible without scrolling
 - can optionally load the latest pushed `packages/tokens/figma/import-bundle.json` from GitHub
 - can optionally remove stale variables during import when **Remove stale variables during import** is checked
+- can remove stale collection modes during exact schema sync; this is enabled by default so a one-mode `Component-based` collection does not retain an obsolete `Dark` mode
+- can explicitly recreate stale wrong-type variables when **Recreate wrong-type variables** is checked; this is off by default because IDs change
 
 Example alias defaults:
 ```json
@@ -30,12 +35,13 @@ Example alias defaults:
 Expected input:
 
 - a single flattened import bundle JSON
-- or `manifest.json` plus the referenced token JSON files
 - fastest local workflow: click **Choose files** or drag `packages/tokens/figma/import-bundle.json`
 - fallback workflow: paste JSON manually
 - published workflow: click **Load latest from GitHub** to fetch the last pushed bundle:
   - `https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/packages/tokens/figma/import-bundle.json`
 - cleanup workflow: enable **Remove stale variables during import** only when the bundle should become the source of truth for the imported collections
+- mode cleanup workflow: keep **Remove stale collection modes** enabled when the manifest intentionally removes or renames modes
+- type-repair workflow: enable **Recreate wrong-type variables** only after reviewing the ID-change warning; normal value and alias updates preserve IDs
 
 Shadow behavior:
 

@@ -18,17 +18,17 @@
 
   /* ── Colors — default state ───────────────────────────────────── */
   --radio-bg:                 var(--color-bg-surface);
-  --radio-border:             #a1a1a4;
-  --radio-border-hover:       #c9c9c9;
-  --radio-border-focus:       #0b73cb;
+  --radio-border:             var(--color-control-idle);
+  --radio-border-hover:       var(--color-control-idle-hover);
+  --radio-border-focus:       var(--color-border-focus);
   --radio-focus-ring-inner-color: var(--color-bg-surface);
 
   /* ── Colors — checked ─────────────────────────────────────────── */
   --radio-bg-checked:         transparent;
-  --radio-border-checked:     #0576da;
-  --radio-border-checked-hover: #04549b;
-  --radio-dot-color:          #0576da;
-  --radio-dot-color-hover:    #04549b;
+  --radio-border-checked:     var(--color-action-primary);
+  --radio-border-checked-hover: var(--color-action-primary-hover);
+  --radio-dot-color:          var(--color-action-primary);
+  --radio-dot-color-hover:    var(--color-action-primary-hover);
 
   /* ── Colors — error ───────────────────────────────────────────── */
   --radio-border-error:       var(--color-border-error-strong);
@@ -36,8 +36,8 @@
 
   /* ── Colors — disabled ────────────────────────────────────────── */
   --radio-bg-disabled:        transparent;
-  --radio-border-disabled:    #c9c9c9;
-  --radio-dot-disabled:       #c9c9c9;
+  --radio-border-disabled:    var(--color-control-idle-hover);
+  --radio-dot-disabled:       var(--color-control-idle-hover);
 
   /* ── Label / helper ───────────────────────────────────────────── */
   --radio-font-family:        var(--font-body);

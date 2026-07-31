@@ -22,27 +22,27 @@
 
   /* ── Colors — default state ───────────────────────────────────── */
   --checkbox-bg:               var(--color-bg-surface);
-  --checkbox-border:           #a1a1a4;
-  --checkbox-border-hover:     #c9c9c9;
-  --checkbox-border-focus:     #0b73cb;
+  --checkbox-border:           var(--color-control-idle);
+  --checkbox-border-hover:     var(--color-control-idle-hover);
+  --checkbox-border-focus:     var(--color-border-focus);
   --checkbox-focus-ring-inner-color: var(--color-bg-surface);
-  --checkbox-mark-color:       #ffffff;
+  --checkbox-mark-color:       var(--color-fg-inverse);
 
   /* ── Colors — checked / indeterminate ────────────────────────── */
-  --checkbox-bg-checked:       #2d2d2e;
-  --checkbox-bg-checked-hover: #5e5e5f;
-  --checkbox-border-checked:   #2d2d2e;
-  --checkbox-border-checked-hover: #5e5e5f;
+  --checkbox-bg-checked:       var(--color-control-checked);
+  --checkbox-bg-checked-hover: var(--color-control-checked-hover);
+  --checkbox-border-checked:   var(--color-control-checked);
+  --checkbox-border-checked-hover: var(--color-control-checked-hover);
 
   /* ── Colors — error ───────────────────────────────────────────── */
   --checkbox-border-error:     var(--color-border-error-strong);
-  --checkbox-bg-error-checked: #2d2d2e;
+  --checkbox-bg-error-checked: var(--color-control-checked);
 
   /* ── Colors — disabled ────────────────────────────────────────── */
   --checkbox-bg-disabled:      transparent;
-  --checkbox-bg-disabled-checked: #c9c9c9;
-  --checkbox-border-disabled:  #c9c9c9;
-  --checkbox-mark-disabled:    #ffffff;
+  --checkbox-bg-disabled-checked: var(--color-control-idle-hover);
+  --checkbox-border-disabled:  var(--color-control-idle-hover);
+  --checkbox-mark-disabled:    var(--color-fg-inverse);
 
   /* ── Label / helper ───────────────────────────────────────────── */
   --checkbox-font-family:      var(--font-body);
