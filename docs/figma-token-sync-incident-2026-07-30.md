@@ -23,7 +23,7 @@ The generated repository bundle contains the same collection counts and mode str
 
 - 1,632 variables
 - 1,950 per-mode values
-- 1,270 alias values
+- 1,271 alias values
 - 0 unresolved CSS expressions
 
 ## Where colors are changed now
@@ -49,6 +49,13 @@ Neutral and Emphasize use dedicated feedback roles so shared background-token ch
 The shared soft-focus border keeps its exact deployed color through an explicit primitive:
 
 - `Color modes/border/border-focus-soft` → `Primitives/Colors/Blue/150` (`#C7E5F0`) in both modes
+
+The Light info background now also resolves through the deployed primitive value:
+
+- `Color modes/feedback/info/bg` → `Primitives/Colors/Blue/50` (`#E0F2FF`)
+
+The Figma primitive previously stored `#EFF6FF`, while the CSS source and deployed Netlify build
+used `#E0F2FF`. Updating the primitive closes that drift for all five Light semantic consumers.
 
 Switching `Color modes` is therefore sufficient. `Component-based` no longer has a second theme switch.
 

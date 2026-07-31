@@ -467,7 +467,7 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Feedback — reusable intent surfaces ── */
 --color-feedback-text: #1b1a1a;         /* dark: #f4f3f3 */
---color-feedback-info-bg: #e0f2ff;      /* dark: #003877 */
+--color-feedback-info-bg: var(--color-blue-50);/* dark: #003877 */
 --color-feedback-info-border: var(--color-border-info-subtle);/* dark: #0059c2 */
 --color-feedback-info-accent: var(--color-fg-info);/* dark: #54a3f6 */
 --color-feedback-info-action: var(--color-action-primary);/* dark: #54a3f6 */

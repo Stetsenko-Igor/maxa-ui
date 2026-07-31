@@ -221,7 +221,7 @@
 
   /* ── Feedback — reusable intent surfaces ──────────────────────────── */
   --color-feedback-text:                #1b1a1a;
-  --color-feedback-info-bg:             #e0f2ff;
+  --color-feedback-info-bg:             var(--color-blue-50);
   --color-feedback-info-border:         var(--color-border-info-subtle);
   --color-feedback-info-accent:         var(--color-fg-info);
   --color-feedback-info-action:         var(--color-action-primary);

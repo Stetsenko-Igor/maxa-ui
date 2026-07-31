@@ -8,7 +8,7 @@
     "info": {
       "bg": {
         "$description": "Info feedback background.",
-        "$value": "#E0F2FF",
+        "$value": "{Colors.Blue.50}",
         "$type": "color"
       },
       "border": {

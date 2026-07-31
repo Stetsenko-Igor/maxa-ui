@@ -850,7 +850,7 @@
     },
     "Blue": {
       "50": {
-        "$value": "#EFF6FF",
+        "$value": "#E0F2FF",
         "$type": "color"
       },
       "100": {

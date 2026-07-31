@@ -30,3 +30,6 @@ page semantics.
 
 `border-focus-soft` now aliases the exact `Colors/Blue/150` primitive in both color modes instead
 of storing the same raw hex value twice. Its resolved color remains `#C7E5F0`.
+
+Aligned Figma `Colors/Blue/50` with the deployed CSS primitive (`#E0F2FF`) and routed the Light
+Alert info background through that primitive instead of duplicating its hex value.

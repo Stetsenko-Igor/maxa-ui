@@ -241,7 +241,7 @@ describe("semantic.css — bg + action", () => {
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-feedback-info-bg:             #e0f2ff;")
+    expect(light).toContain("--color-feedback-info-bg:             var(--color-blue-50);")
     expect(light).toContain("--color-feedback-info-border:         var(--color-border-info-subtle);")
     expect(light).toContain("--color-feedback-success-border:      var(--color-border-success-subtle);")
     expect(light).toContain("--color-feedback-warning-border:      var(--color-border-warning-subtle);")
@@ -502,7 +502,8 @@ describe("figma import bundle", () => {
     expect(dark?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
     expect(Object.keys(light ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
     expect(Object.keys(dark ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
-    expect(light?.["feedback/info/bg"]).toBe("#E0F2FF")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Blue/50"]).toBe("#E0F2FF")
+    expect(light?.["feedback/info/bg"]).toBe("{Colors.Blue.50}")
     expect(light?.["feedback/info/border"]).toBe("{Color modes/border/border-info-subtle}")
     expect(light?.["feedback/success/border"]).toBe("{Color modes/border/border-success-subtle}")
     expect(light?.["feedback/warning/border"]).toBe("{Color modes/border/border-warning-subtle}")
