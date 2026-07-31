@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1721
+Total tokens: 1720
 
 ## Primitives
 
@@ -328,7 +328,6 @@ Source: `packages/tokens/src/semantic.css`
 /* ── Background — status/intent (orthogonal to elevation) ── */
 --color-bg-neutral-surface: var(--color-neutral-50);/* dark: var(--color-neutral-900) */
 --color-bg-neutral-subtle: var(--color-neutral-100);/* dark: var(--color-neutral-800) */
---color-bg-neutral-on-subtle: var(--color-neutral-200);/* dark: var(--color-neutral-700) */
 --color-bg-neutral-on-muted: var(--color-neutral-300);/* dark: var(--color-neutral-600) */
 --color-bg-neutral-strong: var(--color-neutral-800);/* dark: var(--color-neutral-400) */
 --color-bg-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */

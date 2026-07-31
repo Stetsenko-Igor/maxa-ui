@@ -400,10 +400,6 @@
       "$value": "{Colors.Neutral.800}",
       "$type": "color"
     },
-    "bg-neutral-on-subtle": {
-      "$value": "{Colors.Neutral.700}",
-      "$type": "color"
-    },
     "bg-neutral-on-muted": {
       "$value": "{Colors.Neutral.600}",
       "$type": "color"

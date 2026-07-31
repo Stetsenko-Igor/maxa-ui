@@ -473,13 +473,6 @@
         "darkHex": "#444445"
       },
       {
-        "name": "--color-bg-neutral-on-subtle",
-        "lightValue": "var(--color-neutral-200)",
-        "darkValue": "var(--color-neutral-700)",
-        "lightHex": "#EDEDED",
-        "darkHex": "#6B6B6D"
-      },
-      {
         "name": "--color-bg-neutral-on-muted",
         "lightValue": "var(--color-neutral-300)",
         "darkValue": "var(--color-neutral-600)",

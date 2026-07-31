@@ -93,7 +93,7 @@ const FIGMA_BACKGROUND_INTENTS = ['brand', 'neutral', 'info', 'success', 'warnin
 const FIGMA_BACKGROUND_INTENT_SUFFIXES = ['subtle', 'surface', 'strong', 'muted'];
 // The neutral intent uses the reconciled ladder vocabulary instead of the
 // intent-surface duplicate (bg-neutral-surface was renamed to bg-neutral-on-subtle).
-const FIGMA_BACKGROUND_NEUTRAL_SUFFIXES = ['surface', 'subtle', 'on-subtle', 'muted', 'on-muted', 'strong'];
+const FIGMA_BACKGROUND_NEUTRAL_SUFFIXES = ['surface', 'subtle', 'muted', 'on-muted', 'strong'];
 const FIGMA_LEGACY_COLOR_GROUPS = new Set(['fg', 'bg']);
 
 function collectFiles(dir, extensions) {
