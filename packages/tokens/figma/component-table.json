@@ -42,7 +42,7 @@
     },
     "header-bg": {
       "$description": "Table: header bg.",
-      "$value": "var(--color-bg-neutral-on-muted)",
+      "$value": "var(--color-bg-neutral-muted)",
       "$type": "color"
     },
     "fg": {
@@ -52,7 +52,7 @@
     },
     "header-text": {
       "$description": "Table: header text.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "var(--color-text-secondary)",
       "$type": "color"
     },
     "header-font-size": {

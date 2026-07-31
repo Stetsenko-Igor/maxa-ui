@@ -461,23 +461,23 @@
       {
         "name": "--color-bg-neutral-surface",
         "lightValue": "var(--color-neutral-50)",
-        "darkValue": "var(--color-neutral-900)",
+        "darkValue": "var(--color-neutral-950)",
         "lightHex": "#F5F6FA",
-        "darkHex": "#2A2A2B"
+        "darkHex": "#1A1919"
       },
       {
         "name": "--color-bg-neutral-subtle",
         "lightValue": "var(--color-neutral-100)",
-        "darkValue": "var(--color-neutral-800)",
+        "darkValue": "var(--color-neutral-900)",
         "lightHex": "#F4F3F3",
-        "darkHex": "#444445"
+        "darkHex": "#2A2A2B"
       },
       {
         "name": "--color-bg-neutral-on-muted",
         "lightValue": "var(--color-neutral-300)",
-        "darkValue": "var(--color-neutral-600)",
+        "darkValue": "var(--color-neutral-700)",
         "lightHex": "#E4E4E4",
-        "darkHex": "#8C8C8E"
+        "darkHex": "#6B6B6D"
       },
       {
         "name": "--color-bg-neutral-strong",
@@ -601,9 +601,9 @@
       {
         "name": "--color-bg-neutral-muted",
         "lightValue": "var(--color-neutral-200)",
-        "darkValue": "var(--color-neutral-700)",
+        "darkValue": "var(--color-neutral-800)",
         "lightHex": "#EDEDED",
-        "darkHex": "#6B6B6D"
+        "darkHex": "#444445"
       },
       {
         "name": "--color-bg-info-muted",
