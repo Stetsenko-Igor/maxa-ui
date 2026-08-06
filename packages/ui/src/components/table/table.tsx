@@ -80,16 +80,28 @@ export interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement>
   selected?: boolean
   subdued?: boolean
   interactive?: boolean
+  striped?: boolean
 }
 
 const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ className, selected = false, subdued = false, interactive = false, ...props }, ref) => (
+  (
+    {
+      className,
+      selected = false,
+      subdued = false,
+      interactive = false,
+      striped = false,
+      ...props
+    },
+    ref,
+  ) => (
     <tr
       ref={ref}
       className={cn("maxa-table__row", className)}
       data-selected={selected ? "" : undefined}
       data-subdued={subdued ? "" : undefined}
       data-interactive={interactive ? "" : undefined}
+      data-striped={striped ? "" : undefined}
       {...props}
     />
   ),

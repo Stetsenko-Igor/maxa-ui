@@ -150,7 +150,7 @@ Colors/
   Brand/         -> 50-950 (#31e5c2 = 500, #15cba8 = 600)
 
   Tailwind palette:
-  Slate, Gray, Zinc, Stone,
+  Gray, Zinc, Stone,
   Red, Orange, Amber, Yellow, Lime, Green,
   Emerald, Teal, Cyan, Sky, Blue, Indigo,
   Violet, Purple, Fuchsia, Pink, Rose

@@ -1,0 +1,30 @@
+{
+  "background": {
+    "bg-overlay-strong": {
+      "$value": "{Colors.Neutral (alpha).Black.72}",
+      "$type": "color"
+    }
+  },
+  "action": {
+    "action-menu-hover": {
+      "$value": "{Color modes/action/action-neutral-hover}",
+      "$type": "color"
+    },
+    "action-menu-active": {
+      "$value": "{Color modes/action/action-neutral-active}",
+      "$type": "color"
+    }
+  },
+  "border": {
+    "border-focus-soft": {
+      "$value": "{Colors.Blue.150}",
+      "$type": "color"
+    }
+  },
+  "foreground": {
+    "fg-on-inverse-muted": {
+      "$value": "{Colors.Neutral (alpha).White.45}",
+      "$type": "color"
+    }
+  }
+}

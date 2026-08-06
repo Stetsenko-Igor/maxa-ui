@@ -1,5 +1,7 @@
 # Figma token architecture repair — 2026-07-30
 
+> Historical note: the `Color modes/feedback/*` architecture remains the current domain-semantic contract for Alert. On 2026-08-05 it was briefly removed during a duplicate-role cleanup, then restored with approved primitives and direct primitive aliases after distinguishing value overlap from duplicate meaning.
+
 ## Outcome
 
 The repository and the live `[MAXA] Foundation` Figma file now use one theme switch:
@@ -108,10 +110,19 @@ Published Dark values:
 | Warning | `#521D00` | `#B44E00` | `#E16D00` | `#F4F3F3` |
 | Error | `#7B0000` | `#D71913` | `#FF755E` | `#F4F3F3` |
 
-The four intent feedback roles preserve their approved values exactly. Neutral and Emphasize preserve their current appearance through dedicated reusable feedback roles:
+These published values remain the visual calibration target. After the primitive palettes were replaced, the closest approved aliases resolve as follows:
+
+| Intent | Background | Border | Accent |
+| --- | --- | --- | --- |
+| Info | Blue/700 `#04549B` | Blue/600 `#0564B9` | Blue/400 `#449BE8` |
+| Success | Green/800 `#1E6131` | Green/700 `#227939` | Green/500 `#30AA50` |
+| Warning | Orange/900 `#7C2D12` | Orange/700 `#C2410C` | Orange/600 `#EA580C` |
+| Error | Red/700 `#960F0B` | Red/500 `#D31510` | Red/300 `#FA908B` |
+
+Neutral and Emphasize preserve their appearance through dedicated reusable feedback roles:
 
 - Neutral background resolves directly from primitives to `#FFFFFF` in Light and `#2A2A2B` in Dark;
-- Emphasize background resolves directly from primitives to `#F5F6FA` in Light and `#1A1919` in Dark.
+- Emphasize background resolves directly from primitives to `#FAFAFA` in Light and `#2A2A2B` in Dark.
 
 This deliberately avoids transitive coupling to `background/bg-surface` and `background/bg-page`.
 
@@ -149,6 +160,27 @@ The migration then:
 No Alert structure, layout, content, component properties, or variants were changed. The test page is not used to define or validate the production Alert component; the token files and variable alias graph are the source of truth for this migration.
 
 ## Repository safeguards
+
+### Live mapping verification rule
+
+Before reporting an effective component color, inspect both the live Figma alias graph and the
+repository token chain. Do not infer the current Figma mapping from `semantic.css` alone. When
+the two differ, report the drift explicitly and treat the live Figma file as the current design
+state until a user-approved sync updates the repository.
+
+Before replacing a feedback alias or primitive palette, capture the resolved production hex values
+and compare the proposed resolved colors visually. Numeric steps are not portable between palettes:
+for example, `950/200` in a replacement scale is not automatically equivalent to the previous dark
+background and border. Keep this comparison covered by a token regression test.
+
+Observed on 2026-08-05:
+
+- `action/action-primary` → `Colors/Blue/500` in Figma and code;
+- `action/action-success` → `Colors/Green/500` in Figma, while code still mapped to Green/700;
+- `action/action-destructive` → `Colors/Red/500` in Figma, while code still mapped to Red/600;
+- `action/action-warning` → `Colors/Yellow/500` in Figma and code.
+
+This drift must be resolved only after the replacement primitive scales are visually approved.
 
 `build-figma-import-bundle.mjs` now rejects:
 
@@ -188,8 +220,9 @@ Checkbox, Radio, and Toggle correctly moved toward semantic control roles. The f
 
 The subsequent primitive cleanup intentionally maps Dark feedback roles to the canonical Blue,
 Green, Yellow/Orange, and Red palettes. This removes the duplicate `Colors/Status/*` family;
-the resolved Dark Alert colors change slightly, while verified text and non-text contrast remain
-above the required thresholds.
+the resolved Dark Alert colors change slightly while remaining visually calibrated against the
+published component. Each background, border, and accent step is selected independently from the
+resolved color; no generic `950/200` recipe is applied.
 
 ## Publishing
 

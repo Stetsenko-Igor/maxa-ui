@@ -33,6 +33,14 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("maxa-button--lg")
   })
 
+  it("adds the optional surface class without changing the outline variant", () => {
+    render(<Button variant="outline" outlineSurface>Test</Button>)
+    expect(screen.getByRole("button")).toHaveClass(
+      "maxa-button--outline",
+      "maxa-button--outline-surface",
+    )
+  })
+
   it("is disabled when disabled prop is set", () => {
     render(<Button disabled>Test</Button>)
     expect(screen.getByRole("button")).toBeDisabled()

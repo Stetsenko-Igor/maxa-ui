@@ -33,12 +33,17 @@ const buttonVariants = cva("maxa-button", {
       true:  "maxa-button--full-width",
       false: "",
     },
+    outlineSurface: {
+      true:  "maxa-button--outline-surface",
+      false: "",
+    },
   },
   defaultVariants: {
     variant: "primary",
     size: "md",
     iconOnly: false,
     fullWidth: false,
+    outlineSurface: false,
   },
 })
 
@@ -59,6 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       iconOnly,
       fullWidth,
+      outlineSurface,
       asChild = false,
       loading = false,
       disabled,
@@ -77,7 +83,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <Comp
           ref={ref}
-          className={buttonVariants({ variant, size, iconOnly, fullWidth, className })}
+          className={buttonVariants({ variant, size, iconOnly, fullWidth, outlineSurface, className })}
           aria-disabled={isDisabled || undefined}
           aria-busy={loading || undefined}
           {...props}
@@ -90,7 +96,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={buttonVariants({ variant, size, iconOnly, fullWidth, className })}
+        className={buttonVariants({ variant, size, iconOnly, fullWidth, outlineSurface, className })}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-busy={loading || undefined}

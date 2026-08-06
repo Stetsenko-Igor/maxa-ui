@@ -18,12 +18,14 @@
   --button-secondary-bg-hover:     var(--color-action-neutral-hover);
   --button-secondary-bg-active:    var(--color-action-neutral-active);
   --button-secondary-text:         var(--color-text-primary);
+  --button-secondary-text-active:  var(--color-text-on-neutral-action-active);
   --button-secondary-border:       var(--color-action-neutral);
   --button-secondary-border-hover: var(--color-action-neutral-hover);
   --button-secondary-border-focus: var(--color-border-focus);
 
   /* outline */
-  --button-outline-bg:           var(--color-bg-surface);
+  --button-outline-bg:           transparent;
+  --button-outline-bg-surface:   var(--color-bg-surface);
   --button-outline-bg-hover:     var(--color-action-neutral-subtle-hover);
   --button-outline-bg-active:    var(--color-action-neutral-subtle-active);
   --button-outline-text:         var(--color-text-primary);
@@ -58,7 +60,9 @@
   --button-success-bg:           var(--color-action-success);
   --button-success-bg-hover:     var(--color-action-success-hover);
   --button-success-bg-active:    var(--color-action-success-active);
-  --button-success-text:         var(--color-text-inverse);
+  --button-success-text:         var(--color-text-on-success);
+  --button-success-text-hover:   var(--color-text-on-success);
+  --button-success-text-active:  var(--color-text-on-success);
   --button-success-border:       var(--color-action-success);
   --button-success-border-hover: var(--color-action-success-hover);
   --button-success-border-focus: var(--color-border-focus);
@@ -67,7 +71,7 @@
   --button-destructive-bg:           var(--color-action-destructive);
   --button-destructive-bg-hover:     var(--color-action-destructive-hover);
   --button-destructive-bg-active:    var(--color-action-destructive-active);
-  --button-destructive-text:         var(--color-text-inverse);
+  --button-destructive-text:         var(--color-text-on-destructive);
   --button-destructive-border:       var(--color-action-destructive);
   --button-destructive-border-hover: var(--color-action-destructive-hover);
   --button-destructive-border-focus: var(--color-border-focus);
@@ -76,7 +80,9 @@
   --button-warning-bg:           var(--color-action-warning);
   --button-warning-bg-hover:     var(--color-action-warning-hover);
   --button-warning-bg-active:    var(--color-action-warning-active);
-  --button-warning-text:         var(--color-text-primary);
+  --button-warning-text:         var(--color-text-on-warning);
+  --button-warning-text-hover:   var(--color-text-on-warning);
+  --button-warning-text-active:  var(--color-text-inverse);
   --button-warning-border:       var(--color-action-warning);
   --button-warning-border-hover: var(--color-action-warning-hover);
   --button-warning-border-focus: var(--color-border-focus);

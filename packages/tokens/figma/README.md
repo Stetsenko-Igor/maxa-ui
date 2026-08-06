@@ -43,7 +43,8 @@ This order keeps aliases resolvable during import:
 - Change raw palette or spacing scale only in `primitives.json`.
 - Change semantic spacing intent only in `spacing.json`.
 - Change shared semantic light/dark colors in `colors-semantic-light.json` and `colors-semantic-dark.json`.
-- Change reusable feedback and component-support semantics in `colors-feedback-light.json` and `colors-feedback-dark.json`.
+- Change reusable feedback recipes in `colors-feedback-light.json` and `colors-feedback-dark.json`.
+- Change shared component-support semantics in `colors-support-light.json` and `colors-support-dark.json`.
 - Change extended hue roles in `colors-utility-light.json` and `colors-utility-dark.json`.
 - Keep descriptions durable. Prefer intent and alias references over repeating raw values.
 - Keep semantic names stable. Prefer updating primitive targets before renaming semantic tokens.
@@ -59,6 +60,18 @@ This order keeps aliases resolvable during import:
   Examples: `mobile`, `tablet`, `desktop`
 - Component-based tokens use PascalCase component groups and lowercase roles.
   Examples: `Button/primary/bg`, `Button/link/text-hover`, `Button/size/md/height`
+
+### Path Grammar and Stability
+
+The full variable path carries meaning. A leaf name does not need to repeat context that is already supplied by its parent groups.
+
+- Existing base semantic families keep their code-facing leaf prefixes as a stable API.
+  Examples: `text/text-primary`, `foreground/fg-primary`, `background/bg-page`, `border/border-primary`, `action/action-primary`
+- Do not add component-specific namespaces to `Color modes`. The reusable `feedback/*` family is a domain semantic recipe shared by feedback surfaces; component-specific assignments remain in `Component-based`.
+- Component tokens use component-local property names because the component group supplies the scope.
+  Examples: `Table/bg`, `Table/cell-text`, `Table/row-bg-selected-hover`
+- Do not opportunistically normalize existing base semantic paths to shorter forms such as `text/primary` or `background/page`. Those paths are public aliases used by code, Figma, tests, and consumers.
+- If base semantic names are ever normalized, handle the work as a dedicated naming migration with ID-preserving renames, complete alias updates, importer coverage, and export-to-repository zero-drift verification. Do not combine it with color-value or component-token changes.
 
 ## Usage Notes
 
@@ -117,11 +130,14 @@ Examples:
 - `Alert/color/info/bg` -> `Color modes/feedback/info/bg`
 - `Alert/color/info/action` -> `Color modes/feedback/info/action`
 - `Alert/color/info/action-hover` -> `Color modes/feedback/info/action-hover`
-- `Alert/color/info/text` -> `Color modes/text/text-primary`
-- `Alert/color/info/bg` in Dark -> `Color modes/feedback/info/bg` -> `Primitives/Colors/Blue/800`
-- every intent-specific `Color modes/feedback/*` COLOR value aliases `Primitives` directly; `feedback/text` reuses `text/text-primary`
-- `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg` -> `Primitives/Colors/Base/White` in Light
-- `Alert/color/emphasize/bg` -> `Color modes/feedback/emphasize/bg` -> `Primitives/Colors/Neutral/50` in Light
+- `Alert/color/info/text` -> `Color modes/feedback/text`
+- `Alert/color/info/bg` in Dark -> `Color modes/feedback/info/bg` -> `Primitives/Colors/Blue/700`
+- `Button/outline/bg` -> `Primitives/Colors/Base/Transparent`
+- `Button/outline/bg-surface` -> `Color modes/background/bg-surface`
+- every `Color modes/feedback/*` COLOR value aliases `Primitives` directly, so feedback recipes can evolve independently from generic background, border, foreground, text, and action roles
+- `Alert/color/neutral/bg` -> `Color modes/feedback/neutral/bg`
+- `Alert/color/emphasize/bg` -> `Color modes/feedback/emphasize/bg`
+- `Alert/color/neutral/action` -> `Color modes/feedback/neutral/action`
 - `Utility/bg-violet-muted` -> `Color modes/utility/bg-violet-muted`
 - `Button/link/bg` -> `Primitives/Colors/Base/Transparent`
 - `Button/size/md/padding-x` -> `Spacing/spacing-xl`

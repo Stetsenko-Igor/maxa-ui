@@ -1,15 +1,18 @@
 {
   "feedback": {
-    "text": { "$value": "{Color modes/text/text-primary}", "$type": "color" },
+    "text": {
+      "$value": "{Colors.Neutral.100}",
+      "$type": "color"
+    },
     "info": {
-      "bg": { "$value": "{Colors.Blue.800}", "$type": "color" },
+      "bg": { "$value": "{Colors.Blue.700}", "$type": "color" },
       "border": { "$value": "{Colors.Blue.600}", "$type": "color" },
-      "accent": { "$value": "{Colors.Blue.300}", "$type": "color" },
+      "accent": { "$value": "{Colors.Blue.400}", "$type": "color" },
       "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     },
     "success": {
-      "bg": { "$value": "{Colors.Green.900}", "$type": "color" },
+      "bg": { "$value": "{Colors.Green.800}", "$type": "color" },
       "border": { "$value": "{Colors.Green.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Green.500}", "$type": "color" },
       "action": { "$value": "{Colors.Green.400}", "$type": "color" },
@@ -18,14 +21,14 @@
     "warning": {
       "bg": { "$value": "{Colors.Orange.900}", "$type": "color" },
       "border": { "$value": "{Colors.Orange.700}", "$type": "color" },
-      "accent": { "$value": "{Colors.Orange.400}", "$type": "color" },
+      "accent": { "$value": "{Colors.Orange.600}", "$type": "color" },
       "action": { "$value": "{Colors.Orange.400}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Orange.300}", "$type": "color" }
     },
     "error": {
-      "bg": { "$value": "{Colors.Red.900}", "$type": "color" },
-      "border": { "$value": "{Colors.Red.600}", "$type": "color" },
-      "accent": { "$value": "{Colors.Red.400}", "$type": "color" },
+      "bg": { "$value": "{Colors.Red.700}", "$type": "color" },
+      "border": { "$value": "{Colors.Red.500}", "$type": "color" },
+      "accent": { "$value": "{Colors.Red.300}", "$type": "color" },
       "action": { "$value": "{Colors.Red.400}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Red.300}", "$type": "color" }
     },
@@ -34,35 +37,16 @@
       "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
       "accent": { "$value": "{Colors.Neutral.500}", "$type": "color" },
       "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
-      "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
-      "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
+      "action": { "$value": "{Colors.Red.400}", "$type": "color" },
+      "action-hover": { "$value": "{Colors.Red.300}", "$type": "color" }
     },
     "emphasize": {
-      "bg": { "$value": "{Colors.Neutral.950}", "$type": "color" },
+      "bg": { "$value": "{Colors.Neutral.900}", "$type": "color" },
       "border": { "$value": "{Colors.Neutral.800}", "$type": "color" },
       "accent": { "$value": "{Colors.Neutral.500}", "$type": "color" },
       "text": { "$value": "{Colors.Neutral.100}", "$type": "color" },
       "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     }
-  },
-  "background": {
-    "bg-overlay-strong": { "$value": "{Colors.Neutral (alpha).Black.72}", "$type": "color" }
-  },
-  "action": {
-    "action-menu-hover": {
-      "$value": "{Color modes/action/action-neutral-hover}",
-      "$type": "color"
-    },
-    "action-menu-active": {
-      "$value": "{Color modes/action/action-neutral-active}",
-      "$type": "color"
-    }
-  },
-  "border": {
-    "border-focus-soft": { "$value": "{Colors.Blue.150}", "$type": "color" }
-  },
-  "foreground": {
-    "fg-on-inverse-muted": { "$value": "{Colors.Neutral (alpha).White.45}", "$type": "color" }
   }
 }

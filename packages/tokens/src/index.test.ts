@@ -86,17 +86,12 @@ describe("themes/maxa.css — brand", () => {
     }
   })
 
-  it("brand-600 is teal hinge #31E5C2", () => {
+  it("brand-500 is the MAXA core color #31E5C2", () => {
     expect(css.toLowerCase()).toContain("#31e5c2")
   })
-})
 
-describe("themes/maxa.css — dark brand override", () => {
-  const css = readFileSync(join(src, "themes/maxa.css"), "utf-8")
-
-  it("has [data-theme='dark'] block with dark brand scale", () => {
-    expect(css).toContain('[data-theme="dark"]')
-    expect(css.toLowerCase()).toContain("#09483c")
+  it("keeps one primitive scale and delegates theme changes to semantic roles", () => {
+    expect(css).not.toContain('[data-theme="dark"]')
   })
 })
 
@@ -113,6 +108,11 @@ describe("primitives.css — gray", () => {
     for (const step of [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
       expect(css).toContain(`--color-neutral-${step}:`)
     }
+  })
+
+  it("defines the Figma neutral surface steps exactly", () => {
+    expect(css).toContain("--color-neutral-50:  #FAFAFA;")
+    expect(css).toContain("--color-neutral-925: #232324;")
   })
 
   it("defines all status palette steps used by semantic tokens", () => {
@@ -218,40 +218,45 @@ describe("semantic.css — bg + action", () => {
 
   it("maps CSS action primary to blue, not brand", () => {
     expect(css).toContain("--color-action-primary:                 var(--color-blue-500);")
+    expect(css).toContain("--color-action-primary-hover:           var(--color-blue-600);")
+    expect(css).toContain("--color-action-primary-active:          var(--color-blue-700);")
     expect(css).not.toContain("--color-action-primary-normal:")
   })
 
-  it("maps neutral hover and active states to the published Figma values", () => {
+  it("maps neutral states to adjacent balanced steps", () => {
     const darkIdx = css.indexOf('\n[data-theme="dark"] {')
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-action-neutral-hover:           var(--color-neutral-500);")
-    expect(light).toContain("--color-action-neutral-active:          var(--color-neutral-600);")
-    expect(dark).toContain("--color-action-neutral-hover:           var(--color-neutral-600);")
-    expect(dark).toContain("--color-action-neutral-active:          var(--color-neutral-500);")
+    expect(light).toContain("--color-action-neutral-hover:           var(--color-neutral-400);")
+    expect(light).toContain("--color-action-neutral-active:          var(--color-neutral-450);")
+    expect(dark).toContain("--color-action-neutral-hover:           var(--color-neutral-700);")
+    expect(dark).toContain("--color-action-neutral-active:          var(--color-neutral-600);")
   })
 
   it("does not redefine bg-nav in semantic layer (moved to component-nav.css)", () => {
     expect(css).not.toContain("--color-bg-nav:")
   })
 
-  it("routes Alert feedback through the canonical primitive palettes", () => {
+  it("keeps a dedicated feedback recipe alongside the shared semantic roles", () => {
     const darkIdx = css.indexOf('\n[data-theme="dark"] {')
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-feedback-info-bg:             var(--color-blue-50);")
-    expect(light).toContain("--color-feedback-info-border:         var(--color-blue-200);")
-    expect(light).toContain("--color-feedback-success-border:      var(--color-green-400);")
-    expect(light).toContain("--color-feedback-warning-border:      var(--color-orange-300);")
-    expect(light).toContain("--color-feedback-error-border:        var(--color-red-300);")
-    expect(light).toContain("--color-feedback-text:                var(--color-text-primary);")
-    expect(dark).toContain("--color-feedback-text:                var(--color-text-primary);")
-    expect(dark).toContain("--color-feedback-info-bg:             var(--color-blue-800);")
-    expect(dark).toContain("--color-feedback-success-bg:          var(--color-green-900);")
-    expect(dark).toContain("--color-feedback-warning-bg:          var(--color-orange-900);")
-    expect(dark).toContain("--color-feedback-error-bg:            var(--color-red-900);")
+    expect(light).toContain("--color-bg-info-subtle:       var(--color-blue-100);")
+    expect(light).toContain("--color-border-info-subtle:    var(--color-blue-200);")
+    expect(light).toContain("--color-action-success:                var(--color-green-500);")
+    expect(light).toContain("--color-action-destructive:                var(--color-red-500);")
+    expect(dark).toContain("--color-bg-info-subtle:       var(--color-blue-950);")
+    expect(dark).toContain("--color-bg-success-subtle:    var(--color-green-950);")
+    expect(dark).toContain("--color-bg-warning-subtle:    var(--color-yellow-950);")
+    expect(dark).toContain("--color-bg-error-subtle:      var(--color-red-950);")
+    expect(light).toContain("--color-feedback-info-bg:                var(--color-blue-100);")
+    expect(light).toContain("--color-feedback-success-action:         var(--color-green-500);")
+    expect(light).toContain("--color-feedback-error-action-hover:     var(--color-red-700);")
+    expect(dark).toContain("--color-feedback-info-bg:                var(--color-blue-700);")
+    expect(dark).toContain("--color-feedback-success-action:         var(--color-green-400);")
+    expect(dark).toContain("--color-feedback-error-action-hover:     var(--color-red-300);")
     expect(css).not.toContain("--color-status-")
     expect(dark).toContain("--color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);")
   })
@@ -336,11 +341,13 @@ describe("figma manifest", () => {
     expect(manifest.collections["Color modes"]?.modes.Light).toEqual([
       "colors-semantic-light.json",
       "colors-feedback-light.json",
+      "colors-support-light.json",
       "colors-utility-light.json",
     ])
     expect(manifest.collections["Color modes"]?.modes.Dark).toEqual([
       "colors-semantic-dark.json",
       "colors-feedback-dark.json",
+      "colors-support-dark.json",
       "colors-utility-dark.json",
     ])
   })
@@ -351,6 +358,12 @@ describe("figma manifest", () => {
 })
 
 describe("figma import bundle", () => {
+  it("excludes the unused Slate primitive palette", () => {
+    const primitives = bundle.collections.Primitives?.modes.Value ?? {}
+
+    expect(Object.keys(primitives).some((name) => name.startsWith("Colors/Slate/"))).toBe(false)
+  })
+
   const bundle = JSON.parse(
     readFileSync(join(root, "figma/import-bundle.json"), "utf-8"),
   ) as {
@@ -387,14 +400,26 @@ describe("figma import bundle", () => {
     expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
   })
 
-  it("matches the published neutral action aliases in both color modes", () => {
+  it("matches the balanced neutral action aliases in both color modes", () => {
     const light = bundle.collections["Color modes"]?.modes.Light
     const dark = bundle.collections["Color modes"]?.modes.Dark
 
-    expect(light?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.500}")
-    expect(light?.["action/action-neutral-active"]).toBe("{Colors.Neutral.600}")
-    expect(dark?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.600}")
-    expect(dark?.["action/action-neutral-active"]).toBe("{Colors.Neutral.500}")
+    expect(light?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.400}")
+    expect(light?.["action/action-neutral-active"]).toBe("{Colors.Neutral.450}")
+    expect(dark?.["action/action-neutral-hover"]).toBe("{Colors.Neutral.700}")
+    expect(dark?.["action/action-neutral-active"]).toBe("{Colors.Neutral.600}")
+  })
+
+  it("matches the updated neutral primitives and semantic aliases", () => {
+    const primitives = bundle.collections.Primitives?.modes.Value
+    const light = bundle.collections["Color modes"]?.modes.Light
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+
+    expect(primitives?.["Colors/Neutral/50"]).toBe("#FAFAFA")
+    expect(primitives?.["Colors/Neutral/450"]).toBe("#C9C9C9")
+    expect(primitives?.["Colors/Neutral/925"]).toBe("#232324")
+    expect(light?.["text/text-disabled"]).toBe("{Colors.Neutral.500}")
+    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.925}")
   })
 
   it("includes shadow effect styles for Figma", () => {
@@ -467,11 +492,17 @@ describe("figma import bundle", () => {
 
     expect(missing).toEqual([])
     expect(bundle.collections["Color modes"]?.scopes?.["text/text-primary"]).toEqual(["TEXT_FILL"])
-    expect(bundle.collections["Color modes"]?.scopes?.["feedback/text"]).toEqual(["TEXT_FILL"])
-    expect(bundle.collections["Color modes"]?.scopes?.["feedback/info/border"]).toEqual(["STROKE_COLOR"])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Orange/500"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Red/500"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Yellow/500"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Blue/500"]).toEqual([])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual(["STROKE_COLOR"])
     expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/info/action"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/neutral/action"]).toEqual([
+      "ALL_FILLS",
+      "STROKE_COLOR",
+    ])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual(["WIDTH_HEIGHT"])
     expect(bundle.collections["Component-based"]?.scopes?.["Context Menu/z"]).toEqual([])
   })
@@ -481,19 +512,19 @@ describe("figma import bundle", () => {
 
     expect(component?.["Select/bg"]).toBe("{Component-based/Input/bg}")
     expect(component?.["Context Menu/bg"]).toBe("{Component-based/Dropdown Menu/surface/bg}")
-    expect(component?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
+    expect(component?.["Social Button/bg"]).toBe("{Color modes/background/bg-surface}")
     expect(component?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
     expect(component?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
-    for (const intent of ["info", "success", "warning", "error"]) {
-      expect(component?.[`Alert/color/${intent}/action`]).toBe(
-        `{Color modes/feedback/${intent}/action}`,
-      )
-      expect(component?.[`Alert/color/${intent}/action-hover`]).toBe(
-        `{Color modes/feedback/${intent}/action-hover}`,
-      )
-    }
+    expect(component?.["Alert/color/info/action"]).toBe("{Color modes/feedback/info/action}")
+    expect(component?.["Alert/color/success/action"]).toBe("{Color modes/feedback/success/action}")
+    expect(component?.["Alert/color/warning/action"]).toBe("{Color modes/feedback/warning/action}")
+    expect(component?.["Alert/color/error/action"]).toBe("{Color modes/feedback/error/action}")
+    expect(component?.["Alert/color/neutral/action"]).toBe("{Color modes/feedback/neutral/action}")
     for (const intent of ["info", "success", "warning", "error", "neutral", "emphasize"]) {
-      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-primary}")
+      const textAlias = ["neutral", "emphasize"].includes(intent)
+        ? `{Color modes/feedback/${intent}/text}`
+        : "{Color modes/feedback/text}"
+      expect(component?.[`Alert/color/${intent}/text`]).toBe(textAlias)
     }
     expect(component?.["Calendar/shadow"]).toBeUndefined()
     expect(component?.["Context Menu/shadow"]).toBeUndefined()
@@ -518,30 +549,11 @@ describe("figma import bundle", () => {
     expect(dark?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
     expect(Object.keys(light ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
     expect(Object.keys(dark ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
-    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Blue/50"]).toBe("#E0F2FF")
-    expect(light?.["feedback/info/bg"]).toBe("{Colors.Blue.50}")
-    expect(light?.["feedback/info/border"]).toBe("{Colors.Blue.200}")
-    expect(light?.["feedback/success/border"]).toBe("{Colors.Green.400}")
-    expect(light?.["feedback/warning/border"]).toBe("{Colors.Orange.300}")
-    expect(light?.["feedback/error/border"]).toBe("{Colors.Red.300}")
-    expect(light?.["feedback/success/accent"]).toBe("{Colors.Green.700}")
-    expect(light?.["feedback/warning/accent"]).toBe("{Colors.Orange.700}")
-    expect(light?.["feedback/text"]).toBe("{Color modes/text/text-primary}")
-    expect(dark?.["feedback/text"]).toBe("{Color modes/text/text-primary}")
-    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.800}")
-    expect(dark?.["feedback/info/border"]).toBe("{Colors.Blue.600}")
-    expect(dark?.["feedback/error/accent"]).toBe("{Colors.Red.400}")
-    for (const mode of [light, dark]) {
-      for (const [name, value] of Object.entries(mode ?? {})) {
-        if (name.startsWith("feedback/")) {
-          if (name === "feedback/text") {
-            expect(value).toBe("{Color modes/text/text-primary}")
-          } else {
-            expect(value).toMatch(/^\{Colors\./)
-          }
-        }
-      }
-    }
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Blue/50"]).toBe("#EFF7FF")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Blue/500"]).toBe("#0576DA")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Green/500"]).toBe("#30AA50")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Red/500"]).toBe("#D31510")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Brand/500"]).toBe("#31E5C2")
     expect(light?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Ink.50}")
     expect(dark?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Black.72}")
     expect(light?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
@@ -552,30 +564,22 @@ describe("figma import bundle", () => {
     expect(component?.["Multi Select/chip-bg"]).toBe("{Color modes/utility/bg-gray-muted}")
     expect(component?.["Toast/color/stripe-info"]).toBe("{Color modes/border/border-info-strong}")
     expect(component?.["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
-    expect(light?.["feedback/neutral/bg"]).toBe("{Colors.Base.White}")
-    expect(dark?.["feedback/neutral/bg"]).toBe("{Colors.Neutral.900}")
-    expect(light?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.50}")
-    expect(dark?.["feedback/emphasize/bg"]).toBe("{Colors.Neutral.950}")
-    for (const intent of ["neutral", "emphasize"]) {
-      for (const role of ["bg", "border", "accent"]) {
-        expect(component?.[`Alert/color/${intent}/${role}`]).toBe(
-          `{Color modes/feedback/${intent}/${role}}`,
-        )
-      }
-      expect(component?.[`Alert/color/${intent}/text`]).toBe("{Color modes/text/text-primary}")
-    }
+    expect(component?.["Alert/color/info/border"]).toBe("{Color modes/feedback/info/border}")
+    expect(component?.["Alert/color/info/accent"]).toBe("{Color modes/feedback/info/accent}")
+    expect(component?.["Alert/color/neutral/bg"]).toBe("{Color modes/feedback/neutral/bg}")
+    expect(component?.["Alert/color/emphasize/bg"]).toBe("{Color modes/feedback/emphasize/bg}")
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
     expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
   })
 
-  it("keeps every feedback color on canonical primitives without a duplicate Status palette", () => {
+  it("routes Alert through the dedicated feedback namespace backed directly by primitives", () => {
     const colorModes = bundle.collections["Color modes"]
     for (const [modeName, values] of Object.entries(colorModes?.modes ?? {})) {
-      for (const [name, value] of Object.entries(values)) {
-        if (name.startsWith("feedback/") && colorModes?.types?.[name] === "COLOR") {
-          expect(value, `${name} [${modeName}]`).toMatch(/^\{[^}]+\}$/)
-        }
+      const feedbackEntries = Object.entries(values).filter(([name]) => name.startsWith("feedback/"))
+      expect(feedbackEntries, `${modeName} feedback roles`).toHaveLength(33)
+      for (const [name, value] of feedbackEntries) {
+        expect(value, `${name} [${modeName}]`).toMatch(/^\{Colors\./)
       }
     }
 
@@ -583,76 +587,50 @@ describe("figma import bundle", () => {
     expect(primitives?.["Colors/Base/Ink"]).toBe("#1B1A1A")
     expect(Object.keys(primitives ?? {}).some((name) => name.startsWith("Colors/Status/"))).toBe(false)
 
-    const expectedLightAliases = {
-      "feedback/text": "{Color modes/text/text-primary}",
-      "feedback/info/bg": "{Colors.Blue.50}",
-      "feedback/info/border": "{Colors.Blue.200}",
-      "feedback/info/accent": "{Colors.Blue.500}",
-      "feedback/info/action": "{Colors.Blue.500}",
-      "feedback/info/action-hover": "{Colors.Blue.600}",
-      "feedback/success/bg": "{Colors.Green.100}",
-      "feedback/success/border": "{Colors.Green.400}",
-      "feedback/success/accent": "{Colors.Green.700}",
-      "feedback/success/action": "{Colors.Green.800}",
-      "feedback/success/action-hover": "{Colors.Green.800}",
-      "feedback/warning/bg": "{Colors.Orange.100}",
-      "feedback/warning/border": "{Colors.Orange.300}",
-      "feedback/warning/accent": "{Colors.Orange.700}",
-      "feedback/warning/action": "{Colors.Orange.700}",
-      "feedback/warning/action-hover": "{Colors.Orange.700}",
-      "feedback/error/bg": "{Colors.Red.100}",
-      "feedback/error/border": "{Colors.Red.300}",
-      "feedback/error/accent": "{Colors.Red.700}",
-      "feedback/error/action": "{Colors.Red.700}",
-      "feedback/error/action-hover": "{Colors.Red.700}",
-      "feedback/neutral/bg": "{Colors.Base.White}",
-      "feedback/neutral/border": "{Colors.Neutral.400}",
-      "feedback/neutral/accent": "{Colors.Neutral.800}",
-      "feedback/neutral/text": "{Colors.Neutral.950}",
-      "feedback/emphasize/bg": "{Colors.Neutral.50}",
-      "feedback/emphasize/border": "{Colors.Neutral.400}",
-      "feedback/emphasize/accent": "{Colors.Neutral.800}",
-      "feedback/emphasize/text": "{Colors.Neutral.950}",
+    const component = bundle.collections["Component-based"]?.modes.Default ?? {}
+    expect(component["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
+    expect(component["Alert/color/success/bg"]).toBe("{Color modes/feedback/success/bg}")
+    expect(component["Alert/color/warning/bg"]).toBe("{Color modes/feedback/warning/bg}")
+    expect(component["Alert/color/error/bg"]).toBe("{Color modes/feedback/error/bg}")
+    expect(Object.values(component).some((value) =>
+      typeof value === "string" && value.includes("Color modes/feedback/"),
+    )).toBe(true)
+  })
+
+  it("keeps dark Alert feedback surfaces saturated without becoming near-black", () => {
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+
+    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.700}")
+    expect(dark?.["feedback/info/border"]).toBe("{Colors.Blue.600}")
+    expect(dark?.["feedback/info/accent"]).toBe("{Colors.Blue.400}")
+
+    expect(dark?.["feedback/success/bg"]).toBe("{Colors.Green.800}")
+    expect(dark?.["feedback/success/border"]).toBe("{Colors.Green.700}")
+    expect(dark?.["feedback/success/accent"]).toBe("{Colors.Green.500}")
+
+    expect(dark?.["feedback/warning/bg"]).toBe("{Colors.Orange.900}")
+    expect(dark?.["feedback/warning/border"]).toBe("{Colors.Orange.700}")
+    expect(dark?.["feedback/warning/accent"]).toBe("{Colors.Orange.600}")
+
+    expect(dark?.["feedback/error/bg"]).toBe("{Colors.Red.700}")
+    expect(dark?.["feedback/error/border"]).toBe("{Colors.Red.500}")
+    expect(dark?.["feedback/error/accent"]).toBe("{Colors.Red.300}")
+
+    for (const intent of ["neutral", "emphasize"]) {
+      expect(dark?.[`feedback/${intent}/bg`]).toBe("{Colors.Neutral.900}")
+      expect(dark?.[`feedback/${intent}/border`]).toBe("{Colors.Neutral.800}")
+      expect(dark?.[`feedback/${intent}/accent`]).toBe("{Colors.Neutral.500}")
     }
-    const expectedDarkAliases = {
-      "feedback/text": "{Color modes/text/text-primary}",
-      "feedback/info/bg": "{Colors.Blue.800}",
-      "feedback/info/border": "{Colors.Blue.600}",
-      "feedback/info/accent": "{Colors.Blue.300}",
-      "feedback/info/action": "{Colors.Blue.400}",
-      "feedback/info/action-hover": "{Colors.Blue.300}",
-      "feedback/success/bg": "{Colors.Green.900}",
-      "feedback/success/border": "{Colors.Green.700}",
-      "feedback/success/accent": "{Colors.Green.500}",
-      "feedback/success/action": "{Colors.Green.400}",
-      "feedback/success/action-hover": "{Colors.Green.300}",
-      "feedback/warning/bg": "{Colors.Orange.900}",
-      "feedback/warning/border": "{Colors.Orange.700}",
-      "feedback/warning/accent": "{Colors.Orange.400}",
-      "feedback/warning/action": "{Colors.Orange.400}",
-      "feedback/warning/action-hover": "{Colors.Orange.300}",
-      "feedback/error/bg": "{Colors.Red.900}",
-      "feedback/error/border": "{Colors.Red.600}",
-      "feedback/error/accent": "{Colors.Red.400}",
-      "feedback/error/action": "{Colors.Red.400}",
-      "feedback/error/action-hover": "{Colors.Red.300}",
-      "feedback/neutral/bg": "{Colors.Neutral.900}",
-      "feedback/neutral/border": "{Colors.Neutral.800}",
-      "feedback/neutral/accent": "{Colors.Neutral.500}",
-      "feedback/neutral/text": "{Colors.Neutral.100}",
-      "feedback/emphasize/bg": "{Colors.Neutral.950}",
-      "feedback/emphasize/border": "{Colors.Neutral.800}",
-      "feedback/emphasize/accent": "{Colors.Neutral.500}",
-      "feedback/emphasize/text": "{Colors.Neutral.100}",
-    }
-    const light = colorModes?.modes.Light ?? {}
-    const dark = colorModes?.modes.Dark ?? {}
-    for (const [tokenName, expectedAlias] of Object.entries(expectedLightAliases)) {
-      expect(light[tokenName]).toBe(expectedAlias)
-    }
-    for (const [tokenName, expectedAlias] of Object.entries(expectedDarkAliases)) {
-      expect(dark[tokenName]).toBe(expectedAlias)
-    }
+  })
+
+  it("keeps Warning Alert actions on the approved orange palette", () => {
+    const light = bundle.collections["Color modes"]?.modes.Light
+    const dark = bundle.collections["Color modes"]?.modes.Dark
+
+    expect(light?.["feedback/warning/action"]).toBe("{Colors.Orange.700}")
+    expect(light?.["feedback/warning/action-hover"]).toBe("{Colors.Orange.700}")
+    expect(dark?.["feedback/warning/action"]).toBe("{Colors.Orange.400}")
+    expect(dark?.["feedback/warning/action-hover"]).toBe("{Colors.Orange.300}")
   })
 
   it("keeps every Color modes COLOR value as an alias — no raw literals in any group", () => {
@@ -714,7 +692,7 @@ describe("figma import bundle", () => {
 
     // The reconciled ladder: surface → subtle → muted → on-muted → strong.
     expect(light?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.50}")
-    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.950}")
+    expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.925}")
     expect(light?.["background/bg-neutral-on-subtle"]).toBeUndefined()
     expect(light?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.200}")
     expect(dark?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.800}")
@@ -732,6 +710,43 @@ describe("figma import bundle", () => {
     )
   })
 
+  it("keeps Table text colors attached to explicit content roles", () => {
+    const tableTokens = readFileSync(join(root, "src/component-table.css"), "utf-8")
+    const tableStyles = readFileSync(
+      join(root, "../ui/src/components/table/table.css"),
+      "utf-8",
+    )
+    const componentMode = bundle.collections["Component-based"]?.modes.Default ?? {}
+
+    expect(tableTokens).not.toContain("--table-text:")
+    expect(tableStyles).not.toContain("var(--table-text)")
+    expect(componentMode["Table/text"]).toBeUndefined()
+    expect(tableTokens).toContain("--table-cell-text:")
+    expect(tableStyles).toContain("color: var(--table-cell-text)")
+    expect(componentMode["Table/cell-text"]).toBeDefined()
+  })
+
+  it("keeps Table row backgrounds and caption roles aligned with the Figma model", () => {
+    const tableTokens = readFileSync(join(root, "src/component-table.css"), "utf-8")
+    const tableStyles = readFileSync(
+      join(root, "../ui/src/components/table/table.css"),
+      "utf-8",
+    )
+    const componentMode = bundle.collections["Component-based"]?.modes.Default ?? {}
+
+    expect(componentMode["Table/row-bg"]).toBe("{Color modes/background/bg-surface}")
+    expect(componentMode["Table/row-bg-striped"]).toBe(
+      "{Color modes/background/bg-neutral-surface}",
+    )
+    expect(componentMode["Table/cell-bg"]).toBeUndefined()
+    expect(componentMode["Table/text-caption"]).toBe("{Color modes/text/text-tertiary}")
+    expect(tableTokens).toContain("--table-row-bg-striped:")
+    expect(tableTokens).not.toContain("--table-cell-bg:")
+    expect(tableStyles).toContain("background: var(--table-row-bg-striped)")
+    expect(tableStyles).toContain("background: transparent")
+    expect(tableStyles).toContain("color: var(--table-text-caption)")
+  })
+
   it("keeps CSS and Figma Color modes vocabularies in bidirectional name parity", () => {
     // The blind spot this closes: the export↔bundle diff compares two files
     // generated from the same figma/*.json sources, so a CSS-vs-Figma naming
@@ -742,7 +757,7 @@ describe("figma import bundle", () => {
     const lightTokens = bundle.collections["Color modes"]?.modes.Light ?? {}
 
     const HUES =
-      "gray|slate|zinc|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose"
+      "gray|zinc|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose"
     const groups: Array<[string, string]> = [
       ["text", "text"],
       ["border", "border"],
@@ -764,23 +779,24 @@ describe("figma import bundle", () => {
           .map((n) => n.slice("--color-".length))
           .filter((rest) => rest === cssPrefix || rest.startsWith(`${cssPrefix}-`))
           // Decorative hue families live in Color modes/utility, not here.
-          .filter((rest) => !(["bg", "text"].includes(cssPrefix) && hueRe.test(rest))),
+          .filter((rest) => !(["bg", "text", "fg"].includes(cssPrefix) && hueRe.test(rest))),
       )
       expect([...cssKeys].filter((k) => !figmaKeys.has(k)).sort(), `${cssPrefix}: CSS-only names`).toEqual([])
       expect([...figmaKeys].filter((k) => !cssKeys.has(k)).sort(), `${figmaGroup}: Figma-only names`).toEqual([])
     }
 
-    // Feedback maps with the group prefix folded into the CSS name.
     const figmaFeedback = new Set(
       Object.keys(lightTokens)
-        .filter((k) => k.startsWith("feedback/"))
-        .map((k) => `feedback-${k.slice("feedback/".length).replace(/\//g, "-")}`),
+        .filter((name) => name.startsWith("feedback/"))
+        .map((name) => name.replaceAll("/", "-")),
     )
     const cssFeedback = new Set(
-      [...cssNames].filter((n) => n.startsWith("--color-feedback")).map((n) => n.slice("--color-".length)),
+      [...cssNames]
+        .map((name) => name.slice("--color-".length))
+        .filter((name) => name.startsWith("feedback-")),
     )
-    expect([...cssFeedback].filter((k) => !figmaFeedback.has(k)).sort()).toEqual([])
-    expect([...figmaFeedback].filter((k) => !cssFeedback.has(k)).sort()).toEqual([])
+    expect([...cssFeedback].filter((name) => !figmaFeedback.has(name)).sort()).toEqual([])
+    expect([...figmaFeedback].filter((name) => !cssFeedback.has(name)).sort()).toEqual([])
   })
 
   it("gives Component-based one Default mode and no raw color values", () => {
@@ -894,19 +910,23 @@ describe("figma color modes", () => {
     expect(lightFile.text["text-primary"]?.$value).toBe("{Colors.Neutral.950}")
     expect(lightFile.text["text-secondary"]?.$value).toBe("{Colors.Neutral.800}")
     expect(lightFile.text["text-tertiary"]?.$value).toBe("{Colors.Neutral.600}")
+    expect(lightFile.text["text-disabled"]?.$value).toBe("{Colors.Neutral.500}")
     expect(lightFile.text["text-on-brand"]?.$value).toBe("{Colors.Neutral.950}")
     expect(lightFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.600}")
-    expect(lightFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.25}")
+    expect(lightFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.100}")
     expect(lightFile.background["bg-float"]?.$value).toBe("{Colors.Base.White}")
     expect(lightFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.700}")
     expect(lightFile.text["text-info"]?.$value).toBe("{Colors.Blue.900}")
-    expect(lightFile.action["action-primary-subtle-hover"]?.$value).toBe("{Colors.Blue.50}")
+    expect(lightFile.action["action-primary-subtle"]?.$value).toBe("{Colors.Blue.100}")
+    expect(lightFile.action["action-primary-subtle-hover"]?.$value).toBe("{Colors.Blue.150}")
+    expect(lightFile.background["bg-info-subtle"]?.$value).toBe("{Colors.Blue.100}")
     expect(lightFile.action["action-brand-subtle-hover"]?.$value).toBe("{Colors.Brand.50}")
     expect(darkFile.text["text-secondary"]?.$value).toBe("{Colors.Neutral.200}")
     expect(darkFile.text["text-on-brand"]?.$value).toBe("{Colors.Neutral.950}")
     expect(darkFile.text["text-brand"]?.$value).toBe("{Colors.Brand.400}")
     expect(darkFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.500}")
     expect(darkFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.975}")
+    expect(darkFile.background["bg-neutral-surface"]?.$value).toBe("{Colors.Neutral.925}")
     expect(darkFile.background["bg-float"]?.$value).toBe("{Colors.Neutral.800}")
     expect(darkFile.background["bg-info-strong"]?.$value).toBe("{Colors.Blue.500}")
     expect(darkFile.background["bg-brand-strong"]?.$value).toBe("{Colors.Brand.600}")
@@ -1153,6 +1173,9 @@ describe("figma component-based button tokens", () => {
     expect(lightFile.Button.success["bg-hover"]?.$value).toBe("{Color modes/action/action-success-hover}")
     expect(lightFile.Button.destructive.bg?.$value).toBe("{Color modes/action/action-destructive}")
     expect(lightFile.Button.destructive["bg-hover"]?.$value).toBe("{Color modes/action/action-destructive-hover}")
+    expect(lightFile.Button.success.text?.$value).toBe("{Color modes/text/text-on-success}")
+    expect(lightFile.Button.success["text-hover"]?.$value).toBe("{Color modes/text/text-on-success}")
+    expect(lightFile.Button.success["text-active"]?.$value).toBe("{Color modes/text/text-on-success}")
   })
 
   it("uses one disabled opacity token for Button", () => {
@@ -1173,6 +1196,11 @@ describe("figma component-based button tokens", () => {
     expect(lightFile.Button.link["bg-hover"]?.$value).toBe("{Primitives/Colors/Base/Transparent}")
     expect(lightFile.Button.link.text?.$value).toBe("{Color modes/action/action-primary}")
     expect(lightFile.Button.link["text-hover"]?.$value).toBe("{Color modes/action/action-primary-hover}")
+  })
+
+  it("keeps outline transparent with an explicit optional surface token", () => {
+    expect(lightFile.Button.outline.bg?.$value).toBe("{Primitives/Colors/Base/Transparent}")
+    expect(lightFile.Button.outline["bg-surface"]?.$value).toBe("{Color modes/background/bg-surface}")
   })
 
   it("defines size, typography, icon-size, and icon-only tokens", () => {
@@ -1579,7 +1607,7 @@ describe("runtime — dark mode CSS variable override", () => {
     expect(dark).not.toBe(light)
   })
 
-  it("dark mode: --color-brand-50 differs from light mode (theme override)", () => {
+  it("dark mode: primitive brand scale remains stable", () => {
     document.documentElement.removeAttribute("data-theme")
     const light = getComputedStyle(document.documentElement)
       .getPropertyValue("--color-brand-50")
@@ -1590,8 +1618,7 @@ describe("runtime — dark mode CSS variable override", () => {
       .getPropertyValue("--color-brand-50")
       .trim()
 
-    // Light: #E9FCF8 (pale teal)  Dark: #09483C (very dark teal)
-    expect(dark).not.toBe(light)
+    expect(dark).toBe(light)
   })
 
   it("dark mode: --color-text-primary differs from light mode", () => {

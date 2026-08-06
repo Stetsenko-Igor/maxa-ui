@@ -1,14 +1,14 @@
 {
   "feedback": {
     "text": {
-      "$description": "Text used on intent feedback surfaces.",
-      "$value": "{Color modes/text/text-primary}",
+      "$description": "Default text used on intent feedback surfaces.",
+      "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
     "info": {
       "bg": {
         "$description": "Info feedback background.",
-        "$value": "{Colors.Blue.50}",
+        "$value": "{Colors.Blue.100}",
         "$type": "color"
       },
       "border": {
@@ -18,7 +18,7 @@
       },
       "accent": {
         "$description": "Info feedback icon and accent stripe.",
-        "$value": "{Colors.Blue.500}",
+        "$value": "{Colors.Blue.600}",
         "$type": "color"
       },
       "action": {
@@ -28,19 +28,19 @@
       },
       "action-hover": {
         "$description": "Info feedback action hover color.",
-        "$value": "{Colors.Blue.600}",
+        "$value": "{Colors.Blue.700}",
         "$type": "color"
       }
     },
     "success": {
       "bg": {
         "$description": "Success feedback background.",
-        "$value": "{Colors.Green.100}",
+        "$value": "{Colors.Green.50}",
         "$type": "color"
       },
       "border": {
         "$description": "Success feedback border.",
-        "$value": "{Colors.Green.400}",
+        "$value": "{Colors.Green.300}",
         "$type": "color"
       },
       "accent": {
@@ -50,29 +50,29 @@
       },
       "action": {
         "$description": "Success feedback action color.",
-        "$value": "{Colors.Green.800}",
+        "$value": "{Colors.Green.500}",
         "$type": "color"
       },
       "action-hover": {
         "$description": "Success feedback action hover color.",
-        "$value": "{Colors.Green.800}",
+        "$value": "{Colors.Green.700}",
         "$type": "color"
       }
     },
     "warning": {
       "bg": {
         "$description": "Warning feedback background.",
-        "$value": "{Colors.Orange.100}",
+        "$value": "{Colors.Orange.50}",
         "$type": "color"
       },
       "border": {
         "$description": "Warning feedback border.",
-        "$value": "{Colors.Orange.300}",
+        "$value": "{Colors.Orange.200}",
         "$type": "color"
       },
       "accent": {
         "$description": "Warning feedback icon and accent stripe.",
-        "$value": "{Colors.Orange.700}",
+        "$value": "{Colors.Yellow.600}",
         "$type": "color"
       },
       "action": {
@@ -89,12 +89,12 @@
     "error": {
       "bg": {
         "$description": "Error feedback background.",
-        "$value": "{Colors.Red.100}",
+        "$value": "{Colors.Red.50}",
         "$type": "color"
       },
       "border": {
         "$description": "Error feedback border.",
-        "$value": "{Colors.Red.300}",
+        "$value": "{Colors.Red.200}",
         "$type": "color"
       },
       "accent": {
@@ -104,7 +104,7 @@
       },
       "action": {
         "$description": "Error feedback action color.",
-        "$value": "{Colors.Red.700}",
+        "$value": "{Colors.Red.500}",
         "$type": "color"
       },
       "action-hover": {
@@ -115,13 +115,13 @@
     },
     "neutral": {
       "bg": {
-        "$description": "Neutral feedback background isolated from shared surface semantics.",
+        "$description": "Neutral feedback background.",
         "$value": "{Colors.Base.White}",
         "$type": "color"
       },
       "border": {
-        "$description": "Neutral feedback border isolated from shared border semantics.",
-        "$value": "{Colors.Neutral.400}",
+        "$description": "Neutral feedback border.",
+        "$value": "{Colors.Neutral.300}",
         "$type": "color"
       },
       "accent": {
@@ -135,25 +135,25 @@
         "$type": "color"
       },
       "action": {
-        "$description": "Neutral feedback action link and button color.",
-        "$value": "{Colors.Blue.500}",
+        "$description": "Neutral feedback destructive action color.",
+        "$value": "{Colors.Red.500}",
         "$type": "color"
       },
       "action-hover": {
-        "$description": "Neutral feedback action hover color.",
-        "$value": "{Colors.Blue.600}",
+        "$description": "Neutral feedback destructive action hover color.",
+        "$value": "{Colors.Red.700}",
         "$type": "color"
       }
     },
     "emphasize": {
       "bg": {
-        "$description": "Emphasized feedback background isolated from shared page semantics.",
+        "$description": "Emphasized feedback background.",
         "$value": "{Colors.Neutral.50}",
         "$type": "color"
       },
       "border": {
-        "$description": "Emphasized feedback border isolated from shared border semantics.",
-        "$value": "{Colors.Neutral.400}",
+        "$description": "Emphasized feedback border.",
+        "$value": "{Colors.Neutral.300}",
         "$type": "color"
       },
       "accent": {
@@ -167,48 +167,15 @@
         "$type": "color"
       },
       "action": {
-        "$description": "Emphasize feedback action link and button color.",
+        "$description": "Emphasized feedback action color.",
         "$value": "{Colors.Blue.500}",
         "$type": "color"
       },
       "action-hover": {
-        "$description": "Emphasize feedback action hover color.",
-        "$value": "{Colors.Blue.600}",
+        "$description": "Emphasized feedback action hover color.",
+        "$value": "{Colors.Blue.700}",
         "$type": "color"
       }
-    }
-  },
-  "background": {
-    "bg-overlay-strong": {
-      "$description": "High-emphasis modal overlay.",
-      "$value": "{Colors.Neutral (alpha).Ink.50}",
-      "$type": "color"
-    }
-  },
-  "action": {
-    "action-menu-hover": {
-      "$description": "Menu item hover background.",
-      "$value": "{Color modes/action/action-neutral-subtle-hover}",
-      "$type": "color"
-    },
-    "action-menu-active": {
-      "$description": "Menu item active background.",
-      "$value": "{Color modes/action/action-neutral-subtle-active}",
-      "$type": "color"
-    }
-  },
-  "border": {
-    "border-focus-soft": {
-      "$description": "Soft focus border for low-contrast controls.",
-      "$value": "{Colors.Blue.150}",
-      "$type": "color"
-    }
-  },
-  "foreground": {
-    "fg-on-inverse-muted": {
-      "$description": "Muted foreground used over inverse surfaces.",
-      "$value": "{Colors.Neutral (alpha).White.45}",
-      "$type": "color"
     }
   }
 }

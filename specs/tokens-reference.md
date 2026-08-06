@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1720
+Total tokens: 1750
 
 ## Primitives
 
@@ -26,56 +26,58 @@ Source: `packages/tokens/src/primitives.css`
 
 /* ── Gray — Figma: Colors/Neutral/25..950 ── */
 --color-neutral-0: var(--color-base-white);
---color-neutral-25: #F8F8F8;
---color-neutral-50: #F5F6FA;
+--color-neutral-25: #FCFCFC;
+--color-neutral-50: #FAFAFA;
 --color-neutral-100: #F4F3F3;
 --color-neutral-200: #EDEDED;
 --color-neutral-300: #E4E4E4;
 --color-neutral-400: #D7D5D5;
+--color-neutral-450: #C9C9C9;
 --color-neutral-500: #A1A1A4;
 --color-neutral-600: #8C8C8E;
 --color-neutral-700: #6B6B6D;
 --color-neutral-800: #444445;
 --color-neutral-900: #2A2A2B;
+--color-neutral-925: #232324;
 --color-neutral-950: #1A1919;
 --color-neutral-975: #161616;
 --color-neutral-1000: #0D0D0D;
 
 /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
---color-blue-50: #E0F2FF;
---color-blue-100: #DBEAFE;
+--color-blue-50: #EFF7FF;
+--color-blue-100: #DDEEFF;
 --color-blue-150: #C7E5F0;
---color-blue-200: #96CEFD;
---color-blue-300: #59A7F6;
---color-blue-400: #147AF3;
---color-blue-500: #0265DC;
---color-blue-600: #0054B6;
---color-blue-700: #00408A;
---color-blue-800: #003073;
---color-blue-900: #00235C;
---color-blue-950: #001845;
---color-green-50: #f0fdf4;
---color-green-100: #dcfce7;
---color-green-200: #bbf7d0;
---color-green-300: #86efac;
---color-green-400: #4ade80;
---color-green-500: #22c55e;
---color-green-600: #16a34a;
---color-green-700: #15803d;
---color-green-800: #166534;
---color-green-900: #14532d;
---color-green-950: #052e16;
---color-red-50: #fef2f2;
---color-red-100: #fee2e2;
---color-red-200: #fecaca;
---color-red-300: #fca5a5;
---color-red-400: #f87171;
---color-red-500: #ef4444;
---color-red-600: #dc2626;
---color-red-700: #b91c1c;
---color-red-800: #991b1b;
---color-red-900: #7f1d1d;
---color-red-950: #450a0a;
+--color-blue-200: #BADBFB;
+--color-blue-300: #86C0F4;
+--color-blue-400: #449BE8;
+--color-blue-500: #0576DA;
+--color-blue-600: #0564B9;
+--color-blue-700: #04549B;
+--color-blue-800: #073F72;
+--color-blue-900: #092F54;
+--color-blue-950: #061D35;
+--color-green-50: #F0FAF2;
+--color-green-100: #DFF4E4;
+--color-green-200: #BDE8C8;
+--color-green-300: #8CD99F;
+--color-green-400: #59C675;
+--color-green-500: #30AA50;
+--color-green-600: #288F44;
+--color-green-700: #227939;
+--color-green-800: #1E6131;
+--color-green-900: #194C28;
+--color-green-950: #0C2A15;
+--color-red-50: #FFF1F0;
+--color-red-100: #FFE1DF;
+--color-red-200: #FFC3BF;
+--color-red-300: #FA908B;
+--color-red-400: #EA514B;
+--color-red-500: #D31510;
+--color-red-600: #B9120E;
+--color-red-700: #960F0B;
+--color-red-800: #78100D;
+--color-red-900: #5C100E;
+--color-red-950: #360806;
 --color-yellow-50: #fefce8;
 --color-yellow-100: #fef9c3;
 --color-yellow-200: #fef08a;
@@ -255,17 +257,17 @@ Source: `packages/tokens/src/primitives.css`
 Source: `packages/tokens/src/themes/maxa.css`
 
 ```css
---color-brand-50: #E9FCF8;   /* dark: #09483C */
---color-brand-100: #D2F9F2;  /* dark: #0C5A4C */
---color-brand-200: #A8F3E5;  /* dark: #107864 */
---color-brand-300: #81EED9;  /* dark: #15A287 */
---color-brand-400: #59EACE;  /* dark: #1ACCAA */
---color-brand-500: #45E7C8;  /* dark: #1DE2BC */
---color-brand-600: #31E5C2;  /* dark: #31E5C2 */
---color-brand-700: #28C6A8;  /* dark: #59DEC4 */
---color-brand-800: #2C9A85;  /* dark: #7EDAC8 */
---color-brand-900: #2C7365;  /* dark: #9FDACF */
---color-brand-950: #284F48;  /* dark: #BDDED7 */
+--color-brand-50: #F3FDFA;
+--color-brand-100: #E0FBF3;
+--color-brand-200: #C3F6E7;
+--color-brand-300: #A0F1DB;
+--color-brand-400: #77ECCF;
+--color-brand-500: #31E5C2;
+--color-brand-600: #15CBA8;
+--color-brand-700: #0DA88A;
+--color-brand-800: #0C8A73;
+--color-brand-900: #0D7462;
+--color-brand-950: #053D35;
 ```
 
 ## Semantic Colors
@@ -277,14 +279,18 @@ Source: `packages/tokens/src/semantic.css`
 --color-text-primary: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
 --color-text-secondary: var(--color-neutral-800);/* dark: var(--color-neutral-200) */
 --color-text-tertiary: var(--color-neutral-600);/* dark: var(--color-neutral-500) */
---color-text-disabled: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
+--color-text-disabled: var(--color-neutral-500);/* dark: var(--color-neutral-700) */
 --color-text-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-text-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
+--color-text-on-success: var(--color-base-white);/* dark: var(--color-base-white) */
+--color-text-on-warning: var(--color-base-black);/* dark: var(--color-base-black) */
+--color-text-on-destructive: var(--color-base-white);/* dark: var(--color-base-black) */
+--color-text-on-neutral-action-active: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
---color-text-info: var(--color-blue-600);/* dark: var(--color-blue-300) */
---color-text-success: var(--color-green-800);/* dark: var(--color-green-400) */
---color-text-error: var(--color-red-700);/* dark: var(--color-red-300) */
---color-text-warning: var(--color-orange-700);/* dark: var(--color-yellow-400) */
+--color-text-info: var(--color-blue-900);/* dark: var(--color-blue-300) */
+--color-text-success: var(--color-green-900);/* dark: var(--color-green-300) */
+--color-text-error: var(--color-red-900);/* dark: var(--color-red-300) */
+--color-text-warning: var(--color-orange-900);/* dark: var(--color-orange-300) */
 
 /* ── Foreground — icons and non-text foreground elements ── */
 --color-fg-primary: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
@@ -294,10 +300,10 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-fg-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-fg-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
---color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-300) */
---color-fg-success: var(--color-green-800);/* dark: var(--color-green-400) */
---color-fg-error: var(--color-red-700); /* dark: var(--color-red-300) */
---color-fg-warning: var(--color-orange-700);/* dark: var(--color-yellow-400) */
+--color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-400) */
+--color-fg-success: var(--color-green-700);/* dark: var(--color-green-400) */
+--color-fg-error: var(--color-red-700); /* dark: var(--color-red-400) */
+--color-fg-warning: var(--color-yellow-600);/* dark: var(--color-yellow-400) */
 
 /* ── Border ── */
 --color-border-primary: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
@@ -305,7 +311,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-tertiary: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-border-focus: var(--color-blue-500);/* dark: var(--color-blue-400) */
 --color-border-brand: var(--color-brand-500);/* dark: var(--color-brand-400) */
---color-border-error-strong: var(--color-red-500);/* dark: var(--color-red-500) */
+--color-border-error-strong: var(--color-red-500);/* dark: var(--color-red-400) */
 --color-border-info-strong: var(--color-blue-700);/* dark: var(--color-blue-500) */
 --color-border-info-subtle: var(--color-blue-200);
 --color-border-success-strong: var(--color-green-700);/* dark: var(--color-green-500) */
@@ -317,16 +323,16 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-neutral-subtle: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 
 /* ── Background — surface elevation ── */
---color-bg-page: var(--color-neutral-50);/* #F5F6FA — gray canvas | dark: var(--color-neutral-950) */
+--color-bg-page: var(--color-neutral-50);/* #FAFAFA — gray canvas | dark: var(--color-neutral-950) */
 --color-bg-surface: var(--color-base-white);/* #FFFFFF — raised surfaces | dark: var(--color-neutral-900) */
 --color-bg-float: var(--color-base-white);/* #FFFFFF — floating surfaces | dark: var(--color-neutral-800) */
---color-bg-muted: var(--color-neutral-25);/* #F8F8F8 — recessed zones | dark: var(--color-neutral-975) */
+--color-bg-muted: var(--color-neutral-100);/* #F4F3F3 — recessed zones | dark: var(--color-neutral-975) */
 --color-bg-overlay: rgba(0, 0, 0, 0.5); /* dark: rgba(0, 0, 0, 0.7) */
 --color-bg-inverse: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-bg-disabled: var(--color-neutral-100);/* dark: var(--color-neutral-800) */
 
 /* ── Background — status/intent (orthogonal to elevation) ── */
---color-bg-neutral-surface: var(--color-neutral-50);/* dark: var(--color-neutral-950) */
+--color-bg-neutral-surface: var(--color-neutral-50);/* dark: var(--color-neutral-925) */
 --color-bg-neutral-subtle: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-bg-neutral-on-muted: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 --color-bg-neutral-strong: var(--color-neutral-800);/* dark: var(--color-neutral-400) */
@@ -334,7 +340,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-brand-surface: var(--color-brand-100);/* dark: var(--color-brand-900) */
 --color-bg-brand-muted: var(--color-brand-200);/* dark: var(--color-brand-800) */
 --color-bg-brand-strong: var(--color-brand-500);/* dark: var(--color-brand-600) */
---color-bg-info-subtle: var(--color-blue-50);/* dark: var(--color-blue-950) */
+--color-bg-info-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
 --color-bg-info-surface: var(--color-blue-50);/* dark: var(--color-blue-950) */
 --color-bg-info-strong: var(--color-blue-700);/* dark: var(--color-blue-500) */
 --color-bg-success-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
@@ -355,33 +361,33 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-error-muted: var(--color-red-100);/* dark: var(--color-red-900) */
 
 /* ── Action — interactive element backgrounds ── */
---color-action-primary: var(--color-blue-500);/* dark: var(--color-blue-300) */
---color-action-primary-hover: var(--color-blue-600);/* dark: var(--color-blue-200) */
---color-action-primary-active: var(--color-blue-700);/* dark: var(--color-blue-100) */
---color-action-primary-subtle: var(--color-blue-50);/* dark: var(--color-blue-950) */
---color-action-primary-subtle-hover: var(--color-blue-50);/* dark: var(--color-blue-950) */
+--color-action-primary: var(--color-blue-500);/* dark: var(--color-blue-400) */
+--color-action-primary-hover: var(--color-blue-600);/* dark: var(--color-blue-300) */
+--color-action-primary-active: var(--color-blue-700);/* dark: var(--color-blue-200) */
+--color-action-primary-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
+--color-action-primary-subtle-hover: var(--color-blue-150);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-active: var(--color-blue-200);/* dark: var(--color-blue-900) */
 --color-action-neutral: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
---color-action-neutral-hover: var(--color-neutral-500);/* dark: var(--color-neutral-600) */
---color-action-neutral-active: var(--color-neutral-600);/* dark: var(--color-neutral-500) */
+--color-action-neutral-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
+--color-action-neutral-active: var(--color-neutral-450);/* dark: var(--color-neutral-600) */
 --color-action-neutral-subtle: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-action-neutral-subtle-hover: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
---color-action-neutral-subtle-active: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
+--color-action-neutral-subtle-active: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 --color-action-brand: var(--color-brand-500);/* dark: var(--color-brand-600) */
 --color-action-brand-hover: var(--color-brand-600);/* dark: var(--color-brand-500) */
 --color-action-brand-active: var(--color-brand-700);/* dark: var(--color-brand-400) */
 --color-action-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-hover: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-active: var(--color-brand-200);/* dark: var(--color-brand-900) */
---color-action-success: var(--color-green-700);/* dark: var(--color-green-400) */
---color-action-success-hover: var(--color-green-800);/* dark: var(--color-green-300) */
---color-action-success-active: var(--color-green-900);/* dark: var(--color-green-200) */
+--color-action-success: var(--color-green-500);/* dark: var(--color-green-400) */
+--color-action-success-hover: var(--color-green-600);/* dark: var(--color-green-300) */
+--color-action-success-active: var(--color-green-700);/* dark: var(--color-green-200) */
 --color-action-success-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
 --color-action-success-subtle-hover: var(--color-green-50);/* dark: var(--color-green-950) */
 --color-action-success-subtle-active: var(--color-green-100);/* dark: var(--color-green-900) */
---color-action-destructive: var(--color-red-600);/* dark: var(--color-red-400) */
---color-action-destructive-hover: var(--color-red-700);/* dark: var(--color-red-300) */
---color-action-destructive-active: var(--color-red-800);/* dark: var(--color-red-200) */
+--color-action-destructive: var(--color-red-500);/* dark: var(--color-red-400) */
+--color-action-destructive-hover: var(--color-red-600);/* dark: var(--color-red-300) */
+--color-action-destructive-active: var(--color-red-700);/* dark: var(--color-red-200) */
 --color-action-destructive-subtle: var(--color-red-50);/* dark: var(--color-red-950) */
 --color-action-destructive-subtle-hover: var(--color-red-50);/* dark: var(--color-red-950) */
 --color-action-destructive-subtle-active: var(--color-red-100);/* dark: var(--color-red-900) */
@@ -465,6 +471,23 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-rose-muted: var(--color-rose-100);/* dark: var(--color-rose-900) */
 --color-bg-rose-strong: var(--color-rose-700);
 --color-text-rose: var(--color-rose-900);/* dark: var(--color-rose-300) */
+--color-fg-red: var(--color-text-red);
+--color-fg-orange: var(--color-text-orange);
+--color-fg-amber: var(--color-text-amber);
+--color-fg-yellow: var(--color-text-yellow);
+--color-fg-lime: var(--color-text-lime);
+--color-fg-green: var(--color-text-green);
+--color-fg-emerald: var(--color-text-emerald);
+--color-fg-teal: var(--color-text-teal);
+--color-fg-cyan: var(--color-text-cyan);
+--color-fg-sky: var(--color-text-sky);
+--color-fg-blue: var(--color-text-blue);
+--color-fg-indigo: var(--color-text-indigo);
+--color-fg-violet: var(--color-text-violet);
+--color-fg-purple: var(--color-text-purple);
+--color-fg-fuchsia: var(--color-text-fuchsia);
+--color-fg-pink: var(--color-text-pink);
+--color-fg-rose: var(--color-text-rose);
 
 /* ── Control — form-control idle/checked states (Checkbox/Radio/Toggle) ── */
 --color-control-idle: var(--color-neutral-500);/* dark: var(--color-neutral-600) */
@@ -472,40 +495,40 @@ Source: `packages/tokens/src/semantic.css`
 --color-control-checked: var(--color-neutral-900);/* dark: var(--color-neutral-200) */
 --color-control-checked-hover: var(--color-neutral-700);/* dark: var(--color-neutral-400) */
 
-/* ── Feedback — reusable intent surfaces ── */
---color-feedback-text: var(--color-text-primary);/* dark: var(--color-text-primary) */
---color-feedback-info-bg: var(--color-blue-50);/* dark: var(--color-blue-800) */
+/* ── Feedback — reusable intent recipes ── */
+--color-feedback-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
+--color-feedback-info-bg: var(--color-blue-100);/* dark: var(--color-blue-700) */
 --color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-blue-600) */
---color-feedback-info-accent: var(--color-blue-500);/* dark: var(--color-blue-300) */
+--color-feedback-info-accent: var(--color-blue-600);/* dark: var(--color-blue-400) */
 --color-feedback-info-action: var(--color-blue-500);/* dark: var(--color-blue-400) */
---color-feedback-info-action-hover: var(--color-blue-600);/* dark: var(--color-blue-300) */
---color-feedback-success-bg: var(--color-green-100);/* dark: var(--color-green-900) */
---color-feedback-success-border: var(--color-green-400);/* dark: var(--color-green-700) */
+--color-feedback-info-action-hover: var(--color-blue-700);/* dark: var(--color-blue-300) */
+--color-feedback-success-bg: var(--color-green-50);/* dark: var(--color-green-800) */
+--color-feedback-success-border: var(--color-green-300);/* dark: var(--color-green-700) */
 --color-feedback-success-accent: var(--color-green-700);/* dark: var(--color-green-500) */
---color-feedback-success-action: var(--color-green-800);/* dark: var(--color-green-400) */
---color-feedback-success-action-hover: var(--color-green-800);/* dark: var(--color-green-300) */
---color-feedback-warning-bg: var(--color-orange-100);/* dark: var(--color-orange-900) */
---color-feedback-warning-border: var(--color-orange-300);/* dark: var(--color-orange-700) */
---color-feedback-warning-accent: var(--color-orange-700);/* dark: var(--color-orange-400) */
+--color-feedback-success-action: var(--color-green-500);/* dark: var(--color-green-400) */
+--color-feedback-success-action-hover: var(--color-green-700);/* dark: var(--color-green-300) */
+--color-feedback-warning-bg: var(--color-orange-50);/* dark: var(--color-orange-900) */
+--color-feedback-warning-border: var(--color-orange-200);/* dark: var(--color-orange-700) */
+--color-feedback-warning-accent: var(--color-yellow-600);/* dark: var(--color-orange-600) */
 --color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-orange-400) */
 --color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-orange-300) */
---color-feedback-error-bg: var(--color-red-100);/* dark: var(--color-red-900) */
---color-feedback-error-border: var(--color-red-300);/* dark: var(--color-red-600) */
---color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-red-400) */
---color-feedback-error-action: var(--color-red-700);/* dark: var(--color-red-400) */
+--color-feedback-error-bg: var(--color-red-50);/* dark: var(--color-red-700) */
+--color-feedback-error-border: var(--color-red-200);/* dark: var(--color-red-500) */
+--color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-red-300) */
+--color-feedback-error-action: var(--color-red-500);/* dark: var(--color-red-400) */
 --color-feedback-error-action-hover: var(--color-red-700);/* dark: var(--color-red-300) */
---color-feedback-neutral-bg: var(--color-white);/* dark: var(--color-neutral-900) */
---color-feedback-neutral-border: var(--color-neutral-400);/* dark: var(--color-neutral-800) */
+--color-feedback-neutral-bg: var(--color-base-white);/* dark: var(--color-neutral-900) */
+--color-feedback-neutral-border: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
 --color-feedback-neutral-accent: var(--color-neutral-800);/* dark: var(--color-neutral-500) */
 --color-feedback-neutral-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
---color-feedback-neutral-action: var(--color-action-primary);/* dark: var(--color-blue-400) */
---color-feedback-neutral-action-hover: var(--color-action-primary-hover);/* dark: var(--color-blue-300) */
---color-feedback-emphasize-bg: var(--color-neutral-50);/* dark: var(--color-neutral-950) */
---color-feedback-emphasize-border: var(--color-neutral-400);/* dark: var(--color-neutral-800) */
+--color-feedback-neutral-action: var(--color-red-500);/* dark: var(--color-red-400) */
+--color-feedback-neutral-action-hover: var(--color-red-700);/* dark: var(--color-red-300) */
+--color-feedback-emphasize-bg: var(--color-neutral-50);/* dark: var(--color-neutral-900) */
+--color-feedback-emphasize-border: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
 --color-feedback-emphasize-accent: var(--color-neutral-800);/* dark: var(--color-neutral-500) */
 --color-feedback-emphasize-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
---color-feedback-emphasize-action: var(--color-action-primary);/* dark: var(--color-blue-400) */
---color-feedback-emphasize-action-hover: var(--color-action-primary-hover);/* dark: var(--color-blue-300) */
+--color-feedback-emphasize-action: var(--color-blue-500);/* dark: var(--color-blue-400) */
+--color-feedback-emphasize-action-hover: var(--color-blue-700);/* dark: var(--color-blue-300) */
 
 /* ── Shared component support roles ── */
 --color-bg-overlay-strong: var(--color-neutral-alpha-ink-50);/* dark: var(--color-neutral-alpha-black-72) */
@@ -691,10 +714,12 @@ Source: `packages/tokens/src/component-button.css`
 --button-secondary-bg-hover: var(--color-action-neutral-hover);
 --button-secondary-bg-active: var(--color-action-neutral-active);
 --button-secondary-text: var(--color-text-primary);
+--button-secondary-text-active: var(--color-text-on-neutral-action-active);
 --button-secondary-border: var(--color-action-neutral);
 --button-secondary-border-hover: var(--color-action-neutral-hover);
 --button-secondary-border-focus: var(--color-border-focus);
---button-outline-bg: var(--color-bg-surface);
+--button-outline-bg: transparent;
+--button-outline-bg-surface: var(--color-bg-surface);
 --button-outline-bg-hover: var(--color-action-neutral-subtle-hover);
 --button-outline-bg-active: var(--color-action-neutral-subtle-active);
 --button-outline-text: var(--color-text-primary);
@@ -723,21 +748,25 @@ Source: `packages/tokens/src/component-button.css`
 --button-success-bg: var(--color-action-success);
 --button-success-bg-hover: var(--color-action-success-hover);
 --button-success-bg-active: var(--color-action-success-active);
---button-success-text: var(--color-text-inverse);
+--button-success-text: var(--color-text-on-success);
+--button-success-text-hover: var(--color-text-on-success);
+--button-success-text-active: var(--color-text-on-success);
 --button-success-border: var(--color-action-success);
 --button-success-border-hover: var(--color-action-success-hover);
 --button-success-border-focus: var(--color-border-focus);
 --button-destructive-bg: var(--color-action-destructive);
 --button-destructive-bg-hover: var(--color-action-destructive-hover);
 --button-destructive-bg-active: var(--color-action-destructive-active);
---button-destructive-text: var(--color-text-inverse);
+--button-destructive-text: var(--color-text-on-destructive);
 --button-destructive-border: var(--color-action-destructive);
 --button-destructive-border-hover: var(--color-action-destructive-hover);
 --button-destructive-border-focus: var(--color-border-focus);
 --button-warning-bg: var(--color-action-warning);
 --button-warning-bg-hover: var(--color-action-warning-hover);
 --button-warning-bg-active: var(--color-action-warning-active);
---button-warning-text: var(--color-text-primary);
+--button-warning-text: var(--color-text-on-warning);
+--button-warning-text-hover: var(--color-text-on-warning);
+--button-warning-text-active: var(--color-text-inverse);
 --button-warning-border: var(--color-action-warning);
 --button-warning-border-hover: var(--color-action-warning-hover);
 --button-warning-border-focus: var(--color-border-focus);
@@ -1205,34 +1234,34 @@ Source: `packages/tokens/src/component-table.css`
 --table-border: var(--color-border-secondary);
 --table-radius: var(--radius-md);
 --table-min-width: 720px;
---table-text: var(--color-text-primary);
 --table-font-family: var(--font-body);
 --table-font-size: var(--text-sm);
 --table-line-height: var(--text-sm--line-height);
 --table-header-bg: var(--color-bg-neutral-muted);/* dark: var(--color-bg-neutral-muted) */
 --table-fg: var(--color-fg-secondary);
+--table-fg-disabled: var(--color-fg-disabled);
 --table-header-text: var(--color-text-secondary);
---table-header-font-size: var(--text-sm);
---table-header-line-height: var(--text-sm--line-height);
+--table-header-font-size: var(--text-caption-sm);
+--table-header-line-height: var(--text-caption-sm--line-height);
 --table-header-font-weight: var(--font-weight-semibold);
 --table-header-height: 40px;
 --table-header-padding-x: var(--spacing-3);
 --table-header-padding-y: var(--spacing-2);
 --table-head-gap: var(--spacing-1);
---table-sort-icon: var(--color-fg-tertiary);
 --table-sort-icon-size: 14px;
 --table-sort-icon-font-size: var(--text-caption-sm);
 --table-checkbox-cell-width: 44px;
 --table-checkbox-control-size: 20px;
 --table-row-height-sm: 40px;
---table-row-height: 40px;
+--table-row-height: 48px;
 --table-row-height-lg: 64px;
+--table-row-bg: var(--color-bg-surface);
+--table-row-bg-striped: var(--color-bg-neutral-surface);
 --table-row-bg-hover: var(--color-action-neutral-subtle-hover);
 --table-row-bg-selected: var(--color-action-primary-subtle);/* dark: var(--color-action-primary-subtle) */
 --table-row-bg-selected-hover: var(--color-action-primary-subtle-hover);/* dark: var(--color-action-primary-subtle-hover) */
 --table-row-bg-subdued: var(--color-bg-muted);/* dark: var(--color-bg-muted) */
---table-cell-bg: var(--color-bg-surface);
---table-cell-text: var(--color-text-primary);
+--table-cell-text: var(--color-text-secondary);
 --table-cell-font-weight: var(--font-weight-medium);
 --table-cell-title-font-weight: var(--font-weight-semibold);
 --table-cell-subtitle-text: var(--color-text-tertiary);
@@ -1243,11 +1272,11 @@ Source: `packages/tokens/src/component-table.css`
 --table-cell-link-text: var(--color-action-primary);
 --table-cell-link-font-weight: var(--font-weight-semibold);
 --table-cell-content-gap: var(--spacing-2);
---table-cell-icon-size: 16px;
+--table-cell-icon-size: 20px;
 --table-cell-stack-gap: var(--spacing-1);
---table-cell-padding-x: var(--spacing-3);
+--table-cell-padding-x: var(--spacing-4);
 --table-cell-padding-y-sm: var(--spacing-2);
---table-cell-padding-y: var(--spacing-2);
+--table-cell-padding-y: var(--spacing-3);
 --table-cell-padding-y-lg: var(--spacing-4);
 --table-row-actions-gap: var(--spacing-1);
 --table-row-action-size: 28px;
@@ -1273,14 +1302,15 @@ Source: `packages/tokens/src/component-table.css`
 --table-loader-min-width: 96px;
 --table-loader-radius: var(--radius-sm);
 --table-loader-bg: var(--color-bg-neutral-subtle);
---table-footer-bg: var(--color-bg-muted);
---table-footer-text: var(--color-text-primary);
+--table-footer-bg: var(--color-bg-surface);
+--table-footer-text: var(--color-text-secondary);
+--table-footer-text-caption: var(--color-text-tertiary);
 --table-footer-font-weight: var(--font-weight-semibold);
---table-caption-text: var(--color-text-tertiary);
+--table-text-caption: var(--color-text-tertiary);
 --table-caption-font-size: var(--text-caption-sm);
 --table-caption-line-height: var(--text-caption-sm--line-height);
 --table-caption-font-weight: var(--font-weight-medium);
---table-caption-padding-y: var(--spacing-1);
+--table-caption-padding-y: var(--spacing-3);
 ```
 
 ## Breadcrumb Component Tokens
@@ -2076,9 +2106,9 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-border-hover: var(--color-border-secondary);
 --social-button-border-active: var(--color-border-secondary);
 --social-button-border-focus: var(--color-border-focus-soft);
---social-button-bg: var(--button-outline-bg);
---social-button-bg-hover: var(--button-outline-bg);
---social-button-bg-active: var(--button-outline-bg);
+--social-button-bg: var(--color-bg-surface);
+--social-button-bg-hover: var(--color-bg-surface);
+--social-button-bg-active: var(--color-bg-surface);
 --social-button-text: var(--color-text-primary);
 --social-button-shadow: var(--shadow-sm);
 --social-button-shadow-hover: var(--shadow-sm);

@@ -1,0 +1,35 @@
+{
+  "background": {
+    "bg-overlay-strong": {
+      "$description": "High-emphasis modal overlay.",
+      "$value": "{Colors.Neutral (alpha).Ink.50}",
+      "$type": "color"
+    }
+  },
+  "action": {
+    "action-menu-hover": {
+      "$description": "Menu item hover background.",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
+      "$type": "color"
+    },
+    "action-menu-active": {
+      "$description": "Menu item active background.",
+      "$value": "{Color modes/action/action-neutral-subtle-active}",
+      "$type": "color"
+    }
+  },
+  "border": {
+    "border-focus-soft": {
+      "$description": "Soft focus border for low-contrast controls.",
+      "$value": "{Colors.Blue.150}",
+      "$type": "color"
+    }
+  },
+  "foreground": {
+    "fg-on-inverse-muted": {
+      "$description": "Muted foreground used over inverse surfaces.",
+      "$value": "{Colors.Neutral (alpha).White.45}",
+      "$type": "color"
+    }
+  }
+}

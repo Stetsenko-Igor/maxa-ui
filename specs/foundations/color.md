@@ -57,10 +57,10 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 
 | Token | Light value | Dark value | When to use |
 |-------|-------------|------------|-------------|
-| `--color-bg-page` | Neutral/50 (#F5F6FA) | Neutral/1000 (#0D0D0D) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. |
+| `--color-bg-page` | Neutral/50 (#FAFAFA) | Neutral/950 (#1A1919) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. |
 | `--color-bg-surface` | Base white (#FFFFFF) | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, sidebar/drawer, table rows, content containers. |
 | `--color-bg-float` | Base white (#FFFFFF) | Neutral/800 (#444445) | Floating surfaces that sit above regular surfaces: dropdown menus, popovers, tooltips, floating command palettes. |
-| `--color-bg-muted` | Neutral/25 (#F8F8F8) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, table fill (under white rows), search-fields embedded in dark sidebars, disabled-input fill alternative. |
+| `--color-bg-muted` | Neutral/100 (#F4F3F3) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, subdued table rows, search-fields embedded in dark sidebars, disabled-input fill alternative. |
 | `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer scrim. |
 | `--color-bg-inverse` | Neutral/950 | Neutral/950 | Inverted surface (dark even on light theme). |
 | `--color-bg-disabled` | Neutral/100 | Neutral/800 | Disabled input/control backgrounds. |
@@ -70,7 +70,7 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 1. Is this the page/viewport background itself? → `bg/page`
 2. Is this a regular interactive or content-bearing surface above the page (card, input, modal, sidebar)? → `bg/surface`
 3. Is this a floating layer above other surfaces (dropdown, popover, tooltip, floating command palette)? → `bg/float`
-4. Is this a recessed/inset zone (code block, well, table-fill under rows)? → `bg/muted`
+4. Is this a recessed/inset zone (code block, well, subdued table row)? → `bg/muted`
 5. Is this a modal scrim? → `bg/overlay`
 6. None of the above — it's status/intent (success, error, brand, etc.)? → use the status bg tokens below, not the elevation tier.
 
@@ -86,7 +86,9 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 | Tooltip / Popover panel | `bg/float` |
 | Sidebar / Drawer | `bg/surface` |
 | Table row | `bg/surface` |
-| Table outer area / gaps between rows | `bg/muted` or `bg/page` (match the page) |
+| Striped/zebra table row | `bg/neutral-surface` (Neutral/50 in Light) |
+| Subdued table row | `bg/muted` (Neutral/100 in Light) |
+| Table outer area / gaps between rows | `bg/page` or the containing surface |
 | Code block (`<pre>`) inside a card | `bg/muted` |
 | Search-field embedded in a dark sidebar | `bg/muted` |
 | Modal backdrop | `bg/overlay` |
@@ -101,13 +103,15 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 
 | Token | Light | Dark | Use |
 |-------|-------|------|-----|
-| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/800 | Subtle section background |
-| `--color-bg-neutral-on-subtle` | Neutral/200 | Neutral/700 | Slightly stronger neutral |
+| `--color-bg-neutral-surface` | Neutral/50 | Neutral/925 | Neutral surface tint; striped table rows |
+| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/900 | Subtle section background |
+| `--color-bg-neutral-muted` | Neutral/200 | Neutral/800 | Muted neutral fill; table headers |
+| `--color-bg-neutral-on-muted` | Neutral/300 | Neutral/700 | Slightly stronger neutral fill |
 | `--color-bg-neutral-strong` | Neutral/800 | Neutral/400 | Strong neutral (inverse) |
 | `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section |
 | `--color-bg-brand-surface` | Brand/100 | Brand/900 | Brand surface |
 | `--color-bg-brand-strong` | Brand/500 | Brand/600 | Strong brand fill |
-| `--color-bg-info-subtle` | Blue/50 | Blue/950 | Info section bg |
+| `--color-bg-info-subtle` | Blue/100 | Blue/950 | Info section bg |
 | `--color-bg-info-surface` | Blue/50 | Blue/950 | Info surface fill |
 | `--color-bg-info-strong` | Blue/700 | Blue/500 | Strong info fill |
 | `--color-bg-success-subtle` | Green/50 | Green/950 | Success section bg |

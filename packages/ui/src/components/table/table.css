@@ -15,7 +15,6 @@
   border-spacing: 0;
   border-radius: var(--table-radius);
   background: var(--table-bg);
-  color: var(--table-text);
   font-family: var(--table-font-family);
   font-size: var(--table-font-size);
   line-height: var(--table-line-height);
@@ -24,7 +23,7 @@
 .maxa-table__caption {
   caption-side: top;
   padding: 0 0 var(--table-caption-padding-y);
-  color: var(--table-caption-text);
+  color: var(--table-text-caption);
   font-size: var(--table-caption-font-size);
   line-height: var(--table-caption-line-height);
   font-weight: var(--table-caption-font-weight);
@@ -78,13 +77,13 @@
   height: var(--table-sort-icon-size);
   align-items: center;
   justify-content: center;
-  color: var(--table-sort-icon);
+  color: var(--table-fg);
   font-size: var(--table-sort-icon-font-size);
   line-height: 1;
 }
 
 .maxa-table__cell {
-  background: var(--table-cell-bg);
+  background: transparent;
   color: var(--table-cell-text);
   font-weight: var(--table-cell-font-weight);
 }
@@ -293,19 +292,27 @@
   border-bottom: 0;
 }
 
-.maxa-table__row[data-subdued] > .maxa-table__cell {
+.maxa-table__body > .maxa-table__row {
+  background: var(--table-row-bg);
+}
+
+.maxa-table__body > .maxa-table__row[data-striped] {
+  background: var(--table-row-bg-striped);
+}
+
+.maxa-table__body > .maxa-table__row[data-subdued] {
   background: var(--table-row-bg-subdued);
 }
 
-.maxa-table__row[data-selected] > .maxa-table__cell {
+.maxa-table__body > .maxa-table__row[data-selected] {
   background: var(--table-row-bg-selected);
 }
 
-.maxa-table__row[data-interactive]:hover > .maxa-table__cell {
+.maxa-table__body > .maxa-table__row[data-interactive]:hover {
   background: var(--table-row-bg-hover);
 }
 
-.maxa-table__row[data-selected][data-interactive]:hover > .maxa-table__cell {
+.maxa-table__body > .maxa-table__row[data-selected][data-interactive]:hover {
   background: var(--table-row-bg-selected-hover);
 }
 
@@ -313,6 +320,14 @@
   background: var(--table-footer-bg);
   color: var(--table-footer-text);
   font-weight: var(--table-footer-font-weight);
+}
+
+.maxa-table__footer .maxa-table__cell-subtitle {
+  color: var(--table-footer-text-caption);
+}
+
+.maxa-table__head[aria-disabled="true"] .maxa-table__sort-icon {
+  color: var(--table-fg-disabled);
 }
 
 .maxa-table__head[data-align="center"],

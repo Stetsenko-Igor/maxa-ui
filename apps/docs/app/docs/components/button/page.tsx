@@ -29,6 +29,7 @@ const BUTTON_PROPS = [
   { name: "iconTrailing", type: "ReactNode", default: undefined, description: "Icon after the label." },
   { name: "iconOnly", type: "boolean", default: "false", description: "Square layout, no label. Always pair with aria-label." },
   { name: "fullWidth", type: "boolean", default: "false", description: "Stretches the button to the available width." },
+  { name: "outlineSurface", type: "boolean", default: "false", description: "Adds the semantic surface fill to the outline variant. Other variants ignore it." },
   { name: "loading", type: "boolean", default: "false", description: "Shows spinner, disables interaction." },
   { name: "asChild", type: "boolean", default: "false", description: "Merges props onto the child element (Radix Slot)." },
   { name: "disabled", type: "boolean", default: "false", description: "Disables the button." },
@@ -109,12 +110,14 @@ export default function ButtonPage() {
           <ComponentPreview code={`<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
+<Button variant="outline" outlineSurface>Outline on surface</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>
 <Button variant="text">Text</Button>`}>
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
+            <Button variant="outline" outlineSurface>Outline on surface</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="link">Link</Button>
             <Button variant="text">Text</Button>

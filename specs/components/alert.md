@@ -2,7 +2,7 @@
 
 ## Overview
 
-The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based/Alert` tokens alias reusable `feedback` roles in `Color modes`. Neutral and Emphasize feedback roles resolve directly to primitives so shared surface and page semantics can evolve without restyling Alert. Component names exist only in `Component-based`.
+The MAXA Alert (callout) is a contextual feedback box that communicates a status, outcome, or important message inline within a layout. Its stable `Component-based/Alert` tokens alias the reusable `Color modes/feedback/*` semantic recipes. Generic background, border, foreground, text, and action roles remain available for non-feedback surfaces, while component names exist only in `Component-based`.
 
 **Component package:** `@maxa/ui` → `Alert`
 **Token source:** `packages/tokens/src/component-alert.css`
@@ -30,22 +30,22 @@ Each intent maps to theme-aware component token values.
 
 ### `info`
 - **Use when:** Neutral, helpful context or tips.
-- **Tokens:** `bg/info-subtle`, `border/info-subtle`, `text/primary`, `fg/info`
+- **Tokens:** `feedback/info/{bg,border,accent,action,action-hover}` and `feedback/text`
 - **Role:** `status` (polite)
 
 ### `success`
 - **Use when:** Confirming a successful, completed action.
-- **Tokens:** `bg/success-subtle`, `border/success-subtle`, `text/primary`, `fg/success`
+- **Tokens:** `feedback/success/{bg,border,accent,action,action-hover}` and `feedback/text`
 - **Role:** `status` (polite)
 
 ### `warning`
 - **Use when:** Cautioning the user about a potential issue or required attention.
-- **Tokens:** `bg/warning-subtle`, `border/warning-subtle`, `text/primary`, `fg/warning`
+- **Tokens:** `feedback/warning/{bg,border,accent,action,action-hover}` and `feedback/text`
 - **Role:** `alert` (assertive)
 
 ### `error`
 - **Use when:** Reporting an error, failure, or destructive consequence.
-- **Tokens:** `bg/error-subtle`, `border/error-subtle`, `text/primary`, `fg/error`
+- **Tokens:** `feedback/error/{bg,border,accent,action,action-hover}` and `feedback/text`
 - **Role:** `alert` (assertive)
 
 ---
@@ -103,7 +103,7 @@ All other native `div` attributes are forwarded.
 --alert-info-action-hover: var(--color-feedback-info-action-hover);
 ```
 
-The Light values intentionally preserve the published MAXA UI appearance, including intent-colored borders. Dark mode resolves through `Color modes`; those semantic roles alias the canonical Blue, Green, Yellow/Orange, and Red primitives rather than storing raw colors or maintaining a parallel feedback-only primitive palette.
+Dark mode resolves through `Color modes/feedback/*`; every feedback role aliases the approved Blue, Green, Yellow/Orange, Red, or Neutral primitives directly. This keeps the recipe independently tunable without storing raw component colors.
 
 Figma exposes matching `Component-based/Alert/color/{intent}/action` and `action-hover`
 variables for Info, Success, Warning, and Error. Bind Alert button fills or foregrounds to

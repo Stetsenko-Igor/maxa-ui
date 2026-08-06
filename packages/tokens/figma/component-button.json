@@ -58,6 +58,11 @@
         "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
+      "text-active": {
+        "$description": "Button, secondary: text color on the active neutral surface.",
+        "$value": "{Color modes/text/text-on-neutral-action-active}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, secondary: border.",
         "$value": "{Color modes/action/action-neutral}",
@@ -76,7 +81,12 @@
     },
     "outline": {
       "bg": {
-        "$description": "Button, outline: background.",
+        "$description": "Button, outline: transparent background at rest.",
+        "$value": "{Primitives/Colors/Base/Transparent}",
+        "$type": "color"
+      },
+      "bg-surface": {
+        "$description": "Button, outline: optional surface background for busy or non-surface contexts.",
         "$value": "{Color modes/background/bg-surface}",
         "$type": "color"
       },
@@ -228,7 +238,17 @@
       },
       "text": {
         "$description": "Button, success: text color.",
-        "$value": "{Color modes/text/text-inverse}",
+        "$value": "{Color modes/text/text-on-success}",
+        "$type": "color"
+      },
+      "text-hover": {
+        "$description": "Button, success: text color (hover state).",
+        "$value": "{Color modes/text/text-on-success}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$description": "Button, success: text color (active state).",
+        "$value": "{Color modes/text/text-on-success}",
         "$type": "color"
       },
       "border": {
@@ -265,7 +285,7 @@
       },
       "text": {
         "$description": "Button, destructive: text color.",
-        "$value": "{Color modes/text/text-inverse}",
+        "$value": "{Color modes/text/text-on-destructive}",
         "$type": "color"
       },
       "border": {
@@ -302,7 +322,17 @@
       },
       "text": {
         "$description": "Button, warning: text color.",
-        "$value": "{Color modes/text/text-primary}",
+        "$value": "{Color modes/text/text-on-warning}",
+        "$type": "color"
+      },
+      "text-hover": {
+        "$description": "Button, warning: text color (hover state).",
+        "$value": "{Color modes/text/text-on-warning}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$description": "Button, warning: text color (active state).",
+        "$value": "{Color modes/text/text-inverse}",
         "$type": "color"
       },
       "border": {

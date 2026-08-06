@@ -33,6 +33,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
     },
     { type: "boolean", name: "loading", default: false },
     { type: "boolean", name: "disabled", default: false },
+    { type: "boolean", name: "outlineSurface", default: false },
     { type: "text", name: "label", default: "Create project" },
   ],
   render: (v: PlaygroundValues) => (
@@ -41,6 +42,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
       size={v.size as "xs" | "sm" | "md" | "lg"}
       loading={v.loading as boolean}
       disabled={v.disabled as boolean}
+      outlineSurface={v.outlineSurface as boolean}
     >
       {v.label as string}
     </Button>
@@ -49,6 +51,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
     const attrs = [`variant="${v.variant}"`, `size="${v.size}"`]
     if (v.loading) attrs.push("loading")
     if (v.disabled) attrs.push("disabled")
+    if (v.outlineSurface) attrs.push("outlineSurface")
     return `<Button ${attrs.join(" ")}>${v.label}</Button>`
   },
 }
@@ -58,12 +61,14 @@ export function ButtonDefaultPreview() {
     <ComponentPreview
       code={`<Button variant="primary">Create project</Button>
 <Button variant="secondary">Cancel</Button>
-<Button variant="outline">Learn more</Button>`}
+<Button variant="outline">Learn more</Button>
+<Button variant="outline" outlineSurface>On a surface</Button>`}
       playground={BUTTON_PLAYGROUND}
     >
       <Button variant="primary">Create project</Button>
       <Button variant="secondary">Cancel</Button>
       <Button variant="outline">Learn more</Button>
+      <Button variant="outline" outlineSurface>On a surface</Button>
     </ComponentPreview>
   )
 }

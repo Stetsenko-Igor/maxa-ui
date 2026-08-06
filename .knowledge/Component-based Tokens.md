@@ -109,7 +109,7 @@ Approved variants:
 
 - `primary` — main blue primary action, follows `action/primary`, not `action/brand`
 - `secondary` — neutral filled action, not a white outlined button
-- `outline` — bordered neutral action using a surface fill and neutral border
+- `outline` — bordered neutral action, transparent at rest, with an optional semantic surface fill
 - `ghost` — transparent/subtle action
 - `link` — text-like action button
 - `success` — positive/success action
@@ -436,7 +436,8 @@ Use `Color modes` aliases as targets.
 | `Button/secondary/border` | `{action/neutral}` |  |
 | `Button/secondary/border-hover` | `{action/neutral-hover}` |  |
 | `Button/secondary/border-focus` | `{border/focus}` |  |
-| `Button/outline/bg` | `{bg/secondary}` | Neutral surface, not transparent, so it adapts in dark mode. |
+| `Button/outline/bg` | `{Primitives/Colors/Base/Transparent}` | Default border-only outline surface. |
+| `Button/outline/bg-surface` | `{background/bg-surface}` | Optional theme-aware surface fill. |
 | `Button/outline/bg-hover` | `{action/neutral-subtle-hover}` |  |
 | `Button/outline/bg-active` | `{action/neutral-subtle-active}` |  |
 | `Button/outline/text` | `{text/primary}` |  |
@@ -462,7 +463,7 @@ Use `Color modes` aliases as targets.
 | `Button/success/bg` | `{action/positive}` | Success/positive filled action. |
 | `Button/success/bg-hover` | `{action/positive-hover}` |  |
 | `Button/success/bg-active` | `{action/positive-active}` |  |
-| `Button/success/text` | `{text/inverse}` | Needs contrast review. |
+| `Button/success/text` | `{text/text-on-success}` | White in every theme/state by design; improve contrast through the success surface palette, not black text. |
 | `Button/success/border` | `{action/positive}` |  |
 | `Button/success/border-hover` | `{action/positive-hover}` |  |
 | `Button/success/border-focus` | `{border/focus}` |  |

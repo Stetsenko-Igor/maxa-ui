@@ -68,6 +68,12 @@ const PROPS = [
     description: "Enables hover styling for clickable rows.",
   },
   {
+    name: "striped",
+    type: "boolean",
+    default: "false",
+    description: "Applies the alternate resting row background.",
+  },
+  {
     name: "TableHead",
     type: "th",
     default: undefined,
@@ -235,7 +241,7 @@ export default function TablePage() {
         <DocsExample title="Subdued, selected, interactive">
           <ComponentPreview
             layout="block"
-            code={`<TableRow interactive>Default</TableRow>\n<TableRow interactive selected>Selected</TableRow>\n<TableRow interactive subdued>Subdued</TableRow>`}
+            code={`<TableRow interactive>Default</TableRow>\n<TableRow interactive striped>Striped</TableRow>\n<TableRow interactive selected>Selected</TableRow>\n<TableRow interactive subdued>Subdued</TableRow>`}
           >
             <div className="docs-table-example">
               <Table density="sm" style={{ minWidth: "360px" }}>
@@ -249,6 +255,10 @@ export default function TablePage() {
                   <TableRow interactive>
                     <TableCell>Default</TableCell>
                     <TableCell>Standard row with hover behavior.</TableCell>
+                  </TableRow>
+                  <TableRow interactive striped>
+                    <TableCell>Striped</TableCell>
+                    <TableCell>Alternate resting row background.</TableCell>
                   </TableRow>
                   <TableRow interactive selected>
                     <TableCell>Selected</TableCell>

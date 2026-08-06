@@ -82,17 +82,17 @@
     },
     "bg": {
       "$description": "Social Button: background.",
-      "$value": "var(--button-outline-bg)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "bg-hover": {
       "$description": "Social Button: background (hover state).",
-      "$value": "var(--button-outline-bg)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "bg-active": {
       "$description": "Social Button: background (active state).",
-      "$value": "var(--button-outline-bg)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "text": {

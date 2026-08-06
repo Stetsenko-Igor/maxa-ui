@@ -34,11 +34,13 @@
         "Light": [
           "colors-semantic-light.json",
           "colors-feedback-light.json",
+          "colors-support-light.json",
           "colors-utility-light.json"
         ],
         "Dark": [
           "colors-semantic-dark.json",
           "colors-feedback-dark.json",
+          "colors-support-dark.json",
           "colors-utility-dark.json"
         ]
       }

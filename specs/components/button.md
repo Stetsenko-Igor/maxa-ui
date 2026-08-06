@@ -38,7 +38,8 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 
 ### `outline`
 - **Use when:** Tertiary action. Low visual weight but still prominent enough for a border.
-- **Background:** `--button-outline-bg` → `bg/surface` (raised neutral surface)
+- **Background:** transparent by default (`--button-outline-bg`)
+- **Optional surface:** set `outlineSurface` to use `--button-outline-bg-surface` → `bg/surface`; useful over busy or non-surface content
 - **Border:** `--button-outline-border` → `border/primary`
 - **Text:** `--button-outline-text` → `text/primary`
 
@@ -60,19 +61,21 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 ### `success`
 - **Use when:** Confirming a successful/completed action (e.g. "Mark as complete", "Approve").
 - **Background:** `--button-success-bg` → `action/success` (green)
-- **Text:** `--button-success-text` → `text/inverse`
+- **Text:** `--button-success-text`, `--button-success-text-hover`, and `--button-success-text-active` → `text/on-success` (white in every state)
 - Use sparingly — only when the green color meaningfully communicates the action's outcome.
+
+Design decision: Success Button text stays white in every theme and interaction state. Do not switch it to black as an isolated contrast fix. If stricter contrast is required later, recalibrate the success action backgrounds together with the white foreground.
 
 ### `destructive`
 - **Use when:** Destructive, irreversible actions (delete, remove, revoke).
 - **Background:** `--button-destructive-bg` → `action/destructive` (red)
-- **Text:** `--button-destructive-text` → `text/inverse`
+- **Text:** `--button-destructive-text` → mode-aware `text/on-destructive`
 - Always pair with a confirmation dialog for truly destructive actions.
 
 ### `warning`
 - **Use when:** Reversible cautious actions that need attention but are not destructive (e.g. publish overrides, override-defaults).
 - **Background:** `--button-warning-bg` → `action/warning` (yellow)
-- **Text:** `--button-warning-text` → `text/primary` (yellow needs dark foreground for contrast)
+- **Text:** dark on default/hover yellow, then `text/inverse` on the stronger active fill
 - Distinct from `destructive` — warning does not imply destruction.
 
 ### `text`
@@ -197,7 +200,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 | `background: #0265DC` | `background: var(--button-primary-bg)` |
 | `border-radius: 4px` | `border-radius: var(--button-size-md-radius)` |
 | Using `primary` for every action | Reserve `primary` for one CTA per view |
-| White text on `success`/`destructive` via `text-inverse` | Use `--button-success-text` / `--button-destructive-text` |
+| Hardcoded white text on `success`/`destructive` | Use `--button-success-text` / `--button-destructive-text` |
 | `secondary` as outlined white button | `secondary` is a filled gray button |
 | Custom disabled styles | Use `--button-disabled-opacity: 0.5` on the element |
 

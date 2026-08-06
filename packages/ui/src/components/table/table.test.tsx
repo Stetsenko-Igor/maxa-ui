@@ -25,7 +25,7 @@ function BasicTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow selected interactive>
+        <TableRow selected interactive striped>
           <TableCell>Postcard</TableCell>
           <TableCell align="right" cellType="numeric" cellSize="lg">
             $48.00
@@ -55,6 +55,7 @@ describe("Table", () => {
     const row = screen.getByRole("cell", { name: "Postcard" }).closest("tr")
     expect(row).toHaveAttribute("data-selected")
     expect(row).toHaveAttribute("data-interactive")
+    expect(row).toHaveAttribute("data-striped")
   })
 
   it("applies alignment and sort attributes", () => {

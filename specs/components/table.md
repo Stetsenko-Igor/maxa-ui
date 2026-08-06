@@ -38,7 +38,7 @@ The code maps this to semantic parts:
 
 - Header cell variants map to `TableHead` with `headerType`, `align`, and `sort`.
 - Body cell variants map to `TableCell` with `cellType`, `cellSize`, and composition with existing components.
-- Row states map to `TableRow` props: `selected`, `subdued`, `interactive`.
+- Row states map to `TableRow` props: `selected`, `subdued`, `interactive`, `striped`.
 
 ## Product Row Pattern
 
@@ -71,6 +71,7 @@ Extends `React.TableHTMLAttributes<HTMLTableElement>`.
 | `selected`    | `boolean` | `false` | Applies selected row background.        |
 | `subdued`     | `boolean` | `false` | Applies subdued row background.         |
 | `interactive` | `boolean` | `false` | Enables hover state for clickable rows. |
+| `striped`     | `boolean` | `false` | Applies the alternate resting row background. |
 
 Extends `React.HTMLAttributes<HTMLTableRowElement>`.
 
@@ -106,7 +107,7 @@ Extends `React.TdHTMLAttributes<HTMLTableCellElement>`.
 
 - Uses component tokens only.
 - Container owns border, radius, background, and horizontal overflow.
-- Rows own selected/subdued/interactive states.
+- Rows own default/striped/selected/subdued/interactive backgrounds.
 - Caption renders as a small muted table label above the bordered table.
 - Header cells use semibold table-heading typography, not regular body text.
 - Cells own alignment, padding, content type hooks, small/large height overrides, thumbnail helper, icon helper, text stack helper, input-field composition, and loader helper.

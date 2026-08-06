@@ -37,7 +37,7 @@ const SEMANTIC_COLOR_GROUPS = {
 // like var(--color-bg-gray-muted) lands in `background/` and duplicates the
 // utility variable.
 const UTILITY_HUES = new Set([
-  "gray", "slate", "zinc", "stone", "red", "orange", "amber", "yellow", "lime",
+  "gray", "zinc", "stone", "red", "orange", "amber", "yellow", "lime",
   "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet",
   "purple", "fuchsia", "pink", "rose",
 ])
@@ -477,18 +477,14 @@ function finalizeBundle(outputBundle) {
     for (const [tokenName, value] of Object.entries(tokens)) {
       if (!tokenName.startsWith("feedback/") || !isAliasValue(value)) continue
       const target = parseBundleAlias(outputBundle, "Color modes", value)
-      const isSharedFeedbackText =
-        tokenName === "feedback/text" &&
-        target.collectionName === "Color modes" &&
-        target.tokenName === "text/text-primary"
-      if (target.collectionName !== "Primitives" && !isSharedFeedbackText) {
+      if (target.collectionName !== "Primitives") {
         indirectFeedbackAliases.push(`${tokenName} [${modeName}] -> ${target.collectionName}/${target.tokenName}`)
       }
     }
   }
   if (indirectFeedbackAliases.length > 0) {
     throw new Error(
-      `Color modes feedback colors must alias Primitives directly, except feedback/text -> text/text-primary; found semantic-to-semantic chains at:\n${indirectFeedbackAliases.join("\n")}`,
+      `Color modes feedback colors must alias Primitives directly; found semantic-to-semantic chains at:\n${indirectFeedbackAliases.join("\n")}`,
     )
   }
 
@@ -545,7 +541,11 @@ function toFigmaType(declaredType, value) {
 function inferVariableScopes(collectionName, tokenName, type) {
   const lower = tokenName.toLowerCase()
 
-  if (collectionName === "Primitives" || collectionName === "Breakpoints") return []
+  if (collectionName === "Primitives") {
+    if (/^colors\/(orange|red|yellow)\//.test(lower)) return ["ALL_FILLS"]
+    return []
+  }
+  if (collectionName === "Breakpoints") return []
   if (collectionName === "Spacing") return ["GAP"]
   if (collectionName === "Radius") return ["CORNER_RADIUS"]
 
@@ -564,8 +564,7 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (group === "border") return ["STROKE_COLOR"]
     if (group === "action" || group === "control") return ["ALL_FILLS", "STROKE_COLOR"]
     if (group === "feedback") {
-      if (lower === "feedback/text") return ["TEXT_FILL"]
-      if (lower.endsWith("/text")) return ["TEXT_FILL"]
+      if (lower === "feedback/text" || lower.endsWith("/text")) return ["TEXT_FILL"]
       if (lower.endsWith("/border")) return ["STROKE_COLOR"]
       if (lower.endsWith("/accent")) return ["SHAPE_FILL"]
       return ["ALL_FILLS"]
@@ -591,6 +590,9 @@ function inferVariableScopes(collectionName, tokenName, type) {
   }
 
   if (type === "COLOR") {
+    if (/^alert\/color\/neutral\/action(?:-hover)?$/.test(lower)) {
+      return ["ALL_FILLS", "STROKE_COLOR"]
+    }
     if (/(^|\/)(border|separator)(\/|$)|border-|focus-ring/.test(lower)) return ["STROKE_COLOR"]
     if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower)) return ["TEXT_FILL"]
     if (/(icon|mark|dot|fg|foreground)/.test(lower)) return ["SHAPE_FILL"]

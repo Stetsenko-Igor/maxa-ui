@@ -124,7 +124,7 @@
         },
         "text": {
           "$description": "Alert, color info: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
@@ -156,7 +156,7 @@
         },
         "text": {
           "$description": "Alert, color success: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
@@ -188,7 +188,7 @@
         },
         "text": {
           "$description": "Alert, color warning: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
@@ -220,7 +220,7 @@
         },
         "text": {
           "$description": "Alert, color error: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/text}",
           "$type": "color"
         }
       },
@@ -242,16 +242,16 @@
         },
         "text": {
           "$description": "Alert, color neutral: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/neutral/text}",
           "$type": "color"
         },
         "action": {
-          "$description": "Alert, color neutral: action.",
+          "$description": "Alert, color neutral: destructive action.",
           "$value": "{Color modes/feedback/neutral/action}",
           "$type": "color"
         },
         "action-hover": {
-          "$description": "Alert, color neutral: action (hover state).",
+          "$description": "Alert, color neutral: destructive action (hover state).",
           "$value": "{Color modes/feedback/neutral/action-hover}",
           "$type": "color"
         }
@@ -274,7 +274,7 @@
         },
         "text": {
           "$description": "Alert, color emphasize: text color.",
-          "$value": "{Color modes/text/text-primary}",
+          "$value": "{Color modes/feedback/emphasize/text}",
           "$type": "color"
         },
         "action": {

@@ -24,6 +24,22 @@
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
+    "text-on-success": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "text-on-warning": {
+      "$value": "{Colors.Base.Black}",
+      "$type": "color"
+    },
+    "text-on-destructive": {
+      "$value": "{Colors.Base.Black}",
+      "$type": "color"
+    },
+    "text-on-neutral-action-active": {
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
     "text-brand": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"
@@ -137,11 +153,11 @@
       "$type": "color"
     },
     "action-neutral-hover": {
-      "$value": "{Colors.Neutral.600}",
+      "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
     "action-neutral-active": {
-      "$value": "{Colors.Neutral.500}",
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "action-neutral-subtle": {
@@ -393,7 +409,7 @@
       "$type": "color"
     },
     "bg-neutral-surface": {
-      "$value": "{Colors.Neutral.950}",
+      "$value": "{Colors.Neutral.925}",
       "$type": "color"
     },
     "bg-neutral-subtle": {

@@ -113,12 +113,16 @@ describe("resolveChain", () => {
 })
 
 describe("loadTokens (real repo)", () => {
-  it("loads tokens from packages/tokens/src including theme dark overrides", () => {
+  it("keeps brand primitives stable and applies dark behavior through semantic roles", () => {
     const tokens = loadTokens(resolveRepoRoot())
     expect(tokens.size).toBeGreaterThan(100)
-    const brand = tokens.get("--color-brand-600")
+    const brand = tokens.get("--color-brand-500")
     expect(brand?.light).toBeTruthy()
-    expect(brand?.dark).toBeTruthy()
+    expect(brand?.dark).toBeUndefined()
     expect(brand?.sourceFile).toContain("packages/tokens/src")
+
+    const actionBrand = tokens.get("--color-action-brand")
+    expect(actionBrand?.light).toBe("var(--color-brand-500)")
+    expect(actionBrand?.dark).toBe("var(--color-brand-600)")
   })
 })

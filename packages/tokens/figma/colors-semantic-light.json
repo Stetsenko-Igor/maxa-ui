@@ -17,7 +17,7 @@
     },
     "text-disabled": {
       "$description": "Disabled form labels.",
-      "$value": "{Colors.Neutral.400}",
+      "$value": "{Colors.Neutral.500}",
       "$type": "color"
     },
     "text-inverse": {
@@ -27,6 +27,26 @@
     },
     "text-on-brand": {
       "$description": "Dark text on strong brand fill.",
+      "$value": "{Colors.Neutral.950}",
+      "$type": "color"
+    },
+    "text-on-success": {
+      "$description": "White text on success action surfaces.",
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "text-on-warning": {
+      "$description": "High-contrast text on bright warning action surfaces.",
+      "$value": "{Colors.Base.Black}",
+      "$type": "color"
+    },
+    "text-on-destructive": {
+      "$description": "High-contrast text on destructive action surfaces.",
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
+    "text-on-neutral-action-active": {
+      "$description": "Text on the active neutral action surface.",
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
@@ -151,12 +171,12 @@
     },
     "action-primary-subtle": {
       "$description": "Low-emphasis primary action fill.",
-      "$value": "{Colors.Blue.50}",
+      "$value": "{Colors.Blue.100}",
       "$type": "color"
     },
     "action-primary-subtle-hover": {
       "$description": "Low-emphasis primary action fill, hover state.",
-      "$value": "{Colors.Blue.50}",
+      "$value": "{Colors.Blue.150}",
       "$type": "color"
     },
     "action-primary-subtle-active": {
@@ -171,12 +191,12 @@
     },
     "action-neutral-hover": {
       "$description": "Neutral button background, hover state.",
-      "$value": "{Colors.Neutral.500}",
+      "$value": "{Colors.Neutral.400}",
       "$type": "color"
     },
     "action-neutral-active": {
       "$description": "Neutral button background, active state.",
-      "$value": "{Colors.Neutral.600}",
+      "$value": "{Colors.Neutral.450}",
       "$type": "color"
     },
     "action-neutral-subtle": {
@@ -389,8 +409,8 @@
       "$type": "color"
     },
     "bg-muted": {
-      "$description": "Recessed zones: code blocks, wells, table fill.",
-      "$value": "{Colors.Neutral.25}",
+      "$description": "Recessed zones: code blocks, wells, subdued table rows.",
+      "$value": "{Colors.Neutral.100}",
       "$type": "color"
     },
     "bg-disabled": {
@@ -475,7 +495,7 @@
     },
     "bg-info-subtle": {
       "$description": "Low-emphasis info surface fill.",
-      "$value": "{Colors.Blue.50}",
+      "$value": "{Colors.Blue.100}",
       "$type": "color"
     },
     "bg-info-surface": {

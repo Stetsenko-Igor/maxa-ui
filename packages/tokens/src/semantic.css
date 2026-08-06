@@ -7,8 +7,8 @@
 /*   bg/surface — white raised surfaces (inputs, cards, modals,        */
 /*                sidebar, drawer, table rows, content containers)     */
 /*   bg/float   — floating surfaces (dropdowns, popovers, tooltips)    */
-/*   bg/muted   — quiet/recessed zones (code blocks, wells, table fill,*/
-/*                search-fields inside dark sidebars)                  */
+/*   bg/muted   — quiet/recessed zones (code blocks, wells, subdued   */
+/*                table rows, search-fields inside dark sidebars)     */
 /*   bg/overlay — modal scrim                                          */
 /*                                                                     */
 /* Status/intent bg tokens (brand, success, warning, error, info,      */
@@ -20,14 +20,18 @@
   --color-text-primary:       var(--color-neutral-950);
   --color-text-secondary:     var(--color-neutral-800);
   --color-text-tertiary:      var(--color-neutral-600);
-  --color-text-disabled:      var(--color-neutral-400);
+  --color-text-disabled:      var(--color-neutral-500);
   --color-text-inverse:       var(--color-base-white);
   --color-text-on-brand:      var(--color-neutral-950);
+  --color-text-on-success:    var(--color-base-white);
+  --color-text-on-warning:    var(--color-base-black);
+  --color-text-on-destructive: var(--color-base-white);
+  --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-600);
-  --color-text-info:          var(--color-blue-600);
-  --color-text-success:       var(--color-green-800);
-  --color-text-error:         var(--color-red-700);
-  --color-text-warning:       var(--color-orange-700);
+  --color-text-info:          var(--color-blue-900);
+  --color-text-success:       var(--color-green-900);
+  --color-text-error:         var(--color-red-900);
+  --color-text-warning:       var(--color-orange-900);
 
   /* ── Foreground — icons and non-text foreground elements ────────── */
   --color-fg-primary:       var(--color-neutral-950);
@@ -38,9 +42,9 @@
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-600);
   --color-fg-info:          var(--color-blue-600);
-  --color-fg-success:      var(--color-green-800);
+  --color-fg-success:      var(--color-green-700);
   --color-fg-error:      var(--color-red-700);
-  --color-fg-warning:       var(--color-orange-700);
+  --color-fg-warning:       var(--color-yellow-600);
 
   /* ── Border ─────────────────────────────────────────────────────── */
   --color-border-primary:        var(--color-neutral-300);
@@ -60,10 +64,10 @@
   --color-border-neutral-subtle: var(--color-neutral-300);
 
   /* ── Background — surface elevation ─────────────────────────────── */
-  --color-bg-page:              var(--color-neutral-50);     /* #F5F6FA — gray canvas */
+  --color-bg-page:              var(--color-neutral-50);     /* #FAFAFA — gray canvas */
   --color-bg-surface:           var(--color-base-white);  /* #FFFFFF — raised surfaces */
   --color-bg-float:             var(--color-base-white);  /* #FFFFFF — floating surfaces */
-  --color-bg-muted:             var(--color-neutral-25);     /* #F8F8F8 — recessed zones */
+  --color-bg-muted:             var(--color-neutral-100);    /* #F4F3F3 — recessed zones */
   --color-bg-overlay:           rgba(0, 0, 0, 0.5);
   --color-bg-inverse:           var(--color-neutral-950);
   --color-bg-disabled:          var(--color-neutral-100);
@@ -77,7 +81,7 @@
   --color-bg-brand-surface:    var(--color-brand-100);
   --color-bg-brand-muted:      var(--color-brand-200);
   --color-bg-brand-strong:     var(--color-brand-500);
-  --color-bg-info-subtle:       var(--color-blue-50);
+  --color-bg-info-subtle:       var(--color-blue-100);
   --color-bg-info-surface:      var(--color-blue-50);
   --color-bg-info-strong:       var(--color-blue-700);
   --color-bg-success-subtle:    var(--color-green-50);
@@ -103,12 +107,12 @@
   --color-action-primary:                 var(--color-blue-500);
   --color-action-primary-hover:           var(--color-blue-600);
   --color-action-primary-active:          var(--color-blue-700);
-  --color-action-primary-subtle:          var(--color-blue-50);
-  --color-action-primary-subtle-hover:    var(--color-blue-50);
+  --color-action-primary-subtle:          var(--color-blue-100);
+  --color-action-primary-subtle-hover:    var(--color-blue-150);
   --color-action-primary-subtle-active:   var(--color-blue-200);
   --color-action-neutral:                 var(--color-neutral-300);
-  --color-action-neutral-hover:           var(--color-neutral-500);
-  --color-action-neutral-active:          var(--color-neutral-600);
+  --color-action-neutral-hover:           var(--color-neutral-400);
+  --color-action-neutral-active:          var(--color-neutral-450);
   --color-action-neutral-subtle:          var(--color-neutral-100);
   --color-action-neutral-subtle-hover:    var(--color-neutral-200);
   --color-action-neutral-subtle-active:   var(--color-neutral-300);
@@ -118,15 +122,15 @@
   --color-action-brand-subtle:            var(--color-brand-50);
   --color-action-brand-subtle-hover:      var(--color-brand-50);
   --color-action-brand-subtle-active:     var(--color-brand-200);
-  --color-action-success:                var(--color-green-700);
-  --color-action-success-hover:          var(--color-green-800);
-  --color-action-success-active:         var(--color-green-900);
+  --color-action-success:                var(--color-green-500);
+  --color-action-success-hover:          var(--color-green-600);
+  --color-action-success-active:         var(--color-green-700);
   --color-action-success-subtle:         var(--color-green-50);
   --color-action-success-subtle-hover:   var(--color-green-50);
   --color-action-success-subtle-active:  var(--color-green-100);
-  --color-action-destructive:                var(--color-red-600);
-  --color-action-destructive-hover:          var(--color-red-700);
-  --color-action-destructive-active:         var(--color-red-800);
+  --color-action-destructive:                var(--color-red-500);
+  --color-action-destructive-hover:          var(--color-red-600);
+  --color-action-destructive-active:         var(--color-red-700);
   --color-action-destructive-subtle:         var(--color-red-50);
   --color-action-destructive-subtle-hover:   var(--color-red-50);
   --color-action-destructive-subtle-active:  var(--color-red-100);
@@ -214,46 +218,65 @@
   --color-bg-rose-strong:   var(--color-rose-700);
   --color-text-rose:        var(--color-rose-900);
 
+  /* Utility foreground aliases share the theme-aware text hue values. */
+  --color-fg-red:       var(--color-text-red);
+  --color-fg-orange:    var(--color-text-orange);
+  --color-fg-amber:     var(--color-text-amber);
+  --color-fg-yellow:    var(--color-text-yellow);
+  --color-fg-lime:      var(--color-text-lime);
+  --color-fg-green:     var(--color-text-green);
+  --color-fg-emerald:   var(--color-text-emerald);
+  --color-fg-teal:      var(--color-text-teal);
+  --color-fg-cyan:      var(--color-text-cyan);
+  --color-fg-sky:       var(--color-text-sky);
+  --color-fg-blue:      var(--color-text-blue);
+  --color-fg-indigo:    var(--color-text-indigo);
+  --color-fg-violet:    var(--color-text-violet);
+  --color-fg-purple:    var(--color-text-purple);
+  --color-fg-fuchsia:   var(--color-text-fuchsia);
+  --color-fg-pink:      var(--color-text-pink);
+  --color-fg-rose:      var(--color-text-rose);
+
   /* ── Control — form-control idle/checked states (Checkbox/Radio/Toggle) ── */
   --color-control-idle:           var(--color-neutral-500);
   --color-control-idle-hover:     var(--color-neutral-400);
   --color-control-checked:        var(--color-neutral-900);
   --color-control-checked-hover:  var(--color-neutral-700);
 
-  /* ── Feedback — reusable intent surfaces ──────────────────────────── */
-  --color-feedback-text:                var(--color-text-primary);
-  --color-feedback-info-bg:             var(--color-blue-50);
-  --color-feedback-info-border:         var(--color-blue-200);
-  --color-feedback-info-accent:         var(--color-blue-500);
-  --color-feedback-info-action:         var(--color-blue-500);
-  --color-feedback-info-action-hover:   var(--color-blue-600);
-  --color-feedback-success-bg:          var(--color-green-100);
-  --color-feedback-success-border:      var(--color-green-400);
-  --color-feedback-success-accent:      var(--color-green-700);
-  --color-feedback-success-action:      var(--color-green-800);
-  --color-feedback-success-action-hover: var(--color-green-800);
-  --color-feedback-warning-bg:          var(--color-orange-100);
-  --color-feedback-warning-border:      var(--color-orange-300);
-  --color-feedback-warning-accent:      var(--color-orange-700);
-  --color-feedback-warning-action:      var(--color-orange-700);
-  --color-feedback-warning-action-hover: var(--color-orange-700);
-  --color-feedback-error-bg:            var(--color-red-100);
-  --color-feedback-error-border:        var(--color-red-300);
-  --color-feedback-error-accent:        var(--color-red-700);
-  --color-feedback-error-action:        var(--color-red-700);
-  --color-feedback-error-action-hover:  var(--color-red-700);
-  --color-feedback-neutral-bg:          var(--color-white);
-  --color-feedback-neutral-border:      var(--color-neutral-400);
-  --color-feedback-neutral-accent:      var(--color-neutral-800);
-  --color-feedback-neutral-text:        var(--color-neutral-950);
-  --color-feedback-neutral-action:      var(--color-action-primary);
-  --color-feedback-neutral-action-hover: var(--color-action-primary-hover);
-  --color-feedback-emphasize-bg:        var(--color-neutral-50);
-  --color-feedback-emphasize-border:    var(--color-neutral-400);
-  --color-feedback-emphasize-accent:    var(--color-neutral-800);
-  --color-feedback-emphasize-text:      var(--color-neutral-950);
-  --color-feedback-emphasize-action:    var(--color-action-primary);
-  --color-feedback-emphasize-action-hover: var(--color-action-primary-hover);
+  /* ── Feedback — reusable intent recipes ─────────────────────────── */
+  --color-feedback-text:                   var(--color-neutral-950);
+  --color-feedback-info-bg:                var(--color-blue-100);
+  --color-feedback-info-border:            var(--color-blue-200);
+  --color-feedback-info-accent:            var(--color-blue-600);
+  --color-feedback-info-action:            var(--color-blue-500);
+  --color-feedback-info-action-hover:      var(--color-blue-700);
+  --color-feedback-success-bg:             var(--color-green-50);
+  --color-feedback-success-border:         var(--color-green-300);
+  --color-feedback-success-accent:         var(--color-green-700);
+  --color-feedback-success-action:         var(--color-green-500);
+  --color-feedback-success-action-hover:   var(--color-green-700);
+  --color-feedback-warning-bg:             var(--color-orange-50);
+  --color-feedback-warning-border:         var(--color-orange-200);
+  --color-feedback-warning-accent:         var(--color-yellow-600);
+  --color-feedback-warning-action:         var(--color-orange-700);
+  --color-feedback-warning-action-hover:   var(--color-orange-700);
+  --color-feedback-error-bg:               var(--color-red-50);
+  --color-feedback-error-border:           var(--color-red-200);
+  --color-feedback-error-accent:           var(--color-red-700);
+  --color-feedback-error-action:           var(--color-red-500);
+  --color-feedback-error-action-hover:     var(--color-red-700);
+  --color-feedback-neutral-bg:             var(--color-base-white);
+  --color-feedback-neutral-border:         var(--color-neutral-300);
+  --color-feedback-neutral-accent:         var(--color-neutral-800);
+  --color-feedback-neutral-text:           var(--color-neutral-950);
+  --color-feedback-neutral-action:         var(--color-red-500);
+  --color-feedback-neutral-action-hover:   var(--color-red-700);
+  --color-feedback-emphasize-bg:           var(--color-neutral-50);
+  --color-feedback-emphasize-border:       var(--color-neutral-300);
+  --color-feedback-emphasize-accent:       var(--color-neutral-800);
+  --color-feedback-emphasize-text:         var(--color-neutral-950);
+  --color-feedback-emphasize-action:       var(--color-blue-500);
+  --color-feedback-emphasize-action-hover: var(--color-blue-700);
 
   /* ── Shared component support roles ──────────────────────────────── */
   --color-bg-overlay-strong:       var(--color-neutral-alpha-ink-50);
@@ -271,11 +294,15 @@
   --color-text-disabled:      var(--color-neutral-700);
   --color-text-inverse:       var(--color-neutral-900);
   --color-text-on-brand:      var(--color-neutral-950);
+  --color-text-on-success:    var(--color-base-white);
+  --color-text-on-warning:    var(--color-base-black);
+  --color-text-on-destructive: var(--color-base-black);
+  --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand:         var(--color-brand-400);
   --color-text-info:          var(--color-blue-300);
-  --color-text-success:       var(--color-green-400);
+  --color-text-success:       var(--color-green-300);
   --color-text-error:         var(--color-red-300);
-  --color-text-warning:       var(--color-yellow-400);
+  --color-text-warning:       var(--color-orange-300);
 
   /* ── Foreground — dark ──────────────────────────────────────────── */
   --color-fg-primary:       var(--color-neutral-100);
@@ -285,9 +312,9 @@
   --color-fg-inverse:       var(--color-neutral-900);
   --color-fg-on-brand:      var(--color-neutral-950);
   --color-fg-brand:         var(--color-brand-400);
-  --color-fg-info:          var(--color-blue-300);
+  --color-fg-info:          var(--color-blue-400);
   --color-fg-success:      var(--color-green-400);
-  --color-fg-error:      var(--color-red-300);
+  --color-fg-error:      var(--color-red-400);
   --color-fg-warning:       var(--color-yellow-400);
 
   /* ── Border — dark ──────────────────────────────────────────────── */
@@ -296,7 +323,7 @@
   --color-border-tertiary:       var(--color-neutral-900);
   --color-border-focus:          var(--color-blue-400);
   --color-border-brand:          var(--color-brand-400);
-  --color-border-error-strong:          var(--color-red-500);
+  --color-border-error-strong:          var(--color-red-400);
   --color-border-info-strong:    var(--color-blue-500);
   --color-border-success-strong: var(--color-green-500);
   --color-border-warning-strong: var(--color-orange-500);
@@ -313,7 +340,7 @@
   --color-bg-disabled:          var(--color-neutral-800);
 
   /* ── Background — status/intent (dark) ──────────────────────────── */
-  --color-bg-neutral-surface:   var(--color-neutral-950);
+  --color-bg-neutral-surface:   var(--color-neutral-925);
   --color-bg-neutral-subtle:    var(--color-neutral-900);
   --color-bg-neutral-on-muted:  var(--color-neutral-700);
   --color-bg-neutral-strong:    var(--color-neutral-400);
@@ -342,18 +369,18 @@
   --color-bg-error-muted:       var(--color-red-900);
 
   /* ── Action — dark ──────────────────────────────────────────────── */
-  --color-action-primary:                 var(--color-blue-300);
-  --color-action-primary-hover:           var(--color-blue-200);
-  --color-action-primary-active:          var(--color-blue-100);
+  --color-action-primary:                 var(--color-blue-400);
+  --color-action-primary-hover:           var(--color-blue-300);
+  --color-action-primary-active:          var(--color-blue-200);
   --color-action-primary-subtle:          var(--color-blue-950);
   --color-action-primary-subtle-hover:    var(--color-blue-950);
   --color-action-primary-subtle-active:   var(--color-blue-900);
   --color-action-neutral:                 var(--color-neutral-800);
-  --color-action-neutral-hover:           var(--color-neutral-600);
-  --color-action-neutral-active:          var(--color-neutral-500);
+  --color-action-neutral-hover:           var(--color-neutral-700);
+  --color-action-neutral-active:          var(--color-neutral-600);
   --color-action-neutral-subtle:          var(--color-neutral-900);
   --color-action-neutral-subtle-hover:    var(--color-neutral-800);
-  --color-action-neutral-subtle-active:   var(--color-neutral-800);
+  --color-action-neutral-subtle-active:   var(--color-neutral-700);
   --color-action-brand:                   var(--color-brand-600);
   --color-action-brand-hover:             var(--color-brand-500);
   --color-action-brand-active:            var(--color-brand-400);
@@ -459,39 +486,39 @@
   --color-control-checked:        var(--color-neutral-200);
   --color-control-checked-hover:  var(--color-neutral-400);
 
-  /* ── Feedback — dark ─────────────────────────────────────────────── */
-  --color-feedback-text:                var(--color-text-primary);
-  --color-feedback-info-bg:             var(--color-blue-800);
-  --color-feedback-info-border:         var(--color-blue-600);
-  --color-feedback-info-accent:         var(--color-blue-300);
-  --color-feedback-info-action:         var(--color-blue-400);
-  --color-feedback-info-action-hover:   var(--color-blue-300);
-  --color-feedback-success-bg:          var(--color-green-900);
-  --color-feedback-success-border:      var(--color-green-700);
-  --color-feedback-success-accent:      var(--color-green-500);
-  --color-feedback-success-action:      var(--color-green-400);
-  --color-feedback-success-action-hover: var(--color-green-300);
-  --color-feedback-warning-bg:          var(--color-orange-900);
-  --color-feedback-warning-border:      var(--color-orange-700);
-  --color-feedback-warning-accent:      var(--color-orange-400);
-  --color-feedback-warning-action:      var(--color-orange-400);
-  --color-feedback-warning-action-hover: var(--color-orange-300);
-  --color-feedback-error-bg:            var(--color-red-900);
-  --color-feedback-error-border:        var(--color-red-600);
-  --color-feedback-error-accent:        var(--color-red-400);
-  --color-feedback-error-action:        var(--color-red-400);
-  --color-feedback-error-action-hover:  var(--color-red-300);
-  --color-feedback-neutral-bg:          var(--color-neutral-900);
-  --color-feedback-neutral-border:      var(--color-neutral-800);
-  --color-feedback-neutral-accent:      var(--color-neutral-500);
-  --color-feedback-neutral-text:        var(--color-neutral-100);
-  --color-feedback-neutral-action:      var(--color-blue-400);
-  --color-feedback-neutral-action-hover: var(--color-blue-300);
-  --color-feedback-emphasize-bg:        var(--color-neutral-950);
-  --color-feedback-emphasize-border:    var(--color-neutral-800);
-  --color-feedback-emphasize-accent:    var(--color-neutral-500);
-  --color-feedback-emphasize-text:      var(--color-neutral-100);
-  --color-feedback-emphasize-action:    var(--color-blue-400);
+  /* ── Feedback — dark ────────────────────────────────────────────── */
+  --color-feedback-text:                   var(--color-neutral-100);
+  --color-feedback-info-bg:                var(--color-blue-700);
+  --color-feedback-info-border:            var(--color-blue-600);
+  --color-feedback-info-accent:            var(--color-blue-400);
+  --color-feedback-info-action:            var(--color-blue-400);
+  --color-feedback-info-action-hover:      var(--color-blue-300);
+  --color-feedback-success-bg:             var(--color-green-800);
+  --color-feedback-success-border:         var(--color-green-700);
+  --color-feedback-success-accent:         var(--color-green-500);
+  --color-feedback-success-action:         var(--color-green-400);
+  --color-feedback-success-action-hover:   var(--color-green-300);
+  --color-feedback-warning-bg:             var(--color-orange-900);
+  --color-feedback-warning-border:         var(--color-orange-700);
+  --color-feedback-warning-accent:         var(--color-orange-600);
+  --color-feedback-warning-action:         var(--color-orange-400);
+  --color-feedback-warning-action-hover:   var(--color-orange-300);
+  --color-feedback-error-bg:               var(--color-red-700);
+  --color-feedback-error-border:           var(--color-red-500);
+  --color-feedback-error-accent:           var(--color-red-300);
+  --color-feedback-error-action:           var(--color-red-400);
+  --color-feedback-error-action-hover:     var(--color-red-300);
+  --color-feedback-neutral-bg:             var(--color-neutral-900);
+  --color-feedback-neutral-border:         var(--color-neutral-800);
+  --color-feedback-neutral-accent:         var(--color-neutral-500);
+  --color-feedback-neutral-text:           var(--color-neutral-100);
+  --color-feedback-neutral-action:         var(--color-red-400);
+  --color-feedback-neutral-action-hover:   var(--color-red-300);
+  --color-feedback-emphasize-bg:           var(--color-neutral-900);
+  --color-feedback-emphasize-border:       var(--color-neutral-800);
+  --color-feedback-emphasize-accent:       var(--color-neutral-500);
+  --color-feedback-emphasize-text:         var(--color-neutral-100);
+  --color-feedback-emphasize-action:       var(--color-blue-400);
   --color-feedback-emphasize-action-hover: var(--color-blue-300);
 
   /* ── Shared component support roles — dark ──────────────────────── */
