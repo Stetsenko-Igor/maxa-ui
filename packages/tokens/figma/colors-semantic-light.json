@@ -372,7 +372,7 @@
       "$type": "color"
     },
     "fg-on-color": {
-      "$description": "Icons on strong colored fills.",
+      "$description": "Foreground color for icons on strong colored backgrounds.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },

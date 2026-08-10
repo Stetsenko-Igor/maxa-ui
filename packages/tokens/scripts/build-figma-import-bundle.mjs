@@ -570,10 +570,10 @@ function inferVariableScopes(collectionName, tokenName, type) {
       return ["ALL_FILLS"]
     }
     if (group === "foreground") {
-      // Matches live Figma usage: this role decorates non-text shapes on
-      // inverse surfaces. Exact rule only — other foreground roles keep
-      // ALL_FILLS until repository usage proves a narrower scope.
+      // Match the narrower icon-only scopes used by these live Foundation roles.
+      // Other foreground roles retain their established ALL_FILLS scope.
       if (lower === "foreground/fg-on-inverse-muted") return ["SHAPE_FILL"]
+      if (lower === "foreground/fg-on-color") return ["SHAPE_FILL", "STROKE_COLOR"]
       return ["ALL_FILLS"]
     }
     if (group === "utility") {

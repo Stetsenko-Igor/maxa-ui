@@ -20,6 +20,15 @@ const sandbox = {
 vm.createContext(sandbox);
 vm.runInContext(source, sandbox, { filename: 'code.js' });
 
+const secondaryForegroundPreview = vm.runInContext(
+  'PREVIEW_TOKEN_COLORS["Button/secondary/fg"]',
+  sandbox,
+);
+assert.deepEqual(
+  JSON.parse(JSON.stringify(secondaryForegroundPreview)),
+  { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
+);
+
 const node = (id, name, type = 'FRAME') => ({ id, name, type });
 const surface = node('surface', 'Button', 'COMPONENT');
 const label = node('label', 'NAME', 'TEXT');

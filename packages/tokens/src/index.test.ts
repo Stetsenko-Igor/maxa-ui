@@ -497,6 +497,10 @@ describe("figma import bundle", () => {
 
     expect(missing).toEqual([])
     expect(bundle.collections["Color modes"]?.scopes?.["text/text-primary"]).toEqual(["TEXT_FILL"])
+    expect(bundle.collections["Color modes"]?.scopes?.["foreground/fg-on-color"]).toEqual([
+      "SHAPE_FILL",
+      "STROKE_COLOR",
+    ])
     expect(bundle.collections.Primitives?.scopes?.["Colors/Orange/500"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections.Primitives?.scopes?.["Colors/Red/500"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections.Primitives?.scopes?.["Colors/Yellow/500"]).toEqual(["ALL_FILLS"])
@@ -843,7 +847,7 @@ describe("figma import bundle", () => {
     expect(component?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
     expect(component?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
     expect(component?.["Button/primary/fg"]).toBe("{Color modes/foreground/fg-on-color}")
-    expect(component?.["Button/secondary/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/secondary/fg"]).toBe("{Color modes/foreground/fg-primary}")
     expect(component?.["Button/outline/fg"]).toBe("{Color modes/foreground/fg-primary}")
     expect(component?.["Button/ghost/fg"]).toBe("{Color modes/foreground/fg-primary}")
     expect(component?.["Button/success/fg"]).toBe("{Color modes/foreground/fg-on-color}")

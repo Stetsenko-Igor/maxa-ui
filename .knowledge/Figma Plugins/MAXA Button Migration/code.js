@@ -14,7 +14,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/secondary/bg-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
   'Button/secondary/bg-active': { r: 140 / 255, g: 140 / 255, b: 142 / 255 },
   'Button/secondary/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
-  'Button/secondary/fg': { r: 1, g: 1, b: 1 },
+  'Button/secondary/fg': { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
   'Button/secondary/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/secondary/border-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
   'Button/secondary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },

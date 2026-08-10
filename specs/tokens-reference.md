@@ -718,7 +718,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-secondary-bg-active: var(--color-action-neutral-active);
 --button-secondary-text: var(--color-text-primary);
 --button-secondary-text-active: var(--color-text-on-neutral-action-active);
---button-secondary-fg: var(--color-fg-on-color);
+--button-secondary-fg: var(--color-fg-primary);
 --button-secondary-border: var(--color-action-neutral);
 --button-secondary-border-hover: var(--color-action-neutral-hover);
 --button-secondary-border-focus: var(--color-border-focus);

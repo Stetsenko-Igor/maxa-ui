@@ -70,7 +70,7 @@
       },
       "fg": {
         "$description": "Button, secondary: icon foreground color.",
-        "$value": "{Color modes/foreground/fg-on-color}",
+        "$value": "{Color modes/foreground/fg-primary}",
         "$type": "color"
       },
       "border": {

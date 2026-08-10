@@ -1763,7 +1763,7 @@
         "foreground/fg-disabled": "Disabled icons.",
         "foreground/fg-inverse": "Icons on dark or inverted surfaces.",
         "foreground/fg-on-brand": "Icons on strong brand fill.",
-        "foreground/fg-on-color": "Icons on strong colored fills.",
+        "foreground/fg-on-color": "Foreground color for icons on strong colored backgrounds.",
         "foreground/fg-brand": "Brand-colored icons.",
         "foreground/fg-success": "Success icons.",
         "foreground/fg-error": "Error and destructive icons.",
@@ -2434,7 +2434,8 @@
           "ALL_FILLS"
         ],
         "foreground/fg-on-color": [
-          "ALL_FILLS"
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "foreground/fg-brand": [
           "ALL_FILLS"
@@ -3417,7 +3418,7 @@
           "Button/secondary/bg-active": "{Color modes/action/action-neutral-active}",
           "Button/secondary/text": "{Color modes/text/text-primary}",
           "Button/secondary/text-active": "{Color modes/text/text-on-neutral-action-active}",
-          "Button/secondary/fg": "{Color modes/foreground/fg-on-color}",
+          "Button/secondary/fg": "{Color modes/foreground/fg-primary}",
           "Button/secondary/border": "{Color modes/action/action-neutral}",
           "Button/secondary/border-hover": "{Color modes/action/action-neutral-hover}",
           "Button/secondary/border-focus": "{Color modes/border/border-focus}",

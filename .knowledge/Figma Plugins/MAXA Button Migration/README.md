@@ -1,4 +1,4 @@
-# MAXA Button Migration v6
+# MAXA Button Migration v7
 
 This plugin migrates legacy MAXA Button component sets to the current Foundation variables.
 
@@ -19,6 +19,7 @@ Current status:
 - `XS`, `Pressed`, `Selected`, `Focus`, `Loading`, `Positive`, and `Negative` values are normalized to the current token model
 - `Positive` maps to `Button/success/*`; `Negative` maps to `Button/destructive/*`
 - labels use `Button/{type}/text*`, while icons use the dedicated `Button/{type}/fg*` tokens
+- Secondary icons resolve through `Button/secondary/fg` to `foreground/fg-primary`
 - Link keeps state-aware icon tokens: `Button/link/fg`, `Button/link/fg-hover`, and `Button/link/fg-active`
 - Focus keeps the base background and binds `border-focus`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
 - Loading keeps the base variant styling and applies `Button/disabled/opacity`
@@ -73,7 +74,7 @@ Validated legacy values:
 - states: `Default`, `Hover`, `Pressed`, `Selected`, `Focus`, `Loading`, `Disabled`
 - icon arrangements: icon-only, left, right, dropdown indicator, and two-icon combinations
 
-Out of scope in v6:
+Out of scope in v7:
 
 - split buttons and menu-button behavior (a dropdown indicator inside a normal Button is supported)
 - close buttons
