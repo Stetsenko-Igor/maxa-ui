@@ -65,6 +65,44 @@ assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButt
 assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['size']), 'L - Large');
 assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['state']), 'Pressed');
 
+const legacyDropdownInstance = {
+  id: 'legacy-dropdown-instance',
+  name: 'Button',
+  type: 'INSTANCE',
+  componentProperties: {
+    Type: { type: 'VARIANT', value: 'Primary' },
+    '📐 Size': { type: 'VARIANT', value: 'M - Medium' },
+    State: { type: 'VARIANT', value: 'Default' },
+    'Dropdown ▼': { type: 'VARIANT', value: 'False' },
+    '⬅️ Icon Left': { type: 'VARIANT', value: 'Yes' },
+    '➡️ Icon Right': { type: 'VARIANT', value: 'Yes' },
+    '🔀 Icon Left Swap': { type: 'INSTANCE_SWAP', value: 'bird-icon' },
+  },
+  setProperties(properties) {
+    for (const [key, value] of Object.entries(properties)) {
+      this.componentProperties[key].value = value;
+    }
+  },
+};
+const visitedDropdownBranches = [];
+await sandbox.visitDropdownVariantBranches(legacyDropdownInstance, async () => {
+  visitedDropdownBranches.push({
+    dropdown: legacyDropdownInstance.componentProperties['Dropdown ▼'].value,
+    right: legacyDropdownInstance.componentProperties['➡️ Icon Right'].value,
+    leftSwap: legacyDropdownInstance.componentProperties['🔀 Icon Left Swap'].value,
+  });
+});
+assert.deepEqual(
+  JSON.parse(JSON.stringify(visitedDropdownBranches)),
+  [
+    { dropdown: 'False', right: 'Yes', leftSwap: 'bird-icon' },
+    { dropdown: 'True', right: 'No', leftSwap: 'bird-icon' },
+  ],
+);
+assert.equal(legacyDropdownInstance.componentProperties['Dropdown ▼'].value, 'False');
+assert.equal(legacyDropdownInstance.componentProperties['➡️ Icon Right'].value, 'Yes');
+assert.equal(legacyDropdownInstance.componentProperties['🔀 Icon Left Swap'].value, 'bird-icon');
+
 function mapping({ variant, state, size = 'md', iconOnly = false, left = false, right = false, loading = false }) {
   const leadingIcon = loading ? loadingSpinner : left || iconOnly ? leftIcon : null;
   const children = [];

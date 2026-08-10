@@ -1377,16 +1377,10 @@ async function applyMapping(options, selectionMap) {
     const sourceNode = sourceNodes.get(analysis.id);
     if (!sourceNode || (sourceNode.type !== 'COMPONENT' && sourceNode.type !== 'INSTANCE')) continue;
 
-    const allAssignments = analysis.mappingPreview && analysis.mappingPreview.assignments
-      ? analysis.mappingPreview.assignments
-      : [];
-    const selectedAssignments = allAssignments.filter((assignment) => {
-      const componentSelection = selectionMap && selectionMap[analysis.id]
-        ? selectionMap[analysis.id]
-        : null;
-      if (!componentSelection) return true;
-      return componentSelection[assignment.id] !== false;
-    });
+    const componentSelection = selectionMap && selectionMap[analysis.id]
+      ? selectionMap[analysis.id]
+      : null;
+    const selectedAssignments = getSelectedAssignments(analysis, componentSelection);
 
     if (!selectedAssignments.length) continue;
 
@@ -1397,7 +1391,21 @@ async function applyMapping(options, selectionMap) {
       variableCache: variableCache,
       importedVariableKeys: importedVariableKeys,
     };
-    const changedCount = await applyAssignmentsToNode(sourceNode, analysis, selectedAssignments, analysisResult.libraryResolution, counters);
+    let changedCount = 0;
+    await visitDropdownVariantBranches(sourceNode, async (branchNode, branchIndex) => {
+      const branchAnalysis = branchIndex === 0
+        ? analysis
+        : analyzeComponent(branchNode, options || {});
+      const branchAssignments = getSelectedAssignments(branchAnalysis, componentSelection);
+      if (!branchAssignments.length) return;
+      changedCount += await applyAssignmentsToNode(
+        branchNode,
+        branchAnalysis,
+        branchAssignments,
+        analysisResult.libraryResolution,
+        counters,
+      );
+    });
     if (changedCount > 0) {
       appliedComponents += 1;
       appliedAssignments += changedCount;
@@ -1421,6 +1429,71 @@ async function applyMapping(options, selectionMap) {
     missingTokens: missingList,
     bindingErrors: bindingErrors,
   };
+}
+
+function getSelectedAssignments(analysis, componentSelection) {
+  const assignments = analysis && analysis.mappingPreview && analysis.mappingPreview.assignments
+    ? analysis.mappingPreview.assignments
+    : [];
+  if (!componentSelection) return assignments;
+  return assignments.filter((assignment) => componentSelection[assignment.id] !== false);
+}
+
+async function visitDropdownVariantBranches(node, visitor) {
+  if (!node || node.type !== 'INSTANCE' || typeof node.setProperties !== 'function' || !node.componentProperties) {
+    await visitor(node, 0);
+    return 1;
+  }
+
+  const entries = Object.entries(node.componentProperties);
+  const dropdownEntry = entries.find(([key, property]) => (
+    property
+    && property.type === 'VARIANT'
+    && normalizePropertyKey(key).includes('dropdown')
+    && /^(true|false)$/i.test(String(property.value || '').trim())
+  ));
+  const leftEntry = entries.find(([key, property]) => (
+    property
+    && property.type === 'VARIANT'
+    && normalizePropertyKey(key).includes('icon left')
+  ));
+
+  if (!dropdownEntry || !leftEntry || !isTruthyVariantValue(leftEntry[1].value)) {
+    await visitor(node, 0);
+    return 1;
+  }
+
+  const originalProperties = {};
+  for (const [key, property] of entries) {
+    if (property && property.type === 'VARIANT' && typeof property.value === 'string') {
+      originalProperties[key] = property.value;
+    }
+  }
+
+  const [dropdownKey, dropdownProperty] = dropdownEntry;
+  const currentDropdownValue = String(dropdownProperty.value).trim();
+  const alternateDropdownValue = /^true$/i.test(currentDropdownValue) ? 'False' : 'True';
+  const alternateProperties = {
+    [dropdownKey]: alternateDropdownValue,
+  };
+
+  if (/^true$/i.test(alternateDropdownValue)) {
+    const rightEntry = entries.find(([key, property]) => (
+      property
+      && property.type === 'VARIANT'
+      && normalizePropertyKey(key).includes('icon right')
+    ));
+    if (rightEntry) alternateProperties[rightEntry[0]] = 'No';
+  }
+
+  await visitor(node, 0);
+  try {
+    node.setProperties(alternateProperties);
+    await visitor(node, 1);
+  } finally {
+    node.setProperties(originalProperties);
+  }
+  return 2;
 }
 
 async function applyAssignmentsToNode(node, analysis, assignments, libraryResolution, counters) {

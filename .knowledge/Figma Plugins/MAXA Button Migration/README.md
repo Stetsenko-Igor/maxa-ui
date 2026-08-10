@@ -1,4 +1,4 @@
-# MAXA Button Migration v7
+# MAXA Button Migration v8
 
 This plugin migrates legacy MAXA Button component sets to the current Foundation variables.
 
@@ -25,6 +25,8 @@ Current status:
 - Loading keeps the base variant styling and applies `Button/disabled/opacity`
 - both icons in two-icon variants receive color and size bindings
 - selected Button instances are supported, so already-swapped icons can be rebound and keep their foreground token while Dropdown variants change
+- instances with `Icon Left=Yes` are repaired in both `Dropdown=False` and `Dropdown=True` branches, removing legacy branch-specific paint styles before the original variant properties are restored
+- icon swaps, labels, and the original Dropdown/right-icon configuration are preserved during the two-branch repair
 - normal buttons bind `padding-x-icon` only on an edge that contains an icon or loading spinner, while the opposite edge keeps `padding-x`
 - resolved gaps follow the published size scale: `xs=4`, `sm=6`, `md=8`, `lg=8`
 - Link variants use Hug contents on both axes, bind all four paddings to `spacing-none`, and do not use container height, radius, horizontal-padding, or icon-only size tokens
@@ -74,7 +76,7 @@ Validated legacy values:
 - states: `Default`, `Hover`, `Pressed`, `Selected`, `Focus`, `Loading`, `Disabled`
 - icon arrangements: icon-only, left, right, dropdown indicator, and two-icon combinations
 
-Out of scope in v7:
+Out of scope in v8:
 
 - split buttons and menu-button behavior (a dropdown indicator inside a normal Button is supported)
 - close buttons
