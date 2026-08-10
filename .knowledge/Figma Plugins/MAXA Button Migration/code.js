@@ -6,6 +6,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/primary/bg-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
   'Button/primary/bg-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
   'Button/primary/text': { r: 1, g: 1, b: 1 },
+  'Button/primary/fg': { r: 1, g: 1, b: 1 },
   'Button/primary/border': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/primary/border-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
   'Button/primary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
@@ -13,6 +14,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/secondary/bg-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
   'Button/secondary/bg-active': { r: 140 / 255, g: 140 / 255, b: 142 / 255 },
   'Button/secondary/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
+  'Button/secondary/fg': { r: 1, g: 1, b: 1 },
   'Button/secondary/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/secondary/border-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
   'Button/secondary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
@@ -20,6 +22,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/outline/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
   'Button/outline/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
+  'Button/outline/fg': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/outline/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
   'Button/outline/border-active': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
@@ -28,6 +31,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/ghost/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
   'Button/ghost/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/ghost/text': { r: 68 / 255, g: 68 / 255, b: 69 / 255 },
+  'Button/ghost/fg': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/ghost/border': { r: 1, g: 1, b: 1, a: 0 },
   'Button/ghost/border-hover': { r: 1, g: 1, b: 1, a: 0 },
   'Button/ghost/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
@@ -47,6 +51,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/success/bg-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
   'Button/success/bg-active': { r: 21 / 255, g: 128 / 255, b: 61 / 255 },
   'Button/success/text': { r: 1, g: 1, b: 1 },
+  'Button/success/fg': { r: 1, g: 1, b: 1 },
   'Button/success/border': { r: 34 / 255, g: 197 / 255, b: 94 / 255 },
   'Button/success/border-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
   'Button/success/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
@@ -54,6 +59,7 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/destructive/bg-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
   'Button/destructive/bg-active': { r: 185 / 255, g: 28 / 255, b: 28 / 255 },
   'Button/destructive/text': { r: 1, g: 1, b: 1 },
+  'Button/destructive/fg': { r: 1, g: 1, b: 1 },
   'Button/destructive/border': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
   'Button/destructive/border-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
   'Button/destructive/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
@@ -122,12 +128,12 @@ figma.ui.onmessage = async (msg) => {
 async function analyzeSelection(options) {
   const selection = figma.currentPage.selection || [];
   if (!selection.length) {
-    throw new Error('Nothing selected. Select one or more Button components or component sets.');
+    throw new Error('Nothing selected. Select one or more Button instances, components, or component sets.');
   }
 
   const targets = collectTargets(selection);
   if (!targets.length) {
-    throw new Error('No supported targets found. Select COMPONENT or COMPONENT_SET nodes.');
+    throw new Error('No supported targets found. Select INSTANCE, COMPONENT, or COMPONENT_SET nodes.');
   }
 
   const analyses = [];
@@ -163,7 +169,7 @@ async function analyzeSelection(options) {
 function collectTargets(nodes) {
   const results = [];
   for (const node of nodes) {
-    if (node.type === 'COMPONENT' || node.type === 'COMPONENT_SET') {
+    if (node.type === 'INSTANCE' || node.type === 'COMPONENT' || node.type === 'COMPONENT_SET') {
       results.push(node);
     }
   }
@@ -202,7 +208,7 @@ function analyzeComponentSet(componentSet, options) {
 }
 
 function analyzeComponent(component, options) {
-  const parsedProperties = parseVariantProperties(component.name);
+  const parsedProperties = getParsedProperties(component);
   const textLayers = findNodes(component, (node) => node.type === 'TEXT' && isVisibleNode(node));
   const visibleTextLayers = textLayers.filter((node) => normalizeText(node.characters || '').length > 0);
   const iconCandidates = findIconCandidates(component);
@@ -657,6 +663,17 @@ function parseVariantProperties(name) {
   return properties;
 }
 
+function getParsedProperties(node) {
+  const properties = parseVariantProperties(node && node.name);
+  if (!node || node.type !== 'INSTANCE' || !node.componentProperties) return properties;
+
+  for (const [rawKey, property] of Object.entries(node.componentProperties)) {
+    if (!property || property.type !== 'VARIANT' || typeof property.value !== 'string') continue;
+    properties[normalizePropertyKey(rawKey)] = property.value;
+  }
+  return properties;
+}
+
 function normalizePropertyKey(key) {
   return String(key || '')
     .toLowerCase()
@@ -904,7 +921,7 @@ function buildMappingPreview(input) {
     }
     result.notes.push(variant === 'link'
       ? 'Link icons use the dedicated Button/link/fg state tokens.'
-      : 'Icon layers use the same semantic foreground token as the button label.');
+      : `Icon layers use the dedicated Button/${variant}/fg token.`);
   }
 
   return result;
@@ -1276,7 +1293,7 @@ function collectPreviewItems(result, selectionMap) {
   for (const analysis of flatAnalyses) {
     if (analysis.kind !== 'COMPONENT') continue;
     const sourceNode = sourceNodes.get(analysis.id);
-    if (!sourceNode || sourceNode.type !== 'COMPONENT') continue;
+    if (!sourceNode || (sourceNode.type !== 'COMPONENT' && sourceNode.type !== 'INSTANCE')) continue;
     const previewAssignments = analysis.mappingPreview && analysis.mappingPreview.assignments
       ? analysis.mappingPreview.assignments
       : [];
@@ -1299,7 +1316,7 @@ function collectPreviewItems(result, selectionMap) {
 }
 
 function collectComponentNodes(node, results) {
-  if (node.type === 'COMPONENT') {
+  if (node.type === 'COMPONENT' || node.type === 'INSTANCE') {
     results.set(node.id, node);
     return;
   }
@@ -1358,7 +1375,7 @@ async function applyMapping(options, selectionMap) {
   for (const analysis of componentAnalyses) {
     if (analysis.kind !== 'COMPONENT') continue;
     const sourceNode = sourceNodes.get(analysis.id);
-    if (!sourceNode || sourceNode.type !== 'COMPONENT') continue;
+    if (!sourceNode || (sourceNode.type !== 'COMPONENT' && sourceNode.type !== 'INSTANCE')) continue;
 
     const allAssignments = analysis.mappingPreview && analysis.mappingPreview.assignments
       ? analysis.mappingPreview.assignments
@@ -2125,7 +2142,7 @@ function getIconToken(variant, state) {
   if (variant === 'link') {
     return `Button/link/fg${getForegroundStateSuffix(state)}`;
   }
-  return getLabelToken(variant, state);
+  return `Button/${variant}/fg`;
 }
 
 function countSelectedAssignments(selectionMap) {

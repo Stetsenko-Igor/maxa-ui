@@ -104,7 +104,7 @@ export default function ButtonPage() {
       <DocsSection
         id="variants"
         title="Variants"
-        description="Nine variants map to the action hierarchy. Use primary once per view for the main call-to-action."
+        description="Eight variants map to the action hierarchy. Use primary once per view for the main call-to-action."
       >
         <DocsExample title="Action variants">
           <ComponentPreview code={`<Button variant="primary">Primary</Button>
@@ -112,15 +112,13 @@ export default function ButtonPage() {
 <Button variant="outline">Outline</Button>
 <Button variant="outline" outlineSurface>Outline on surface</Button>
 <Button variant="ghost">Ghost</Button>
-<Button variant="link">Link</Button>
-<Button variant="text">Text</Button>`}>
+<Button variant="link">Link</Button>`}>
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="outline" outlineSurface>Outline on surface</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="link">Link</Button>
-            <Button variant="text">Text</Button>
           </ComponentPreview>
         </DocsExample>
 

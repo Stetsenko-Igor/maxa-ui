@@ -117,17 +117,18 @@
 }
 
 /* The icon edge is optically tighter; the label-only edge keeps regular padding. */
-.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link):not(.maxa-button--text)[data-icon-leading] {
+.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link)[data-icon-leading] {
   padding-inline-start: var(--button-padding-x-icon-current);
 }
 
-.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link):not(.maxa-button--text)[data-icon-trailing] {
+.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link)[data-icon-trailing] {
   padding-inline-end: var(--button-padding-x-icon-current);
 }
 
 /* ── Variants ────────────────────────────────────────────────── */
 
 .maxa-button--primary {
+  --button-fg-current: var(--button-primary-fg);
   background-color: var(--button-primary-bg);
   color: var(--button-primary-text);
   border-color: var(--button-primary-border);
@@ -144,6 +145,7 @@
 }
 
 .maxa-button--secondary {
+  --button-fg-current: var(--button-secondary-fg);
   background-color: var(--button-secondary-bg);
   color: var(--button-secondary-text);
   border-color: var(--button-secondary-border);
@@ -161,6 +163,7 @@
 }
 
 .maxa-button--outline {
+  --button-fg-current: var(--button-outline-fg);
   background-color: var(--button-outline-bg);
   color: var(--button-outline-text);
   border-color: var(--button-outline-border);
@@ -181,6 +184,7 @@
 }
 
 .maxa-button--ghost {
+  --button-fg-current: var(--button-ghost-fg);
   background-color: var(--button-ghost-bg);
   color: var(--button-ghost-text);
   border-color: var(--button-ghost-border);
@@ -196,6 +200,7 @@
 }
 
 .maxa-button--link {
+  --button-fg-current: var(--button-link-fg);
   background-color: var(--button-link-bg);
   color: var(--button-link-text);
   border-color: var(--button-link-border);
@@ -204,25 +209,19 @@
   height: auto;
 }
 .maxa-button--link:hover {
+  --button-fg-current: var(--button-link-fg-hover);
   color: var(--button-link-text-hover);
 }
 .maxa-button--link:active {
+  --button-fg-current: var(--button-link-fg-active);
   color: var(--button-link-text-active);
-}
-.maxa-button--link .maxa-button__icon {
-  color: var(--button-link-fg);
-}
-.maxa-button--link:hover .maxa-button__icon {
-  color: var(--button-link-fg-hover);
-}
-.maxa-button--link:active .maxa-button__icon {
-  color: var(--button-link-fg-active);
 }
 .maxa-button--link:focus-visible {
   border-color: var(--button-link-border-focus);
 }
 
 .maxa-button--success {
+  --button-fg-current: var(--button-success-fg);
   background-color: var(--button-success-bg);
   color: var(--button-success-text);
   border-color: var(--button-success-border);
@@ -241,6 +240,7 @@
 }
 
 .maxa-button--destructive {
+  --button-fg-current: var(--button-destructive-fg);
   background-color: var(--button-destructive-bg);
   color: var(--button-destructive-text);
   border-color: var(--button-destructive-border);
@@ -257,6 +257,7 @@
 }
 
 .maxa-button--warning {
+  --button-fg-current: var(--button-warning-fg);
   background-color: var(--button-warning-bg);
   color: var(--button-warning-text);
   border-color: var(--button-warning-border);
@@ -272,22 +273,6 @@
 }
 .maxa-button--warning:focus-visible {
   border-color: var(--button-warning-border-focus);
-}
-
-.maxa-button--text {
-  background-color: var(--button-text-bg);
-  color: var(--button-text-text);
-  border-color: var(--button-text-border);
-  padding-inline: 0;
-}
-.maxa-button--text:hover {
-  color: var(--button-text-text-hover);
-}
-.maxa-button--text:active {
-  color: var(--button-text-text-active);
-}
-.maxa-button--text:focus-visible {
-  border-color: var(--button-text-border-focus);
 }
 
 /* ── Full width ──────────────────────────────────────────────── */
@@ -310,6 +295,7 @@
   justify-content: center;
   flex-shrink: 0;
   line-height: 0;
+  color: var(--button-fg-current, currentColor);
 }
 
 .maxa-button--icon-only .maxa-button__icon {
@@ -332,6 +318,7 @@
 
 .maxa-button__spinner {
   display: inline-block;
+  color: var(--button-fg-current, currentColor);
   width: 1em;
   height: 1em;
   border: 2px solid currentColor;

@@ -593,6 +593,9 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (/^alert\/color\/neutral\/action(?:-hover)?$/.test(lower)) {
       return ["ALL_FILLS", "STROKE_COLOR"]
     }
+    if (/^button\/[^/]+\/fg(?:-(?:hover|active))?$/.test(lower)) {
+      return ["SHAPE_FILL", "STROKE_COLOR"]
+    }
     if (/(^|\/)(border|separator)(\/|$)|border-|focus-ring/.test(lower)) return ["STROKE_COLOR"]
     if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower)) return ["TEXT_FILL"]
     if (/(icon|mark|dot|fg|foreground)/.test(lower)) return ["SHAPE_FILL"]

@@ -294,6 +294,13 @@
         "darkHex": "#1A1919"
       },
       {
+        "name": "--color-fg-on-color",
+        "lightValue": "var(--color-base-white)",
+        "darkValue": "var(--color-base-white)",
+        "lightHex": "#ffffff",
+        "darkHex": "#ffffff"
+      },
+      {
         "name": "--color-fg-brand",
         "lightValue": "var(--color-brand-600)",
         "darkValue": "var(--color-brand-400)",

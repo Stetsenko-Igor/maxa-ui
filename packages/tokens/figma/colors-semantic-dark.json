@@ -298,6 +298,10 @@
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
+    "fg-on-color": {
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
     "fg-brand": {
       "$value": "{Colors.Brand.400}",
       "$type": "color"

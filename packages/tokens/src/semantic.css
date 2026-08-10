@@ -40,6 +40,7 @@
   --color-fg-disabled:      var(--color-neutral-400);
   --color-fg-inverse:       var(--color-base-white);
   --color-fg-on-brand:      var(--color-neutral-950);
+  --color-fg-on-color:      var(--color-base-white);
   --color-fg-brand:         var(--color-brand-600);
   --color-fg-info:          var(--color-blue-600);
   --color-fg-success:      var(--color-green-700);
@@ -312,6 +313,7 @@
   --color-fg-disabled:      var(--color-neutral-700);
   --color-fg-inverse:       var(--color-neutral-900);
   --color-fg-on-brand:      var(--color-neutral-950);
+  --color-fg-on-color:      var(--color-base-white);
   --color-fg-brand:         var(--color-brand-400);
   --color-fg-info:          var(--color-blue-400);
   --color-fg-success:      var(--color-green-400);

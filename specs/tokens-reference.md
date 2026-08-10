@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1756
+Total tokens: 1755
 
 ## Primitives
 
@@ -299,6 +299,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-disabled: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
 --color-fg-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-fg-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
+--color-fg-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
 --color-fg-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
 --color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-400) */
 --color-fg-success: var(--color-green-700);/* dark: var(--color-green-400) */
@@ -708,6 +709,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-primary-bg-hover: var(--color-action-primary-hover);
 --button-primary-bg-active: var(--color-action-primary-active);
 --button-primary-text: var(--color-text-inverse);
+--button-primary-fg: var(--color-fg-on-color);
 --button-primary-border: var(--color-action-primary);
 --button-primary-border-hover: var(--color-action-primary-hover);
 --button-primary-border-focus: var(--color-border-focus);
@@ -716,6 +718,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-secondary-bg-active: var(--color-action-neutral-active);
 --button-secondary-text: var(--color-text-primary);
 --button-secondary-text-active: var(--color-text-on-neutral-action-active);
+--button-secondary-fg: var(--color-fg-on-color);
 --button-secondary-border: var(--color-action-neutral);
 --button-secondary-border-hover: var(--color-action-neutral-hover);
 --button-secondary-border-focus: var(--color-border-focus);
@@ -724,6 +727,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-outline-bg-hover: var(--color-action-neutral-subtle-hover);
 --button-outline-bg-active: var(--color-action-neutral-subtle-active);
 --button-outline-text: var(--color-text-primary);
+--button-outline-fg: var(--color-fg-primary);
 --button-outline-border: var(--color-border-primary);
 --button-outline-border-hover: var(--color-border-neutral-muted);
 --button-outline-border-active: var(--color-border-neutral-muted);
@@ -732,6 +736,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
 --button-ghost-bg-active: var(--color-action-neutral-subtle-active);
 --button-ghost-text: var(--color-text-secondary);
+--button-ghost-fg: var(--color-fg-primary);
 --button-ghost-border: transparent;
 --button-ghost-border-hover: transparent;
 --button-ghost-border-focus: var(--color-border-focus);
@@ -753,6 +758,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-success-text: var(--color-text-on-success);
 --button-success-text-hover: var(--color-text-on-success);
 --button-success-text-active: var(--color-text-on-success);
+--button-success-fg: var(--color-fg-on-color);
 --button-success-border: var(--color-action-success);
 --button-success-border-hover: var(--color-action-success-hover);
 --button-success-border-focus: var(--color-border-focus);
@@ -760,6 +766,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-destructive-bg-hover: var(--color-action-destructive-hover);
 --button-destructive-bg-active: var(--color-action-destructive-active);
 --button-destructive-text: var(--color-text-on-destructive);
+--button-destructive-fg: var(--color-fg-on-color);
 --button-destructive-border: var(--color-action-destructive);
 --button-destructive-border-hover: var(--color-action-destructive-hover);
 --button-destructive-border-focus: var(--color-border-focus);
@@ -769,18 +776,10 @@ Source: `packages/tokens/src/component-button.css`
 --button-warning-text: var(--color-text-on-warning);
 --button-warning-text-hover: var(--color-text-on-warning);
 --button-warning-text-active: var(--color-text-inverse);
+--button-warning-fg: var(--color-fg-on-color);
 --button-warning-border: var(--color-action-warning);
 --button-warning-border-hover: var(--color-action-warning-hover);
 --button-warning-border-focus: var(--color-border-focus);
---button-text-bg: transparent;
---button-text-bg-hover: transparent;
---button-text-bg-active: transparent;
---button-text-text: var(--color-text-primary);
---button-text-text-hover: var(--color-action-primary);
---button-text-text-active: var(--color-action-primary-active);
---button-text-border: transparent;
---button-text-border-hover: transparent;
---button-text-border-focus: var(--color-border-focus);
 
 /* ── Sizes ── */
 --button-size-xs-height: 24px;

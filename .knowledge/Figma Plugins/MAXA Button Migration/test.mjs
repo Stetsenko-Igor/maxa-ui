@@ -42,6 +42,20 @@ assert.equal(sandbox.normalizeSize('L - Large'), 'lg');
 assert.equal(sandbox.normalizeState('Pressed'), 'pressed');
 assert.equal(sandbox.normalizeState('Selected'), 'selected');
 
+const selectedButtonInstance = node('button-instance', 'Button', 'INSTANCE');
+selectedButtonInstance.componentProperties = {
+  Type: { type: 'VARIANT', value: 'Primary' },
+  '📐 Size': { type: 'VARIANT', value: 'L - Large' },
+  State: { type: 'VARIANT', value: 'Pressed' },
+};
+assert.equal(
+  sandbox.collectTargets([selectedButtonInstance, surface, node('frame', 'Frame')]).map((item) => item.id).join(','),
+  'button-instance,surface',
+);
+assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['type']), 'Primary');
+assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['size']), 'L - Large');
+assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['state']), 'Pressed');
+
 function mapping({ variant, state, size = 'md', iconOnly = false, left = false, right = false, loading = false }) {
   const leadingIcon = loading ? loadingSpinner : left || iconOnly ? leftIcon : null;
   const children = [];
@@ -122,6 +136,14 @@ assert.equal(tokenFor(primaryRightIcon, 'padding-right'), 'Button/size/md/paddin
 const primaryTwoIcons = mapping({ variant: 'primary', state: 'default', left: true, right: true });
 assert.equal(tokenFor(primaryTwoIcons, 'padding-left'), 'Button/size/md/padding-x-icon');
 assert.equal(tokenFor(primaryTwoIcons, 'padding-right'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryTwoIcons, 'leading-icon'), 'Button/primary/fg');
+assert.equal(tokenFor(primaryTwoIcons, 'trailing-icon'), 'Button/primary/fg');
+
+for (const variant of ['secondary', 'outline', 'ghost', 'success', 'destructive', 'warning']) {
+  const preview = mapping({ variant, state: 'hover', left: true, right: true });
+  assert.equal(tokenFor(preview, 'leading-icon'), `Button/${variant}/fg`);
+  assert.equal(tokenFor(preview, 'trailing-icon'), `Button/${variant}/fg`);
+}
 
 const primaryLoadingSpinner = mapping({ variant: 'primary', state: 'loading', loading: true });
 assert.equal(tokenFor(primaryLoadingSpinner, 'padding-left'), 'Button/size/md/padding-x-icon');

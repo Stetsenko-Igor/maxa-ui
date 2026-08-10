@@ -17,7 +17,6 @@ const buttonVariants = cva("maxa-button", {
       success:   "maxa-button--success",
       destructive: "maxa-button--destructive",
       warning:   "maxa-button--warning",
-      text:      "maxa-button--text",
     },
     size: {
       xs: "maxa-button--xs",

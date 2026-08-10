@@ -167,7 +167,7 @@ describe("semantic.css — text + border", () => {
   it("defines foreground tokens for icons and non-text foregrounds", () => {
     for (const t of [
       "fg-primary", "fg-secondary", "fg-tertiary",
-      "fg-disabled", "fg-inverse", "fg-on-brand",
+      "fg-disabled", "fg-inverse", "fg-on-brand", "fg-on-color",
       "fg-brand", "fg-info", "fg-success",
       "fg-error", "fg-warning",
     ]) {
@@ -842,6 +842,14 @@ describe("figma import bundle", () => {
     expect(component?.["Popover/layout/width"]).toBe(320)
     expect(component?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
     expect(component?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
+    expect(component?.["Button/primary/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/secondary/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/outline/fg"]).toBe("{Color modes/foreground/fg-primary}")
+    expect(component?.["Button/ghost/fg"]).toBe("{Color modes/foreground/fg-primary}")
+    expect(component?.["Button/success/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/destructive/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/warning/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/text/bg"]).toBeUndefined()
     expect(component?.["Divider/size"]).toBe(1)
     expect(component?.["Utility/text-violet"]).toBe("{Color modes/utility/text-violet}")
   })
@@ -1147,7 +1155,6 @@ describe("figma component-based button tokens", () => {
       "success",
       "destructive",
       "warning",
-      "text",
       "disabled",
       "size",
       "icon-only",

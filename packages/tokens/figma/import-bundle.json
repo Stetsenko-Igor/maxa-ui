@@ -1274,6 +1274,7 @@
           "foreground/fg-disabled": "{Colors.Neutral.400}",
           "foreground/fg-inverse": "{Colors.Base.White}",
           "foreground/fg-on-brand": "{Colors.Neutral.950}",
+          "foreground/fg-on-color": "{Colors.Base.White}",
           "foreground/fg-brand": "{Colors.Brand.600}",
           "foreground/fg-success": "{Colors.Green.700}",
           "foreground/fg-error": "{Colors.Red.700}",
@@ -1517,6 +1518,7 @@
           "foreground/fg-disabled": "{Colors.Neutral.700}",
           "foreground/fg-inverse": "{Colors.Neutral.900}",
           "foreground/fg-on-brand": "{Colors.Neutral.950}",
+          "foreground/fg-on-color": "{Colors.Base.White}",
           "foreground/fg-brand": "{Colors.Brand.400}",
           "foreground/fg-success": "{Colors.Green.400}",
           "foreground/fg-error": "{Colors.Red.400}",
@@ -1761,6 +1763,7 @@
         "foreground/fg-disabled": "Disabled icons.",
         "foreground/fg-inverse": "Icons on dark or inverted surfaces.",
         "foreground/fg-on-brand": "Icons on strong brand fill.",
+        "foreground/fg-on-color": "Icons on strong colored fills.",
         "foreground/fg-brand": "Brand-colored icons.",
         "foreground/fg-success": "Success icons.",
         "foreground/fg-error": "Error and destructive icons.",
@@ -2004,6 +2007,7 @@
         "foreground/fg-disabled": "COLOR",
         "foreground/fg-inverse": "COLOR",
         "foreground/fg-on-brand": "COLOR",
+        "foreground/fg-on-color": "COLOR",
         "foreground/fg-brand": "COLOR",
         "foreground/fg-success": "COLOR",
         "foreground/fg-error": "COLOR",
@@ -2427,6 +2431,9 @@
           "ALL_FILLS"
         ],
         "foreground/fg-on-brand": [
+          "ALL_FILLS"
+        ],
+        "foreground/fg-on-color": [
           "ALL_FILLS"
         ],
         "foreground/fg-brand": [
@@ -3401,6 +3408,7 @@
           "Button/primary/bg-hover": "{Color modes/action/action-primary-hover}",
           "Button/primary/bg-active": "{Color modes/action/action-primary-active}",
           "Button/primary/text": "{Color modes/text/text-inverse}",
+          "Button/primary/fg": "{Color modes/foreground/fg-on-color}",
           "Button/primary/border": "{Color modes/action/action-primary}",
           "Button/primary/border-hover": "{Color modes/action/action-primary-hover}",
           "Button/primary/border-focus": "{Color modes/border/border-focus}",
@@ -3409,6 +3417,7 @@
           "Button/secondary/bg-active": "{Color modes/action/action-neutral-active}",
           "Button/secondary/text": "{Color modes/text/text-primary}",
           "Button/secondary/text-active": "{Color modes/text/text-on-neutral-action-active}",
+          "Button/secondary/fg": "{Color modes/foreground/fg-on-color}",
           "Button/secondary/border": "{Color modes/action/action-neutral}",
           "Button/secondary/border-hover": "{Color modes/action/action-neutral-hover}",
           "Button/secondary/border-focus": "{Color modes/border/border-focus}",
@@ -3417,6 +3426,7 @@
           "Button/outline/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "Button/outline/bg-active": "{Color modes/action/action-neutral-subtle-active}",
           "Button/outline/text": "{Color modes/text/text-primary}",
+          "Button/outline/fg": "{Color modes/foreground/fg-primary}",
           "Button/outline/border": "{Color modes/border/border-primary}",
           "Button/outline/border-hover": "{Color modes/border/border-neutral-muted}",
           "Button/outline/border-active": "{Color modes/border/border-neutral-muted}",
@@ -3425,6 +3435,7 @@
           "Button/ghost/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "Button/ghost/bg-active": "{Color modes/action/action-neutral-subtle-active}",
           "Button/ghost/text": "{Color modes/text/text-secondary}",
+          "Button/ghost/fg": "{Color modes/foreground/fg-primary}",
           "Button/ghost/border": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/border-hover": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/border-focus": "{Color modes/border/border-focus}",
@@ -3446,6 +3457,7 @@
           "Button/success/text": "{Color modes/text/text-on-success}",
           "Button/success/text-hover": "{Color modes/text/text-on-success}",
           "Button/success/text-active": "{Color modes/text/text-on-success}",
+          "Button/success/fg": "{Color modes/foreground/fg-on-color}",
           "Button/success/border": "{Color modes/action/action-success}",
           "Button/success/border-hover": "{Color modes/action/action-success-hover}",
           "Button/success/border-focus": "{Color modes/border/border-focus}",
@@ -3453,6 +3465,7 @@
           "Button/destructive/bg-hover": "{Color modes/action/action-destructive-hover}",
           "Button/destructive/bg-active": "{Color modes/action/action-destructive-active}",
           "Button/destructive/text": "{Color modes/text/text-on-destructive}",
+          "Button/destructive/fg": "{Color modes/foreground/fg-on-color}",
           "Button/destructive/border": "{Color modes/action/action-destructive}",
           "Button/destructive/border-hover": "{Color modes/action/action-destructive-hover}",
           "Button/destructive/border-focus": "{Color modes/border/border-focus}",
@@ -3462,18 +3475,10 @@
           "Button/warning/text": "{Color modes/text/text-on-warning}",
           "Button/warning/text-hover": "{Color modes/text/text-on-warning}",
           "Button/warning/text-active": "{Color modes/text/text-inverse}",
+          "Button/warning/fg": "{Color modes/foreground/fg-on-color}",
           "Button/warning/border": "{Color modes/action/action-warning}",
           "Button/warning/border-hover": "{Color modes/action/action-warning-hover}",
           "Button/warning/border-focus": "{Color modes/border/border-focus}",
-          "Button/text/bg": "{Primitives/Colors/Base/Transparent}",
-          "Button/text/bg-hover": "{Primitives/Colors/Base/Transparent}",
-          "Button/text/bg-active": "{Primitives/Colors/Base/Transparent}",
-          "Button/text/text": "{Color modes/text/text-primary}",
-          "Button/text/text-hover": "{Color modes/action/action-primary}",
-          "Button/text/text-active": "{Color modes/action/action-primary-active}",
-          "Button/text/border": "{Primitives/Colors/Base/Transparent}",
-          "Button/text/border-hover": "{Primitives/Colors/Base/Transparent}",
-          "Button/text/border-focus": "{Color modes/border/border-focus}",
           "Button/disabled/opacity": 50,
           "Button/size/xs/height": 24,
           "Button/size/xs/padding-x": "{Spacing/spacing-md}",
@@ -4455,6 +4460,7 @@
         "Button/primary/bg-hover": "Button, primary: background (hover state).",
         "Button/primary/bg-active": "Button, primary: background (active state).",
         "Button/primary/text": "Button, primary: text color.",
+        "Button/primary/fg": "Button, primary: icon foreground color.",
         "Button/primary/border": "Button, primary: border.",
         "Button/primary/border-hover": "Button, primary: border (hover state).",
         "Button/primary/border-focus": "Button, primary: border (focus state).",
@@ -4463,6 +4469,7 @@
         "Button/secondary/bg-active": "Button, secondary: background (active state).",
         "Button/secondary/text": "Button, secondary: text color.",
         "Button/secondary/text-active": "Button, secondary: text color on the active neutral surface.",
+        "Button/secondary/fg": "Button, secondary: icon foreground color.",
         "Button/secondary/border": "Button, secondary: border.",
         "Button/secondary/border-hover": "Button, secondary: border (hover state).",
         "Button/secondary/border-focus": "Button, secondary: border (focus state).",
@@ -4471,6 +4478,7 @@
         "Button/outline/bg-hover": "Button, outline: background (hover state).",
         "Button/outline/bg-active": "Button, outline: background (active state).",
         "Button/outline/text": "Button, outline: text color.",
+        "Button/outline/fg": "Button, outline: icon foreground color.",
         "Button/outline/border": "Button, outline: border.",
         "Button/outline/border-hover": "Button, outline: border (hover state).",
         "Button/outline/border-active": "Button, outline: border (active state).",
@@ -4479,6 +4487,7 @@
         "Button/ghost/bg-hover": "Button, ghost: background (hover state).",
         "Button/ghost/bg-active": "Button, ghost: background (active state).",
         "Button/ghost/text": "Button, ghost: text color.",
+        "Button/ghost/fg": "Button, ghost: icon foreground color.",
         "Button/ghost/border": "Button, ghost: border.",
         "Button/ghost/border-hover": "Button, ghost: border (hover state).",
         "Button/ghost/border-focus": "Button, ghost: border (focus state).",
@@ -4500,6 +4509,7 @@
         "Button/success/text": "Button, success: text color.",
         "Button/success/text-hover": "Button, success: text color (hover state).",
         "Button/success/text-active": "Button, success: text color (active state).",
+        "Button/success/fg": "Button, success: icon foreground color.",
         "Button/success/border": "Button, success: border.",
         "Button/success/border-hover": "Button, success: border (hover state).",
         "Button/success/border-focus": "Button, success: border (focus state).",
@@ -4507,6 +4517,7 @@
         "Button/destructive/bg-hover": "Button, destructive: background (hover state).",
         "Button/destructive/bg-active": "Button, destructive: background (active state).",
         "Button/destructive/text": "Button, destructive: text color.",
+        "Button/destructive/fg": "Button, destructive: icon foreground color.",
         "Button/destructive/border": "Button, destructive: border.",
         "Button/destructive/border-hover": "Button, destructive: border (hover state).",
         "Button/destructive/border-focus": "Button, destructive: border (focus state).",
@@ -4516,18 +4527,10 @@
         "Button/warning/text": "Button, warning: text color.",
         "Button/warning/text-hover": "Button, warning: text color (hover state).",
         "Button/warning/text-active": "Button, warning: text color (active state).",
+        "Button/warning/fg": "Button, warning: icon foreground color.",
         "Button/warning/border": "Button, warning: border.",
         "Button/warning/border-hover": "Button, warning: border (hover state).",
         "Button/warning/border-focus": "Button, warning: border (focus state).",
-        "Button/text/bg": "Button, text: background.",
-        "Button/text/bg-hover": "Button, text: background (hover state).",
-        "Button/text/bg-active": "Button, text: background (active state).",
-        "Button/text/text": "Button, text: text color.",
-        "Button/text/text-hover": "Button, text: text color (hover state).",
-        "Button/text/text-active": "Button, text: text color (active state).",
-        "Button/text/border": "Button, text: border.",
-        "Button/text/border-hover": "Button, text: border (hover state).",
-        "Button/text/border-focus": "Button, text: border (focus state).",
         "Button/disabled/opacity": "Button, disabled: opacity.",
         "Button/size/xs/height": "Button, size xs: height.",
         "Button/size/xs/padding-x": "Button, size xs: padding x.",
@@ -5508,6 +5511,7 @@
         "Button/primary/bg-hover": "COLOR",
         "Button/primary/bg-active": "COLOR",
         "Button/primary/text": "COLOR",
+        "Button/primary/fg": "COLOR",
         "Button/primary/border": "COLOR",
         "Button/primary/border-hover": "COLOR",
         "Button/primary/border-focus": "COLOR",
@@ -5516,6 +5520,7 @@
         "Button/secondary/bg-active": "COLOR",
         "Button/secondary/text": "COLOR",
         "Button/secondary/text-active": "COLOR",
+        "Button/secondary/fg": "COLOR",
         "Button/secondary/border": "COLOR",
         "Button/secondary/border-hover": "COLOR",
         "Button/secondary/border-focus": "COLOR",
@@ -5524,6 +5529,7 @@
         "Button/outline/bg-hover": "COLOR",
         "Button/outline/bg-active": "COLOR",
         "Button/outline/text": "COLOR",
+        "Button/outline/fg": "COLOR",
         "Button/outline/border": "COLOR",
         "Button/outline/border-hover": "COLOR",
         "Button/outline/border-active": "COLOR",
@@ -5532,6 +5538,7 @@
         "Button/ghost/bg-hover": "COLOR",
         "Button/ghost/bg-active": "COLOR",
         "Button/ghost/text": "COLOR",
+        "Button/ghost/fg": "COLOR",
         "Button/ghost/border": "COLOR",
         "Button/ghost/border-hover": "COLOR",
         "Button/ghost/border-focus": "COLOR",
@@ -5553,6 +5560,7 @@
         "Button/success/text": "COLOR",
         "Button/success/text-hover": "COLOR",
         "Button/success/text-active": "COLOR",
+        "Button/success/fg": "COLOR",
         "Button/success/border": "COLOR",
         "Button/success/border-hover": "COLOR",
         "Button/success/border-focus": "COLOR",
@@ -5560,6 +5568,7 @@
         "Button/destructive/bg-hover": "COLOR",
         "Button/destructive/bg-active": "COLOR",
         "Button/destructive/text": "COLOR",
+        "Button/destructive/fg": "COLOR",
         "Button/destructive/border": "COLOR",
         "Button/destructive/border-hover": "COLOR",
         "Button/destructive/border-focus": "COLOR",
@@ -5569,18 +5578,10 @@
         "Button/warning/text": "COLOR",
         "Button/warning/text-hover": "COLOR",
         "Button/warning/text-active": "COLOR",
+        "Button/warning/fg": "COLOR",
         "Button/warning/border": "COLOR",
         "Button/warning/border-hover": "COLOR",
         "Button/warning/border-focus": "COLOR",
-        "Button/text/bg": "COLOR",
-        "Button/text/bg-hover": "COLOR",
-        "Button/text/bg-active": "COLOR",
-        "Button/text/text": "COLOR",
-        "Button/text/text-hover": "COLOR",
-        "Button/text/text-active": "COLOR",
-        "Button/text/border": "COLOR",
-        "Button/text/border-hover": "COLOR",
-        "Button/text/border-focus": "COLOR",
         "Button/disabled/opacity": "FLOAT",
         "Button/size/xs/height": "FLOAT",
         "Button/size/xs/padding-x": "FLOAT",
@@ -6775,6 +6776,10 @@
         "Button/primary/text": [
           "TEXT_FILL"
         ],
+        "Button/primary/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
+        ],
         "Button/primary/border": [
           "STROKE_COLOR"
         ],
@@ -6798,6 +6803,10 @@
         ],
         "Button/secondary/text-active": [
           "TEXT_FILL"
+        ],
+        "Button/secondary/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/secondary/border": [
           "STROKE_COLOR"
@@ -6823,6 +6832,10 @@
         "Button/outline/text": [
           "TEXT_FILL"
         ],
+        "Button/outline/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
+        ],
         "Button/outline/border": [
           "STROKE_COLOR"
         ],
@@ -6846,6 +6859,10 @@
         ],
         "Button/ghost/text": [
           "TEXT_FILL"
+        ],
+        "Button/ghost/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/ghost/border": [
           "STROKE_COLOR"
@@ -6875,13 +6892,16 @@
           "TEXT_FILL"
         ],
         "Button/link/fg": [
-          "SHAPE_FILL"
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/link/fg-hover": [
-          "SHAPE_FILL"
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/link/fg-active": [
-          "SHAPE_FILL"
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/link/border": [
           "STROKE_COLOR"
@@ -6910,6 +6930,10 @@
         "Button/success/text-active": [
           "TEXT_FILL"
         ],
+        "Button/success/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
+        ],
         "Button/success/border": [
           "STROKE_COLOR"
         ],
@@ -6930,6 +6954,10 @@
         ],
         "Button/destructive/text": [
           "TEXT_FILL"
+        ],
+        "Button/destructive/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
         ],
         "Button/destructive/border": [
           "STROKE_COLOR"
@@ -6958,6 +6986,10 @@
         "Button/warning/text-active": [
           "TEXT_FILL"
         ],
+        "Button/warning/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
+        ],
         "Button/warning/border": [
           "STROKE_COLOR"
         ],
@@ -6965,33 +6997,6 @@
           "STROKE_COLOR"
         ],
         "Button/warning/border-focus": [
-          "STROKE_COLOR"
-        ],
-        "Button/text/bg": [
-          "TEXT_FILL"
-        ],
-        "Button/text/bg-hover": [
-          "TEXT_FILL"
-        ],
-        "Button/text/bg-active": [
-          "TEXT_FILL"
-        ],
-        "Button/text/text": [
-          "TEXT_FILL"
-        ],
-        "Button/text/text-hover": [
-          "TEXT_FILL"
-        ],
-        "Button/text/text-active": [
-          "TEXT_FILL"
-        ],
-        "Button/text/border": [
-          "STROKE_COLOR"
-        ],
-        "Button/text/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/text/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/disabled/opacity": [

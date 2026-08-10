@@ -371,6 +371,11 @@
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
+    "fg-on-color": {
+      "$description": "Icons on strong colored fills.",
+      "$value": "{Colors.Base.White}",
+      "$type": "color"
+    },
     "fg-brand": {
       "$description": "Brand-colored icons.",
       "$value": "{Colors.Brand.600}",

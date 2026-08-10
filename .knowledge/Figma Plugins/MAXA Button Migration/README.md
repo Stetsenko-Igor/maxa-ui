@@ -1,10 +1,10 @@
-# MAXA Button Migration v5
+# MAXA Button Migration v6
 
 This plugin migrates legacy MAXA Button component sets to the current Foundation variables.
 
 Current scope:
 
-- analyze existing legacy Button components
+- analyze existing Button instances, legacy components, and component sets
 - identify likely Button family, size, and state
 - detect legacy styling dependencies such as local styles and hardcoded values
 - report warnings and confidence before any migration happens
@@ -18,10 +18,12 @@ Current status:
 - bindings target the `Component-based` collection, for example `Button/primary/bg`, `Button/size/md/height`, and `Button/font-family`
 - `XS`, `Pressed`, `Selected`, `Focus`, `Loading`, `Positive`, and `Negative` values are normalized to the current token model
 - `Positive` maps to `Button/success/*`; `Negative` maps to `Button/destructive/*`
-- Link labels use `Button/link/text*`, while Link icons use the dedicated `Button/link/fg*` state tokens
+- labels use `Button/{type}/text*`, while icons use the dedicated `Button/{type}/fg*` tokens
+- Link keeps state-aware icon tokens: `Button/link/fg`, `Button/link/fg-hover`, and `Button/link/fg-active`
 - Focus keeps the base background and binds `border-focus`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
 - Loading keeps the base variant styling and applies `Button/disabled/opacity`
 - both icons in two-icon variants receive color and size bindings
+- selected Button instances are supported, so already-swapped icons can be rebound and keep their foreground token while Dropdown variants change
 - normal buttons bind `padding-x-icon` only on an edge that contains an icon or loading spinner, while the opposite edge keeps `padding-x`
 - resolved gaps follow the published size scale: `xs=4`, `sm=6`, `md=8`, `lg=8`
 - Link variants use Hug contents on both axes, bind all four paddings to `spacing-none`, and do not use container height, radius, horizontal-padding, or icon-only size tokens
@@ -38,7 +40,7 @@ Recommended workflow:
 2. Keep **Remove stale variables during import** off for migration passes unless you are intentionally cleaning old variables.
 3. Keep **Remove stale collection modes** on so `Component-based` remains a single `Default` mode.
 4. Make sure the Figma file has access to `🟠 [MAXA] Foundation` and its `Component-based` variable collection.
-5. Select Button components or component sets.
+5. Select Button instances, components, or component sets.
 6. Run `Analyze selection`, review confidence and warnings, then run `Apply mapping`.
 
 Validation:
@@ -71,7 +73,7 @@ Validated legacy values:
 - states: `Default`, `Hover`, `Pressed`, `Selected`, `Focus`, `Loading`, `Disabled`
 - icon arrangements: icon-only, left, right, dropdown indicator, and two-icon combinations
 
-Out of scope in v5:
+Out of scope in v6:
 
 - split buttons and menu-button behavior (a dropdown indicator inside a normal Button is supported)
 - close buttons

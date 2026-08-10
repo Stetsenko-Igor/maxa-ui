@@ -21,6 +21,11 @@
         "$value": "{Color modes/text/text-inverse}",
         "$type": "color"
       },
+      "fg": {
+        "$description": "Button, primary: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-on-color}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, primary: border.",
         "$value": "{Color modes/action/action-primary}",
@@ -61,6 +66,11 @@
       "text-active": {
         "$description": "Button, secondary: text color on the active neutral surface.",
         "$value": "{Color modes/text/text-on-neutral-action-active}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, secondary: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-on-color}",
         "$type": "color"
       },
       "border": {
@@ -105,6 +115,11 @@
         "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
+      "fg": {
+        "$description": "Button, outline: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-primary}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, outline: border.",
         "$value": "{Color modes/border/border-primary}",
@@ -145,6 +160,11 @@
       "text": {
         "$description": "Button, ghost: text color.",
         "$value": "{Color modes/text/text-secondary}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, ghost: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-primary}",
         "$type": "color"
       },
       "border": {
@@ -256,6 +276,11 @@
         "$value": "{Color modes/text/text-on-success}",
         "$type": "color"
       },
+      "fg": {
+        "$description": "Button, success: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-on-color}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, success: border.",
         "$value": "{Color modes/action/action-success}",
@@ -291,6 +316,11 @@
       "text": {
         "$description": "Button, destructive: text color.",
         "$value": "{Color modes/text/text-on-destructive}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, destructive: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-on-color}",
         "$type": "color"
       },
       "border": {
@@ -340,6 +370,11 @@
         "$value": "{Color modes/text/text-inverse}",
         "$type": "color"
       },
+      "fg": {
+        "$description": "Button, warning: icon foreground color.",
+        "$value": "{Color modes/foreground/fg-on-color}",
+        "$type": "color"
+      },
       "border": {
         "$description": "Button, warning: border.",
         "$value": "{Color modes/action/action-warning}",
@@ -352,53 +387,6 @@
       },
       "border-focus": {
         "$description": "Button, warning: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
-        "$type": "color"
-      }
-    },
-    "text": {
-      "bg": {
-        "$description": "Button, text: background.",
-        "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "bg-hover": {
-        "$description": "Button, text: background (hover state).",
-        "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "bg-active": {
-        "$description": "Button, text: background (active state).",
-        "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "text": {
-        "$description": "Button, text: text color.",
-        "$value": "{Color modes/text/text-primary}",
-        "$type": "color"
-      },
-      "text-hover": {
-        "$description": "Button, text: text color (hover state).",
-        "$value": "{Color modes/action/action-primary}",
-        "$type": "color"
-      },
-      "text-active": {
-        "$description": "Button, text: text color (active state).",
-        "$value": "{Color modes/action/action-primary-active}",
-        "$type": "color"
-      },
-      "border": {
-        "$description": "Button, text: border.",
-        "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "border-hover": {
-        "$description": "Button, text: border (hover state).",
-        "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, text: border (focus state).",
         "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
