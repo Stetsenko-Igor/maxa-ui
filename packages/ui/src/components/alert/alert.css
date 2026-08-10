@@ -148,6 +148,7 @@
   --button-outline-bg-active:    color-mix(in srgb, var(--alert-action-color) 16%, transparent);
   --button-outline-border:       var(--alert-action-color);
   --button-outline-border-hover: var(--alert-action-color);
+  --button-outline-border-active: var(--alert-action-color);
   --button-outline-text:         var(--alert-action-color);
 }
 
@@ -156,6 +157,7 @@
 .maxa-alert[data-layout="stacked"] .maxa-alert__action.maxa-button--outline {
   --button-outline-border:       var(--alert-action-color);
   --button-outline-border-hover: var(--alert-action-color);
+  --button-outline-border-active: var(--alert-action-color);
   --button-outline-text:         var(--alert-action-color);
 }
 

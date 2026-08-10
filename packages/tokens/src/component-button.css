@@ -30,7 +30,8 @@
   --button-outline-bg-active:    var(--color-action-neutral-subtle-active);
   --button-outline-text:         var(--color-text-primary);
   --button-outline-border:       var(--color-border-primary);
-  --button-outline-border-hover: var(--color-border-secondary);
+  --button-outline-border-hover: var(--color-border-neutral-muted);
+  --button-outline-border-active: var(--color-border-neutral-muted);
   --button-outline-border-focus: var(--color-border-focus);
 
   /* ghost */
@@ -102,8 +103,9 @@
 
   /* xs */
   --button-size-xs-height:      24px;
-  --button-size-xs-padding-x:   6px;
-  --button-size-xs-gap:         2px;
+  --button-size-xs-padding-x:   8px;
+  --button-size-xs-padding-x-icon: 6px;
+  --button-size-xs-gap:         4px;
   --button-size-xs-radius:      var(--radius-xs);
   --button-size-xs-text:        var(--text-sm);
   --button-size-xs-line-height: 14px;
@@ -113,7 +115,8 @@
   /* sm */
   --button-size-sm-height:      28px;
   --button-size-sm-padding-x:   10px;
-  --button-size-sm-gap:         4px;
+  --button-size-sm-padding-x-icon: 8px;
+  --button-size-sm-gap:         6px;
   --button-size-sm-radius:      var(--radius-xs);
   --button-size-sm-text:        var(--text-sm);
   --button-size-sm-line-height: 14px;
@@ -123,7 +126,8 @@
   /* md */
   --button-size-md-height:      36px;
   --button-size-md-padding-x:   16px;
-  --button-size-md-gap:         6px;
+  --button-size-md-padding-x-icon: 14px;
+  --button-size-md-gap:         8px;
   --button-size-md-radius:      var(--radius-xs);
   --button-size-md-text:        var(--text-sm);
   --button-size-md-line-height: 14px;
@@ -133,6 +137,7 @@
   /* lg */
   --button-size-lg-height:      48px;
   --button-size-lg-padding-x:   24px;
+  --button-size-lg-padding-x-icon: 20px;
   --button-size-lg-gap:         8px;
   --button-size-lg-radius:      var(--radius-sm);
   --button-size-lg-text:        var(--text-md);

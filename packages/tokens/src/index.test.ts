@@ -149,7 +149,7 @@ describe("semantic.css — text + border", () => {
       "border-primary", "border-secondary", "border-tertiary", "border-focus",
       "border-brand", "border-error-strong", "border-error-subtle", "border-info-strong", "border-info-subtle",
       "border-success-strong", "border-success-subtle", "border-warning-strong", "border-warning-subtle",
-      "border-neutral-strong", "border-neutral-subtle",
+      "border-neutral-strong", "border-neutral-muted", "border-neutral-subtle",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -252,9 +252,14 @@ describe("semantic.css — bg + action", () => {
     expect(dark).toContain("--color-bg-warning-subtle:    var(--color-yellow-950);")
     expect(dark).toContain("--color-bg-error-subtle:      var(--color-red-950);")
     expect(light).toContain("--color-feedback-info-bg:                var(--color-blue-100);")
+    expect(light).toContain("--color-feedback-success-bg:             var(--color-green-100);")
+    expect(light).toContain("--color-feedback-warning-bg:             var(--color-orange-100);")
+    expect(light).toContain("--color-feedback-error-bg:               var(--color-red-100);")
     expect(light).toContain("--color-feedback-success-action:         var(--color-green-500);")
     expect(light).toContain("--color-feedback-error-action-hover:     var(--color-red-700);")
-    expect(dark).toContain("--color-feedback-info-bg:                var(--color-blue-700);")
+    expect(dark).toContain("--color-feedback-info-bg:                var(--color-blue-800);")
+    expect(dark).toContain("--color-feedback-success-bg:             var(--color-green-900);")
+    expect(dark).toContain("--color-feedback-error-bg:               var(--color-red-800);")
     expect(dark).toContain("--color-feedback-success-action:         var(--color-green-400);")
     expect(dark).toContain("--color-feedback-error-action-hover:     var(--color-red-300);")
     expect(css).not.toContain("--color-status-")
@@ -545,6 +550,9 @@ describe("figma import bundle", () => {
     expect(dark?.["utility/bg-gray-muted"]).toBe("{Colors.Gray.900}")
     expect(light?.["border/border-info-strong"]).toBe("{Colors.Blue.700}")
     expect(dark?.["border/border-info-strong"]).toBe("{Colors.Blue.500}")
+    expect(light?.["border/border-neutral-muted"]).toBe("{Colors.Neutral.400}")
+    expect(dark?.["border/border-neutral-muted"]).toBe("{Colors.Neutral.600}")
+    expect(dark?.["border/border-neutral-strong"]).toBe("{Colors.Neutral.300}")
     expect(light?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
     expect(dark?.["border/border-focus-soft"]).toBe("{Colors.Blue.150}")
     expect(Object.keys(light ?? {}).some((name) => name.startsWith("component/"))).toBe(false)
@@ -571,6 +579,8 @@ describe("figma import bundle", () => {
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
     expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
+    expect(component?.["Button/outline/border-hover"]).toBe("{Color modes/border/border-neutral-muted}")
+    expect(component?.["Button/outline/border-active"]).toBe("{Color modes/border/border-neutral-muted}")
   })
 
   it("routes Alert through the dedicated feedback namespace backed directly by primitives", () => {
@@ -597,22 +607,23 @@ describe("figma import bundle", () => {
     )).toBe(true)
   })
 
-  it("keeps dark Alert feedback surfaces saturated without becoming near-black", () => {
+  it("matches the published dark Alert feedback surfaces", () => {
     const dark = bundle.collections["Color modes"]?.modes.Dark
 
-    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.700}")
+    expect(dark?.["feedback/info/bg"]).toBe("{Colors.Blue.800}")
     expect(dark?.["feedback/info/border"]).toBe("{Colors.Blue.600}")
     expect(dark?.["feedback/info/accent"]).toBe("{Colors.Blue.400}")
 
-    expect(dark?.["feedback/success/bg"]).toBe("{Colors.Green.800}")
+    expect(dark?.["feedback/success/bg"]).toBe("{Colors.Green.900}")
     expect(dark?.["feedback/success/border"]).toBe("{Colors.Green.700}")
     expect(dark?.["feedback/success/accent"]).toBe("{Colors.Green.500}")
 
     expect(dark?.["feedback/warning/bg"]).toBe("{Colors.Orange.900}")
     expect(dark?.["feedback/warning/border"]).toBe("{Colors.Orange.700}")
     expect(dark?.["feedback/warning/accent"]).toBe("{Colors.Orange.600}")
+    expect(bundle.collections.Primitives?.modes.Value?.["Colors/Orange/900"]).toBe("#6d240d")
 
-    expect(dark?.["feedback/error/bg"]).toBe("{Colors.Red.700}")
+    expect(dark?.["feedback/error/bg"]).toBe("{Colors.Red.800}")
     expect(dark?.["feedback/error/border"]).toBe("{Colors.Red.500}")
     expect(dark?.["feedback/error/accent"]).toBe("{Colors.Red.300}")
 
@@ -1201,6 +1212,8 @@ describe("figma component-based button tokens", () => {
   it("keeps outline transparent with an explicit optional surface token", () => {
     expect(lightFile.Button.outline.bg?.$value).toBe("{Primitives/Colors/Base/Transparent}")
     expect(lightFile.Button.outline["bg-surface"]?.$value).toBe("{Color modes/background/bg-surface}")
+    expect(lightFile.Button.outline["border-hover"]?.$value).toBe("{Color modes/border/border-neutral-muted}")
+    expect(lightFile.Button.outline["border-active"]?.$value).toBe("{Color modes/border/border-neutral-muted}")
   })
 
   it("defines size, typography, icon-size, and icon-only tokens", () => {
@@ -1209,6 +1222,8 @@ describe("figma component-based button tokens", () => {
 
     expect(size.sm.height?.$value).toBe(28)
     expect(size.sm["padding-x"]?.$value).toBe(10)
+    expect(size.sm["padding-x-icon"]?.$value).toBe("{Spacing/spacing-md}")
+    expect(size.sm.gap?.$value).toBe("{Spacing/spacing-sm}")
     expect(size.sm.text?.$value).toBe("{Typography/Font size/text-sm}")
     expect(size.sm["line-height"]?.$value).toBe(14)
     expect(size.sm.weight?.$value).toBe("{Typography/Font weight/semibold}")
@@ -1216,15 +1231,23 @@ describe("figma component-based button tokens", () => {
 
     expect(size.md.height?.$value).toBe(36)
     expect(size.md["padding-x"]?.$value).toBe("{Spacing/spacing-xl}")
+    expect(size.md["padding-x-icon"]?.$value).toBe(14)
+    expect(size.md.gap?.$value).toBe("{Spacing/spacing-md}")
     expect(size.md["icon-size"]?.$value).toBe(16)
 
     expect(size.lg.height?.$value).toBe(48)
+    expect(size.lg["padding-x-icon"]?.$value).toBe("{Spacing/spacing-2xl}")
+    expect(size.lg.gap?.$value).toBe("{Spacing/spacing-md}")
     expect(size.lg.radius?.$value).toBe("{Radius/radius-sm}")
     expect(size.lg["icon-size"]?.$value).toBe(20)
 
     expect(iconOnly.sm.size?.$value).toBe(28)
     expect(iconOnly.md.size?.$value).toBe(36)
     expect(iconOnly.lg.size?.$value).toBe(48)
+
+    expect(size.xs["padding-x"]?.$value).toBe("{Spacing/spacing-md}")
+    expect(size.xs["padding-x-icon"]?.$value).toBe("{Spacing/spacing-sm}")
+    expect(size.xs.gap?.$value).toBe("{Spacing/spacing-xs}")
   })
 })
 

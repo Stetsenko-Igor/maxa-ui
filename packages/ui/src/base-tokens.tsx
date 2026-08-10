@@ -92,6 +92,7 @@ export type BorderColorToken =
   | "success-strong"
   | "warning-strong"
   | "neutral-strong"
+  | "neutral-muted"
   | "neutral-subtle"
 
 export type BoxProps = HTMLAttributes<HTMLElement> & {

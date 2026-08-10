@@ -61,6 +61,7 @@
   --color-border-warning-subtle: var(--color-orange-200);
   --color-border-error-subtle:   var(--color-red-200);
   --color-border-neutral-strong: var(--color-neutral-700);
+  --color-border-neutral-muted:  var(--color-neutral-400);
   --color-border-neutral-subtle: var(--color-neutral-300);
 
   /* ── Background — surface elevation ─────────────────────────────── */
@@ -250,17 +251,17 @@
   --color-feedback-info-accent:            var(--color-blue-600);
   --color-feedback-info-action:            var(--color-blue-500);
   --color-feedback-info-action-hover:      var(--color-blue-700);
-  --color-feedback-success-bg:             var(--color-green-50);
+  --color-feedback-success-bg:             var(--color-green-100);
   --color-feedback-success-border:         var(--color-green-300);
   --color-feedback-success-accent:         var(--color-green-700);
   --color-feedback-success-action:         var(--color-green-500);
   --color-feedback-success-action-hover:   var(--color-green-700);
-  --color-feedback-warning-bg:             var(--color-orange-50);
+  --color-feedback-warning-bg:             var(--color-orange-100);
   --color-feedback-warning-border:         var(--color-orange-200);
   --color-feedback-warning-accent:         var(--color-yellow-600);
   --color-feedback-warning-action:         var(--color-orange-700);
   --color-feedback-warning-action-hover:   var(--color-orange-700);
-  --color-feedback-error-bg:               var(--color-red-50);
+  --color-feedback-error-bg:               var(--color-red-100);
   --color-feedback-error-border:           var(--color-red-200);
   --color-feedback-error-accent:           var(--color-red-700);
   --color-feedback-error-action:           var(--color-red-500);
@@ -327,7 +328,8 @@
   --color-border-info-strong:    var(--color-blue-500);
   --color-border-success-strong: var(--color-green-500);
   --color-border-warning-strong: var(--color-orange-500);
-  --color-border-neutral-strong: var(--color-neutral-500);
+  --color-border-neutral-strong: var(--color-neutral-300);
+  --color-border-neutral-muted:  var(--color-neutral-600);
   --color-border-neutral-subtle: var(--color-neutral-700);
 
   /* ── Background — dark (surface elevation) ──────────────────────── */
@@ -488,12 +490,12 @@
 
   /* ── Feedback — dark ────────────────────────────────────────────── */
   --color-feedback-text:                   var(--color-neutral-100);
-  --color-feedback-info-bg:                var(--color-blue-700);
+  --color-feedback-info-bg:                var(--color-blue-800);
   --color-feedback-info-border:            var(--color-blue-600);
   --color-feedback-info-accent:            var(--color-blue-400);
   --color-feedback-info-action:            var(--color-blue-400);
   --color-feedback-info-action-hover:      var(--color-blue-300);
-  --color-feedback-success-bg:             var(--color-green-800);
+  --color-feedback-success-bg:             var(--color-green-900);
   --color-feedback-success-border:         var(--color-green-700);
   --color-feedback-success-accent:         var(--color-green-500);
   --color-feedback-success-action:         var(--color-green-400);
@@ -503,7 +505,7 @@
   --color-feedback-warning-accent:         var(--color-orange-600);
   --color-feedback-warning-action:         var(--color-orange-400);
   --color-feedback-warning-action-hover:   var(--color-orange-300);
-  --color-feedback-error-bg:               var(--color-red-700);
+  --color-feedback-error-bg:               var(--color-red-800);
   --color-feedback-error-border:           var(--color-red-500);
   --color-feedback-error-accent:           var(--color-red-300);
   --color-feedback-error-action:           var(--color-red-400);

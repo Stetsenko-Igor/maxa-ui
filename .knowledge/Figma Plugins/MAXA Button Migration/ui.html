@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>MAXA Button Migration v2</title>
+  <title>MAXA Button Migration v5</title>
   <style>
     html { height: 100%; }
     body {
@@ -271,7 +271,7 @@
   </style>
 </head>
 <body>
-  <h1>MAXA Button Migration v2</h1>
+  <h1>MAXA Button Migration v5</h1>
   <p>Analyze selected Button components first. Keep detection automatic or force one Button type, review the token mapping, then apply bindings from the MAXA Foundation library.</p>
 
   <div class="panel">
@@ -603,13 +603,14 @@ hardcoded text color: ${item.legacyDependencies.hasHardcodedTextColor ? 'yes' : 
       if (!preview) return '';
       const rows = (preview.assignments || []).map((assignment) => {
         const checked = isAssignmentSelected(item.id, assignment.id) ? 'checked' : '';
+        const target = assignment.token || assignment.description || 'Direct layout rule';
         return `
           <label class="mapping-row">
             <input type="checkbox" data-component-id="${escapeHtml(item.id)}" data-assignment-id="${escapeHtml(assignment.id)}" ${checked} />
             <span>${escapeHtml(assignment.role)}</span>
             <span>${escapeHtml(formatNode(assignment.sourceNode))}</span>
             <div>
-              <code>${escapeHtml(assignment.token)}</code>
+              <code>${escapeHtml(target)}</code>
               ${renderTokenStatus(assignment.token)}
             </div>
           </label>
@@ -626,7 +627,7 @@ size: ${escapeHtml(preview.targetSize)}</div>
             <span></span>
             <span>Role</span>
             <span>Current node</span>
-            <span>Target token</span>
+            <span>Target token / rule</span>
           </div>
           ${rows}
         </div>
@@ -635,6 +636,7 @@ size: ${escapeHtml(preview.targetSize)}</div>
     }
 
     function renderTokenStatus(token) {
+      if (!token) return '<span class="token-status">direct Figma layout rule</span>';
       const resolution = currentLibraryResolution && currentLibraryResolution.tokenMap
         ? currentLibraryResolution.tokenMap[token]
         : null;

@@ -78,6 +78,7 @@ const borderTokens = [
   "success-strong",
   "warning-strong",
   "neutral-strong",
+  "neutral-muted",
   "neutral-subtle",
 ] as const
 

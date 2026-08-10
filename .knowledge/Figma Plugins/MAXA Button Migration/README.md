@@ -1,4 +1,4 @@
-# MAXA Button Migration v2
+# MAXA Button Migration v5
 
 This plugin migrates legacy MAXA Button component sets to the current Foundation variables.
 
@@ -19,9 +19,17 @@ Current status:
 - `XS`, `Pressed`, `Selected`, `Focus`, `Loading`, `Positive`, and `Negative` values are normalized to the current token model
 - `Positive` maps to `Button/success/*`; `Negative` maps to `Button/destructive/*`
 - Link labels use `Button/link/text*`, while Link icons use the dedicated `Button/link/fg*` state tokens
-- Focus keeps the base background and binds `border-focus`; Pressed and Selected bind active foreground/background tokens
+- Focus keeps the base background and binds `border-focus`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
 - Loading keeps the base variant styling and applies `Button/disabled/opacity`
 - both icons in two-icon variants receive color and size bindings
+- normal buttons bind `padding-x-icon` only on an edge that contains an icon or loading spinner, while the opposite edge keeps `padding-x`
+- resolved gaps follow the published size scale: `xs=4`, `sm=6`, `md=8`, `lg=8`
+- Link variants use Hug contents on both axes, bind all four paddings to `spacing-none`, and do not use container height, radius, horizontal-padding, or icon-only size tokens
+- Link content still uses the shared size-specific gap, typography, and icon-size tokens
+- icon color migration covers existing solid fills and strokes, including Loading Spinner rings
+- repeat runs are idempotent: bindings that already target the correct variable are left untouched
+- hidden legacy `bgr-filled` layers in Outline variants are migrated to `Button/outline/bg-surface`, which aliases `Color modes/background/bg-surface`
+- legacy dependency checks include hidden Outline background layers, so stale paint styles are no longer missed by analysis
 - the source Button token JSON now aliases through current semantic color variables such as `Color modes/action/action-primary`, `Color modes/text/text-inverse`, and `Color modes/background/bg-surface`
 
 Recommended workflow:
@@ -63,7 +71,7 @@ Validated legacy values:
 - states: `Default`, `Hover`, `Pressed`, `Selected`, `Focus`, `Loading`, `Disabled`
 - icon arrangements: icon-only, left, right, dropdown indicator, and two-icon combinations
 
-Out of scope in v2:
+Out of scope in v5:
 
 - split buttons and menu-button behavior (a dropdown indicator inside a normal Button is supported)
 - close buttons

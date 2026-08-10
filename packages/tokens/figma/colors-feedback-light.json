@@ -35,7 +35,7 @@
     "success": {
       "bg": {
         "$description": "Success feedback background.",
-        "$value": "{Colors.Green.50}",
+        "$value": "{Colors.Green.100}",
         "$type": "color"
       },
       "border": {
@@ -62,7 +62,7 @@
     "warning": {
       "bg": {
         "$description": "Warning feedback background.",
-        "$value": "{Colors.Orange.50}",
+        "$value": "{Colors.Orange.100}",
         "$type": "color"
       },
       "border": {
@@ -89,7 +89,7 @@
     "error": {
       "bg": {
         "$description": "Error feedback background.",
-        "$value": "{Colors.Red.50}",
+        "$value": "{Colors.Red.100}",
         "$type": "color"
       },
       "border": {

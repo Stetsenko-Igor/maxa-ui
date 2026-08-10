@@ -115,7 +115,11 @@
       "$type": "color"
     },
     "border-neutral-strong": {
-      "$value": "{Colors.Neutral.500}",
+      "$value": "{Colors.Neutral.300}",
+      "$type": "color"
+    },
+    "border-neutral-muted": {
+      "$value": "{Colors.Neutral.600}",
       "$type": "color"
     },
     "border-neutral-subtle": {

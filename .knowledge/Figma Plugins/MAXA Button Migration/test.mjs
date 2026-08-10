@@ -25,6 +25,12 @@ const surface = node('surface', 'Button', 'COMPONENT');
 const label = node('label', 'NAME', 'TEXT');
 const leftIcon = node('left', 'Left Icon', 'INSTANCE');
 const rightIcon = node('right', 'Right Icon', 'INSTANCE');
+const loadingSpinner = node('loading', 'Loading Spinner', 'INSTANCE');
+const outlineBackground = {
+  ...node('outline-background', 'bgr-filled', 'RECTANGLE'),
+  visible: false,
+  fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }],
+};
 
 assert.equal(sandbox.normalizeVariant('Positive'), 'success');
 assert.equal(sandbox.normalizeVariant('Negative'), 'destructive');
@@ -36,16 +42,25 @@ assert.equal(sandbox.normalizeSize('L - Large'), 'lg');
 assert.equal(sandbox.normalizeState('Pressed'), 'pressed');
 assert.equal(sandbox.normalizeState('Selected'), 'selected');
 
-function mapping({ variant, state, size = 'md', iconOnly = false, left = false, right = false }) {
+function mapping({ variant, state, size = 'md', iconOnly = false, left = false, right = false, loading = false }) {
+  const leadingIcon = loading ? loadingSpinner : left || iconOnly ? leftIcon : null;
+  const children = [];
+  if (leadingIcon) children.push(leadingIcon);
+  if (!iconOnly) children.push(label);
+  if (right) children.push(rightIcon);
+  const component = { ...surface, children };
+
   return sandbox.buildMappingPreview({
     familyCandidate: iconOnly ? 'Buttons/Icon button' : variant === 'destructive' ? 'Buttons/Button destructive' : 'Buttons/Button',
     variantCandidate: variant,
     sizeCandidate: size,
     stateCandidate: state,
-    surfaceLayer: surface,
+    componentLayer: component,
+    surfaceLayer: component,
+    legacyBackgroundLayer: variant === 'outline' ? outlineBackground : null,
     borderLayer: null,
     labelLayer: iconOnly ? null : label,
-    leadingIconLayer: left || iconOnly ? leftIcon : null,
+    leadingIconLayer: leadingIcon,
     trailingIconLayer: right ? rightIcon : null,
   });
 }
@@ -56,13 +71,25 @@ function tokenFor(preview, role) {
 
 const outlineFocus = mapping({ variant: 'outline', state: 'focus' });
 assert.equal(tokenFor(outlineFocus, 'surface'), 'Button/outline/bg');
+assert.equal(tokenFor(outlineFocus, 'background-surface'), 'Button/outline/bg-surface');
 assert.equal(tokenFor(outlineFocus, 'border'), 'Button/outline/border-focus');
+assert.equal(sandbox.detectLegacyBackgroundLayer({ children: [outlineBackground] }), outlineBackground);
+
+const outlinePressed = mapping({ variant: 'outline', state: 'pressed' });
+assert.equal(tokenFor(outlinePressed, 'border'), 'Button/outline/border-active');
 
 const linkHover = mapping({ variant: 'link', state: 'hover', left: true, right: true });
 assert.equal(tokenFor(linkHover, 'label'), 'Button/link/text-hover');
 assert.equal(tokenFor(linkHover, 'leading-icon'), 'Button/link/fg-hover');
 assert.equal(tokenFor(linkHover, 'trailing-icon'), 'Button/link/fg-hover');
 assert.equal(linkHover.assignments.filter((assignment) => assignment.role === 'icon-size').length, 2);
+assert.ok(linkHover.assignments.some((assignment) => assignment.role === 'link-layout' && !assignment.token));
+assert.equal(tokenFor(linkHover, 'padding-zero'), 'spacing-none');
+for (const forbiddenRole of ['height', 'padding-x', 'padding-left', 'padding-right', 'radius', 'size']) {
+  assert.equal(linkHover.assignments.some((assignment) => assignment.role === forbiddenRole), false, `Link must not use ${forbiddenRole}`);
+}
+assert.equal(tokenFor(linkHover, 'gap'), 'Button/size/md/gap');
+assert.equal(tokenFor(linkHover, 'text-size'), 'Button/size/md/text');
 
 const linkPressed = mapping({ variant: 'link', state: 'pressed', left: true });
 assert.equal(tokenFor(linkPressed, 'surface'), 'Button/link/bg-active');
@@ -80,6 +107,101 @@ assert.equal(tokenFor(iconOnlyXs, 'size'), 'Button/icon-only/xs/size');
 assert.equal(tokenFor(iconOnlyXs, 'radius'), 'Button/size/xs/radius');
 assert.equal(tokenFor(iconOnlyXs, 'icon-size'), 'Button/size/xs/icon-size');
 
+const primaryNoIcons = mapping({ variant: 'primary', state: 'default' });
+assert.equal(tokenFor(primaryNoIcons, 'padding-left'), 'Button/size/md/padding-x');
+assert.equal(tokenFor(primaryNoIcons, 'padding-right'), 'Button/size/md/padding-x');
+
+const primaryLeftIcon = mapping({ variant: 'primary', state: 'default', left: true });
+assert.equal(tokenFor(primaryLeftIcon, 'padding-left'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryLeftIcon, 'padding-right'), 'Button/size/md/padding-x');
+
+const primaryRightIcon = mapping({ variant: 'primary', state: 'default', right: true });
+assert.equal(tokenFor(primaryRightIcon, 'padding-left'), 'Button/size/md/padding-x');
+assert.equal(tokenFor(primaryRightIcon, 'padding-right'), 'Button/size/md/padding-x-icon');
+
+const primaryTwoIcons = mapping({ variant: 'primary', state: 'default', left: true, right: true });
+assert.equal(tokenFor(primaryTwoIcons, 'padding-left'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryTwoIcons, 'padding-right'), 'Button/size/md/padding-x-icon');
+
+const primaryLoadingSpinner = mapping({ variant: 'primary', state: 'loading', loading: true });
+assert.equal(tokenFor(primaryLoadingSpinner, 'padding-left'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryLoadingSpinner, 'padding-right'), 'Button/size/md/padding-x');
+
+const clearedBindings = new Map();
+const linkLayoutNode = {
+  layoutMode: 'HORIZONTAL',
+  primaryAxisSizingMode: 'FIXED',
+  counterAxisSizingMode: 'FIXED',
+  layoutSizingHorizontal: 'FIXED',
+  layoutSizingVertical: 'FIXED',
+  minWidth: 80,
+  maxWidth: 200,
+  minHeight: 24,
+  maxHeight: 48,
+  topLeftRadius: 4,
+  topRightRadius: 4,
+  bottomLeftRadius: 4,
+  bottomRightRadius: 4,
+  boundVariables: {
+    height: { id: 'old-height' },
+    topLeftRadius: { id: 'old-radius' },
+    topRightRadius: { id: 'old-radius' },
+    bottomLeftRadius: { id: 'old-radius' },
+    bottomRightRadius: { id: 'old-radius' },
+  },
+  setBoundVariable(field, variable) {
+    clearedBindings.set(field, variable);
+  },
+};
+assert.equal(sandbox.applyLinkLayout(linkLayoutNode, null, []), true);
+assert.equal(linkLayoutNode.layoutSizingHorizontal, 'HUG');
+assert.equal(linkLayoutNode.layoutSizingVertical, 'HUG');
+assert.equal(linkLayoutNode.minHeight, null);
+assert.equal(linkLayoutNode.topLeftRadius, 0);
+assert.equal(clearedBindings.get('height'), null);
+
+let paintBindingCalls = 0;
+sandbox.figma.variables = {
+  setBoundVariableForPaint(paint, field, variable) {
+    paintBindingCalls += 1;
+    return {
+      ...paint,
+      boundVariableId: variable.id,
+      boundField: field,
+      boundVariables: { color: { id: variable.id } },
+    };
+  },
+};
+const spinnerTrack = {
+  id: 'spinner-track',
+  name: 'Track',
+  type: 'ELLIPSE',
+  fills: [],
+  strokes: [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }],
+  strokeWeight: 1,
+};
+const spinnerActive = {
+  id: 'spinner-active',
+  name: 'Active',
+  type: 'ELLIPSE',
+  fills: [],
+  strokes: [{ type: 'SOLID', color: { r: 0, g: 0, b: 0 } }],
+  strokeWeight: 1,
+};
+const spinnerInstance = {
+  id: 'spinner',
+  name: 'Loading Spinner',
+  type: 'INSTANCE',
+  fills: [],
+  children: [spinnerTrack, spinnerActive],
+};
+assert.equal(await sandbox.bindIconColorVariable(spinnerInstance, { id: 'icon-color', resolvedType: 'COLOR' }), true);
+assert.equal(spinnerTrack.strokes[0].boundVariableId, 'icon-color');
+assert.equal(spinnerActive.strokes[0].boundVariableId, 'icon-color');
+assert.equal(paintBindingCalls, 2);
+assert.equal(await sandbox.bindIconColorVariable(spinnerInstance, { id: 'icon-color', resolvedType: 'COLOR' }), true);
+assert.equal(paintBindingCalls, 2);
+
 function flattenTokenPaths(value, prefix = '', result = new Set()) {
   if (!value || typeof value !== 'object') return result;
   if ('$value' in value) {
@@ -92,7 +214,19 @@ function flattenTokenPaths(value, prefix = '', result = new Set()) {
   return result;
 }
 
-const componentTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/component-button.json'), 'utf8')));
+const componentTokenJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/component-button.json'), 'utf8'));
+const componentTokens = flattenTokenPaths(componentTokenJson);
+const spacingTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/spacing.json'), 'utf8')));
+const availableTokens = new Set([...componentTokens, ...spacingTokens]);
+assert.equal(componentTokenJson.Button.size.xs.gap.$value, '{Spacing/spacing-xs}');
+assert.equal(componentTokenJson.Button.size.sm.gap.$value, '{Spacing/spacing-sm}');
+assert.equal(componentTokenJson.Button.size.md.gap.$value, '{Spacing/spacing-md}');
+assert.equal(componentTokenJson.Button.size.lg.gap.$value, '{Spacing/spacing-md}');
+assert.equal(componentTokenJson.Button.size.xs['padding-x'].$value, '{Spacing/spacing-md}');
+assert.equal(componentTokenJson.Button.size.xs['padding-x-icon'].$value, '{Spacing/spacing-sm}');
+assert.equal(componentTokenJson.Button.size.sm['padding-x-icon'].$value, '{Spacing/spacing-md}');
+assert.equal(componentTokenJson.Button.size.md['padding-x-icon'].$value, 14);
+assert.equal(componentTokenJson.Button.size.lg['padding-x-icon'].$value, '{Spacing/spacing-2xl}');
 const types = ['Primary', 'Secondary', '𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline', 'Positive', 'Negative', 'Link', 'Ghost'];
 const sizes = ['L - Large', 'M - Medium', 'S - Small', 'XS - Xtra Small'];
 const states = ['Default', 'Pressed', 'Focus', 'Hover', 'Selected', 'Loading', 'Disabled'];
@@ -119,7 +253,9 @@ for (const type of types) {
           left: iconPattern.includes('left') || iconPattern === 'dropdown',
           right: iconPattern === 'right' || iconPattern === 'left+right' || iconPattern === 'left+dropdown',
         });
-        for (const assignment of preview.assignments) generatedTokens.add(assignment.token);
+        for (const assignment of preview.assignments) {
+          if (assignment.token) generatedTokens.add(assignment.token);
+        }
       }
     }
   }
@@ -127,10 +263,12 @@ for (const type of types) {
 
 assert.equal(variantCount, 1372);
 for (const token of generatedTokens) {
-  assert.ok(componentTokens.has(token), `Component token is missing: ${token}`);
+  assert.ok(availableTokens.has(token), `Migration token is missing: ${token}`);
   assert.ok(!token.includes('/danger/'), `Legacy danger token generated: ${token}`);
   assert.ok(!token.endsWith('bg-focus'), `Nonexistent focus background generated: ${token}`);
-  assert.ok(!token.endsWith('border-active'), `Nonexistent active border generated: ${token}`);
+  if (token.endsWith('border-active')) {
+    assert.equal(token, 'Button/outline/border-active', `Unexpected active border generated: ${token}`);
+  }
 }
 
 console.log(`Button migration tests passed: ${variantCount} variants, ${generatedTokens.size} unique target tokens.`);

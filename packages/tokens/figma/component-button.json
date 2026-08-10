@@ -112,7 +112,12 @@
       },
       "border-hover": {
         "$description": "Button, outline: border (hover state).",
-        "$value": "{Color modes/border/border-secondary}",
+        "$value": "{Color modes/border/border-neutral-muted}",
+        "$type": "color"
+      },
+      "border-active": {
+        "$description": "Button, outline: border (active state).",
+        "$value": "{Color modes/border/border-neutral-muted}",
         "$type": "color"
       },
       "border-focus": {
@@ -414,12 +419,17 @@
         },
         "padding-x": {
           "$description": "Button, size xs: padding x.",
+          "$value": "{Spacing/spacing-md}",
+          "$type": "number"
+        },
+        "padding-x-icon": {
+          "$description": "Button, size xs: horizontal padding on a side that contains an icon.",
           "$value": "{Spacing/spacing-sm}",
           "$type": "number"
         },
         "gap": {
           "$description": "Button, size xs: gap.",
-          "$value": "{Spacing/spacing-xxs}",
+          "$value": "{Spacing/spacing-xs}",
           "$type": "number"
         },
         "radius": {
@@ -459,9 +469,14 @@
           "$value": 10,
           "$type": "number"
         },
+        "padding-x-icon": {
+          "$description": "Button, size sm: horizontal padding on a side that contains an icon.",
+          "$value": "{Spacing/spacing-md}",
+          "$type": "number"
+        },
         "gap": {
           "$description": "Button, size sm: gap.",
-          "$value": "{Spacing/spacing-xs}",
+          "$value": "{Spacing/spacing-sm}",
           "$type": "number"
         },
         "radius": {
@@ -501,9 +516,14 @@
           "$value": "{Spacing/spacing-xl}",
           "$type": "number"
         },
+        "padding-x-icon": {
+          "$description": "Button, size md: horizontal padding on a side that contains an icon.",
+          "$value": 14,
+          "$type": "number"
+        },
         "gap": {
           "$description": "Button, size md: gap.",
-          "$value": "{Spacing/spacing-sm}",
+          "$value": "{Spacing/spacing-md}",
           "$type": "number"
         },
         "radius": {
@@ -541,6 +561,11 @@
         "padding-x": {
           "$description": "Button, size lg: padding x.",
           "$value": "{Spacing/spacing-3xl}",
+          "$type": "number"
+        },
+        "padding-x-icon": {
+          "$description": "Button, size lg: horizontal padding on a side that contains an icon.",
+          "$value": "{Spacing/spacing-2xl}",
           "$type": "number"
         },
         "gap": {

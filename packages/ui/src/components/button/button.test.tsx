@@ -51,6 +51,8 @@ describe("Button", () => {
     render(<Button loading>Test</Button>)
     const btn = screen.getByRole("button")
     expect(btn).toBeDisabled()
+    expect(btn).toHaveAttribute("data-icon-leading")
+    expect(btn).not.toHaveAttribute("data-icon-trailing")
     expect(btn.querySelector(".maxa-button__spinner")).toBeInTheDocument()
   })
 
@@ -63,8 +65,18 @@ describe("Button", () => {
         Test
       </Button>,
     )
+    const btn = screen.getByRole("button")
+    expect(btn).toHaveAttribute("data-icon-leading")
+    expect(btn).toHaveAttribute("data-icon-trailing")
     expect(screen.getByTestId("lead")).toBeInTheDocument()
     expect(screen.getByTestId("trail")).toBeInTheDocument()
+  })
+
+  it("does not mark icon edges when no icons are rendered", () => {
+    render(<Button>Test</Button>)
+    const btn = screen.getByRole("button")
+    expect(btn).not.toHaveAttribute("data-icon-leading")
+    expect(btn).not.toHaveAttribute("data-icon-trailing")
   })
 
   it("renders as a different element via asChild", () => {

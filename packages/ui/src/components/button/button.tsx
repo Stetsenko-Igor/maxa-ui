@@ -101,6 +101,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={isDisabled}
         aria-busy={loading || undefined}
         data-loading={loading || undefined}
+        data-icon-leading={loading || iconLeading ? "" : undefined}
+        data-icon-trailing={!loading && iconTrailing ? "" : undefined}
         {...props}
       >
         { loading

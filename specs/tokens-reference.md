@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1750
+Total tokens: 1756
 
 ## Primitives
 
@@ -98,7 +98,7 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-600: #ea580c;
 --color-orange-700: #c2410c;
 --color-orange-800: #9a3412;
---color-orange-900: #7c2d12;
+--color-orange-900: #6d240d;
 --color-orange-950: #431407;
 
 /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
@@ -319,7 +319,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-warning-strong: var(--color-orange-600);/* dark: var(--color-orange-500) */
 --color-border-warning-subtle: var(--color-orange-200);
 --color-border-error-subtle: var(--color-red-200);
---color-border-neutral-strong: var(--color-neutral-700);/* dark: var(--color-neutral-500) */
+--color-border-neutral-strong: var(--color-neutral-700);/* dark: var(--color-neutral-300) */
+--color-border-neutral-muted: var(--color-neutral-400);/* dark: var(--color-neutral-600) */
 --color-border-neutral-subtle: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 
 /* ── Background — surface elevation ── */
@@ -497,22 +498,22 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Feedback — reusable intent recipes ── */
 --color-feedback-text: var(--color-neutral-950);/* dark: var(--color-neutral-100) */
---color-feedback-info-bg: var(--color-blue-100);/* dark: var(--color-blue-700) */
+--color-feedback-info-bg: var(--color-blue-100);/* dark: var(--color-blue-800) */
 --color-feedback-info-border: var(--color-blue-200);/* dark: var(--color-blue-600) */
 --color-feedback-info-accent: var(--color-blue-600);/* dark: var(--color-blue-400) */
 --color-feedback-info-action: var(--color-blue-500);/* dark: var(--color-blue-400) */
 --color-feedback-info-action-hover: var(--color-blue-700);/* dark: var(--color-blue-300) */
---color-feedback-success-bg: var(--color-green-50);/* dark: var(--color-green-800) */
+--color-feedback-success-bg: var(--color-green-100);/* dark: var(--color-green-900) */
 --color-feedback-success-border: var(--color-green-300);/* dark: var(--color-green-700) */
 --color-feedback-success-accent: var(--color-green-700);/* dark: var(--color-green-500) */
 --color-feedback-success-action: var(--color-green-500);/* dark: var(--color-green-400) */
 --color-feedback-success-action-hover: var(--color-green-700);/* dark: var(--color-green-300) */
---color-feedback-warning-bg: var(--color-orange-50);/* dark: var(--color-orange-900) */
+--color-feedback-warning-bg: var(--color-orange-100);/* dark: var(--color-orange-900) */
 --color-feedback-warning-border: var(--color-orange-200);/* dark: var(--color-orange-700) */
 --color-feedback-warning-accent: var(--color-yellow-600);/* dark: var(--color-orange-600) */
 --color-feedback-warning-action: var(--color-orange-700);/* dark: var(--color-orange-400) */
 --color-feedback-warning-action-hover: var(--color-orange-700);/* dark: var(--color-orange-300) */
---color-feedback-error-bg: var(--color-red-50);/* dark: var(--color-red-700) */
+--color-feedback-error-bg: var(--color-red-100);/* dark: var(--color-red-800) */
 --color-feedback-error-border: var(--color-red-200);/* dark: var(--color-red-500) */
 --color-feedback-error-accent: var(--color-red-700);/* dark: var(--color-red-300) */
 --color-feedback-error-action: var(--color-red-500);/* dark: var(--color-red-400) */
@@ -724,7 +725,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-outline-bg-active: var(--color-action-neutral-subtle-active);
 --button-outline-text: var(--color-text-primary);
 --button-outline-border: var(--color-border-primary);
---button-outline-border-hover: var(--color-border-secondary);
+--button-outline-border-hover: var(--color-border-neutral-muted);
+--button-outline-border-active: var(--color-border-neutral-muted);
 --button-outline-border-focus: var(--color-border-focus);
 --button-ghost-bg: transparent;
 --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
@@ -782,8 +784,9 @@ Source: `packages/tokens/src/component-button.css`
 
 /* ── Sizes ── */
 --button-size-xs-height: 24px;
---button-size-xs-padding-x: 6px;
---button-size-xs-gap: 2px;
+--button-size-xs-padding-x: 8px;
+--button-size-xs-padding-x-icon: 6px;
+--button-size-xs-gap: 4px;
 --button-size-xs-radius: var(--radius-xs);
 --button-size-xs-text: var(--text-sm);
 --button-size-xs-line-height: 14px;
@@ -791,7 +794,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-xs-icon-size: 12px;
 --button-size-sm-height: 28px;
 --button-size-sm-padding-x: 10px;
---button-size-sm-gap: 4px;
+--button-size-sm-padding-x-icon: 8px;
+--button-size-sm-gap: 6px;
 --button-size-sm-radius: var(--radius-xs);
 --button-size-sm-text: var(--text-sm);
 --button-size-sm-line-height: 14px;
@@ -799,7 +803,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-sm-icon-size: 16px;
 --button-size-md-height: 36px;
 --button-size-md-padding-x: 16px;
---button-size-md-gap: 6px;
+--button-size-md-padding-x-icon: 14px;
+--button-size-md-gap: 8px;
 --button-size-md-radius: var(--radius-xs);
 --button-size-md-text: var(--text-sm);
 --button-size-md-line-height: 14px;
@@ -807,6 +812,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-md-icon-size: 16px;
 --button-size-lg-height: 48px;
 --button-size-lg-padding-x: 24px;
+--button-size-lg-padding-x-icon: 20px;
 --button-size-lg-gap: 8px;
 --button-size-lg-radius: var(--radius-sm);
 --button-size-lg-text: var(--text-md);

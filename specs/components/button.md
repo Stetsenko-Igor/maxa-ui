@@ -41,6 +41,7 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 - **Background:** transparent by default (`--button-outline-bg`)
 - **Optional surface:** set `outlineSurface` to use `--button-outline-bg-surface` → `bg/surface`; useful over busy or non-surface content
 - **Border:** `--button-outline-border` → `border/primary`
+- **Hover/active border:** `--button-outline-border-hover` / `--button-outline-border-active` → `border/neutral-muted`
 - **Text:** `--button-outline-text` → `text/primary`
 
 ### `ghost`
@@ -56,6 +57,7 @@ The MAXA Button is a multi-variant interactive element. It uses component-level 
 - **Hover text:** `--button-link-text-hover` → `action/primary-hover`
 - **Icon foreground:** `--button-link-fg` → `action/primary`
 - **Hover/active icon foreground:** `--button-link-fg-hover` / `--button-link-fg-active`
+- **Layout:** Hug content with zero padding and zero border width; size tokens affect only the label, icon, and their gap
 - No underline by default in MAXA UI — relies on color context.
 
 ### `success`
@@ -89,14 +91,14 @@ Design decision: Success Button text stays white in every theme and interaction 
 
 ## Sizes
 
-| Size | Height | Padding X | Gap | Radius | Font size | Line height | Weight | Icon size |
-|------|--------|-----------|-----|--------|-----------|-------------|--------|-----------|
-| `xs` | 24px | 6px (spacing-sm) | 2px (spacing-xxs) | 4px (radius-xs) | 12px (text-sm) | 14px | Medium 500 | 12px |
-| `sm` | 28px | 10px | 4px (spacing-xs) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
-| `md` | 36px | 16px (spacing-xl) | 6px (spacing-sm) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
-| `lg` | 48px | 24px (spacing-3xl) | 8px (spacing-md) | 6px (radius-sm) | 14px (text-md) | 20px | SemiBold 600 | 20px |
+| Size | Height | Padding X | Icon-edge padding | Gap | Radius | Font size | Line height | Weight | Icon size |
+|------|--------|-----------|-------------------|-----|--------|-----------|-------------|--------|-----------|
+| `xs` | 24px | 8px (spacing-md) | 6px (spacing-sm) | 4px (spacing-xs) | 4px (radius-xs) | 12px (text-sm) | 14px | Medium 500 | 12px |
+| `sm` | 28px | 10px | 8px (spacing-md) | 6px (spacing-sm) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
+| `md` | 36px | 16px (spacing-xl) | 14px | 8px (spacing-md) | 4px (radius-xs) | 12px (text-sm) | 14px | SemiBold 600 | 16px |
+| `lg` | 48px | 24px (spacing-3xl) | 20px (spacing-2xl) | 8px (spacing-md) | 6px (radius-sm) | 14px (text-md) | 20px | SemiBold 600 | 20px |
 
-Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` padding-x (10px) has no named spacing alias — stored as raw value.
+Note: `padding-x-icon` applies only to the edge that contains an icon or loading spinner. The opposite edge keeps regular `padding-x`. `xs` uses Medium weight (500); all other sizes use SemiBold (600). Raw values remain for `sm` padding-x (10px) and `md` icon-edge padding (14px), which have no named spacing aliases.
 
 **Icon-only square sizes:**
 - `xs` → 24×24px
@@ -119,7 +121,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 |-------|-------------|---------------|
 | Default | No modifier | `--button-{variant}-bg` |
 | Hover | `:hover` | `--button-{variant}-bg-hover` |
-| Active | `:active` | `--button-{variant}-bg-active` |
+| Active | `:active` | `--button-{variant}-bg-active`; Outline also uses `--button-outline-border-active` |
 | Focus | `:focus-visible` | `--button-{variant}-border-focus` → `border/focus` |
 | Disabled | `disabled` attr or `aria-disabled` | `opacity: var(--button-disabled-opacity)` = 50% |
 | Loading | custom state | replace label with spinner, keep size/variant |
@@ -147,7 +149,8 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 ```css
 --button-size-md-height:      36px;
 --button-size-md-padding-x:   var(--spacing-xl);       /* 16px */
---button-size-md-gap:         var(--spacing-sm);        /* 6px */
+--button-size-md-padding-x-icon: 14px;
+--button-size-md-gap:         var(--spacing-md);        /* 8px */
 --button-size-md-radius:      var(--radius-xs);         /* 4px */
 --button-size-md-text:        var(--font-size-text-sm); /* 12px */
 --button-size-md-line-height: 14px;
@@ -159,6 +162,7 @@ Note: `xs` uses Medium weight (500). All other sizes use SemiBold (600). `sm` pa
 ```css
 --button-size-lg-height:      48px;
 --button-size-lg-padding-x:   var(--spacing-3xl);      /* 24px */
+--button-size-lg-padding-x-icon: var(--spacing-2xl);   /* 20px */
 --button-size-lg-gap:         var(--spacing-md);        /* 8px */
 --button-size-lg-radius:      var(--radius-sm);         /* 6px */
 --button-size-lg-text:        var(--font-size-text-md); /* 14px */

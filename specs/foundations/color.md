@@ -133,7 +133,9 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | `--color-border-tertiary` | Neutral/100 | Neutral/900 | Faintest dividers |
 | `--color-border-focus` | Blue/500 | Blue/400 | Focus rings on interactive elements |
 | `--color-border-brand` | Brand/500 | Brand/400 | Brand-accented borders |
-| `--color-border-neutral-strong` / `-subtle` | Neutral/700 · Neutral/300 | Neutral/500 · Neutral/700 | Neutral status/emphasis borders |
+| `--color-border-neutral-strong` | Neutral/700 | Neutral/300 | High-emphasis neutral outline |
+| `--color-border-neutral-muted` | Neutral/400 | Neutral/600 | Muted hover and active outline |
+| `--color-border-neutral-subtle` | Neutral/300 | Neutral/700 | Low-emphasis neutral outline |
 | `--color-border-info-strong` / `-subtle` | Blue/700 · Blue/200 | Blue/500 · Blue/200 | Info state borders |
 | `--color-border-success-strong` / `-subtle` | Green/700 · Green/300 | Green/500 · Green/300 | Success state borders |
 | `--color-border-warning-strong` / `-subtle` | Orange/600 · Orange/200 | Orange/500 · Orange/200 | Warning state borders |

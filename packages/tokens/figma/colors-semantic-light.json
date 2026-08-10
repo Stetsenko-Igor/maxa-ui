@@ -147,6 +147,11 @@
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
     },
+    "border-neutral-muted": {
+      "$description": "Muted neutral outline for interactive states.",
+      "$value": "{Colors.Neutral.400}",
+      "$type": "color"
+    },
     "border-neutral-subtle": {
       "$description": "Low-emphasis neutral outline.",
       "$value": "{Colors.Neutral.300}",

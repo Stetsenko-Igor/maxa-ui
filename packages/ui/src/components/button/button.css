@@ -1,13 +1,16 @@
 /* Button component styles — references only component tokens */
 
 .maxa-button {
+  --button-padding-x-current: var(--button-size-md-padding-x);
+  --button-padding-x-icon-current: var(--button-size-md-padding-x-icon);
+
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--button-size-md-gap);
   height: var(--button-size-md-height);
-  padding-inline: var(--button-size-md-padding-x);
+  padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-md-radius);
   border: 1px solid transparent;
   font-family: var(--button-font-family);
@@ -35,9 +38,12 @@
 /* ── Sizes ──────────────────────────────────────────────────── */
 
 .maxa-button--xs {
+  --button-padding-x-current: var(--button-size-xs-padding-x);
+  --button-padding-x-icon-current: var(--button-size-xs-padding-x-icon);
+
   gap: var(--button-size-xs-gap);
   height: var(--button-size-xs-height);
-  padding-inline: var(--button-size-xs-padding-x);
+  padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-xs-radius);
   font-size: var(--button-size-xs-text);
   line-height: var(--button-size-xs-line-height);
@@ -45,9 +51,12 @@
 }
 
 .maxa-button--sm {
+  --button-padding-x-current: var(--button-size-sm-padding-x);
+  --button-padding-x-icon-current: var(--button-size-sm-padding-x-icon);
+
   gap: var(--button-size-sm-gap);
   height: var(--button-size-sm-height);
-  padding-inline: var(--button-size-sm-padding-x);
+  padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-sm-radius);
   font-size: var(--button-size-sm-text);
   line-height: var(--button-size-sm-line-height);
@@ -55,9 +64,12 @@
 }
 
 .maxa-button--md {
+  --button-padding-x-current: var(--button-size-md-padding-x);
+  --button-padding-x-icon-current: var(--button-size-md-padding-x-icon);
+
   gap: var(--button-size-md-gap);
   height: var(--button-size-md-height);
-  padding-inline: var(--button-size-md-padding-x);
+  padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-md-radius);
   font-size: var(--button-size-md-text);
   line-height: var(--button-size-md-line-height);
@@ -65,9 +77,12 @@
 }
 
 .maxa-button--lg {
+  --button-padding-x-current: var(--button-size-lg-padding-x);
+  --button-padding-x-icon-current: var(--button-size-lg-padding-x-icon);
+
   gap: var(--button-size-lg-gap);
   height: var(--button-size-lg-height);
-  padding-inline: var(--button-size-lg-padding-x);
+  padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-lg-radius);
   font-size: var(--button-size-lg-text);
   line-height: var(--button-size-lg-line-height);
@@ -99,6 +114,15 @@
   gap: 0;
   padding: 0;
   aspect-ratio: 1 / 1;
+}
+
+/* The icon edge is optically tighter; the label-only edge keeps regular padding. */
+.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link):not(.maxa-button--text)[data-icon-leading] {
+  padding-inline-start: var(--button-padding-x-icon-current);
+}
+
+.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link):not(.maxa-button--text)[data-icon-trailing] {
+  padding-inline-end: var(--button-padding-x-icon-current);
 }
 
 /* ── Variants ────────────────────────────────────────────────── */
@@ -150,6 +174,7 @@
 }
 .maxa-button--outline:active {
   background-color: var(--button-outline-bg-active);
+  border-color: var(--button-outline-border-active);
 }
 .maxa-button--outline:focus-visible {
   border-color: var(--button-outline-border-focus);
@@ -174,7 +199,8 @@
   background-color: var(--button-link-bg);
   color: var(--button-link-text);
   border-color: var(--button-link-border);
-  padding-inline: 0;
+  border-width: 0;
+  padding: 0;
   height: auto;
 }
 .maxa-button--link:hover {

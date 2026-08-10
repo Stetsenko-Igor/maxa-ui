@@ -21,7 +21,8 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/outline/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/outline/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/outline/border-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
+  'Button/outline/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
+  'Button/outline/border-active': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
   'Button/outline/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/ghost/bg': { r: 1, g: 1, b: 1, a: 0 },
   'Button/ghost/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
@@ -206,12 +207,13 @@ function analyzeComponent(component, options) {
   const visibleTextLayers = textLayers.filter((node) => normalizeText(node.characters || '').length > 0);
   const iconCandidates = findIconCandidates(component);
   const surfaceLayer = detectSurfaceLayer(component);
+  const legacyBackgroundLayer = detectLegacyBackgroundLayer(component);
   const borderLayer = detectBorderLayer(component, surfaceLayer);
   const sizeCandidate = detectSize(component, parsedProperties);
   const stateCandidate = detectState(component.name, parsedProperties);
   const familyCandidate = detectFamily(component, visibleTextLayers, iconCandidates, parsedProperties, options);
   const variantCandidate = detectVariant(component.name, surfaceLayer, parsedProperties, options);
-  const legacyDependencies = detectLegacyDependencies(component, surfaceLayer, visibleTextLayers);
+  const legacyDependencies = detectLegacyDependencies(component, surfaceLayer, legacyBackgroundLayer, visibleTextLayers);
   const warnings = [];
 
   if (!surfaceLayer) warnings.push('No clear surface layer found.');
@@ -229,11 +231,13 @@ function analyzeComponent(component, options) {
     warnings,
   });
   const mappingPreview = buildMappingPreview({
+    componentLayer: component,
     familyCandidate,
     variantCandidate,
     sizeCandidate: sizeCandidate || 'unknown',
     stateCandidate,
     surfaceLayer,
+    legacyBackgroundLayer,
     borderLayer,
     labelLayer: visibleTextLayers[0] || null,
     leadingIconLayer: iconCandidates[0] || null,
@@ -255,6 +259,7 @@ function analyzeComponent(component, options) {
     confidence,
     anatomy: {
       surfaceLayer: surfaceLayer ? describeNode(surfaceLayer) : null,
+      legacyBackgroundLayer: legacyBackgroundLayer ? describeNode(legacyBackgroundLayer) : null,
       labelLayers: visibleTextLayers.map(describeNode),
       borderLayer: borderLayer ? describeNode(borderLayer) : null,
       leadingIconLayer: iconCandidates[0] ? describeNode(iconCandidates[0]) : null,
@@ -344,14 +349,36 @@ function detectSurfaceLayer(component) {
   return candidates[0].node || null;
 }
 
+function detectLegacyBackgroundLayer(component) {
+  if (!component || !('children' in component) || !Array.isArray(component.children)) return null;
+  const directMatch = component.children.find(isLegacyBackgroundLayer);
+  if (directMatch) return directMatch;
+  const nestedMatches = findNodes(component, isLegacyBackgroundLayer);
+  return nestedMatches[0] || null;
+}
+
+function isLegacyBackgroundLayer(node) {
+  if (!node || !('fills' in node)) return false;
+  const normalizedName = String(node.name || '')
+    .toLowerCase()
+    .trim()
+    .replace(/[\s_]+/g, '-');
+  return normalizedName === 'bgr-filled' || normalizedName === 'background-filled';
+}
+
 function detectBorderLayer(component, surfaceLayer) {
   if (surfaceLayer && hasStrokes(surfaceLayer)) return surfaceLayer;
   const candidates = findNodes(component, (node) => node !== surfaceLayer && hasStrokes(node));
   return candidates[0] || null;
 }
 
-function detectLegacyDependencies(component, surfaceLayer, textLayers) {
-  const nodes = [component, ...(surfaceLayer ? [surfaceLayer] : []), ...textLayers];
+function detectLegacyDependencies(component, surfaceLayer, legacyBackgroundLayer, textLayers) {
+  const nodes = [
+    component,
+    ...(surfaceLayer ? [surfaceLayer] : []),
+    ...(legacyBackgroundLayer ? [legacyBackgroundLayer] : []),
+    ...textLayers,
+  ];
   const styleIds = new Set();
   let hasHardcodedPaints = false;
   let hasHardcodedStrokes = false;
@@ -429,16 +456,6 @@ function findNearestInstanceAncestor(node, stopAtId) {
   while (current && current.id !== stopAtId) {
     if (current.type === 'INSTANCE') return current;
     current = current.parent;
-  }
-  return null;
-}
-
-function findFirstColoredDescendant(node) {
-  if (!('children' in node) || !Array.isArray(node.children)) return null;
-  for (const child of node.children) {
-    if (hasFills(child)) return child;
-    const nested = findFirstColoredDescendant(child);
-    if (nested) return nested;
   }
   return null;
 }
@@ -734,9 +751,11 @@ function votesToSummary(voteMap) {
 function buildMappingPreview(input) {
   const variant = normalizePreviewVariant(input.familyCandidate, input.variantCandidate);
   const backgroundSuffix = getBackgroundStateSuffix(input.stateCandidate);
-  const borderSuffix = getBorderStateSuffix(input.stateCandidate);
+  const borderSuffix = getBorderStateSuffix(input.stateCandidate, variant);
   const size = input.sizeCandidate;
   const isIconFamily = input.familyCandidate === 'Buttons/Icon button';
+  const isLink = variant === 'link';
+  const edgeIcons = detectEdgeIconPresence(input);
   const result = {
     targetVariant: variant || 'unknown',
     targetState: input.stateCandidate || 'default',
@@ -785,6 +804,15 @@ function buildMappingPreview(input) {
     result.notes.push('No surface layer detected.');
   }
 
+  if (variant === 'outline' && input.legacyBackgroundLayer) {
+    result.assignments.push({
+      id: 'outline-background-surface',
+      role: 'background-surface',
+      sourceNode: describeNode(input.legacyBackgroundLayer),
+      token: 'Button/outline/bg-surface',
+    });
+  }
+
   if (input.stateCandidate === 'disabled' || input.stateCandidate === 'loading') {
     result.assignments.push({
       id: 'disabled-opacity',
@@ -794,8 +822,30 @@ function buildMappingPreview(input) {
     });
   }
 
+  if (isLink) {
+    result.assignments.push({
+      id: 'link-hug-layout',
+      role: 'link-layout',
+      sourceNode: describeNode(input.componentLayer || input.surfaceLayer),
+      description: 'Hug contents on both axes and remove container size/radius bindings.',
+    });
+    result.assignments.push({
+      id: 'link-padding-zero',
+      role: 'padding-zero',
+      sourceNode: describeNode(input.surfaceLayer || input.componentLayer),
+      token: 'spacing-none',
+    });
+  }
+
   if (size && size !== 'unknown') {
-    if (isIconFamily) {
+    if (isLink) {
+      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/gap` });
+      if (input.labelLayer) {
+        result.assignments.push({ id: `size-${size}-text`, role: 'text-size', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/text` });
+        result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
+        result.assignments.push({ id: `size-${size}-weight`, role: 'weight', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/weight` });
+      }
+    } else if (isIconFamily) {
       result.assignments.push({
         id: `size-${size}-icon-only`,
         role: 'size',
@@ -805,7 +855,18 @@ function buildMappingPreview(input) {
       result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
     } else {
       result.assignments.push({ id: `size-${size}-height`, role: 'height', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/height` });
-      result.assignments.push({ id: `size-${size}-padding-x`, role: 'padding-x', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/padding-x` });
+      result.assignments.push({
+        id: `size-${size}-padding-left`,
+        role: 'padding-left',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: `Button/size/${size}/${edgeIcons.left ? 'padding-x-icon' : 'padding-x'}`,
+      });
+      result.assignments.push({
+        id: `size-${size}-padding-right`,
+        role: 'padding-right',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: `Button/size/${size}/${edgeIcons.right ? 'padding-x-icon' : 'padding-x'}`,
+      });
       result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/gap` });
       result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
       if (input.labelLayer) {
@@ -847,6 +908,44 @@ function buildMappingPreview(input) {
   }
 
   return result;
+}
+
+function detectEdgeIconPresence(input) {
+  const fallback = {
+    left: Boolean(input.leadingIconLayer),
+    right: Boolean(input.trailingIconLayer),
+  };
+  const root = input.componentLayer;
+  if (!root || !Array.isArray(root.children) || !input.labelLayer) return fallback;
+
+  const visibleChildren = root.children.filter(isVisibleNode);
+  const labelIndex = visibleChildren.findIndex((child) => nodeContainsId(child, input.labelLayer.id));
+  if (labelIndex === -1) return fallback;
+
+  const iconIds = new Set([
+    input.leadingIconLayer && input.leadingIconLayer.id,
+    input.trailingIconLayer && input.trailingIconLayer.id,
+  ].filter(Boolean));
+  if (!iconIds.size) return { left: false, right: false };
+
+  const containsMappedIcon = (child) => {
+    for (const iconId of iconIds) {
+      if (nodeContainsId(child, iconId)) return true;
+    }
+    return false;
+  };
+
+  return {
+    left: visibleChildren.slice(0, labelIndex).some(containsMappedIcon),
+    right: visibleChildren.slice(labelIndex + 1).some(containsMappedIcon),
+  };
+}
+
+function nodeContainsId(node, id) {
+  if (!node || !id) return false;
+  if (node.id === id) return true;
+  if (!Array.isArray(node.children)) return false;
+  return node.children.some((child) => nodeContainsId(child, id));
 }
 
 function buildCurrentVisualPreview(component, surfaceLayer, borderLayer, labelLayer, familyCandidate) {
@@ -1309,6 +1408,7 @@ async function applyMapping(options, selectionMap) {
 
 async function applyAssignmentsToNode(node, analysis, assignments, libraryResolution, counters) {
   const surface = detectSurfaceLayer(node);
+  const legacyBackground = detectLegacyBackgroundLayer(node);
   const border = detectBorderLayer(node, surface);
   const labels = findNodes(node, (candidate) => candidate.type === 'TEXT' && isVisibleNode(candidate));
   const icons = findIconCandidates(node);
@@ -1340,10 +1440,13 @@ async function applyAssignmentsToNode(node, analysis, assignments, libraryResolu
   let changedCount = 0;
 
   for (const assignment of assignments) {
-    const variable = await resolveVariableForToken(assignment.token, libraryResolution, counters);
-    if (!variable) {
-      counters.missingTokens.add(assignment.token);
-      continue;
+    let variable = null;
+    if (assignment.token) {
+      variable = await resolveVariableForToken(assignment.token, libraryResolution, counters);
+      if (!variable) {
+        counters.missingTokens.add(assignment.token);
+        continue;
+      }
     }
 
     const didApply = await applyAssignmentBinding({
@@ -1352,6 +1455,7 @@ async function applyAssignmentsToNode(node, analysis, assignments, libraryResolu
       assignment: assignment,
       variable: variable,
       surface: surface,
+      legacyBackground: legacyBackground,
       border: border,
       labelNode: labelNode,
       leadingIcon: icons.length ? icons[0] : null,
@@ -1412,6 +1516,9 @@ async function applyAssignmentBinding(input) {
   if (role === 'surface') {
     return await bindPaintVariable(input.surface, input.variable);
   }
+  if (role === 'background-surface') {
+    return await bindPaintVariable(input.legacyBackground, input.variable);
+  }
   if (role === 'border') {
     return await bindStrokeVariable(input.border || input.surface, input.variable);
   }
@@ -1423,11 +1530,7 @@ async function applyAssignmentBinding(input) {
     const iconNode = sourceId ? await figma.getNodeByIdAsync(sourceId) : null;
     if (!iconNode) return false;
     const bindTarget = findNearestInstanceAncestor(iconNode, input.node.id) || iconNode;
-    if (bindTarget.type === 'INSTANCE' && !hasFills(bindTarget)) {
-      const coloredChild = findFirstColoredDescendant(bindTarget);
-      return coloredChild ? await bindPaintVariable(coloredChild, input.variable) : await bindPaintVariable(bindTarget, input.variable);
-    }
-    return await bindPaintVariable(bindTarget, input.variable);
+    return await bindIconColorVariable(bindTarget, input.variable);
   }
   if (role === 'disabled') {
     return bindNodeField(input.surface || input.node, 'opacity', input.variable);
@@ -1435,11 +1538,23 @@ async function applyAssignmentBinding(input) {
   if (role === 'height') {
     return bindNodeField(input.surface || input.node, 'height', input.variable);
   }
+  if (role === 'link-layout') {
+    return applyLinkLayout(input.node, input.surface, input.bindingErrors);
+  }
+  if (role === 'padding-zero') {
+    return bindAllPadding(getLayoutTarget(input.node, input.surface), input.variable);
+  }
+  if (role === 'padding-left') {
+    return bindPaddingSide(getLayoutTarget(input.node, input.surface), 'paddingLeft', input.variable);
+  }
+  if (role === 'padding-right') {
+    return bindPaddingSide(getLayoutTarget(input.node, input.surface), 'paddingRight', input.variable);
+  }
   if (role === 'padding-x') {
-    return bindHorizontalPadding(input.surface || input.node, input.variable);
+    return bindHorizontalPadding(getLayoutTarget(input.node, input.surface), input.variable);
   }
   if (role === 'gap') {
-    return bindNodeField(input.surface || input.node, 'itemSpacing', input.variable);
+    return bindNodeField(getLayoutTarget(input.node, input.surface), 'itemSpacing', input.variable);
   }
   if (role === 'radius') {
     return bindCornerRadius(input.surface || input.node, input.variable);
@@ -1473,6 +1588,7 @@ async function bindPaintVariable(node, variable) {
   if (variable.resolvedType !== 'COLOR') return false;
   const currentFills = Array.isArray(node.fills) ? node.fills.slice() : [];
   const solidIndex = findFirstSolidPaintIndex(currentFills);
+  if (solidIndex !== -1 && isPaintBoundToVariable(currentFills[solidIndex], variable)) return true;
   if ('fillStyleId' in node && node.fillStyleId && typeof node.setFillStyleIdAsync === 'function') {
     try { await node.setFillStyleIdAsync(''); } catch (e) {}
   }
@@ -1488,11 +1604,12 @@ async function bindStrokeVariable(node, variable) {
   if (!node || !variable || !figma.variables || typeof figma.variables.setBoundVariableForPaint !== 'function') return false;
   if (!('strokes' in node)) return false;
   if (variable.resolvedType !== 'COLOR') return false;
+  const currentStrokes = Array.isArray(node.strokes) ? node.strokes.slice() : [];
+  const solidIndex = findFirstSolidPaintIndex(currentStrokes);
+  if (solidIndex !== -1 && isPaintBoundToVariable(currentStrokes[solidIndex], variable)) return true;
   if ('strokeStyleId' in node && node.strokeStyleId && typeof node.setStrokeStyleIdAsync === 'function') {
     try { await node.setStrokeStyleIdAsync(''); } catch (e) {}
   }
-  const currentStrokes = Array.isArray(node.strokes) ? node.strokes.slice() : [];
-  const solidIndex = findFirstSolidPaintIndex(currentStrokes);
   const fallbackPaint = solidPaint({ r: 0.8, g: 0.8, b: 0.8 });
   const nextPaint = figma.variables.setBoundVariableForPaint(solidIndex === -1 ? fallbackPaint : currentStrokes[solidIndex], 'color', variable);
   if (solidIndex === -1) currentStrokes.push(nextPaint);
@@ -1502,8 +1619,34 @@ async function bindStrokeVariable(node, variable) {
   return true;
 }
 
+async function bindIconColorVariable(node, variable) {
+  if (!node || !variable) return false;
+  const paintTargets = [];
+  walk(node, (candidate) => {
+    const hasSolidFill = 'fills' in candidate
+      && Array.isArray(candidate.fills)
+      && candidate.fills.some(isSolidPaint);
+    const hasSolidStroke = 'strokes' in candidate
+      && Array.isArray(candidate.strokes)
+      && candidate.strokes.some(isSolidPaint);
+    if (hasSolidFill || hasSolidStroke) {
+      paintTargets.push({ node: candidate, hasSolidFill, hasSolidStroke });
+    }
+  });
+
+  let applied = false;
+  for (const target of paintTargets) {
+    if (target.hasSolidFill && await bindPaintVariable(target.node, variable)) applied = true;
+    if (target.hasSolidStroke && await bindStrokeVariable(target.node, variable)) applied = true;
+  }
+
+  if (applied) return true;
+  return await bindPaintVariable(node, variable);
+}
+
 function bindNodeField(node, field, variable) {
   if (!node || !variable || typeof node.setBoundVariable !== 'function') return false;
+  if (isFieldBoundToVariable(node, field, variable)) return true;
   try {
     node.setBoundVariable(field, variable);
     return true;
@@ -1521,6 +1664,7 @@ function bindLineHeight(node, variable, errors) {
     errors && errors.push(`bindLineHeight: expected NUMBER/FLOAT, got ${variable.resolvedType}`);
     return false;
   }
+  if (isFieldBoundToVariable(node, 'lineHeight', variable)) return true;
   // Figma won't bind a variable to lineHeight if unit is AUTO — normalize first
   try {
     if (node.lineHeight && node.lineHeight.unit === 'AUTO') {
@@ -1547,6 +1691,7 @@ function bindFontFamily(node, variable, errors) {
     errors && errors.push(`bindFontFamily: expected STRING, got ${variable.resolvedType}`);
     return false;
   }
+  if (isFieldBoundToVariable(node, 'fontFamily', variable)) return true;
   try {
     node.setBoundVariable('fontFamily', variable);
     return true;
@@ -1565,6 +1710,7 @@ function bindFontStyle(node, variable, errors) {
     errors && errors.push(`bindFontStyle: expected STRING, got ${variable.resolvedType}`);
     return false;
   }
+  if (isFieldBoundToVariable(node, 'fontStyle', variable)) return true;
   try {
     node.setBoundVariable('fontStyle', variable);
     return true;
@@ -1583,6 +1729,7 @@ function bindTextField(node, field, variable, errors) {
     errors && errors.push(`bindTextField(${field}): skipped STRING variable`);
     return false;
   }
+  if (isFieldBoundToVariable(node, field, variable)) return true;
   try {
     node.setBoundVariable(field, variable);
     return true;
@@ -1592,17 +1739,86 @@ function bindTextField(node, field, variable, errors) {
   }
 }
 
+function getLayoutTarget(node, surface) {
+  if (surface && 'layoutMode' in surface && surface.layoutMode !== 'NONE') return surface;
+  return node || surface;
+}
+
+function applyLinkLayout(node, surface, errors) {
+  const target = getLayoutTarget(node, surface);
+  if (!target) return false;
+  let applied = false;
+
+  if (typeof target.setBoundVariable === 'function') {
+    const fields = [
+      'width',
+      'height',
+      'minWidth',
+      'maxWidth',
+      'minHeight',
+      'maxHeight',
+      'topLeftRadius',
+      'topRightRadius',
+      'bottomLeftRadius',
+      'bottomRightRadius',
+    ];
+    for (const field of fields) {
+      if (!hasFieldBinding(target, field)) continue;
+      try {
+        target.setBoundVariable(field, null);
+        applied = true;
+      } catch (error) {
+        errors && errors.push(`link-layout: could not clear ${field}: ${error && error.message ? error.message : String(error)}`);
+      }
+    }
+  }
+
+  for (const field of ['minWidth', 'maxWidth', 'minHeight', 'maxHeight']) {
+    if (field in target) {
+      try { target[field] = null; } catch (error) {}
+    }
+  }
+  for (const field of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius']) {
+    if (field in target) {
+      try { target[field] = 0; } catch (error) {}
+    }
+  }
+
+  if ('layoutMode' in target && target.layoutMode !== 'NONE') {
+    try {
+      target.primaryAxisSizingMode = 'AUTO';
+      target.counterAxisSizingMode = 'AUTO';
+      target.layoutSizingHorizontal = 'HUG';
+      target.layoutSizingVertical = 'HUG';
+      applied = true;
+    } catch (error) {
+      errors && errors.push(`link-layout: ${error && error.message ? error.message : String(error)}`);
+    }
+  } else {
+    errors && errors.push('link-layout: target is not an auto-layout frame.');
+  }
+
+  return applied;
+}
+
+function bindPaddingSide(node, field, variable) {
+  return bindNodeField(node, field, variable);
+}
+
+function bindAllPadding(node, variable) {
+  if (!node || !variable || typeof node.setBoundVariable !== 'function') return false;
+  let applied = false;
+  for (const field of ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft']) {
+    if (bindPaddingSide(node, field, variable)) applied = true;
+  }
+  return applied;
+}
+
 function bindHorizontalPadding(node, variable) {
   if (!node || !variable || typeof node.setBoundVariable !== 'function') return false;
   let applied = false;
-  try {
-    node.setBoundVariable('paddingLeft', variable);
-    applied = true;
-  } catch (error) {}
-  try {
-    node.setBoundVariable('paddingRight', variable);
-    applied = true;
-  } catch (error) {}
+  if (bindNodeField(node, 'paddingLeft', variable)) applied = true;
+  if (bindNodeField(node, 'paddingRight', variable)) applied = true;
   return applied;
 }
 
@@ -1611,10 +1827,7 @@ function bindCornerRadius(node, variable) {
   let applied = false;
   const fields = ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'];
   for (const field of fields) {
-    try {
-      node.setBoundVariable(field, variable);
-      applied = true;
-    } catch (error) {}
+    if (bindNodeField(node, field, variable)) applied = true;
   }
   return applied;
 }
@@ -1622,15 +1835,32 @@ function bindCornerRadius(node, variable) {
 function bindIconSize(node, variable) {
   if (!node || !variable || typeof node.setBoundVariable !== 'function') return false;
   let applied = false;
-  try {
-    node.setBoundVariable('width', variable);
-    applied = true;
-  } catch (error) {}
-  try {
-    node.setBoundVariable('height', variable);
-    applied = true;
-  } catch (error) {}
+  if (bindNodeField(node, 'width', variable)) applied = true;
+  if (bindNodeField(node, 'height', variable)) applied = true;
   return applied;
+}
+
+function hasFieldBinding(node, field) {
+  if (!node || !node.boundVariables) return false;
+  const value = node.boundVariables[field];
+  return Array.isArray(value) ? value.length > 0 : Boolean(value);
+}
+
+function isFieldBoundToVariable(node, field, variable) {
+  if (!node || !variable || !node.boundVariables) return false;
+  const value = node.boundVariables[field];
+  const aliases = Array.isArray(value) ? value : [value];
+  return aliases.some((alias) => alias && alias.id === variable.id);
+}
+
+function isPaintBoundToVariable(paint, variable) {
+  return Boolean(
+    paint
+    && variable
+    && paint.boundVariables
+    && paint.boundVariables.color
+    && paint.boundVariables.color.id === variable.id
+  );
 }
 
 function findFirstSolidPaintIndex(paints) {
@@ -1743,7 +1973,9 @@ function createSideCard(titleText, previewNode, analysis, selectedAssignments) {
   if (selectedAssignments && selectedAssignments.length) {
     const notes = figma.createText();
     notes.fontName = { family: 'Inter', style: 'Regular' };
-    notes.characters = selectedAssignments.map((assignment) => `${assignment.role} -> ${assignment.token}`).join('\n');
+    notes.characters = selectedAssignments
+      .map((assignment) => `${assignment.role} -> ${assignment.token || assignment.description || 'Direct layout rule'}`)
+      .join('\n');
     notes.fontSize = 11;
     notes.lineHeight = { unit: 'PIXELS', value: 16 };
     notes.fills = [solidPaint({ r: 0.42, g: 0.42, b: 0.47 })];
@@ -1865,7 +2097,8 @@ function getBackgroundStateSuffix(state) {
   }
 }
 
-function getBorderStateSuffix(state) {
+function getBorderStateSuffix(state, variant) {
+  if (variant === 'outline' && isActiveState(state)) return '-active';
   switch (state) {
     case 'hover':
       return '-hover';

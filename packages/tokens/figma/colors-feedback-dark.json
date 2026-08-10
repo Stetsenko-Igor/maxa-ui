@@ -5,14 +5,14 @@
       "$type": "color"
     },
     "info": {
-      "bg": { "$value": "{Colors.Blue.700}", "$type": "color" },
+      "bg": { "$value": "{Colors.Blue.800}", "$type": "color" },
       "border": { "$value": "{Colors.Blue.600}", "$type": "color" },
       "accent": { "$value": "{Colors.Blue.400}", "$type": "color" },
       "action": { "$value": "{Colors.Blue.400}", "$type": "color" },
       "action-hover": { "$value": "{Colors.Blue.300}", "$type": "color" }
     },
     "success": {
-      "bg": { "$value": "{Colors.Green.800}", "$type": "color" },
+      "bg": { "$value": "{Colors.Green.900}", "$type": "color" },
       "border": { "$value": "{Colors.Green.700}", "$type": "color" },
       "accent": { "$value": "{Colors.Green.500}", "$type": "color" },
       "action": { "$value": "{Colors.Green.400}", "$type": "color" },
@@ -26,7 +26,7 @@
       "action-hover": { "$value": "{Colors.Orange.300}", "$type": "color" }
     },
     "error": {
-      "bg": { "$value": "{Colors.Red.700}", "$type": "color" },
+      "bg": { "$value": "{Colors.Red.800}", "$type": "color" },
       "border": { "$value": "{Colors.Red.500}", "$type": "color" },
       "accent": { "$value": "{Colors.Red.300}", "$type": "color" },
       "action": { "$value": "{Colors.Red.400}", "$type": "color" },
