@@ -30,19 +30,14 @@
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
-    "text-on-success": {
-      "$description": "White text on success action surfaces.",
+    "text-on-color": {
+      "$description": "White text on strong colored action surfaces.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "text-on-warning": {
       "$description": "High-contrast text on bright warning action surfaces.",
       "$value": "{Colors.Base.Black}",
-      "$type": "color"
-    },
-    "text-on-destructive": {
-      "$description": "High-contrast text on destructive action surfaces.",
-      "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "text-on-neutral-action-active": {
@@ -53,6 +48,21 @@
     "text-brand": {
       "$description": "Brand-colored labels and links.",
       "$value": "{Colors.Brand.600}",
+      "$type": "color"
+    },
+    "text-link": {
+      "$description": "Link text color on regular surfaces.",
+      "$value": "{Colors.Blue.500}",
+      "$type": "color"
+    },
+    "text-link-hover": {
+      "$description": "Link text color on hover.",
+      "$value": "{Colors.Blue.550}",
+      "$type": "color"
+    },
+    "text-link-active": {
+      "$description": "Link text color while pressed.",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "text-success": {
@@ -166,12 +176,12 @@
     },
     "action-primary-hover": {
       "$description": "Primary CTA background, hover state.",
-      "$value": "{Colors.Blue.600}",
+      "$value": "{Colors.Blue.550}",
       "$type": "color"
     },
     "action-primary-active": {
       "$description": "Primary CTA background, active state.",
-      "$value": "{Colors.Blue.700}",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "action-primary-subtle": {
@@ -251,32 +261,17 @@
     },
     "action-success": {
       "$description": "Confirm/approve action background (green).",
-      "$value": "{Colors.Green.500}",
+      "$value": "{Colors.Green.650}",
       "$type": "color"
     },
     "action-success-hover": {
       "$description": "Confirm action background, hover state.",
-      "$value": "{Colors.Green.600}",
+      "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "action-success-active": {
       "$description": "Confirm action background, active state.",
-      "$value": "{Colors.Green.700}",
-      "$type": "color"
-    },
-    "action-success-subtle": {
-      "$description": "Low-emphasis confirm action fill.",
-      "$value": "{Colors.Green.50}",
-      "$type": "color"
-    },
-    "action-success-subtle-hover": {
-      "$description": "Low-emphasis confirm action fill, hover state.",
-      "$value": "{Colors.Green.50}",
-      "$type": "color"
-    },
-    "action-success-subtle-active": {
-      "$description": "Low-emphasis confirm action fill, active state.",
-      "$value": "{Colors.Green.100}",
+      "$value": "{Colors.Green.750}",
       "$type": "color"
     },
     "action-destructive": {
@@ -286,27 +281,12 @@
     },
     "action-destructive-hover": {
       "$description": "Destructive action background, hover state.",
-      "$value": "{Colors.Red.600}",
+      "$value": "{Colors.Red.550}",
       "$type": "color"
     },
     "action-destructive-active": {
       "$description": "Destructive action background, active state.",
-      "$value": "{Colors.Red.700}",
-      "$type": "color"
-    },
-    "action-destructive-subtle": {
-      "$description": "Low-emphasis destructive action fill.",
-      "$value": "{Colors.Red.50}",
-      "$type": "color"
-    },
-    "action-destructive-subtle-hover": {
-      "$description": "Low-emphasis destructive action fill, hover state.",
-      "$value": "{Colors.Red.50}",
-      "$type": "color"
-    },
-    "action-destructive-subtle-active": {
-      "$description": "Low-emphasis destructive action fill, active state.",
-      "$value": "{Colors.Red.100}",
+      "$value": "{Colors.Red.600}",
       "$type": "color"
     },
     "action-warning": {
@@ -379,6 +359,21 @@
     "fg-brand": {
       "$description": "Brand-colored icons.",
       "$value": "{Colors.Brand.600}",
+      "$type": "color"
+    },
+    "fg-link": {
+      "$description": "Link icon color on regular surfaces.",
+      "$value": "{Colors.Blue.500}",
+      "$type": "color"
+    },
+    "fg-link-hover": {
+      "$description": "Link icon color on hover.",
+      "$value": "{Colors.Blue.550}",
+      "$type": "color"
+    },
+    "fg-link-active": {
+      "$description": "Link icon color while pressed.",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "fg-success": {

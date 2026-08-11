@@ -2,13 +2,14 @@
 
 .maxa-button {
   --button-padding-x-current: var(--button-size-md-padding-x);
-  --button-padding-x-icon-current: var(--button-size-md-padding-x-icon);
+  --button-gap-current: var(--spacing-sm);
+  --button-label-padding-x-current: var(--spacing-xxs);
 
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--button-size-md-gap);
+  gap: var(--button-gap-current);
   height: var(--button-size-md-height);
   padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-md-radius);
@@ -20,12 +21,16 @@
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
-  transition: background-color var(--duration-base) var(--easing-standard), border-color var(--duration-base) var(--easing-standard), color var(--duration-base) var(--easing-standard);
+  transition:
+    background-color var(--duration-base) var(--easing-standard),
+    border-color var(--duration-base) var(--easing-standard),
+    color var(--duration-base) var(--easing-standard);
   -webkit-font-smoothing: antialiased;
 }
 
 .maxa-button:focus-visible {
-  outline: 2px solid var(--color-border-focus);
+  border-color: var(--button-focus-border);
+  outline: 2px solid var(--button-focus-border);
   outline-offset: 2px;
 }
 
@@ -35,13 +40,18 @@
   pointer-events: none;
 }
 
+.maxa-button[data-loading="true"] {
+  opacity: 1;
+}
+
 /* ── Sizes ──────────────────────────────────────────────────── */
 
 .maxa-button--xs {
   --button-padding-x-current: var(--button-size-xs-padding-x);
-  --button-padding-x-icon-current: var(--button-size-xs-padding-x-icon);
+  --button-gap-current: var(--spacing-xxs);
+  --button-label-padding-x-current: var(--spacing-xxs);
 
-  gap: var(--button-size-xs-gap);
+  gap: var(--button-gap-current);
   height: var(--button-size-xs-height);
   padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-xs-radius);
@@ -52,9 +62,10 @@
 
 .maxa-button--sm {
   --button-padding-x-current: var(--button-size-sm-padding-x);
-  --button-padding-x-icon-current: var(--button-size-sm-padding-x-icon);
+  --button-gap-current: var(--spacing-xs);
+  --button-label-padding-x-current: var(--spacing-xxs);
 
-  gap: var(--button-size-sm-gap);
+  gap: var(--button-gap-current);
   height: var(--button-size-sm-height);
   padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-sm-radius);
@@ -65,9 +76,10 @@
 
 .maxa-button--md {
   --button-padding-x-current: var(--button-size-md-padding-x);
-  --button-padding-x-icon-current: var(--button-size-md-padding-x-icon);
+  --button-gap-current: var(--spacing-sm);
+  --button-label-padding-x-current: var(--spacing-xxs);
 
-  gap: var(--button-size-md-gap);
+  gap: var(--button-gap-current);
   height: var(--button-size-md-height);
   padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-md-radius);
@@ -78,9 +90,10 @@
 
 .maxa-button--lg {
   --button-padding-x-current: var(--button-size-lg-padding-x);
-  --button-padding-x-icon-current: var(--button-size-lg-padding-x-icon);
+  --button-gap-current: var(--spacing-xs);
+  --button-label-padding-x-current: var(--spacing-xs);
 
-  gap: var(--button-size-lg-gap);
+  gap: var(--button-gap-current);
   height: var(--button-size-lg-height);
   padding-inline: var(--button-padding-x-current);
   border-radius: var(--button-size-lg-radius);
@@ -91,19 +104,19 @@
 
 /* Icon-only: square dimensions */
 .maxa-button--xs.maxa-button--icon-only {
-  width: var(--button-icon-only-xs-size);
+  width: var(--button-size-xs-height);
   padding-inline: 0;
 }
 .maxa-button--sm.maxa-button--icon-only {
-  width: var(--button-icon-only-sm-size);
+  width: var(--button-size-sm-height);
   padding-inline: 0;
 }
 .maxa-button--md.maxa-button--icon-only {
-  width: var(--button-icon-only-md-size);
+  width: var(--button-size-md-height);
   padding-inline: 0;
 }
 .maxa-button--lg.maxa-button--icon-only {
-  width: var(--button-icon-only-lg-size);
+  width: var(--button-size-lg-height);
   padding-inline: 0;
 }
 
@@ -116,21 +129,17 @@
   aspect-ratio: 1 / 1;
 }
 
-/* The icon edge is optically tighter; the label-only edge keeps regular padding. */
-.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link)[data-icon-leading] {
-  padding-inline-start: var(--button-padding-x-icon-current);
-}
-
-.maxa-button:not(.maxa-button--icon-only):not(.maxa-button--link)[data-icon-trailing] {
-  padding-inline-end: var(--button-padding-x-icon-current);
+/* Radix Slot keeps one child, so asChild receives the label's optical padding on the root. */
+.maxa-button[data-as-child="true"]:not(.maxa-button--link):not(.maxa-button--icon-only) {
+  padding-inline: calc(var(--button-padding-x-current) + var(--button-label-padding-x-current));
 }
 
 /* ── Variants ────────────────────────────────────────────────── */
 
 .maxa-button--primary {
-  --button-fg-current: var(--button-primary-fg);
+  --button-fg-current: var(--button-content-fg-on-color);
   background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
+  color: var(--button-content-text-on-color);
   border-color: var(--button-primary-border);
 }
 .maxa-button--primary:hover {
@@ -140,10 +149,6 @@
 .maxa-button--primary:active {
   background-color: var(--button-primary-bg-active);
 }
-.maxa-button--primary:focus-visible {
-  border-color: var(--button-primary-border-focus);
-}
-
 .maxa-button--secondary {
   --button-fg-current: var(--button-secondary-fg);
   background-color: var(--button-secondary-bg);
@@ -158,10 +163,6 @@
   background-color: var(--button-secondary-bg-active);
   color: var(--button-secondary-text-active);
 }
-.maxa-button--secondary:focus-visible {
-  border-color: var(--button-secondary-border-focus);
-}
-
 .maxa-button--outline {
   --button-fg-current: var(--button-outline-fg);
   background-color: var(--button-outline-bg);
@@ -179,10 +180,6 @@
   background-color: var(--button-outline-bg-active);
   border-color: var(--button-outline-border-active);
 }
-.maxa-button--outline:focus-visible {
-  border-color: var(--button-outline-border-focus);
-}
-
 .maxa-button--ghost {
   --button-fg-current: var(--button-ghost-fg);
   background-color: var(--button-ghost-bg);
@@ -195,10 +192,6 @@
 .maxa-button--ghost:active {
   background-color: var(--button-ghost-bg-active);
 }
-.maxa-button--ghost:focus-visible {
-  border-color: var(--button-ghost-border-focus);
-}
-
 .maxa-button--link {
   --button-fg-current: var(--button-link-fg);
   background-color: var(--button-link-bg);
@@ -208,6 +201,19 @@
   padding: 0;
   height: auto;
 }
+.maxa-button--link .maxa-button__label {
+  padding-inline: 0;
+}
+.maxa-button--xs.maxa-button--link {
+  gap: var(--spacing-xs);
+}
+.maxa-button--sm.maxa-button--link {
+  gap: var(--spacing-sm);
+}
+.maxa-button--md.maxa-button--link,
+.maxa-button--lg.maxa-button--link {
+  gap: var(--spacing-md);
+}
 .maxa-button--link:hover {
   --button-fg-current: var(--button-link-fg-hover);
   color: var(--button-link-text-hover);
@@ -216,33 +222,24 @@
   --button-fg-current: var(--button-link-fg-active);
   color: var(--button-link-text-active);
 }
-.maxa-button--link:focus-visible {
-  border-color: var(--button-link-border-focus);
-}
-
 .maxa-button--success {
-  --button-fg-current: var(--button-success-fg);
+  --button-fg-current: var(--button-content-fg-on-color);
   background-color: var(--button-success-bg);
-  color: var(--button-success-text);
+  color: var(--button-content-text-on-color);
   border-color: var(--button-success-border);
 }
 .maxa-button--success:hover {
   background-color: var(--button-success-bg-hover);
-  color: var(--button-success-text-hover);
   border-color: var(--button-success-border-hover);
 }
 .maxa-button--success:active {
   background-color: var(--button-success-bg-active);
-  color: var(--button-success-text-active);
-}
-.maxa-button--success:focus-visible {
-  border-color: var(--button-success-border-focus);
 }
 
 .maxa-button--destructive {
-  --button-fg-current: var(--button-destructive-fg);
+  --button-fg-current: var(--button-content-fg-on-color);
   background-color: var(--button-destructive-bg);
-  color: var(--button-destructive-text);
+  color: var(--button-content-text-on-color);
   border-color: var(--button-destructive-border);
 }
 .maxa-button--destructive:hover {
@@ -252,10 +249,6 @@
 .maxa-button--destructive:active {
   background-color: var(--button-destructive-bg-active);
 }
-.maxa-button--destructive:focus-visible {
-  border-color: var(--button-destructive-border-focus);
-}
-
 .maxa-button--warning {
   --button-fg-current: var(--button-warning-fg);
   background-color: var(--button-warning-bg);
@@ -271,10 +264,6 @@
   background-color: var(--button-warning-bg-active);
   color: var(--button-warning-text-active);
 }
-.maxa-button--warning:focus-visible {
-  border-color: var(--button-warning-border-focus);
-}
-
 /* ── Full width ──────────────────────────────────────────────── */
 
 .maxa-button--full-width {
@@ -288,6 +277,10 @@
 }
 
 /* ── Icon sizing ─────────────────────────────────────────────── */
+
+.maxa-button__label {
+  padding-inline: var(--button-label-padding-x-current);
+}
 
 .maxa-button__icon {
   display: inline-flex;
@@ -309,10 +302,22 @@
   flex: 0 0 auto;
 }
 
-.maxa-button--xs .maxa-button__icon { width: var(--button-size-xs-icon-size); height: var(--button-size-xs-icon-size); }
-.maxa-button--sm .maxa-button__icon { width: var(--button-size-sm-icon-size); height: var(--button-size-sm-icon-size); }
-.maxa-button--md .maxa-button__icon { width: var(--button-size-md-icon-size); height: var(--button-size-md-icon-size); }
-.maxa-button--lg .maxa-button__icon { width: var(--button-size-lg-icon-size); height: var(--button-size-lg-icon-size); }
+.maxa-button--xs .maxa-button__icon {
+  width: var(--button-size-xs-icon-size);
+  height: var(--button-size-xs-icon-size);
+}
+.maxa-button--sm .maxa-button__icon {
+  width: var(--button-size-sm-icon-size);
+  height: var(--button-size-sm-icon-size);
+}
+.maxa-button--md .maxa-button__icon {
+  width: var(--button-size-md-icon-size);
+  height: var(--button-size-md-icon-size);
+}
+.maxa-button--lg .maxa-button__icon {
+  width: var(--button-size-lg-icon-size);
+  height: var(--button-size-lg-icon-size);
+}
 
 /* ── Spinner ─────────────────────────────────────────────────── */
 
@@ -328,5 +333,7 @@
 }
 
 @keyframes maxa-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

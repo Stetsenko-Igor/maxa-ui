@@ -321,6 +321,7 @@
           "Colors/Red/300": "#FA908B",
           "Colors/Red/400": "#EA514B",
           "Colors/Red/500": "#D31510",
+          "Colors/Red/550": "#C6140F",
           "Colors/Red/600": "#B9120E",
           "Colors/Red/700": "#960F0B",
           "Colors/Red/800": "#78100D",
@@ -377,7 +378,9 @@
           "Colors/Green/400": "#59C675",
           "Colors/Green/500": "#30AA50",
           "Colors/Green/600": "#288F44",
+          "Colors/Green/650": "#25843E",
           "Colors/Green/700": "#227939",
+          "Colors/Green/750": "#206D35",
           "Colors/Green/800": "#1E6131",
           "Colors/Green/900": "#194C28",
           "Colors/Green/950": "#0C2A15",
@@ -432,6 +435,7 @@
           "Colors/Blue/300": "#86C0F4",
           "Colors/Blue/400": "#449BE8",
           "Colors/Blue/500": "#0576DA",
+          "Colors/Blue/550": "#056DC9",
           "Colors/Blue/600": "#0564B9",
           "Colors/Blue/700": "#04549B",
           "Colors/Blue/800": "#073F72",
@@ -637,6 +641,7 @@
         "Colors/Red/300": "COLOR",
         "Colors/Red/400": "COLOR",
         "Colors/Red/500": "COLOR",
+        "Colors/Red/550": "COLOR",
         "Colors/Red/600": "COLOR",
         "Colors/Red/700": "COLOR",
         "Colors/Red/800": "COLOR",
@@ -693,7 +698,9 @@
         "Colors/Green/400": "COLOR",
         "Colors/Green/500": "COLOR",
         "Colors/Green/600": "COLOR",
+        "Colors/Green/650": "COLOR",
         "Colors/Green/700": "COLOR",
+        "Colors/Green/750": "COLOR",
         "Colors/Green/800": "COLOR",
         "Colors/Green/900": "COLOR",
         "Colors/Green/950": "COLOR",
@@ -748,6 +755,7 @@
         "Colors/Blue/300": "COLOR",
         "Colors/Blue/400": "COLOR",
         "Colors/Blue/500": "COLOR",
+        "Colors/Blue/550": "COLOR",
         "Colors/Blue/600": "COLOR",
         "Colors/Blue/700": "COLOR",
         "Colors/Blue/800": "COLOR",
@@ -943,6 +951,9 @@
         "Colors/Red/500": [
           "ALL_FILLS"
         ],
+        "Colors/Red/550": [
+          "ALL_FILLS"
+        ],
         "Colors/Red/600": [
           "ALL_FILLS"
         ],
@@ -1053,7 +1064,9 @@
         "Colors/Green/400": [],
         "Colors/Green/500": [],
         "Colors/Green/600": [],
+        "Colors/Green/650": [],
         "Colors/Green/700": [],
+        "Colors/Green/750": [],
         "Colors/Green/800": [],
         "Colors/Green/900": [],
         "Colors/Green/950": [],
@@ -1108,6 +1121,7 @@
         "Colors/Blue/300": [],
         "Colors/Blue/400": [],
         "Colors/Blue/500": [],
+        "Colors/Blue/550": [],
         "Colors/Blue/600": [],
         "Colors/Blue/700": [],
         "Colors/Blue/800": [],
@@ -1207,11 +1221,13 @@
           "text/text-disabled": "{Colors.Neutral.500}",
           "text/text-inverse": "{Colors.Base.White}",
           "text/text-on-brand": "{Colors.Neutral.950}",
-          "text/text-on-success": "{Colors.Base.White}",
+          "text/text-on-color": "{Colors.Base.White}",
           "text/text-on-warning": "{Colors.Base.Black}",
-          "text/text-on-destructive": "{Colors.Base.White}",
           "text/text-on-neutral-action-active": "{Colors.Neutral.950}",
           "text/text-brand": "{Colors.Brand.600}",
+          "text/text-link": "{Colors.Blue.500}",
+          "text/text-link-hover": "{Colors.Blue.550}",
+          "text/text-link-active": "{Colors.Blue.600}",
           "text/text-success": "{Colors.Green.900}",
           "text/text-warning": "{Colors.Orange.900}",
           "text/text-error": "{Colors.Red.900}",
@@ -1233,8 +1249,8 @@
           "border/border-neutral-muted": "{Colors.Neutral.400}",
           "border/border-neutral-subtle": "{Colors.Neutral.300}",
           "action/action-primary": "{Colors.Blue.500}",
-          "action/action-primary-hover": "{Colors.Blue.600}",
-          "action/action-primary-active": "{Colors.Blue.700}",
+          "action/action-primary-hover": "{Colors.Blue.550}",
+          "action/action-primary-active": "{Colors.Blue.600}",
           "action/action-primary-subtle": "{Colors.Blue.100}",
           "action/action-primary-subtle-hover": "{Colors.Blue.150}",
           "action/action-primary-subtle-active": "{Colors.Blue.200}",
@@ -1250,18 +1266,12 @@
           "action/action-brand-subtle": "{Colors.Brand.50}",
           "action/action-brand-subtle-hover": "{Colors.Brand.50}",
           "action/action-brand-subtle-active": "{Colors.Brand.200}",
-          "action/action-success": "{Colors.Green.500}",
-          "action/action-success-hover": "{Colors.Green.600}",
-          "action/action-success-active": "{Colors.Green.700}",
-          "action/action-success-subtle": "{Colors.Green.50}",
-          "action/action-success-subtle-hover": "{Colors.Green.50}",
-          "action/action-success-subtle-active": "{Colors.Green.100}",
+          "action/action-success": "{Colors.Green.650}",
+          "action/action-success-hover": "{Colors.Green.700}",
+          "action/action-success-active": "{Colors.Green.750}",
           "action/action-destructive": "{Colors.Red.500}",
-          "action/action-destructive-hover": "{Colors.Red.600}",
-          "action/action-destructive-active": "{Colors.Red.700}",
-          "action/action-destructive-subtle": "{Colors.Red.50}",
-          "action/action-destructive-subtle-hover": "{Colors.Red.50}",
-          "action/action-destructive-subtle-active": "{Colors.Red.100}",
+          "action/action-destructive-hover": "{Colors.Red.550}",
+          "action/action-destructive-active": "{Colors.Red.600}",
           "action/action-warning": "{Colors.Yellow.500}",
           "action/action-warning-hover": "{Colors.Yellow.600}",
           "action/action-warning-active": "{Colors.Yellow.700}",
@@ -1276,6 +1286,9 @@
           "foreground/fg-on-brand": "{Colors.Neutral.950}",
           "foreground/fg-on-color": "{Colors.Base.White}",
           "foreground/fg-brand": "{Colors.Brand.600}",
+          "foreground/fg-link": "{Colors.Blue.500}",
+          "foreground/fg-link-hover": "{Colors.Blue.550}",
+          "foreground/fg-link-active": "{Colors.Blue.600}",
           "foreground/fg-success": "{Colors.Green.700}",
           "foreground/fg-error": "{Colors.Red.700}",
           "foreground/fg-warning": "{Colors.Yellow.600}",
@@ -1451,11 +1464,13 @@
           "text/text-disabled": "{Colors.Neutral.700}",
           "text/text-inverse": "{Colors.Neutral.900}",
           "text/text-on-brand": "{Colors.Neutral.950}",
-          "text/text-on-success": "{Colors.Base.White}",
+          "text/text-on-color": "{Colors.Base.White}",
           "text/text-on-warning": "{Colors.Base.Black}",
-          "text/text-on-destructive": "{Colors.Base.Black}",
           "text/text-on-neutral-action-active": "{Colors.Neutral.950}",
           "text/text-brand": "{Colors.Brand.400}",
+          "text/text-link": "{Colors.Blue.400}",
+          "text/text-link-hover": "{Colors.Blue.300}",
+          "text/text-link-active": "{Colors.Blue.200}",
           "text/text-success": "{Colors.Green.300}",
           "text/text-warning": "{Colors.Orange.300}",
           "text/text-error": "{Colors.Red.300}",
@@ -1476,9 +1491,9 @@
           "border/border-neutral-strong": "{Colors.Neutral.300}",
           "border/border-neutral-muted": "{Colors.Neutral.600}",
           "border/border-neutral-subtle": "{Colors.Neutral.700}",
-          "action/action-primary": "{Colors.Blue.400}",
-          "action/action-primary-hover": "{Colors.Blue.300}",
-          "action/action-primary-active": "{Colors.Blue.200}",
+          "action/action-primary": "{Colors.Blue.600}",
+          "action/action-primary-hover": "{Colors.Blue.550}",
+          "action/action-primary-active": "{Colors.Blue.500}",
           "action/action-primary-subtle": "{Colors.Blue.950}",
           "action/action-primary-subtle-hover": "{Colors.Blue.950}",
           "action/action-primary-subtle-active": "{Colors.Blue.900}",
@@ -1494,18 +1509,12 @@
           "action/action-brand-subtle": "{Colors.Brand.950}",
           "action/action-brand-subtle-hover": "{Colors.Brand.950}",
           "action/action-brand-subtle-active": "{Colors.Brand.900}",
-          "action/action-success": "{Colors.Green.400}",
-          "action/action-success-hover": "{Colors.Green.300}",
-          "action/action-success-active": "{Colors.Green.200}",
-          "action/action-success-subtle": "{Colors.Green.950}",
-          "action/action-success-subtle-hover": "{Colors.Green.950}",
-          "action/action-success-subtle-active": "{Colors.Green.900}",
-          "action/action-destructive": "{Colors.Red.400}",
-          "action/action-destructive-hover": "{Colors.Red.300}",
-          "action/action-destructive-active": "{Colors.Red.200}",
-          "action/action-destructive-subtle": "{Colors.Red.950}",
-          "action/action-destructive-subtle-hover": "{Colors.Red.950}",
-          "action/action-destructive-subtle-active": "{Colors.Red.900}",
+          "action/action-success": "{Colors.Green.750}",
+          "action/action-success-hover": "{Colors.Green.700}",
+          "action/action-success-active": "{Colors.Green.650}",
+          "action/action-destructive": "{Colors.Red.600}",
+          "action/action-destructive-hover": "{Colors.Red.550}",
+          "action/action-destructive-active": "{Colors.Red.500}",
           "action/action-warning": "{Colors.Yellow.400}",
           "action/action-warning-hover": "{Colors.Yellow.300}",
           "action/action-warning-active": "{Colors.Yellow.200}",
@@ -1520,6 +1529,9 @@
           "foreground/fg-on-brand": "{Colors.Neutral.950}",
           "foreground/fg-on-color": "{Colors.Base.White}",
           "foreground/fg-brand": "{Colors.Brand.400}",
+          "foreground/fg-link": "{Colors.Blue.400}",
+          "foreground/fg-link-hover": "{Colors.Blue.300}",
+          "foreground/fg-link-active": "{Colors.Blue.200}",
           "foreground/fg-success": "{Colors.Green.400}",
           "foreground/fg-error": "{Colors.Red.400}",
           "foreground/fg-warning": "{Colors.Yellow.400}",
@@ -1696,11 +1708,13 @@
         "text/text-disabled": "Disabled form labels.",
         "text/text-inverse": "Text on dark or colored surfaces.",
         "text/text-on-brand": "Dark text on strong brand fill.",
-        "text/text-on-success": "White text on success action surfaces.",
+        "text/text-on-color": "White text on strong colored action surfaces.",
         "text/text-on-warning": "High-contrast text on bright warning action surfaces.",
-        "text/text-on-destructive": "High-contrast text on destructive action surfaces.",
         "text/text-on-neutral-action-active": "Text on the active neutral action surface.",
         "text/text-brand": "Brand-colored labels and links.",
+        "text/text-link": "Link text color on regular surfaces.",
+        "text/text-link-hover": "Link text color on hover.",
+        "text/text-link-active": "Link text color while pressed.",
         "text/text-success": "Success message text.",
         "text/text-warning": "Warning message text.",
         "text/text-error": "Error and validation message text.",
@@ -1742,15 +1756,9 @@
         "action/action-success": "Confirm/approve action background (green).",
         "action/action-success-hover": "Confirm action background, hover state.",
         "action/action-success-active": "Confirm action background, active state.",
-        "action/action-success-subtle": "Low-emphasis confirm action fill.",
-        "action/action-success-subtle-hover": "Low-emphasis confirm action fill, hover state.",
-        "action/action-success-subtle-active": "Low-emphasis confirm action fill, active state.",
         "action/action-destructive": "Destructive action background (red).",
         "action/action-destructive-hover": "Destructive action background, hover state.",
         "action/action-destructive-active": "Destructive action background, active state.",
-        "action/action-destructive-subtle": "Low-emphasis destructive action fill.",
-        "action/action-destructive-subtle-hover": "Low-emphasis destructive action fill, hover state.",
-        "action/action-destructive-subtle-active": "Low-emphasis destructive action fill, active state.",
         "action/action-warning": "Warning action background (yellow).",
         "action/action-warning-hover": "Warning action background, hover state.",
         "action/action-warning-active": "Warning action background, active state.",
@@ -1765,6 +1773,9 @@
         "foreground/fg-on-brand": "Icons on strong brand fill.",
         "foreground/fg-on-color": "Foreground color for icons on strong colored backgrounds.",
         "foreground/fg-brand": "Brand-colored icons.",
+        "foreground/fg-link": "Link icon color on regular surfaces.",
+        "foreground/fg-link-hover": "Link icon color on hover.",
+        "foreground/fg-link-active": "Link icon color while pressed.",
         "foreground/fg-success": "Success icons.",
         "foreground/fg-error": "Error and destructive icons.",
         "foreground/fg-warning": "Warning icons.",
@@ -1940,11 +1951,13 @@
         "text/text-disabled": "COLOR",
         "text/text-inverse": "COLOR",
         "text/text-on-brand": "COLOR",
-        "text/text-on-success": "COLOR",
+        "text/text-on-color": "COLOR",
         "text/text-on-warning": "COLOR",
-        "text/text-on-destructive": "COLOR",
         "text/text-on-neutral-action-active": "COLOR",
         "text/text-brand": "COLOR",
+        "text/text-link": "COLOR",
+        "text/text-link-hover": "COLOR",
+        "text/text-link-active": "COLOR",
         "text/text-success": "COLOR",
         "text/text-warning": "COLOR",
         "text/text-error": "COLOR",
@@ -1986,15 +1999,9 @@
         "action/action-success": "COLOR",
         "action/action-success-hover": "COLOR",
         "action/action-success-active": "COLOR",
-        "action/action-success-subtle": "COLOR",
-        "action/action-success-subtle-hover": "COLOR",
-        "action/action-success-subtle-active": "COLOR",
         "action/action-destructive": "COLOR",
         "action/action-destructive-hover": "COLOR",
         "action/action-destructive-active": "COLOR",
-        "action/action-destructive-subtle": "COLOR",
-        "action/action-destructive-subtle-hover": "COLOR",
-        "action/action-destructive-subtle-active": "COLOR",
         "action/action-warning": "COLOR",
         "action/action-warning-hover": "COLOR",
         "action/action-warning-active": "COLOR",
@@ -2009,6 +2016,9 @@
         "foreground/fg-on-brand": "COLOR",
         "foreground/fg-on-color": "COLOR",
         "foreground/fg-brand": "COLOR",
+        "foreground/fg-link": "COLOR",
+        "foreground/fg-link-hover": "COLOR",
+        "foreground/fg-link-active": "COLOR",
         "foreground/fg-success": "COLOR",
         "foreground/fg-error": "COLOR",
         "foreground/fg-warning": "COLOR",
@@ -2196,19 +2206,25 @@
         "text/text-on-brand": [
           "TEXT_FILL"
         ],
-        "text/text-on-success": [
+        "text/text-on-color": [
           "TEXT_FILL"
         ],
         "text/text-on-warning": [
-          "TEXT_FILL"
-        ],
-        "text/text-on-destructive": [
           "TEXT_FILL"
         ],
         "text/text-on-neutral-action-active": [
           "TEXT_FILL"
         ],
         "text/text-brand": [
+          "TEXT_FILL"
+        ],
+        "text/text-link": [
+          "TEXT_FILL"
+        ],
+        "text/text-link-hover": [
+          "TEXT_FILL"
+        ],
+        "text/text-link-active": [
           "TEXT_FILL"
         ],
         "text/text-success": [
@@ -2355,18 +2371,6 @@
           "ALL_FILLS",
           "STROKE_COLOR"
         ],
-        "action/action-success-subtle": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "action/action-success-subtle-hover": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "action/action-success-subtle-active": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
         "action/action-destructive": [
           "ALL_FILLS",
           "STROKE_COLOR"
@@ -2376,18 +2380,6 @@
           "STROKE_COLOR"
         ],
         "action/action-destructive-active": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "action/action-destructive-subtle": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "action/action-destructive-subtle-hover": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "action/action-destructive-subtle-active": [
           "ALL_FILLS",
           "STROKE_COLOR"
         ],
@@ -2438,6 +2430,15 @@
           "STROKE_COLOR"
         ],
         "foreground/fg-brand": [
+          "ALL_FILLS"
+        ],
+        "foreground/fg-link": [
+          "ALL_FILLS"
+        ],
+        "foreground/fg-link-hover": [
+          "ALL_FILLS"
+        ],
+        "foreground/fg-link-active": [
           "ALL_FILLS"
         ],
         "foreground/fg-success": [
@@ -3405,14 +3406,14 @@
           "Breadcrumb/ellipsis-size": 28,
           "Breadcrumb/font-size": "{Typography/Font size/text-sm}",
           "Breadcrumb/font-weight": "{Typography/Font weight/medium}",
+          "Button/content/text-on-color": "{Color modes/text/text-on-color}",
+          "Button/content/fg-on-color": "{Color modes/foreground/fg-on-color}",
+          "Button/focus/border": "{Color modes/border/border-focus}",
           "Button/primary/bg": "{Color modes/action/action-primary}",
           "Button/primary/bg-hover": "{Color modes/action/action-primary-hover}",
           "Button/primary/bg-active": "{Color modes/action/action-primary-active}",
-          "Button/primary/text": "{Color modes/text/text-inverse}",
-          "Button/primary/fg": "{Color modes/foreground/fg-on-color}",
           "Button/primary/border": "{Color modes/action/action-primary}",
           "Button/primary/border-hover": "{Color modes/action/action-primary-hover}",
-          "Button/primary/border-focus": "{Color modes/border/border-focus}",
           "Button/secondary/bg": "{Color modes/action/action-neutral}",
           "Button/secondary/bg-hover": "{Color modes/action/action-neutral-hover}",
           "Button/secondary/bg-active": "{Color modes/action/action-neutral-active}",
@@ -3421,7 +3422,6 @@
           "Button/secondary/fg": "{Color modes/foreground/fg-primary}",
           "Button/secondary/border": "{Color modes/action/action-neutral}",
           "Button/secondary/border-hover": "{Color modes/action/action-neutral-hover}",
-          "Button/secondary/border-focus": "{Color modes/border/border-focus}",
           "Button/outline/bg": "{Primitives/Colors/Base/Transparent}",
           "Button/outline/bg-surface": "{Color modes/background/bg-surface}",
           "Button/outline/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
@@ -3431,7 +3431,6 @@
           "Button/outline/border": "{Color modes/border/border-primary}",
           "Button/outline/border-hover": "{Color modes/border/border-neutral-muted}",
           "Button/outline/border-active": "{Color modes/border/border-neutral-muted}",
-          "Button/outline/border-focus": "{Color modes/border/border-focus}",
           "Button/ghost/bg": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "Button/ghost/bg-active": "{Color modes/action/action-neutral-subtle-active}",
@@ -3439,37 +3438,27 @@
           "Button/ghost/fg": "{Color modes/foreground/fg-primary}",
           "Button/ghost/border": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/border-hover": "{Primitives/Colors/Base/Transparent}",
-          "Button/ghost/border-focus": "{Color modes/border/border-focus}",
           "Button/link/bg": "{Primitives/Colors/Base/Transparent}",
           "Button/link/bg-hover": "{Primitives/Colors/Base/Transparent}",
           "Button/link/bg-active": "{Primitives/Colors/Base/Transparent}",
-          "Button/link/text": "{Color modes/action/action-primary}",
-          "Button/link/text-hover": "{Color modes/action/action-primary-hover}",
-          "Button/link/text-active": "{Color modes/action/action-primary-active}",
-          "Button/link/fg": "{Color modes/action/action-primary}",
-          "Button/link/fg-hover": "{Color modes/action/action-primary-hover}",
-          "Button/link/fg-active": "{Color modes/action/action-primary-active}",
+          "Button/link/text": "{Color modes/text/text-link}",
+          "Button/link/text-hover": "{Color modes/text/text-link-hover}",
+          "Button/link/text-active": "{Color modes/text/text-link-active}",
+          "Button/link/fg": "{Color modes/foreground/fg-link}",
+          "Button/link/fg-hover": "{Color modes/foreground/fg-link-hover}",
+          "Button/link/fg-active": "{Color modes/foreground/fg-link-active}",
           "Button/link/border": "{Primitives/Colors/Base/Transparent}",
           "Button/link/border-hover": "{Primitives/Colors/Base/Transparent}",
-          "Button/link/border-focus": "{Color modes/border/border-focus}",
           "Button/success/bg": "{Color modes/action/action-success}",
           "Button/success/bg-hover": "{Color modes/action/action-success-hover}",
           "Button/success/bg-active": "{Color modes/action/action-success-active}",
-          "Button/success/text": "{Color modes/text/text-on-success}",
-          "Button/success/text-hover": "{Color modes/text/text-on-success}",
-          "Button/success/text-active": "{Color modes/text/text-on-success}",
-          "Button/success/fg": "{Color modes/foreground/fg-on-color}",
           "Button/success/border": "{Color modes/action/action-success}",
           "Button/success/border-hover": "{Color modes/action/action-success-hover}",
-          "Button/success/border-focus": "{Color modes/border/border-focus}",
           "Button/destructive/bg": "{Color modes/action/action-destructive}",
           "Button/destructive/bg-hover": "{Color modes/action/action-destructive-hover}",
           "Button/destructive/bg-active": "{Color modes/action/action-destructive-active}",
-          "Button/destructive/text": "{Color modes/text/text-on-destructive}",
-          "Button/destructive/fg": "{Color modes/foreground/fg-on-color}",
           "Button/destructive/border": "{Color modes/action/action-destructive}",
           "Button/destructive/border-hover": "{Color modes/action/action-destructive-hover}",
-          "Button/destructive/border-focus": "{Color modes/border/border-focus}",
           "Button/warning/bg": "{Color modes/action/action-warning}",
           "Button/warning/bg-hover": "{Color modes/action/action-warning-hover}",
           "Button/warning/bg-active": "{Color modes/action/action-warning-active}",
@@ -3479,48 +3468,35 @@
           "Button/warning/fg": "{Color modes/foreground/fg-on-color}",
           "Button/warning/border": "{Color modes/action/action-warning}",
           "Button/warning/border-hover": "{Color modes/action/action-warning-hover}",
-          "Button/warning/border-focus": "{Color modes/border/border-focus}",
           "Button/disabled/opacity": 50,
           "Button/size/xs/height": 24,
-          "Button/size/xs/padding-x": "{Spacing/spacing-md}",
-          "Button/size/xs/padding-x-icon": "{Spacing/spacing-sm}",
-          "Button/size/xs/gap": "{Spacing/spacing-xs}",
+          "Button/size/xs/padding-x": "{Spacing/spacing-sm}",
           "Button/size/xs/radius": "{Radius/radius-xs}",
           "Button/size/xs/text": "{Typography/Font size/text-sm}",
           "Button/size/xs/line-height": 14,
           "Button/size/xs/weight": "{Typography/Font weight/medium}",
           "Button/size/xs/icon-size": 12,
           "Button/size/sm/height": 28,
-          "Button/size/sm/padding-x": 10,
-          "Button/size/sm/padding-x-icon": "{Spacing/spacing-md}",
-          "Button/size/sm/gap": "{Spacing/spacing-sm}",
+          "Button/size/sm/padding-x": "{Spacing/spacing-md}",
           "Button/size/sm/radius": "{Radius/radius-xs}",
           "Button/size/sm/text": "{Typography/Font size/text-sm}",
           "Button/size/sm/line-height": 14,
           "Button/size/sm/weight": "{Typography/Font weight/semibold}",
           "Button/size/sm/icon-size": 16,
           "Button/size/md/height": 36,
-          "Button/size/md/padding-x": "{Spacing/spacing-xl}",
-          "Button/size/md/padding-x-icon": 14,
-          "Button/size/md/gap": "{Spacing/spacing-md}",
+          "Button/size/md/padding-x": 14,
           "Button/size/md/radius": "{Radius/radius-xs}",
           "Button/size/md/text": "{Typography/Font size/text-sm}",
           "Button/size/md/line-height": 14,
           "Button/size/md/weight": "{Typography/Font weight/semibold}",
           "Button/size/md/icon-size": 16,
           "Button/size/lg/height": 48,
-          "Button/size/lg/padding-x": "{Spacing/spacing-3xl}",
-          "Button/size/lg/padding-x-icon": "{Spacing/spacing-2xl}",
-          "Button/size/lg/gap": "{Spacing/spacing-md}",
+          "Button/size/lg/padding-x": "{Spacing/spacing-2xl}",
           "Button/size/lg/radius": "{Radius/radius-sm}",
           "Button/size/lg/text": "{Typography/Font size/text-md}",
           "Button/size/lg/line-height": 20,
           "Button/size/lg/weight": "{Typography/Font weight/semibold}",
           "Button/size/lg/icon-size": 20,
-          "Button/icon-only/xs/size": 24,
-          "Button/icon-only/sm/size": 28,
-          "Button/icon-only/md/size": 36,
-          "Button/icon-only/lg/size": 48,
           "Button/font-family": "{Typography/Font family/body}",
           "Calendar/bg": "{Color modes/background/bg-surface}",
           "Calendar/border": "{Color modes/border/border-secondary}",
@@ -4060,9 +4036,9 @@
           "Social Button/height-sm": 32,
           "Social Button/height": 40,
           "Social Button/height-lg": "{Component-based/Button/size/lg/height}",
-          "Social Button/padding-x-sm": "{Component-based/Button/size/sm/padding-x}",
-          "Social Button/padding-x": "{Component-based/Button/size/md/padding-x}",
-          "Social Button/padding-x-lg": "{Component-based/Button/size/lg/padding-x}",
+          "Social Button/padding-x-sm": 10,
+          "Social Button/padding-x": "{Spacing/spacing-xl}",
+          "Social Button/padding-x-lg": "{Spacing/spacing-3xl}",
           "Social Button/gap-sm": "{Spacing/spacing-md}",
           "Social Button/gap": "{Spacing/spacing-md}",
           "Social Button/gap-lg": "{Spacing/spacing-lg}",
@@ -4457,14 +4433,14 @@
         "Breadcrumb/ellipsis-size": "Breadcrumb: ellipsis size.",
         "Breadcrumb/font-size": "Breadcrumb: font size.",
         "Breadcrumb/font-weight": "Breadcrumb: font weight.",
+        "Button/content/text-on-color": "Button: shared white label color on strong colored surfaces.",
+        "Button/content/fg-on-color": "Button: shared white icon color on strong colored surfaces.",
+        "Button/focus/border": "Button: shared focus border color.",
         "Button/primary/bg": "Button, primary: background.",
         "Button/primary/bg-hover": "Button, primary: background (hover state).",
         "Button/primary/bg-active": "Button, primary: background (active state).",
-        "Button/primary/text": "Button, primary: text color.",
-        "Button/primary/fg": "Button, primary: icon foreground color.",
         "Button/primary/border": "Button, primary: border.",
         "Button/primary/border-hover": "Button, primary: border (hover state).",
-        "Button/primary/border-focus": "Button, primary: border (focus state).",
         "Button/secondary/bg": "Button, secondary: background.",
         "Button/secondary/bg-hover": "Button, secondary: background (hover state).",
         "Button/secondary/bg-active": "Button, secondary: background (active state).",
@@ -4473,7 +4449,6 @@
         "Button/secondary/fg": "Button, secondary: icon foreground color.",
         "Button/secondary/border": "Button, secondary: border.",
         "Button/secondary/border-hover": "Button, secondary: border (hover state).",
-        "Button/secondary/border-focus": "Button, secondary: border (focus state).",
         "Button/outline/bg": "Button, outline: transparent background at rest.",
         "Button/outline/bg-surface": "Button, outline: optional surface background for busy or non-surface contexts.",
         "Button/outline/bg-hover": "Button, outline: background (hover state).",
@@ -4483,7 +4458,6 @@
         "Button/outline/border": "Button, outline: border.",
         "Button/outline/border-hover": "Button, outline: border (hover state).",
         "Button/outline/border-active": "Button, outline: border (active state).",
-        "Button/outline/border-focus": "Button, outline: border (focus state).",
         "Button/ghost/bg": "Button, ghost: background.",
         "Button/ghost/bg-hover": "Button, ghost: background (hover state).",
         "Button/ghost/bg-active": "Button, ghost: background (active state).",
@@ -4491,7 +4465,6 @@
         "Button/ghost/fg": "Button, ghost: icon foreground color.",
         "Button/ghost/border": "Button, ghost: border.",
         "Button/ghost/border-hover": "Button, ghost: border (hover state).",
-        "Button/ghost/border-focus": "Button, ghost: border (focus state).",
         "Button/link/bg": "Button, link: background.",
         "Button/link/bg-hover": "Button, link: background (hover state).",
         "Button/link/bg-active": "Button, link: background (active state).",
@@ -4503,25 +4476,16 @@
         "Button/link/fg-active": "Button, link: foreground icon color (active state).",
         "Button/link/border": "Button, link: border.",
         "Button/link/border-hover": "Button, link: border (hover state).",
-        "Button/link/border-focus": "Button, link: border (focus state).",
         "Button/success/bg": "Button, success: background.",
         "Button/success/bg-hover": "Button, success: background (hover state).",
         "Button/success/bg-active": "Button, success: background (active state).",
-        "Button/success/text": "Button, success: text color.",
-        "Button/success/text-hover": "Button, success: text color (hover state).",
-        "Button/success/text-active": "Button, success: text color (active state).",
-        "Button/success/fg": "Button, success: icon foreground color.",
         "Button/success/border": "Button, success: border.",
         "Button/success/border-hover": "Button, success: border (hover state).",
-        "Button/success/border-focus": "Button, success: border (focus state).",
         "Button/destructive/bg": "Button, destructive: background.",
         "Button/destructive/bg-hover": "Button, destructive: background (hover state).",
         "Button/destructive/bg-active": "Button, destructive: background (active state).",
-        "Button/destructive/text": "Button, destructive: text color.",
-        "Button/destructive/fg": "Button, destructive: icon foreground color.",
         "Button/destructive/border": "Button, destructive: border.",
         "Button/destructive/border-hover": "Button, destructive: border (hover state).",
-        "Button/destructive/border-focus": "Button, destructive: border (focus state).",
         "Button/warning/bg": "Button, warning: background.",
         "Button/warning/bg-hover": "Button, warning: background (hover state).",
         "Button/warning/bg-active": "Button, warning: background (active state).",
@@ -4531,48 +4495,35 @@
         "Button/warning/fg": "Button, warning: icon foreground color.",
         "Button/warning/border": "Button, warning: border.",
         "Button/warning/border-hover": "Button, warning: border (hover state).",
-        "Button/warning/border-focus": "Button, warning: border (focus state).",
         "Button/disabled/opacity": "Button, disabled: opacity.",
         "Button/size/xs/height": "Button, size xs: height.",
-        "Button/size/xs/padding-x": "Button, size xs: padding x.",
-        "Button/size/xs/padding-x-icon": "Button, size xs: horizontal padding on a side that contains an icon.",
-        "Button/size/xs/gap": "Button, size xs: gap.",
+        "Button/size/xs/padding-x": "Button, size xs: symmetric root padding.",
         "Button/size/xs/radius": "Button, size xs: radius.",
-        "Button/size/xs/text": "Button, size xs: text color.",
+        "Button/size/xs/text": "Button, size xs: font size.",
         "Button/size/xs/line-height": "Button, size xs: line height.",
-        "Button/size/xs/weight": "Button, size xs: weight.",
-        "Button/size/xs/icon-size": "Button, size xs: icon color size.",
+        "Button/size/xs/weight": "Button, size xs: font weight.",
+        "Button/size/xs/icon-size": "Button, size xs: icon size.",
         "Button/size/sm/height": "Button, size sm: height.",
-        "Button/size/sm/padding-x": "Button, size sm: padding x.",
-        "Button/size/sm/padding-x-icon": "Button, size sm: horizontal padding on a side that contains an icon.",
-        "Button/size/sm/gap": "Button, size sm: gap.",
+        "Button/size/sm/padding-x": "Button, size sm: symmetric root padding.",
         "Button/size/sm/radius": "Button, size sm: radius.",
-        "Button/size/sm/text": "Button, size sm: text color.",
+        "Button/size/sm/text": "Button, size sm: font size.",
         "Button/size/sm/line-height": "Button, size sm: line height.",
-        "Button/size/sm/weight": "Button, size sm: weight.",
-        "Button/size/sm/icon-size": "Button, size sm: icon color size.",
+        "Button/size/sm/weight": "Button, size sm: font weight.",
+        "Button/size/sm/icon-size": "Button, size sm: icon size.",
         "Button/size/md/height": "Button, size md: height.",
-        "Button/size/md/padding-x": "Button, size md: padding x.",
-        "Button/size/md/padding-x-icon": "Button, size md: horizontal padding on a side that contains an icon.",
-        "Button/size/md/gap": "Button, size md: gap.",
+        "Button/size/md/padding-x": "Button, size md: symmetric root padding.",
         "Button/size/md/radius": "Button, size md: radius.",
-        "Button/size/md/text": "Button, size md: text color.",
+        "Button/size/md/text": "Button, size md: font size.",
         "Button/size/md/line-height": "Button, size md: line height.",
-        "Button/size/md/weight": "Button, size md: weight.",
-        "Button/size/md/icon-size": "Button, size md: icon color size.",
+        "Button/size/md/weight": "Button, size md: font weight.",
+        "Button/size/md/icon-size": "Button, size md: icon size.",
         "Button/size/lg/height": "Button, size lg: height.",
-        "Button/size/lg/padding-x": "Button, size lg: padding x.",
-        "Button/size/lg/padding-x-icon": "Button, size lg: horizontal padding on a side that contains an icon.",
-        "Button/size/lg/gap": "Button, size lg: gap.",
+        "Button/size/lg/padding-x": "Button, size lg: symmetric root padding.",
         "Button/size/lg/radius": "Button, size lg: radius.",
-        "Button/size/lg/text": "Button, size lg: text color.",
+        "Button/size/lg/text": "Button, size lg: font size.",
         "Button/size/lg/line-height": "Button, size lg: line height.",
-        "Button/size/lg/weight": "Button, size lg: weight.",
-        "Button/size/lg/icon-size": "Button, size lg: icon color size.",
-        "Button/icon-only/xs/size": "Button, icon only xs: size.",
-        "Button/icon-only/sm/size": "Button, icon only sm: size.",
-        "Button/icon-only/md/size": "Button, icon only md: size.",
-        "Button/icon-only/lg/size": "Button, icon only lg: size.",
+        "Button/size/lg/weight": "Button, size lg: font weight.",
+        "Button/size/lg/icon-size": "Button, size lg: icon size.",
         "Button/font-family": "Button: font family.",
         "Calendar/bg": "Calendar: background.",
         "Calendar/border": "Calendar: border.",
@@ -5508,14 +5459,14 @@
         "Breadcrumb/ellipsis-size": "FLOAT",
         "Breadcrumb/font-size": "FLOAT",
         "Breadcrumb/font-weight": "STRING",
+        "Button/content/text-on-color": "COLOR",
+        "Button/content/fg-on-color": "COLOR",
+        "Button/focus/border": "COLOR",
         "Button/primary/bg": "COLOR",
         "Button/primary/bg-hover": "COLOR",
         "Button/primary/bg-active": "COLOR",
-        "Button/primary/text": "COLOR",
-        "Button/primary/fg": "COLOR",
         "Button/primary/border": "COLOR",
         "Button/primary/border-hover": "COLOR",
-        "Button/primary/border-focus": "COLOR",
         "Button/secondary/bg": "COLOR",
         "Button/secondary/bg-hover": "COLOR",
         "Button/secondary/bg-active": "COLOR",
@@ -5524,7 +5475,6 @@
         "Button/secondary/fg": "COLOR",
         "Button/secondary/border": "COLOR",
         "Button/secondary/border-hover": "COLOR",
-        "Button/secondary/border-focus": "COLOR",
         "Button/outline/bg": "COLOR",
         "Button/outline/bg-surface": "COLOR",
         "Button/outline/bg-hover": "COLOR",
@@ -5534,7 +5484,6 @@
         "Button/outline/border": "COLOR",
         "Button/outline/border-hover": "COLOR",
         "Button/outline/border-active": "COLOR",
-        "Button/outline/border-focus": "COLOR",
         "Button/ghost/bg": "COLOR",
         "Button/ghost/bg-hover": "COLOR",
         "Button/ghost/bg-active": "COLOR",
@@ -5542,7 +5491,6 @@
         "Button/ghost/fg": "COLOR",
         "Button/ghost/border": "COLOR",
         "Button/ghost/border-hover": "COLOR",
-        "Button/ghost/border-focus": "COLOR",
         "Button/link/bg": "COLOR",
         "Button/link/bg-hover": "COLOR",
         "Button/link/bg-active": "COLOR",
@@ -5554,25 +5502,16 @@
         "Button/link/fg-active": "COLOR",
         "Button/link/border": "COLOR",
         "Button/link/border-hover": "COLOR",
-        "Button/link/border-focus": "COLOR",
         "Button/success/bg": "COLOR",
         "Button/success/bg-hover": "COLOR",
         "Button/success/bg-active": "COLOR",
-        "Button/success/text": "COLOR",
-        "Button/success/text-hover": "COLOR",
-        "Button/success/text-active": "COLOR",
-        "Button/success/fg": "COLOR",
         "Button/success/border": "COLOR",
         "Button/success/border-hover": "COLOR",
-        "Button/success/border-focus": "COLOR",
         "Button/destructive/bg": "COLOR",
         "Button/destructive/bg-hover": "COLOR",
         "Button/destructive/bg-active": "COLOR",
-        "Button/destructive/text": "COLOR",
-        "Button/destructive/fg": "COLOR",
         "Button/destructive/border": "COLOR",
         "Button/destructive/border-hover": "COLOR",
-        "Button/destructive/border-focus": "COLOR",
         "Button/warning/bg": "COLOR",
         "Button/warning/bg-hover": "COLOR",
         "Button/warning/bg-active": "COLOR",
@@ -5582,12 +5521,9 @@
         "Button/warning/fg": "COLOR",
         "Button/warning/border": "COLOR",
         "Button/warning/border-hover": "COLOR",
-        "Button/warning/border-focus": "COLOR",
         "Button/disabled/opacity": "FLOAT",
         "Button/size/xs/height": "FLOAT",
         "Button/size/xs/padding-x": "FLOAT",
-        "Button/size/xs/padding-x-icon": "FLOAT",
-        "Button/size/xs/gap": "FLOAT",
         "Button/size/xs/radius": "FLOAT",
         "Button/size/xs/text": "FLOAT",
         "Button/size/xs/line-height": "FLOAT",
@@ -5595,8 +5531,6 @@
         "Button/size/xs/icon-size": "FLOAT",
         "Button/size/sm/height": "FLOAT",
         "Button/size/sm/padding-x": "FLOAT",
-        "Button/size/sm/padding-x-icon": "FLOAT",
-        "Button/size/sm/gap": "FLOAT",
         "Button/size/sm/radius": "FLOAT",
         "Button/size/sm/text": "FLOAT",
         "Button/size/sm/line-height": "FLOAT",
@@ -5604,8 +5538,6 @@
         "Button/size/sm/icon-size": "FLOAT",
         "Button/size/md/height": "FLOAT",
         "Button/size/md/padding-x": "FLOAT",
-        "Button/size/md/padding-x-icon": "FLOAT",
-        "Button/size/md/gap": "FLOAT",
         "Button/size/md/radius": "FLOAT",
         "Button/size/md/text": "FLOAT",
         "Button/size/md/line-height": "FLOAT",
@@ -5613,17 +5545,11 @@
         "Button/size/md/icon-size": "FLOAT",
         "Button/size/lg/height": "FLOAT",
         "Button/size/lg/padding-x": "FLOAT",
-        "Button/size/lg/padding-x-icon": "FLOAT",
-        "Button/size/lg/gap": "FLOAT",
         "Button/size/lg/radius": "FLOAT",
         "Button/size/lg/text": "FLOAT",
         "Button/size/lg/line-height": "FLOAT",
         "Button/size/lg/weight": "STRING",
         "Button/size/lg/icon-size": "FLOAT",
-        "Button/icon-only/xs/size": "FLOAT",
-        "Button/icon-only/sm/size": "FLOAT",
-        "Button/icon-only/md/size": "FLOAT",
-        "Button/icon-only/lg/size": "FLOAT",
         "Button/font-family": "STRING",
         "Calendar/bg": "COLOR",
         "Calendar/border": "COLOR",
@@ -6765,6 +6691,15 @@
         "Breadcrumb/font-weight": [
           "FONT_STYLE"
         ],
+        "Button/content/text-on-color": [
+          "TEXT_FILL"
+        ],
+        "Button/content/fg-on-color": [
+          "SHAPE_FILL"
+        ],
+        "Button/focus/border": [
+          "STROKE_COLOR"
+        ],
         "Button/primary/bg": [
           "ALL_FILLS"
         ],
@@ -6774,20 +6709,10 @@
         "Button/primary/bg-active": [
           "ALL_FILLS"
         ],
-        "Button/primary/text": [
-          "TEXT_FILL"
-        ],
-        "Button/primary/fg": [
-          "SHAPE_FILL",
-          "STROKE_COLOR"
-        ],
         "Button/primary/border": [
           "STROKE_COLOR"
         ],
         "Button/primary/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/primary/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/secondary/bg": [
@@ -6813,9 +6738,6 @@
           "STROKE_COLOR"
         ],
         "Button/secondary/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/secondary/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/outline/bg": [
@@ -6846,9 +6768,6 @@
         "Button/outline/border-active": [
           "STROKE_COLOR"
         ],
-        "Button/outline/border-focus": [
-          "STROKE_COLOR"
-        ],
         "Button/ghost/bg": [
           "ALL_FILLS"
         ],
@@ -6869,9 +6788,6 @@
           "STROKE_COLOR"
         ],
         "Button/ghost/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/ghost/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/link/bg": [
@@ -6910,9 +6826,6 @@
         "Button/link/border-hover": [
           "STROKE_COLOR"
         ],
-        "Button/link/border-focus": [
-          "STROKE_COLOR"
-        ],
         "Button/success/bg": [
           "ALL_FILLS"
         ],
@@ -6922,26 +6835,10 @@
         "Button/success/bg-active": [
           "ALL_FILLS"
         ],
-        "Button/success/text": [
-          "TEXT_FILL"
-        ],
-        "Button/success/text-hover": [
-          "TEXT_FILL"
-        ],
-        "Button/success/text-active": [
-          "TEXT_FILL"
-        ],
-        "Button/success/fg": [
-          "SHAPE_FILL",
-          "STROKE_COLOR"
-        ],
         "Button/success/border": [
           "STROKE_COLOR"
         ],
         "Button/success/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/success/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/destructive/bg": [
@@ -6953,20 +6850,10 @@
         "Button/destructive/bg-active": [
           "ALL_FILLS"
         ],
-        "Button/destructive/text": [
-          "TEXT_FILL"
-        ],
-        "Button/destructive/fg": [
-          "SHAPE_FILL",
-          "STROKE_COLOR"
-        ],
         "Button/destructive/border": [
           "STROKE_COLOR"
         ],
         "Button/destructive/border-hover": [
-          "STROKE_COLOR"
-        ],
-        "Button/destructive/border-focus": [
           "STROKE_COLOR"
         ],
         "Button/warning/bg": [
@@ -6997,9 +6884,6 @@
         "Button/warning/border-hover": [
           "STROKE_COLOR"
         ],
-        "Button/warning/border-focus": [
-          "STROKE_COLOR"
-        ],
         "Button/disabled/opacity": [
           "OPACITY"
         ],
@@ -7007,12 +6891,6 @@
           "WIDTH_HEIGHT"
         ],
         "Button/size/xs/padding-x": [
-          "GAP"
-        ],
-        "Button/size/xs/padding-x-icon": [
-          "GAP"
-        ],
-        "Button/size/xs/gap": [
           "GAP"
         ],
         "Button/size/xs/radius": [
@@ -7036,12 +6914,6 @@
         "Button/size/sm/padding-x": [
           "GAP"
         ],
-        "Button/size/sm/padding-x-icon": [
-          "GAP"
-        ],
-        "Button/size/sm/gap": [
-          "GAP"
-        ],
         "Button/size/sm/radius": [
           "CORNER_RADIUS"
         ],
@@ -7061,12 +6933,6 @@
           "WIDTH_HEIGHT"
         ],
         "Button/size/md/padding-x": [
-          "GAP"
-        ],
-        "Button/size/md/padding-x-icon": [
-          "GAP"
-        ],
-        "Button/size/md/gap": [
           "GAP"
         ],
         "Button/size/md/radius": [
@@ -7090,12 +6956,6 @@
         "Button/size/lg/padding-x": [
           "GAP"
         ],
-        "Button/size/lg/padding-x-icon": [
-          "GAP"
-        ],
-        "Button/size/lg/gap": [
-          "GAP"
-        ],
         "Button/size/lg/radius": [
           "CORNER_RADIUS"
         ],
@@ -7109,18 +6969,6 @@
           "FONT_STYLE"
         ],
         "Button/size/lg/icon-size": [
-          "WIDTH_HEIGHT"
-        ],
-        "Button/icon-only/xs/size": [
-          "WIDTH_HEIGHT"
-        ],
-        "Button/icon-only/sm/size": [
-          "WIDTH_HEIGHT"
-        ],
-        "Button/icon-only/md/size": [
-          "WIDTH_HEIGHT"
-        ],
-        "Button/icon-only/lg/size": [
           "WIDTH_HEIGHT"
         ],
         "Button/font-family": [

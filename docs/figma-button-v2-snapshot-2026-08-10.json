@@ -1,0 +1,187 @@
+{
+  "snapshot": {
+    "date": "2026-08-10",
+    "purpose": "Preserve the Button v2 structure and token bindings before building Button v3.",
+    "figmaFileKey": "9M6ulX7a6bDlmctFdClAzu",
+    "sourcePage": {
+      "id": "2678:1985",
+      "name": "     ↳ Update & Test 🚧"
+    },
+    "sourceComponentSet": {
+      "id": "2786:6384",
+      "name": ".🟢 Button / Light Mode",
+      "variantCount": 1372,
+      "status": "Unpublished by the leading dot; retained unchanged as the visual and migration checkpoint."
+    },
+    "targetPage": {
+      "id": "11008:20892",
+      "name": "     ↳  Button v3"
+    }
+  },
+  "v2VariantAxes": {
+    "Type": ["Primary", "Secondary", "𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline", "Positive", "Negative", "Link", "Ghost"],
+    "📐 Size": ["L", "M", "S", "XS"],
+    "State": ["Default", "Pressed", "Focus", "Hover", "Selected", "Loading", "Disabled"],
+    "Icon Only": ["False", "True"],
+    "Dropdown": ["False", "True"],
+    "Icon Left": ["No", "Yes"],
+    "Icon Right": ["No", "Yes"]
+  },
+  "v2ComponentProperties": [
+    "Left icon swap",
+    "Label",
+    "Right icon swap",
+    "Icon Only swap",
+    "Has Background"
+  ],
+  "v3SourceSelection": {
+    "regular": "Icon Only=False, Dropdown=False, Icon Left=Yes, Icon Right=Yes",
+    "iconOnly": "Icon Only=True, Dropdown=False, Icon Left=No, Icon Right=No",
+    "regularSourceCount": 196,
+    "iconOnlySourceCount": 196,
+    "initialTargetVariantCount": 392,
+    "currentTargetVariantCount": 336,
+    "removedVariantAxes": ["Dropdown", "Icon Left", "Icon Right"],
+    "replacementProperties": [
+      "Icon Left (Boolean)",
+      "Icon Right (Boolean)",
+      "Left icon swap",
+      "Right icon swap"
+    ]
+  },
+  "geometry": {
+    "principle": "The Text padding wrapper preserves the current visual text edges and icon-to-glyph distances while reducing variant count.",
+    "nonLink": {
+      "XS": {
+        "height": 24,
+        "iconSize": 12,
+        "rootPaddingX": 6,
+        "rootGap": 2,
+        "textPaddingX": 2,
+        "effectiveTextEdge": 8,
+        "effectiveIconToGlyphGap": 4
+      },
+      "S": {
+        "height": 28,
+        "iconSize": 16,
+        "rootPaddingX": 8,
+        "rootGap": 4,
+        "textPaddingX": 2,
+        "effectiveTextEdge": 10,
+        "effectiveIconToGlyphGap": 6
+      },
+      "M": {
+        "height": 36,
+        "iconSize": 16,
+        "rootPaddingX": 14,
+        "rootGap": 6,
+        "textPaddingX": 2,
+        "effectiveTextEdge": 16,
+        "effectiveIconToGlyphGap": 8
+      },
+      "L": {
+        "height": 48,
+        "iconSize": 20,
+        "rootPaddingX": 20,
+        "rootGap": 4,
+        "textPaddingX": 4,
+        "effectiveTextEdge": 24,
+        "effectiveIconToGlyphGap": 8
+      }
+    },
+    "link": {
+      "rootPadding": 0,
+      "textPaddingX": 0,
+      "height": "Hug",
+      "iconToTextGap": { "XS": 4, "S": 6, "M": 8, "L": 8 }
+    }
+  },
+  "publishedVariableKeys": {
+    "spacing": {
+      "2": "3d733ae80020b60ad50cf004aa9e8804744240db",
+      "4": "b2ef435b77b8f7ffee6d127beb7e8bc8e3a2b86d",
+      "6": "2bc92ec884bbd2baf8a8af6f8f4c73ee53561af0"
+    },
+    "buttonPaddingXIcon": {
+      "XS": "d831e5c16feb01043511db788c3a5abe1bcb3a79",
+      "S": "fca4ca7c6431c5b2e78ec55958564d5cd7805e9a",
+      "M": "3a52a4b5c7f01ecff82c54bb2fa32700426c8021",
+      "L": "fe1f3b8fe25917d34e298ed75eff7cd1772c9570"
+    },
+    "buttonGap": {
+      "XS": "d9614e1572312620579de3961e17b39ee518c2a8",
+      "S": "573bf8f8dc58df96339b14133173243b612e2fc8",
+      "M": "56ef17ca67cc4f69704a4f7713df5c0535162793",
+      "L": "c06915048348454c0164777e903161f6e8cda66d"
+    }
+  },
+  "safety": {
+    "mutateV2": false,
+    "mutateExistingButtonTokenValues": false,
+    "reason": "Changing shared Button v2 variables would silently alter already-used and unpublished instances before migration."
+  },
+  "v3Result": {
+    "componentSetId": "11020:118515",
+    "componentSetName": "🟢 Button / Light Mode",
+    "dimensions": { "width": 2174, "height": 3073 },
+    "qaFrameId": "11022:327",
+    "variantCount": 336,
+    "variantAxes": ["Type", "📐 Size", "State", "Icon Only"],
+    "canonicalOrder": {
+      "types": ["Primary", "Secondary", "𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline", "Positive", "Negative", "Ghost", "Link"],
+      "sizes": ["L - Large", "M - Medium", "S - Small", "XS - Xtra Small"],
+      "rowGroups": ["Icon Only=False", "Icon Only=True"],
+      "states": ["Default", "Hover", "Active", "Focus", "Loading", "Disabled"]
+    },
+    "componentProperties": [
+      "✏️ Label",
+      "⬅️ Icon Left",
+      "➡️ Icon Right",
+      "🔀 Icon Left Swap",
+      "🔀 Icon Right Swap",
+      "🔀 Icon Only Swap",
+      "Has Background"
+    ],
+    "validation": {
+      "pass": true,
+      "errorCount": 0,
+      "regularVariants": 168,
+      "iconOnlyVariants": 168,
+      "textPaddingWrappers": 168,
+      "buttonV2VariantCountAfterBuild": 1372,
+      "qaInstanceCount": 31,
+      "primaryIconAlias": "Button/primary/fg -> foreground/fg-on-color",
+      "secondaryIconAlias": "Button/secondary/fg -> foreground/fg-primary",
+      "outlineBackgroundAlias": "Button/outline/bg-surface -> background/bg-surface"
+    },
+    "stateCleanup": {
+      "removedState": "Selected",
+      "renamedState": { "from": "Pressed", "to": "Active" },
+      "removedVariantCount": 56,
+      "reason": "Selected is a persistent toggle state, while Button only needs the transient Active interaction state."
+    },
+    "loadingBehavior": {
+      "updated": "2026-08-11",
+      "rootOpacity": 1,
+      "disabledOpacityBinding": false,
+      "interactive": false,
+      "regularContent": ["Loading Spinner", "Label"],
+      "iconOnlyContent": ["Loading Spinner"],
+      "prototypeReactionCount": 0
+    },
+    "loadingSpinnerPolicy": {
+      "spinnerCount": 56,
+      "buttonForegroundOverrideCount": 24,
+      "inheritedStrokeCount": 32,
+      "types": {
+        "Primary": { "appearance": "White", "stroke": "Button/primary/fg" },
+        "Positive": { "appearance": "White", "stroke": "Button/success/fg" },
+        "Negative": { "appearance": "White", "stroke": "Button/destructive/fg" },
+        "Secondary": { "appearance": "Greyscale", "stroke": "inherit Spinner" },
+        "𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline": { "appearance": "Greyscale", "stroke": "inherit Spinner" },
+        "Ghost": { "appearance": "Greyscale", "stroke": "inherit Spinner" },
+        "Link": { "appearance": "Primary", "stroke": "inherit Spinner" }
+      }
+    }
+  }
+}

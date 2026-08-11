@@ -1,4 +1,4 @@
-# MAXA Button Migration v8
+# MAXA Button Migration v9
 
 This plugin migrates legacy MAXA Button component sets to the current Foundation variables.
 
@@ -18,24 +18,24 @@ Current status:
 - bindings target the `Component-based` collection, for example `Button/primary/bg`, `Button/size/md/height`, and `Button/font-family`
 - `XS`, `Pressed`, `Selected`, `Focus`, `Loading`, `Positive`, and `Negative` values are normalized to the current token model
 - `Positive` maps to `Button/success/*`; `Negative` maps to `Button/destructive/*`
-- labels use `Button/{type}/text*`, while icons use the dedicated `Button/{type}/fg*` tokens
+- Primary, Success, and Destructive labels/icons use the shared `Button/content/text-on-color` and `Button/content/fg-on-color` tokens; neutral variants keep their local content roles
 - Secondary icons resolve through `Button/secondary/fg` to `foreground/fg-primary`
 - Link keeps state-aware icon tokens: `Button/link/fg`, `Button/link/fg-hover`, and `Button/link/fg-active`
-- Focus keeps the base background and binds `border-focus`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
-- Loading keeps the base variant styling and applies `Button/disabled/opacity`
+- Focus keeps the base background and binds the shared `Button/focus/border`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
+- Loading keeps the base variant styling at 100% opacity; only Disabled binds `Button/disabled/opacity`
 - both icons in two-icon variants receive color and size bindings
 - selected Button instances are supported, so already-swapped icons can be rebound and keep their foreground token while Dropdown variants change
 - instances with `Icon Left=Yes` are repaired in both `Dropdown=False` and `Dropdown=True` branches, removing legacy branch-specific paint styles before the original variant properties are restored
 - icon swaps, labels, and the original Dropdown/right-icon configuration are preserved during the two-branch repair
-- normal buttons bind `padding-x-icon` only on an edge that contains an icon or loading spinner, while the opposite edge keeps `padding-x`
-- resolved gaps follow the published size scale: `xs=4`, `sm=6`, `md=8`, `lg=8`
+- normal buttons use one symmetric `padding-x` token regardless of icon presence; the optional label wrapper receives optical inline padding when it exists
+- resolved gaps bind directly to the shared spacing scale: `xs=2`, `sm=4`, `md=6`, `lg=4`; label optical padding is `2/2/2/4`
 - Link variants use Hug contents on both axes, bind all four paddings to `spacing-none`, and do not use container height, radius, horizontal-padding, or icon-only size tokens
-- Link content still uses the shared size-specific gap, typography, and icon-size tokens
+- Link content uses direct spacing aliases for its `4/6/8/8` gaps plus the shared size-specific typography and icon-size tokens
 - icon color migration covers existing solid fills and strokes, including Loading Spinner rings
 - repeat runs are idempotent: bindings that already target the correct variable are left untouched
 - hidden legacy `bgr-filled` layers in Outline variants are migrated to `Button/outline/bg-surface`, which aliases `Color modes/background/bg-surface`
 - legacy dependency checks include hidden Outline background layers, so stale paint styles are no longer missed by analysis
-- the source Button token JSON now aliases through current semantic color variables such as `Color modes/action/action-primary`, `Color modes/text/text-inverse`, and `Color modes/background/bg-surface`
+- the source Button token JSON now aliases through current semantic color variables such as `Color modes/action/action-primary`, `Color modes/text/text-on-color`, and `Color modes/background/bg-surface`
 
 Recommended workflow:
 

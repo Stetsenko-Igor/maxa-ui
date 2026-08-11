@@ -3,8 +3,8 @@
 This document compares the MAXA UI kit (`@maxa/ui`) against the MaxaDevs product
 FSD component inventory (`@/shared/ui/*`) and states the development direction for the
 kit. It is a different lens from [core-gap-audit.md](./core-gap-audit.md), which
-compares core gaps against generic product *patterns*; this doc compares against the
-*actual FSD component set* MaxaDevs maintains.
+compares core gaps against generic product _patterns_; this doc compares against the
+_actual FSD component set_ MaxaDevs maintains.
 
 Operating model: the kit owns tokens and reusable primitives; the FSD layer owns
 product-specific and composite components and consumes the kit via npm.
@@ -23,26 +23,26 @@ utility-button, toast, datatable. No orphan (unexported) components.
 
 ## A. Covered — FSD can consume the kit directly
 
-| MaxaDevs FSD | Kit equivalent |
-|---|---|
-| Alert | alert |
-| DatePicker / DateRangePicker / MonthsPicker / YearSelector | date-picker (+ DateRangePicker + QuarterPicker) |
-| Dropdown / Menu / Select / ContextMenu / SelectionMenu | dropdown-menu, select, context-menu |
-| MultiSelectDropdown / CreatableSelect / SearchableSelect | multi-select |
-| EmptyData | empty |
-| ProgressBar | progress |
-| Spinner / Loader / CircleLoader / Preloader | spinner (+ skeleton) |
-| Tag / Tags | tag |
-| Breadcrumbs | breadcrumb |
-| Tooltip / ProTip | tooltip |
-| Popup / PopUpModal | popover / dialog |
-| Tabs / StatelessTabs / AdminTabs | tabs |
-| AdminTable | table / datatable |
-| paginator | pagination |
-| Checkbox / RadioButton / Toggle | checkbox / radio / toggle |
+| MaxaDevs FSD                                                        | Kit equivalent                                        |
+| ------------------------------------------------------------------- | ----------------------------------------------------- |
+| Alert                                                               | alert                                                 |
+| DatePicker / DateRangePicker / MonthsPicker / YearSelector          | date-picker (+ DateRangePicker + QuarterPicker)       |
+| Dropdown / Menu / Select / ContextMenu / SelectionMenu              | dropdown-menu, select, context-menu                   |
+| MultiSelectDropdown / CreatableSelect / SearchableSelect            | multi-select                                          |
+| EmptyData                                                           | empty                                                 |
+| ProgressBar                                                         | progress                                              |
+| Spinner / Loader / CircleLoader / Preloader                         | spinner (+ skeleton)                                  |
+| Tag / Tags                                                          | tag                                                   |
+| Breadcrumbs                                                         | breadcrumb                                            |
+| Tooltip / ProTip                                                    | tooltip                                               |
+| Popup / PopUpModal                                                  | popover / dialog                                      |
+| Tabs / StatelessTabs / AdminTabs                                    | tabs                                                  |
+| AdminTable                                                          | table / datatable                                     |
+| paginator                                                           | pagination                                            |
+| Checkbox / RadioButton / Toggle                                     | checkbox / radio / toggle                             |
 | ConfirmExitModal / OverwriteConfirmationModal / PropertiesWarnings… | dialog + alert-dialog (instances, not new primitives) |
-| Label | form-field (label) |
-| Icon / icons / SvgSprites / HamburgerIcon | @maxa/icons (separate package) + icon-button |
+| Label                                                               | form-field (label)                                    |
+| Icon / icons / SvgSprites / HamburgerIcon                           | @maxa/icons (separate package) + icon-button          |
 
 ## B. Covered with caveats — resolve before adoption
 
@@ -58,7 +58,7 @@ utility-button, toast, datatable. No orphan (unexported) components.
 - **FileInput partial.** Ours is a single-file generic picker — no multi-file, no image
   preview, no drag-and-drop. Their ImageUploader / MultiFileUploader / DropZone need more.
 - **ActionLink / LogoutLink** → approximated by button `variant="link"`; a true
-  text-link primitive would be a small addition if wanted.
+  Dedicated text-link and fg-link semantic roles now cover theme-aware interactive links.
 - **ValidationErrorsAlt** → partly covered by alert + form-field errors; no dedicated
   multi-error list component.
 

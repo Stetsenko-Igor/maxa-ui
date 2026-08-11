@@ -2,67 +2,67 @@ figma.showUI(__html__, { width: 900, height: 920 });
 
 const PREVIEW_PLUGIN_KEY = 'maxa-button-migration-preview';
 const PREVIEW_TOKEN_COLORS = {
-  'Button/primary/bg': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/primary/bg-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
-  'Button/primary/bg-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
-  'Button/primary/text': { r: 1, g: 1, b: 1 },
-  'Button/primary/fg': { r: 1, g: 1, b: 1 },
-  'Button/primary/border': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/primary/border-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
-  'Button/primary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
+  'Button/content/text-on-color': { r: 1, g: 1, b: 1 },
+  'Button/content/fg-on-color': { r: 1, g: 1, b: 1 },
+  'Button/focus/border': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
+  'Button/primary/bg': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
+  'Button/primary/bg-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
+  'Button/primary/bg-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/primary/border': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
+  'Button/primary/border-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
   'Button/secondary/bg': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/secondary/bg-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
-  'Button/secondary/bg-active': { r: 140 / 255, g: 140 / 255, b: 142 / 255 },
+  'Button/secondary/bg-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
+  'Button/secondary/bg-active': { r: 201 / 255, g: 201 / 255, b: 201 / 255 },
   'Button/secondary/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
+  'Button/secondary/text-active': { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
   'Button/secondary/fg': { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
   'Button/secondary/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
-  'Button/secondary/border-hover': { r: 161 / 255, g: 161 / 255, b: 164 / 255 },
-  'Button/secondary/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/outline/bg': { r: 252 / 255, g: 252 / 255, b: 252 / 255 },
-  'Button/outline/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
+  'Button/secondary/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
+  'Button/outline/bg': { r: 1, g: 1, b: 1, a: 0 },
+  'Button/outline/bg-hover': { r: 237 / 255, g: 237 / 255, b: 237 / 255 },
   'Button/outline/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/text': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/outline/fg': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/outline/border': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/outline/border-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
   'Button/outline/border-active': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
-  'Button/outline/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/ghost/bg': { r: 1, g: 1, b: 1, a: 0 },
-  'Button/ghost/bg-hover': { r: 233 / 255, g: 234 / 255, b: 239 / 255 },
+  'Button/ghost/bg-hover': { r: 237 / 255, g: 237 / 255, b: 237 / 255 },
   'Button/ghost/bg-active': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/ghost/text': { r: 68 / 255, g: 68 / 255, b: 69 / 255 },
   'Button/ghost/fg': { r: 27 / 255, g: 26 / 255, b: 26 / 255 },
   'Button/ghost/border': { r: 1, g: 1, b: 1, a: 0 },
   'Button/ghost/border-hover': { r: 1, g: 1, b: 1, a: 0 },
-  'Button/ghost/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
   'Button/link/bg': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/bg-hover': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/bg-active': { r: 1, g: 1, b: 1, a: 0 },
-  'Button/link/text': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/link/text-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
-  'Button/link/text-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
-  'Button/link/fg': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/link/fg-hover': { r: 0 / 255, g: 84 / 255, b: 182 / 255 },
-  'Button/link/fg-active': { r: 0 / 255, g: 64 / 255, b: 138 / 255 },
+  'Button/link/text': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
+  'Button/link/text-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
+  'Button/link/text-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/link/fg': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
+  'Button/link/fg-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
+  'Button/link/fg-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
   'Button/link/border': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/border-hover': { r: 1, g: 1, b: 1, a: 0 },
-  'Button/link/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/success/bg': { r: 34 / 255, g: 197 / 255, b: 94 / 255 },
-  'Button/success/bg-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
-  'Button/success/bg-active': { r: 21 / 255, g: 128 / 255, b: 61 / 255 },
-  'Button/success/text': { r: 1, g: 1, b: 1 },
-  'Button/success/fg': { r: 1, g: 1, b: 1 },
-  'Button/success/border': { r: 34 / 255, g: 197 / 255, b: 94 / 255 },
-  'Button/success/border-hover': { r: 22 / 255, g: 163 / 255, b: 74 / 255 },
-  'Button/success/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
-  'Button/destructive/bg': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
-  'Button/destructive/bg-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
-  'Button/destructive/bg-active': { r: 185 / 255, g: 28 / 255, b: 28 / 255 },
-  'Button/destructive/text': { r: 1, g: 1, b: 1 },
-  'Button/destructive/fg': { r: 1, g: 1, b: 1 },
-  'Button/destructive/border': { r: 239 / 255, g: 68 / 255, b: 68 / 255 },
-  'Button/destructive/border-hover': { r: 220 / 255, g: 38 / 255, b: 38 / 255 },
-  'Button/destructive/border-focus': { r: 2 / 255, g: 101 / 255, b: 220 / 255 },
+  'Button/success/bg': { r: 37 / 255, g: 132 / 255, b: 62 / 255 },
+  'Button/success/bg-hover': { r: 34 / 255, g: 121 / 255, b: 57 / 255 },
+  'Button/success/bg-active': { r: 32 / 255, g: 109 / 255, b: 53 / 255 },
+  'Button/success/border': { r: 37 / 255, g: 132 / 255, b: 62 / 255 },
+  'Button/success/border-hover': { r: 34 / 255, g: 121 / 255, b: 57 / 255 },
+  'Button/destructive/bg': { r: 211 / 255, g: 21 / 255, b: 16 / 255 },
+  'Button/destructive/bg-hover': { r: 198 / 255, g: 20 / 255, b: 15 / 255 },
+  'Button/destructive/bg-active': { r: 185 / 255, g: 18 / 255, b: 14 / 255 },
+  'Button/destructive/border': { r: 211 / 255, g: 21 / 255, b: 16 / 255 },
+  'Button/destructive/border-hover': { r: 198 / 255, g: 20 / 255, b: 15 / 255 },
+  'Button/warning/bg': { r: 234 / 255, g: 179 / 255, b: 8 / 255 },
+  'Button/warning/bg-hover': { r: 202 / 255, g: 138 / 255, b: 4 / 255 },
+  'Button/warning/bg-active': { r: 161 / 255, g: 98 / 255, b: 7 / 255 },
+  'Button/warning/text': { r: 0, g: 0, b: 0 },
+  'Button/warning/text-hover': { r: 0, g: 0, b: 0 },
+  'Button/warning/text-active': { r: 1, g: 1, b: 1 },
+  'Button/warning/fg': { r: 1, g: 1, b: 1 },
+  'Button/warning/border': { r: 234 / 255, g: 179 / 255, b: 8 / 255 },
+  'Button/warning/border-hover': { r: 202 / 255, g: 138 / 255, b: 4 / 255 },
 };
 
 figma.ui.onmessage = async (msg) => {
@@ -772,7 +772,6 @@ function buildMappingPreview(input) {
   const size = input.sizeCandidate;
   const isIconFamily = input.familyCandidate === 'Buttons/Icon button';
   const isLink = variant === 'link';
-  const edgeIcons = detectEdgeIconPresence(input);
   const result = {
     targetVariant: variant || 'unknown',
     targetState: input.stateCandidate || 'default',
@@ -812,7 +811,9 @@ function buildMappingPreview(input) {
       id: 'surface-border',
       role: 'border',
       sourceNode: describeNode(input.borderLayer || input.surfaceLayer),
-      token: `Button/${variant}/border${borderSuffix}`,
+      token: input.stateCandidate === 'focus'
+        ? 'Button/focus/border'
+        : `Button/${variant}/border${borderSuffix}`,
     });
     if (!input.borderLayer) {
       result.notes.push('No existing border layer detected; Apply will add a token-bound stroke to the button surface.');
@@ -830,7 +831,7 @@ function buildMappingPreview(input) {
     });
   }
 
-  if (input.stateCandidate === 'disabled' || input.stateCandidate === 'loading') {
+  if (input.stateCandidate === 'disabled') {
     result.assignments.push({
       id: 'disabled-opacity',
       role: 'disabled',
@@ -855,8 +856,10 @@ function buildMappingPreview(input) {
   }
 
   if (size && size !== 'unknown') {
+    const gapToken = getGapToken(size);
+    const labelPaddingToken = getLabelPaddingToken(size);
     if (isLink) {
-      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/gap` });
+      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: getLinkGapToken(size) });
       if (input.labelLayer) {
         result.assignments.push({ id: `size-${size}-text`, role: 'text-size', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/text` });
         result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
@@ -867,7 +870,7 @@ function buildMappingPreview(input) {
         id: `size-${size}-icon-only`,
         role: 'size',
         sourceNode: describeNode(input.surfaceLayer),
-        token: `Button/icon-only/${size}/size`,
+        token: `Button/size/${size}/height`,
       });
       result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
     } else {
@@ -876,17 +879,26 @@ function buildMappingPreview(input) {
         id: `size-${size}-padding-left`,
         role: 'padding-left',
         sourceNode: describeNode(input.surfaceLayer),
-        token: `Button/size/${size}/${edgeIcons.left ? 'padding-x-icon' : 'padding-x'}`,
+        token: `Button/size/${size}/padding-x`,
       });
       result.assignments.push({
         id: `size-${size}-padding-right`,
         role: 'padding-right',
         sourceNode: describeNode(input.surfaceLayer),
-        token: `Button/size/${size}/${edgeIcons.right ? 'padding-x-icon' : 'padding-x'}`,
+        token: `Button/size/${size}/padding-x`,
       });
-      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/gap` });
+      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: gapToken });
       result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
       if (input.labelLayer) {
+        const labelParent = input.labelLayer.parent;
+        if (labelParent && labelParent !== input.componentLayer && labelParent !== input.surfaceLayer) {
+          result.assignments.push({
+            id: `size-${size}-label-padding-x`,
+            role: 'label-padding-x',
+            sourceNode: describeNode(labelParent),
+            token: labelPaddingToken,
+          });
+        }
         result.assignments.push({ id: `size-${size}-text`, role: 'text-size', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/text` });
         result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
         result.assignments.push({ id: `size-${size}-weight`, role: 'weight', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/weight` });
@@ -1643,6 +1655,11 @@ async function applyAssignmentBinding(input) {
   if (role === 'padding-x') {
     return bindHorizontalPadding(getLayoutTarget(input.node, input.surface), input.variable);
   }
+  if (role === 'label-padding-x') {
+    const sourceId = input.assignment.sourceNode && input.assignment.sourceNode.id;
+    const labelContainer = sourceId ? await figma.getNodeByIdAsync(sourceId) : null;
+    return bindHorizontalPadding(labelContainer, input.variable);
+  }
   if (role === 'gap') {
     return bindNodeField(getLayoutTarget(input.node, input.surface), 'itemSpacing', input.variable);
   }
@@ -2199,19 +2216,49 @@ function getBorderStateSuffix(state, variant) {
   }
 }
 
+function getGapToken(size) {
+  return {
+    xs: 'spacing-xxs',
+    sm: 'spacing-xs',
+    md: 'spacing-sm',
+    lg: 'spacing-xs',
+  }[size] || 'spacing-xs';
+}
+
+function getLinkGapToken(size) {
+  return {
+    xs: 'spacing-xs',
+    sm: 'spacing-sm',
+    md: 'spacing-md',
+    lg: 'spacing-md',
+  }[size] || 'spacing-md';
+}
+
+function getLabelPaddingToken(size) {
+  return size === 'lg' ? 'spacing-xs' : 'spacing-xxs';
+}
+
 function getForegroundStateSuffix(state) {
   if (isActiveState(state)) return '-active';
   return state === 'hover' ? '-hover' : '';
 }
 
 function getLabelToken(variant, state) {
-  const suffix = variant === 'link' || variant === 'text'
+  if (variant === 'primary' || variant === 'success' || variant === 'destructive') {
+    return 'Button/content/text-on-color';
+  }
+  const suffix = variant === 'link' || variant === 'text' || variant === 'warning'
     ? getForegroundStateSuffix(state)
-    : '';
+    : variant === 'secondary' && isActiveState(state)
+      ? '-active'
+      : '';
   return `Button/${variant}/text${suffix}`;
 }
 
 function getIconToken(variant, state) {
+  if (variant === 'primary' || variant === 'success' || variant === 'destructive') {
+    return 'Button/content/fg-on-color';
+  }
   if (variant === 'link') {
     return `Button/link/fg${getForegroundStateSuffix(state)}`;
   }

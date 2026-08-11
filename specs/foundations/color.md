@@ -6,7 +6,7 @@ Three layers. Never skip a layer downward.
 
 ```
 Primitives  →  Semantic tokens  →  Component tokens  →  Code
-#1B1A1A         --color-text-primary   --button-primary-text   color: var(--button-primary-text)
+#FFFFFF          --color-text-on-color   --button-content-text-on-color   color: var(--button-content-text-on-color)
 ```
 
 **Rule:** UI code must only reference semantic or component tokens. Never reference primitives directly in components.
@@ -15,19 +15,21 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 
 ### Text
 
-| Token | Light value | Dark value | When to use |
-|-------|-------------|------------|-------------|
-| `--color-text-primary` | Neutral/950 | Neutral/100 | Main body text, headings |
-| `--color-text-secondary` | Neutral/800 | Neutral/200 | Supporting text, labels |
-| `--color-text-tertiary` | Neutral/600 | Neutral/500 | Captions, metadata, placeholder |
-| `--color-text-disabled` | Neutral/400 | Neutral/700 | Disabled form labels |
-| `--color-text-inverse` | White | Neutral/900 | Text on dark/colored surfaces |
-| `--color-text-on-brand` | Neutral/950 | Neutral/950 | Text on `bg-brand-strong` (teal is bright → use dark text) |
-| `--color-text-brand` | Brand/600 | Brand/400 | Brand-colored labels, links |
-| `--color-text-info` | Blue/600 | Blue/400 | Informational copy |
-| `--color-text-success` | Green/600 | Green/400 | Success messages |
-| `--color-text-error` | Red/600 | Red/400 | Error messages, validation |
-| `--color-text-warning` | Yellow/600 | Yellow/400 | Warning messages |
+| Token                              | Light value          | Dark value           | When to use                                                |
+| ---------------------------------- | -------------------- | -------------------- | ---------------------------------------------------------- |
+| `--color-text-primary`             | Neutral/950          | Neutral/100          | Main body text, headings                                   |
+| `--color-text-secondary`           | Neutral/800          | Neutral/200          | Supporting text, labels                                    |
+| `--color-text-tertiary`            | Neutral/600          | Neutral/500          | Captions, metadata, placeholder                            |
+| `--color-text-disabled`            | Neutral/400          | Neutral/700          | Disabled form labels                                       |
+| `--color-text-inverse`             | White                | Neutral/900          | Text on dark/colored surfaces                              |
+| `--color-text-on-brand`            | Neutral/950          | Neutral/950          | Text on `bg-brand-strong` (teal is bright → use dark text) |
+| `--color-text-on-color`            | White                | White                | Labels on strong blue, green, and red action surfaces      |
+| `--color-text-link` + hover/active | Blue/500 → 550 → 600 | Blue/400 → 300 → 200 | Accessible interactive link labels on regular surfaces     |
+| `--color-text-brand`               | Brand/600            | Brand/400            | Brand-colored labels, links                                |
+| `--color-text-info`                | Blue/600             | Blue/400             | Informational copy                                         |
+| `--color-text-success`             | Green/600            | Green/400            | Success messages                                           |
+| `--color-text-error`               | Red/600              | Red/400              | Error messages, validation                                 |
+| `--color-text-warning`             | Yellow/600           | Yellow/400           | Warning messages                                           |
 
 **Critical:** `--color-text-inverse` is for text on dark backgrounds. `--color-text-on-brand` is specifically for text on `bg-brand-strong` — do NOT use `text-inverse` there because MAXA teal is bright and requires dark text for contrast.
 
@@ -35,19 +37,21 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 
 Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other non-text foreground elements. Do not use `text-*` tokens for icons unless the icon must exactly inherit adjacent text color.
 
-| Token | Light value | Dark value | When to use |
-|-------|-------------|------------|-------------|
-| `--color-fg-primary` | Neutral/950 | Neutral/100 | Highest-emphasis icons and non-text foreground |
-| `--color-fg-secondary` | Neutral/800 | Neutral/200 | Supporting icons |
-| `--color-fg-tertiary` | Neutral/600 | Neutral/500 | Low-emphasis icons, placeholders, subtle controls |
-| `--color-fg-disabled` | Neutral/400 | Neutral/700 | Disabled icons |
-| `--color-fg-inverse` | White | Neutral/900 | Icons on dark/inverted surfaces |
-| `--color-fg-on-brand` | Neutral/950 | Neutral/950 | Icons on `bg-brand-strong` |
-| `--color-fg-brand` | Brand/600 | Brand/400 | Brand-colored icons |
-| `--color-fg-info` | Blue/600 | Blue/400 | Informational icons |
-| `--color-fg-success` | Green/700 | Green/400 | Success icons |
-| `--color-fg-error` | Red/700 | Red/400 | Error/destructive icons |
-| `--color-fg-warning` | Yellow/600 | Yellow/400 | Warning icons |
+| Token                            | Light value          | Dark value           | When to use                                          |
+| -------------------------------- | -------------------- | -------------------- | ---------------------------------------------------- |
+| `--color-fg-primary`             | Neutral/950          | Neutral/100          | Highest-emphasis icons and non-text foreground       |
+| `--color-fg-secondary`           | Neutral/800          | Neutral/200          | Supporting icons                                     |
+| `--color-fg-tertiary`            | Neutral/600          | Neutral/500          | Low-emphasis icons, placeholders, subtle controls    |
+| `--color-fg-disabled`            | Neutral/400          | Neutral/700          | Disabled icons                                       |
+| `--color-fg-inverse`             | White                | Neutral/900          | Icons on dark/inverted surfaces                      |
+| `--color-fg-on-brand`            | Neutral/950          | Neutral/950          | Icons on `bg-brand-strong`                           |
+| `--color-fg-on-color`            | White                | White                | Icons on strong blue, green, and red action surfaces |
+| `--color-fg-link` + hover/active | Blue/500 → 550 → 600 | Blue/400 → 300 → 200 | Icons paired with link labels                        |
+| `--color-fg-brand`               | Brand/600            | Brand/400            | Brand-colored icons                                  |
+| `--color-fg-info`                | Blue/600             | Blue/400             | Informational icons                                  |
+| `--color-fg-success`             | Green/700            | Green/400            | Success icons                                        |
+| `--color-fg-error`               | Red/700              | Red/400              | Error/destructive icons                              |
+| `--color-fg-warning`             | Yellow/600           | Yellow/400           | Warning icons                                        |
 
 ### Background / Surface
 
@@ -55,15 +59,15 @@ Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other 
 
 The visual hierarchy comes from elevation, not shadow: the page is gray, content-bearing surfaces sit above it, floating UI can have its own surface token, and recessed zones (code blocks, search-fields-in-sidebars) sink below the page color.
 
-| Token | Light value | Dark value | When to use |
-|-------|-------------|------------|-------------|
-| `--color-bg-page` | Neutral/50 (#FAFAFA) | Neutral/950 (#1A1919) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. |
-| `--color-bg-surface` | Base white (#FFFFFF) | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, sidebar/drawer, table rows, content containers. |
-| `--color-bg-float` | Base white (#FFFFFF) | Neutral/800 (#444445) | Floating surfaces that sit above regular surfaces: dropdown menus, popovers, tooltips, floating command palettes. |
-| `--color-bg-muted` | Neutral/100 (#F4F3F3) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, subdued table rows, search-fields embedded in dark sidebars, disabled-input fill alternative. |
-| `--color-bg-overlay` | Black/50% | Black/70% | Modal/drawer scrim. |
-| `--color-bg-inverse` | Neutral/950 | Neutral/950 | Inverted surface (dark even on light theme). |
-| `--color-bg-disabled` | Neutral/100 | Neutral/800 | Disabled input/control backgrounds. |
+| Token                 | Light value           | Dark value            | When to use                                                                                                                                       |
+| --------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--color-bg-page`     | Neutral/50 (#FAFAFA)  | Neutral/950 (#1A1919) | Lowest layer — the page/viewport canvas itself. Everything else floats on top.                                                                    |
+| `--color-bg-surface`  | Base white (#FFFFFF)  | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, sidebar/drawer, table rows, content containers.                                   |
+| `--color-bg-float`    | Base white (#FFFFFF)  | Neutral/800 (#444445) | Floating surfaces that sit above regular surfaces: dropdown menus, popovers, tooltips, floating command palettes.                                 |
+| `--color-bg-muted`    | Neutral/100 (#F4F3F3) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, subdued table rows, search-fields embedded in dark sidebars, disabled-input fill alternative. |
+| `--color-bg-overlay`  | Black/50%             | Black/70%             | Modal/drawer scrim.                                                                                                                               |
+| `--color-bg-inverse`  | Neutral/950           | Neutral/950           | Inverted surface (dark even on light theme).                                                                                                      |
+| `--color-bg-disabled` | Neutral/100           | Neutral/800           | Disabled input/control backgrounds.                                                                                                               |
 
 **Decision tree — choosing a surface token:**
 
@@ -76,22 +80,22 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 
 **Examples:**
 
-| Element | Token |
-|---------|-------|
-| Body of every docs/app page | `bg/page` |
-| Card on a docs page | `bg/surface` |
-| Modal panel | `bg/surface` |
-| Input field | `bg/surface` |
-| Dropdown menu | `bg/float` |
-| Tooltip / Popover panel | `bg/float` |
-| Sidebar / Drawer | `bg/surface` |
-| Table row | `bg/surface` |
-| Striped/zebra table row | `bg/neutral-surface` (Neutral/50 in Light) |
-| Subdued table row | `bg/muted` (Neutral/100 in Light) |
-| Table outer area / gaps between rows | `bg/page` or the containing surface |
-| Code block (`<pre>`) inside a card | `bg/muted` |
-| Search-field embedded in a dark sidebar | `bg/muted` |
-| Modal backdrop | `bg/overlay` |
+| Element                                 | Token                                      |
+| --------------------------------------- | ------------------------------------------ |
+| Body of every docs/app page             | `bg/page`                                  |
+| Card on a docs page                     | `bg/surface`                               |
+| Modal panel                             | `bg/surface`                               |
+| Input field                             | `bg/surface`                               |
+| Dropdown menu                           | `bg/float`                                 |
+| Tooltip / Popover panel                 | `bg/float`                                 |
+| Sidebar / Drawer                        | `bg/surface`                               |
+| Table row                               | `bg/surface`                               |
+| Striped/zebra table row                 | `bg/neutral-surface` (Neutral/50 in Light) |
+| Subdued table row                       | `bg/muted` (Neutral/100 in Light)          |
+| Table outer area / gaps between rows    | `bg/page` or the containing surface        |
+| Code block (`<pre>`) inside a card      | `bg/muted`                                 |
+| Search-field embedded in a dark sidebar | `bg/muted`                                 |
+| Modal backdrop                          | `bg/overlay`                               |
 
 **Component-specific bg:** `--nav-bg` lives in the **component layer** (`component-nav.css`), not semantic. Navigation surface is always dark regardless of theme.
 
@@ -101,45 +105,45 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 
 `{intent}` in the naming pattern means one of the supported semantic intents: `neutral`, `brand`, `info`, `success`, `warning`, or `error`. For example, `--color-bg-{intent}-subtle` becomes `--color-bg-success-subtle` or `--color-bg-error-subtle`.
 
-| Token | Light | Dark | Use |
-|-------|-------|------|-----|
-| `--color-bg-neutral-surface` | Neutral/50 | Neutral/925 | Neutral surface tint; striped table rows |
-| `--color-bg-neutral-subtle` | Neutral/100 | Neutral/900 | Subtle section background |
-| `--color-bg-neutral-muted` | Neutral/200 | Neutral/800 | Muted neutral fill; table headers |
-| `--color-bg-neutral-on-muted` | Neutral/300 | Neutral/700 | Slightly stronger neutral fill |
-| `--color-bg-neutral-strong` | Neutral/800 | Neutral/400 | Strong neutral (inverse) |
-| `--color-bg-brand-subtle` | Brand/50 | Brand/950 | Brand-tinted section |
-| `--color-bg-brand-surface` | Brand/100 | Brand/900 | Brand surface |
-| `--color-bg-brand-strong` | Brand/500 | Brand/600 | Strong brand fill |
-| `--color-bg-info-subtle` | Blue/100 | Blue/950 | Info section bg |
-| `--color-bg-info-surface` | Blue/50 | Blue/950 | Info surface fill |
-| `--color-bg-info-strong` | Blue/700 | Blue/500 | Strong info fill |
-| `--color-bg-success-subtle` | Green/50 | Green/950 | Success section bg |
-| `--color-bg-success-surface` | Green/50 | Green/950 | Success surface fill |
-| `--color-bg-success-strong` | Green/700 | Green/500 | Strong success fill |
-| `--color-bg-error-subtle` | Red/50 | Red/950 | Error section bg |
-| `--color-bg-error-surface` | Red/50 | Red/950 | Error surface fill |
-| `--color-bg-error-strong` | Red/700 | Red/500 | Strong error fill |
-| `--color-bg-warning-subtle` | Orange/50 | Yellow/950 | Warning section bg |
-| `--color-bg-warning-surface` | Orange/50 | Yellow/950 | Warning surface fill |
-| `--color-bg-warning-strong` | Orange/600 | Orange/500 | Strong warning fill |
+| Token                         | Light       | Dark        | Use                                      |
+| ----------------------------- | ----------- | ----------- | ---------------------------------------- |
+| `--color-bg-neutral-surface`  | Neutral/50  | Neutral/925 | Neutral surface tint; striped table rows |
+| `--color-bg-neutral-subtle`   | Neutral/100 | Neutral/900 | Subtle section background                |
+| `--color-bg-neutral-muted`    | Neutral/200 | Neutral/800 | Muted neutral fill; table headers        |
+| `--color-bg-neutral-on-muted` | Neutral/300 | Neutral/700 | Slightly stronger neutral fill           |
+| `--color-bg-neutral-strong`   | Neutral/800 | Neutral/400 | Strong neutral (inverse)                 |
+| `--color-bg-brand-subtle`     | Brand/50    | Brand/950   | Brand-tinted section                     |
+| `--color-bg-brand-surface`    | Brand/100   | Brand/900   | Brand surface                            |
+| `--color-bg-brand-strong`     | Brand/500   | Brand/600   | Strong brand fill                        |
+| `--color-bg-info-subtle`      | Blue/100    | Blue/950    | Info section bg                          |
+| `--color-bg-info-surface`     | Blue/50     | Blue/950    | Info surface fill                        |
+| `--color-bg-info-strong`      | Blue/700    | Blue/500    | Strong info fill                         |
+| `--color-bg-success-subtle`   | Green/50    | Green/950   | Success section bg                       |
+| `--color-bg-success-surface`  | Green/50    | Green/950   | Success surface fill                     |
+| `--color-bg-success-strong`   | Green/700   | Green/500   | Strong success fill                      |
+| `--color-bg-error-subtle`     | Red/50      | Red/950     | Error section bg                         |
+| `--color-bg-error-surface`    | Red/50      | Red/950     | Error surface fill                       |
+| `--color-bg-error-strong`     | Red/700     | Red/500     | Strong error fill                        |
+| `--color-bg-warning-subtle`   | Orange/50   | Yellow/950  | Warning section bg                       |
+| `--color-bg-warning-surface`  | Orange/50   | Yellow/950  | Warning surface fill                     |
+| `--color-bg-warning-strong`   | Orange/600  | Orange/500  | Strong warning fill                      |
 
 ### Border
 
-| Token | Light value | Dark value | When to use |
-|-------|-------------|------------|-------------|
-| `--color-border-primary` | Neutral/300 | Neutral/700 | Default input, card borders |
-| `--color-border-secondary` | Neutral/200 | Neutral/800 | Lighter borders, subtle separators |
-| `--color-border-tertiary` | Neutral/100 | Neutral/900 | Faintest dividers |
-| `--color-border-focus` | Blue/500 | Blue/400 | Focus rings on interactive elements |
-| `--color-border-brand` | Brand/500 | Brand/400 | Brand-accented borders |
-| `--color-border-neutral-strong` | Neutral/700 | Neutral/300 | High-emphasis neutral outline |
-| `--color-border-neutral-muted` | Neutral/400 | Neutral/600 | Muted hover and active outline |
-| `--color-border-neutral-subtle` | Neutral/300 | Neutral/700 | Low-emphasis neutral outline |
-| `--color-border-info-strong` / `-subtle` | Blue/700 · Blue/200 | Blue/500 · Blue/200 | Info state borders |
-| `--color-border-success-strong` / `-subtle` | Green/700 · Green/300 | Green/500 · Green/300 | Success state borders |
-| `--color-border-warning-strong` / `-subtle` | Orange/600 · Orange/200 | Orange/500 · Orange/200 | Warning state borders |
-| `--color-border-error-strong` / `-subtle` | Red/500 · Red/200 | Red/500 · Red/200 | Error/invalid input borders |
+| Token                                       | Light value             | Dark value              | When to use                         |
+| ------------------------------------------- | ----------------------- | ----------------------- | ----------------------------------- |
+| `--color-border-primary`                    | Neutral/300             | Neutral/700             | Default input, card borders         |
+| `--color-border-secondary`                  | Neutral/200             | Neutral/800             | Lighter borders, subtle separators  |
+| `--color-border-tertiary`                   | Neutral/100             | Neutral/900             | Faintest dividers                   |
+| `--color-border-focus`                      | Blue/500                | Blue/400                | Focus rings on interactive elements |
+| `--color-border-brand`                      | Brand/500               | Brand/400               | Brand-accented borders              |
+| `--color-border-neutral-strong`             | Neutral/700             | Neutral/300             | High-emphasis neutral outline       |
+| `--color-border-neutral-muted`              | Neutral/400             | Neutral/600             | Muted hover and active outline      |
+| `--color-border-neutral-subtle`             | Neutral/300             | Neutral/700             | Low-emphasis neutral outline        |
+| `--color-border-info-strong` / `-subtle`    | Blue/700 · Blue/200     | Blue/500 · Blue/200     | Info state borders                  |
+| `--color-border-success-strong` / `-subtle` | Green/700 · Green/300   | Green/500 · Green/300   | Success state borders               |
+| `--color-border-warning-strong` / `-subtle` | Orange/600 · Orange/200 | Orange/500 · Orange/200 | Warning state borders               |
+| `--color-border-error-strong` / `-subtle`   | Red/500 · Red/200       | Red/500 · Red/200       | Error/invalid input borders         |
 
 Every status border follows the `-strong` / `-subtle` pair; there is no bare
 `--color-border-error` (it is `--color-border-error-strong`).
@@ -148,16 +152,16 @@ Every status border follows the `-strong` / `-subtle` pair; there is no bare
 
 Action tokens drive button and interactive element surfaces. Always use action tokens for interactive backgrounds — not bg tokens.
 
-| Group | Tokens | Use case |
-|-------|--------|---------|
-| `action/primary` | `--color-action-primary` + hover/active variants | Primary CTA, blue buttons |
-| `action/neutral` | `--color-action-neutral` + hover/active variants | Secondary / neutral buttons |
-| `action/brand` | `--color-action-brand` + hover/active variants | Brand-teal interactive elements |
-| `action/success` | `--color-action-success` + hover/active variants | Confirm / approve actions (green) |
+| Group                | Tokens                                               | Use case                                  |
+| -------------------- | ---------------------------------------------------- | ----------------------------------------- |
+| `action/primary`     | `--color-action-primary` + hover/active variants     | Primary CTA, blue buttons                 |
+| `action/neutral`     | `--color-action-neutral` + hover/active variants     | Secondary / neutral buttons               |
+| `action/brand`       | `--color-action-brand` + hover/active variants       | Brand-teal interactive elements           |
+| `action/success`     | `--color-action-success` + hover/active variants     | Confirm / approve actions (green)         |
 | `action/destructive` | `--color-action-destructive` + hover/active variants | Destructive actions: delete, remove (red) |
-| `action/warning` | `--color-action-warning` + hover/active variants | Warning actions |
+| `action/warning`     | `--color-action-warning` + hover/active variants     | Warning actions                           |
 
-Each group has: default, `-hover`, `-active`, `-subtle`, `-subtle-hover`, `-subtle-active`.
+Every group has default, `-hover`, and `-active`. Primary, neutral, brand, and warning also expose subtle states. Success and destructive intentionally keep only the solid action ladder; low-emphasis status surfaces belong to `bg/success-*`, `bg/error-*`, or `feedback/*`.
 
 ### Status vocabulary (one word per concept)
 
@@ -168,7 +172,7 @@ every passive layer (`text`, `fg`, `border`, `bg`). The words `positive`, `negat
 The interactive **action** layer is the one exception: a destructive action button reads as
 `--color-action-destructive` (an action, not a status) and a confirm button as
 `--color-action-success`. Feedback components (Alert, Toast) stay on the status word `error`;
-only genuinely destructive *actions* (Button) use `destructive`.
+only genuinely destructive _actions_ (Button) use `destructive`.
 
 > **Warning hue is intentional:** status `warning` is orange (light) → yellow (dark), while the
 > interactive `--color-action-warning` is yellow in both modes. Interactive warning = yellow;
@@ -176,23 +180,23 @@ only genuinely destructive *actions* (Button) use `destructive`.
 
 ## Common Mistakes to Avoid
 
-| ❌ Wrong | ✅ Correct |
-|---------|-----------|
-| `color: #1B1A1A` | `color: var(--color-text-primary)` |
-| `background: #0265DC` | `background: var(--color-action-primary)` |
-| `border-color: #E4E4E4` | `border-color: var(--color-border-primary)` |
-| `color: var(--color-neutral-950)` directly in component | `color: var(--color-text-primary)` |
-| Icon uses `var(--color-text-secondary)` by default | Use `var(--color-fg-secondary)` unless it intentionally inherits text |
-| White text on brand solid | `color: var(--color-text-on-brand)` (dark text, not white) |
-| `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, `bg/float`, or `bg/muted` by intent |
-| Hardcoded shadow to separate a card from page in light mode | Use the gray page (`bg/page`) + white surface (`bg/surface`) — hierarchy is built-in |
+| ❌ Wrong                                                           | ✅ Correct                                                                           |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `color: #1B1A1A`                                                   | `color: var(--color-text-primary)`                                                   |
+| `background: #0265DC`                                              | `background: var(--color-action-primary)`                                            |
+| `border-color: #E4E4E4`                                            | `border-color: var(--color-border-primary)`                                          |
+| `color: var(--color-neutral-950)` directly in component            | `color: var(--color-text-primary)`                                                   |
+| Icon uses `var(--color-text-secondary)` by default                 | Use `var(--color-fg-secondary)` unless it intentionally inherits text                |
+| White text on brand solid                                          | `color: var(--color-text-on-brand)` (dark text, not white)                           |
+| `background: var(--color-bg-primary)` / `-secondary` / `-tertiary` | Pick `bg/page`, `bg/surface`, `bg/float`, or `bg/muted` by intent                    |
+| Hardcoded shadow to separate a card from page in light mode        | Use the gray page (`bg/page`) + white surface (`bg/surface`) — hierarchy is built-in |
 
 ## Dark mode
 
 Dark mode is applied via `data-theme="dark"` on `<html>`. All semantic tokens automatically switch. Do not write separate dark mode selectors for color — they are handled at the token level.
 
 ```html
-<html data-theme="dark">
+<html data-theme="dark"></html>
 ```
 
 ## Source files

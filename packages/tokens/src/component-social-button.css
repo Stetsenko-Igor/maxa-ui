@@ -6,9 +6,9 @@
   --social-button-height-sm: 32px;
   --social-button-height: 40px;
   --social-button-height-lg: var(--button-size-lg-height);
-  --social-button-padding-x-sm: var(--button-size-sm-padding-x);
-  --social-button-padding-x: var(--button-size-md-padding-x);
-  --social-button-padding-x-lg: var(--button-size-lg-padding-x);
+  --social-button-padding-x-sm: 10px;
+  --social-button-padding-x: var(--spacing-xl);
+  --social-button-padding-x-lg: var(--spacing-3xl);
   --social-button-gap-sm: var(--spacing-2);
   --social-button-gap: var(--spacing-2);
   --social-button-gap-lg: var(--spacing-3);

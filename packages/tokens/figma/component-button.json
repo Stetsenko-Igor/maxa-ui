@@ -1,5 +1,24 @@
 {
   "Button": {
+    "content": {
+      "text-on-color": {
+        "$description": "Button: shared white label color on strong colored surfaces.",
+        "$value": "{Color modes/text/text-on-color}",
+        "$type": "color"
+      },
+      "fg-on-color": {
+        "$description": "Button: shared white icon color on strong colored surfaces.",
+        "$value": "{Color modes/foreground/fg-on-color}",
+        "$type": "color"
+      }
+    },
+    "focus": {
+      "border": {
+        "$description": "Button: shared focus border color.",
+        "$value": "{Color modes/border/border-focus}",
+        "$type": "color"
+      }
+    },
     "primary": {
       "bg": {
         "$description": "Button, primary: background.",
@@ -16,16 +35,6 @@
         "$value": "{Color modes/action/action-primary-active}",
         "$type": "color"
       },
-      "text": {
-        "$description": "Button, primary: text color.",
-        "$value": "{Color modes/text/text-inverse}",
-        "$type": "color"
-      },
-      "fg": {
-        "$description": "Button, primary: icon foreground color.",
-        "$value": "{Color modes/foreground/fg-on-color}",
-        "$type": "color"
-      },
       "border": {
         "$description": "Button, primary: border.",
         "$value": "{Color modes/action/action-primary}",
@@ -34,11 +43,6 @@
       "border-hover": {
         "$description": "Button, primary: border (hover state).",
         "$value": "{Color modes/action/action-primary-hover}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, primary: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
     },
@@ -81,11 +85,6 @@
       "border-hover": {
         "$description": "Button, secondary: border (hover state).",
         "$value": "{Color modes/action/action-neutral-hover}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, secondary: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
     },
@@ -134,11 +133,6 @@
         "$description": "Button, outline: border (active state).",
         "$value": "{Color modes/border/border-neutral-muted}",
         "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, outline: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
-        "$type": "color"
       }
     },
     "ghost": {
@@ -176,11 +170,6 @@
         "$description": "Button, ghost: border (hover state).",
         "$value": "{Primitives/Colors/Base/Transparent}",
         "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, ghost: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
-        "$type": "color"
       }
     },
     "link": {
@@ -201,32 +190,32 @@
       },
       "text": {
         "$description": "Button, link: text color.",
-        "$value": "{Color modes/action/action-primary}",
+        "$value": "{Color modes/text/text-link}",
         "$type": "color"
       },
       "text-hover": {
         "$description": "Button, link: text color (hover state).",
-        "$value": "{Color modes/action/action-primary-hover}",
+        "$value": "{Color modes/text/text-link-hover}",
         "$type": "color"
       },
       "text-active": {
         "$description": "Button, link: text color (active state).",
-        "$value": "{Color modes/action/action-primary-active}",
+        "$value": "{Color modes/text/text-link-active}",
         "$type": "color"
       },
       "fg": {
         "$description": "Button, link: foreground icon color.",
-        "$value": "{Color modes/action/action-primary}",
+        "$value": "{Color modes/foreground/fg-link}",
         "$type": "color"
       },
       "fg-hover": {
         "$description": "Button, link: foreground icon color (hover state).",
-        "$value": "{Color modes/action/action-primary-hover}",
+        "$value": "{Color modes/foreground/fg-link-hover}",
         "$type": "color"
       },
       "fg-active": {
         "$description": "Button, link: foreground icon color (active state).",
-        "$value": "{Color modes/action/action-primary-active}",
+        "$value": "{Color modes/foreground/fg-link-active}",
         "$type": "color"
       },
       "border": {
@@ -237,11 +226,6 @@
       "border-hover": {
         "$description": "Button, link: border (hover state).",
         "$value": "{Primitives/Colors/Base/Transparent}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, link: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
     },
@@ -261,26 +245,6 @@
         "$value": "{Color modes/action/action-success-active}",
         "$type": "color"
       },
-      "text": {
-        "$description": "Button, success: text color.",
-        "$value": "{Color modes/text/text-on-success}",
-        "$type": "color"
-      },
-      "text-hover": {
-        "$description": "Button, success: text color (hover state).",
-        "$value": "{Color modes/text/text-on-success}",
-        "$type": "color"
-      },
-      "text-active": {
-        "$description": "Button, success: text color (active state).",
-        "$value": "{Color modes/text/text-on-success}",
-        "$type": "color"
-      },
-      "fg": {
-        "$description": "Button, success: icon foreground color.",
-        "$value": "{Color modes/foreground/fg-on-color}",
-        "$type": "color"
-      },
       "border": {
         "$description": "Button, success: border.",
         "$value": "{Color modes/action/action-success}",
@@ -289,11 +253,6 @@
       "border-hover": {
         "$description": "Button, success: border (hover state).",
         "$value": "{Color modes/action/action-success-hover}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, success: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
     },
@@ -313,16 +272,6 @@
         "$value": "{Color modes/action/action-destructive-active}",
         "$type": "color"
       },
-      "text": {
-        "$description": "Button, destructive: text color.",
-        "$value": "{Color modes/text/text-on-destructive}",
-        "$type": "color"
-      },
-      "fg": {
-        "$description": "Button, destructive: icon foreground color.",
-        "$value": "{Color modes/foreground/fg-on-color}",
-        "$type": "color"
-      },
       "border": {
         "$description": "Button, destructive: border.",
         "$value": "{Color modes/action/action-destructive}",
@@ -331,11 +280,6 @@
       "border-hover": {
         "$description": "Button, destructive: border (hover state).",
         "$value": "{Color modes/action/action-destructive-hover}",
-        "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, destructive: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
         "$type": "color"
       }
     },
@@ -384,11 +328,6 @@
         "$description": "Button, warning: border (hover state).",
         "$value": "{Color modes/action/action-warning-hover}",
         "$type": "color"
-      },
-      "border-focus": {
-        "$description": "Button, warning: border (focus state).",
-        "$value": "{Color modes/border/border-focus}",
-        "$type": "color"
       }
     },
     "disabled": {
@@ -406,18 +345,8 @@
           "$type": "number"
         },
         "padding-x": {
-          "$description": "Button, size xs: padding x.",
-          "$value": "{Spacing/spacing-md}",
-          "$type": "number"
-        },
-        "padding-x-icon": {
-          "$description": "Button, size xs: horizontal padding on a side that contains an icon.",
+          "$description": "Button, size xs: symmetric root padding.",
           "$value": "{Spacing/spacing-sm}",
-          "$type": "number"
-        },
-        "gap": {
-          "$description": "Button, size xs: gap.",
-          "$value": "{Spacing/spacing-xs}",
           "$type": "number"
         },
         "radius": {
@@ -426,7 +355,7 @@
           "$type": "number"
         },
         "text": {
-          "$description": "Button, size xs: text color.",
+          "$description": "Button, size xs: font size.",
           "$value": "{Typography/Font size/text-sm}",
           "$type": "number"
         },
@@ -436,12 +365,12 @@
           "$type": "number"
         },
         "weight": {
-          "$description": "Button, size xs: weight.",
+          "$description": "Button, size xs: font weight.",
           "$value": "{Typography/Font weight/medium}",
           "$type": "string"
         },
         "icon-size": {
-          "$description": "Button, size xs: icon color size.",
+          "$description": "Button, size xs: icon size.",
           "$value": 12,
           "$type": "number"
         }
@@ -453,18 +382,8 @@
           "$type": "number"
         },
         "padding-x": {
-          "$description": "Button, size sm: padding x.",
-          "$value": 10,
-          "$type": "number"
-        },
-        "padding-x-icon": {
-          "$description": "Button, size sm: horizontal padding on a side that contains an icon.",
+          "$description": "Button, size sm: symmetric root padding.",
           "$value": "{Spacing/spacing-md}",
-          "$type": "number"
-        },
-        "gap": {
-          "$description": "Button, size sm: gap.",
-          "$value": "{Spacing/spacing-sm}",
           "$type": "number"
         },
         "radius": {
@@ -473,7 +392,7 @@
           "$type": "number"
         },
         "text": {
-          "$description": "Button, size sm: text color.",
+          "$description": "Button, size sm: font size.",
           "$value": "{Typography/Font size/text-sm}",
           "$type": "number"
         },
@@ -483,12 +402,12 @@
           "$type": "number"
         },
         "weight": {
-          "$description": "Button, size sm: weight.",
+          "$description": "Button, size sm: font weight.",
           "$value": "{Typography/Font weight/semibold}",
           "$type": "string"
         },
         "icon-size": {
-          "$description": "Button, size sm: icon color size.",
+          "$description": "Button, size sm: icon size.",
           "$value": 16,
           "$type": "number"
         }
@@ -500,18 +419,8 @@
           "$type": "number"
         },
         "padding-x": {
-          "$description": "Button, size md: padding x.",
-          "$value": "{Spacing/spacing-xl}",
-          "$type": "number"
-        },
-        "padding-x-icon": {
-          "$description": "Button, size md: horizontal padding on a side that contains an icon.",
+          "$description": "Button, size md: symmetric root padding.",
           "$value": 14,
-          "$type": "number"
-        },
-        "gap": {
-          "$description": "Button, size md: gap.",
-          "$value": "{Spacing/spacing-md}",
           "$type": "number"
         },
         "radius": {
@@ -520,7 +429,7 @@
           "$type": "number"
         },
         "text": {
-          "$description": "Button, size md: text color.",
+          "$description": "Button, size md: font size.",
           "$value": "{Typography/Font size/text-sm}",
           "$type": "number"
         },
@@ -530,12 +439,12 @@
           "$type": "number"
         },
         "weight": {
-          "$description": "Button, size md: weight.",
+          "$description": "Button, size md: font weight.",
           "$value": "{Typography/Font weight/semibold}",
           "$type": "string"
         },
         "icon-size": {
-          "$description": "Button, size md: icon color size.",
+          "$description": "Button, size md: icon size.",
           "$value": 16,
           "$type": "number"
         }
@@ -547,18 +456,8 @@
           "$type": "number"
         },
         "padding-x": {
-          "$description": "Button, size lg: padding x.",
-          "$value": "{Spacing/spacing-3xl}",
-          "$type": "number"
-        },
-        "padding-x-icon": {
-          "$description": "Button, size lg: horizontal padding on a side that contains an icon.",
+          "$description": "Button, size lg: symmetric root padding.",
           "$value": "{Spacing/spacing-2xl}",
-          "$type": "number"
-        },
-        "gap": {
-          "$description": "Button, size lg: gap.",
-          "$value": "{Spacing/spacing-md}",
           "$type": "number"
         },
         "radius": {
@@ -567,7 +466,7 @@
           "$type": "number"
         },
         "text": {
-          "$description": "Button, size lg: text color.",
+          "$description": "Button, size lg: font size.",
           "$value": "{Typography/Font size/text-md}",
           "$type": "number"
         },
@@ -577,43 +476,13 @@
           "$type": "number"
         },
         "weight": {
-          "$description": "Button, size lg: weight.",
+          "$description": "Button, size lg: font weight.",
           "$value": "{Typography/Font weight/semibold}",
           "$type": "string"
         },
         "icon-size": {
-          "$description": "Button, size lg: icon color size.",
+          "$description": "Button, size lg: icon size.",
           "$value": 20,
-          "$type": "number"
-        }
-      }
-    },
-    "icon-only": {
-      "xs": {
-        "size": {
-          "$description": "Button, icon only xs: size.",
-          "$value": 24,
-          "$type": "number"
-        }
-      },
-      "sm": {
-        "size": {
-          "$description": "Button, icon only sm: size.",
-          "$value": 28,
-          "$type": "number"
-        }
-      },
-      "md": {
-        "size": {
-          "$description": "Button, icon only md: size.",
-          "$value": 36,
-          "$type": "number"
-        }
-      },
-      "lg": {
-        "size": {
-          "$description": "Button, icon only lg: size.",
-          "$value": 48,
           "$type": "number"
         }
       }

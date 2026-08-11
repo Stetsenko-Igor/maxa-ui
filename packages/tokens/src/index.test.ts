@@ -5,6 +5,11 @@ import { join } from "node:path"
 const src = join(import.meta.dirname, ".")
 const root = join(src, "..")
 
+function cssVariable(css: string, name: string): string | undefined {
+  const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+  return css.match(new RegExp(`--${escapedName}\\s*:\\s*([^;]+);`))?.[1]?.trim()
+}
+
 // ── theme.css ──────────────────────────────────────────────────────────────
 
 describe("theme.css", () => {
@@ -65,9 +70,9 @@ describe("theme.css", () => {
   it("imports in correct order: primitives → maxa → semantic → dimensions → shadows", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
     const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
-    const semIdx  = css.indexOf('@import "./semantic.css"')
-    const dimIdx  = css.indexOf('@import "./dimensions.css"')
-    const shadowIdx  = css.indexOf('@import "./shadows.css"')
+    const semIdx = css.indexOf('@import "./semantic.css"')
+    const dimIdx = css.indexOf('@import "./dimensions.css"')
+    const shadowIdx = css.indexOf('@import "./shadows.css"')
     expect(primIdx).toBeLessThan(maxaIdx)
     expect(maxaIdx).toBeLessThan(semIdx)
     expect(semIdx).toBeLessThan(dimIdx)
@@ -111,8 +116,8 @@ describe("primitives.css — gray", () => {
   })
 
   it("defines the Figma neutral surface steps exactly", () => {
-    expect(css).toContain("--color-neutral-50:  #FAFAFA;")
-    expect(css).toContain("--color-neutral-925: #232324;")
+    expect(cssVariable(css, "color-neutral-50")?.toLowerCase()).toBe("#fafafa")
+    expect(cssVariable(css, "color-neutral-925")?.toLowerCase()).toBe("#232324")
   })
 
   it("defines all status palette steps used by semantic tokens", () => {
@@ -123,8 +128,15 @@ describe("primitives.css — gray", () => {
     }
   })
 
+  it("defines the calibrated intermediate action steps", () => {
+    expect(cssVariable(css, "color-blue-550")?.toLowerCase()).toBe("#056dc9")
+    expect(cssVariable(css, "color-green-650")?.toLowerCase()).toBe("#25843e")
+    expect(cssVariable(css, "color-green-750")?.toLowerCase()).toBe("#206d35")
+    expect(cssVariable(css, "color-red-550")?.toLowerCase()).toBe("#c6140f")
+  })
+
   it("defines the exact soft-focus blue primitive", () => {
-    expect(css).toContain("--color-blue-150: #C7E5F0;")
+    expect(cssVariable(css, "color-blue-150")?.toLowerCase()).toBe("#c7e5f0")
   })
 })
 
@@ -133,12 +145,25 @@ describe("primitives.css — gray", () => {
 describe("semantic.css — text + border", () => {
   const css = readFileSync(join(src, "semantic.css"), "utf-8")
 
-  it("defines all 11 text tokens in :root", () => {
+  it("defines the canonical text roles in :root", () => {
     for (const t of [
-      "text-primary", "text-secondary", "text-tertiary",
-      "text-disabled", "text-inverse", "text-on-brand",
-      "text-brand", "text-info", "text-success",
-      "text-error", "text-warning",
+      "text-primary",
+      "text-secondary",
+      "text-tertiary",
+      "text-disabled",
+      "text-inverse",
+      "text-on-brand",
+      "text-on-color",
+      "text-on-warning",
+      "text-on-neutral-action-active",
+      "text-brand",
+      "text-link",
+      "text-link-hover",
+      "text-link-active",
+      "text-info",
+      "text-success",
+      "text-error",
+      "text-warning",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -146,10 +171,22 @@ describe("semantic.css — text + border", () => {
 
   it("defines canonical border tokens", () => {
     for (const t of [
-      "border-primary", "border-secondary", "border-tertiary", "border-focus",
-      "border-brand", "border-error-strong", "border-error-subtle", "border-info-strong", "border-info-subtle",
-      "border-success-strong", "border-success-subtle", "border-warning-strong", "border-warning-subtle",
-      "border-neutral-strong", "border-neutral-muted", "border-neutral-subtle",
+      "border-primary",
+      "border-secondary",
+      "border-tertiary",
+      "border-focus",
+      "border-brand",
+      "border-error-strong",
+      "border-error-subtle",
+      "border-info-strong",
+      "border-info-subtle",
+      "border-success-strong",
+      "border-success-subtle",
+      "border-warning-strong",
+      "border-warning-subtle",
+      "border-neutral-strong",
+      "border-neutral-muted",
+      "border-neutral-subtle",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -166,10 +203,21 @@ describe("semantic.css — text + border", () => {
 
   it("defines foreground tokens for icons and non-text foregrounds", () => {
     for (const t of [
-      "fg-primary", "fg-secondary", "fg-tertiary",
-      "fg-disabled", "fg-inverse", "fg-on-brand", "fg-on-color",
-      "fg-brand", "fg-info", "fg-success",
-      "fg-error", "fg-warning",
+      "fg-primary",
+      "fg-secondary",
+      "fg-tertiary",
+      "fg-disabled",
+      "fg-inverse",
+      "fg-on-brand",
+      "fg-on-color",
+      "fg-brand",
+      "fg-link",
+      "fg-link-hover",
+      "fg-link-active",
+      "fg-info",
+      "fg-success",
+      "fg-error",
+      "fg-warning",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -183,15 +231,32 @@ describe("semantic.css — bg + action", () => {
 
   it("defines all background tokens", () => {
     for (const t of [
-      "bg-page", "bg-surface", "bg-float", "bg-muted",
-      "bg-neutral-surface", "bg-neutral-subtle", "bg-neutral-on-muted", "bg-neutral-strong",
-      "bg-disabled", "bg-overlay", "bg-inverse",
-      "bg-brand-subtle", "bg-brand-surface", "bg-brand-strong",
-      "bg-info-subtle", "bg-info-surface",
+      "bg-page",
+      "bg-surface",
+      "bg-float",
+      "bg-muted",
+      "bg-neutral-surface",
+      "bg-neutral-subtle",
+      "bg-neutral-on-muted",
+      "bg-neutral-strong",
+      "bg-disabled",
+      "bg-overlay",
+      "bg-inverse",
+      "bg-brand-subtle",
+      "bg-brand-surface",
+      "bg-brand-strong",
+      "bg-info-subtle",
+      "bg-info-surface",
       "bg-info-strong",
-      "bg-success-subtle", "bg-success-surface", "bg-success-strong",
-      "bg-error-subtle", "bg-error-surface", "bg-error-strong",
-      "bg-warning-subtle", "bg-warning-surface", "bg-warning-strong",
+      "bg-success-subtle",
+      "bg-success-surface",
+      "bg-success-strong",
+      "bg-error-subtle",
+      "bg-error-surface",
+      "bg-error-strong",
+      "bg-warning-subtle",
+      "bg-warning-surface",
+      "bg-warning-strong",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
@@ -199,28 +264,64 @@ describe("semantic.css — bg + action", () => {
 
   it("defines all action tokens", () => {
     for (const t of [
-      "action-primary", "action-primary-hover", "action-primary-active",
-      "action-primary-subtle", "action-primary-subtle-hover", "action-primary-subtle-active",
-      "action-neutral", "action-neutral-hover", "action-neutral-active",
-      "action-neutral-subtle", "action-neutral-subtle-hover", "action-neutral-subtle-active",
-      "action-brand", "action-brand-hover", "action-brand-active",
-      "action-brand-subtle", "action-brand-subtle-hover", "action-brand-subtle-active",
-      "action-success", "action-success-hover", "action-success-active",
-      "action-success-subtle", "action-success-subtle-hover", "action-success-subtle-active",
-      "action-destructive", "action-destructive-hover", "action-destructive-active",
-      "action-destructive-subtle", "action-destructive-subtle-hover", "action-destructive-subtle-active",
-      "action-warning", "action-warning-hover", "action-warning-active",
-      "action-warning-subtle", "action-warning-subtle-hover", "action-warning-subtle-active",
+      "action-primary",
+      "action-primary-hover",
+      "action-primary-active",
+      "action-primary-subtle",
+      "action-primary-subtle-hover",
+      "action-primary-subtle-active",
+      "action-neutral",
+      "action-neutral-hover",
+      "action-neutral-active",
+      "action-neutral-subtle",
+      "action-neutral-subtle-hover",
+      "action-neutral-subtle-active",
+      "action-brand",
+      "action-brand-hover",
+      "action-brand-active",
+      "action-brand-subtle",
+      "action-brand-subtle-hover",
+      "action-brand-subtle-active",
+      "action-success",
+      "action-success-hover",
+      "action-success-active",
+      "action-destructive",
+      "action-destructive-hover",
+      "action-destructive-active",
+      "action-warning",
+      "action-warning-hover",
+      "action-warning-active",
+      "action-warning-subtle",
+      "action-warning-subtle-hover",
+      "action-warning-subtle-active",
     ]) {
       expect(css).toContain(`--color-${t}:`)
     }
   })
 
   it("maps CSS action primary to blue, not brand", () => {
-    expect(css).toContain("--color-action-primary:                 var(--color-blue-500);")
-    expect(css).toContain("--color-action-primary-hover:           var(--color-blue-600);")
-    expect(css).toContain("--color-action-primary-active:          var(--color-blue-700);")
+    expect(cssVariable(css, "color-action-primary")).toBe("var(--color-blue-500)")
+    expect(cssVariable(css, "color-action-primary-hover")).toBe("var(--color-blue-550)")
+    expect(cssVariable(css, "color-action-primary-active")).toBe("var(--color-blue-600)")
     expect(css).not.toContain("--color-action-primary-normal:")
+  })
+
+  it("uses compact opposite-direction action ladders across themes", () => {
+    const darkIdx = css.indexOf('\n[data-theme="dark"] {')
+    const light = css.slice(0, darkIdx)
+    const dark = css.slice(darkIdx)
+
+    expect(cssVariable(light, "color-action-success")).toBe("var(--color-green-650)")
+    expect(cssVariable(light, "color-action-success-hover")).toBe("var(--color-green-700)")
+    expect(cssVariable(light, "color-action-success-active")).toBe("var(--color-green-750)")
+    expect(cssVariable(light, "color-action-destructive-hover")).toBe("var(--color-red-550)")
+    expect(cssVariable(dark, "color-action-primary")).toBe("var(--color-blue-600)")
+    expect(cssVariable(dark, "color-action-primary-hover")).toBe("var(--color-blue-550)")
+    expect(cssVariable(dark, "color-action-primary-active")).toBe("var(--color-blue-500)")
+    expect(cssVariable(dark, "color-action-success")).toBe("var(--color-green-750)")
+    expect(cssVariable(dark, "color-action-destructive")).toBe("var(--color-red-600)")
+    expect(css).not.toContain("--color-action-success-subtle:")
+    expect(css).not.toContain("--color-action-destructive-subtle:")
   })
 
   it("maps neutral states to adjacent balanced steps", () => {
@@ -228,10 +329,10 @@ describe("semantic.css — bg + action", () => {
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-action-neutral-hover:           var(--color-neutral-400);")
-    expect(light).toContain("--color-action-neutral-active:          var(--color-neutral-450);")
-    expect(dark).toContain("--color-action-neutral-hover:           var(--color-neutral-700);")
-    expect(dark).toContain("--color-action-neutral-active:          var(--color-neutral-600);")
+    expect(cssVariable(light, "color-action-neutral-hover")).toBe("var(--color-neutral-400)")
+    expect(cssVariable(light, "color-action-neutral-active")).toBe("var(--color-neutral-450)")
+    expect(cssVariable(dark, "color-action-neutral-hover")).toBe("var(--color-neutral-700)")
+    expect(cssVariable(dark, "color-action-neutral-active")).toBe("var(--color-neutral-600)")
   })
 
   it("does not redefine bg-nav in semantic layer (moved to component-nav.css)", () => {
@@ -243,27 +344,29 @@ describe("semantic.css — bg + action", () => {
     const light = css.slice(0, darkIdx)
     const dark = css.slice(darkIdx)
 
-    expect(light).toContain("--color-bg-info-subtle:       var(--color-blue-100);")
-    expect(light).toContain("--color-border-info-subtle:    var(--color-blue-200);")
-    expect(light).toContain("--color-action-success:                var(--color-green-500);")
-    expect(light).toContain("--color-action-destructive:                var(--color-red-500);")
-    expect(dark).toContain("--color-bg-info-subtle:       var(--color-blue-950);")
-    expect(dark).toContain("--color-bg-success-subtle:    var(--color-green-950);")
-    expect(dark).toContain("--color-bg-warning-subtle:    var(--color-yellow-950);")
-    expect(dark).toContain("--color-bg-error-subtle:      var(--color-red-950);")
-    expect(light).toContain("--color-feedback-info-bg:                var(--color-blue-100);")
-    expect(light).toContain("--color-feedback-success-bg:             var(--color-green-100);")
-    expect(light).toContain("--color-feedback-warning-bg:             var(--color-orange-100);")
-    expect(light).toContain("--color-feedback-error-bg:               var(--color-red-100);")
-    expect(light).toContain("--color-feedback-success-action:         var(--color-green-500);")
-    expect(light).toContain("--color-feedback-error-action-hover:     var(--color-red-700);")
-    expect(dark).toContain("--color-feedback-info-bg:                var(--color-blue-800);")
-    expect(dark).toContain("--color-feedback-success-bg:             var(--color-green-900);")
-    expect(dark).toContain("--color-feedback-error-bg:               var(--color-red-800);")
-    expect(dark).toContain("--color-feedback-success-action:         var(--color-green-400);")
-    expect(dark).toContain("--color-feedback-error-action-hover:     var(--color-red-300);")
+    expect(cssVariable(light, "color-bg-info-subtle")).toBe("var(--color-blue-100)")
+    expect(cssVariable(light, "color-border-info-subtle")).toBe("var(--color-blue-200)")
+    expect(cssVariable(light, "color-action-success")).toBe("var(--color-green-650)")
+    expect(cssVariable(light, "color-action-destructive")).toBe("var(--color-red-500)")
+    expect(cssVariable(dark, "color-bg-info-subtle")).toBe("var(--color-blue-950)")
+    expect(cssVariable(dark, "color-bg-success-subtle")).toBe("var(--color-green-950)")
+    expect(cssVariable(dark, "color-bg-warning-subtle")).toBe("var(--color-yellow-950)")
+    expect(cssVariable(dark, "color-bg-error-subtle")).toBe("var(--color-red-950)")
+    expect(cssVariable(light, "color-feedback-info-bg")).toBe("var(--color-blue-100)")
+    expect(cssVariable(light, "color-feedback-success-bg")).toBe("var(--color-green-100)")
+    expect(cssVariable(light, "color-feedback-warning-bg")).toBe("var(--color-orange-100)")
+    expect(cssVariable(light, "color-feedback-error-bg")).toBe("var(--color-red-100)")
+    expect(cssVariable(light, "color-feedback-success-action")).toBe("var(--color-green-500)")
+    expect(cssVariable(light, "color-feedback-error-action-hover")).toBe("var(--color-red-700)")
+    expect(cssVariable(dark, "color-feedback-info-bg")).toBe("var(--color-blue-800)")
+    expect(cssVariable(dark, "color-feedback-success-bg")).toBe("var(--color-green-900)")
+    expect(cssVariable(dark, "color-feedback-error-bg")).toBe("var(--color-red-800)")
+    expect(cssVariable(dark, "color-feedback-success-action")).toBe("var(--color-green-400)")
+    expect(cssVariable(dark, "color-feedback-error-action-hover")).toBe("var(--color-red-300)")
     expect(css).not.toContain("--color-status-")
-    expect(dark).toContain("--color-bg-overlay-strong:       var(--color-neutral-alpha-black-72);")
+    expect(cssVariable(dark, "color-bg-overlay-strong")).toBe(
+      "var(--color-neutral-alpha-black-72)",
+    )
   })
 })
 
@@ -301,7 +404,6 @@ describe("dimensions.css — spacing + radius + width", () => {
       expect(css).toContain(`--width-${n}:`)
     }
   })
-
 })
 
 // ── figma tokens ───────────────────────────────────────────────────────────
@@ -369,15 +471,16 @@ describe("figma import bundle", () => {
     expect(Object.keys(primitives).some((name) => name.startsWith("Colors/Slate/"))).toBe(false)
   })
 
-  const bundle = JSON.parse(
-    readFileSync(join(root, "figma/import-bundle.json"), "utf-8"),
-  ) as {
+  const bundle = JSON.parse(readFileSync(join(root, "figma/import-bundle.json"), "utf-8")) as {
     aliasDefaults: Record<string, string>
-    collections: Record<string, {
-      modes: Record<string, Record<string, number | string | boolean>>
-      types?: Record<string, "BOOLEAN" | "COLOR" | "FLOAT" | "STRING">
-      scopes?: Record<string, string[]>
-    }>
+    collections: Record<
+      string,
+      {
+        modes: Record<string, Record<string, number | string | boolean>>
+        types?: Record<string, "BOOLEAN" | "COLOR" | "FLOAT" | "STRING">
+        scopes?: Record<string, string[]>
+      }
+    >
     effects?: { shadows?: Record<string, Record<string, Record<string, unknown[]>>> }
   }
 
@@ -401,7 +504,9 @@ describe("figma import bundle", () => {
   it("maps Layout short spacing aliases to the Spacing collection", () => {
     expect(bundle.aliasDefaults.Layout).toBe("Spacing")
     expect(bundle.collections.Layout?.modes.Desktop?.["V-stack/tight"]).toBe("{Spacing/spacing-xs}")
-    expect(bundle.collections.Layout?.modes.Desktop?.["Container/padding"]).toBe("{Spacing/spacing-4xl}")
+    expect(bundle.collections.Layout?.modes.Desktop?.["Container/padding"]).toBe(
+      "{Spacing/spacing-4xl}",
+    )
     expect(bundle.collections.Layout?.modes.Desktop?.["Grid/margin"]).toBe("{Container/padding}")
   })
 
@@ -461,9 +566,13 @@ describe("figma import bundle", () => {
           const targetCollectionName = targetPath.slice(0, targetSlash)
           const targetTokenName = targetPath.slice(targetSlash + 1)
           const targetCollection = bundle.collections[targetCollectionName]
-          const targetExists = targetCollection && Object.values(targetCollection.modes)
-            .some((targetTokens) => targetTokens[targetTokenName] !== undefined)
-          if (!targetExists) missing.push(`${collectionName}/${tokenName} [${modeName}] -> ${targetPath}`)
+          const targetExists =
+            targetCollection &&
+            Object.values(targetCollection.modes).some(
+              (targetTokens) => targetTokens[targetTokenName] !== undefined,
+            )
+          if (!targetExists)
+            missing.push(`${collectionName}/${tokenName} [${modeName}] -> ${targetPath}`)
         }
       }
     }
@@ -475,7 +584,9 @@ describe("figma import bundle", () => {
     const missing: string[] = []
 
     for (const [collectionName, collection] of Object.entries(bundle.collections)) {
-      const tokenNames = new Set(Object.values(collection.modes).flatMap((tokens) => Object.keys(tokens)))
+      const tokenNames = new Set(
+        Object.values(collection.modes).flatMap((tokens) => Object.keys(tokens)),
+      )
       for (const tokenName of tokenNames) {
         if (!collection.types?.[tokenName]) missing.push(`${collectionName}/${tokenName}`)
       }
@@ -491,7 +602,8 @@ describe("figma import bundle", () => {
 
     for (const [collectionName, collection] of Object.entries(bundle.collections)) {
       for (const tokenName of Object.keys(collection.types ?? {})) {
-        if (!Array.isArray(collection.scopes?.[tokenName])) missing.push(`${collectionName}/${tokenName}`)
+        if (!Array.isArray(collection.scopes?.[tokenName]))
+          missing.push(`${collectionName}/${tokenName}`)
       }
     }
 
@@ -506,13 +618,19 @@ describe("figma import bundle", () => {
     expect(bundle.collections.Primitives?.scopes?.["Colors/Yellow/500"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections.Primitives?.scopes?.["Colors/Blue/500"]).toEqual([])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
-    expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual(["STROKE_COLOR"])
-    expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/info/action"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual([
+      "STROKE_COLOR",
+    ])
+    expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/info/action"]).toEqual([
+      "ALL_FILLS",
+    ])
     expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/neutral/action"]).toEqual([
       "ALL_FILLS",
       "STROKE_COLOR",
     ])
-    expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual(["WIDTH_HEIGHT"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Select/size-md-height"]).toEqual([
+      "WIDTH_HEIGHT",
+    ])
     expect(bundle.collections["Component-based"]?.scopes?.["Context Menu/z"]).toEqual([])
   })
 
@@ -568,7 +686,9 @@ describe("figma import bundle", () => {
     expect(bundle.collections.Primitives?.modes.Value?.["Colors/Brand/500"]).toBe("#31E5C2")
     expect(light?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Ink.50}")
     expect(dark?.["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Black.72}")
-    expect(light?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-subtle-hover}")
+    expect(light?.["action/action-menu-hover"]).toBe(
+      "{Color modes/action/action-neutral-subtle-hover}",
+    )
     expect(dark?.["action/action-menu-hover"]).toBe("{Color modes/action/action-neutral-hover}")
     expect(light?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.100}")
     expect(dark?.["utility/bg-violet-muted"]).toBe("{Colors.Violet.900}")
@@ -581,16 +701,24 @@ describe("figma import bundle", () => {
     expect(component?.["Alert/color/neutral/bg"]).toBe("{Color modes/feedback/neutral/bg}")
     expect(component?.["Alert/color/emphasize/bg"]).toBe("{Color modes/feedback/emphasize/bg}")
     expect(component?.["Dialog/overlay-bg"]).toBe("{Color modes/background/bg-overlay-strong}")
-    expect(component?.["Dropdown Menu/item/bg-hover"]).toBe("{Color modes/action/action-menu-hover}")
+    expect(component?.["Dropdown Menu/item/bg-hover"]).toBe(
+      "{Color modes/action/action-menu-hover}",
+    )
     expect(component?.["Utility/bg-violet-muted"]).toBe("{Color modes/utility/bg-violet-muted}")
-    expect(component?.["Button/outline/border-hover"]).toBe("{Color modes/border/border-neutral-muted}")
-    expect(component?.["Button/outline/border-active"]).toBe("{Color modes/border/border-neutral-muted}")
+    expect(component?.["Button/outline/border-hover"]).toBe(
+      "{Color modes/border/border-neutral-muted}",
+    )
+    expect(component?.["Button/outline/border-active"]).toBe(
+      "{Color modes/border/border-neutral-muted}",
+    )
   })
 
   it("routes Alert through the dedicated feedback namespace backed directly by primitives", () => {
     const colorModes = bundle.collections["Color modes"]
     for (const [modeName, values] of Object.entries(colorModes?.modes ?? {})) {
-      const feedbackEntries = Object.entries(values).filter(([name]) => name.startsWith("feedback/"))
+      const feedbackEntries = Object.entries(values).filter(([name]) =>
+        name.startsWith("feedback/"),
+      )
       expect(feedbackEntries, `${modeName} feedback roles`).toHaveLength(33)
       for (const [name, value] of feedbackEntries) {
         expect(value, `${name} [${modeName}]`).toMatch(/^\{Colors\./)
@@ -599,16 +727,20 @@ describe("figma import bundle", () => {
 
     const primitives = bundle.collections.Primitives?.modes.Value
     expect(primitives?.["Colors/Base/Ink"]).toBe("#1B1A1A")
-    expect(Object.keys(primitives ?? {}).some((name) => name.startsWith("Colors/Status/"))).toBe(false)
+    expect(Object.keys(primitives ?? {}).some((name) => name.startsWith("Colors/Status/"))).toBe(
+      false,
+    )
 
     const component = bundle.collections["Component-based"]?.modes.Default ?? {}
     expect(component["Alert/color/info/bg"]).toBe("{Color modes/feedback/info/bg}")
     expect(component["Alert/color/success/bg"]).toBe("{Color modes/feedback/success/bg}")
     expect(component["Alert/color/warning/bg"]).toBe("{Color modes/feedback/warning/bg}")
     expect(component["Alert/color/error/bg"]).toBe("{Color modes/feedback/error/bg}")
-    expect(Object.values(component).some((value) =>
-      typeof value === "string" && value.includes("Color modes/feedback/"),
-    )).toBe(true)
+    expect(
+      Object.values(component).some(
+        (value) => typeof value === "string" && value.includes("Color modes/feedback/"),
+      ),
+    ).toBe(true)
   })
 
   it("matches the published dark Alert feedback surfaces", () => {
@@ -661,10 +793,18 @@ describe("figma import bundle", () => {
 
   it("routes overlay and inverse-muted roles through the exact alpha primitives", () => {
     const colorModes = bundle.collections["Color modes"]?.modes
-    expect(colorModes?.Light["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Ink.50}")
-    expect(colorModes?.Dark["background/bg-overlay-strong"]).toBe("{Colors.Neutral (alpha).Black.72}")
-    expect(colorModes?.Light["foreground/fg-on-inverse-muted"]).toBe("{Colors.Neutral (alpha).White.45}")
-    expect(colorModes?.Dark["foreground/fg-on-inverse-muted"]).toBe("{Colors.Neutral (alpha).White.45}")
+    expect(colorModes?.Light["background/bg-overlay-strong"]).toBe(
+      "{Colors.Neutral (alpha).Ink.50}",
+    )
+    expect(colorModes?.Dark["background/bg-overlay-strong"]).toBe(
+      "{Colors.Neutral (alpha).Black.72}",
+    )
+    expect(colorModes?.Light["foreground/fg-on-inverse-muted"]).toBe(
+      "{Colors.Neutral (alpha).White.45}",
+    )
+    expect(colorModes?.Dark["foreground/fg-on-inverse-muted"]).toBe(
+      "{Colors.Neutral (alpha).White.45}",
+    )
 
     const primitives = bundle.collections.Primitives?.modes.Value
     expect(primitives?.["Colors/Neutral (alpha)/Ink/50"]).toBe("#1B1A1A80")
@@ -713,9 +853,9 @@ describe("figma import bundle", () => {
     expect(dark?.["background/bg-neutral-muted"]).toBe("{Colors.Neutral.800}")
     expect(light?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.300}")
     expect(dark?.["background/bg-neutral-on-muted"]).toBe("{Colors.Neutral.700}")
-    expect(css).toContain("--color-bg-neutral-surface:   var(--color-neutral-50)")
+    expect(cssVariable(css, "color-bg-neutral-surface")).toBe("var(--color-neutral-50)")
     expect(css).not.toContain("--color-bg-neutral-on-subtle")
-    expect(css).toContain("--color-bg-neutral-on-muted:  var(--color-neutral-300)")
+    expect(cssVariable(css, "color-bg-neutral-on-muted")).toBe("var(--color-neutral-300)")
 
     // Table header consumes the new step.
     const tableCss = readFileSync(join(root, "src/component-table.css"), "utf-8")
@@ -727,10 +867,7 @@ describe("figma import bundle", () => {
 
   it("keeps Table text colors attached to explicit content roles", () => {
     const tableTokens = readFileSync(join(root, "src/component-table.css"), "utf-8")
-    const tableStyles = readFileSync(
-      join(root, "../ui/src/components/table/table.css"),
-      "utf-8",
-    )
+    const tableStyles = readFileSync(join(root, "../ui/src/components/table/table.css"), "utf-8")
     const componentMode = bundle.collections["Component-based"]?.modes.Default ?? {}
 
     expect(tableTokens).not.toContain("--table-text:")
@@ -743,10 +880,7 @@ describe("figma import bundle", () => {
 
   it("keeps Table row backgrounds and caption roles aligned with the Figma model", () => {
     const tableTokens = readFileSync(join(root, "src/component-table.css"), "utf-8")
-    const tableStyles = readFileSync(
-      join(root, "../ui/src/components/table/table.css"),
-      "utf-8",
-    )
+    const tableStyles = readFileSync(join(root, "../ui/src/components/table/table.css"), "utf-8")
     const componentMode = bundle.collections["Component-based"]?.modes.Default ?? {}
 
     expect(componentMode["Table/row-bg"]).toBe("{Color modes/background/bg-surface}")
@@ -796,8 +930,14 @@ describe("figma import bundle", () => {
           // Decorative hue families live in Color modes/utility, not here.
           .filter((rest) => !(["bg", "text", "fg"].includes(cssPrefix) && hueRe.test(rest))),
       )
-      expect([...cssKeys].filter((k) => !figmaKeys.has(k)).sort(), `${cssPrefix}: CSS-only names`).toEqual([])
-      expect([...figmaKeys].filter((k) => !cssKeys.has(k)).sort(), `${figmaGroup}: Figma-only names`).toEqual([])
+      expect(
+        [...cssKeys].filter((k) => !figmaKeys.has(k)).sort(),
+        `${cssPrefix}: CSS-only names`,
+      ).toEqual([])
+      expect(
+        [...figmaKeys].filter((k) => !cssKeys.has(k)).sort(),
+        `${figmaGroup}: Figma-only names`,
+      ).toEqual([])
     }
 
     const figmaFeedback = new Set(
@@ -845,13 +985,16 @@ describe("figma import bundle", () => {
     expect(component?.["Tooltip/layout/max-width"]).toBe(240)
     expect(component?.["Popover/layout/width"]).toBe(320)
     expect(component?.["Dropdown Menu/surface/bg"]).toBe("{Color modes/background/bg-float}")
-    expect(component?.["Button/link/fg"]).toBe("{Color modes/action/action-primary}")
-    expect(component?.["Button/primary/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/link/fg"]).toBe("{Color modes/foreground/fg-link}")
+    expect(component?.["Button/content/text-on-color"]).toBe("{Color modes/text/text-on-color}")
+    expect(component?.["Button/content/fg-on-color"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/focus/border"]).toBe("{Color modes/border/border-focus}")
+    expect(component?.["Button/primary/fg"]).toBeUndefined()
     expect(component?.["Button/secondary/fg"]).toBe("{Color modes/foreground/fg-primary}")
     expect(component?.["Button/outline/fg"]).toBe("{Color modes/foreground/fg-primary}")
     expect(component?.["Button/ghost/fg"]).toBe("{Color modes/foreground/fg-primary}")
-    expect(component?.["Button/success/fg"]).toBe("{Color modes/foreground/fg-on-color}")
-    expect(component?.["Button/destructive/fg"]).toBe("{Color modes/foreground/fg-on-color}")
+    expect(component?.["Button/success/fg"]).toBeUndefined()
+    expect(component?.["Button/destructive/fg"]).toBeUndefined()
     expect(component?.["Button/warning/fg"]).toBe("{Color modes/foreground/fg-on-color}")
     expect(component?.["Button/text/bg"]).toBeUndefined()
     expect(component?.["Divider/size"]).toBe(1)
@@ -860,9 +1003,10 @@ describe("figma import bundle", () => {
 })
 
 describe("figma radius tokens", () => {
-  const radiusFile = JSON.parse(
-    readFileSync(join(root, "figma/radius.json"), "utf-8"),
-  ) as Record<string, { $value: number; $type: string }>
+  const radiusFile = JSON.parse(readFileSync(join(root, "figma/radius.json"), "utf-8")) as Record<
+    string,
+    { $value: number; $type: string }
+  >
 
   it("defines the full radius scale", () => {
     for (const token of [
@@ -920,6 +1064,10 @@ describe("figma color modes", () => {
     readFileSync(join(root, "figma/colors-semantic-dark.json"), "utf-8"),
   ) as Record<string, Record<string, { $value: string; $type: string }>>
 
+  const colorPrimitives = JSON.parse(
+    readFileSync(join(root, "figma/primitives.json"), "utf-8"),
+  ) as { Colors: Record<string, Record<string, { $value: string }>> }
+
   it("keeps light and dark semantic groups aligned", () => {
     expect(Object.keys(lightFile)).toEqual(Object.keys(darkFile))
     expect(Object.keys(lightFile.text)).toEqual(Object.keys(darkFile.text))
@@ -935,6 +1083,7 @@ describe("figma color modes", () => {
     expect(lightFile.text["text-tertiary"]?.$value).toBe("{Colors.Neutral.600}")
     expect(lightFile.text["text-disabled"]?.$value).toBe("{Colors.Neutral.500}")
     expect(lightFile.text["text-on-brand"]?.$value).toBe("{Colors.Neutral.950}")
+    expect(lightFile.text["text-on-color"]?.$value).toBe("{Colors.Base.White}")
     expect(lightFile.foreground["fg-tertiary"]?.$value).toBe("{Colors.Neutral.600}")
     expect(lightFile.background["bg-muted"]?.$value).toBe("{Colors.Neutral.100}")
     expect(lightFile.background["bg-float"]?.$value).toBe("{Colors.Base.White}")
@@ -955,10 +1104,66 @@ describe("figma color modes", () => {
     expect(darkFile.background["bg-brand-strong"]?.$value).toBe("{Colors.Brand.600}")
     expect(darkFile.background["bg-inverse"]?.$value).toBe("{Colors.Neutral.950}")
     expect(darkFile.border["border-focus"]?.$value).toBe("{Colors.Blue.400}")
-    expect(darkFile.action["action-primary"]?.$value).toBe("{Colors.Blue.400}")
+    expect(darkFile.text["text-on-color"]?.$value).toBe("{Colors.Base.White}")
+    expect(darkFile.action["action-primary"]?.$value).toBe("{Colors.Blue.600}")
+    expect(darkFile.action["action-primary-hover"]?.$value).toBe("{Colors.Blue.550}")
+    expect(darkFile.action["action-primary-active"]?.$value).toBe("{Colors.Blue.500}")
+    expect(lightFile.action["action-success"]?.$value).toBe("{Colors.Green.650}")
+    expect(darkFile.action["action-success"]?.$value).toBe("{Colors.Green.750}")
+    expect(lightFile.action["action-destructive-hover"]?.$value).toBe("{Colors.Red.550}")
+    expect(darkFile.action["action-destructive"]?.$value).toBe("{Colors.Red.600}")
+    expect(lightFile.action["action-success-subtle"]).toBeUndefined()
+    expect(darkFile.action["action-destructive-subtle"]).toBeUndefined()
     expect(darkFile.action["action-brand"]?.$value).toBe("{Colors.Brand.600}")
     expect(darkFile.action["action-primary-subtle-hover"]?.$value).toBe("{Colors.Blue.950}")
     expect(darkFile.action["action-brand-subtle-active"]?.$value).toBe("{Colors.Brand.900}")
+  })
+
+  it("keeps filled and Link Button content at AA contrast in both themes", () => {
+    const relativeLuminance = (hex: string) => {
+      const channels = [1, 3, 5].map(
+        (start) => Number.parseInt(hex.slice(start, start + 2), 16) / 255,
+      )
+      const linear = channels.map((value) =>
+        value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4,
+      )
+      return 0.2126 * linear[0]! + 0.7152 * linear[1]! + 0.0722 * linear[2]!
+    }
+
+    for (const mode of [lightFile, darkFile]) {
+      expect(mode.text["text-on-color"]?.$value).toBe("{Colors.Base.White}")
+      for (const intent of ["primary", "success", "destructive"]) {
+        for (const state of ["", "-hover", "-active"]) {
+          const alias = mode.action[`action-${intent}${state}`]?.$value
+          const match = /^\{Colors\.([^.]+)\.([^.]+)\}$/.exec(alias)
+          expect(match, alias).not.toBeNull()
+          if (!match) throw new Error(`Invalid action alias: ${alias}`)
+          const background = colorPrimitives.Colors[match[1]!]?.[match[2]!]?.$value
+          expect(background, alias).toMatch(/^#[0-9A-Fa-f]{6}$/)
+          if (!background) throw new Error(`Missing primitive for ${alias}`)
+          const ratio = 1.05 / (relativeLuminance(background) + 0.05)
+          expect(ratio, `${intent}${state} ${background}`).toBeGreaterThanOrEqual(4.5)
+        }
+      }
+    }
+
+    for (const [mode, surface] of [
+      [lightFile, "#FFFFFF"],
+      [darkFile, "#2A2A2B"],
+    ] as const) {
+      for (const state of ["", "-hover", "-active"]) {
+        const alias = mode.text[`text-link${state}`]?.$value
+        const match = /^\{Colors\.([^.]+)\.([^.]+)\}$/.exec(alias)
+        if (!match) throw new Error(`Invalid Link alias: ${alias}`)
+        const foreground = colorPrimitives.Colors[match[1]!]![match[2]!]!.$value
+        const foregroundLuminance = relativeLuminance(foreground)
+        const surfaceLuminance = relativeLuminance(surface)
+        const ratio =
+          (Math.max(foregroundLuminance, surfaceLuminance) + 0.05) /
+          (Math.min(foregroundLuminance, surfaceLuminance) + 0.05)
+        expect(ratio, `text-link${state} ${foreground}`).toBeGreaterThanOrEqual(4.5)
+      }
+    }
   })
 })
 
@@ -985,10 +1190,7 @@ describe("figma typography tokens", () => {
   })
 
   it("matches web font-family naming", () => {
-    expect(Object.keys(desktopTypographyFile["Font family"] ?? {})).toEqual([
-      "body",
-      "mono",
-    ])
+    expect(Object.keys(desktopTypographyFile["Font family"] ?? {})).toEqual(["body", "mono"])
   })
 
   it("uses Montserrat for body and Roboto Mono for mono font family tokens", () => {
@@ -1073,16 +1275,15 @@ describe("figma layout tokens", () => {
     expect(mobileLayoutFile["Container/padding"]?.$description).toBe(
       "Mobile horizontal container padding. Alias: spacing-xl.",
     )
-    expect(desktopLayoutFile["Container/max-width"]?.$description).toBe(
-      "Maximum container width.",
-    )
+    expect(desktopLayoutFile["Container/max-width"]?.$description).toBe("Maximum container width.")
   })
 })
 
 describe("figma spacing tokens", () => {
-  const spacingFile = JSON.parse(
-    readFileSync(join(root, "figma/spacing.json"), "utf-8"),
-  ) as Record<string, { $value: string; $type: string; $description?: string }>
+  const spacingFile = JSON.parse(readFileSync(join(root, "figma/spacing.json"), "utf-8")) as Record<
+    string,
+    { $value: string; $type: string; $description?: string }
+  >
 
   it("aliases semantic spacing tokens to primitives", () => {
     expect(spacingFile["spacing-none"]?.$value).toBe("{Primitives/Spacing/0 (0px)}")
@@ -1120,7 +1321,9 @@ describe("figma spacing primitive tokens", () => {
   })
 
   it("adds readable spacing labels to primitive tokens", () => {
-    expect(primitivesFile.Spacing["4 (16px)"]?.$description).toBe("Primitive spacing step 4 (16px).")
+    expect(primitivesFile.Spacing["4 (16px)"]?.$description).toBe(
+      "Primitive spacing step 4 (16px).",
+    )
   })
 })
 
@@ -1151,6 +1354,8 @@ describe("figma component-based button tokens", () => {
 
   it("defines approved Button variants", () => {
     expect(Object.keys(lightFile.Button)).toEqual([
+      "content",
+      "focus",
       "primary",
       "secondary",
       "outline",
@@ -1161,7 +1366,6 @@ describe("figma component-based button tokens", () => {
       "warning",
       "disabled",
       "size",
-      "icon-only",
       "font-family",
     ])
   })
@@ -1171,7 +1375,9 @@ describe("figma component-based button tokens", () => {
   })
 
   it("uses current semantic color alias paths for Button variables", () => {
-    const aliases = collectTokenValues(lightFile).filter((value) => value.startsWith("{Color modes/"))
+    const aliases = collectTokenValues(lightFile).filter((value) =>
+      value.startsWith("{Color modes/"),
+    )
 
     expect(aliases.length).toBeGreaterThan(0)
     expect(aliases).not.toContain("{Color modes/action/primary}")
@@ -1179,25 +1385,47 @@ describe("figma component-based button tokens", () => {
     expect(aliases).not.toContain("{Color modes/fg/primary}")
 
     for (const alias of aliases) {
-      expect(alias).toMatch(/^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/)
+      expect(alias).toMatch(
+        /^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/,
+      )
     }
   })
 
   it("aliases primary to action primary, not brand", () => {
     expect(lightFile.Button.primary.bg?.$value).toBe("{Color modes/action/action-primary}")
-    expect(lightFile.Button.primary["bg-hover"]?.$value).toBe("{Color modes/action/action-primary-hover}")
-    expect(lightFile.Button.primary["bg-active"]?.$value).toBe("{Color modes/action/action-primary-active}")
-    expect(lightFile.Button.primary.text?.$value).toBe("{Color modes/text/text-inverse}")
+    expect(lightFile.Button.primary["bg-hover"]?.$value).toBe(
+      "{Color modes/action/action-primary-hover}",
+    )
+    expect(lightFile.Button.primary["bg-active"]?.$value).toBe(
+      "{Color modes/action/action-primary-active}",
+    )
+    expect(lightFile.Button.primary.text).toBeUndefined()
   })
 
-  it("defines success and destructive button variants from action tokens", () => {
+  it("shares on-color content and focus roles across colored buttons", () => {
+    expect(lightFile.Button.content["text-on-color"]?.$value).toBe(
+      "{Color modes/text/text-on-color}",
+    )
+    expect(lightFile.Button.content["fg-on-color"]?.$value).toBe(
+      "{Color modes/foreground/fg-on-color}",
+    )
+    expect(lightFile.Button.focus.border?.$value).toBe("{Color modes/border/border-focus}")
+
     expect(lightFile.Button.success.bg?.$value).toBe("{Color modes/action/action-success}")
-    expect(lightFile.Button.success["bg-hover"]?.$value).toBe("{Color modes/action/action-success-hover}")
+    expect(lightFile.Button.success["bg-hover"]?.$value).toBe(
+      "{Color modes/action/action-success-hover}",
+    )
     expect(lightFile.Button.destructive.bg?.$value).toBe("{Color modes/action/action-destructive}")
-    expect(lightFile.Button.destructive["bg-hover"]?.$value).toBe("{Color modes/action/action-destructive-hover}")
-    expect(lightFile.Button.success.text?.$value).toBe("{Color modes/text/text-on-success}")
-    expect(lightFile.Button.success["text-hover"]?.$value).toBe("{Color modes/text/text-on-success}")
-    expect(lightFile.Button.success["text-active"]?.$value).toBe("{Color modes/text/text-on-success}")
+    expect(lightFile.Button.destructive["bg-hover"]?.$value).toBe(
+      "{Color modes/action/action-destructive-hover}",
+    )
+
+    for (const variant of ["primary", "success", "destructive"]) {
+      const tokens = lightFile.Button[variant] as Record<string, TokenLeaf>
+      expect(tokens.text).toBeUndefined()
+      expect(tokens.fg).toBeUndefined()
+      expect(tokens["border-focus"]).toBeUndefined()
+    }
   })
 
   it("uses one disabled opacity token for Button", () => {
@@ -1205,7 +1433,15 @@ describe("figma component-based button tokens", () => {
 
     expect(lightDisabled.opacity?.$value).toBe(50)
 
-    for (const variant of ["primary", "secondary", "outline", "ghost", "link", "success", "destructive"]) {
+    for (const variant of [
+      "primary",
+      "secondary",
+      "outline",
+      "ghost",
+      "link",
+      "success",
+      "destructive",
+    ]) {
       const tokens = lightFile.Button[variant] as Record<string, TokenLeaf>
       expect(tokens["bg-disabled"]).toBeUndefined()
       expect(tokens["text-disabled"]).toBeUndefined()
@@ -1213,52 +1449,52 @@ describe("figma component-based button tokens", () => {
     }
   })
 
-  it("keeps link transparent and action-colored", () => {
+  it("keeps link transparent and uses dedicated accessible content roles", () => {
     expect(lightFile.Button.link.bg?.$value).toBe("{Primitives/Colors/Base/Transparent}")
     expect(lightFile.Button.link["bg-hover"]?.$value).toBe("{Primitives/Colors/Base/Transparent}")
-    expect(lightFile.Button.link.text?.$value).toBe("{Color modes/action/action-primary}")
-    expect(lightFile.Button.link["text-hover"]?.$value).toBe("{Color modes/action/action-primary-hover}")
+    expect(lightFile.Button.link.text?.$value).toBe("{Color modes/text/text-link}")
+    expect(lightFile.Button.link["text-hover"]?.$value).toBe("{Color modes/text/text-link-hover}")
+    expect(lightFile.Button.link.fg?.$value).toBe("{Color modes/foreground/fg-link}")
   })
 
   it("keeps outline transparent with an explicit optional surface token", () => {
     expect(lightFile.Button.outline.bg?.$value).toBe("{Primitives/Colors/Base/Transparent}")
-    expect(lightFile.Button.outline["bg-surface"]?.$value).toBe("{Color modes/background/bg-surface}")
-    expect(lightFile.Button.outline["border-hover"]?.$value).toBe("{Color modes/border/border-neutral-muted}")
-    expect(lightFile.Button.outline["border-active"]?.$value).toBe("{Color modes/border/border-neutral-muted}")
+    expect(lightFile.Button.outline["bg-surface"]?.$value).toBe(
+      "{Color modes/background/bg-surface}",
+    )
+    expect(lightFile.Button.outline["border-hover"]?.$value).toBe(
+      "{Color modes/border/border-neutral-muted}",
+    )
+    expect(lightFile.Button.outline["border-active"]?.$value).toBe(
+      "{Color modes/border/border-neutral-muted}",
+    )
   })
 
-  it("defines size, typography, icon-size, and icon-only tokens", () => {
+  it("defines only size-specific geometry and typography tokens", () => {
     const size = lightFile.Button.size as Record<string, Record<string, TokenLeaf>>
-    const iconOnly = lightFile.Button["icon-only"] as Record<string, Record<string, TokenLeaf>>
 
     expect(size.sm.height?.$value).toBe(28)
-    expect(size.sm["padding-x"]?.$value).toBe(10)
-    expect(size.sm["padding-x-icon"]?.$value).toBe("{Spacing/spacing-md}")
-    expect(size.sm.gap?.$value).toBe("{Spacing/spacing-sm}")
+    expect(size.sm["padding-x"]?.$value).toBe("{Spacing/spacing-md}")
     expect(size.sm.text?.$value).toBe("{Typography/Font size/text-sm}")
     expect(size.sm["line-height"]?.$value).toBe(14)
     expect(size.sm.weight?.$value).toBe("{Typography/Font weight/semibold}")
     expect(size.sm["icon-size"]?.$value).toBe(16)
 
     expect(size.md.height?.$value).toBe(36)
-    expect(size.md["padding-x"]?.$value).toBe("{Spacing/spacing-xl}")
-    expect(size.md["padding-x-icon"]?.$value).toBe(14)
-    expect(size.md.gap?.$value).toBe("{Spacing/spacing-md}")
+    expect(size.md["padding-x"]?.$value).toBe(14)
     expect(size.md["icon-size"]?.$value).toBe(16)
 
     expect(size.lg.height?.$value).toBe(48)
-    expect(size.lg["padding-x-icon"]?.$value).toBe("{Spacing/spacing-2xl}")
-    expect(size.lg.gap?.$value).toBe("{Spacing/spacing-md}")
+    expect(size.lg["padding-x"]?.$value).toBe("{Spacing/spacing-2xl}")
     expect(size.lg.radius?.$value).toBe("{Radius/radius-sm}")
     expect(size.lg["icon-size"]?.$value).toBe(20)
 
-    expect(iconOnly.sm.size?.$value).toBe(28)
-    expect(iconOnly.md.size?.$value).toBe(36)
-    expect(iconOnly.lg.size?.$value).toBe(48)
-
-    expect(size.xs["padding-x"]?.$value).toBe("{Spacing/spacing-md}")
-    expect(size.xs["padding-x-icon"]?.$value).toBe("{Spacing/spacing-sm}")
-    expect(size.xs.gap?.$value).toBe("{Spacing/spacing-xs}")
+    expect(size.xs["padding-x"]?.$value).toBe("{Spacing/spacing-sm}")
+    expect(lightFile.Button["icon-only"]).toBeUndefined()
+    for (const tokens of Object.values(size)) {
+      expect(tokens["padding-x-icon"]).toBeUndefined()
+      expect(tokens.gap).toBeUndefined()
+    }
   })
 })
 
@@ -1315,14 +1551,18 @@ describe("figma component-based input tokens", () => {
   })
 
   it("uses current semantic color alias paths for Input variables", () => {
-    const aliases = collectTokenValues(lightFile as TokenTree).filter((value) => value.startsWith("{Color modes/"))
+    const aliases = collectTokenValues(lightFile as TokenTree).filter((value) =>
+      value.startsWith("{Color modes/"),
+    )
 
     expect(aliases.length).toBeGreaterThan(0)
     expect(aliases).not.toContain("{Color modes/bg/surface}")
     expect(aliases).not.toContain("{Color modes/fg/primary}")
 
     for (const alias of aliases) {
-      expect(alias).toMatch(/^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/)
+      expect(alias).toMatch(
+        /^\{Color modes\/(text\/text-|foreground\/fg-|background\/bg-|border\/border-|action\/action-)/,
+      )
     }
   })
 
@@ -1351,7 +1591,10 @@ describe("figma component-based input tokens", () => {
 
   it("defines Input size, typography, and textarea tokens", () => {
     const size = lightFile.Input.size as Record<string, Record<string, TokenLeaf>>
-    const textarea = lightFile.Input.textarea as Record<string, TokenLeaf | Record<string, TokenLeaf>>
+    const textarea = lightFile.Input.textarea as Record<
+      string,
+      TokenLeaf | Record<string, TokenLeaf>
+    >
     const textareaSm = textarea.sm as Record<string, TokenLeaf>
     const textareaMd = textarea.md as Record<string, TokenLeaf>
     const textareaLg = textarea.lg as Record<string, TokenLeaf>
@@ -1432,9 +1675,24 @@ describe("figma component-based utility tokens", () => {
 
   it("defines bg-{hue}-strong in both Color modes", () => {
     const hues = [
-      "gray", "red", "orange", "amber", "yellow", "lime", "green", "emerald",
-      "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia",
-      "pink", "rose",
+      "gray",
+      "red",
+      "orange",
+      "amber",
+      "yellow",
+      "lime",
+      "green",
+      "emerald",
+      "teal",
+      "cyan",
+      "sky",
+      "blue",
+      "indigo",
+      "violet",
+      "purple",
+      "fuchsia",
+      "pink",
+      "rose",
     ]
     for (const hue of hues) {
       const key = `bg-${hue}-strong`
@@ -1455,7 +1713,9 @@ describe("typography.css — font families", () => {
     expect(css).toContain("--font-body:")
     expect(css).toContain("--font-mono:")
     expect(css).toContain('"Montserrat", ui-sans-serif, system-ui, sans-serif')
-    expect(css).toContain('ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace')
+    expect(css).toContain(
+      'ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+    )
   })
 })
 
@@ -1573,9 +1833,7 @@ function readThemeCSS() {
   // Strip @import lines (already inlined above) and @theme wrappers
   // happy-dom doesn't process @theme — extract variable declarations directly
   const strip = (css: string) =>
-    css
-      .replace(/@import\s+["'][^"']+["'];/g, "")
-      .replace(/@theme\s*\{/g, ":root {")
+    css.replace(/@import\s+["'][^"']+["'];/g, "").replace(/@theme\s*\{/g, ":root {")
   return [primitives, maxa, semantic, dimensions, typography, shadows].map(strip).join("\n")
 }
 

@@ -4,9 +4,9 @@
 
 @theme {
   /* ── Base — Figma: Colors/Base/* ────────────────────────────────── */
-  --color-base-white:  #ffffff;
-  --color-base-black:  #000000;
-  --color-base-ink:    #1B1A1A;
+  --color-base-white: #ffffff;
+  --color-base-black: #000000;
+  --color-base-ink: #1b1a1a;
   --color-transparent: transparent;
 
   /* Legacy aliases — kept for Tailwind utilities */
@@ -14,63 +14,67 @@
   --color-black: var(--color-base-black);
 
   /* ── Gray — Figma: Colors/Neutral/25..950 ───────────────────────── */
-  --color-neutral-0:   var(--color-base-white);
-  --color-neutral-25:  #FCFCFC;
-  --color-neutral-50:  #FAFAFA;
-  --color-neutral-100: #F4F3F3;
-  --color-neutral-200: #EDEDED;
-  --color-neutral-300: #E4E4E4;
-  --color-neutral-400: #D7D5D5;
-  --color-neutral-450: #C9C9C9;
-  --color-neutral-500: #A1A1A4;
-  --color-neutral-600: #8C8C8E;
-  --color-neutral-700: #6B6B6D;
+  --color-neutral-0: var(--color-base-white);
+  --color-neutral-25: #fcfcfc;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f4f3f3;
+  --color-neutral-200: #ededed;
+  --color-neutral-300: #e4e4e4;
+  --color-neutral-400: #d7d5d5;
+  --color-neutral-450: #c9c9c9;
+  --color-neutral-500: #a1a1a4;
+  --color-neutral-600: #8c8c8e;
+  --color-neutral-700: #6b6b6d;
   --color-neutral-800: #444445;
-  --color-neutral-900: #2A2A2B;
+  --color-neutral-900: #2a2a2b;
   --color-neutral-925: #232324;
-  --color-neutral-950: #1A1919;
+  --color-neutral-950: #1a1919;
   --color-neutral-975: #161616;
-  --color-neutral-1000: #0D0D0D;
+  --color-neutral-1000: #0d0d0d;
 
   /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
-  --color-blue-50:  #EFF7FF;
-  --color-blue-100: #DDEEFF;
-  --color-blue-150: #C7E5F0;
-  --color-blue-200: #BADBFB;
-  --color-blue-300: #86C0F4;
-  --color-blue-400: #449BE8;
-  --color-blue-500: #0576DA;
-  --color-blue-600: #0564B9;
-  --color-blue-700: #04549B;
-  --color-blue-800: #073F72;
-  --color-blue-900: #092F54;
-  --color-blue-950: #061D35;
+  --color-blue-50: #eff7ff;
+  --color-blue-100: #ddeeff;
+  --color-blue-150: #c7e5f0;
+  --color-blue-200: #badbfb;
+  --color-blue-300: #86c0f4;
+  --color-blue-400: #449be8;
+  --color-blue-500: #0576da;
+  --color-blue-550: #056dc9;
+  --color-blue-600: #0564b9;
+  --color-blue-700: #04549b;
+  --color-blue-800: #073f72;
+  --color-blue-900: #092f54;
+  --color-blue-950: #061d35;
 
-  --color-green-50:  #F0FAF2;
-  --color-green-100: #DFF4E4;
-  --color-green-200: #BDE8C8;
-  --color-green-300: #8CD99F;
-  --color-green-400: #59C675;
-  --color-green-500: #30AA50;
-  --color-green-600: #288F44;
+  --color-green-50: #f0faf2;
+  --color-green-100: #dff4e4;
+  --color-green-200: #bde8c8;
+  --color-green-300: #8cd99f;
+  --color-green-400: #59c675;
+  --color-green-500: #30aa50;
+  --color-green-600: #288f44;
+  --color-green-650: #25843e;
   --color-green-700: #227939;
-  --color-green-800: #1E6131;
-  --color-green-900: #194C28;
-  --color-green-950: #0C2A15;
+  --color-green-750: #206d35;
+  --color-green-800: #1e6131;
+  --color-green-900: #194c28;
+  --color-green-950: #0c2a15;
 
-  --color-red-50:  #FFF1F0;
-  --color-red-100: #FFE1DF;
-  --color-red-200: #FFC3BF;
-  --color-red-300: #FA908B;
-  --color-red-400: #EA514B;
-  --color-red-500: #D31510;
-  --color-red-600: #B9120E;
-  --color-red-700: #960F0B;
-  --color-red-800: #78100D;
-  --color-red-900: #5C100E;
+  --color-red-50: #fff1f0;
+  --color-red-100: #ffe1df;
+  --color-red-200: #ffc3bf;
+  --color-red-300: #fa908b;
+  --color-red-400: #ea514b;
+  --color-red-500: #d31510;
+  --color-red-550: #c6140f;
+  --color-red-600: #b9120e;
+  --color-red-700: #960f0b;
+  --color-red-800: #78100d;
+  --color-red-900: #5c100e;
   --color-red-950: #360806;
 
-  --color-yellow-50:  #fefce8;
+  --color-yellow-50: #fefce8;
   --color-yellow-100: #fef9c3;
   --color-yellow-200: #fef08a;
   --color-yellow-300: #fde047;
@@ -82,7 +86,7 @@
   --color-yellow-900: #713f12;
   --color-yellow-950: #422006;
 
-  --color-orange-50:  #fff7ed;
+  --color-orange-50: #fff7ed;
   --color-orange-100: #ffedd5;
   --color-orange-200: #fed7aa;
   --color-orange-300: #fdba74;
@@ -95,16 +99,16 @@
   --color-orange-950: #431407;
 
   /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ─────────── */
-  --color-neutral-alpha-ink-50:   #1B1A1A80;
-  --color-neutral-alpha-black-72: #000000B8;
-  --color-neutral-alpha-white-45: #FFFFFF73;
+  --color-neutral-alpha-ink-50: #1b1a1a80;
+  --color-neutral-alpha-black-72: #000000b8;
+  --color-neutral-alpha-white-45: #ffffff73;
 
   /* ── Extended decorative palette — Tailwind v4 defaults ─────────── */
   /* Used by Badge/Tag appearance prop for user-defined color labels.   */
   /* No invented values — all standard Tailwind hex.                   */
 
   /* Gray (neutral-tone gray, distinct from MAXA neutral scale) */
-  --color-gray-50:  #f9fafb;
+  --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
   --color-gray-200: #e5e7eb;
   --color-gray-300: #d1d5db;
@@ -117,7 +121,7 @@
   --color-gray-950: #030712;
 
   /* Amber */
-  --color-amber-50:  #fffbeb;
+  --color-amber-50: #fffbeb;
   --color-amber-100: #fef3c7;
   --color-amber-200: #fde68a;
   --color-amber-300: #fcd34d;
@@ -130,7 +134,7 @@
   --color-amber-950: #451a03;
 
   /* Lime */
-  --color-lime-50:  #f7fee7;
+  --color-lime-50: #f7fee7;
   --color-lime-100: #ecfccb;
   --color-lime-200: #d9f99d;
   --color-lime-300: #bef264;
@@ -143,7 +147,7 @@
   --color-lime-950: #1a2e05;
 
   /* Sky */
-  --color-sky-50:  #f0f9ff;
+  --color-sky-50: #f0f9ff;
   --color-sky-100: #e0f2fe;
   --color-sky-200: #bae6fd;
   --color-sky-300: #7dd3fc;
@@ -156,7 +160,7 @@
   --color-sky-950: #082f49;
 
   /* Indigo */
-  --color-indigo-50:  #eef2ff;
+  --color-indigo-50: #eef2ff;
   --color-indigo-100: #e0e7ff;
   --color-indigo-200: #c7d2fe;
   --color-indigo-300: #a5b4fc;
@@ -169,7 +173,7 @@
   --color-indigo-950: #1e1b4b;
 
   /* Rose */
-  --color-rose-50:  #fff1f2;
+  --color-rose-50: #fff1f2;
   --color-rose-100: #ffe4e6;
   --color-rose-200: #fecdd3;
   --color-rose-300: #fda4af;
@@ -182,7 +186,7 @@
   --color-rose-950: #4c0519;
 
   /* Pink */
-  --color-pink-50:  #fdf2f8;
+  --color-pink-50: #fdf2f8;
   --color-pink-100: #fce7f3;
   --color-pink-200: #fbcfe8;
   --color-pink-300: #f9a8d4;
@@ -195,7 +199,7 @@
   --color-pink-950: #500724;
 
   /* Fuchsia */
-  --color-fuchsia-50:  #fdf4ff;
+  --color-fuchsia-50: #fdf4ff;
   --color-fuchsia-100: #fae8ff;
   --color-fuchsia-200: #f5d0fe;
   --color-fuchsia-300: #f0abfc;
@@ -208,7 +212,7 @@
   --color-fuchsia-950: #4a044e;
 
   /* Purple */
-  --color-purple-50:  #faf5ff;
+  --color-purple-50: #faf5ff;
   --color-purple-100: #f3e8ff;
   --color-purple-200: #e9d5ff;
   --color-purple-300: #d8b4fe;
@@ -221,7 +225,7 @@
   --color-purple-950: #3b0764;
 
   /* Violet */
-  --color-violet-50:  #f5f3ff;
+  --color-violet-50: #f5f3ff;
   --color-violet-100: #ede9fe;
   --color-violet-200: #ddd6fe;
   --color-violet-300: #c4b5fd;
@@ -234,7 +238,7 @@
   --color-violet-950: #2e1065;
 
   /* Teal */
-  --color-teal-50:  #f0fdfa;
+  --color-teal-50: #f0fdfa;
   --color-teal-100: #ccfbf1;
   --color-teal-200: #99f6e4;
   --color-teal-300: #5eead4;
@@ -247,7 +251,7 @@
   --color-teal-950: #042f2e;
 
   /* Cyan */
-  --color-cyan-50:  #ecfeff;
+  --color-cyan-50: #ecfeff;
   --color-cyan-100: #cffafe;
   --color-cyan-200: #a5f3fc;
   --color-cyan-300: #67e8f9;
@@ -260,7 +264,7 @@
   --color-cyan-950: #083344;
 
   /* Emerald */
-  --color-emerald-50:  #ecfdf5;
+  --color-emerald-50: #ecfdf5;
   --color-emerald-100: #d1fae5;
   --color-emerald-200: #a7f3d0;
   --color-emerald-300: #6ee7b7;

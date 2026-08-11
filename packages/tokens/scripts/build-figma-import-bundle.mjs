@@ -37,9 +37,26 @@ const SEMANTIC_COLOR_GROUPS = {
 // like var(--color-bg-gray-muted) lands in `background/` and duplicates the
 // utility variable.
 const UTILITY_HUES = new Set([
-  "gray", "zinc", "stone", "red", "orange", "amber", "yellow", "lime",
-  "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet",
-  "purple", "fuchsia", "pink", "rose",
+  "gray",
+  "zinc",
+  "stone",
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
 ])
 
 function utilityHueAlias(rest) {
@@ -54,14 +71,11 @@ const COMPONENT_CSS_VAR_ALIASES = {
   "button-outline-bg": "Button/outline/bg",
   "button-size-lg-height": "Button/size/lg/height",
   "button-size-lg-line-height": "Button/size/lg/line-height",
-  "button-size-lg-padding-x": "Button/size/lg/padding-x",
   "button-size-lg-text": "Button/size/lg/text",
   "button-size-md-line-height": "Button/size/md/line-height",
-  "button-size-md-padding-x": "Button/size/md/padding-x",
   "button-size-md-text": "Button/size/md/text",
   "button-size-md-weight": "Button/size/md/weight",
   "button-size-sm-line-height": "Button/size/sm/line-height",
-  "button-size-sm-padding-x": "Button/size/sm/padding-x",
   "button-size-sm-text": "Button/size/sm/text",
   "dialog-overlay-bg": "Dialog/overlay-bg",
   "dropdown-menu-bg": "Dropdown Menu/surface/bg",
@@ -148,51 +162,127 @@ const COMPONENT_EFFECT_TOKEN_PATHS = new Set([
   "Toast/shadow",
 ])
 
-const RADIUS_KEYS = new Set(["none", "xxs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "full"])
+const RADIUS_KEYS = new Set([
+  "none",
+  "xxs",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+  "3xl",
+  "4xl",
+  "full",
+])
 
 const SPACING_NAMED_KEYS = new Set([
-  "none", "xxs", "xs", "sm", "md", "lg", "xl",
-  "2xl", "3xl", "4xl", "5xl", "6xl", "7xl", "8xl", "9xl", "10xl", "11xl",
+  "none",
+  "xxs",
+  "xs",
+  "sm",
+  "md",
+  "lg",
+  "xl",
+  "2xl",
+  "3xl",
+  "4xl",
+  "5xl",
+  "6xl",
+  "7xl",
+  "8xl",
+  "9xl",
+  "10xl",
+  "11xl",
 ])
 
 // Legacy numeric spacing scale (packages/tokens/src/dimensions.css) -> px value.
 const SPACING_NUMERIC_PX = {
-  1: 4, 2: 8, 3: 12, 4: 16, 5: 20, 6: 24, 7: 28, 8: 32, 9: 36,
-  10: 40, 11: 44, 12: 48, 14: 56, 16: 64, 20: 80, 24: 96, 32: 128,
+  1: 4,
+  2: 8,
+  3: 12,
+  4: 16,
+  5: 20,
+  6: 24,
+  7: 28,
+  8: 32,
+  9: 36,
+  10: 40,
+  11: 44,
+  12: 48,
+  14: 56,
+  16: 64,
+  20: 80,
+  24: 96,
+  32: 128,
 }
 
 // px value -> Figma named Spacing scale suffix. Not every numeric-scale value has
 // a named counterpart (e.g. 28px/36px/44px/56px fall in gaps) — those are left
 // unconverted on purpose.
 const SPACING_PX_TO_KEY = {
-  0: "none", 2: "xxs", 4: "xs", 6: "sm", 8: "md", 12: "lg", 16: "xl",
-  20: "2xl", 24: "3xl", 32: "4xl", 40: "5xl", 48: "6xl", 64: "7xl",
-  80: "8xl", 96: "9xl", 128: "10xl", 160: "11xl",
+  0: "none",
+  2: "xxs",
+  4: "xs",
+  6: "sm",
+  8: "md",
+  12: "lg",
+  16: "xl",
+  20: "2xl",
+  24: "3xl",
+  32: "4xl",
+  40: "5xl",
+  48: "6xl",
+  64: "7xl",
+  80: "8xl",
+  96: "9xl",
+  128: "10xl",
+  160: "11xl",
 }
 
 const FONT_WEIGHT_KEYS = new Set([
-  "regular", "regular-italic", "medium", "medium-italic",
-  "semibold", "semibold-italic", "bold", "bold-italic",
+  "regular",
+  "regular-italic",
+  "medium",
+  "medium-italic",
+  "semibold",
+  "semibold-italic",
+  "bold",
+  "bold-italic",
 ])
 
 const FONT_FAMILY_KEYS = new Set(["body", "mono"])
 
 const FONT_SIZE_KEYS = new Set([
-  "heading-2xl", "heading-xl", "heading-lg", "heading-md", "heading-sm", "heading-xs",
-  "text-lg", "text-md", "text-sm", "caption-sm", "caption-xs",
+  "heading-2xl",
+  "heading-xl",
+  "heading-lg",
+  "heading-md",
+  "heading-sm",
+  "heading-xs",
+  "text-lg",
+  "text-md",
+  "text-sm",
+  "caption-sm",
+  "caption-xs",
 ])
 
 const BARE_TEXT_SIZE_SUFFIXES = new Set(["sm", "md", "lg"])
 
-
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"))
 const componentModes = manifest.collections?.["Component-based"]?.modes ?? {}
 if (JSON.stringify(Object.keys(componentModes)) !== JSON.stringify(["Default"])) {
-  throw new Error('Component-based must have exactly one mode named "Default". Put every Light/Dark value in Color modes.')
+  throw new Error(
+    'Component-based must have exactly one mode named "Default". Put every Light/Dark value in Color modes.',
+  )
 }
-const legacyComponentFiles = Object.values(componentModes).flat().filter((fileName) => /-(?:light|dark)\.json$/.test(fileName))
+const legacyComponentFiles = Object.values(componentModes)
+  .flat()
+  .filter((fileName) => /-(?:light|dark)\.json$/.test(fileName))
 if (legacyComponentFiles.length > 0) {
-  throw new Error(`Component-based uses legacy theme-specific files: ${legacyComponentFiles.join(", ")}`)
+  throw new Error(
+    `Component-based uses legacy theme-specific files: ${legacyComponentFiles.join(", ")}`,
+  )
 }
 const bundle = {
   aliasDefaults,
@@ -221,9 +311,10 @@ for (const [collectionName, collectionDef] of Object.entries(manifest.collection
     modes[modeName] = mergedTokens
   }
 
-  bundle.collections[collectionName] = Object.keys(descriptions).length > 0
-    ? { modes, descriptions, declaredTypes }
-    : { modes, declaredTypes }
+  bundle.collections[collectionName] =
+    Object.keys(descriptions).length > 0
+      ? { modes, descriptions, declaredTypes }
+      : { modes, declaredTypes }
 }
 
 try {
@@ -251,10 +342,16 @@ function flattenTokens(input, pathParts, output, collectionName, descriptions, d
 
     if (isToken(value)) {
       const tokenPath = nextPath.join("/")
-      if (collectionName === "Component-based" && COMPONENT_EFFECT_TOKEN_PATHS.has(tokenPath)) continue
+      if (collectionName === "Component-based" && COMPONENT_EFFECT_TOKEN_PATHS.has(tokenPath))
+        continue
       output[tokenPath] = normalizeTokenValue(value.$value, collectionName)
       if (!declaredTypes[tokenPath]) declaredTypes[tokenPath] = value.$type
-      if (descriptions && typeof value.$description === "string" && value.$description.trim() && !descriptions[tokenPath]) {
+      if (
+        descriptions &&
+        typeof value.$description === "string" &&
+        value.$description.trim() &&
+        !descriptions[tokenPath]
+      ) {
         descriptions[tokenPath] = value.$description.trim()
       }
       continue
@@ -393,7 +490,9 @@ function finalizeBundle(outputBundle) {
     for (const [modeName, tokens] of modeEntries.slice(1)) {
       const actualNames = Object.keys(tokens).sort()
       if (JSON.stringify(actualNames) !== JSON.stringify(expectedNames)) {
-        throw new Error(`Collection "${collectionName}" mode "${modeName}" has a different token set.`)
+        throw new Error(
+          `Collection "${collectionName}" mode "${modeName}" has a different token set.`,
+        )
       }
     }
   }
@@ -408,7 +507,8 @@ function finalizeBundle(outputBundle) {
     const collection = outputBundle.collections[collectionName]
     if (!collection) throw new Error(`Alias collection not found: "${collectionName}".`)
     const values = Object.values(collection.modes).map((tokens) => tokens[tokenName])
-    if (values.some((value) => value === undefined)) throw new Error(`Token is missing from a mode: "${fullPath}".`)
+    if (values.some((value) => value === undefined))
+      throw new Error(`Token is missing from a mode: "${fullPath}".`)
 
     resolving.add(fullPath)
     const modeTypes = values.map((value) => {
@@ -420,17 +520,24 @@ function finalizeBundle(outputBundle) {
     })
     resolving.delete(fullPath)
 
-    if (modeTypes.some((type) => !type)) throw new Error(`Unsupported Figma variable type at "${fullPath}".`)
-    if (new Set(modeTypes).size !== 1) throw new Error(`Figma variable type differs by mode at "${fullPath}".`)
+    if (modeTypes.some((type) => !type))
+      throw new Error(`Unsupported Figma variable type at "${fullPath}".`)
+    if (new Set(modeTypes).size !== 1)
+      throw new Error(`Figma variable type differs by mode at "${fullPath}".`)
     typeCache.set(fullPath, modeTypes[0])
     return modeTypes[0]
   }
 
   for (const [collectionName, collection] of Object.entries(outputBundle.collections)) {
     const tokenNames = Object.keys(Object.values(collection.modes)[0])
-    collection.types = Object.fromEntries(tokenNames.map((tokenName) => [tokenName, resolveType(collectionName, tokenName)]))
+    collection.types = Object.fromEntries(
+      tokenNames.map((tokenName) => [tokenName, resolveType(collectionName, tokenName)]),
+    )
     collection.scopes = Object.fromEntries(
-      tokenNames.map((tokenName) => [tokenName, inferVariableScopes(collectionName, tokenName, collection.types[tokenName])]),
+      tokenNames.map((tokenName) => [
+        tokenName,
+        inferVariableScopes(collectionName, tokenName, collection.types[tokenName]),
+      ]),
     )
     delete collection.declaredTypes
   }
@@ -438,7 +545,10 @@ function finalizeBundle(outputBundle) {
   const componentCollection = outputBundle.collections["Component-based"]
   const componentTokens = componentCollection?.modes?.Default ?? {}
   const rawComponentColors = Object.entries(componentTokens)
-    .filter(([tokenName, value]) => componentCollection.types[tokenName] === "COLOR" && !isAliasValue(value))
+    .filter(
+      ([tokenName, value]) =>
+        componentCollection.types[tokenName] === "COLOR" && !isAliasValue(value),
+    )
     .map(([tokenName]) => tokenName)
   if (rawComponentColors.length > 0) {
     throw new Error(
@@ -447,8 +557,9 @@ function finalizeBundle(outputBundle) {
   }
 
   const colorModesCollection = outputBundle.collections["Color modes"]
-  const duplicateComponentRoles = Object.keys(colorModesCollection?.modes?.Light ?? {})
-    .filter((tokenName) => tokenName.startsWith("component/"))
+  const duplicateComponentRoles = Object.keys(colorModesCollection?.modes?.Light ?? {}).filter(
+    (tokenName) => tokenName.startsWith("component/"),
+  )
   if (duplicateComponentRoles.length > 0) {
     throw new Error(
       `Color modes must contain semantic roles, not a duplicate component namespace; found:\n${duplicateComponentRoles.join("\n")}`,
@@ -478,7 +589,9 @@ function finalizeBundle(outputBundle) {
       if (!tokenName.startsWith("feedback/") || !isAliasValue(value)) continue
       const target = parseBundleAlias(outputBundle, "Color modes", value)
       if (target.collectionName !== "Primitives") {
-        indirectFeedbackAliases.push(`${tokenName} [${modeName}] -> ${target.collectionName}/${target.tokenName}`)
+        indirectFeedbackAliases.push(
+          `${tokenName} [${modeName}] -> ${target.collectionName}/${target.tokenName}`,
+        )
       }
     }
   }
@@ -499,7 +612,9 @@ function finalizeBundle(outputBundle) {
     }
   }
   if (invalidValues.length) {
-    throw new Error(`CSS expressions cannot be imported as Figma variables:\n${invalidValues.join("\n")}`)
+    throw new Error(
+      `CSS expressions cannot be imported as Figma variables:\n${invalidValues.join("\n")}`,
+    )
   }
 }
 
@@ -597,7 +712,8 @@ function inferVariableScopes(collectionName, tokenName, type) {
       return ["SHAPE_FILL", "STROKE_COLOR"]
     }
     if (/(^|\/)(border|separator)(\/|$)|border-|focus-ring/.test(lower)) return ["STROKE_COLOR"]
-    if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower)) return ["TEXT_FILL"]
+    if (/(text|label|title|description|placeholder|caption|shortcut)/.test(lower))
+      return ["TEXT_FILL"]
     if (/(icon|mark|dot|fg|foreground)/.test(lower)) return ["SHAPE_FILL"]
     return ["ALL_FILLS"]
   }
@@ -607,7 +723,8 @@ function inferVariableScopes(collectionName, tokenName, type) {
     if (/opacity/.test(lower)) return ["OPACITY"]
     if (/radius/.test(lower)) return ["CORNER_RADIUS"]
     if (/line-height/.test(lower)) return ["LINE_HEIGHT"]
-    if (/font-size|(^|\/)(text|caption)(\/|$)|size-(sm|md|lg)-text/.test(lower)) return ["FONT_SIZE"]
+    if (/font-size|(^|\/)(text|caption)(\/|$)|size-(sm|md|lg)-text/.test(lower))
+      return ["FONT_SIZE"]
     if (/font-weight|(^|\/)weight$/.test(lower)) return ["FONT_WEIGHT"]
     if (/border-width|stroke-width/.test(lower)) return ["STROKE_FLOAT"]
     if (/(padding|gap|spacing|margin)/.test(lower)) return ["GAP"]

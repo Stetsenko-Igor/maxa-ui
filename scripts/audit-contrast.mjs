@@ -131,7 +131,8 @@ function themeVarsFor(mode, parsed) {
 
 function resolveToken(token, vars, stack = []) {
   if (!token) return { value: null, unresolved: "missing token" }
-  if (stack.includes(token)) return { value: null, unresolved: `circular alias: ${stack.join(" -> ")} -> ${token}` }
+  if (stack.includes(token))
+    return { value: null, unresolved: `circular alias: ${stack.join(" -> ")} -> ${token}` }
   const raw = vars.get(token)
   if (!raw) return { value: null, unresolved: `unresolved token: ${token}` }
   return resolveValue(raw, vars, [...stack, token])
@@ -200,12 +201,17 @@ function channelToLinear(value) {
 }
 
 function relativeLuminance(color) {
-  return 0.2126 * channelToLinear(color.r) + 0.7152 * channelToLinear(color.g) + 0.0722 * channelToLinear(color.b)
+  return (
+    0.2126 * channelToLinear(color.r) +
+    0.7152 * channelToLinear(color.g) +
+    0.0722 * channelToLinear(color.b)
+  )
 }
 
 function contrastRatio(foreground, background) {
   const fg = foreground.a < 1 ? compositeOver(foreground, background) : foreground
-  const bg = background.a < 1 ? compositeOver(background, { r: 255, g: 255, b: 255, a: 1 }) : background
+  const bg =
+    background.a < 1 ? compositeOver(background, { r: 255, g: 255, b: 255, a: 1 }) : background
   const lighter = Math.max(relativeLuminance(fg), relativeLuminance(bg))
   const darker = Math.min(relativeLuminance(fg), relativeLuminance(bg))
   return (lighter + 0.05) / (darker + 0.05)
@@ -234,9 +240,24 @@ function pair(component, pairName, fg, bg, kind = "text", options = {}) {
 function buildMatrix() {
   const pairs = []
   const buttonVariants = [
-    ["primary", "--button-primary-text", "--button-primary-bg"],
-    ["primary hover", "--button-primary-text", "--button-primary-bg-hover"],
-    ["primary active", "--button-primary-text", "--button-primary-bg-active"],
+    [
+      "primary",
+      "--button-content-text-on-color",
+      "--button-primary-bg",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "primary hover",
+      "--button-content-text-on-color",
+      "--button-primary-bg-hover",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "primary active",
+      "--button-content-text-on-color",
+      "--button-primary-bg-active",
+      "--button-content-fg-on-color",
+    ],
     ["secondary", "--button-secondary-text", "--button-secondary-bg"],
     ["secondary hover", "--button-secondary-text", "--button-secondary-bg-hover"],
     ["secondary active", "--button-secondary-text-active", "--button-secondary-bg-active"],
@@ -249,47 +270,176 @@ function buildMatrix() {
     ["link", "--button-link-text", "--color-bg-surface"],
     ["link hover", "--button-link-text-hover", "--color-bg-surface"],
     ["link active", "--button-link-text-active", "--color-bg-surface"],
-    ["success", "--button-success-text", "--button-success-bg"],
-    ["success hover", "--button-success-text-hover", "--button-success-bg-hover"],
-    ["success active", "--button-success-text-active", "--button-success-bg-active"],
-    ["destructive", "--button-destructive-text", "--button-destructive-bg"],
-    ["destructive hover", "--button-destructive-text", "--button-destructive-bg-hover"],
-    ["destructive active", "--button-destructive-text", "--button-destructive-bg-active"],
+    [
+      "success",
+      "--button-content-text-on-color",
+      "--button-success-bg",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "success hover",
+      "--button-content-text-on-color",
+      "--button-success-bg-hover",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "success active",
+      "--button-content-text-on-color",
+      "--button-success-bg-active",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "destructive",
+      "--button-content-text-on-color",
+      "--button-destructive-bg",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "destructive hover",
+      "--button-content-text-on-color",
+      "--button-destructive-bg-hover",
+      "--button-content-fg-on-color",
+    ],
+    [
+      "destructive active",
+      "--button-content-text-on-color",
+      "--button-destructive-bg-active",
+      "--button-content-fg-on-color",
+    ],
     ["warning", "--button-warning-text", "--button-warning-bg"],
     ["warning hover", "--button-warning-text-hover", "--button-warning-bg-hover"],
     ["warning active", "--button-warning-text-active", "--button-warning-bg-active"],
   ]
 
-  for (const [name, fg, bg] of buttonVariants) {
-    pairs.push(pair("Button", `Button ${name} text on bg`, fg, bg))
-    pairs.push(pair("IconButton", `IconButton ${name} icon on bg`, fg, bg, "nonText"))
+  for (const [name, textFg, bg, iconFg = textFg] of buttonVariants) {
+    pairs.push(pair("Button", `Button ${name} text on bg`, textFg, bg))
+    pairs.push(pair("IconButton", `IconButton ${name} icon on bg`, iconFg, bg, "nonText"))
   }
 
-  pairs.push(pair("Button", "Button focus border on surface", "--button-primary-border-focus", "--color-bg-surface", "nonText"))
-  pairs.push(pair("IconButton", "IconButton focus border on surface", "--button-primary-border-focus", "--color-bg-surface", "nonText"))
-  pairs.push(pair("Button", "Button disabled opacity", "--button-disabled-opacity", "--color-bg-surface", "informational", { skipReason: "Opacity token is informational; no computed alpha model is applied." }))
+  pairs.push(
+    pair(
+      "Button",
+      "Button focus border on surface",
+      "--button-focus-border",
+      "--color-bg-surface",
+      "nonText",
+    ),
+  )
+  pairs.push(
+    pair(
+      "IconButton",
+      "IconButton focus border on surface",
+      "--button-focus-border",
+      "--color-bg-surface",
+      "nonText",
+    ),
+  )
+  pairs.push(
+    pair(
+      "Button",
+      "Button disabled opacity",
+      "--button-disabled-opacity",
+      "--color-bg-surface",
+      "informational",
+      { skipReason: "Opacity token is informational; no computed alpha model is applied." },
+    ),
+  )
 
   const fieldComponents = ["Input", "Select", "DatePicker"]
   for (const component of fieldComponents) {
     pairs.push(pair(component, `${component} text on field`, "--input-text", "--input-bg"))
-    pairs.push(pair(component, `${component} placeholder on field`, "--input-placeholder", "--input-bg"))
-    pairs.push(pair(component, `${component} label on page`, "--input-label-text", "--color-bg-page"))
+    pairs.push(
+      pair(component, `${component} placeholder on field`, "--input-placeholder", "--input-bg"),
+    )
+    pairs.push(
+      pair(component, `${component} label on page`, "--input-label-text", "--color-bg-page"),
+    )
     pairs.push(pair(component, `${component} hint on page`, "--input-hint-text", "--color-bg-page"))
-    pairs.push(pair(component, `${component} error text on page`, "--input-error-text", "--color-bg-page"))
-    pairs.push(pair(component, `${component} success hint on page`, "--input-success-hint", "--color-bg-page"))
-    pairs.push(pair(component, `${component} disabled text on disabled bg`, "--input-disabled-text", "--input-disabled-bg", "informational", { skipReason: "Disabled text is exempt from WCAG contrast requirements; enabled text states are measured as blocking pairs." }))
-    pairs.push(pair(component, `${component} readonly text on readonly bg`, "--input-readonly-text", "--input-readonly-bg"))
-    pairs.push(pair(component, `${component} icon on field`, "--input-placeholder", "--input-bg", "nonText"))
-    pairs.push(pair(component, `${component} focus ring on field`, "--input-focus-ring", "--input-bg", "nonText"))
-    pairs.push(pair(component, `${component} default border on field`, "--input-border", "--input-bg", "informational", { skipReason: "Subtle decorative border; focus/error indicators are measured as blocking pairs." }))
-    pairs.push(pair(component, `${component} error border on field`, "--input-error-border", "--input-bg", "nonText"))
+    pairs.push(
+      pair(component, `${component} error text on page`, "--input-error-text", "--color-bg-page"),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} success hint on page`,
+        "--input-success-hint",
+        "--color-bg-page",
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} disabled text on disabled bg`,
+        "--input-disabled-text",
+        "--input-disabled-bg",
+        "informational",
+        {
+          skipReason:
+            "Disabled text is exempt from WCAG contrast requirements; enabled text states are measured as blocking pairs.",
+        },
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} readonly text on readonly bg`,
+        "--input-readonly-text",
+        "--input-readonly-bg",
+      ),
+    )
+    pairs.push(
+      pair(component, `${component} icon on field`, "--input-placeholder", "--input-bg", "nonText"),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} focus ring on field`,
+        "--input-focus-ring",
+        "--input-bg",
+        "nonText",
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} default border on field`,
+        "--input-border",
+        "--input-bg",
+        "informational",
+        {
+          skipReason:
+            "Subtle decorative border; focus/error indicators are measured as blocking pairs.",
+        },
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} error border on field`,
+        "--input-error-border",
+        "--input-bg",
+        "nonText",
+      ),
+    )
   }
 
   pairs.push(pair("FormField", "FormField label on page", "--input-label-text", "--color-bg-page"))
-  pairs.push(pair("FormField", "FormField required mark on page", "--input-error-text", "--color-bg-page"))
+  pairs.push(
+    pair("FormField", "FormField required mark on page", "--input-error-text", "--color-bg-page"),
+  )
   pairs.push(pair("FormField", "FormField hint on page", "--input-hint-text", "--color-bg-page"))
-  pairs.push(pair("FormField", "FormField error hint on page", "--input-error-hint", "--color-bg-page"))
-  pairs.push(pair("FormField", "FormField info icon on page", "--input-placeholder", "--color-bg-page", "nonText"))
+  pairs.push(
+    pair("FormField", "FormField error hint on page", "--input-error-hint", "--color-bg-page"),
+  )
+  pairs.push(
+    pair(
+      "FormField",
+      "FormField info icon on page",
+      "--input-placeholder",
+      "--color-bg-page",
+      "nonText",
+    ),
+  )
 
   const checks = [
     ["Checkbox", "--checkbox"],
@@ -298,21 +448,93 @@ function buildMatrix() {
   for (const [component, prefix] of checks) {
     const markToken = component === "Checkbox" ? "--checkbox-mark-color" : "--radio-dot-color"
     const checkedBg = component === "Checkbox" ? "--checkbox-bg-checked" : "--radio-bg-checked"
-    const checkedBorder = component === "Checkbox" ? "--checkbox-border-checked" : "--radio-border-checked"
-    const errorCheckedBg = component === "Checkbox" ? "--checkbox-bg-error-checked" : "--radio-bg-error-checked"
+    const checkedBorder =
+      component === "Checkbox" ? "--checkbox-border-checked" : "--radio-border-checked"
+    const errorCheckedBg =
+      component === "Checkbox" ? "--checkbox-bg-error-checked" : "--radio-bg-error-checked"
     const disabledBg = component === "Checkbox" ? "--checkbox-bg-disabled" : "--radio-bg-disabled"
-    const disabledBorder = component === "Checkbox" ? "--checkbox-border-disabled" : "--radio-border-disabled"
+    const disabledBorder =
+      component === "Checkbox" ? "--checkbox-border-disabled" : "--radio-border-disabled"
 
-    pairs.push(pair(component, `${component} label on page`, `${prefix}-label-text`, "--color-bg-page"))
-    pairs.push(pair(component, `${component} helper on page`, `${prefix}-helper-text`, "--color-bg-page"))
-    pairs.push(pair(component, `${component} error helper on page`, `${prefix}-helper-error`, "--color-bg-page"))
-    pairs.push(pair(component, `${component} checked mark on checked bg`, markToken, checkedBg, "nonText"))
-    pairs.push(pair(component, `${component} checked border on page`, checkedBorder, "--color-bg-page", "nonText"))
-    pairs.push(pair(component, `${component} error checked mark on error bg`, markToken, errorCheckedBg, "nonText"))
-    pairs.push(pair(component, `${component} focus border on page`, `${prefix}-border-focus`, "--color-bg-page", "nonText"))
-    pairs.push(pair(component, `${component} default border on page`, `${prefix}-border`, "--color-bg-page", "informational", { skipReason: "Subtle decorative border; checked, error, and focus indicators are measured as blocking pairs." }))
-    pairs.push(pair(component, `${component} hover border on page`, `${prefix}-border-hover`, "--color-bg-page", "informational", { skipReason: "Subtle hover border; focus/error indicators are measured as blocking pairs." }))
-    pairs.push(pair(component, `${component} disabled border on disabled bg`, disabledBorder, disabledBg, "informational", { skipReason: "Disabled control boundary is intentionally muted and non-blocking." }))
+    pairs.push(
+      pair(component, `${component} label on page`, `${prefix}-label-text`, "--color-bg-page"),
+    )
+    pairs.push(
+      pair(component, `${component} helper on page`, `${prefix}-helper-text`, "--color-bg-page"),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} error helper on page`,
+        `${prefix}-helper-error`,
+        "--color-bg-page",
+      ),
+    )
+    pairs.push(
+      pair(component, `${component} checked mark on checked bg`, markToken, checkedBg, "nonText"),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} checked border on page`,
+        checkedBorder,
+        "--color-bg-page",
+        "nonText",
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} error checked mark on error bg`,
+        markToken,
+        errorCheckedBg,
+        "nonText",
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} focus border on page`,
+        `${prefix}-border-focus`,
+        "--color-bg-page",
+        "nonText",
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} default border on page`,
+        `${prefix}-border`,
+        "--color-bg-page",
+        "informational",
+        {
+          skipReason:
+            "Subtle decorative border; checked, error, and focus indicators are measured as blocking pairs.",
+        },
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} hover border on page`,
+        `${prefix}-border-hover`,
+        "--color-bg-page",
+        "informational",
+        {
+          skipReason: "Subtle hover border; focus/error indicators are measured as blocking pairs.",
+        },
+      ),
+    )
+    pairs.push(
+      pair(
+        component,
+        `${component} disabled border on disabled bg`,
+        disabledBorder,
+        disabledBg,
+        "informational",
+        { skipReason: "Disabled control boundary is intentionally muted and non-blocking." },
+      ),
+    )
   }
 
   return pairs
@@ -444,19 +666,27 @@ function renderMarkdown(report, title = "Phase 1 Contrast Audit Baseline") {
   lines.push("")
   lines.push("| Checked | Passed | Failed | Skipped |")
   lines.push("|---------|--------|--------|---------|")
-  lines.push(`| ${report.summary.checked} | ${report.summary.passed} | ${report.summary.failed} | ${report.summary.skipped} |`)
+  lines.push(
+    `| ${report.summary.checked} | ${report.summary.passed} | ${report.summary.failed} | ${report.summary.skipped} |`,
+  )
   lines.push("")
 
   for (const theme of ["light", "dark"]) {
     const themeLabel = theme === "light" ? "Light theme" : "Dark theme"
     lines.push(`## ${themeLabel}`)
     lines.push("")
-    lines.push("| Component | Pair | Foreground token | Background token | Ratio | Threshold | Result |")
-    lines.push("|-----------|------|------------------|------------------|-------|-----------|--------|")
+    lines.push(
+      "| Component | Pair | Foreground token | Background token | Ratio | Threshold | Result |",
+    )
+    lines.push(
+      "|-----------|------|------------------|------------------|-------|-----------|--------|",
+    )
     for (const result of report.results.filter((item) => item.theme === theme && !item.skipped)) {
       const ratio = result.ratio === null ? "n/a" : result.ratio.toFixed(2)
       const threshold = result.threshold === 0 ? "info" : result.threshold.toFixed(1)
-      lines.push(`| ${result.component} | ${result.pair} | \`${result.foregroundToken}\` | \`${result.backgroundToken}\` | ${ratio} | ${threshold} | ${result.result} |`)
+      lines.push(
+        `| ${result.component} | ${result.pair} | \`${result.foregroundToken}\` | \`${result.backgroundToken}\` | ${ratio} | ${threshold} | ${result.result} |`,
+      )
     }
     lines.push("")
   }
@@ -468,7 +698,9 @@ function renderMarkdown(report, title = "Phase 1 Contrast Audit Baseline") {
     lines.push("No failures measured.")
   } else {
     for (const result of failures) {
-      lines.push(`- ${result.theme}: ${result.component} / ${result.pair} — ${result.ratio ?? "n/a"} against ${result.threshold}; ${result.reason || "below threshold"}`)
+      lines.push(
+        `- ${result.theme}: ${result.component} / ${result.pair} — ${result.ratio ?? "n/a"} against ${result.threshold}; ${result.reason || "below threshold"}`,
+      )
     }
   }
   lines.push("")
@@ -493,7 +725,9 @@ function writeOutput(report) {
   if (format === "json") {
     payload = `${JSON.stringify(report, null, 2)}\n`
   } else if (format === "markdown") {
-    const title = outPath?.includes("final") ? "Phase 1 Contrast Audit Final" : "Phase 1 Contrast Audit Baseline"
+    const title = outPath?.includes("final")
+      ? "Phase 1 Contrast Audit Final"
+      : "Phase 1 Contrast Audit Baseline"
     payload = renderMarkdown(report, title)
     if (title.endsWith("Final")) {
       const tokenChanges = [
@@ -523,5 +757,7 @@ function writeOutput(report) {
 const report = runAudit()
 writeOutput(report)
 
-console.log(`Contrast audit: ${report.summary.checked} checked, ${report.summary.failed} failed, ${report.summary.skipped} skipped`)
+console.log(
+  `Contrast audit: ${report.summary.checked} checked, ${report.summary.failed} failed, ${report.summary.skipped} skipped`,
+)
 process.exit(report.summary.failed > 0 ? 1 : 0)

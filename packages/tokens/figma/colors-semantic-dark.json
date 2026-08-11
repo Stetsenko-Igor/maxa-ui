@@ -24,15 +24,11 @@
       "$value": "{Colors.Neutral.950}",
       "$type": "color"
     },
-    "text-on-success": {
+    "text-on-color": {
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
     "text-on-warning": {
-      "$value": "{Colors.Base.Black}",
-      "$type": "color"
-    },
-    "text-on-destructive": {
       "$value": "{Colors.Base.Black}",
       "$type": "color"
     },
@@ -42,6 +38,18 @@
     },
     "text-brand": {
       "$value": "{Colors.Brand.400}",
+      "$type": "color"
+    },
+    "text-link": {
+      "$value": "{Colors.Blue.400}",
+      "$type": "color"
+    },
+    "text-link-hover": {
+      "$value": "{Colors.Blue.300}",
+      "$type": "color"
+    },
+    "text-link-active": {
+      "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
     "text-success": {
@@ -129,15 +137,15 @@
   },
   "action": {
     "action-primary": {
-      "$value": "{Colors.Blue.400}",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "action-primary-hover": {
-      "$value": "{Colors.Blue.300}",
+      "$value": "{Colors.Blue.550}",
       "$type": "color"
     },
     "action-primary-active": {
-      "$value": "{Colors.Blue.200}",
+      "$value": "{Colors.Blue.500}",
       "$type": "color"
     },
     "action-primary-subtle": {
@@ -201,51 +209,27 @@
       "$type": "color"
     },
     "action-success": {
-      "$value": "{Colors.Green.400}",
+      "$value": "{Colors.Green.750}",
       "$type": "color"
     },
     "action-success-hover": {
-      "$value": "{Colors.Green.300}",
+      "$value": "{Colors.Green.700}",
       "$type": "color"
     },
     "action-success-active": {
-      "$value": "{Colors.Green.200}",
-      "$type": "color"
-    },
-    "action-success-subtle": {
-      "$value": "{Colors.Green.950}",
-      "$type": "color"
-    },
-    "action-success-subtle-hover": {
-      "$value": "{Colors.Green.950}",
-      "$type": "color"
-    },
-    "action-success-subtle-active": {
-      "$value": "{Colors.Green.900}",
+      "$value": "{Colors.Green.650}",
       "$type": "color"
     },
     "action-destructive": {
-      "$value": "{Colors.Red.400}",
+      "$value": "{Colors.Red.600}",
       "$type": "color"
     },
     "action-destructive-hover": {
-      "$value": "{Colors.Red.300}",
+      "$value": "{Colors.Red.550}",
       "$type": "color"
     },
     "action-destructive-active": {
-      "$value": "{Colors.Red.200}",
-      "$type": "color"
-    },
-    "action-destructive-subtle": {
-      "$value": "{Colors.Red.950}",
-      "$type": "color"
-    },
-    "action-destructive-subtle-hover": {
-      "$value": "{Colors.Red.950}",
-      "$type": "color"
-    },
-    "action-destructive-subtle-active": {
-      "$value": "{Colors.Red.900}",
+      "$value": "{Colors.Red.500}",
       "$type": "color"
     },
     "action-warning": {
@@ -304,6 +288,18 @@
     },
     "fg-brand": {
       "$value": "{Colors.Brand.400}",
+      "$type": "color"
+    },
+    "fg-link": {
+      "$value": "{Colors.Blue.400}",
+      "$type": "color"
+    },
+    "fg-link-hover": {
+      "$value": "{Colors.Blue.300}",
+      "$type": "color"
+    },
+    "fg-link-active": {
+      "$value": "{Colors.Blue.200}",
       "$type": "color"
     },
     "fg-success": {

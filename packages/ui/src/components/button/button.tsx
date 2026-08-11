@@ -9,14 +9,14 @@ import type { VariantProps } from "class-variance-authority"
 const buttonVariants = cva("maxa-button", {
   variants: {
     variant: {
-      primary:   "maxa-button--primary",
+      primary: "maxa-button--primary",
       secondary: "maxa-button--secondary",
-      outline:   "maxa-button--outline",
-      ghost:     "maxa-button--ghost",
-      link:      "maxa-button--link",
-      success:   "maxa-button--success",
+      outline: "maxa-button--outline",
+      ghost: "maxa-button--ghost",
+      link: "maxa-button--link",
+      success: "maxa-button--success",
       destructive: "maxa-button--destructive",
-      warning:   "maxa-button--warning",
+      warning: "maxa-button--warning",
     },
     size: {
       xs: "maxa-button--xs",
@@ -25,15 +25,15 @@ const buttonVariants = cva("maxa-button", {
       lg: "maxa-button--lg",
     },
     iconOnly: {
-      true:  "maxa-button--icon-only",
+      true: "maxa-button--icon-only",
       false: "",
     },
     fullWidth: {
-      true:  "maxa-button--full-width",
+      true: "maxa-button--full-width",
       false: "",
     },
     outlineSurface: {
-      true:  "maxa-button--outline-surface",
+      true: "maxa-button--outline-surface",
       false: "",
     },
   },
@@ -47,8 +47,7 @@ const buttonVariants = cva("maxa-button", {
 })
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean
   loading?: boolean
   iconLeading?: React.ReactNode
@@ -82,9 +81,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <Comp
           ref={ref}
-          className={buttonVariants({ variant, size, iconOnly, fullWidth, outlineSurface, className })}
+          className={buttonVariants({
+            variant,
+            size,
+            iconOnly,
+            fullWidth,
+            outlineSurface,
+            className,
+          })}
           aria-disabled={isDisabled || undefined}
           aria-busy={loading || undefined}
+          data-as-child="true"
           {...props}
         >
           {children}
@@ -95,7 +102,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        className={buttonVariants({ variant, size, iconOnly, fullWidth, outlineSurface, className })}
+        className={buttonVariants({
+          variant,
+          size,
+          iconOnly,
+          fullWidth,
+          outlineSurface,
+          className,
+        })}
         disabled={isDisabled}
         aria-disabled={isDisabled}
         aria-busy={loading || undefined}
@@ -104,10 +118,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-icon-trailing={!loading && iconTrailing ? "" : undefined}
         {...props}
       >
-        { loading
-          ? <span className="maxa-button__spinner" aria-hidden="true" />
-          : iconLeading && <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">{iconLeading}</span>
-        }
+        {loading ? (
+          <span className="maxa-button__spinner" aria-hidden="true" />
+        ) : (
+          iconLeading && (
+            <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">
+              {iconLeading}
+            </span>
+          )
+        )}
         {children && <span className="maxa-button__label">{children}</span>}
         {!loading && iconTrailing && (
           <span className="maxa-button__icon maxa-button__icon--trailing" aria-hidden="true">

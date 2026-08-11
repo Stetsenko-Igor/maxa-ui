@@ -27,17 +27,17 @@
     },
     "padding-x-sm": {
       "$description": "Social Button: padding x sm.",
-      "$value": "var(--button-size-sm-padding-x)",
+      "$value": 10,
       "$type": "number"
     },
     "padding-x": {
       "$description": "Social Button: padding x.",
-      "$value": "var(--button-size-md-padding-x)",
+      "$value": "{Spacing/spacing-xl}",
       "$type": "number"
     },
     "padding-x-lg": {
       "$description": "Social Button: padding x lg.",
-      "$value": "var(--button-size-lg-padding-x)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "gap-sm": {

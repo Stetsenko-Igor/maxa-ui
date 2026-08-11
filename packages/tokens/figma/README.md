@@ -17,7 +17,7 @@ This folder contains the import-ready token source for the MAXA design system.
 - `Breakpoints`
   Semantic viewport names with legacy frontend aliases in descriptions.
 - `Component-based`
-  Component-level aliases such as Button variants, states, sizes, typography, and icon-only sizes. This collection has one mode, `Default`.
+  Component-level aliases such as Button variants, shared content/focus roles, sizes, and typography. This collection has one mode, `Default`.
 
 ## Import Order
 

@@ -20,10 +20,8 @@ const sandbox = {
 vm.createContext(sandbox);
 vm.runInContext(source, sandbox, { filename: 'code.js' });
 
-const secondaryForegroundPreview = vm.runInContext(
-  'PREVIEW_TOKEN_COLORS["Button/secondary/fg"]',
-  sandbox,
-);
+const previewTokenColors = vm.runInContext('PREVIEW_TOKEN_COLORS', sandbox);
+const secondaryForegroundPreview = previewTokenColors['Button/secondary/fg'];
 assert.deepEqual(
   JSON.parse(JSON.stringify(secondaryForegroundPreview)),
   { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
@@ -133,7 +131,7 @@ function tokenFor(preview, role) {
 const outlineFocus = mapping({ variant: 'outline', state: 'focus' });
 assert.equal(tokenFor(outlineFocus, 'surface'), 'Button/outline/bg');
 assert.equal(tokenFor(outlineFocus, 'background-surface'), 'Button/outline/bg-surface');
-assert.equal(tokenFor(outlineFocus, 'border'), 'Button/outline/border-focus');
+assert.equal(tokenFor(outlineFocus, 'border'), 'Button/focus/border');
 assert.equal(sandbox.detectLegacyBackgroundLayer({ children: [outlineBackground] }), outlineBackground);
 
 const outlinePressed = mapping({ variant: 'outline', state: 'pressed' });
@@ -149,7 +147,7 @@ assert.equal(tokenFor(linkHover, 'padding-zero'), 'spacing-none');
 for (const forbiddenRole of ['height', 'padding-x', 'padding-left', 'padding-right', 'radius', 'size']) {
   assert.equal(linkHover.assignments.some((assignment) => assignment.role === forbiddenRole), false, `Link must not use ${forbiddenRole}`);
 }
-assert.equal(tokenFor(linkHover, 'gap'), 'Button/size/md/gap');
+assert.equal(tokenFor(linkHover, 'gap'), 'spacing-md');
 assert.equal(tokenFor(linkHover, 'text-size'), 'Button/size/md/text');
 
 const linkPressed = mapping({ variant: 'link', state: 'pressed', left: true });
@@ -161,10 +159,11 @@ assert.equal(tokenFor(linkPressed, 'leading-icon'), 'Button/link/fg-active');
 const primaryLoading = mapping({ variant: 'primary', state: 'loading' });
 assert.equal(tokenFor(primaryLoading, 'surface'), 'Button/primary/bg');
 assert.equal(tokenFor(primaryLoading, 'border'), 'Button/primary/border');
-assert.equal(tokenFor(primaryLoading, 'disabled'), 'Button/disabled/opacity');
+assert.equal(tokenFor(primaryLoading, 'disabled'), undefined);
+assert.equal(tokenFor(primaryLoading, 'label'), 'Button/content/text-on-color');
 
 const iconOnlyXs = mapping({ variant: 'primary', state: 'default', size: 'xs', iconOnly: true });
-assert.equal(tokenFor(iconOnlyXs, 'size'), 'Button/icon-only/xs/size');
+assert.equal(tokenFor(iconOnlyXs, 'size'), 'Button/size/xs/height');
 assert.equal(tokenFor(iconOnlyXs, 'radius'), 'Button/size/xs/radius');
 assert.equal(tokenFor(iconOnlyXs, 'icon-size'), 'Button/size/xs/icon-size');
 
@@ -173,27 +172,34 @@ assert.equal(tokenFor(primaryNoIcons, 'padding-left'), 'Button/size/md/padding-x
 assert.equal(tokenFor(primaryNoIcons, 'padding-right'), 'Button/size/md/padding-x');
 
 const primaryLeftIcon = mapping({ variant: 'primary', state: 'default', left: true });
-assert.equal(tokenFor(primaryLeftIcon, 'padding-left'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryLeftIcon, 'padding-left'), 'Button/size/md/padding-x');
 assert.equal(tokenFor(primaryLeftIcon, 'padding-right'), 'Button/size/md/padding-x');
 
 const primaryRightIcon = mapping({ variant: 'primary', state: 'default', right: true });
 assert.equal(tokenFor(primaryRightIcon, 'padding-left'), 'Button/size/md/padding-x');
-assert.equal(tokenFor(primaryRightIcon, 'padding-right'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryRightIcon, 'padding-right'), 'Button/size/md/padding-x');
 
 const primaryTwoIcons = mapping({ variant: 'primary', state: 'default', left: true, right: true });
-assert.equal(tokenFor(primaryTwoIcons, 'padding-left'), 'Button/size/md/padding-x-icon');
-assert.equal(tokenFor(primaryTwoIcons, 'padding-right'), 'Button/size/md/padding-x-icon');
-assert.equal(tokenFor(primaryTwoIcons, 'leading-icon'), 'Button/primary/fg');
-assert.equal(tokenFor(primaryTwoIcons, 'trailing-icon'), 'Button/primary/fg');
+assert.equal(tokenFor(primaryTwoIcons, 'padding-left'), 'Button/size/md/padding-x');
+assert.equal(tokenFor(primaryTwoIcons, 'padding-right'), 'Button/size/md/padding-x');
+assert.equal(tokenFor(primaryTwoIcons, 'gap'), 'spacing-sm');
+assert.equal(tokenFor(primaryTwoIcons, 'leading-icon'), 'Button/content/fg-on-color');
+assert.equal(tokenFor(primaryTwoIcons, 'trailing-icon'), 'Button/content/fg-on-color');
 
-for (const variant of ['secondary', 'outline', 'ghost', 'success', 'destructive', 'warning']) {
+for (const variant of ['secondary', 'outline', 'ghost', 'warning']) {
   const preview = mapping({ variant, state: 'hover', left: true, right: true });
   assert.equal(tokenFor(preview, 'leading-icon'), `Button/${variant}/fg`);
   assert.equal(tokenFor(preview, 'trailing-icon'), `Button/${variant}/fg`);
 }
+for (const variant of ['success', 'destructive']) {
+  const preview = mapping({ variant, state: 'hover', left: true, right: true });
+  assert.equal(tokenFor(preview, 'label'), 'Button/content/text-on-color');
+  assert.equal(tokenFor(preview, 'leading-icon'), 'Button/content/fg-on-color');
+  assert.equal(tokenFor(preview, 'trailing-icon'), 'Button/content/fg-on-color');
+}
 
 const primaryLoadingSpinner = mapping({ variant: 'primary', state: 'loading', loading: true });
-assert.equal(tokenFor(primaryLoadingSpinner, 'padding-left'), 'Button/size/md/padding-x-icon');
+assert.equal(tokenFor(primaryLoadingSpinner, 'padding-left'), 'Button/size/md/padding-x');
 assert.equal(tokenFor(primaryLoadingSpinner, 'padding-right'), 'Button/size/md/padding-x');
 
 const clearedBindings = new Map();
@@ -287,15 +293,18 @@ const componentTokenJson = JSON.parse(fs.readFileSync(path.join(repoRoot, 'packa
 const componentTokens = flattenTokenPaths(componentTokenJson);
 const spacingTokens = flattenTokenPaths(JSON.parse(fs.readFileSync(path.join(repoRoot, 'packages/tokens/figma/spacing.json'), 'utf8')));
 const availableTokens = new Set([...componentTokens, ...spacingTokens]);
-assert.equal(componentTokenJson.Button.size.xs.gap.$value, '{Spacing/spacing-xs}');
-assert.equal(componentTokenJson.Button.size.sm.gap.$value, '{Spacing/spacing-sm}');
-assert.equal(componentTokenJson.Button.size.md.gap.$value, '{Spacing/spacing-md}');
-assert.equal(componentTokenJson.Button.size.lg.gap.$value, '{Spacing/spacing-md}');
-assert.equal(componentTokenJson.Button.size.xs['padding-x'].$value, '{Spacing/spacing-md}');
-assert.equal(componentTokenJson.Button.size.xs['padding-x-icon'].$value, '{Spacing/spacing-sm}');
-assert.equal(componentTokenJson.Button.size.sm['padding-x-icon'].$value, '{Spacing/spacing-md}');
-assert.equal(componentTokenJson.Button.size.md['padding-x-icon'].$value, 14);
-assert.equal(componentTokenJson.Button.size.lg['padding-x-icon'].$value, '{Spacing/spacing-2xl}');
+assert.equal(componentTokenJson.Button.size.xs['padding-x'].$value, '{Spacing/spacing-sm}');
+assert.equal(componentTokenJson.Button.size.sm['padding-x'].$value, '{Spacing/spacing-md}');
+assert.equal(componentTokenJson.Button.size.md['padding-x'].$value, 14);
+assert.equal(componentTokenJson.Button.size.lg['padding-x'].$value, '{Spacing/spacing-2xl}');
+for (const size of ['xs', 'sm', 'md', 'lg']) {
+  assert.equal(componentTokenJson.Button.size[size].gap, undefined);
+  assert.equal(componentTokenJson.Button.size[size]['padding-x-icon'], undefined);
+}
+assert.equal(componentTokenJson.Button['icon-only'], undefined);
+assert.equal(componentTokenJson.Button.content['text-on-color'].$value, '{Color modes/text/text-on-color}');
+assert.equal(componentTokenJson.Button.content['fg-on-color'].$value, '{Color modes/foreground/fg-on-color}');
+assert.equal(componentTokenJson.Button.focus.border.$value, '{Color modes/border/border-focus}');
 const types = ['Primary', 'Secondary', '𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline', 'Positive', 'Negative', 'Link', 'Ghost'];
 const sizes = ['L - Large', 'M - Medium', 'S - Small', 'XS - Xtra Small'];
 const states = ['Default', 'Pressed', 'Focus', 'Hover', 'Selected', 'Loading', 'Disabled'];
@@ -323,7 +332,15 @@ for (const type of types) {
           right: iconPattern === 'right' || iconPattern === 'left+right' || iconPattern === 'left+dropdown',
         });
         for (const assignment of preview.assignments) {
-          if (assignment.token) generatedTokens.add(assignment.token);
+          if (assignment.token) {
+            generatedTokens.add(assignment.token);
+            if (['surface', 'border', 'label', 'leading-icon', 'trailing-icon'].includes(assignment.role)) {
+              assert.ok(
+                previewTokenColors[assignment.token],
+                `Preview color is missing: ${assignment.token}`,
+              );
+            }
+          }
         }
       }
     }

@@ -18,12 +18,43 @@ const TOC = [
 ]
 
 const ICON_BUTTON_PROPS = [
-  { name: "icon", type: "ReactNode", default: undefined, description: "Icon to display. Wrap SVG in 16×16 bounds." },
-  { name: "aria-label", type: "string", default: undefined, description: "Accessible label — required since there is no visible text." },
-  { name: "variant", type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'", default: "'secondary'", description: "The visual style of the button." },
-  { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Controls height, padding, and icon bounds." },
-  { name: "loading", type: "boolean", default: "false", description: "Replaces content with a spinner and disables the button." },
-  { name: "disabled", type: "boolean", default: "false", description: "Disables the button. Applies 50% opacity to the whole element." },
+  {
+    name: "icon",
+    type: "ReactNode",
+    default: undefined,
+    description: "Icon to display. Wrap SVG in 16×16 bounds.",
+  },
+  {
+    name: "aria-label",
+    type: "string",
+    default: undefined,
+    description: "Accessible label — required since there is no visible text.",
+  },
+  {
+    name: "variant",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'destructive' | 'warning'",
+    default: "'secondary'",
+    description: "The visual style of the button.",
+  },
+  {
+    name: "size",
+    type: "'xs' | 'sm' | 'md' | 'lg'",
+    default: "'md'",
+    description: "Controls height, padding, and icon bounds.",
+  },
+  {
+    name: "loading",
+    type: "boolean",
+    default: "false",
+    description:
+      "Replaces the icon with a centered spinner at full opacity and disables interaction.",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    default: "false",
+    description: "Disables the button. Applies 50% opacity to the whole element.",
+  },
 ]
 
 const ICON_BUTTON_MARKDOWN = `# IconButton
@@ -44,7 +75,8 @@ import "@maxa/tokens/theme.css"
 \`\`\`
 `
 
-const GITHUB_URL = "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/icon-button"
+const GITHUB_URL =
+  "https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/icon-button"
 
 export default function IconButtonPage() {
   return (
@@ -57,9 +89,9 @@ export default function IconButtonPage() {
       next={{ href: "/docs/components/checkbox", label: "Checkbox" }}
       lead={
         <>
-          A square button that renders a single icon. Shares all variants and
-          sizes with <code>Button</code> but enforces an accessible{" "}
-          <code>aria-label</code> in place of visible text.
+          A square button that renders a single icon. Shares all variants and sizes with{" "}
+          <code>Button</code> but enforces an accessible <code>aria-label</code> in place of visible
+          text.
         </>
       }
     >
@@ -86,17 +118,19 @@ export default function IconButtonPage() {
         title="Variants"
         description={
           <>
-            Five variants mirror the <code>Button</code> hierarchy. Use{" "}
-            <code>secondary</code> as the default for icon-only actions.
+            Variants mirror the <code>Button</code> hierarchy. Use <code>secondary</code> as the
+            default for icon-only actions.
           </>
         }
       >
         <DocsExample title="All variants">
-          <ComponentPreview code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
+          <ComponentPreview
+            code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="ghost" />
-<IconButton icon={<PlusIcon />} aria-label="Add" variant="destructive" />`}>
+<IconButton icon={<PlusIcon />} aria-label="Add" variant="destructive" />`}
+          >
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" />
@@ -111,16 +145,18 @@ export default function IconButtonPage() {
         title="Sizes"
         description={
           <>
-            Four sizes: <code>xs</code> 24px, <code>sm</code> 28px,{" "}
-            <code>md</code> 36px, and <code>lg</code> 48px.
+            Four sizes: <code>xs</code> 24px, <code>sm</code> 28px, <code>md</code> 36px, and{" "}
+            <code>lg</code> 48px.
           </>
         }
       >
         <DocsExample title="All sizes">
-          <ComponentPreview code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="xs" />
+          <ComponentPreview
+            code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="xs" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="sm" />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="md" />
-<IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="lg" />`}>
+<IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="lg" />`}
+          >
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="xs" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="sm" />
             <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" size="md" />
@@ -134,14 +170,16 @@ export default function IconButtonPage() {
         title="Disabled"
         description={
           <>
-            Applies <code>opacity: 0.5</code> to the whole element. No
-            individual property overrides.
+            Applies <code>opacity: 0.5</code> to the whole element. No individual property
+            overrides.
           </>
         }
       >
-        <ComponentPreview code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" disabled />
+        <ComponentPreview
+          code={`<IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" disabled />
 <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" disabled />
-<IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" disabled />`}>
+<IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" disabled />`}
+        >
           <IconButton icon={<PlusIcon />} aria-label="Add" variant="primary" disabled />
           <IconButton icon={<PlusIcon />} aria-label="Add" variant="secondary" disabled />
           <IconButton icon={<PlusIcon />} aria-label="Add" variant="outline" disabled />
@@ -157,7 +195,16 @@ export default function IconButtonPage() {
 
 function PlusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <line x1="12" y1="5" x2="12" y2="19" />
       <line x1="5" y1="12" x2="19" y2="12" />
     </svg>

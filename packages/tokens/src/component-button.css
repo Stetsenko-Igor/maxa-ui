@@ -2,152 +2,127 @@
 /* Reference only semantic tokens (Layer 2). Never raw primitives. */
 
 :root {
+  /* ── Shared content and focus ─────────────────────────────────── */
+  --button-content-text-on-color: var(--color-text-on-color);
+  --button-content-fg-on-color: var(--color-fg-on-color);
+  --button-focus-border: var(--color-border-focus);
+
   /* ── Variants ─────────────────────────────────────────────────── */
 
   /* primary */
-  --button-primary-bg:           var(--color-action-primary);
-  --button-primary-bg-hover:     var(--color-action-primary-hover);
-  --button-primary-bg-active:    var(--color-action-primary-active);
-  --button-primary-text:         var(--color-text-inverse);
-  --button-primary-fg:           var(--color-fg-on-color);
-  --button-primary-border:       var(--color-action-primary);
+  --button-primary-bg: var(--color-action-primary);
+  --button-primary-bg-hover: var(--color-action-primary-hover);
+  --button-primary-bg-active: var(--color-action-primary-active);
+  --button-primary-border: var(--color-action-primary);
   --button-primary-border-hover: var(--color-action-primary-hover);
-  --button-primary-border-focus: var(--color-border-focus);
 
   /* secondary */
-  --button-secondary-bg:           var(--color-action-neutral);
-  --button-secondary-bg-hover:     var(--color-action-neutral-hover);
-  --button-secondary-bg-active:    var(--color-action-neutral-active);
-  --button-secondary-text:         var(--color-text-primary);
-  --button-secondary-text-active:  var(--color-text-on-neutral-action-active);
-  --button-secondary-fg:           var(--color-fg-primary);
-  --button-secondary-border:       var(--color-action-neutral);
+  --button-secondary-bg: var(--color-action-neutral);
+  --button-secondary-bg-hover: var(--color-action-neutral-hover);
+  --button-secondary-bg-active: var(--color-action-neutral-active);
+  --button-secondary-text: var(--color-text-primary);
+  --button-secondary-text-active: var(--color-text-on-neutral-action-active);
+  --button-secondary-fg: var(--color-fg-primary);
+  --button-secondary-border: var(--color-action-neutral);
   --button-secondary-border-hover: var(--color-action-neutral-hover);
-  --button-secondary-border-focus: var(--color-border-focus);
 
   /* outline */
-  --button-outline-bg:           transparent;
-  --button-outline-bg-surface:   var(--color-bg-surface);
-  --button-outline-bg-hover:     var(--color-action-neutral-subtle-hover);
-  --button-outline-bg-active:    var(--color-action-neutral-subtle-active);
-  --button-outline-text:         var(--color-text-primary);
-  --button-outline-fg:           var(--color-fg-primary);
-  --button-outline-border:       var(--color-border-primary);
+  --button-outline-bg: transparent;
+  --button-outline-bg-surface: var(--color-bg-surface);
+  --button-outline-bg-hover: var(--color-action-neutral-subtle-hover);
+  --button-outline-bg-active: var(--color-action-neutral-subtle-active);
+  --button-outline-text: var(--color-text-primary);
+  --button-outline-fg: var(--color-fg-primary);
+  --button-outline-border: var(--color-border-primary);
   --button-outline-border-hover: var(--color-border-neutral-muted);
   --button-outline-border-active: var(--color-border-neutral-muted);
-  --button-outline-border-focus: var(--color-border-focus);
 
   /* ghost */
-  --button-ghost-bg:           transparent;
-  --button-ghost-bg-hover:     var(--color-action-neutral-subtle-hover);
-  --button-ghost-bg-active:    var(--color-action-neutral-subtle-active);
-  --button-ghost-text:         var(--color-text-secondary);
-  --button-ghost-fg:           var(--color-fg-primary);
-  --button-ghost-border:       transparent;
+  --button-ghost-bg: transparent;
+  --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
+  --button-ghost-bg-active: var(--color-action-neutral-subtle-active);
+  --button-ghost-text: var(--color-text-secondary);
+  --button-ghost-fg: var(--color-fg-primary);
+  --button-ghost-border: transparent;
   --button-ghost-border-hover: transparent;
-  --button-ghost-border-focus: var(--color-border-focus);
 
   /* link */
-  --button-link-bg:             transparent;
-  --button-link-bg-hover:       transparent;
-  --button-link-bg-active:      transparent;
-  --button-link-text:           var(--color-action-primary);
-  --button-link-text-hover:     var(--color-action-primary-hover);
-  --button-link-text-active:    var(--color-action-primary-active);
-  --button-link-fg:             var(--color-action-primary);
-  --button-link-fg-hover:       var(--color-action-primary-hover);
-  --button-link-fg-active:      var(--color-action-primary-active);
-  --button-link-border:         transparent;
-  --button-link-border-hover:   transparent;
-  --button-link-border-focus:   var(--color-border-focus);
+  --button-link-bg: transparent;
+  --button-link-bg-hover: transparent;
+  --button-link-bg-active: transparent;
+  --button-link-text: var(--color-text-link);
+  --button-link-text-hover: var(--color-text-link-hover);
+  --button-link-text-active: var(--color-text-link-active);
+  --button-link-fg: var(--color-fg-link);
+  --button-link-fg-hover: var(--color-fg-link-hover);
+  --button-link-fg-active: var(--color-fg-link-active);
+  --button-link-border: transparent;
+  --button-link-border-hover: transparent;
 
   /* success */
-  --button-success-bg:           var(--color-action-success);
-  --button-success-bg-hover:     var(--color-action-success-hover);
-  --button-success-bg-active:    var(--color-action-success-active);
-  --button-success-text:         var(--color-text-on-success);
-  --button-success-text-hover:   var(--color-text-on-success);
-  --button-success-text-active:  var(--color-text-on-success);
-  --button-success-fg:           var(--color-fg-on-color);
-  --button-success-border:       var(--color-action-success);
+  --button-success-bg: var(--color-action-success);
+  --button-success-bg-hover: var(--color-action-success-hover);
+  --button-success-bg-active: var(--color-action-success-active);
+  --button-success-border: var(--color-action-success);
   --button-success-border-hover: var(--color-action-success-hover);
-  --button-success-border-focus: var(--color-border-focus);
 
-  /* danger */
-  --button-destructive-bg:           var(--color-action-destructive);
-  --button-destructive-bg-hover:     var(--color-action-destructive-hover);
-  --button-destructive-bg-active:    var(--color-action-destructive-active);
-  --button-destructive-text:         var(--color-text-on-destructive);
-  --button-destructive-fg:           var(--color-fg-on-color);
-  --button-destructive-border:       var(--color-action-destructive);
+  /* destructive */
+  --button-destructive-bg: var(--color-action-destructive);
+  --button-destructive-bg-hover: var(--color-action-destructive-hover);
+  --button-destructive-bg-active: var(--color-action-destructive-active);
+  --button-destructive-border: var(--color-action-destructive);
   --button-destructive-border-hover: var(--color-action-destructive-hover);
-  --button-destructive-border-focus: var(--color-border-focus);
 
   /* warning */
-  --button-warning-bg:           var(--color-action-warning);
-  --button-warning-bg-hover:     var(--color-action-warning-hover);
-  --button-warning-bg-active:    var(--color-action-warning-active);
-  --button-warning-text:         var(--color-text-on-warning);
-  --button-warning-text-hover:   var(--color-text-on-warning);
-  --button-warning-text-active:  var(--color-text-inverse);
-  --button-warning-fg:           var(--color-fg-on-color);
-  --button-warning-border:       var(--color-action-warning);
+  --button-warning-bg: var(--color-action-warning);
+  --button-warning-bg-hover: var(--color-action-warning-hover);
+  --button-warning-bg-active: var(--color-action-warning-active);
+  --button-warning-text: var(--color-text-on-warning);
+  --button-warning-text-hover: var(--color-text-on-warning);
+  --button-warning-text-active: var(--color-text-inverse);
+  --button-warning-fg: var(--color-fg-on-color);
+  --button-warning-border: var(--color-action-warning);
   --button-warning-border-hover: var(--color-action-warning-hover);
-  --button-warning-border-focus: var(--color-border-focus);
 
   /* ── Sizes ────────────────────────────────────────────────────── */
 
   /* xs */
-  --button-size-xs-height:      24px;
-  --button-size-xs-padding-x:   8px;
-  --button-size-xs-padding-x-icon: 6px;
-  --button-size-xs-gap:         4px;
-  --button-size-xs-radius:      var(--radius-xs);
-  --button-size-xs-text:        var(--text-sm);
+  --button-size-xs-height: 24px;
+  --button-size-xs-padding-x: 6px;
+  --button-size-xs-radius: var(--radius-xs);
+  --button-size-xs-text: var(--text-sm);
   --button-size-xs-line-height: 14px;
-  --button-size-xs-weight:      var(--font-weight-medium);
-  --button-size-xs-icon-size:   12px;
+  --button-size-xs-weight: var(--font-weight-medium);
+  --button-size-xs-icon-size: 12px;
 
   /* sm */
-  --button-size-sm-height:      28px;
-  --button-size-sm-padding-x:   10px;
-  --button-size-sm-padding-x-icon: 8px;
-  --button-size-sm-gap:         6px;
-  --button-size-sm-radius:      var(--radius-xs);
-  --button-size-sm-text:        var(--text-sm);
+  --button-size-sm-height: 28px;
+  --button-size-sm-padding-x: 8px;
+  --button-size-sm-radius: var(--radius-xs);
+  --button-size-sm-text: var(--text-sm);
   --button-size-sm-line-height: 14px;
-  --button-size-sm-weight:      var(--font-weight-semibold);
-  --button-size-sm-icon-size:   16px;
+  --button-size-sm-weight: var(--font-weight-semibold);
+  --button-size-sm-icon-size: 16px;
 
   /* md */
-  --button-size-md-height:      36px;
-  --button-size-md-padding-x:   16px;
-  --button-size-md-padding-x-icon: 14px;
-  --button-size-md-gap:         8px;
-  --button-size-md-radius:      var(--radius-xs);
-  --button-size-md-text:        var(--text-sm);
+  --button-size-md-height: 36px;
+  --button-size-md-padding-x: 14px;
+  --button-size-md-radius: var(--radius-xs);
+  --button-size-md-text: var(--text-sm);
   --button-size-md-line-height: 14px;
-  --button-size-md-weight:      var(--font-weight-semibold);
-  --button-size-md-icon-size:   16px;
+  --button-size-md-weight: var(--font-weight-semibold);
+  --button-size-md-icon-size: 16px;
 
   /* lg */
-  --button-size-lg-height:      48px;
-  --button-size-lg-padding-x:   24px;
-  --button-size-lg-padding-x-icon: 20px;
-  --button-size-lg-gap:         8px;
-  --button-size-lg-radius:      var(--radius-sm);
-  --button-size-lg-text:        var(--text-md);
+  --button-size-lg-height: 48px;
+  --button-size-lg-padding-x: 20px;
+  --button-size-lg-radius: var(--radius-sm);
+  --button-size-lg-text: var(--text-md);
   --button-size-lg-line-height: 20px;
-  --button-size-lg-weight:      var(--font-weight-semibold);
-  --button-size-lg-icon-size:   20px;
+  --button-size-lg-weight: var(--font-weight-semibold);
+  --button-size-lg-icon-size: 20px;
 
-  /* ── Icon-only square sizes ───────────────────────────────────── */
-  --button-icon-only-xs-size: 24px;
-  --button-icon-only-sm-size: 28px;
-  --button-icon-only-md-size: 36px;
-  --button-icon-only-lg-size: 48px;
-
-  /* ── Shared ───────────────────────────────────────────────────── */
+  /* ── Shared behavior ──────────────────────────────────────────── */
   --button-disabled-opacity: 0.5;
-  --button-font-family:      var(--font-body);
+  --button-font-family: var(--font-body);
 }

@@ -20,20 +20,20 @@ A square button containing one icon. No text. No label slot — the visual is th
 └────┘
 ```
 
-Width = height (square). Dimensions come from `--button-icon-only-{sm,md,lg}-size`.
+Width = height (square). Both dimensions reuse `--button-size-{xs,sm,md,lg}-height`; there is no duplicate icon-only size token family.
 
 ---
 
 ## Sizes
 
-| Size | Square dimension |
-|------|------------------|
-| `xs` | 24px |
-| `sm` | 28px |
-| `md` (default) | 36px |
-| `lg` | 48px |
+| Size           | Square dimension |
+| -------------- | ---------------- |
+| `xs`           | 24px             |
+| `sm`           | 28px             |
+| `md` (default) | 36px             |
+| `lg`           | 48px             |
 
-`xs` is passed through to Button but Button typically clamps to `sm` icon-only size — verify in implementation.
+All four sizes map directly to the corresponding Button height.
 
 ---
 
@@ -42,6 +42,7 @@ Width = height (square). Dimensions come from `--button-icon-only-{sm,md,lg}-siz
 Inherits all Button variants: `primary`, `secondary`, `outline`, `ghost`, `link`, `success`, `destructive`.
 
 **Most common in practice:**
+
 - `ghost` — toolbar buttons, table-row actions, inline editor controls
 - `outline` — toolbar with stronger affordance
 - `primary` — single CTA represented as an icon (rare; usually only when space is constrained)
@@ -50,11 +51,11 @@ Inherits all Button variants: `primary`, `secondary`, `outline`, `ghost`, `link`
 
 ## Props
 
-| Prop | Type | Default | Notes |
-|------|------|---------|-------|
-| `icon` | `ReactNode` | — | **Required.** The icon to render |
-| `aria-label` | `string` | — | **Required.** Accessible name (e.g. "Close", "Edit", "Settings") |
-| `size` | `"xs" \| "sm" \| "md" \| "lg"` | `"md"` | |
+| Prop         | Type                           | Default | Notes                                                            |
+| ------------ | ------------------------------ | ------- | ---------------------------------------------------------------- |
+| `icon`       | `ReactNode`                    | —       | **Required.** The icon to render                                 |
+| `aria-label` | `string`                       | —       | **Required.** Accessible name (e.g. "Close", "Edit", "Settings") |
+| `size`       | `"xs" \| "sm" \| "md" \| "lg"` | `"md"`  |                                                                  |
 
 Plus all `ButtonProps` except `iconOnly`, `iconLeading`, `iconTrailing`, `children` (these are managed internally).
 
@@ -99,6 +100,7 @@ Plus all `ButtonProps` except `iconOnly`, `iconLeading`, `iconTrailing`, `childr
 ## Relationship to Button
 
 IconButton is **not** a separate variant of Button. It is a constraint-wrapper that:
+
 1. Forces `iconOnly={true}` underneath.
 2. Reroutes the `icon` prop to `iconLeading`.
 3. Promotes `aria-label` to a required prop at the type level.

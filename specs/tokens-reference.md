@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1755
+Total tokens: 1733
 
 ## Primitives
 
@@ -19,64 +19,68 @@ Source: `packages/tokens/src/primitives.css`
 /* ── Base — Figma: Colors/Base/* ── */
 --color-base-white: #ffffff;
 --color-base-black: #000000;
---color-base-ink: #1B1A1A;
+--color-base-ink: #1b1a1a;
 --color-transparent: transparent;
 --color-white: var(--color-base-white);
 --color-black: var(--color-base-black);
 
 /* ── Gray — Figma: Colors/Neutral/25..950 ── */
 --color-neutral-0: var(--color-base-white);
---color-neutral-25: #FCFCFC;
---color-neutral-50: #FAFAFA;
---color-neutral-100: #F4F3F3;
---color-neutral-200: #EDEDED;
---color-neutral-300: #E4E4E4;
---color-neutral-400: #D7D5D5;
---color-neutral-450: #C9C9C9;
---color-neutral-500: #A1A1A4;
---color-neutral-600: #8C8C8E;
---color-neutral-700: #6B6B6D;
+--color-neutral-25: #fcfcfc;
+--color-neutral-50: #fafafa;
+--color-neutral-100: #f4f3f3;
+--color-neutral-200: #ededed;
+--color-neutral-300: #e4e4e4;
+--color-neutral-400: #d7d5d5;
+--color-neutral-450: #c9c9c9;
+--color-neutral-500: #a1a1a4;
+--color-neutral-600: #8c8c8e;
+--color-neutral-700: #6b6b6d;
 --color-neutral-800: #444445;
---color-neutral-900: #2A2A2B;
+--color-neutral-900: #2a2a2b;
 --color-neutral-925: #232324;
---color-neutral-950: #1A1919;
+--color-neutral-950: #1a1919;
 --color-neutral-975: #161616;
---color-neutral-1000: #0D0D0D;
+--color-neutral-1000: #0d0d0d;
 
 /* ── Status palettes — Figma: Colors/{Blue,Green,Red,Yellow,Orange}/* ── */
---color-blue-50: #EFF7FF;
---color-blue-100: #DDEEFF;
---color-blue-150: #C7E5F0;
---color-blue-200: #BADBFB;
---color-blue-300: #86C0F4;
---color-blue-400: #449BE8;
---color-blue-500: #0576DA;
---color-blue-600: #0564B9;
---color-blue-700: #04549B;
---color-blue-800: #073F72;
---color-blue-900: #092F54;
---color-blue-950: #061D35;
---color-green-50: #F0FAF2;
---color-green-100: #DFF4E4;
---color-green-200: #BDE8C8;
---color-green-300: #8CD99F;
---color-green-400: #59C675;
---color-green-500: #30AA50;
---color-green-600: #288F44;
+--color-blue-50: #eff7ff;
+--color-blue-100: #ddeeff;
+--color-blue-150: #c7e5f0;
+--color-blue-200: #badbfb;
+--color-blue-300: #86c0f4;
+--color-blue-400: #449be8;
+--color-blue-500: #0576da;
+--color-blue-550: #056dc9;
+--color-blue-600: #0564b9;
+--color-blue-700: #04549b;
+--color-blue-800: #073f72;
+--color-blue-900: #092f54;
+--color-blue-950: #061d35;
+--color-green-50: #f0faf2;
+--color-green-100: #dff4e4;
+--color-green-200: #bde8c8;
+--color-green-300: #8cd99f;
+--color-green-400: #59c675;
+--color-green-500: #30aa50;
+--color-green-600: #288f44;
+--color-green-650: #25843e;
 --color-green-700: #227939;
---color-green-800: #1E6131;
---color-green-900: #194C28;
---color-green-950: #0C2A15;
---color-red-50: #FFF1F0;
---color-red-100: #FFE1DF;
---color-red-200: #FFC3BF;
---color-red-300: #FA908B;
---color-red-400: #EA514B;
---color-red-500: #D31510;
---color-red-600: #B9120E;
---color-red-700: #960F0B;
---color-red-800: #78100D;
---color-red-900: #5C100E;
+--color-green-750: #206d35;
+--color-green-800: #1e6131;
+--color-green-900: #194c28;
+--color-green-950: #0c2a15;
+--color-red-50: #fff1f0;
+--color-red-100: #ffe1df;
+--color-red-200: #ffc3bf;
+--color-red-300: #fa908b;
+--color-red-400: #ea514b;
+--color-red-500: #d31510;
+--color-red-550: #c6140f;
+--color-red-600: #b9120e;
+--color-red-700: #960f0b;
+--color-red-800: #78100d;
+--color-red-900: #5c100e;
 --color-red-950: #360806;
 --color-yellow-50: #fefce8;
 --color-yellow-100: #fef9c3;
@@ -102,9 +106,9 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-950: #431407;
 
 /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
---color-neutral-alpha-ink-50: #1B1A1A80;
---color-neutral-alpha-black-72: #000000B8;
---color-neutral-alpha-white-45: #FFFFFF73;
+--color-neutral-alpha-ink-50: #1b1a1a80;
+--color-neutral-alpha-black-72: #000000b8;
+--color-neutral-alpha-white-45: #ffffff73;
 
 /* ── Extended decorative palette — Tailwind v4 defaults ── */
 --color-gray-50: #f9fafb;
@@ -282,11 +286,13 @@ Source: `packages/tokens/src/semantic.css`
 --color-text-disabled: var(--color-neutral-500);/* dark: var(--color-neutral-700) */
 --color-text-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-text-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
---color-text-on-success: var(--color-base-white);/* dark: var(--color-base-white) */
+--color-text-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
 --color-text-on-warning: var(--color-base-black);/* dark: var(--color-base-black) */
---color-text-on-destructive: var(--color-base-white);/* dark: var(--color-base-black) */
 --color-text-on-neutral-action-active: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
+--color-text-link: var(--color-blue-500);/* dark: var(--color-blue-400) */
+--color-text-link-hover: var(--color-blue-550);/* dark: var(--color-blue-300) */
+--color-text-link-active: var(--color-blue-600);/* dark: var(--color-blue-200) */
 --color-text-info: var(--color-blue-900);/* dark: var(--color-blue-300) */
 --color-text-success: var(--color-green-900);/* dark: var(--color-green-300) */
 --color-text-error: var(--color-red-900);/* dark: var(--color-red-300) */
@@ -301,6 +307,9 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-fg-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
 --color-fg-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
+--color-fg-link: var(--color-blue-500); /* dark: var(--color-blue-400) */
+--color-fg-link-hover: var(--color-blue-550);/* dark: var(--color-blue-300) */
+--color-fg-link-active: var(--color-blue-600);/* dark: var(--color-blue-200) */
 --color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-400) */
 --color-fg-success: var(--color-green-700);/* dark: var(--color-green-400) */
 --color-fg-error: var(--color-red-700); /* dark: var(--color-red-400) */
@@ -363,9 +372,9 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-error-muted: var(--color-red-100);/* dark: var(--color-red-900) */
 
 /* ── Action — interactive element backgrounds ── */
---color-action-primary: var(--color-blue-500);/* dark: var(--color-blue-400) */
---color-action-primary-hover: var(--color-blue-600);/* dark: var(--color-blue-300) */
---color-action-primary-active: var(--color-blue-700);/* dark: var(--color-blue-200) */
+--color-action-primary: var(--color-blue-500);/* dark: var(--color-blue-600) */
+--color-action-primary-hover: var(--color-blue-550);/* dark: var(--color-blue-550) */
+--color-action-primary-active: var(--color-blue-600);/* dark: var(--color-blue-500) */
 --color-action-primary-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-hover: var(--color-blue-150);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-active: var(--color-blue-200);/* dark: var(--color-blue-900) */
@@ -381,18 +390,12 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-hover: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-active: var(--color-brand-200);/* dark: var(--color-brand-900) */
---color-action-success: var(--color-green-500);/* dark: var(--color-green-400) */
---color-action-success-hover: var(--color-green-600);/* dark: var(--color-green-300) */
---color-action-success-active: var(--color-green-700);/* dark: var(--color-green-200) */
---color-action-success-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
---color-action-success-subtle-hover: var(--color-green-50);/* dark: var(--color-green-950) */
---color-action-success-subtle-active: var(--color-green-100);/* dark: var(--color-green-900) */
---color-action-destructive: var(--color-red-500);/* dark: var(--color-red-400) */
---color-action-destructive-hover: var(--color-red-600);/* dark: var(--color-red-300) */
---color-action-destructive-active: var(--color-red-700);/* dark: var(--color-red-200) */
---color-action-destructive-subtle: var(--color-red-50);/* dark: var(--color-red-950) */
---color-action-destructive-subtle-hover: var(--color-red-50);/* dark: var(--color-red-950) */
---color-action-destructive-subtle-active: var(--color-red-100);/* dark: var(--color-red-900) */
+--color-action-success: var(--color-green-650);/* dark: var(--color-green-750) */
+--color-action-success-hover: var(--color-green-700);/* dark: var(--color-green-700) */
+--color-action-success-active: var(--color-green-750);/* dark: var(--color-green-650) */
+--color-action-destructive: var(--color-red-500);/* dark: var(--color-red-600) */
+--color-action-destructive-hover: var(--color-red-550);/* dark: var(--color-red-550) */
+--color-action-destructive-active: var(--color-red-600);/* dark: var(--color-red-500) */
 --color-action-warning: var(--color-yellow-500);/* dark: var(--color-yellow-400) */
 --color-action-warning-hover: var(--color-yellow-600);/* dark: var(--color-yellow-300) */
 --color-action-warning-active: var(--color-yellow-700);/* dark: var(--color-yellow-200) */
@@ -704,15 +707,17 @@ Source: `packages/tokens/src/shadows.css`
 Source: `packages/tokens/src/component-button.css`
 
 ```css
+/* ── Shared content and focus ── */
+--button-content-text-on-color: var(--color-text-on-color);
+--button-content-fg-on-color: var(--color-fg-on-color);
+--button-focus-border: var(--color-border-focus);
+
 /* ── Variants ── */
 --button-primary-bg: var(--color-action-primary);
 --button-primary-bg-hover: var(--color-action-primary-hover);
 --button-primary-bg-active: var(--color-action-primary-active);
---button-primary-text: var(--color-text-inverse);
---button-primary-fg: var(--color-fg-on-color);
 --button-primary-border: var(--color-action-primary);
 --button-primary-border-hover: var(--color-action-primary-hover);
---button-primary-border-focus: var(--color-border-focus);
 --button-secondary-bg: var(--color-action-neutral);
 --button-secondary-bg-hover: var(--color-action-neutral-hover);
 --button-secondary-bg-active: var(--color-action-neutral-active);
@@ -721,7 +726,6 @@ Source: `packages/tokens/src/component-button.css`
 --button-secondary-fg: var(--color-fg-primary);
 --button-secondary-border: var(--color-action-neutral);
 --button-secondary-border-hover: var(--color-action-neutral-hover);
---button-secondary-border-focus: var(--color-border-focus);
 --button-outline-bg: transparent;
 --button-outline-bg-surface: var(--color-bg-surface);
 --button-outline-bg-hover: var(--color-action-neutral-subtle-hover);
@@ -731,7 +735,6 @@ Source: `packages/tokens/src/component-button.css`
 --button-outline-border: var(--color-border-primary);
 --button-outline-border-hover: var(--color-border-neutral-muted);
 --button-outline-border-active: var(--color-border-neutral-muted);
---button-outline-border-focus: var(--color-border-focus);
 --button-ghost-bg: transparent;
 --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
 --button-ghost-bg-active: var(--color-action-neutral-subtle-active);
@@ -739,37 +742,27 @@ Source: `packages/tokens/src/component-button.css`
 --button-ghost-fg: var(--color-fg-primary);
 --button-ghost-border: transparent;
 --button-ghost-border-hover: transparent;
---button-ghost-border-focus: var(--color-border-focus);
 --button-link-bg: transparent;
 --button-link-bg-hover: transparent;
 --button-link-bg-active: transparent;
---button-link-text: var(--color-action-primary);
---button-link-text-hover: var(--color-action-primary-hover);
---button-link-text-active: var(--color-action-primary-active);
---button-link-fg: var(--color-action-primary);
---button-link-fg-hover: var(--color-action-primary-hover);
---button-link-fg-active: var(--color-action-primary-active);
+--button-link-text: var(--color-text-link);
+--button-link-text-hover: var(--color-text-link-hover);
+--button-link-text-active: var(--color-text-link-active);
+--button-link-fg: var(--color-fg-link);
+--button-link-fg-hover: var(--color-fg-link-hover);
+--button-link-fg-active: var(--color-fg-link-active);
 --button-link-border: transparent;
 --button-link-border-hover: transparent;
---button-link-border-focus: var(--color-border-focus);
 --button-success-bg: var(--color-action-success);
 --button-success-bg-hover: var(--color-action-success-hover);
 --button-success-bg-active: var(--color-action-success-active);
---button-success-text: var(--color-text-on-success);
---button-success-text-hover: var(--color-text-on-success);
---button-success-text-active: var(--color-text-on-success);
---button-success-fg: var(--color-fg-on-color);
 --button-success-border: var(--color-action-success);
 --button-success-border-hover: var(--color-action-success-hover);
---button-success-border-focus: var(--color-border-focus);
 --button-destructive-bg: var(--color-action-destructive);
 --button-destructive-bg-hover: var(--color-action-destructive-hover);
 --button-destructive-bg-active: var(--color-action-destructive-active);
---button-destructive-text: var(--color-text-on-destructive);
---button-destructive-fg: var(--color-fg-on-color);
 --button-destructive-border: var(--color-action-destructive);
 --button-destructive-border-hover: var(--color-action-destructive-hover);
---button-destructive-border-focus: var(--color-border-focus);
 --button-warning-bg: var(--color-action-warning);
 --button-warning-bg-hover: var(--color-action-warning-hover);
 --button-warning-bg-active: var(--color-action-warning-active);
@@ -779,53 +772,38 @@ Source: `packages/tokens/src/component-button.css`
 --button-warning-fg: var(--color-fg-on-color);
 --button-warning-border: var(--color-action-warning);
 --button-warning-border-hover: var(--color-action-warning-hover);
---button-warning-border-focus: var(--color-border-focus);
 
 /* ── Sizes ── */
 --button-size-xs-height: 24px;
---button-size-xs-padding-x: 8px;
---button-size-xs-padding-x-icon: 6px;
---button-size-xs-gap: 4px;
+--button-size-xs-padding-x: 6px;
 --button-size-xs-radius: var(--radius-xs);
 --button-size-xs-text: var(--text-sm);
 --button-size-xs-line-height: 14px;
 --button-size-xs-weight: var(--font-weight-medium);
 --button-size-xs-icon-size: 12px;
 --button-size-sm-height: 28px;
---button-size-sm-padding-x: 10px;
---button-size-sm-padding-x-icon: 8px;
---button-size-sm-gap: 6px;
+--button-size-sm-padding-x: 8px;
 --button-size-sm-radius: var(--radius-xs);
 --button-size-sm-text: var(--text-sm);
 --button-size-sm-line-height: 14px;
 --button-size-sm-weight: var(--font-weight-semibold);
 --button-size-sm-icon-size: 16px;
 --button-size-md-height: 36px;
---button-size-md-padding-x: 16px;
---button-size-md-padding-x-icon: 14px;
---button-size-md-gap: 8px;
+--button-size-md-padding-x: 14px;
 --button-size-md-radius: var(--radius-xs);
 --button-size-md-text: var(--text-sm);
 --button-size-md-line-height: 14px;
 --button-size-md-weight: var(--font-weight-semibold);
 --button-size-md-icon-size: 16px;
 --button-size-lg-height: 48px;
---button-size-lg-padding-x: 24px;
---button-size-lg-padding-x-icon: 20px;
---button-size-lg-gap: 8px;
+--button-size-lg-padding-x: 20px;
 --button-size-lg-radius: var(--radius-sm);
 --button-size-lg-text: var(--text-md);
 --button-size-lg-line-height: 20px;
 --button-size-lg-weight: var(--font-weight-semibold);
 --button-size-lg-icon-size: 20px;
 
-/* ── Icon-only square sizes ── */
---button-icon-only-xs-size: 24px;
---button-icon-only-sm-size: 28px;
---button-icon-only-md-size: 36px;
---button-icon-only-lg-size: 48px;
-
-/* ── Shared ── */
+/* ── Shared behavior ── */
 --button-disabled-opacity: 0.5;
 --button-font-family: var(--font-body);
 ```
@@ -2100,9 +2078,9 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-height-sm: 32px;
 --social-button-height: 40px;
 --social-button-height-lg: var(--button-size-lg-height);
---social-button-padding-x-sm: var(--button-size-sm-padding-x);
---social-button-padding-x: var(--button-size-md-padding-x);
---social-button-padding-x-lg: var(--button-size-lg-padding-x);
+--social-button-padding-x-sm: 10px;
+--social-button-padding-x: var(--spacing-xl);
+--social-button-padding-x-lg: var(--spacing-3xl);
 --social-button-gap-sm: var(--spacing-2);
 --social-button-gap: var(--spacing-2);
 --social-button-gap-lg: var(--spacing-3);

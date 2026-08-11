@@ -1,5 +1,7 @@
-import { describe, it, expect } from "vitest"
-import { render, screen } from "@testing-library/react"
+import { readFileSync } from "node:fs"
+import { resolve } from "node:path"
+import { describe, it, expect, vi } from "vitest"
+import { fireEvent, render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
 import { Button } from "./button"
 
@@ -34,7 +36,11 @@ describe("Button", () => {
   })
 
   it("adds the optional surface class without changing the outline variant", () => {
-    render(<Button variant="outline" outlineSurface>Test</Button>)
+    render(
+      <Button variant="outline" outlineSurface>
+        Test
+      </Button>,
+    )
     expect(screen.getByRole("button")).toHaveClass(
       "maxa-button--outline",
       "maxa-button--outline-surface",
@@ -48,20 +54,39 @@ describe("Button", () => {
   })
 
   it("is disabled and shows spinner when loading", () => {
-    render(<Button loading>Test</Button>)
+    const onClick = vi.fn()
+    render(
+      <div style={{ "--button-disabled-opacity": "0.5" } as React.CSSProperties}>
+        <Button loading onClick={onClick}>
+          Saving
+        </Button>
+      </div>,
+    )
     const btn = screen.getByRole("button")
+    const spinner = btn.querySelector(".maxa-button__spinner")
+    const label = btn.querySelector(".maxa-button__label")
+
     expect(btn).toBeDisabled()
+    expect(btn).toHaveAttribute("aria-busy", "true")
     expect(btn).toHaveAttribute("data-icon-leading")
     expect(btn).not.toHaveAttribute("data-icon-trailing")
-    expect(btn.querySelector(".maxa-button__spinner")).toBeInTheDocument()
+    expect(spinner).toBeInTheDocument()
+    expect(label).toHaveTextContent("Saving")
+    expect(spinner?.nextElementSibling).toBe(label)
+
+    fireEvent.click(btn)
+    expect(onClick).not.toHaveBeenCalled()
+  })
+
+  it("keeps the loading state fully opaque", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
+
+    expect(css).toMatch(/\.maxa-button\[data-loading="true"\]\s*\{[^}]*opacity:\s*1;/s)
   })
 
   it("renders leading and trailing icons", () => {
     render(
-      <Button
-        iconLeading={<svg data-testid="lead" />}
-        iconTrailing={<svg data-testid="trail" />}
-      >
+      <Button iconLeading={<svg data-testid="lead" />} iconTrailing={<svg data-testid="trail" />}>
         Test
       </Button>,
     )
@@ -87,6 +112,18 @@ describe("Button", () => {
     )
     const link = screen.getByRole("link", { name: "Link button" })
     expect(link).toHaveClass("maxa-button--primary")
+    expect(link).toHaveAttribute("data-as-child", "true")
+  })
+
+  it("implements the v3 optical spacing without icon-edge token branches", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
+
+    expect(css).toContain("--button-label-padding-x-current: var(--spacing-xxs)")
+    expect(css).toMatch(/\.maxa-button__label\s*\{[^}]*padding-inline:/s)
+    expect(css).toMatch(/\.maxa-button--link\s*\{[^}]*padding:\s*0;[^}]*height:\s*auto;/s)
+    expect(css).not.toContain("padding-x-icon")
+    expect(css).not.toContain("button-icon-only-")
+    expect(css).not.toContain("button-size-md-gap")
   })
 
   it("has no accessibility violations", async () => {

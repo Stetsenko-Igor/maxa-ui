@@ -164,15 +164,34 @@ function NewBadge() {
 
 function PlusIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
     </svg>
   )
 }
 
 function EditIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
       <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
     </svg>
@@ -181,9 +200,20 @@ function EditIcon() {
 
 function TrashIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-      <path d="M10 11v6M14 11v6" /><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="3 6 5 6 21 6" />
+      <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+      <path d="M10 11v6M14 11v6" />
+      <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
     </svg>
   )
 }
@@ -196,14 +226,18 @@ export default function ComponentsPage() {
       toc={TOC}
       lead={
         <>
-          Component catalog covering identity, status indicators, data labels, actions, form controls, selection,
-          layout, feedback, and overlays. All use component-level tokens, typed React APIs, and full documentation.
+          Component catalog covering identity, status indicators, data labels, actions, form
+          controls, selection, layout, feedback, and overlays. All use component-level tokens, typed
+          React APIs, and full documentation.
         </>
       }
     >
-      <DocsPageSection id="catalog" title="Catalog" description="Each component is fully documented with interactive previews, code examples, and an API reference.">
+      <DocsPageSection
+        id="catalog"
+        title="Catalog"
+        description="Each component is fully documented with interactive previews, code examples, and an API reference."
+      >
         <div style={grid}>
-
           {/* A */}
           <Link href="/docs/components/alert" style={card}>
             <p style={eyebrow}>Feedback</p>
@@ -213,7 +247,9 @@ export default function ComponentsPage() {
             </p>
             <div style={{ ...preview, flexDirection: "column", alignItems: "stretch", gap: "8px" }}>
               <Alert intent="success">Changes saved successfully.</Alert>
-              <Alert intent="warning" action={<AlertAction>Undo</AlertAction>}>File deleted.</Alert>
+              <Alert intent="warning" action={<AlertAction>Undo</AlertAction>}>
+                File deleted.
+              </Alert>
             </div>
             <span style={footer}>View Alert →</span>
           </Link>
@@ -226,7 +262,9 @@ export default function ComponentsPage() {
             </p>
             <div style={preview}>
               <AlertDialog>
-                <AlertDialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Delete</AlertDialogTrigger>
+                <AlertDialogTrigger className="maxa-button maxa-button--outline maxa-button--md">
+                  Delete
+                </AlertDialogTrigger>
                 <AlertDialogContent size="sm">
                   <AlertDialogTitle>Delete package?</AlertDialogTitle>
                   <AlertDialogDescription>This action cannot be undone.</AlertDialogDescription>
@@ -241,14 +279,23 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Identity</p>
             <h2 style={title}>Avatar</h2>
             <p style={description}>
-              User and collaborator identity primitive with fallback initials, sizes, statuses, and groups.
+              User and collaborator identity primitive with fallback initials, sizes, statuses, and
+              groups.
             </p>
             <div style={preview}>
               <AvatarGroup max={3}>
-                <Avatar appearance="blue" emphasis="medium"><AvatarFallback>IS</AvatarFallback></Avatar>
-                <Avatar appearance="green" emphasis="medium"><AvatarFallback>AV</AvatarFallback></Avatar>
-                <Avatar appearance="rose" emphasis="medium"><AvatarFallback>MC</AvatarFallback></Avatar>
-                <Avatar appearance="orange" emphasis="medium"><AvatarFallback>JW</AvatarFallback></Avatar>
+                <Avatar appearance="blue" emphasis="medium">
+                  <AvatarFallback>IS</AvatarFallback>
+                </Avatar>
+                <Avatar appearance="green" emphasis="medium">
+                  <AvatarFallback>AV</AvatarFallback>
+                </Avatar>
+                <Avatar appearance="rose" emphasis="medium">
+                  <AvatarFallback>MC</AvatarFallback>
+                </Avatar>
+                <Avatar appearance="orange" emphasis="medium">
+                  <AvatarFallback>JW</AvatarFallback>
+                </Avatar>
               </AvatarGroup>
             </div>
             <span style={footer}>View Avatar →</span>
@@ -262,11 +309,21 @@ export default function ComponentsPage() {
               Compact status and metadata indicator. Five intents and three emphasis levels.
             </p>
             <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
-              <Badge intent="neutral" emphasis="low">Draft</Badge>
-              <Badge intent="info" emphasis="low">In review</Badge>
-              <Badge intent="success" emphasis="high">Active</Badge>
-              <Badge intent="warning" emphasis="low">Pending</Badge>
-              <Badge intent="error" emphasis="high">Failed</Badge>
+              <Badge intent="neutral" emphasis="low">
+                Draft
+              </Badge>
+              <Badge intent="info" emphasis="low">
+                In review
+              </Badge>
+              <Badge intent="success" emphasis="high">
+                Active
+              </Badge>
+              <Badge intent="warning" emphasis="low">
+                Pending
+              </Badge>
+              <Badge intent="error" emphasis="high">
+                Failed
+              </Badge>
             </div>
             <span style={footer}>View Badge →</span>
           </Link>
@@ -281,9 +338,13 @@ export default function ComponentsPage() {
             <div style={preview}>
               <Breadcrumb>
                 <BreadcrumbList>
-                  <BreadcrumbItem><span className="maxa-breadcrumb__link">Dashboard</span></BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <span className="maxa-breadcrumb__link">Dashboard</span>
+                  </BreadcrumbItem>
                   <BreadcrumbSeparator />
-                  <BreadcrumbItem><BreadcrumbPage>Packages</BreadcrumbPage></BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Packages</BreadcrumbPage>
+                  </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
             </div>
@@ -295,7 +356,7 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Action</p>
             <h2 style={title}>Button</h2>
             <p style={description}>
-              Nine variants, four sizes, icon support, loading state, and polymorphic rendering.
+              Eight variants, four sizes, icon support, loading state, and polymorphic rendering.
             </p>
             <div style={preview}>
               <Button variant="primary">Create</Button>
@@ -322,9 +383,12 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Form</p>
             <h2 style={title}>Checkbox</h2>
             <p style={description}>
-              Native checkbox with top label, side label, helper text, indeterminate, disabled, and error states.
+              Native checkbox with top label, side label, helper text, indeterminate, disabled, and
+              error states.
             </p>
-            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+            <div
+              style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}
+            >
               <Checkbox sideLabel="Unchecked" />
               <Checkbox sideLabel="Checked" defaultChecked />
               <Checkbox sideLabel="Disabled" disabled defaultChecked />
@@ -340,7 +404,18 @@ export default function ComponentsPage() {
             </p>
             <div style={preview}>
               <ContextMenu>
-                <ContextMenuTrigger style={{ width: "180px", height: "72px", display: "grid", placeItems: "center", border: "1px dashed var(--color-border-primary)", borderRadius: "var(--radius-md)", color: "var(--color-text-secondary)", fontSize: "var(--text-sm)" }}>
+                <ContextMenuTrigger
+                  style={{
+                    width: "180px",
+                    height: "72px",
+                    display: "grid",
+                    placeItems: "center",
+                    border: "1px dashed var(--color-border-primary)",
+                    borderRadius: "var(--radius-md)",
+                    color: "var(--color-text-secondary)",
+                    fontSize: "var(--text-sm)",
+                  }}
+                >
                   Right click
                 </ContextMenuTrigger>
                 <ContextMenuContent>
@@ -375,7 +450,9 @@ export default function ComponentsPage() {
             </p>
             <div style={preview}>
               <Dialog>
-                <DialogTrigger className="maxa-button maxa-button--outline maxa-button--md">Open dialog</DialogTrigger>
+                <DialogTrigger className="maxa-button maxa-button--outline maxa-button--md">
+                  Open dialog
+                </DialogTrigger>
                 <DialogContent>
                   <DialogTitle>Share package</DialogTitle>
                   <DialogDescription>Choose who can view this design package.</DialogDescription>
@@ -393,9 +470,13 @@ export default function ComponentsPage() {
               Thin rule for visually separating content. Horizontal or vertical orientation.
             </p>
             <div style={{ ...preview, flexDirection: "column", gap: "12px" }}>
-              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Section A</span>
+              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>
+                Section A
+              </span>
               <Divider />
-              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Section B</span>
+              <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>
+                Section B
+              </span>
             </div>
             <span style={footer}>View Divider →</span>
           </Link>
@@ -410,7 +491,9 @@ export default function ComponentsPage() {
             </p>
             <div style={preview}>
               <Drawer>
-                <DrawerTrigger className="maxa-button maxa-button--outline maxa-button--md">Open drawer</DrawerTrigger>
+                <DrawerTrigger className="maxa-button maxa-button--outline maxa-button--md">
+                  Open drawer
+                </DrawerTrigger>
                 <DrawerContent>
                   <DrawerHeader>
                     <DrawerTitle>Package settings</DrawerTitle>
@@ -460,7 +543,11 @@ export default function ComponentsPage() {
                 size="sm"
                 title="Scheduled Post Not Found"
                 description="Try another search."
-                action={<Button variant="secondary" size="sm">Clear search</Button>}
+                action={
+                  <Button variant="secondary" size="sm">
+                    Clear search
+                  </Button>
+                }
               />
             </div>
             <span style={footer}>View Empty →</span>
@@ -555,10 +642,22 @@ export default function ComponentsPage() {
             <div style={preview}>
               <Pagination>
                 <PaginationList>
-                  <PaginationItem><span className="maxa-pagination__link maxa-pagination__link--text"><span aria-hidden="true">‹</span>Prev</span></PaginationItem>
-                  <PaginationItem><span className="maxa-pagination__link">1</span></PaginationItem>
-                  <PaginationItem><span className="maxa-pagination__link maxa-pagination__link--active">2</span></PaginationItem>
-                  <PaginationItem><span className="maxa-pagination__link maxa-pagination__link--text">Next<span aria-hidden="true">›</span></span></PaginationItem>
+                  <PaginationItem>
+                    <span className="maxa-pagination__link maxa-pagination__link--text">
+                      <span aria-hidden="true">‹</span>Prev
+                    </span>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <span className="maxa-pagination__link">1</span>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <span className="maxa-pagination__link maxa-pagination__link--active">2</span>
+                  </PaginationItem>
+                  <PaginationItem>
+                    <span className="maxa-pagination__link maxa-pagination__link--text">
+                      Next<span aria-hidden="true">›</span>
+                    </span>
+                  </PaginationItem>
                 </PaginationList>
               </Pagination>
             </div>
@@ -580,7 +679,11 @@ export default function ComponentsPage() {
                 <PopoverContent>
                   <div style={{ display: "grid", gap: "8px" }}>
                     <strong style={{ fontSize: "var(--text-sm)" }}>Filters</strong>
-                    <span style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}>Segment options</span>
+                    <span
+                      style={{ fontSize: "var(--text-sm)", color: "var(--color-text-secondary)" }}
+                    >
+                      Segment options
+                    </span>
                   </div>
                 </PopoverContent>
               </Popover>
@@ -608,7 +711,9 @@ export default function ComponentsPage() {
             <p style={description}>
               Radio input with top label, side label, helper text, and one md size.
             </p>
-            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+            <div
+              style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}
+            >
               <Radio name="plan-demo" value="free" sideLabel="Free" />
               <Radio name="plan-demo" value="pro" sideLabel="Pro" defaultChecked />
               <Radio name="plan-demo" value="enterprise" sideLabel="Enterprise" />
@@ -626,7 +731,9 @@ export default function ComponentsPage() {
             <div style={preview}>
               <div style={{ width: "100%", maxWidth: "280px" }}>
                 <Select label="Plan" defaultValue="">
-                  <option value="" disabled>Choose a plan</option>
+                  <option value="" disabled>
+                    Choose a plan
+                  </option>
                   <option>Free</option>
                   <option>Pro</option>
                 </Select>
@@ -766,7 +873,9 @@ export default function ComponentsPage() {
             <p style={description}>
               Binary on/off control with top label, side label, helper text, and one md size.
             </p>
-            <div style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+            <div
+              style={{ ...preview, flexDirection: "column", alignItems: "flex-start", gap: "12px" }}
+            >
               <Toggle sideLabel="Email updates" defaultChecked />
               <Toggle sideLabel="Auto-save" />
               <Toggle sideLabel="Locked setting" disabled />
@@ -797,10 +906,16 @@ export default function ComponentsPage() {
               Removable data label for user-defined categories. 18 colors, three emphasis levels.
             </p>
             <div style={{ ...preview, gap: "6px", flexWrap: "wrap" }}>
-              <Tag appearance="blue" removable>Audience</Tag>
-              <Tag appearance="violet" emphasis="high" removable>VIP</Tag>
+              <Tag appearance="blue" removable>
+                Audience
+              </Tag>
+              <Tag appearance="violet" emphasis="high" removable>
+                VIP
+              </Tag>
               <Tag appearance="teal">Prague</Tag>
-              <Tag appearance="rose" removable>Luxury</Tag>
+              <Tag appearance="rose" removable>
+                Luxury
+              </Tag>
             </div>
             <span style={footer}>View Tag →</span>
           </Link>
@@ -821,7 +936,6 @@ export default function ComponentsPage() {
             </div>
             <span style={footer}>View Tooltip →</span>
           </Link>
-
         </div>
       </DocsPageSection>
     </DocsPageLayout>
