@@ -93,7 +93,8 @@ The state direction is intentionally theme-aware. Light mode becomes slightly da
 
 - Mark currently unconsumed `action-success-subtle`, `action-success-subtle-hover`, and `action-success-subtle-active` as deprecated.
 - Apply the same treatment to the destructive subtle family only if the final Figma usage audit also confirms no consumers.
-- Deprecation keeps the current variable identity and name, adds a `[Deprecated]` description, and removes the token from all new component bindings.
+- After colored Button labels move to `text/text-on-color`, deprecate the now-redundant `text/text-on-success` and `text/text-on-destructive`; keep `text/text-on-warning` because warning surfaces intentionally use dark content.
+- Deprecation keeps the current variable identity and name, adds a `[Deprecated]` description, hides it from future publishing/picker selection, and removes the token from all new component bindings. Existing bindings remain intact.
 - Do not delete these variables in the same release. Remove them only in a later breaking cleanup after checking published design usage.
 
 ### Consolidate after reference audit
