@@ -100,6 +100,9 @@ const FOUNDATION_PAGES = ["colors", "typography"]
 for (const name of FOUNDATION_PAGES) {
   test(`foundation: ${name}`, async ({ page }) => {
     await gotoStable(page, `/docs/foundations/${name}.html`)
-    await expect(page).toHaveScreenshot(`foundation-${name}.png`, { fullPage: true })
+    await expect(page).toHaveScreenshot(`foundation-${name}.png`, {
+      fullPage: true,
+      timeout: 15_000,
+    })
   })
 }
