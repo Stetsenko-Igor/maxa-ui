@@ -1,14 +1,15 @@
 ---
 "@maxa/tokens": patch
+"@maxa/ui": patch
 ---
 
 Replace hardcoded hex colors in Checkbox, Radio, and Toggle component tokens with semantic
 token references. These three components shared an identical hardcoded hex family
 (`#a1a1a4`, `#c9c9c9`, `#0b73cb`, `#0576da`, `#04549b`, `#e4e4e4`) in both `packages/tokens/src/component-*.css`
 and the mirrored Figma JSON, bypassing the semantic layer entirely (a blind spot in
-`audit-tokens.mjs`, whose hex check skips token *definition* lines).
+`audit-tokens.mjs`, whose hex check skips token _definition_ lines).
 
-Blue interactive states (focus ring, checked/on) now reuse existing `--color-border-focus`,
+Blue interactive states now reuse `--color-focus-ring` for focus and existing control roles for checked/on,
 `--color-action-primary`, and `--color-action-primary-hover` — these already adapt correctly
 per theme. Neutral idle/checked states use four new tokens added to the semantic layer
 (`--color-control-idle`, `--color-control-idle-hover`, `--color-control-checked`,
@@ -52,3 +53,18 @@ The last four raw semantic colors moved behind three new alpha primitives
 `fg-on-inverse-muted` now alias them in both themes with byte-identical resolved colors.
 The bundle build now rejects any raw COLOR literal anywhere in Color modes, and stale
 compatibility wording was removed from eight border/feedback descriptions.
+
+Removed the redundant `Button/focus/border` component token. Button focus now preserves each
+variant's normal border: Figma uses the shared Focus ring effect, while the React Button outline
+references `--color-focus-ring` directly. The Button migration plugin follows the same contract.
+
+Separated action intent from feedback status: green interactive actions now use
+`action-positive` and `Button/positive/*`, while validation and feedback retain `success`.
+Primary, Positive, and Destructive expose explicit `text` and `fg` component roles that remain
+white in both themes. Social Button gap and horizontal padding now reference shared Spacing
+tokens directly; its redundant component spacing proxies were removed.
+
+Aligned Primary, Positive, Destructive, and Link states with the republished Foundation library.
+Their Light/Dark action ramps now use only standard palette steps, and Link text aliases the shared
+primary action states. Removed the unused button-only `Blue/550`, `Green/650`, `Green/750`, and
+`Red/550` primitives from CSS and the Figma import source.

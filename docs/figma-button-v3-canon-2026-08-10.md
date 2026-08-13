@@ -34,15 +34,15 @@ Every size row contains regular variants first, then Icon Only variants. Both gr
 
 Loading is behaviorally disabled but remains fully visible. Every Loading variant uses root opacity `1` with no disabled-opacity variable binding. Regular buttons preserve the label and place the animated Spinner at the leading edge; Icon Only buttons center the Spinner. Loading has no prototype reactions and must not respond to hover, press, focus, or click.
 
-| Type      | Appearance | Stroke behavior                            |
-| --------- | ---------- | ------------------------------------------ |
-| Primary   | White      | Override with `Button/content/fg-on-color` |
-| Positive  | White      | Override with `Button/content/fg-on-color` |
-| Negative  | White      | Override with `Button/content/fg-on-color` |
-| Secondary | Greyscale  | Inherit Spinner component                  |
-| Outline   | Greyscale  | Inherit Spinner component                  |
-| Ghost     | Greyscale  | Inherit Spinner component                  |
-| Link      | Primary    | Inherit Spinner component                  |
+| Type      | Appearance | Stroke behavior                       |
+| --------- | ---------- | ------------------------------------- |
+| Primary   | White      | Override with `Button/primary/fg`     |
+| Positive  | White      | Override with `Button/positive/fg`    |
+| Negative  | White      | Override with `Button/destructive/fg` |
+| Secondary | Greyscale  | Inherit Spinner component             |
+| Outline   | Greyscale  | Inherit Spinner component             |
+| Ghost     | Greyscale  | Inherit Spinner component             |
+| Link      | Primary    | Inherit Spinner component             |
 
 Verified population: 56 Loading spinners. The 24 spinners on colored surfaces have intentional Button foreground overrides; the remaining 32 have no nested stroke overrides.
 
@@ -61,8 +61,8 @@ Link uses zero root padding, zero Text padding, and Hug sizing. Its icon-to-text
 
 ## Component-token cleanup decision
 
-The v3 migration is complete. Each size has one `Button/size/*/padding-x` token. Layout gaps and Text padding bind directly to global Spacing, while Icon Only width/height reuse the regular Button height.
+The v3 migration is complete. Each size has `Button/size/*/padding-x`, `/gap`, and `/text-padding-x` roles. The gap and Text-padding roles alias global Spacing, while Icon Only width/height reuse the regular Button height.
 
-Published v2 identities remain hidden under `Button/legacy/*` for compatibility. Social Button owns its original padding values and no longer depends on Button spacing. New Button v3 bindings contain no legacy references.
+Published v2 identities remain hidden under `Button/legacy/*` for compatibility. Social Button binds gap and horizontal padding directly to shared Spacing variables and owns no component-specific spacing proxies. New Button v3 bindings contain no legacy references.
 
-The remaining active size family is `height`, `padding-x`, `radius`, `text`, `line-height`, `weight`, and `icon-size`.
+The active size family is `height`, `padding-x`, `gap`, `text-padding-x`, `radius`, `text`, `line-height`, `weight`, and `icon-size`.

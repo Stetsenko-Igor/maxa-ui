@@ -84,7 +84,6 @@ export type BorderColorToken =
   | "primary"
   | "secondary"
   | "tertiary"
-  | "focus"
   | "brand"
   | "error-strong"
   | "error-subtle"

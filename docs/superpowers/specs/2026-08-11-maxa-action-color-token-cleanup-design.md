@@ -6,15 +6,15 @@
 
 ## Outcome
 
-Primary, Positive, and Negative buttons use white labels and icons in Light and Dark themes. Their interaction states move in small steps: darker in Light and lighter in Dark. Every colored state remains at or above WCAG AA 4.5:1 contrast against white.
+Primary, Positive, and Negative buttons use white labels and icons in Light and Dark themes. Their interaction states move through the published standard palette: darker in Light and lighter in Dark.
 
 ## Token model
 
-| Layer           | Responsibility                      | Example                                                   |
-| --------------- | ----------------------------------- | --------------------------------------------------------- |
-| Primitives      | Raw color and spacing values        | `Colors/Blue/550`                                         |
-| Color modes     | Reusable semantic intent            | `action/action-primary-hover`, `text/text-on-color`       |
-| Component-based | Thin Button implementation contract | `Button/content/text-on-color`, `Button/primary/bg-hover` |
+| Layer           | Responsibility                      | Example                                             |
+| --------------- | ----------------------------------- | --------------------------------------------------- |
+| Primitives      | Raw color and spacing values        | `Colors/Blue/600`                                   |
+| Color modes     | Reusable semantic intent            | `action/action-primary-hover`, `text/text-on-color` |
+| Component-based | Thin Button implementation contract | `Button/primary/text`, `Button/primary/bg-hover`    |
 
 The collection remains named `Component-based`. Product designers normally use the Button component. Semantic `action/*` is for custom interactive surfaces; `feedback/*` remains independent for status and feedback surfaces.
 
@@ -24,23 +24,23 @@ Link labels and icons use dedicated `text-link*` and `fg-link*` roles. Filled ac
 
 | Intent   | Light default → hover → active | Dark default → hover → active |
 | -------- | ------------------------------ | ----------------------------- |
-| Primary  | Blue 500 → 550 → 600           | Blue 600 → 550 → 500          |
-| Positive | Green 650 → 700 → 750          | Green 750 → 700 → 650         |
-| Negative | Red 500 → 550 → 600            | Red 600 → 550 → 500           |
+| Primary  | Blue 500 → 600 → 700           | Blue 600 → 500 → 400          |
+| Positive | Green 500 → 600 → 700          | Green 600 → 500 → 400         |
+| Negative | Red 500 → 600 → 700            | Red 600 → 500 → 400           |
 
-New primitives: Blue 550 `#056DC9`, Green 650 `#25843E`, Green 750 `#206D35`, Red 550 `#C6140F`.
+Button and Link states use only the standard palette steps. The button-only Blue 550, Green 650, Green 750, and Red 550 primitives are removed.
 
 ## Active Button contract
 
-- Shared colored content: `Button/content/text-on-color`, `Button/content/fg-on-color`.
-- Shared focus color: `Button/focus/border`.
+- Explicit colored content: `Button/{primary|positive|destructive}/text` and `/fg`; each aliases the shared on-color semantic role.
+- Focus keeps the variant border and uses the shared Focus ring effect; no Button-specific focus color token.
 - One symmetric `Button/size/{size}/padding-x` token per size: 6 / 8 / 14 / 20px.
-- Layout gap and Text padding bind directly to global Spacing.
+- Layout gap and Text padding bind through `Button/size/{size}/gap` and `/text-padding-x`, which alias global Spacing.
 - Icon-only width and height reuse `Button/size/{size}/height`.
 - Link has zero outer and Text padding and hugs visible content.
 - Loading remains fully opaque and non-interactive.
 
-Published v2 variable IDs are preserved in Figma under hidden `Button/legacy/*` names. New component bindings contain no legacy references. Social Button owns its original 10 / 16 / 24px horizontal padding instead of inheriting Button spacing.
+Published v2 variable IDs are preserved in Figma under hidden `Button/legacy/*` names. New component bindings contain no legacy references. Social Button binds its layout directly to shared Spacing variables and owns no component-specific spacing proxies.
 
 ## State matrix
 
@@ -51,4 +51,4 @@ Button v3 keeps `Type × Size × State × Icon Only`, with Boolean left/right ic
 - Figma Button v3: 336 variants, no legacy bindings, shared colored content/focus bindings verified.
 - Link variants: zero padding and Hug sizing verified.
 - Loading variants: 100% opacity; Disabled variants: 50% opacity.
-- Repository: token aliases, contrast, component tests, build, and Storybook/docs output are verified before delivery.
+- Repository: token aliases, component tests, build, and Storybook/docs output are verified before delivery. Contrast is audited separately because the published standard ramps intentionally replace the previous AA-calibrated intermediate steps.

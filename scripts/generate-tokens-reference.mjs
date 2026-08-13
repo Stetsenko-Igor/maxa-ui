@@ -214,7 +214,7 @@ function generate() {
  * arrays, so its coverage and values cannot drift from the CSS source.
  *
  * Shape: { neutralScale: Item[], groups: { text, foreground, border,
- * background, action, control, feedback }: Item[] }, where Item =
+ * focusRings, background, action, control, feedback }: Item[] }, where Item =
  * { name, lightValue, darkValue|null, lightHex, darkHex } (hex resolved
  * through the full var() chain; non-hex leaves like rgba()/transparent are
  * passed through as-is).
@@ -271,6 +271,7 @@ function generateColorsDocData() {
         text: group(/^--color-text-(?!gray|slate|zinc|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)/),
         foreground: group(/^--color-fg-/),
         border: group(/^--color-border-/),
+        focusRings: group(/^--color-focus-ring(?:-|$)/),
         background: group(/^--color-bg-(?!gray|slate|zinc|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)/),
         action: group(/^--color-action-/),
         control: group(/^--color-control-/),

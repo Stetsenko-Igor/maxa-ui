@@ -2,17 +2,14 @@
 /* Reference only semantic tokens (Layer 2). Never raw primitives. */
 
 :root {
-  /* ── Shared content and focus ─────────────────────────────────── */
-  --button-content-text-on-color: var(--color-text-on-color);
-  --button-content-fg-on-color: var(--color-fg-on-color);
-  --button-focus-border: var(--color-border-focus);
-
   /* ── Variants ─────────────────────────────────────────────────── */
 
   /* primary */
   --button-primary-bg: var(--color-action-primary);
   --button-primary-bg-hover: var(--color-action-primary-hover);
   --button-primary-bg-active: var(--color-action-primary-active);
+  --button-primary-text: var(--color-text-on-color);
+  --button-primary-fg: var(--color-fg-on-color);
   --button-primary-border: var(--color-action-primary);
   --button-primary-border-hover: var(--color-action-primary-hover);
 
@@ -59,17 +56,21 @@
   --button-link-border: transparent;
   --button-link-border-hover: transparent;
 
-  /* success */
-  --button-success-bg: var(--color-action-success);
-  --button-success-bg-hover: var(--color-action-success-hover);
-  --button-success-bg-active: var(--color-action-success-active);
-  --button-success-border: var(--color-action-success);
-  --button-success-border-hover: var(--color-action-success-hover);
+  /* positive */
+  --button-positive-bg: var(--color-action-positive);
+  --button-positive-bg-hover: var(--color-action-positive-hover);
+  --button-positive-bg-active: var(--color-action-positive-active);
+  --button-positive-text: var(--color-text-on-color);
+  --button-positive-fg: var(--color-fg-on-color);
+  --button-positive-border: var(--color-action-positive);
+  --button-positive-border-hover: var(--color-action-positive-hover);
 
   /* destructive */
   --button-destructive-bg: var(--color-action-destructive);
   --button-destructive-bg-hover: var(--color-action-destructive-hover);
   --button-destructive-bg-active: var(--color-action-destructive-active);
+  --button-destructive-text: var(--color-text-on-color);
+  --button-destructive-fg: var(--color-fg-on-color);
   --button-destructive-border: var(--color-action-destructive);
   --button-destructive-border-hover: var(--color-action-destructive-hover);
 
@@ -89,6 +90,8 @@
   /* xs */
   --button-size-xs-height: 24px;
   --button-size-xs-padding-x: 6px;
+  --button-size-xs-gap: var(--spacing-xxs);
+  --button-size-xs-text-padding-x: var(--spacing-xxs);
   --button-size-xs-radius: var(--radius-xs);
   --button-size-xs-text: var(--text-sm);
   --button-size-xs-line-height: 14px;
@@ -98,6 +101,8 @@
   /* sm */
   --button-size-sm-height: 28px;
   --button-size-sm-padding-x: 8px;
+  --button-size-sm-gap: var(--spacing-xs);
+  --button-size-sm-text-padding-x: var(--spacing-xxs);
   --button-size-sm-radius: var(--radius-xs);
   --button-size-sm-text: var(--text-sm);
   --button-size-sm-line-height: 14px;
@@ -107,6 +112,8 @@
   /* md */
   --button-size-md-height: 36px;
   --button-size-md-padding-x: 14px;
+  --button-size-md-gap: var(--spacing-sm);
+  --button-size-md-text-padding-x: var(--spacing-xxs);
   --button-size-md-radius: var(--radius-xs);
   --button-size-md-text: var(--text-sm);
   --button-size-md-line-height: 14px;
@@ -116,6 +123,8 @@
   /* lg */
   --button-size-lg-height: 48px;
   --button-size-lg-padding-x: 20px;
+  --button-size-lg-gap: var(--spacing-xs);
+  --button-size-lg-text-padding-x: var(--spacing-xs);
   --button-size-lg-radius: var(--radius-sm);
   --button-size-lg-text: var(--text-md);
   --button-size-lg-line-height: 20px;

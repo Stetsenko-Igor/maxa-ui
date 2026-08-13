@@ -138,7 +138,7 @@ export default function ShadowsPage() {
 
       <DocsPageSection id="usage" title="Usage">
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-success)" }}>
+          <div style={{ padding: "16px", background: "var(--color-bg-muted)", borderRadius: "var(--radius-md)", borderLeft: "3px solid var(--color-action-positive)" }}>
             <p style={{ margin: 0, fontSize: "var(--text-sm)", color: "var(--color-text-primary)", fontWeight: "var(--font-weight-semibold)" }}>Do</p>
             <p style={{ margin: "4px 0 0", fontSize: "var(--text-sm)", color: "var(--color-text-secondary)", fontFamily: "var(--font-mono)" }}>
               {`--dropdown-shadow: var(--shadow-sm);`}<br />

@@ -7,12 +7,12 @@
 
 - Added Blue 550, Green 650/750, and Red 550 primitives.
 - Added shared `text/text-on-color`; kept `foreground/fg-on-color` white in both themes.
-- Recalibrated Primary, Success, and Destructive action states for small theme-aware steps.
+- Recalibrated Primary, Positive, and Destructive action states for small theme-aware steps.
 - Split Link text/icon roles from filled action backgrounds to preserve Dark-theme contrast.
 - Removed unused success/destructive subtle action roles from the active source contract.
 - Reduced Button component tokens to real variant differences plus shared content and focus roles.
 - Consolidated size padding to one symmetric token per size.
-- Bound Button internal gaps and Text padding directly to Spacing.
+- Added size-specific Button gap and Text-padding roles that alias Spacing, then bound the v3 masters to them.
 - Reused Button height for icon-only dimensions.
 - Preserved published Figma IDs as hidden `Button/legacy/*` compatibility variables.
 - Rebound and validated all 336 Button v3 variants.

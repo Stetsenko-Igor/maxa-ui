@@ -2,8 +2,8 @@
 
 .maxa-button {
   --button-padding-x-current: var(--button-size-md-padding-x);
-  --button-gap-current: var(--spacing-sm);
-  --button-label-padding-x-current: var(--spacing-xxs);
+  --button-gap-current: var(--button-size-md-gap);
+  --button-label-padding-x-current: var(--button-size-md-text-padding-x);
 
   box-sizing: border-box;
   display: inline-flex;
@@ -29,8 +29,7 @@
 }
 
 .maxa-button:focus-visible {
-  border-color: var(--button-focus-border);
-  outline: 2px solid var(--button-focus-border);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -48,8 +47,8 @@
 
 .maxa-button--xs {
   --button-padding-x-current: var(--button-size-xs-padding-x);
-  --button-gap-current: var(--spacing-xxs);
-  --button-label-padding-x-current: var(--spacing-xxs);
+  --button-gap-current: var(--button-size-xs-gap);
+  --button-label-padding-x-current: var(--button-size-xs-text-padding-x);
 
   gap: var(--button-gap-current);
   height: var(--button-size-xs-height);
@@ -62,8 +61,8 @@
 
 .maxa-button--sm {
   --button-padding-x-current: var(--button-size-sm-padding-x);
-  --button-gap-current: var(--spacing-xs);
-  --button-label-padding-x-current: var(--spacing-xxs);
+  --button-gap-current: var(--button-size-sm-gap);
+  --button-label-padding-x-current: var(--button-size-sm-text-padding-x);
 
   gap: var(--button-gap-current);
   height: var(--button-size-sm-height);
@@ -76,8 +75,8 @@
 
 .maxa-button--md {
   --button-padding-x-current: var(--button-size-md-padding-x);
-  --button-gap-current: var(--spacing-sm);
-  --button-label-padding-x-current: var(--spacing-xxs);
+  --button-gap-current: var(--button-size-md-gap);
+  --button-label-padding-x-current: var(--button-size-md-text-padding-x);
 
   gap: var(--button-gap-current);
   height: var(--button-size-md-height);
@@ -90,8 +89,8 @@
 
 .maxa-button--lg {
   --button-padding-x-current: var(--button-size-lg-padding-x);
-  --button-gap-current: var(--spacing-xs);
-  --button-label-padding-x-current: var(--spacing-xs);
+  --button-gap-current: var(--button-size-lg-gap);
+  --button-label-padding-x-current: var(--button-size-lg-text-padding-x);
 
   gap: var(--button-gap-current);
   height: var(--button-size-lg-height);
@@ -137,9 +136,9 @@
 /* ── Variants ────────────────────────────────────────────────── */
 
 .maxa-button--primary {
-  --button-fg-current: var(--button-content-fg-on-color);
+  --button-fg-current: var(--button-primary-fg);
   background-color: var(--button-primary-bg);
-  color: var(--button-content-text-on-color);
+  color: var(--button-primary-text);
   border-color: var(--button-primary-border);
 }
 .maxa-button--primary:hover {
@@ -222,24 +221,24 @@
   --button-fg-current: var(--button-link-fg-active);
   color: var(--button-link-text-active);
 }
-.maxa-button--success {
-  --button-fg-current: var(--button-content-fg-on-color);
-  background-color: var(--button-success-bg);
-  color: var(--button-content-text-on-color);
-  border-color: var(--button-success-border);
+.maxa-button--positive {
+  --button-fg-current: var(--button-positive-fg);
+  background-color: var(--button-positive-bg);
+  color: var(--button-positive-text);
+  border-color: var(--button-positive-border);
 }
-.maxa-button--success:hover {
-  background-color: var(--button-success-bg-hover);
-  border-color: var(--button-success-border-hover);
+.maxa-button--positive:hover {
+  background-color: var(--button-positive-bg-hover);
+  border-color: var(--button-positive-border-hover);
 }
-.maxa-button--success:active {
-  background-color: var(--button-success-bg-active);
+.maxa-button--positive:active {
+  background-color: var(--button-positive-bg-active);
 }
 
 .maxa-button--destructive {
-  --button-fg-current: var(--button-content-fg-on-color);
+  --button-fg-current: var(--button-destructive-fg);
   background-color: var(--button-destructive-bg);
-  color: var(--button-content-text-on-color);
+  color: var(--button-destructive-text);
   border-color: var(--button-destructive-border);
 }
 .maxa-button--destructive:hover {

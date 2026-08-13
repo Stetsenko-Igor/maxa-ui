@@ -6,7 +6,7 @@ Three layers. Never skip a layer downward.
 
 ```
 Primitives  →  Semantic tokens  →  Component tokens  →  Code
-#FFFFFF          --color-text-on-color   --button-content-text-on-color   color: var(--button-content-text-on-color)
+#FFFFFF          --color-text-on-color   --button-primary-text   color: var(--button-primary-text)
 ```
 
 **Rule:** UI code must only reference semantic or component tokens. Never reference primitives directly in components.
@@ -24,7 +24,7 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 | `--color-text-inverse`             | White                | Neutral/900          | Text on dark/colored surfaces                              |
 | `--color-text-on-brand`            | Neutral/950          | Neutral/950          | Text on `bg-brand-strong` (teal is bright → use dark text) |
 | `--color-text-on-color`            | White                | White                | Labels on strong blue, green, and red action surfaces      |
-| `--color-text-link` + hover/active | Blue/500 → 550 → 600 | Blue/400 → 300 → 200 | Accessible interactive link labels on regular surfaces     |
+| `--color-text-link` + hover/active | action/primary → hover → active | action/primary → hover → active | Interactive link labels synchronized with primary action states |
 | `--color-text-brand`               | Brand/600            | Brand/400            | Brand-colored labels, links                                |
 | `--color-text-info`                | Blue/600             | Blue/400             | Informational copy                                         |
 | `--color-text-success`             | Green/600            | Green/400            | Success messages                                           |
@@ -46,7 +46,7 @@ Foreground tokens are for icons, SVG strokes/fills, decorative marks, and other 
 | `--color-fg-inverse`             | White                | Neutral/900          | Icons on dark/inverted surfaces                      |
 | `--color-fg-on-brand`            | Neutral/950          | Neutral/950          | Icons on `bg-brand-strong`                           |
 | `--color-fg-on-color`            | White                | White                | Icons on strong blue, green, and red action surfaces |
-| `--color-fg-link` + hover/active | Blue/500 → 550 → 600 | Blue/400 → 300 → 200 | Icons paired with link labels                        |
+| `--color-fg-link` + hover/active | Blue/500 → 600 → 700 | Blue/600 → 500 → 400 | Icons paired with link labels                        |
 | `--color-fg-brand`               | Brand/600            | Brand/400            | Brand-colored icons                                  |
 | `--color-fg-info`                | Blue/600             | Blue/400             | Informational icons                                  |
 | `--color-fg-success`             | Green/700            | Green/400            | Success icons                                        |
@@ -135,7 +135,6 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 | `--color-border-primary`                    | Neutral/300             | Neutral/700             | Default input, card borders         |
 | `--color-border-secondary`                  | Neutral/200             | Neutral/800             | Lighter borders, subtle separators  |
 | `--color-border-tertiary`                   | Neutral/100             | Neutral/900             | Faintest dividers                   |
-| `--color-border-focus`                      | Blue/500                | Blue/400                | Focus rings on interactive elements |
 | `--color-border-brand`                      | Brand/500               | Brand/400               | Brand-accented borders              |
 | `--color-border-neutral-strong`             | Neutral/700             | Neutral/300             | High-emphasis neutral outline       |
 | `--color-border-neutral-muted`              | Neutral/400             | Neutral/600             | Muted hover and active outline      |
@@ -148,6 +147,15 @@ These are colored fills for tags, alerts, badges, and intent feedback. They are 
 Every status border follows the `-strong` / `-subtle` pair; there is no bare
 `--color-border-error` (it is `--color-border-error-strong`).
 
+### Focus rings
+
+Focus colors are effects, not borders. They point directly to primitives and may be used for stroke- or effect-based rings.
+
+| Token                       | Light value | Dark value | When to use                    |
+| --------------------------- | ----------- | ---------- | ------------------------------ |
+| `--color-focus-ring`        | Blue/500    | Blue/400   | Default keyboard focus ring    |
+| `--color-focus-ring-error`  | Red/500     | Red/400    | Invalid-control keyboard focus |
+
 ### Action (interactive backgrounds)
 
 Action tokens drive button and interactive element surfaces. Always use action tokens for interactive backgrounds — not bg tokens.
@@ -157,11 +165,11 @@ Action tokens drive button and interactive element surfaces. Always use action t
 | `action/primary`     | `--color-action-primary` + hover/active variants     | Primary CTA, blue buttons                 |
 | `action/neutral`     | `--color-action-neutral` + hover/active variants     | Secondary / neutral buttons               |
 | `action/brand`       | `--color-action-brand` + hover/active variants       | Brand-teal interactive elements           |
-| `action/success`     | `--color-action-success` + hover/active variants     | Confirm / approve actions (green)         |
+| `action/positive`    | `--color-action-positive` + hover/active variants    | Confirm / approve actions (green)         |
 | `action/destructive` | `--color-action-destructive` + hover/active variants | Destructive actions: delete, remove (red) |
 | `action/warning`     | `--color-action-warning` + hover/active variants     | Warning actions                           |
 
-Every group has default, `-hover`, and `-active`. Primary, neutral, brand, and warning also expose subtle states. Success and destructive intentionally keep only the solid action ladder; low-emphasis status surfaces belong to `bg/success-*`, `bg/error-*`, or `feedback/*`.
+Every group has default, `-hover`, and `-active`. Primary, neutral, brand, and warning also expose subtle states. Positive and destructive intentionally keep only the solid action ladder; low-emphasis status surfaces belong to `bg/success-*`, `bg/error-*`, or `feedback/*`.
 
 ### Status vocabulary (one word per concept)
 
@@ -171,8 +179,8 @@ every passive layer (`text`, `fg`, `border`, `bg`). The words `positive`, `negat
 
 The interactive **action** layer is the one exception: a destructive action button reads as
 `--color-action-destructive` (an action, not a status) and a confirm button as
-`--color-action-success`. Feedback components (Alert, Toast) stay on the status word `error`;
-only genuinely destructive _actions_ (Button) use `destructive`.
+`--color-action-positive`. Feedback components (Alert, Toast) stay on `success/error`;
+only interactive action intent uses `positive/destructive`.
 
 > **Warning hue is intentional:** status `warning` is orange (light) → yellow (dark), while the
 > interactive `--color-action-warning` is yellow in both modes. Interactive warning = yellow;

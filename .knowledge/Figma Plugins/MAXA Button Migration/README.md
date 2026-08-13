@@ -17,18 +17,18 @@ Current status:
 - `Apply mapping` is implemented after analysis
 - bindings target the `Component-based` collection, for example `Button/primary/bg`, `Button/size/md/height`, and `Button/font-family`
 - `XS`, `Pressed`, `Selected`, `Focus`, `Loading`, `Positive`, and `Negative` values are normalized to the current token model
-- `Positive` maps to `Button/success/*`; `Negative` maps to `Button/destructive/*`
-- Primary, Success, and Destructive labels/icons use the shared `Button/content/text-on-color` and `Button/content/fg-on-color` tokens; neutral variants keep their local content roles
+- `Positive` maps to `Button/positive/*`; `Negative` maps to `Button/destructive/*`
+- Primary, Positive, and Destructive labels/icons use their explicit `Button/{variant}/text` and `Button/{variant}/fg` roles; each role aliases the shared on-color semantic token
 - Secondary icons resolve through `Button/secondary/fg` to `foreground/fg-primary`
 - Link keeps state-aware icon tokens: `Button/link/fg`, `Button/link/fg-hover`, and `Button/link/fg-active`
-- Focus keeps the base background and binds the shared `Button/focus/border`; Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
+- Focus keeps each variant's base background and border; the Button component owns the shared Focus ring effect separately. Pressed and Selected bind active foreground/background tokens, including `Button/outline/border-active` for Outline
 - Loading keeps the base variant styling at 100% opacity; only Disabled binds `Button/disabled/opacity`
 - both icons in two-icon variants receive color and size bindings
 - selected Button instances are supported, so already-swapped icons can be rebound and keep their foreground token while Dropdown variants change
 - instances with `Icon Left=Yes` are repaired in both `Dropdown=False` and `Dropdown=True` branches, removing legacy branch-specific paint styles before the original variant properties are restored
 - icon swaps, labels, and the original Dropdown/right-icon configuration are preserved during the two-branch repair
 - normal buttons use one symmetric `padding-x` token regardless of icon presence; the optional label wrapper receives optical inline padding when it exists
-- resolved gaps bind directly to the shared spacing scale: `xs=2`, `sm=4`, `md=6`, `lg=4`; label optical padding is `2/2/2/4`
+- regular Button gaps bind to `Button/size/{size}/gap` and label wrappers bind to `Button/size/{size}/text-padding-x`; these component roles preserve `2/4/6/4` gaps and `2/2/2/4` optical padding while remaining centrally adjustable
 - Link variants use Hug contents on both axes, bind all four paddings to `spacing-none`, and do not use container height, radius, horizontal-padding, or icon-only size tokens
 - Link content uses direct spacing aliases for its `4/6/8/8` gaps plus the shared size-specific typography and icon-size tokens
 - icon color migration covers existing solid fills and strokes, including Loading Spinner rings

@@ -27,7 +27,7 @@
     },
     "border-focus": {
       "$description": "File Input: border (focus state).",
-      "$value": "var(--color-border-focus)",
+      "$value": "{Color modes/Effects/Focus rings/focus-ring}",
       "$type": "color"
     },
     "border-error": {
@@ -47,7 +47,7 @@
     },
     "focus-ring": {
       "$description": "File Input: focus ring.",
-      "$value": "var(--color-action-primary)",
+      "$value": "{Color modes/Effects/Focus rings/focus-ring}",
       "$type": "color"
     },
     "focus-ring-width": {

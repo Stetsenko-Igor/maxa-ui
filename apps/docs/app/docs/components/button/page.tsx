@@ -25,7 +25,7 @@ const TOC = [
 const BUTTON_PROPS = [
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'destructive' | 'warning'",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive' | 'warning'",
     default: "'primary'",
     description: "Visual hierarchy.",
   },
@@ -95,7 +95,7 @@ const ICON_BUTTON_PROPS = [
   },
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'success' | 'destructive' | 'warning'",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive' | 'warning'",
     default: "'secondary'",
     description: "Visual style.",
   },
@@ -193,11 +193,11 @@ export default function ButtonPage() {
 
         <DocsExample title="Semantic variants">
           <ComponentPreview
-            code={`<Button variant="success">Confirm</Button>
+            code={`<Button variant="positive">Confirm</Button>
 <Button variant="warning">Review</Button>
 <Button variant="destructive">Delete</Button>`}
           >
-            <Button variant="success">Confirm</Button>
+            <Button variant="positive">Confirm</Button>
             <Button variant="warning">Review</Button>
             <Button variant="destructive">Delete</Button>
           </ComponentPreview>
@@ -240,19 +240,135 @@ export default function ButtonPage() {
       <DocsSection
         id="sizes"
         title="Sizes"
-        description="Four sizes from xs (24 px) to lg (48 px). Mix sizes intentionally — match the surrounding content density."
+        description="Four sizes from xs (24 px) to lg (48 px). The examples include both icon slots so the gap and Text-padding contract is visible, not only listed as numbers."
       >
-        <ComponentPreview
-          code={`<Button size="xs">Extra small</Button>
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>`}
-        >
-          <Button size="xs">Extra small</Button>
-          <Button size="sm">Small</Button>
-          <Button size="md">Medium</Button>
-          <Button size="lg">Large</Button>
-        </ComponentPreview>
+        <DocsExample title="Two-icon spacing">
+          <ComponentPreview
+            code={`<Button size="xs" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>Extra small</Button>
+<Button size="sm" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>Small</Button>
+<Button size="md" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>Medium</Button>
+<Button size="lg" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>Large</Button>`}
+          >
+            <Button size="xs" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>
+              Extra small
+            </Button>
+            <Button size="sm" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>
+              Small
+            </Button>
+            <Button size="md" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>
+              Medium
+            </Button>
+            <Button size="lg" iconLeading={<PlusIcon />} iconTrailing={<ArrowRightIcon />}>
+              Large
+            </Button>
+          </ComponentPreview>
+        </DocsExample>
+
+        <DocsExample title="Component token contract">
+          <div style={{ overflowX: "auto" }}>
+            <table
+              style={{
+                width: "100%",
+                minWidth: "720px",
+                borderCollapse: "collapse",
+                fontSize: "var(--text-sm)",
+                color: "var(--color-text-secondary)",
+              }}
+            >
+              <thead>
+                <tr>
+                  {[
+                    "Size",
+                    "Height",
+                    "Root padding X",
+                    "Gap token",
+                    "Text padding token",
+                    "Effective icon gap",
+                  ].map((heading) => (
+                    <th
+                      key={heading}
+                      style={{
+                        padding: "var(--spacing-4)",
+                        textAlign: "left",
+                        background: "var(--color-bg-muted)",
+                        borderBottom: "1px solid var(--color-border-secondary)",
+                        color: "var(--color-text-primary)",
+                        fontWeight: "var(--font-weight-semibold)",
+                      }}
+                    >
+                      {heading}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "xs",
+                    "24px",
+                    "6px",
+                    "Button/size/xs/gap · 2px",
+                    "Button/size/xs/text-padding-x · 2px",
+                    "4px",
+                  ],
+                  [
+                    "sm",
+                    "28px",
+                    "8px",
+                    "Button/size/sm/gap · 4px",
+                    "Button/size/sm/text-padding-x · 2px",
+                    "6px",
+                  ],
+                  [
+                    "md",
+                    "36px",
+                    "14px",
+                    "Button/size/md/gap · 6px",
+                    "Button/size/md/text-padding-x · 2px",
+                    "8px",
+                  ],
+                  [
+                    "lg",
+                    "48px",
+                    "20px",
+                    "Button/size/lg/gap · 4px",
+                    "Button/size/lg/text-padding-x · 4px",
+                    "8px",
+                  ],
+                ].map((row, index) => (
+                  <tr key={row[0]}>
+                    {row.map((cell, cellIndex) => (
+                      <td
+                        key={cell}
+                        style={{
+                          padding: "var(--spacing-4)",
+                          borderTop:
+                            index === 0 ? "none" : "1px solid var(--color-border-tertiary)",
+                          fontFamily: cellIndex >= 3 ? "var(--font-mono)" : undefined,
+                          color: cellIndex === 0 ? "var(--color-text-primary)" : undefined,
+                          fontWeight: cellIndex === 0 ? "var(--font-weight-semibold)" : undefined,
+                        }}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p
+            style={{
+              margin: "var(--spacing-4) 0 0",
+              fontSize: "var(--text-sm)",
+              lineHeight: "20px",
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            Link is intentionally outside this size contract: it has zero outer and Text padding,
+            hugs visible content, and uses 4 / 6 / 8 / 8px icon gaps.
+          </p>
+        </DocsExample>
       </DocsSection>
 
       {/* With icons */}

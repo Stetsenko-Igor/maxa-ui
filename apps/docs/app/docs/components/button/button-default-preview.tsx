@@ -15,8 +15,9 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
         { label: "outline", value: "outline" },
         { label: "ghost", value: "ghost" },
         { label: "link", value: "link" },
-        { label: "success", value: "success" },
+        { label: "positive", value: "positive" },
         { label: "destructive", value: "destructive" },
+        { label: "warning", value: "warning" },
       ],
       default: "primary",
     },
@@ -38,7 +39,17 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
   ],
   render: (v: PlaygroundValues) => (
     <Button
-      variant={v.variant as "primary" | "secondary" | "outline" | "ghost" | "link" | "success" | "destructive"}
+      variant={
+        v.variant as
+          | "primary"
+          | "secondary"
+          | "outline"
+          | "ghost"
+          | "link"
+          | "positive"
+          | "destructive"
+          | "warning"
+      }
       size={v.size as "xs" | "sm" | "md" | "lg"}
       loading={v.loading as boolean}
       disabled={v.disabled as boolean}
@@ -68,7 +79,9 @@ export function ButtonDefaultPreview() {
       <Button variant="primary">Create project</Button>
       <Button variant="secondary">Cancel</Button>
       <Button variant="outline">Learn more</Button>
-      <Button variant="outline" outlineSurface>On a surface</Button>
+      <Button variant="outline" outlineSurface>
+        On a surface
+      </Button>
     </ComponentPreview>
   )
 }

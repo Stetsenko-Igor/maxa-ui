@@ -2,14 +2,13 @@ figma.showUI(__html__, { width: 900, height: 920 });
 
 const PREVIEW_PLUGIN_KEY = 'maxa-button-migration-preview';
 const PREVIEW_TOKEN_COLORS = {
-  'Button/content/text-on-color': { r: 1, g: 1, b: 1 },
-  'Button/content/fg-on-color': { r: 1, g: 1, b: 1 },
-  'Button/focus/border': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
   'Button/primary/bg': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
-  'Button/primary/bg-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
-  'Button/primary/bg-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/primary/bg-hover': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/primary/bg-active': { r: 4 / 255, g: 84 / 255, b: 155 / 255 },
+  'Button/primary/text': { r: 1, g: 1, b: 1 },
+  'Button/primary/fg': { r: 1, g: 1, b: 1 },
   'Button/primary/border': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
-  'Button/primary/border-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
+  'Button/primary/border-hover': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
   'Button/secondary/bg': { r: 228 / 255, g: 228 / 255, b: 228 / 255 },
   'Button/secondary/bg-hover': { r: 215 / 255, g: 213 / 255, b: 213 / 255 },
   'Button/secondary/bg-active': { r: 201 / 255, g: 201 / 255, b: 201 / 255 },
@@ -37,23 +36,27 @@ const PREVIEW_TOKEN_COLORS = {
   'Button/link/bg-hover': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/bg-active': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/text': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
-  'Button/link/text-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
-  'Button/link/text-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/link/text-hover': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/link/text-active': { r: 4 / 255, g: 84 / 255, b: 155 / 255 },
   'Button/link/fg': { r: 5 / 255, g: 118 / 255, b: 218 / 255 },
-  'Button/link/fg-hover': { r: 5 / 255, g: 109 / 255, b: 201 / 255 },
-  'Button/link/fg-active': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/link/fg-hover': { r: 5 / 255, g: 100 / 255, b: 185 / 255 },
+  'Button/link/fg-active': { r: 4 / 255, g: 84 / 255, b: 155 / 255 },
   'Button/link/border': { r: 1, g: 1, b: 1, a: 0 },
   'Button/link/border-hover': { r: 1, g: 1, b: 1, a: 0 },
-  'Button/success/bg': { r: 37 / 255, g: 132 / 255, b: 62 / 255 },
-  'Button/success/bg-hover': { r: 34 / 255, g: 121 / 255, b: 57 / 255 },
-  'Button/success/bg-active': { r: 32 / 255, g: 109 / 255, b: 53 / 255 },
-  'Button/success/border': { r: 37 / 255, g: 132 / 255, b: 62 / 255 },
-  'Button/success/border-hover': { r: 34 / 255, g: 121 / 255, b: 57 / 255 },
+  'Button/positive/bg': { r: 48 / 255, g: 170 / 255, b: 80 / 255 },
+  'Button/positive/bg-hover': { r: 40 / 255, g: 143 / 255, b: 68 / 255 },
+  'Button/positive/bg-active': { r: 34 / 255, g: 121 / 255, b: 57 / 255 },
+  'Button/positive/text': { r: 1, g: 1, b: 1 },
+  'Button/positive/fg': { r: 1, g: 1, b: 1 },
+  'Button/positive/border': { r: 48 / 255, g: 170 / 255, b: 80 / 255 },
+  'Button/positive/border-hover': { r: 40 / 255, g: 143 / 255, b: 68 / 255 },
   'Button/destructive/bg': { r: 211 / 255, g: 21 / 255, b: 16 / 255 },
-  'Button/destructive/bg-hover': { r: 198 / 255, g: 20 / 255, b: 15 / 255 },
-  'Button/destructive/bg-active': { r: 185 / 255, g: 18 / 255, b: 14 / 255 },
+  'Button/destructive/bg-hover': { r: 185 / 255, g: 18 / 255, b: 14 / 255 },
+  'Button/destructive/bg-active': { r: 150 / 255, g: 15 / 255, b: 11 / 255 },
+  'Button/destructive/text': { r: 1, g: 1, b: 1 },
+  'Button/destructive/fg': { r: 1, g: 1, b: 1 },
   'Button/destructive/border': { r: 211 / 255, g: 21 / 255, b: 16 / 255 },
-  'Button/destructive/border-hover': { r: 198 / 255, g: 20 / 255, b: 15 / 255 },
+  'Button/destructive/border-hover': { r: 185 / 255, g: 18 / 255, b: 14 / 255 },
   'Button/warning/bg': { r: 234 / 255, g: 179 / 255, b: 8 / 255 },
   'Button/warning/bg-hover': { r: 202 / 255, g: 138 / 255, b: 4 / 255 },
   'Button/warning/bg-active': { r: 161 / 255, g: 98 / 255, b: 7 / 255 },
@@ -142,7 +145,7 @@ async function analyzeSelection(options) {
   for (const target of targets) {
     if (target.type === 'COMPONENT_SET') {
       analyses.push(analyzeComponentSet(target, options));
-      for (const child of (target.children || [])) {
+      for (const child of target.children || []) {
         if (child.type === 'COMPONENT') {
           flatComponentAnalyses.push(analyzeComponent(child, options));
         }
@@ -379,12 +382,7 @@ function detectBorderLayer(component, surfaceLayer) {
 }
 
 function detectLegacyDependencies(component, surfaceLayer, legacyBackgroundLayer, textLayers) {
-  const nodes = [
-    component,
-    ...(surfaceLayer ? [surfaceLayer] : []),
-    ...(legacyBackgroundLayer ? [legacyBackgroundLayer] : []),
-    ...textLayers,
-  ];
+  const nodes = [component, ...(surfaceLayer ? [surfaceLayer] : []), ...(legacyBackgroundLayer ? [legacyBackgroundLayer] : []), ...textLayers];
   const styleIds = new Set();
   let hasHardcodedPaints = false;
   let hasHardcodedStrokes = false;
@@ -700,7 +698,7 @@ function normalizeVariant(value) {
   if (source.includes('ghost')) return 'ghost';
   if (source.includes('link')) return 'link';
   if (source.includes('negative') || source.includes('danger') || source.includes('destructive') || source.includes('error')) return 'destructive';
-  if (source.includes('success') || source.includes('positive')) return 'success';
+  if (source.includes('success') || source.includes('positive')) return 'positive';
   if (source.includes('warning')) return 'warning';
   return '';
 }
@@ -729,7 +727,9 @@ function normalizeState(value) {
 }
 
 function isTruthyVariantValue(value) {
-  const source = String(value || '').toLowerCase().trim();
+  const source = String(value || '')
+    .toLowerCase()
+    .trim();
   return source === 'true' || source === 'yes';
 }
 
@@ -811,9 +811,7 @@ function buildMappingPreview(input) {
       id: 'surface-border',
       role: 'border',
       sourceNode: describeNode(input.borderLayer || input.surfaceLayer),
-      token: input.stateCandidate === 'focus'
-        ? 'Button/focus/border'
-        : `Button/${variant}/border${borderSuffix}`,
+      token: `Button/${variant}/border${borderSuffix}`,
     });
     if (!input.borderLayer) {
       result.notes.push('No existing border layer detected; Apply will add a token-bound stroke to the button surface.');
@@ -859,11 +857,31 @@ function buildMappingPreview(input) {
     const gapToken = getGapToken(size);
     const labelPaddingToken = getLabelPaddingToken(size);
     if (isLink) {
-      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: getLinkGapToken(size) });
+      result.assignments.push({
+        id: `size-${size}-gap`,
+        role: 'gap',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: getLinkGapToken(size),
+      });
       if (input.labelLayer) {
-        result.assignments.push({ id: `size-${size}-text`, role: 'text-size', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/text` });
-        result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
-        result.assignments.push({ id: `size-${size}-weight`, role: 'weight', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/weight` });
+        result.assignments.push({
+          id: `size-${size}-text`,
+          role: 'text-size',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/text`,
+        });
+        result.assignments.push({
+          id: `size-${size}-line-height`,
+          role: 'line-height',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/line-height`,
+        });
+        result.assignments.push({
+          id: `size-${size}-weight`,
+          role: 'weight',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/weight`,
+        });
       }
     } else if (isIconFamily) {
       result.assignments.push({
@@ -872,9 +890,19 @@ function buildMappingPreview(input) {
         sourceNode: describeNode(input.surfaceLayer),
         token: `Button/size/${size}/height`,
       });
-      result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
+      result.assignments.push({
+        id: `size-${size}-radius`,
+        role: 'radius',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: `Button/size/${size}/radius`,
+      });
     } else {
-      result.assignments.push({ id: `size-${size}-height`, role: 'height', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/height` });
+      result.assignments.push({
+        id: `size-${size}-height`,
+        role: 'height',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: `Button/size/${size}/height`,
+      });
       result.assignments.push({
         id: `size-${size}-padding-left`,
         role: 'padding-left',
@@ -887,8 +915,18 @@ function buildMappingPreview(input) {
         sourceNode: describeNode(input.surfaceLayer),
         token: `Button/size/${size}/padding-x`,
       });
-      result.assignments.push({ id: `size-${size}-gap`, role: 'gap', sourceNode: describeNode(input.surfaceLayer), token: gapToken });
-      result.assignments.push({ id: `size-${size}-radius`, role: 'radius', sourceNode: describeNode(input.surfaceLayer), token: `Button/size/${size}/radius` });
+      result.assignments.push({
+        id: `size-${size}-gap`,
+        role: 'gap',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: gapToken,
+      });
+      result.assignments.push({
+        id: `size-${size}-radius`,
+        role: 'radius',
+        sourceNode: describeNode(input.surfaceLayer),
+        token: `Button/size/${size}/radius`,
+      });
       if (input.labelLayer) {
         const labelParent = input.labelLayer.parent;
         if (labelParent && labelParent !== input.componentLayer && labelParent !== input.surfaceLayer) {
@@ -899,16 +937,41 @@ function buildMappingPreview(input) {
             token: labelPaddingToken,
           });
         }
-        result.assignments.push({ id: `size-${size}-text`, role: 'text-size', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/text` });
-        result.assignments.push({ id: `size-${size}-line-height`, role: 'line-height', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/line-height` });
-        result.assignments.push({ id: `size-${size}-weight`, role: 'weight', sourceNode: describeNode(input.labelLayer), token: `Button/size/${size}/weight` });
+        result.assignments.push({
+          id: `size-${size}-text`,
+          role: 'text-size',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/text`,
+        });
+        result.assignments.push({
+          id: `size-${size}-line-height`,
+          role: 'line-height',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/line-height`,
+        });
+        result.assignments.push({
+          id: `size-${size}-weight`,
+          role: 'weight',
+          sourceNode: describeNode(input.labelLayer),
+          token: `Button/size/${size}/weight`,
+        });
       }
     }
     if (input.leadingIconLayer) {
-      result.assignments.push({ id: `size-${size}-leading-icon-size`, role: 'icon-size', sourceNode: describeNode(input.leadingIconLayer), token: `Button/size/${size}/icon-size` });
+      result.assignments.push({
+        id: `size-${size}-leading-icon-size`,
+        role: 'icon-size',
+        sourceNode: describeNode(input.leadingIconLayer),
+        token: `Button/size/${size}/icon-size`,
+      });
     }
     if (input.trailingIconLayer) {
-      result.assignments.push({ id: `size-${size}-trailing-icon-size`, role: 'icon-size', sourceNode: describeNode(input.trailingIconLayer), token: `Button/size/${size}/icon-size` });
+      result.assignments.push({
+        id: `size-${size}-trailing-icon-size`,
+        role: 'icon-size',
+        sourceNode: describeNode(input.trailingIconLayer),
+        token: `Button/size/${size}/icon-size`,
+      });
     }
   } else {
     result.notes.push('Size mapping is not available yet.');
@@ -931,9 +994,7 @@ function buildMappingPreview(input) {
         token: getIconToken(variant, input.stateCandidate),
       });
     }
-    result.notes.push(variant === 'link'
-      ? 'Link icons use the dedicated Button/link/fg state tokens.'
-      : `Icon layers use the dedicated Button/${variant}/fg token.`);
+    result.notes.push(variant === 'link' ? 'Link icons use the dedicated Button/link/fg state tokens.' : `Icon layers use the dedicated Button/${variant}/fg token.`);
   }
 
   return result;
@@ -951,10 +1012,7 @@ function detectEdgeIconPresence(input) {
   const labelIndex = visibleChildren.findIndex((child) => nodeContainsId(child, input.labelLayer.id));
   if (labelIndex === -1) return fallback;
 
-  const iconIds = new Set([
-    input.leadingIconLayer && input.leadingIconLayer.id,
-    input.trailingIconLayer && input.trailingIconLayer.id,
-  ].filter(Boolean));
+  const iconIds = new Set([input.leadingIconLayer && input.leadingIconLayer.id, input.trailingIconLayer && input.trailingIconLayer.id].filter(Boolean));
   if (!iconIds.size) return { left: false, right: false };
 
   const containsMappedIcon = (child) => {
@@ -978,13 +1036,19 @@ function nodeContainsId(node, id) {
 }
 
 function buildCurrentVisualPreview(component, surfaceLayer, borderLayer, labelLayer, familyCandidate) {
-  const label = labelLayer && normalizeText(labelLayer.characters || '')
-    ? normalizeText(labelLayer.characters || '')
-    : familyCandidate === 'Buttons/Icon button'
-      ? 'Icon'
-      : 'Button';
-  const surfaceColor = getNodeFillColor(surfaceLayer || component) || { r: 0.95, g: 0.95, b: 0.97, a: 1 };
-  const borderColor = getNodeStrokeColor(borderLayer || surfaceLayer || component) || { r: 0.85, g: 0.85, b: 0.88, a: 1 };
+  const label = labelLayer && normalizeText(labelLayer.characters || '') ? normalizeText(labelLayer.characters || '') : familyCandidate === 'Buttons/Icon button' ? 'Icon' : 'Button';
+  const surfaceColor = getNodeFillColor(surfaceLayer || component) || {
+    r: 0.95,
+    g: 0.95,
+    b: 0.97,
+    a: 1,
+  };
+  const borderColor = getNodeStrokeColor(borderLayer || surfaceLayer || component) || {
+    r: 0.85,
+    g: 0.85,
+    b: 0.88,
+    a: 1,
+  };
   const textColor = getNodeFillColor(labelLayer) || { r: 0.1, g: 0.1, b: 0.12, a: 1 };
   const radius = getNodeRadius(surfaceLayer || component);
   const height = Math.round(component.height);
@@ -1102,9 +1166,7 @@ async function resolveLibraryTokensForAnalyses(analyses) {
     }
 
     if (figma.teamLibrary && typeof figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync === 'function') {
-      const libraryCollections = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync())
-        .slice()
-        .sort((a, b) => getLibraryCollectionPriority(a) - getLibraryCollectionPriority(b));
+      const libraryCollections = (await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()).slice().sort((a, b) => getLibraryCollectionPriority(a) - getLibraryCollectionPriority(b));
       for (const collection of libraryCollections) {
         let variables = [];
         let collectionError = null;
@@ -1186,9 +1248,7 @@ function collectUniqueTargetTokens(analyses) {
   const tokens = new Set();
   for (const analysis of analyses || []) {
     if (analysis.kind !== 'COMPONENT') continue;
-    const assignments = analysis.mappingPreview && analysis.mappingPreview.assignments
-      ? analysis.mappingPreview.assignments
-      : [];
+    const assignments = analysis.mappingPreview && analysis.mappingPreview.assignments ? analysis.mappingPreview.assignments : [];
     for (const assignment of assignments) {
       if (assignment.token) tokens.add(assignment.token);
     }
@@ -1299,20 +1359,15 @@ function collectPreviewItems(result, selectionMap) {
   }
 
   const items = [];
-  const flatAnalyses = result.flatComponentAnalyses
-    || (result.analyses || []).filter((a) => a.kind === 'COMPONENT');
+  const flatAnalyses = result.flatComponentAnalyses || (result.analyses || []).filter((a) => a.kind === 'COMPONENT');
 
   for (const analysis of flatAnalyses) {
     if (analysis.kind !== 'COMPONENT') continue;
     const sourceNode = sourceNodes.get(analysis.id);
     if (!sourceNode || (sourceNode.type !== 'COMPONENT' && sourceNode.type !== 'INSTANCE')) continue;
-    const previewAssignments = analysis.mappingPreview && analysis.mappingPreview.assignments
-      ? analysis.mappingPreview.assignments
-      : [];
+    const previewAssignments = analysis.mappingPreview && analysis.mappingPreview.assignments ? analysis.mappingPreview.assignments : [];
     const selectedAssignments = previewAssignments.filter((assignment) => {
-      const componentSelection = selectionMap && selectionMap[analysis.id]
-        ? selectionMap[analysis.id]
-        : null;
+      const componentSelection = selectionMap && selectionMap[analysis.id] ? selectionMap[analysis.id] : null;
       if (!componentSelection) return true;
       return componentSelection[assignment.id] !== false;
     });
@@ -1345,9 +1400,7 @@ async function loadFontsForComponents(components, errors) {
   for (const component of components || []) {
     const textNodes = findNodes(component, (node) => node.type === 'TEXT' && isVisibleNode(node));
     for (const textNode of textNodes) {
-      const fontNames = textNode.fontName === figma.mixed
-        ? textNode.getStyledTextSegments(['fontName']).map((segment) => segment.fontName)
-        : [textNode.fontName];
+      const fontNames = textNode.fontName === figma.mixed ? textNode.getStyledTextSegments(['fontName']).map((segment) => segment.fontName) : [textNode.fontName];
       for (const fontName of fontNames) {
         if (!fontName || !fontName.family || !fontName.style) continue;
         fontsByKey.set(`${fontName.family}\u0000${fontName.style}`, fontName);
@@ -1355,13 +1408,15 @@ async function loadFontsForComponents(components, errors) {
     }
   }
 
-  await Promise.all(Array.from(fontsByKey.values()).map(async (fontName) => {
-    try {
-      await figma.loadFontAsync(fontName);
-    } catch (error) {
-      errors && errors.push(`font load failed for ${fontName.family} ${fontName.style}: ${error && error.message ? error.message : String(error)}`);
-    }
-  }));
+  await Promise.all(
+    Array.from(fontsByKey.values()).map(async (fontName) => {
+      try {
+        await figma.loadFontAsync(fontName);
+      } catch (error) {
+        errors && errors.push(`font load failed for ${fontName.family} ${fontName.style}: ${error && error.message ? error.message : String(error)}`);
+      }
+    }),
+  );
 }
 
 async function applyMapping(options, selectionMap) {
@@ -1381,17 +1436,14 @@ async function applyMapping(options, selectionMap) {
 
   await loadFontsForComponents(Array.from(sourceNodes.values()), bindingErrors);
 
-  const componentAnalyses = analysisResult.flatComponentAnalyses
-    || (analysisResult.analyses || []).filter((a) => a.kind === 'COMPONENT');
+  const componentAnalyses = analysisResult.flatComponentAnalyses || (analysisResult.analyses || []).filter((a) => a.kind === 'COMPONENT');
 
   for (const analysis of componentAnalyses) {
     if (analysis.kind !== 'COMPONENT') continue;
     const sourceNode = sourceNodes.get(analysis.id);
     if (!sourceNode || (sourceNode.type !== 'COMPONENT' && sourceNode.type !== 'INSTANCE')) continue;
 
-    const componentSelection = selectionMap && selectionMap[analysis.id]
-      ? selectionMap[analysis.id]
-      : null;
+    const componentSelection = selectionMap && selectionMap[analysis.id] ? selectionMap[analysis.id] : null;
     const selectedAssignments = getSelectedAssignments(analysis, componentSelection);
 
     if (!selectedAssignments.length) continue;
@@ -1405,18 +1457,10 @@ async function applyMapping(options, selectionMap) {
     };
     let changedCount = 0;
     await visitDropdownVariantBranches(sourceNode, async (branchNode, branchIndex) => {
-      const branchAnalysis = branchIndex === 0
-        ? analysis
-        : analyzeComponent(branchNode, options || {});
+      const branchAnalysis = branchIndex === 0 ? analysis : analyzeComponent(branchNode, options || {});
       const branchAssignments = getSelectedAssignments(branchAnalysis, componentSelection);
       if (!branchAssignments.length) return;
-      changedCount += await applyAssignmentsToNode(
-        branchNode,
-        branchAnalysis,
-        branchAssignments,
-        analysisResult.libraryResolution,
-        counters,
-      );
+      changedCount += await applyAssignmentsToNode(branchNode, branchAnalysis, branchAssignments, analysisResult.libraryResolution, counters);
     });
     if (changedCount > 0) {
       appliedComponents += 1;
@@ -1427,9 +1471,7 @@ async function applyMapping(options, selectionMap) {
 
   if (!appliedAssignments) {
     const missingList = Array.from(missingTokens);
-    const details = missingList.length
-      ? ` Missing external tokens: ${missingList.slice(0, 10).join(', ')}${missingList.length > 10 ? '…' : ''}.`
-      : '';
+    const details = missingList.length ? ` Missing external tokens: ${missingList.slice(0, 10).join(', ')}${missingList.length > 10 ? '…' : ''}.` : '';
     throw new Error(`Nothing was applied. External library variables could not be resolved or imported for the current selection.${details}`);
   }
 
@@ -1444,9 +1486,7 @@ async function applyMapping(options, selectionMap) {
 }
 
 function getSelectedAssignments(analysis, componentSelection) {
-  const assignments = analysis && analysis.mappingPreview && analysis.mappingPreview.assignments
-    ? analysis.mappingPreview.assignments
-    : [];
+  const assignments = analysis && analysis.mappingPreview && analysis.mappingPreview.assignments ? analysis.mappingPreview.assignments : [];
   if (!componentSelection) return assignments;
   return assignments.filter((assignment) => componentSelection[assignment.id] !== false);
 }
@@ -1458,17 +1498,8 @@ async function visitDropdownVariantBranches(node, visitor) {
   }
 
   const entries = Object.entries(node.componentProperties);
-  const dropdownEntry = entries.find(([key, property]) => (
-    property
-    && property.type === 'VARIANT'
-    && normalizePropertyKey(key).includes('dropdown')
-    && /^(true|false)$/i.test(String(property.value || '').trim())
-  ));
-  const leftEntry = entries.find(([key, property]) => (
-    property
-    && property.type === 'VARIANT'
-    && normalizePropertyKey(key).includes('icon left')
-  ));
+  const dropdownEntry = entries.find(([key, property]) => property && property.type === 'VARIANT' && normalizePropertyKey(key).includes('dropdown') && /^(true|false)$/i.test(String(property.value || '').trim()));
+  const leftEntry = entries.find(([key, property]) => property && property.type === 'VARIANT' && normalizePropertyKey(key).includes('icon left'));
 
   if (!dropdownEntry || !leftEntry || !isTruthyVariantValue(leftEntry[1].value)) {
     await visitor(node, 0);
@@ -1490,11 +1521,7 @@ async function visitDropdownVariantBranches(node, visitor) {
   };
 
   if (/^true$/i.test(alternateDropdownValue)) {
-    const rightEntry = entries.find(([key, property]) => (
-      property
-      && property.type === 'VARIANT'
-      && normalizePropertyKey(key).includes('icon right')
-    ));
+    const rightEntry = entries.find(([key, property]) => property && property.type === 'VARIANT' && normalizePropertyKey(key).includes('icon right'));
     if (rightEntry) alternateProperties[rightEntry[0]] = 'No';
   }
 
@@ -1522,16 +1549,16 @@ async function applyAssignmentsToNode(node, analysis, assignments, libraryResolu
       const hadStyle = 'textStyleId' in labelNode && !!labelNode.textStyleId;
       if (hadStyle && typeof labelNode.setTextStyleIdAsync === 'function') {
         // Preserve fontName so clearing the style doesn't lose family/weight
-        const savedFontName = labelNode.fontName && labelNode.fontName !== figma.mixed
-          ? labelNode.fontName
-          : null;
+        const savedFontName = labelNode.fontName && labelNode.fontName !== figma.mixed ? labelNode.fontName : null;
         try {
           await labelNode.setTextStyleIdAsync('');
         } catch (e) {
           counters.bindingErrors && counters.bindingErrors.push(`textStyle clear FAILED: ${e && e.message ? e.message : String(e)}`);
         }
         if (savedFontName) {
-          try { labelNode.fontName = savedFontName; } catch (e) {}
+          try {
+            labelNode.fontName = savedFontName;
+          } catch (e) {}
         }
       }
     }
@@ -1576,9 +1603,7 @@ async function resolveVariableForToken(token, libraryResolution, counters) {
     return counters.variableCache.get(token);
   }
 
-  const resolution = libraryResolution && libraryResolution.tokenMap
-    ? libraryResolution.tokenMap[token]
-    : null;
+  const resolution = libraryResolution && libraryResolution.tokenMap ? libraryResolution.tokenMap[token] : null;
 
   if (resolution && resolution.status === 'resolved') {
     const importedVariable = await importResolvedVariable(resolution);
@@ -1697,7 +1722,9 @@ async function bindPaintVariable(node, variable) {
   const solidIndex = findFirstSolidPaintIndex(currentFills);
   if (solidIndex !== -1 && isPaintBoundToVariable(currentFills[solidIndex], variable)) return true;
   if ('fillStyleId' in node && node.fillStyleId && typeof node.setFillStyleIdAsync === 'function') {
-    try { await node.setFillStyleIdAsync(''); } catch (e) {}
+    try {
+      await node.setFillStyleIdAsync('');
+    } catch (e) {}
   }
   const fallbackPaint = solidPaint({ r: 0.8, g: 0.8, b: 0.8 });
   const nextPaint = figma.variables.setBoundVariableForPaint(solidIndex === -1 ? fallbackPaint : currentFills[solidIndex], 'color', variable);
@@ -1715,7 +1742,9 @@ async function bindStrokeVariable(node, variable) {
   const solidIndex = findFirstSolidPaintIndex(currentStrokes);
   if (solidIndex !== -1 && isPaintBoundToVariable(currentStrokes[solidIndex], variable)) return true;
   if ('strokeStyleId' in node && node.strokeStyleId && typeof node.setStrokeStyleIdAsync === 'function') {
-    try { await node.setStrokeStyleIdAsync(''); } catch (e) {}
+    try {
+      await node.setStrokeStyleIdAsync('');
+    } catch (e) {}
   }
   const fallbackPaint = solidPaint({ r: 0.8, g: 0.8, b: 0.8 });
   const nextPaint = figma.variables.setBoundVariableForPaint(solidIndex === -1 ? fallbackPaint : currentStrokes[solidIndex], 'color', variable);
@@ -1730,12 +1759,8 @@ async function bindIconColorVariable(node, variable) {
   if (!node || !variable) return false;
   const paintTargets = [];
   walk(node, (candidate) => {
-    const hasSolidFill = 'fills' in candidate
-      && Array.isArray(candidate.fills)
-      && candidate.fills.some(isSolidPaint);
-    const hasSolidStroke = 'strokes' in candidate
-      && Array.isArray(candidate.strokes)
-      && candidate.strokes.some(isSolidPaint);
+    const hasSolidFill = 'fills' in candidate && Array.isArray(candidate.fills) && candidate.fills.some(isSolidPaint);
+    const hasSolidStroke = 'strokes' in candidate && Array.isArray(candidate.strokes) && candidate.strokes.some(isSolidPaint);
     if (hasSolidFill || hasSolidStroke) {
       paintTargets.push({ node: candidate, hasSolidFill, hasSolidStroke });
     }
@@ -1743,8 +1768,8 @@ async function bindIconColorVariable(node, variable) {
 
   let applied = false;
   for (const target of paintTargets) {
-    if (target.hasSolidFill && await bindPaintVariable(target.node, variable)) applied = true;
-    if (target.hasSolidStroke && await bindStrokeVariable(target.node, variable)) applied = true;
+    if (target.hasSolidFill && (await bindPaintVariable(target.node, variable))) applied = true;
+    if (target.hasSolidStroke && (await bindStrokeVariable(target.node, variable))) applied = true;
   }
 
   if (applied) return true;
@@ -1857,18 +1882,7 @@ function applyLinkLayout(node, surface, errors) {
   let applied = false;
 
   if (typeof target.setBoundVariable === 'function') {
-    const fields = [
-      'width',
-      'height',
-      'minWidth',
-      'maxWidth',
-      'minHeight',
-      'maxHeight',
-      'topLeftRadius',
-      'topRightRadius',
-      'bottomLeftRadius',
-      'bottomRightRadius',
-    ];
+    const fields = ['width', 'height', 'minWidth', 'maxWidth', 'minHeight', 'maxHeight', 'topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius'];
     for (const field of fields) {
       if (!hasFieldBinding(target, field)) continue;
       try {
@@ -1882,12 +1896,16 @@ function applyLinkLayout(node, surface, errors) {
 
   for (const field of ['minWidth', 'maxWidth', 'minHeight', 'maxHeight']) {
     if (field in target) {
-      try { target[field] = null; } catch (error) {}
+      try {
+        target[field] = null;
+      } catch (error) {}
     }
   }
   for (const field of ['topLeftRadius', 'topRightRadius', 'bottomLeftRadius', 'bottomRightRadius']) {
     if (field in target) {
-      try { target[field] = 0; } catch (error) {}
+      try {
+        target[field] = 0;
+      } catch (error) {}
     }
   }
 
@@ -1961,13 +1979,7 @@ function isFieldBoundToVariable(node, field, variable) {
 }
 
 function isPaintBoundToVariable(paint, variable) {
-  return Boolean(
-    paint
-    && variable
-    && paint.boundVariables
-    && paint.boundVariables.color
-    && paint.boundVariables.color.id === variable.id
-  );
+  return Boolean(paint && variable && paint.boundVariables && paint.boundVariables.color && paint.boundVariables.color.id === variable.id);
 }
 
 function findFirstSolidPaintIndex(paints) {
@@ -2080,9 +2092,7 @@ function createSideCard(titleText, previewNode, analysis, selectedAssignments) {
   if (selectedAssignments && selectedAssignments.length) {
     const notes = figma.createText();
     notes.fontName = { family: 'Inter', style: 'Regular' };
-    notes.characters = selectedAssignments
-      .map((assignment) => `${assignment.role} -> ${assignment.token || assignment.description || 'Direct layout rule'}`)
-      .join('\n');
+    notes.characters = selectedAssignments.map((assignment) => `${assignment.role} -> ${assignment.token || assignment.description || 'Direct layout rule'}`).join('\n');
     notes.fontSize = 11;
     notes.lineHeight = { unit: 'PIXELS', value: 16 };
     notes.fills = [solidPaint({ r: 0.42, g: 0.42, b: 0.47 })];
@@ -2209,33 +2219,28 @@ function getBorderStateSuffix(state, variant) {
   switch (state) {
     case 'hover':
       return '-hover';
-    case 'focus':
-      return '-focus';
     default:
       return '';
   }
 }
 
 function getGapToken(size) {
-  return {
-    xs: 'spacing-xxs',
-    sm: 'spacing-xs',
-    md: 'spacing-sm',
-    lg: 'spacing-xs',
-  }[size] || 'spacing-xs';
+  return `Button/size/${size}/gap`;
 }
 
 function getLinkGapToken(size) {
-  return {
-    xs: 'spacing-xs',
-    sm: 'spacing-sm',
-    md: 'spacing-md',
-    lg: 'spacing-md',
-  }[size] || 'spacing-md';
+  return (
+    {
+      xs: 'spacing-xs',
+      sm: 'spacing-sm',
+      md: 'spacing-md',
+      lg: 'spacing-md',
+    }[size] || 'spacing-md'
+  );
 }
 
 function getLabelPaddingToken(size) {
-  return size === 'lg' ? 'spacing-xs' : 'spacing-xxs';
+  return `Button/size/${size}/text-padding-x`;
 }
 
 function getForegroundStateSuffix(state) {
@@ -2244,20 +2249,16 @@ function getForegroundStateSuffix(state) {
 }
 
 function getLabelToken(variant, state) {
-  if (variant === 'primary' || variant === 'success' || variant === 'destructive') {
-    return 'Button/content/text-on-color';
+  if (variant === 'primary' || variant === 'positive' || variant === 'destructive') {
+    return `Button/${variant}/text`;
   }
-  const suffix = variant === 'link' || variant === 'text' || variant === 'warning'
-    ? getForegroundStateSuffix(state)
-    : variant === 'secondary' && isActiveState(state)
-      ? '-active'
-      : '';
+  const suffix = variant === 'link' || variant === 'text' || variant === 'warning' ? getForegroundStateSuffix(state) : variant === 'secondary' && isActiveState(state) ? '-active' : '';
   return `Button/${variant}/text${suffix}`;
 }
 
 function getIconToken(variant, state) {
-  if (variant === 'primary' || variant === 'success' || variant === 'destructive') {
-    return 'Button/content/fg-on-color';
+  if (variant === 'primary' || variant === 'positive' || variant === 'destructive') {
+    return `Button/${variant}/fg`;
   }
   if (variant === 'link') {
     return `Button/link/fg${getForegroundStateSuffix(state)}`;
@@ -2297,7 +2298,7 @@ function rgbToKeyword(color) {
   const b = Math.round(color.b * 255);
   if (r > 180 && g < 120 && b < 120) return 'destructive';
   if (b > 180 && r < 120) return 'primary';
-  if (g > 150 && r < 160) return 'success';
+  if (g > 150 && r < 160) return 'positive';
   if (Math.abs(r - g) < 10 && Math.abs(g - b) < 10) return 'secondary';
   return '';
 }

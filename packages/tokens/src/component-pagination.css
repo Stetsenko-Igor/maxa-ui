@@ -11,7 +11,7 @@
   --pagination-item-text: var(--color-text-secondary);
   --pagination-item-text-active: var(--color-action-primary);
   --pagination-item-border: transparent;
-  --pagination-item-border-active: var(--color-border-focus);
+  --pagination-item-border-active: var(--color-focus-ring);
   --pagination-font-size: var(--text-sm);
   --pagination-font-weight: var(--font-weight-medium);
 }

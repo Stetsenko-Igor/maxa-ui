@@ -114,7 +114,7 @@
 }
 
 .maxa-toast__action:focus-visible {
-  outline: 2px solid var(--color-border-focus);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .maxa-toast__close:focus-visible {
-  outline: 2px solid var(--color-border-focus);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 

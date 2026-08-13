@@ -42,12 +42,12 @@
     },
     "border-focus": {
       "$description": "Input: border (focus state).",
-      "$value": "{Color modes/border/border-focus}",
+      "$value": "{Color modes/Effects/Focus rings/focus-ring}",
       "$type": "color"
     },
     "focus-ring": {
       "$description": "Input: focus ring.",
-      "$value": "{Color modes/action/action-primary}",
+      "$value": "{Color modes/Effects/Focus rings/focus-ring}",
       "$type": "color"
     },
     "focus-ring-offset": {
@@ -114,12 +114,12 @@
       },
       "border": {
         "$description": "Input, success: border.",
-        "$value": "{Color modes/action/action-success-active}",
+        "$value": "{Color modes/border/border-success-strong}",
         "$type": "color"
       },
       "border-focus": {
         "$description": "Input, success: border (focus state).",
-        "$value": "{Color modes/action/action-success-active}",
+        "$value": "{Color modes/border/border-success-strong}",
         "$type": "color"
       }
     },

@@ -31,7 +31,7 @@
       "$type": "color"
     },
     "text-on-color": {
-      "$description": "White text on strong colored action surfaces.",
+      "$description": "Text on saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
@@ -52,17 +52,17 @@
     },
     "text-link": {
       "$description": "Link text color on regular surfaces.",
-      "$value": "{Colors.Blue.500}",
+      "$value": "{Color modes/action/action-primary}",
       "$type": "color"
     },
     "text-link-hover": {
       "$description": "Link text color on hover.",
-      "$value": "{Colors.Blue.550}",
+      "$value": "{Color modes/action/action-primary-hover}",
       "$type": "color"
     },
     "text-link-active": {
       "$description": "Link text color while pressed.",
-      "$value": "{Colors.Blue.600}",
+      "$value": "{Color modes/action/action-primary-active}",
       "$type": "color"
     },
     "text-success": {
@@ -100,11 +100,6 @@
     "border-tertiary": {
       "$description": "Faintest dividers.",
       "$value": "{Colors.Neutral.100}",
-      "$type": "color"
-    },
-    "border-focus": {
-      "$description": "Focus rings on interactive elements.",
-      "$value": "{Colors.Blue.500}",
       "$type": "color"
     },
     "border-brand": {
@@ -158,13 +153,25 @@
       "$type": "color"
     },
     "border-neutral-muted": {
-      "$description": "Muted neutral outline for interactive states.",
+      "$description": "High-emphasis neutral outline.",
       "$value": "{Colors.Neutral.400}",
       "$type": "color"
     },
     "border-neutral-subtle": {
       "$description": "Low-emphasis neutral outline.",
       "$value": "{Colors.Neutral.300}",
+      "$type": "color"
+    }
+  },
+  "Effects/Focus rings": {
+    "focus-ring": {
+      "$description": "Default keyboard focus ring color.",
+      "$value": "{Colors.Blue.500}",
+      "$type": "color"
+    },
+    "focus-ring-error": {
+      "$description": "Keyboard focus ring color for invalid controls.",
+      "$value": "{Colors.Red.500}",
       "$type": "color"
     }
   },
@@ -176,12 +183,12 @@
     },
     "action-primary-hover": {
       "$description": "Primary CTA background, hover state.",
-      "$value": "{Colors.Blue.550}",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "action-primary-active": {
       "$description": "Primary CTA background, active state.",
-      "$value": "{Colors.Blue.600}",
+      "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "action-primary-subtle": {
@@ -259,19 +266,19 @@
       "$value": "{Colors.Brand.200}",
       "$type": "color"
     },
-    "action-success": {
-      "$description": "Confirm/approve action background (green).",
-      "$value": "{Colors.Green.650}",
+    "action-positive": {
+      "$description": "Positive confirm or approve action background.",
+      "$value": "{Colors.Green.500}",
       "$type": "color"
     },
-    "action-success-hover": {
-      "$description": "Confirm action background, hover state.",
+    "action-positive-hover": {
+      "$description": "Positive action background, hover state.",
+      "$value": "{Colors.Green.600}",
+      "$type": "color"
+    },
+    "action-positive-active": {
+      "$description": "Positive action background, active state.",
       "$value": "{Colors.Green.700}",
-      "$type": "color"
-    },
-    "action-success-active": {
-      "$description": "Confirm action background, active state.",
-      "$value": "{Colors.Green.750}",
       "$type": "color"
     },
     "action-destructive": {
@@ -281,12 +288,12 @@
     },
     "action-destructive-hover": {
       "$description": "Destructive action background, hover state.",
-      "$value": "{Colors.Red.550}",
+      "$value": "{Colors.Red.600}",
       "$type": "color"
     },
     "action-destructive-active": {
       "$description": "Destructive action background, active state.",
-      "$value": "{Colors.Red.600}",
+      "$value": "{Colors.Red.700}",
       "$type": "color"
     },
     "action-warning": {
@@ -352,7 +359,7 @@
       "$type": "color"
     },
     "fg-on-color": {
-      "$description": "Foreground color for icons on strong colored backgrounds.",
+      "$description": "Icons and non-text foreground on saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
       "$value": "{Colors.Base.White}",
       "$type": "color"
     },
@@ -368,12 +375,12 @@
     },
     "fg-link-hover": {
       "$description": "Link icon color on hover.",
-      "$value": "{Colors.Blue.550}",
+      "$value": "{Colors.Blue.600}",
       "$type": "color"
     },
     "fg-link-active": {
       "$description": "Link icon color while pressed.",
-      "$value": "{Colors.Blue.600}",
+      "$value": "{Colors.Blue.700}",
       "$type": "color"
     },
     "fg-success": {

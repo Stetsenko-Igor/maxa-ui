@@ -4,15 +4,19 @@ import tokenData from "./tokens.generated.json"
 
 export const metadata: Metadata = { title: "Colors — MAXA UI" }
 const TOC = [
+  { href: "#token-model", label: "Token model" },
+  { href: "#choose-a-token", label: "Choose a token" },
+  { href: "#action-ramps", label: "Action ramps" },
   { href: "#tokens-in-context", label: "Tokens in context" },
-  { href: "#neutral-scale", label: "Neutral scale" },
   { href: "#foreground", label: "Foreground" },
   { href: "#action", label: "Action" },
   { href: "#background", label: "Background" },
   { href: "#control", label: "Control" },
   { href: "#feedback", label: "Feedback" },
   { href: "#text", label: "Text" },
+  { href: "#focus-rings", label: "Focus rings" },
   { href: "#border", label: "Border" },
+  { href: "#neutral-scale", label: "Primitive neutral scale" },
 ]
 
 /*
@@ -146,6 +150,8 @@ function HexPair({
 }
 
 function Swatch({ label, token, usage, lightHex, darkHex }: TokenItem) {
+  const resolvedDark = darkHex ?? lightHex
+
   return (
     <div
       style={{
@@ -154,7 +160,45 @@ function Swatch({ label, token, usage, lightHex, darkHex }: TokenItem) {
         border: "1px solid var(--color-border-tertiary)",
       }}
     >
-      <div style={{ height: "56px", background: `var(${token})` }} />
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          height: "72px",
+          background: "var(--color-bg-muted)",
+        }}
+      >
+        {[
+          { mode: "Light", value: lightHex },
+          { mode: "Dark", value: resolvedDark },
+        ].map(({ mode, value }) => (
+          <div
+            key={mode}
+            style={{
+              position: "relative",
+              background: value ?? `var(${token})`,
+              borderLeft: mode === "Dark" ? "1px solid var(--color-border-tertiary)" : "none",
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                left: "var(--spacing-xs)",
+                bottom: "var(--spacing-xs)",
+                padding: "2px 5px",
+                borderRadius: "var(--radius-xs)",
+                background: "color-mix(in srgb, var(--color-bg-inverse) 62%, transparent)",
+                color: "var(--color-text-on-color)",
+                fontSize: "10px",
+                lineHeight: "14px",
+                fontFamily: "var(--font-mono)",
+              }}
+            >
+              {mode}
+            </span>
+          </div>
+        ))}
+      </div>
       <div style={{ padding: "8px 10px", background: "var(--color-bg-page)" }}>
         <p
           style={{
@@ -213,9 +257,9 @@ const USAGE: Record<string, string> = {
   "--color-action-brand-subtle": "Low-emphasis brand action background.",
   "--color-action-brand-subtle-hover": "Low-emphasis brand action hover.",
   "--color-action-brand-subtle-active": "Low-emphasis brand action pressed state.",
-  "--color-action-success": "Confirm / success action fill.",
-  "--color-action-success-hover": "Success action hover state.",
-  "--color-action-success-active": "Success action pressed state.",
+  "--color-action-positive": "Confirm / positive action fill.",
+  "--color-action-positive-hover": "Positive action hover state.",
+  "--color-action-positive-active": "Positive action pressed state.",
   "--color-action-destructive": "Destructive action fill.",
   "--color-action-destructive-hover": "Destructive action hover state.",
   "--color-action-destructive-active": "Destructive action pressed state.",
@@ -283,7 +327,8 @@ const USAGE: Record<string, string> = {
   "--color-border-primary": "Default component outlines and dividers.",
   "--color-border-secondary": "Lower-emphasis separators and nested outlines.",
   "--color-border-tertiary": "Subtle separators and quiet outlines.",
-  "--color-border-focus": "Keyboard focus rings and focused inputs.",
+  "--color-focus-ring": "Keyboard focus rings and focused inputs.",
+  "--color-focus-ring-error": "Keyboard focus rings for invalid controls.",
   "--color-border-brand": "Brand-selected component outlines.",
   "--color-border-error-strong": "Invalid inputs and error boundaries.",
   "--color-border-info-strong": "Strong informational borders.",
@@ -312,8 +357,374 @@ const BG_GROUPS = buildGroup(tokenData.groups.background, "--color-bg-")
 const FG_GROUPS = buildGroup(tokenData.groups.foreground, "--color-fg-")
 const TEXT_GROUPS = buildGroup(tokenData.groups.text, "--color-text-")
 const BORDER_GROUPS = buildGroup(tokenData.groups.border, "--color-border-")
+const FOCUS_RING_GROUPS = buildGroup(tokenData.groups.focusRings, "--color-")
 const CONTROL_GROUPS = buildGroup(tokenData.groups.control, "--color-control-")
 const FEEDBACK_GROUPS = buildGroup(tokenData.groups.feedback, "--color-feedback-")
+
+const hierarchyCardStyle: React.CSSProperties = {
+  minWidth: 0,
+  padding: "var(--spacing-6)",
+  borderRadius: "var(--radius-md)",
+  border: "1px solid var(--color-border-secondary)",
+  background: "var(--color-bg-surface)",
+}
+
+const miniCodeStyle: React.CSSProperties = {
+  display: "block",
+  marginTop: "var(--spacing-xs)",
+  fontFamily: "var(--font-mono)",
+  fontSize: "var(--text-caption-sm)",
+  lineHeight: "18px",
+  color: "var(--color-text-tertiary)",
+  overflowWrap: "anywhere",
+}
+
+function TokenModel() {
+  const layers = [
+    {
+      step: "01",
+      title: "Primitives",
+      owner: "Foundation maintainers",
+      description: "Raw palette steps. They describe a value, not where it should be used.",
+      token: "--color-blue-500",
+      sample: "var(--color-blue-500)",
+    },
+    {
+      step: "02",
+      title: "Semantic roles",
+      owner: "Product designers",
+      description: "Theme-aware intent. Choose these by purpose: text, action, surface, border.",
+      token: "--color-action-primary",
+      sample: "var(--color-action-primary)",
+    },
+    {
+      step: "03",
+      title: "Component contract",
+      owner: "Components",
+      description: "A stable implementation role that points to semantic meaning.",
+      token: "--button-primary-bg",
+      sample: "var(--button-primary-bg)",
+    },
+  ]
+
+  return (
+    <div
+      className="color-token-flow"
+      style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "12px" }}
+    >
+      {layers.map((layer, index) => (
+        <div key={layer.title} style={{ ...hierarchyCardStyle, position: "relative" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "8px",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: "var(--text-caption-sm)",
+                color: "var(--color-text-tertiary)",
+              }}
+            >
+              {layer.step}
+            </span>
+            <span
+              style={{
+                width: "32px",
+                height: "8px",
+                borderRadius: "var(--radius-full)",
+                background: layer.sample,
+                border: "1px solid var(--color-border-tertiary)",
+              }}
+            />
+          </div>
+          <h3
+            style={{
+              margin: "var(--spacing-5) 0 var(--spacing-xs)",
+              fontSize: "var(--text-lg)",
+              lineHeight: "24px",
+              color: "var(--color-text-primary)",
+            }}
+          >
+            {layer.title}
+          </h3>
+          <p
+            style={{
+              margin: 0,
+              minHeight: "54px",
+              fontSize: "var(--text-sm)",
+              lineHeight: "18px",
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            {layer.description}
+          </p>
+          <code style={miniCodeStyle}>{layer.token}</code>
+          <p
+            style={{
+              margin: "var(--spacing-5) 0 0",
+              paddingTop: "var(--spacing-4)",
+              borderTop: "1px solid var(--color-border-tertiary)",
+              fontSize: "var(--text-caption-sm)",
+              color: "var(--color-text-tertiary)",
+            }}
+          >
+            Used by: {layer.owner}
+          </p>
+          {index < layers.length - 1 && (
+            <span
+              aria-hidden="true"
+              style={{
+                position: "absolute",
+                right: "-19px",
+                top: "50%",
+                zIndex: 2,
+                display: "grid",
+                placeItems: "center",
+                width: "26px",
+                height: "26px",
+                borderRadius: "var(--radius-full)",
+                background: "var(--color-bg-surface)",
+                border: "1px solid var(--color-border-secondary)",
+                color: "var(--color-fg-tertiary)",
+                transform: "translateY(-50%)",
+              }}
+            >
+              →
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ChooseTokenGuide() {
+  const choices = [
+    ["Text", "Labels, headings, body copy", "text/*", "Aa", "var(--color-text-primary)"],
+    ["Foreground", "Icons and SVG strokes", "foreground/*", "◇", "var(--color-fg-primary)"],
+    [
+      "Background",
+      "Page, surface, float, status fills",
+      "background/*",
+      "▰",
+      "var(--color-bg-surface)",
+    ],
+    [
+      "Action",
+      "Interactive default, hover, active",
+      "action/*",
+      "↗",
+      "var(--color-action-primary)",
+    ],
+    ["Border", "Outlines, dividers, validation", "border/*", "□", "var(--color-border-primary)"],
+    ["Feedback", "Complete alert recipes", "feedback/*", "!", "var(--color-feedback-info-accent)"],
+    [
+      "Focus ring",
+      "Keyboard focus effect only",
+      "Effects/Focus rings/*",
+      "◎",
+      "var(--color-focus-ring)",
+    ],
+  ] as const
+
+  return (
+    <div
+      className="color-choice-grid"
+      style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: "8px" }}
+    >
+      {choices.map(([title, description, figma, mark, color]) => (
+        <div
+          key={title}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "40px minmax(0, 1fr) auto",
+            alignItems: "center",
+            gap: "var(--spacing-4)",
+            padding: "var(--spacing-4) var(--spacing-5)",
+            borderRadius: "var(--radius-sm)",
+            border: "1px solid var(--color-border-tertiary)",
+            background: "var(--color-bg-surface)",
+          }}
+        >
+          <span
+            style={{
+              display: "grid",
+              placeItems: "center",
+              width: "40px",
+              height: "40px",
+              borderRadius: "var(--radius-sm)",
+              background: "var(--color-bg-muted)",
+              border: `2px solid ${color}`,
+              color,
+              fontWeight: "var(--font-weight-semibold)",
+            }}
+          >
+            {mark}
+          </span>
+          <span style={{ minWidth: 0 }}>
+            <strong
+              style={{
+                display: "block",
+                fontSize: "var(--text-sm)",
+                color: "var(--color-text-primary)",
+              }}
+            >
+              {title}
+            </strong>
+            <span
+              style={{
+                display: "block",
+                marginTop: "2px",
+                fontSize: "var(--text-caption-sm)",
+                color: "var(--color-text-secondary)",
+              }}
+            >
+              {description}
+            </span>
+          </span>
+          <code
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "var(--text-caption-sm)",
+              color: "var(--color-text-tertiary)",
+              overflowWrap: "anywhere",
+              textAlign: "right",
+            }}
+          >
+            {figma}
+          </code>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ActionRamp({
+  title,
+  light,
+  dark,
+}: {
+  title: string
+  light: [string, string, string]
+  dark: [string, string, string]
+}) {
+  const states = ["Default", "Hover", "Active"]
+  return (
+    <div style={{ ...hierarchyCardStyle, padding: 0, overflow: "hidden" }}>
+      <div
+        style={{
+          padding: "var(--spacing-5) var(--spacing-6)",
+          borderBottom: "1px solid var(--color-border-tertiary)",
+        }}
+      >
+        <strong style={{ fontSize: "var(--text-sm)", color: "var(--color-text-primary)" }}>
+          {title}
+        </strong>
+      </div>
+      {[
+        ["Light", light],
+        ["Dark", dark],
+      ].map(([mode, values]) => (
+        <div
+          key={mode as string}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "52px repeat(3, minmax(0, 1fr))",
+            alignItems: "stretch",
+          }}
+        >
+          <span
+            style={{
+              display: "grid",
+              placeItems: "center",
+              fontSize: "var(--text-caption-sm)",
+              color: "var(--color-text-tertiary)",
+              borderTop: mode === "Dark" ? "1px solid var(--color-border-tertiary)" : "none",
+            }}
+          >
+            {mode as string}
+          </span>
+          {(values as [string, string, string]).map((color, index) => (
+            <div
+              key={states[index]}
+              style={{
+                minHeight: "76px",
+                padding: "var(--spacing-4)",
+                background: color,
+                borderLeft:
+                  "1px solid color-mix(in srgb, var(--color-bg-inverse) 12%, transparent)",
+                borderTop:
+                  mode === "Dark"
+                    ? "1px solid color-mix(in srgb, var(--color-bg-inverse) 12%, transparent)"
+                    : "none",
+                color: "var(--color-text-on-color)",
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  fontSize: "var(--text-caption-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                }}
+              >
+                {states[index]}
+              </span>
+              <code
+                style={{
+                  display: "block",
+                  marginTop: "var(--spacing-xs)",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "10px",
+                  color: "inherit",
+                }}
+              >
+                {color}
+              </code>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function ActionRamps() {
+  const token = (name: string) =>
+    tokenData.groups.action.find((item: GeneratedToken) => item.name === name)
+  const values = (
+    prefix: string,
+  ): { light: [string, string, string]; dark: [string, string, string] } => {
+    const items = [token(prefix), token(`${prefix}-hover`), token(`${prefix}-active`)]
+    return {
+      light: items.map((item) => item?.lightHex ?? "transparent") as [string, string, string],
+      dark: items.map((item) => item?.darkHex ?? item?.lightHex ?? "transparent") as [
+        string,
+        string,
+        string,
+      ],
+    }
+  }
+  const ramps = [
+    ["Primary action", values("--color-action-primary")],
+    ["Positive action", values("--color-action-positive")],
+    ["Destructive action", values("--color-action-destructive")],
+  ] as const
+
+  return (
+    <div
+      className="color-ramp-grid"
+      style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "12px" }}
+    >
+      {ramps.map(([title, ramp]) => (
+        <ActionRamp key={title} title={title} {...ramp} />
+      ))}
+    </div>
+  )
+}
 
 /* ─── Annotation diagram data ─── */
 type AnnotationLabel = {
@@ -770,130 +1181,87 @@ export default function ColorsPage() {
       toc={TOC}
       lead={
         <>
-          Semantic color tokens. Components reference only these, never raw primitives like{" "}
-          <code>--color-blue-500</code>.
+          Choose color by purpose, not by hue. Product work starts with semantic roles; components
+          expose a thin component contract; raw palette steps stay inside the Foundation layer.
         </>
       }
     >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "var(--spacing-3)",
+          flexWrap: "wrap",
+          marginTop: "calc(var(--spacing-4) * -1)",
+        }}
+      >
+        {[
+          "Light + Dark",
+          "CSS + Figma",
+          `${Object.values(tokenData.groups).flat().length} semantic roles`,
+        ].map((label) => (
+          <span
+            key={label}
+            style={{
+              padding: "3px 8px",
+              borderRadius: "var(--radius-full)",
+              background: "var(--color-bg-muted)",
+              border: "1px solid var(--color-border-tertiary)",
+              fontSize: "var(--text-caption-sm)",
+              color: "var(--color-text-secondary)",
+            }}
+          >
+            {label}
+          </span>
+        ))}
+      </div>
+
+      <DocsPageSection
+        id="token-model"
+        title="Token model"
+        description="The direction is always left to right. Change a primitive to tune the palette, a semantic role to change theme behavior, or a component token to change one component family."
+      >
+        <TokenModel />
+        <div
+          style={{
+            marginTop: "var(--spacing-4)",
+            padding: "var(--spacing-4) var(--spacing-5)",
+            borderLeft: "3px solid var(--color-action-primary)",
+            background: "var(--color-bg-info-subtle)",
+            borderRadius: "0 var(--radius-sm) var(--radius-sm) 0",
+            fontSize: "var(--text-sm)",
+            lineHeight: "20px",
+            color: "var(--color-text-primary)",
+          }}
+        >
+          <strong>Default rule:</strong> designers pick semantic tokens; component authors map them
+          once inside component tokens. Never choose <code>Blue/500</code> because it happens to
+          look right in one theme.
+        </div>
+      </DocsPageSection>
+
+      <DocsPageSection
+        id="choose-a-token"
+        title="Choose a token"
+        description="Start with the UI object you are coloring. Matching colors in different groups are intentionally separate because text, icons, surfaces, and interaction states have different responsibilities."
+      >
+        <ChooseTokenGuide />
+      </DocsPageSection>
+
+      <DocsPageSection
+        id="action-ramps"
+        title="Action ramps"
+        description="Filled actions become darker through hover and active in Light mode, and lighter in Dark mode. Primary, Positive, and Destructive always keep white label and icon roles."
+      >
+        <ActionRamps />
+      </DocsPageSection>
+
       <DocsPageSection
         id="tokens-in-context"
         title="Tokens in context"
         description="A static component illustration showing how semantic tokens map to real UI parts. The same names are used in CSS, Figma color modes, and component specs."
       >
         <TokenContextDemo />
-      </DocsPageSection>
-
-      <DocsPageSection
-        id="neutral-scale"
-        title="Neutral scale"
-        description={
-          <>
-            Raw primitive steps. Components never reference these directly — always use semantic
-            tokens. Named <code>gray-*</code> in CSS, <code>Neutral.*</code> in Figma.
-          </>
-        }
-      >
-        {/* Scale rows */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            borderRadius: "var(--radius-md)",
-            border: "1px solid var(--color-border-secondary)",
-            overflow: "hidden",
-          }}
-        >
-          {/* Header */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "48px 52px 96px 1fr 1fr",
-              gap: "0 16px",
-              padding: "8px 16px",
-              background: "var(--color-bg-muted)",
-              borderBottom: "1px solid var(--color-border-secondary)",
-            }}
-          >
-            {["", "Step", "Hex", "Light usage", "Dark usage"].map((h) => (
-              <span
-                key={h}
-                style={{
-                  fontSize: "var(--text-caption-sm)",
-                  fontWeight: "var(--font-weight-semibold)",
-                  color: "var(--color-text-tertiary)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                {h}
-              </span>
-            ))}
-          </div>
-
-          {NEUTRAL_SCALE.map(({ step, variable, hex, light, dark }, i) => (
-            <div
-              key={step}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "48px 52px 96px 1fr 1fr",
-                gap: "0 16px",
-                padding: "10px 16px",
-                alignItems: "center",
-                borderTop: i === 0 ? "none" : "1px solid var(--color-border-secondary)",
-              }}
-            >
-              {/* Swatch */}
-              <div
-                style={{
-                  width: "36px",
-                  height: "28px",
-                  borderRadius: "var(--radius-xs)",
-                  background: `var(${variable}, ${hex})`,
-                  border: "1px solid var(--color-border-secondary)",
-                  flexShrink: 0,
-                }}
-              />
-
-              {/* Step */}
-              <span
-                style={{
-                  fontSize: "var(--text-sm)",
-                  fontWeight: "var(--font-weight-semibold)",
-                  color: "var(--color-text-primary)",
-                  fontFamily: "var(--font-mono)",
-                }}
-              >
-                {step}
-              </span>
-
-              {/* Hex */}
-              <code
-                style={{
-                  fontSize: "var(--text-sm)",
-                  fontFamily: "var(--font-mono)",
-                  color: "var(--color-text-tertiary)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {hex}
-              </code>
-
-              {/* Light usages */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-                {light.map((u) => (
-                  <UsageTag key={u} label={u} mode="light" />
-                ))}
-              </div>
-
-              {/* Dark usages */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
-                {dark.map((u) => (
-                  <UsageTag key={u} label={u} mode="dark" />
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
       </DocsPageSection>
 
       <DocsPageSection
@@ -1057,9 +1425,21 @@ export default function ColorsPage() {
       </DocsPageSection>
 
       <DocsPageSection
+        id="focus-rings"
+        title="Focus rings"
+        description="Keyboard-focus effect colors. These roles point directly to primitives and are separate from ordinary component borders."
+      >
+        <div style={swatchGridStyle}>
+          {FOCUS_RING_GROUPS.map((s) => (
+            <Swatch key={s.token} {...s} />
+          ))}
+        </div>
+      </DocsPageSection>
+
+      <DocsPageSection
         id="border"
         title="Border"
-        description="Outline, divider, focus, and validation colors. Strong variants are used when the border itself carries the status meaning."
+        description="Outline, divider, and validation colors. Strong variants are used when the border itself carries the status meaning."
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {BORDER_GROUPS.map(({ label, token, usage }) => (
@@ -1105,6 +1485,112 @@ export default function ColorsPage() {
               </span>
             </div>
           ))}
+        </div>
+      </DocsPageSection>
+
+      <DocsPageSection
+        id="neutral-scale"
+        title="Primitive neutral scale"
+        description={
+          <>
+            A maintenance reference for the Foundation layer. Components never reference these steps
+            directly. Use the semantic roles above; edit primitives only when recalibrating the
+            palette. Named <code>Neutral.*</code> in Figma.
+          </>
+        }
+      >
+        <div className="neutral-token-table" style={{ overflowX: "auto" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              minWidth: "760px",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--color-border-secondary)",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "48px 52px 96px 1fr 1fr",
+                gap: "0 16px",
+                padding: "8px 16px",
+                background: "var(--color-bg-muted)",
+                borderBottom: "1px solid var(--color-border-secondary)",
+              }}
+            >
+              {["", "Step", "Hex", "Light semantic aliases", "Dark semantic aliases"].map(
+                (heading) => (
+                  <span
+                    key={heading}
+                    style={{
+                      fontSize: "var(--text-caption-sm)",
+                      fontWeight: "var(--font-weight-semibold)",
+                      color: "var(--color-text-tertiary)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.06em",
+                    }}
+                  >
+                    {heading}
+                  </span>
+                ),
+              )}
+            </div>
+
+            {NEUTRAL_SCALE.map(({ step, variable, hex, light, dark }, index) => (
+              <div
+                key={step}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "48px 52px 96px 1fr 1fr",
+                  gap: "0 16px",
+                  padding: "10px 16px",
+                  alignItems: "center",
+                  borderTop: index === 0 ? "none" : "1px solid var(--color-border-secondary)",
+                }}
+              >
+                <div
+                  style={{
+                    width: "36px",
+                    height: "28px",
+                    borderRadius: "var(--radius-xs)",
+                    background: `var(${variable}, ${hex})`,
+                    border: "1px solid var(--color-border-secondary)",
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    fontWeight: "var(--font-weight-semibold)",
+                    color: "var(--color-text-primary)",
+                    fontFamily: "var(--font-mono)",
+                  }}
+                >
+                  {step}
+                </span>
+                <code
+                  style={{
+                    fontSize: "var(--text-sm)",
+                    fontFamily: "var(--font-mono)",
+                    color: "var(--color-text-tertiary)",
+                  }}
+                >
+                  {hex}
+                </code>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                  {light.map((usage) => (
+                    <UsageTag key={usage} label={usage} mode="light" />
+                  ))}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
+                  {dark.map((usage) => (
+                    <UsageTag key={usage} label={usage} mode="dark" />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </DocsPageSection>
     </DocsPageLayout>

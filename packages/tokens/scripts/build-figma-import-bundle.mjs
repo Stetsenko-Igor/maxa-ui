@@ -32,6 +32,11 @@ const SEMANTIC_COLOR_GROUPS = {
   control: "control",
 }
 
+const SEMANTIC_COLOR_EXACT_ALIASES = {
+  "focus-ring": "Effects/Focus rings/focus-ring",
+  "focus-ring-error": "Effects/Focus rings/focus-ring-error",
+}
+
 // Decorative hue families (Badge/Tag appearance) live in Color modes/utility,
 // not in the semantic background/text groups. Without this, a CSS reference
 // like var(--color-bg-gray-muted) lands in `background/` and duplicates the
@@ -420,6 +425,9 @@ function convertCssVarToAlias(rawValue) {
 
   if (name.startsWith("color-")) {
     const rest = name.slice("color-".length)
+    if (SEMANTIC_COLOR_EXACT_ALIASES[rest]) {
+      return `{Color modes/${SEMANTIC_COLOR_EXACT_ALIASES[rest]}}`
+    }
     for (const [prefix, figmaGroup] of Object.entries(SEMANTIC_COLOR_GROUPS)) {
       if (rest === prefix || rest.startsWith(`${prefix}-`)) {
         return utilityHueAlias(rest) ?? `{Color modes/${figmaGroup}/${rest}}`
@@ -677,6 +685,7 @@ function inferVariableScopes(collectionName, tokenName, type) {
     const group = lower.split("/")[0]
     if (group === "text") return ["TEXT_FILL"]
     if (group === "border") return ["STROKE_COLOR"]
+    if (lower.startsWith("effects/focus rings/")) return ["STROKE_COLOR", "EFFECT_COLOR"]
     if (group === "action" || group === "control") return ["ALL_FILLS", "STROKE_COLOR"]
     if (group === "feedback") {
       if (lower === "feedback/text" || lower.endsWith("/text")) return ["TEXT_FILL"]
@@ -688,7 +697,9 @@ function inferVariableScopes(collectionName, tokenName, type) {
       // Match the narrower icon-only scopes used by these live Foundation roles.
       // Other foreground roles retain their established ALL_FILLS scope.
       if (lower === "foreground/fg-on-inverse-muted") return ["SHAPE_FILL"]
-      if (lower === "foreground/fg-on-color") return ["SHAPE_FILL", "STROKE_COLOR"]
+      if (lower === "foreground/fg-on-color" || lower.startsWith("foreground/fg-link")) {
+        return ["SHAPE_FILL", "STROKE_COLOR"]
+      }
       return ["ALL_FILLS"]
     }
     if (group === "utility") {

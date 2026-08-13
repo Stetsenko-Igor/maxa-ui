@@ -52,7 +52,7 @@
     },
     "item-border-active": {
       "$description": "Pagination: item border (active state).",
-      "$value": "var(--color-border-focus)",
+      "$value": "{Color modes/Effects/Focus rings/focus-ring}",
       "$type": "color"
     },
     "font-size": {

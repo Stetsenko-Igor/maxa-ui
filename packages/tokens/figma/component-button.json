@@ -1,24 +1,5 @@
 {
   "Button": {
-    "content": {
-      "text-on-color": {
-        "$description": "Button: shared white label color on strong colored surfaces.",
-        "$value": "{Color modes/text/text-on-color}",
-        "$type": "color"
-      },
-      "fg-on-color": {
-        "$description": "Button: shared white icon color on strong colored surfaces.",
-        "$value": "{Color modes/foreground/fg-on-color}",
-        "$type": "color"
-      }
-    },
-    "focus": {
-      "border": {
-        "$description": "Button: shared focus border color.",
-        "$value": "{Color modes/border/border-focus}",
-        "$type": "color"
-      }
-    },
     "primary": {
       "bg": {
         "$description": "Button, primary: background.",
@@ -33,6 +14,16 @@
       "bg-active": {
         "$description": "Button, primary: background (active state).",
         "$value": "{Color modes/action/action-primary-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, primary: white label color in every theme and state.",
+        "$value": "{Color modes/text/text-on-color}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, primary: white icon color in every theme and state.",
+        "$value": "{Color modes/foreground/fg-on-color}",
         "$type": "color"
       },
       "border": {
@@ -229,30 +220,40 @@
         "$type": "color"
       }
     },
-    "success": {
+    "positive": {
       "bg": {
-        "$description": "Button, success: background.",
-        "$value": "{Color modes/action/action-success}",
+        "$description": "Button, positive: background.",
+        "$value": "{Color modes/action/action-positive}",
         "$type": "color"
       },
       "bg-hover": {
-        "$description": "Button, success: background (hover state).",
-        "$value": "{Color modes/action/action-success-hover}",
+        "$description": "Button, positive: background (hover state).",
+        "$value": "{Color modes/action/action-positive-hover}",
         "$type": "color"
       },
       "bg-active": {
-        "$description": "Button, success: background (active state).",
-        "$value": "{Color modes/action/action-success-active}",
+        "$description": "Button, positive: background (active state).",
+        "$value": "{Color modes/action/action-positive-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, positive: white label color in every theme and state.",
+        "$value": "{Color modes/text/text-on-color}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, positive: white icon color in every theme and state.",
+        "$value": "{Color modes/foreground/fg-on-color}",
         "$type": "color"
       },
       "border": {
-        "$description": "Button, success: border.",
-        "$value": "{Color modes/action/action-success}",
+        "$description": "Button, positive: border.",
+        "$value": "{Color modes/action/action-positive}",
         "$type": "color"
       },
       "border-hover": {
-        "$description": "Button, success: border (hover state).",
-        "$value": "{Color modes/action/action-success-hover}",
+        "$description": "Button, positive: border (hover state).",
+        "$value": "{Color modes/action/action-positive-hover}",
         "$type": "color"
       }
     },
@@ -270,6 +271,16 @@
       "bg-active": {
         "$description": "Button, destructive: background (active state).",
         "$value": "{Color modes/action/action-destructive-active}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, destructive: white label color in every theme and state.",
+        "$value": "{Color modes/text/text-on-color}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, destructive: white icon color in every theme and state.",
+        "$value": "{Color modes/foreground/fg-on-color}",
         "$type": "color"
       },
       "border": {
@@ -349,6 +360,16 @@
           "$value": "{Spacing/spacing-sm}",
           "$type": "number"
         },
+        "gap": {
+          "$description": "Button, size xs: gap between icon slots and the text container.",
+          "$value": "{Spacing/spacing-xxs}",
+          "$type": "number"
+        },
+        "text-padding-x": {
+          "$description": "Button, size xs: horizontal padding inside the text container.",
+          "$value": "{Spacing/spacing-xxs}",
+          "$type": "number"
+        },
         "radius": {
           "$description": "Button, size xs: radius.",
           "$value": "{Radius/radius-xs}",
@@ -384,6 +405,16 @@
         "padding-x": {
           "$description": "Button, size sm: symmetric root padding.",
           "$value": "{Spacing/spacing-md}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size sm: gap between icon slots and the text container.",
+          "$value": "{Spacing/spacing-xs}",
+          "$type": "number"
+        },
+        "text-padding-x": {
+          "$description": "Button, size sm: horizontal padding inside the text container.",
+          "$value": "{Spacing/spacing-xxs}",
           "$type": "number"
         },
         "radius": {
@@ -423,6 +454,16 @@
           "$value": 14,
           "$type": "number"
         },
+        "gap": {
+          "$description": "Button, size md: gap between icon slots and the text container.",
+          "$value": "{Spacing/spacing-sm}",
+          "$type": "number"
+        },
+        "text-padding-x": {
+          "$description": "Button, size md: horizontal padding inside the text container.",
+          "$value": "{Spacing/spacing-xxs}",
+          "$type": "number"
+        },
         "radius": {
           "$description": "Button, size md: radius.",
           "$value": "{Radius/radius-xs}",
@@ -458,6 +499,16 @@
         "padding-x": {
           "$description": "Button, size lg: symmetric root padding.",
           "$value": "{Spacing/spacing-2xl}",
+          "$type": "number"
+        },
+        "gap": {
+          "$description": "Button, size lg: gap between icon slots and the text container.",
+          "$value": "{Spacing/spacing-xs}",
+          "$type": "number"
+        },
+        "text-padding-x": {
+          "$description": "Button, size lg: horizontal padding inside the text container.",
+          "$value": "{Spacing/spacing-xs}",
           "$type": "number"
         },
         "radius": {

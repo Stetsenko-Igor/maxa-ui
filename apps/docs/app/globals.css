@@ -2,7 +2,9 @@
 @import "@maxa/tokens/theme.css";
 
 :root {
-  --font-code: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-code:
+    ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   --docs-code-font-size: 13px;
   --docs-code-line-height: 20px;
   --docs-code-bg: #f6f8fa;
@@ -172,7 +174,8 @@ html,
 [data-component-preview] pre,
 .docs-inline-code-scroll {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--color-border-neutral-subtle) 58%, transparent) transparent;
+  scrollbar-color: color-mix(in srgb, var(--color-border-neutral-subtle) 58%, transparent)
+    transparent;
 }
 
 html::-webkit-scrollbar,
@@ -232,13 +235,20 @@ html::-webkit-scrollbar-thumb:hover,
 [data-theme="dark"] .code-block-dark,
 [data-theme="dark"] [data-component-preview] pre,
 [data-theme="dark"] .docs-inline-code-scroll {
-  scrollbar-color: color-mix(in srgb, var(--color-border-neutral-subtle) 46%, transparent) transparent;
+  scrollbar-color: color-mix(in srgb, var(--color-border-neutral-subtle) 46%, transparent)
+    transparent;
 }
 
 /* Code block theme switching */
-.code-block-dark { display: none; }
-[data-theme="dark"] .code-block-light { display: none; }
-[data-theme="dark"] .code-block-dark { display: block; }
+.code-block-dark {
+  display: none;
+}
+[data-theme="dark"] .code-block-light {
+  display: none;
+}
+[data-theme="dark"] .code-block-dark {
+  display: block;
+}
 
 /* Dark mode: tighter, more subtle borders for docs chrome */
 [data-theme="dark"] .docs-sidebar,
@@ -265,6 +275,15 @@ html::-webkit-scrollbar-thumb:hover,
   .docs-main {
     margin-left: 0;
   }
+
+  .color-token-flow,
+  .color-ramp-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .color-token-flow > div > span[aria-hidden="true"] {
+    display: none !important;
+  }
 }
 
 @media (max-width: 45rem) {
@@ -287,6 +306,19 @@ html::-webkit-scrollbar-thumb:hover,
     padding: 0;
   }
 
+  .color-choice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .color-choice-grid > div {
+    grid-template-columns: var(--spacing-5xl) minmax(0, 1fr) !important;
+  }
+
+  .color-choice-grid code {
+    grid-column: 2;
+    text-align: left !important;
+  }
+
   .token-context-demo {
     grid-template-columns: 1fr;
     padding: var(--spacing-5);
@@ -301,5 +333,4 @@ html::-webkit-scrollbar-thumb:hover,
     position: static;
     width: 100%;
   }
-
 }

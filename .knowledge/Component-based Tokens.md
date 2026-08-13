@@ -130,8 +130,9 @@ Approved interaction states:
 
 Focus note:
 
-- keep `border-focus` as the first focus token
-- add effect/ring tokens later only if the foundation system gets an Effects collection
+- use `Effects/Focus rings/focus-ring` for the default keyboard focus color
+- use `Effects/Focus rings/focus-ring-error` for invalid controls
+- do not place focus roles in the generic `border` group
 
 Disabled note:
 
@@ -240,28 +241,24 @@ Button/primary/bg-active
 Button/primary/text
 Button/primary/border
 Button/primary/border-hover
-Button/primary/border-focus
 Button/secondary/bg
 Button/secondary/bg-hover
 Button/secondary/bg-active
 Button/secondary/text
 Button/secondary/border
 Button/secondary/border-hover
-Button/secondary/border-focus
 Button/outline/bg
 Button/outline/bg-hover
 Button/outline/bg-active
 Button/outline/text
 Button/outline/border
 Button/outline/border-hover
-Button/outline/border-focus
 Button/ghost/bg
 Button/ghost/bg-hover
 Button/ghost/bg-active
 Button/ghost/text
 Button/ghost/border
 Button/ghost/border-hover
-Button/ghost/border-focus
 Button/link/bg
 Button/link/bg-hover
 Button/link/bg-active
@@ -270,25 +267,23 @@ Button/link/text-hover
 Button/link/text-active
 Button/link/border
 Button/link/border-hover
-Button/link/border-focus
-Button/success/bg
-Button/success/bg-hover
-Button/success/bg-active
-Button/success/text
-Button/success/border
-Button/success/border-hover
-Button/success/border-focus
-Button/danger/bg
-Button/danger/bg-hover
-Button/danger/bg-active
-Button/danger/text
-Button/danger/border
-Button/danger/border-hover
-Button/danger/border-focus
+Button/positive/bg
+Button/positive/bg-hover
+Button/positive/bg-active
+Button/positive/text
+Button/positive/fg
+Button/positive/border
+Button/positive/border-hover
+Button/destructive/bg
+Button/destructive/bg-hover
+Button/destructive/bg-active
+Button/destructive/text
+Button/destructive/fg
+Button/destructive/border
+Button/destructive/border-hover
 Button/disabled/opacity
 Button/size/sm/height
 Button/size/sm/padding-x
-Button/size/sm/gap
 Button/size/sm/radius
 Button/size/sm/text
 Button/size/sm/line-height
@@ -297,7 +292,6 @@ Button/size/sm/icon-size
 
 Button/size/md/height
 Button/size/md/padding-x
-Button/size/md/gap
 Button/size/md/radius
 Button/size/md/text
 Button/size/md/line-height
@@ -306,7 +300,6 @@ Button/size/md/icon-size
 
 Button/size/lg/height
 Button/size/lg/padding-x
-Button/size/lg/gap
 Button/size/lg/radius
 Button/size/lg/text
 Button/size/lg/line-height
@@ -420,113 +413,97 @@ Figma component guidance:
 
 Use `Color modes` aliases as targets.
 
-| Component token | Alias target | Notes |
-|---|---|---|
-| `Button/primary/bg` | `{action/primary}` | Must follow blue Action / primary, not brand. |
-| `Button/primary/bg-hover` | `{action/primary-hover}` |  |
-| `Button/primary/bg-active` | `{action/primary-active}` |  |
-| `Button/primary/text` | `{text/inverse}` | Needs contrast review against blue primary. |
-| `Button/primary/border` | `{action/primary}` | Same color as fill unless product design requires otherwise. |
-| `Button/primary/border-hover` | `{action/primary-hover}` |  |
-| `Button/primary/border-focus` | `{border/focus}` | Shared focus color. |
-| `Button/secondary/bg` | `{action/neutral}` | Neutral filled action; do not render as an outline style. |
-| `Button/secondary/bg-hover` | `{action/neutral-hover}` |  |
-| `Button/secondary/bg-active` | `{action/neutral-active}` |  |
-| `Button/secondary/text` | `{text/primary}` |  |
-| `Button/secondary/border` | `{action/neutral}` |  |
-| `Button/secondary/border-hover` | `{action/neutral-hover}` |  |
-| `Button/secondary/border-focus` | `{border/focus}` |  |
-| `Button/outline/bg` | `{Primitives/Colors/Base/Transparent}` | Default border-only outline surface. |
-| `Button/outline/bg-surface` | `{background/bg-surface}` | Optional theme-aware surface fill. |
-| `Button/outline/bg-hover` | `{action/neutral-subtle-hover}` |  |
-| `Button/outline/bg-active` | `{action/neutral-subtle-active}` |  |
-| `Button/outline/text` | `{text/primary}` |  |
-| `Button/outline/border` | `{border/primary}` |  |
-| `Button/outline/border-hover` | `{border/secondary}` |  |
-| `Button/outline/border-focus` | `{border/focus}` |  |
-| `Button/ghost/bg` | `{Primitives/Colors/Base/Transparent}` |  |
-| `Button/ghost/bg-hover` | `{action/neutral-subtle-hover}` |  |
-| `Button/ghost/bg-active` | `{action/neutral-subtle-active}` |  |
-| `Button/ghost/text` | `{text/secondary}` |  |
-| `Button/ghost/border` | `{Primitives/Colors/Base/Transparent}` |  |
-| `Button/ghost/border-hover` | `{Primitives/Colors/Base/Transparent}` |  |
-| `Button/ghost/border-focus` | `{border/focus}` |  |
-| `Button/link/bg` | `{Primitives/Colors/Base/Transparent}` | Text-like button. |
-| `Button/link/bg-hover` | `{Primitives/Colors/Base/Transparent}` | Link stays transparent on hover. |
-| `Button/link/bg-active` | `{Primitives/Colors/Base/Transparent}` | Link stays transparent on active. |
-| `Button/link/text` | `{action/primary}` | Link is an action, not only branded text. |
-| `Button/link/text-hover` | `{action/primary-hover}` |  |
-| `Button/link/text-active` | `{action/primary-active}` |  |
-| `Button/link/border` | `{Primitives/Colors/Base/Transparent}` |  |
-| `Button/link/border-hover` | `{Primitives/Colors/Base/Transparent}` |  |
-| `Button/link/border-focus` | `{border/focus}` |  |
-| `Button/success/bg` | `{action/positive}` | Success/positive filled action. |
-| `Button/success/bg-hover` | `{action/positive-hover}` |  |
-| `Button/success/bg-active` | `{action/positive-active}` |  |
-| `Button/success/text` | `{text/text-on-success}` | White in every theme/state by design; improve contrast through the success surface palette, not black text. |
-| `Button/success/border` | `{action/positive}` |  |
-| `Button/success/border-hover` | `{action/positive-hover}` |  |
-| `Button/success/border-focus` | `{border/focus}` |  |
-| `Button/danger/bg` | `{action/negative}` | Destructive filled action. |
-| `Button/danger/bg-hover` | `{action/negative-hover}` |  |
-| `Button/danger/bg-active` | `{action/negative-active}` |  |
-| `Button/danger/text` | `{text/inverse}` | Needs contrast review. |
-| `Button/danger/border` | `{action/negative}` |  |
-| `Button/danger/border-hover` | `{action/negative-hover}` |  |
-| `Button/danger/border-focus` | `{border/focus}` |  |
+| Component token                   | Alias target                           | Notes                                                                   |
+| --------------------------------- | -------------------------------------- | ----------------------------------------------------------------------- |
+| `Button/primary/bg`               | `{action/primary}`                     | Must follow blue Action / primary, not brand.                           |
+| `Button/primary/bg-hover`         | `{action/primary-hover}`               |                                                                         |
+| `Button/primary/bg-active`        | `{action/primary-active}`              |                                                                         |
+| `Button/primary/text`             | `{text/text-on-color}`                 | White in every theme and state.                                         |
+| `Button/primary/fg`               | `{foreground/fg-on-color}`             | White icon foreground in every theme and state.                         |
+| `Button/primary/border`           | `{action/primary}`                     | Same color as fill unless product design requires otherwise.            |
+| `Button/primary/border-hover`     | `{action/primary-hover}`               |                                                                         |
+| `Button/secondary/bg`             | `{action/neutral}`                     | Neutral filled action; do not render as an outline style.               |
+| `Button/secondary/bg-hover`       | `{action/neutral-hover}`               |                                                                         |
+| `Button/secondary/bg-active`      | `{action/neutral-active}`              |                                                                         |
+| `Button/secondary/text`           | `{text/primary}`                       |                                                                         |
+| `Button/secondary/border`         | `{action/neutral}`                     |                                                                         |
+| `Button/secondary/border-hover`   | `{action/neutral-hover}`               |                                                                         |
+| `Button/outline/bg`               | `{Primitives/Colors/Base/Transparent}` | Default border-only outline surface.                                    |
+| `Button/outline/bg-surface`       | `{background/bg-surface}`              | Optional theme-aware surface fill.                                      |
+| `Button/outline/bg-hover`         | `{action/neutral-subtle-hover}`        |                                                                         |
+| `Button/outline/bg-active`        | `{action/neutral-subtle-active}`       |                                                                         |
+| `Button/outline/text`             | `{text/primary}`                       |                                                                         |
+| `Button/outline/border`           | `{border/primary}`                     |                                                                         |
+| `Button/outline/border-hover`     | `{border/secondary}`                   |                                                                         |
+| `Button/ghost/bg`                 | `{Primitives/Colors/Base/Transparent}` |                                                                         |
+| `Button/ghost/bg-hover`           | `{action/neutral-subtle-hover}`        |                                                                         |
+| `Button/ghost/bg-active`          | `{action/neutral-subtle-active}`       |                                                                         |
+| `Button/ghost/text`               | `{text/secondary}`                     |                                                                         |
+| `Button/ghost/border`             | `{Primitives/Colors/Base/Transparent}` |                                                                         |
+| `Button/ghost/border-hover`       | `{Primitives/Colors/Base/Transparent}` |                                                                         |
+| `Button/link/bg`                  | `{Primitives/Colors/Base/Transparent}` | Text-like button.                                                       |
+| `Button/link/bg-hover`            | `{Primitives/Colors/Base/Transparent}` | Link stays transparent on hover.                                        |
+| `Button/link/bg-active`           | `{Primitives/Colors/Base/Transparent}` | Link stays transparent on active.                                       |
+| `Button/link/text`                | `{action/primary}`                     | Link is an action, not only branded text.                               |
+| `Button/link/text-hover`          | `{action/primary-hover}`               |                                                                         |
+| `Button/link/text-active`         | `{action/primary-active}`              |                                                                         |
+| `Button/link/border`              | `{Primitives/Colors/Base/Transparent}` |                                                                         |
+| `Button/link/border-hover`        | `{Primitives/Colors/Base/Transparent}` |                                                                         |
+| `Button/positive/bg`              | `{action/positive}`                    | Positive filled action; `success` remains reserved for feedback status. |
+| `Button/positive/bg-hover`        | `{action/positive-hover}`              |                                                                         |
+| `Button/positive/bg-active`       | `{action/positive-active}`             |                                                                         |
+| `Button/positive/text`            | `{text/text-on-color}`                 | White in every theme and state.                                         |
+| `Button/positive/fg`              | `{foreground/fg-on-color}`             | White icon foreground in every theme and state.                         |
+| `Button/positive/border`          | `{action/positive}`                    |                                                                         |
+| `Button/positive/border-hover`    | `{action/positive-hover}`              |                                                                         |
+| `Button/destructive/bg`           | `{action/destructive}`                 | Destructive filled action.                                              |
+| `Button/destructive/bg-hover`     | `{action/destructive-hover}`           |                                                                         |
+| `Button/destructive/bg-active`    | `{action/destructive-active}`          |                                                                         |
+| `Button/destructive/text`         | `{text/text-on-color}`                 | White in every theme and state.                                         |
+| `Button/destructive/fg`           | `{foreground/fg-on-color}`             | White icon foreground in every theme and state.                         |
+| `Button/destructive/border`       | `{action/destructive}`                 |                                                                         |
+| `Button/destructive/border-hover` | `{action/destructive-hover}`           |                                                                         |
+
+### Focus Behavior
+
+Button focus preserves the normal border token for its variant. Figma components use the shared Focus ring effect, while code uses `--color-focus-ring` directly for the keyboard-focus outline. Do not add `Button/focus/*` or per-variant `border-focus` color tokens.
 
 ### Disabled Behavior
 
-| Component token | Value | Notes |
-|---|---|---|
+| Component token           | Value    | Notes                                                                                                         |
+| ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | `Button/disabled/opacity` | raw `50` | Apply to the Button control itself. Composite form controls should decide disabled surface tokens separately. |
 
 ### Size And Shape
 
 Use `Spacing`, `Radius`, and `Typography` aliases as targets.
 
-| Component token | Alias target | Notes |
-|---|---|---|
-| `Button/size/sm/height` | raw `32` | Figma height token; no existing semantic dimension token yet. |
-| `Button/size/sm/padding-x` | `{spacing-lg}` | 12px. |
-| `Button/size/sm/gap` | `{spacing-sm}` | 6px. |
-| `Button/size/sm/radius` | `{radius-md}` | 8px. |
-| `Button/size/sm/text` | `{Font size/text-sm}` | Needs importer alias validation because Typography is grouped. |
-| `Button/size/sm/line-height` | `{Line height/text-sm}` |  |
-| `Button/size/sm/weight` | `{Font weight/semibold}` |  |
-| `Button/size/sm/icon-size` | raw `16` |  |
-| `Button/size/md/height` | raw `40` |  |
-| `Button/size/md/padding-x` | `{spacing-xl}` | 16px. |
-| `Button/size/md/gap` | `{spacing-md}` | 8px. |
-| `Button/size/md/radius` | `{radius-md}` | 8px. |
-| `Button/size/md/text` | `{Font size/text-md}` |  |
-| `Button/size/md/line-height` | `{Line height/text-md}` |  |
-| `Button/size/md/weight` | `{Font weight/semibold}` |  |
-| `Button/size/md/icon-size` | raw `20` |  |
-| `Button/size/lg/height` | raw `48` |  |
-| `Button/size/lg/padding-x` | `{spacing-2xl}` | 20px. |
-| `Button/size/lg/gap` | `{spacing-md}` | 8px. |
-| `Button/size/lg/radius` | `{radius-lg}` | 10px. |
-| `Button/size/lg/text` | `{Font size/text-lg}` |  |
-| `Button/size/lg/line-height` | `{Line height/text-lg}` |  |
-| `Button/size/lg/weight` | `{Font weight/semibold}` |  |
-| `Button/size/lg/icon-size` | raw `20` |  |
+| Size | Height | `Button/size/*/padding-x` | Radius | Text / line | Icon |
+| ---- | ------ | ------------------------- | ------ | ----------- | ---- |
+| XS   | 24px   | 6px                       | 4px    | 12 / 14px   | 12px |
+| S    | 28px   | 8px                       | 4px    | 12 / 14px   | 16px |
+| M    | 36px   | 14px                      | 4px    | 12 / 14px   | 16px |
+| L    | 48px   | 20px                      | 6px    | 14 / 20px   | 20px |
+
+Root gap and Text padding bind through `Button/size/*/gap` and `Button/size/*/text-padding-x`.
+These component roles alias shared `Spacing/*` variables so the Button layout can be tuned centrally.
+Link is the exception: it uses zero padding, Hug sizing, and shared Spacing directly for its gap.
 
 ### Icon-only Button
 
-| Component token | Alias target | Notes |
-|---|---|---|
-| `Button/icon-only/sm/size` | raw `32` | Square icon-only button size. |
-| `Button/icon-only/md/size` | raw `40` | Square icon-only button size. |
-| `Button/icon-only/lg/size` | raw `48` | Square icon-only button size. |
+Icon Only width and height reuse `Button/size/{size}/height`; no separate Icon Only size family exists.
 
-## Open Decisions
+### Social Button spacing
 
-Deferred beyond Button v1:
+Social Button owns no component-specific gap or padding tokens. Its master variants bind directly
+to the shared Spacing collection (`spacing-md` gap and `spacing-xl` horizontal padding for the
+published medium master). Runtime size modifiers also reference shared spacing variables directly.
 
-- whether filled status buttons (`primary`, `success`, `danger`) need dedicated foreground tokens such as `text/on-primary`, `text/on-success`, `text/on-danger`
-- whether focus ring/elevation belongs in a future Effects collection
-- whether Button needs additional variants after real Figma component usage
+## Resolved decisions
+
+- Primary, Positive, and Destructive use explicit per-variant `text` and `fg` roles, all aliasing on-color semantics.
+- Focus rings live in the shared Effects group, not under Button.
+- Button v3 keeps Icon Only in the same component set and uses Boolean left/right icon properties.
 
 ## Implementation Rule
 

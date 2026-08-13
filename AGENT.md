@@ -31,17 +31,18 @@ MAXA uses a structured spec layer to prevent token fabrication. Every design val
 
 ### Non-negotiable rules
 
-| Rule | Why |
-|------|-----|
-| No hardcoded hex colors | Every color has a semantic token |
-| No hardcoded `px` values from the scale | Every spacing/radius step has a token |
-| No primitive tokens in component code | Use semantic or component tokens only |
-| One `primary` button per view | See interactive-hierarchy spec |
-| No separate `:dark` color selectors | Dark mode is at the token level via `data-theme="dark"` |
+| Rule                                    | Why                                                     |
+| --------------------------------------- | ------------------------------------------------------- |
+| No hardcoded hex colors                 | Every color has a semantic token                        |
+| No hardcoded `px` values from the scale | Every spacing/radius step has a token                   |
+| No primitive tokens in component code   | Use semantic or component tokens only                   |
+| One `primary` button per view           | See interactive-hierarchy spec                          |
+| No separate `:dark` color selectors     | Dark mode is at the token level via `data-theme="dark"` |
 
 ### Audit
 
 Before submitting code:
+
 ```bash
 node scripts/audit-tokens.mjs
 ```
@@ -181,14 +182,13 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
   - `danger` follows `action/negative`
   - Button disabled uses `Button/disabled/opacity = 50`
   - composite form controls may use explicit disabled surface/text/border tokens instead of opacity
-  - focus starts with `border-focus`; effect/ring tokens are deferred until an Effects layer exists
+  - focus preserves the variant border and uses the shared Focus ring effect; do not add a Button-specific focus color token
   - `ghost` uses transparent base/border and neutral subtle hover/active
   - `link` stays transparent and uses `action/primary` for text
   - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
   - source file: `component-button.json`; theme differences resolve through the `Color modes` collection
 - Deferred Button decisions:
   - dedicated foreground tokens for filled status buttons, such as `text/on-primary`, `text/on-success`, `text/on-danger`
-  - future Effects collection for focus ring/elevation
   - additional variants after real Figma component usage
 - Current Input architecture:
   - split field primitives from form-level components

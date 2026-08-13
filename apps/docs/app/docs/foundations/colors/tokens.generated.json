@@ -216,24 +216,24 @@
       },
       {
         "name": "--color-text-link",
-        "lightValue": "var(--color-blue-500)",
-        "darkValue": "var(--color-blue-400)",
+        "lightValue": "var(--color-action-primary)",
+        "darkValue": "var(--color-action-primary)",
         "lightHex": "#0576da",
-        "darkHex": "#449be8"
+        "darkHex": "#0564b9"
       },
       {
         "name": "--color-text-link-hover",
-        "lightValue": "var(--color-blue-550)",
-        "darkValue": "var(--color-blue-300)",
-        "lightHex": "#056dc9",
-        "darkHex": "#86c0f4"
+        "lightValue": "var(--color-action-primary-hover)",
+        "darkValue": "var(--color-action-primary-hover)",
+        "lightHex": "#0564b9",
+        "darkHex": "#0576da"
       },
       {
         "name": "--color-text-link-active",
-        "lightValue": "var(--color-blue-600)",
-        "darkValue": "var(--color-blue-200)",
-        "lightHex": "#0564b9",
-        "darkHex": "#badbfb"
+        "lightValue": "var(--color-action-primary-active)",
+        "darkValue": "var(--color-action-primary-active)",
+        "lightHex": "#04549b",
+        "darkHex": "#449be8"
       },
       {
         "name": "--color-text-info",
@@ -324,23 +324,23 @@
       {
         "name": "--color-fg-link",
         "lightValue": "var(--color-blue-500)",
-        "darkValue": "var(--color-blue-400)",
+        "darkValue": "var(--color-blue-600)",
         "lightHex": "#0576da",
-        "darkHex": "#449be8"
+        "darkHex": "#0564b9"
       },
       {
         "name": "--color-fg-link-hover",
-        "lightValue": "var(--color-blue-550)",
-        "darkValue": "var(--color-blue-300)",
-        "lightHex": "#056dc9",
-        "darkHex": "#86c0f4"
+        "lightValue": "var(--color-blue-600)",
+        "darkValue": "var(--color-blue-500)",
+        "lightHex": "#0564b9",
+        "darkHex": "#0576da"
       },
       {
         "name": "--color-fg-link-active",
-        "lightValue": "var(--color-blue-600)",
-        "darkValue": "var(--color-blue-200)",
-        "lightHex": "#0564b9",
-        "darkHex": "#badbfb"
+        "lightValue": "var(--color-blue-700)",
+        "darkValue": "var(--color-blue-400)",
+        "lightHex": "#04549b",
+        "darkHex": "#449be8"
       },
       {
         "name": "--color-fg-info",
@@ -520,13 +520,6 @@
         "darkHex": "#2a2a2b"
       },
       {
-        "name": "--color-border-focus",
-        "lightValue": "var(--color-blue-500)",
-        "darkValue": "var(--color-blue-400)",
-        "lightHex": "#0576da",
-        "darkHex": "#449be8"
-      },
-      {
         "name": "--color-border-brand",
         "lightValue": "var(--color-brand-500)",
         "darkValue": "var(--color-brand-400)",
@@ -616,6 +609,22 @@
         "darkValue": null,
         "lightHex": "#c7e5f0",
         "darkHex": "#c7e5f0"
+      }
+    ],
+    "focusRings": [
+      {
+        "name": "--color-focus-ring",
+        "lightValue": "var(--color-blue-500)",
+        "darkValue": "var(--color-blue-400)",
+        "lightHex": "#0576da",
+        "darkHex": "#449be8"
+      },
+      {
+        "name": "--color-focus-ring-error",
+        "lightValue": "var(--color-red-500)",
+        "darkValue": "var(--color-red-400)",
+        "lightHex": "#d31510",
+        "darkHex": "#ea514b"
       }
     ],
     "background": [
@@ -861,17 +870,17 @@
       },
       {
         "name": "--color-action-primary-hover",
-        "lightValue": "var(--color-blue-550)",
-        "darkValue": "var(--color-blue-550)",
-        "lightHex": "#056dc9",
-        "darkHex": "#056dc9"
-      },
-      {
-        "name": "--color-action-primary-active",
         "lightValue": "var(--color-blue-600)",
         "darkValue": "var(--color-blue-500)",
         "lightHex": "#0564b9",
         "darkHex": "#0576da"
+      },
+      {
+        "name": "--color-action-primary-active",
+        "lightValue": "var(--color-blue-700)",
+        "darkValue": "var(--color-blue-400)",
+        "lightHex": "#04549b",
+        "darkHex": "#449be8"
       },
       {
         "name": "--color-action-primary-subtle",
@@ -979,25 +988,25 @@
         "darkHex": "#0D7462"
       },
       {
-        "name": "--color-action-success",
-        "lightValue": "var(--color-green-650)",
-        "darkValue": "var(--color-green-750)",
-        "lightHex": "#25843e",
-        "darkHex": "#206d35"
+        "name": "--color-action-positive",
+        "lightValue": "var(--color-green-500)",
+        "darkValue": "var(--color-green-600)",
+        "lightHex": "#30aa50",
+        "darkHex": "#288f44"
       },
       {
-        "name": "--color-action-success-hover",
+        "name": "--color-action-positive-hover",
+        "lightValue": "var(--color-green-600)",
+        "darkValue": "var(--color-green-500)",
+        "lightHex": "#288f44",
+        "darkHex": "#30aa50"
+      },
+      {
+        "name": "--color-action-positive-active",
         "lightValue": "var(--color-green-700)",
-        "darkValue": "var(--color-green-700)",
+        "darkValue": "var(--color-green-400)",
         "lightHex": "#227939",
-        "darkHex": "#227939"
-      },
-      {
-        "name": "--color-action-success-active",
-        "lightValue": "var(--color-green-750)",
-        "darkValue": "var(--color-green-650)",
-        "lightHex": "#206d35",
-        "darkHex": "#25843e"
+        "darkHex": "#59c675"
       },
       {
         "name": "--color-action-destructive",
@@ -1008,17 +1017,17 @@
       },
       {
         "name": "--color-action-destructive-hover",
-        "lightValue": "var(--color-red-550)",
-        "darkValue": "var(--color-red-550)",
-        "lightHex": "#c6140f",
-        "darkHex": "#c6140f"
-      },
-      {
-        "name": "--color-action-destructive-active",
         "lightValue": "var(--color-red-600)",
         "darkValue": "var(--color-red-500)",
         "lightHex": "#b9120e",
         "darkHex": "#d31510"
+      },
+      {
+        "name": "--color-action-destructive-active",
+        "lightValue": "var(--color-red-700)",
+        "darkValue": "var(--color-red-400)",
+        "lightHex": "#960f0b",
+        "darkHex": "#ea514b"
       },
       {
         "name": "--color-action-warning",

@@ -453,7 +453,7 @@ Current Button direction:
 - `danger` should follow `action/negative`
 - Button disabled uses `Button/disabled/opacity = 50`
 - composite form controls may use explicit disabled surface/text/border tokens instead of opacity
-- focus starts with `border-focus`; effect/ring tokens are deferred until the system has an Effects layer
+- focus uses `Effects/Focus rings/focus-ring`; focus colors point directly to primitives instead of living in `border`
 - `ghost` uses transparent base/border and neutral subtle hover/active
 - `link` stays transparent and uses `action/primary` for text
 - Button sizes include text, line-height, weight, icon-size, and icon-only square size tokens
@@ -479,7 +479,7 @@ Current Button direction:
 Deferred Button decisions:
 
 - whether filled status buttons need dedicated foreground tokens such as `text/on-primary`, `text/on-success`, `text/on-danger`
-- whether focus ring/elevation belongs in a future Effects collection
+- whether focus ring elevation needs dedicated Effect Styles beyond the current Focus rings color roles
 - whether Button needs additional variants after real Figma component usage
 
 Current Input direction:

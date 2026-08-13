@@ -394,10 +394,6 @@
         "$value": "#D31510",
         "$type": "color"
       },
-      "550": {
-        "$value": "#C6140F",
-        "$type": "color"
-      },
       "600": {
         "$value": "#B9120E",
         "$type": "color"
@@ -632,16 +628,8 @@
         "$value": "#288F44",
         "$type": "color"
       },
-      "650": {
-        "$value": "#25843E",
-        "$type": "color"
-      },
       "700": {
         "$value": "#227939",
-        "$type": "color"
-      },
-      "750": {
-        "$value": "#206D35",
         "$type": "color"
       },
       "800": {
@@ -869,10 +857,6 @@
       },
       "500": {
         "$value": "#0576DA",
-        "$type": "color"
-      },
-      "550": {
-        "$value": "#056DC9",
         "$type": "color"
       },
       "600": {

@@ -108,7 +108,7 @@ Removable Tag behavior:
 - `removable=true`: trailing remove button appears.
 - `onRemove` fires when the remove button is clicked.
 - The remove button stops event propagation (`e.stopPropagation()`) so clicking X does not trigger the Tag's own click handler.
-- The remove button is keyboard accessible (real `<button>`, `tabIndex={0}`, focus-visible ring `2px var(--color-border-focus)` offset 1px).
+- The remove button is keyboard accessible (real `<button>`, `tabIndex={0}`, focus-visible ring `2px var(--color-focus-ring)` offset 1px).
 - The accessible label is `Remove {children}` when `children` is a string (e.g. `Remove Luxury`); otherwise it falls back to `"Remove"`.
 
 `asChild` and `removable` are mutually exclusive for v1 because Radix Slot expects one child and removable adds a second interactive child.

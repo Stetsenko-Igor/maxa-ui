@@ -27,17 +27,17 @@
     },
     "fill-success": {
       "$description": "Progress: fill success.",
-      "$value": "var(--color-action-success)",
+      "$value": "{Color modes/feedback/success/accent}",
       "$type": "color"
     },
     "fill-warning": {
       "$description": "Progress: fill warning.",
-      "$value": "var(--color-action-warning)",
+      "$value": "{Color modes/feedback/warning/accent}",
       "$type": "color"
     },
     "fill-error": {
       "$description": "Progress: fill error.",
-      "$value": "var(--color-action-destructive)",
+      "$value": "{Color modes/feedback/error/accent}",
       "$type": "color"
     },
     "label-color": {

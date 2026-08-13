@@ -20,7 +20,7 @@
   --radio-bg:                 var(--color-bg-surface);
   --radio-border:             var(--color-control-idle);
   --radio-border-hover:       var(--color-control-idle-hover);
-  --radio-border-focus:       var(--color-border-focus);
+  --radio-border-focus:       var(--color-focus-ring);
   --radio-focus-ring-inner-color: var(--color-bg-surface);
 
   /* ── Colors — checked ─────────────────────────────────────────── */

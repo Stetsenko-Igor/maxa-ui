@@ -70,7 +70,6 @@ const borderTokens = [
   "primary",
   "secondary",
   "tertiary",
-  "focus",
   "brand",
   "error-strong",
   "error-subtle",
@@ -81,6 +80,8 @@ const borderTokens = [
   "neutral-muted",
   "neutral-subtle",
 ] as const
+
+const focusRingTokens = ["focus-ring", "focus-ring-error"] as const
 
 const textTokens = [
   "primary",
@@ -133,6 +134,13 @@ describe("base-tokens cross-layer drift", () => {
       .getPropertyValue(`--color-border-${name}`)
       .trim()
     expect(value, `expected --color-border-${name} to be defined in tokens CSS`).toBeTruthy()
+  })
+
+  it.each(focusRingTokens)("--color-%s resolves to a non-empty value", (name) => {
+    const value = getComputedStyle(document.documentElement)
+      .getPropertyValue(`--color-${name}`)
+      .trim()
+    expect(value, `expected --color-${name} to be defined in tokens CSS`).toBeTruthy()
   })
 
   it.each(textTokens)("--color-text-%s resolves to a non-empty value", (name) => {

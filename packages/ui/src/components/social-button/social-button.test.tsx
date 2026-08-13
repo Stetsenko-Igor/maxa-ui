@@ -1,4 +1,6 @@
 import * as React from "react"
+import { readFileSync } from "node:fs"
+import { resolve } from "node:path"
 import { describe, expect, it } from "vitest"
 import { render, screen } from "@testing-library/react"
 import { axe } from "vitest-axe"
@@ -31,6 +33,18 @@ describe("SocialButton", () => {
     render(<SocialButton ref={ref} provider="github" />)
     expect(ref.current).toBeInstanceOf(HTMLButtonElement)
     expect(ref.current).toHaveClass("maxa-social-button")
+  })
+
+  it("uses shared spacing tokens directly", () => {
+    const css = readFileSync(
+      resolve(process.cwd(), "src/components/social-button/social-button.css"),
+      "utf8",
+    )
+
+    expect(css).toContain("gap: var(--spacing-md)")
+    expect(css).toContain("padding-inline: var(--spacing-xl)")
+    expect(css).not.toContain("--social-button-gap")
+    expect(css).not.toContain("--social-button-padding-x")
   })
 
   it("has no accessibility violations", async () => {

@@ -31,7 +31,7 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 
 - **Use when:** Main call-to-action. One per view/section.
 - **Background:** `--button-primary-bg` → `action/primary` (blue)
-- **Text and icons:** shared `--button-content-text-on-color` / `--button-content-fg-on-color` → white in both themes
+- **Text and icons:** `--button-primary-text` / `--button-primary-fg` → white in both themes
 - **DO NOT** use brand teal for primary. Primary = blue (`action/primary`).
 
 ### `secondary`
@@ -68,11 +68,11 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 - **Layout:** Hug content with zero padding and zero border width; size tokens affect only the label, icon, and their gap
 - No underline by default in MAXA UI — relies on color context.
 
-### `success`
+### `positive`
 
 - **Use when:** Confirming a successful/completed action (e.g. "Mark as complete", "Approve").
-- **Background:** `--button-success-bg` → `action/success` (green)
-- **Text and icons:** shared `--button-content-text-on-color` / `--button-content-fg-on-color` → white in every state and theme
+- **Background:** `--button-positive-bg` → `action/positive` (green)
+- **Text and icons:** `--button-positive-text` / `--button-positive-fg` → white in every state and theme
 - Use sparingly — only when the green color meaningfully communicates the action's outcome.
 
 Design decision: Success Button text stays white in every theme and interaction state. Do not switch it to black as an isolated contrast fix. If stricter contrast is required later, recalibrate the success action backgrounds together with the white foreground.
@@ -81,7 +81,7 @@ Design decision: Success Button text stays white in every theme and interaction 
 
 - **Use when:** Destructive, irreversible actions (delete, remove, revoke).
 - **Background:** `--button-destructive-bg` → `action/destructive` (red)
-- **Text and icons:** shared `--button-content-text-on-color` / `--button-content-fg-on-color` → white in every state and theme
+- **Text and icons:** `--button-destructive-text` / `--button-destructive-fg` → white in every state and theme
 - Always pair with a confirmation dialog for truly destructive actions.
 
 ### `warning`
@@ -100,7 +100,7 @@ Design decision: Success Button text stays white in every theme and interaction 
 | `md` | 36px   | 14px           | 6px        | 2px            | 16px                 | 8px                    | 4px    | 12 / 14px   | SemiBold 600 | 16px      |
 | `lg` | 48px   | 20px           | 4px        | 4px            | 24px                 | 8px                    | 6px    | 14 / 20px   | SemiBold 600 | 20px      |
 
-The root padding is symmetrical whether icons are visible or hidden. The Text padding wrapper provides the remaining optical spacing. Layout gap and Text padding bind directly to global Spacing variables; they do not require Button-specific variables.
+The root padding is symmetrical whether icons are visible or hidden. The Text padding wrapper provides the remaining optical spacing. Regular buttons bind layout gap and Text padding to `Button/size/{size}/gap` and `Button/size/{size}/text-padding-x`; these component tokens alias the same global Spacing values shown above.
 
 **Link exception:** every outer and Text padding value is `0`; the component hugs its visible label/icon content. Its icon-to-text gap is `4 / 6 / 8 / 8px` for `xs / sm / md / lg`.
 
@@ -127,7 +127,7 @@ The root padding is symmetrical whether icons are visible or hidden. The Text pa
 | Default  | No modifier                        | `--button-{variant}-bg`                                                                                     |
 | Hover    | `:hover`                           | `--button-{variant}-bg-hover`                                                                               |
 | Active   | `:active`                          | `--button-{variant}-bg-active`; Outline also uses `--button-outline-border-active`                          |
-| Focus    | `:focus-visible`                   | shared `--button-focus-border` → `border/focus`                                                             |
+| Focus    | `:focus-visible`                   | preserve the variant border and apply the shared Focus ring effect / `--color-focus-ring`                   |
 | Disabled | `disabled` attr or `aria-disabled` | `opacity: var(--button-disabled-opacity)` = 50%                                                             |
 | Loading  | `loading` prop                     | keep label, replace the leading icon with Spinner, hide trailing icon, block interaction, keep 100% opacity |
 
@@ -135,21 +135,21 @@ The root padding is symmetrical whether icons are visible or hidden. The Text pa
 
 **Loading rule:** Loading is behaviorally disabled but not visually disabled. Keep the native button disabled, expose `aria-busy="true"`, suppress click/focus/hover/active behavior, and explicitly restore `opacity: 1`. Regular buttons keep their visible label and show the animated Spinner at the leading edge; Icon Only buttons show the Spinner centered. Loading never uses `--button-disabled-opacity`.
 
-**Focus rule:** Every variant uses the single `--button-focus-border` token. A full Effects/ring token layer is deferred.
+**Focus rule:** Focus never replaces the variant border. In Figma, apply the shared Focus ring effect to the component; in code, use `--color-focus-ring` directly for the keyboard-focus outline. Do not create a Button-specific focus color token.
 
 ### Loading spinner inheritance
 
 Loading instances must keep the spinner component's own stroke unless a colored button surface requires the Button foreground token.
 
-| Figma type | Spinner appearance | Nested stroke override       |
-| ---------- | ------------------ | ---------------------------- |
-| Primary    | White              | `Button/content/fg-on-color` |
-| Positive   | White              | `Button/content/fg-on-color` |
-| Negative   | White              | `Button/content/fg-on-color` |
-| Secondary  | Greyscale          | none; inherit Spinner        |
-| Outline    | Greyscale          | none; inherit Spinner        |
-| Ghost      | Greyscale          | none; inherit Spinner        |
-| Link       | Primary            | none; inherit Spinner        |
+| Figma type | Spinner appearance | Nested stroke override  |
+| ---------- | ------------------ | ----------------------- |
+| Primary    | White              | `Button/primary/fg`     |
+| Positive   | White              | `Button/positive/fg`    |
+| Negative   | White              | `Button/destructive/fg` |
+| Secondary  | Greyscale          | none; inherit Spinner   |
+| Outline    | Greyscale          | none; inherit Spinner   |
+| Ghost      | Greyscale          | none; inherit Spinner   |
+| Link       | Primary            | none; inherit Spinner   |
 
 Do not reintroduce local nested stroke overrides for Secondary, Outline, Ghost, or Link loading icons.
 
@@ -157,12 +157,15 @@ Do not reintroduce local nested stroke overrides for Secondary, Outline, Ghost, 
 
 ## Token Reference
 
-### Shared colored content and focus tokens
+### Colored content tokens
 
 ```css
---button-content-text-on-color: var(--color-text-on-color);
---button-content-fg-on-color: var(--color-fg-on-color);
---button-focus-border: var(--color-border-focus);
+--button-primary-text: var(--color-text-on-color);
+--button-primary-fg: var(--color-fg-on-color);
+--button-positive-text: var(--color-text-on-color);
+--button-positive-fg: var(--color-fg-on-color);
+--button-destructive-text: var(--color-text-on-color);
+--button-destructive-fg: var(--color-fg-on-color);
 ```
 
 ### Primary variant tokens
@@ -180,15 +183,13 @@ Do not reintroduce local nested stroke overrides for Secondary, Outline, Ghost, 
 ```css
 --button-size-md-height: 36px;
 --button-size-md-padding-x: 14px;
+--button-size-md-gap: var(--spacing-sm); /* 6px */
+--button-size-md-text-padding-x: var(--spacing-xxs); /* 2px */
 --button-size-md-radius: var(--radius-xs); /* 4px */
 --button-size-md-text: var(--font-size-text-sm); /* 12px */
 --button-size-md-line-height: 14px;
 --button-size-md-weight: var(--font-weight-semibold);
 --button-size-md-icon-size: 16px;
-
-/* Internal layout aliases global spacing directly. */
---button-internal-gap: var(--spacing-sm); /* 6px */
---button-internal-text-pad-x: var(--spacing-xxs); /* 2px */
 ```
 
 ### Target size tokens (lg example)
@@ -196,21 +197,19 @@ Do not reintroduce local nested stroke overrides for Secondary, Outline, Ghost, 
 ```css
 --button-size-lg-height: 48px;
 --button-size-lg-padding-x: var(--spacing-2xl); /* 20px */
+--button-size-lg-gap: var(--spacing-xs); /* 4px */
+--button-size-lg-text-padding-x: var(--spacing-xs); /* 4px */
 --button-size-lg-radius: var(--radius-sm); /* 6px */
 --button-size-lg-text: var(--font-size-text-md); /* 14px */
 --button-size-lg-line-height: 20px;
 --button-size-lg-weight: var(--font-weight-semibold);
 --button-size-lg-icon-size: 20px;
-
-/* Internal layout aliases global spacing directly. */
---button-internal-gap: var(--spacing-xs); /* 4px */
---button-internal-text-pad-x: var(--spacing-xs); /* 4px */
 ```
 
 ### Compatibility boundary
 
 - The active contract has one `Button/size/*/padding-x` token per size.
-- Layout gaps and Text padding bind directly to global Spacing tokens.
+- Regular layout gaps and Text padding bind through the size-specific Button component tokens; their values alias global Spacing tokens.
 - Icon-only width and height reuse `Button/size/*/height`.
 - Published v2 Figma variable identities are retained under hidden `Button/legacy/*` names so existing instances do not break. New work must not bind to them.
 - Social Button owns its horizontal padding and no longer inherits Button v2 spacing.
@@ -244,14 +243,14 @@ Do not reintroduce local nested stroke overrides for Secondary, Outline, Ghost, 
 
 ## What NOT to do
 
-| ❌ Wrong                                        | ✅ Correct                                                                   |
-| ----------------------------------------------- | ---------------------------------------------------------------------------- |
-| `background: #0265DC`                           | `background: var(--button-primary-bg)`                                       |
-| `border-radius: 4px`                            | `border-radius: var(--button-size-md-radius)`                                |
-| Using `primary` for every action                | Reserve `primary` for one CTA per view                                       |
-| Separate white tokens for every colored variant | Use shared `--button-content-text-on-color` / `--button-content-fg-on-color` |
-| `secondary` as outlined white button            | `secondary` is a filled gray button                                          |
-| Custom disabled styles                          | Use `--button-disabled-opacity: 0.5` on the element                          |
+| ❌ Wrong                                             | ✅ Correct                                                                    |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `background: #0265DC`                                | `background: var(--button-primary-bg)`                                        |
+| `border-radius: 4px`                                 | `border-radius: var(--button-size-md-radius)`                                 |
+| Using `primary` for every action                     | Reserve `primary` for one CTA per view                                        |
+| Bind colored labels/icons to a generic content group | Use the explicit `--button-{variant}-text` / `--button-{variant}-fg` contract |
+| `secondary` as outlined white button                 | `secondary` is a filled gray button                                           |
+| Custom disabled styles                               | Use `--button-disabled-opacity: 0.5` on the element                           |
 
 ---
 

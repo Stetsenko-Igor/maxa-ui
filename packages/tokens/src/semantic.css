@@ -27,9 +27,9 @@
   --color-text-on-warning: var(--color-base-black);
   --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand: var(--color-brand-600);
-  --color-text-link: var(--color-blue-500);
-  --color-text-link-hover: var(--color-blue-550);
-  --color-text-link-active: var(--color-blue-600);
+  --color-text-link: var(--color-action-primary);
+  --color-text-link-hover: var(--color-action-primary-hover);
+  --color-text-link-active: var(--color-action-primary-active);
   --color-text-info: var(--color-blue-900);
   --color-text-success: var(--color-green-900);
   --color-text-error: var(--color-red-900);
@@ -45,8 +45,8 @@
   --color-fg-on-color: var(--color-base-white);
   --color-fg-brand: var(--color-brand-600);
   --color-fg-link: var(--color-blue-500);
-  --color-fg-link-hover: var(--color-blue-550);
-  --color-fg-link-active: var(--color-blue-600);
+  --color-fg-link-hover: var(--color-blue-600);
+  --color-fg-link-active: var(--color-blue-700);
   --color-fg-info: var(--color-blue-600);
   --color-fg-success: var(--color-green-700);
   --color-fg-error: var(--color-red-700);
@@ -56,7 +56,6 @@
   --color-border-primary: var(--color-neutral-300);
   --color-border-secondary: var(--color-neutral-200);
   --color-border-tertiary: var(--color-neutral-100);
-  --color-border-focus: var(--color-blue-500);
   --color-border-brand: var(--color-brand-500);
   --color-border-error-strong: var(--color-red-500);
   --color-border-info-strong: var(--color-blue-700);
@@ -69,6 +68,10 @@
   --color-border-neutral-strong: var(--color-neutral-700);
   --color-border-neutral-muted: var(--color-neutral-400);
   --color-border-neutral-subtle: var(--color-neutral-300);
+
+  /* ── Effects — focus ring colors ──────────────────────────────── */
+  --color-focus-ring: var(--color-blue-500);
+  --color-focus-ring-error: var(--color-red-500);
 
   /* ── Background — surface elevation ─────────────────────────────── */
   --color-bg-page: var(--color-neutral-50); /* #FAFAFA — gray canvas */
@@ -112,8 +115,8 @@
 
   /* ── Action — interactive element backgrounds ───────────────────── */
   --color-action-primary: var(--color-blue-500);
-  --color-action-primary-hover: var(--color-blue-550);
-  --color-action-primary-active: var(--color-blue-600);
+  --color-action-primary-hover: var(--color-blue-600);
+  --color-action-primary-active: var(--color-blue-700);
   --color-action-primary-subtle: var(--color-blue-100);
   --color-action-primary-subtle-hover: var(--color-blue-150);
   --color-action-primary-subtle-active: var(--color-blue-200);
@@ -129,12 +132,12 @@
   --color-action-brand-subtle: var(--color-brand-50);
   --color-action-brand-subtle-hover: var(--color-brand-50);
   --color-action-brand-subtle-active: var(--color-brand-200);
-  --color-action-success: var(--color-green-650);
-  --color-action-success-hover: var(--color-green-700);
-  --color-action-success-active: var(--color-green-750);
+  --color-action-positive: var(--color-green-500);
+  --color-action-positive-hover: var(--color-green-600);
+  --color-action-positive-active: var(--color-green-700);
   --color-action-destructive: var(--color-red-500);
-  --color-action-destructive-hover: var(--color-red-550);
-  --color-action-destructive-active: var(--color-red-600);
+  --color-action-destructive-hover: var(--color-red-600);
+  --color-action-destructive-active: var(--color-red-700);
   --color-action-warning: var(--color-yellow-500);
   --color-action-warning-hover: var(--color-yellow-600);
   --color-action-warning-active: var(--color-yellow-700);
@@ -299,9 +302,9 @@
   --color-text-on-warning: var(--color-base-black);
   --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand: var(--color-brand-400);
-  --color-text-link: var(--color-blue-400);
-  --color-text-link-hover: var(--color-blue-300);
-  --color-text-link-active: var(--color-blue-200);
+  --color-text-link: var(--color-action-primary);
+  --color-text-link-hover: var(--color-action-primary-hover);
+  --color-text-link-active: var(--color-action-primary-active);
   --color-text-info: var(--color-blue-300);
   --color-text-success: var(--color-green-300);
   --color-text-error: var(--color-red-300);
@@ -316,9 +319,9 @@
   --color-fg-on-brand: var(--color-neutral-950);
   --color-fg-on-color: var(--color-base-white);
   --color-fg-brand: var(--color-brand-400);
-  --color-fg-link: var(--color-blue-400);
-  --color-fg-link-hover: var(--color-blue-300);
-  --color-fg-link-active: var(--color-blue-200);
+  --color-fg-link: var(--color-blue-600);
+  --color-fg-link-hover: var(--color-blue-500);
+  --color-fg-link-active: var(--color-blue-400);
   --color-fg-info: var(--color-blue-400);
   --color-fg-success: var(--color-green-400);
   --color-fg-error: var(--color-red-400);
@@ -328,7 +331,6 @@
   --color-border-primary: var(--color-neutral-700);
   --color-border-secondary: var(--color-neutral-800);
   --color-border-tertiary: var(--color-neutral-900);
-  --color-border-focus: var(--color-blue-400);
   --color-border-brand: var(--color-brand-400);
   --color-border-error-strong: var(--color-red-400);
   --color-border-info-strong: var(--color-blue-500);
@@ -337,6 +339,10 @@
   --color-border-neutral-strong: var(--color-neutral-300);
   --color-border-neutral-muted: var(--color-neutral-600);
   --color-border-neutral-subtle: var(--color-neutral-700);
+
+  /* ── Effects — focus ring colors (dark) ───────────────────────── */
+  --color-focus-ring: var(--color-blue-400);
+  --color-focus-ring-error: var(--color-red-400);
 
   /* ── Background — dark (surface elevation) ──────────────────────── */
   --color-bg-page: var(--color-neutral-950); /* #1A1919 — darkest page canvas */
@@ -378,8 +384,8 @@
 
   /* ── Action — dark ──────────────────────────────────────────────── */
   --color-action-primary: var(--color-blue-600);
-  --color-action-primary-hover: var(--color-blue-550);
-  --color-action-primary-active: var(--color-blue-500);
+  --color-action-primary-hover: var(--color-blue-500);
+  --color-action-primary-active: var(--color-blue-400);
   --color-action-primary-subtle: var(--color-blue-950);
   --color-action-primary-subtle-hover: var(--color-blue-950);
   --color-action-primary-subtle-active: var(--color-blue-900);
@@ -395,12 +401,12 @@
   --color-action-brand-subtle: var(--color-brand-950);
   --color-action-brand-subtle-hover: var(--color-brand-950);
   --color-action-brand-subtle-active: var(--color-brand-900);
-  --color-action-success: var(--color-green-750);
-  --color-action-success-hover: var(--color-green-700);
-  --color-action-success-active: var(--color-green-650);
+  --color-action-positive: var(--color-green-600);
+  --color-action-positive-hover: var(--color-green-500);
+  --color-action-positive-active: var(--color-green-400);
   --color-action-destructive: var(--color-red-600);
-  --color-action-destructive-hover: var(--color-red-550);
-  --color-action-destructive-active: var(--color-red-500);
+  --color-action-destructive-hover: var(--color-red-500);
+  --color-action-destructive-active: var(--color-red-400);
   --color-action-warning: var(--color-yellow-400);
   --color-action-warning-hover: var(--color-yellow-300);
   --color-action-warning-active: var(--color-yellow-200);

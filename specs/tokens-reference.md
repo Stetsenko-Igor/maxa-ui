@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1733
+Total tokens: 1735
 
 ## Primitives
 
@@ -51,7 +51,6 @@ Source: `packages/tokens/src/primitives.css`
 --color-blue-300: #86c0f4;
 --color-blue-400: #449be8;
 --color-blue-500: #0576da;
---color-blue-550: #056dc9;
 --color-blue-600: #0564b9;
 --color-blue-700: #04549b;
 --color-blue-800: #073f72;
@@ -64,9 +63,7 @@ Source: `packages/tokens/src/primitives.css`
 --color-green-400: #59c675;
 --color-green-500: #30aa50;
 --color-green-600: #288f44;
---color-green-650: #25843e;
 --color-green-700: #227939;
---color-green-750: #206d35;
 --color-green-800: #1e6131;
 --color-green-900: #194c28;
 --color-green-950: #0c2a15;
@@ -76,7 +73,6 @@ Source: `packages/tokens/src/primitives.css`
 --color-red-300: #fa908b;
 --color-red-400: #ea514b;
 --color-red-500: #d31510;
---color-red-550: #c6140f;
 --color-red-600: #b9120e;
 --color-red-700: #960f0b;
 --color-red-800: #78100d;
@@ -290,9 +286,9 @@ Source: `packages/tokens/src/semantic.css`
 --color-text-on-warning: var(--color-base-black);/* dark: var(--color-base-black) */
 --color-text-on-neutral-action-active: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
---color-text-link: var(--color-blue-500);/* dark: var(--color-blue-400) */
---color-text-link-hover: var(--color-blue-550);/* dark: var(--color-blue-300) */
---color-text-link-active: var(--color-blue-600);/* dark: var(--color-blue-200) */
+--color-text-link: var(--color-action-primary);/* dark: var(--color-action-primary) */
+--color-text-link-hover: var(--color-action-primary-hover);/* dark: var(--color-action-primary-hover) */
+--color-text-link-active: var(--color-action-primary-active);/* dark: var(--color-action-primary-active) */
 --color-text-info: var(--color-blue-900);/* dark: var(--color-blue-300) */
 --color-text-success: var(--color-green-900);/* dark: var(--color-green-300) */
 --color-text-error: var(--color-red-900);/* dark: var(--color-red-300) */
@@ -307,9 +303,9 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-fg-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
 --color-fg-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
---color-fg-link: var(--color-blue-500); /* dark: var(--color-blue-400) */
---color-fg-link-hover: var(--color-blue-550);/* dark: var(--color-blue-300) */
---color-fg-link-active: var(--color-blue-600);/* dark: var(--color-blue-200) */
+--color-fg-link: var(--color-blue-500); /* dark: var(--color-blue-600) */
+--color-fg-link-hover: var(--color-blue-600);/* dark: var(--color-blue-500) */
+--color-fg-link-active: var(--color-blue-700);/* dark: var(--color-blue-400) */
 --color-fg-info: var(--color-blue-600); /* dark: var(--color-blue-400) */
 --color-fg-success: var(--color-green-700);/* dark: var(--color-green-400) */
 --color-fg-error: var(--color-red-700); /* dark: var(--color-red-400) */
@@ -319,7 +315,6 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-primary: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
 --color-border-secondary: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
 --color-border-tertiary: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
---color-border-focus: var(--color-blue-500);/* dark: var(--color-blue-400) */
 --color-border-brand: var(--color-brand-500);/* dark: var(--color-brand-400) */
 --color-border-error-strong: var(--color-red-500);/* dark: var(--color-red-400) */
 --color-border-info-strong: var(--color-blue-700);/* dark: var(--color-blue-500) */
@@ -332,6 +327,10 @@ Source: `packages/tokens/src/semantic.css`
 --color-border-neutral-strong: var(--color-neutral-700);/* dark: var(--color-neutral-300) */
 --color-border-neutral-muted: var(--color-neutral-400);/* dark: var(--color-neutral-600) */
 --color-border-neutral-subtle: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
+
+/* ── Effects — focus ring colors ── */
+--color-focus-ring: var(--color-blue-500);/* dark: var(--color-blue-400) */
+--color-focus-ring-error: var(--color-red-500);/* dark: var(--color-red-400) */
 
 /* ── Background — surface elevation ── */
 --color-bg-page: var(--color-neutral-50);/* #FAFAFA — gray canvas | dark: var(--color-neutral-950) */
@@ -373,8 +372,8 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Action — interactive element backgrounds ── */
 --color-action-primary: var(--color-blue-500);/* dark: var(--color-blue-600) */
---color-action-primary-hover: var(--color-blue-550);/* dark: var(--color-blue-550) */
---color-action-primary-active: var(--color-blue-600);/* dark: var(--color-blue-500) */
+--color-action-primary-hover: var(--color-blue-600);/* dark: var(--color-blue-500) */
+--color-action-primary-active: var(--color-blue-700);/* dark: var(--color-blue-400) */
 --color-action-primary-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-hover: var(--color-blue-150);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-active: var(--color-blue-200);/* dark: var(--color-blue-900) */
@@ -390,12 +389,12 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-brand-subtle: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-hover: var(--color-brand-50);/* dark: var(--color-brand-950) */
 --color-action-brand-subtle-active: var(--color-brand-200);/* dark: var(--color-brand-900) */
---color-action-success: var(--color-green-650);/* dark: var(--color-green-750) */
---color-action-success-hover: var(--color-green-700);/* dark: var(--color-green-700) */
---color-action-success-active: var(--color-green-750);/* dark: var(--color-green-650) */
+--color-action-positive: var(--color-green-500);/* dark: var(--color-green-600) */
+--color-action-positive-hover: var(--color-green-600);/* dark: var(--color-green-500) */
+--color-action-positive-active: var(--color-green-700);/* dark: var(--color-green-400) */
 --color-action-destructive: var(--color-red-500);/* dark: var(--color-red-600) */
---color-action-destructive-hover: var(--color-red-550);/* dark: var(--color-red-550) */
---color-action-destructive-active: var(--color-red-600);/* dark: var(--color-red-500) */
+--color-action-destructive-hover: var(--color-red-600);/* dark: var(--color-red-500) */
+--color-action-destructive-active: var(--color-red-700);/* dark: var(--color-red-400) */
 --color-action-warning: var(--color-yellow-500);/* dark: var(--color-yellow-400) */
 --color-action-warning-hover: var(--color-yellow-600);/* dark: var(--color-yellow-300) */
 --color-action-warning-active: var(--color-yellow-700);/* dark: var(--color-yellow-200) */
@@ -707,15 +706,12 @@ Source: `packages/tokens/src/shadows.css`
 Source: `packages/tokens/src/component-button.css`
 
 ```css
-/* ── Shared content and focus ── */
---button-content-text-on-color: var(--color-text-on-color);
---button-content-fg-on-color: var(--color-fg-on-color);
---button-focus-border: var(--color-border-focus);
-
 /* ── Variants ── */
 --button-primary-bg: var(--color-action-primary);
 --button-primary-bg-hover: var(--color-action-primary-hover);
 --button-primary-bg-active: var(--color-action-primary-active);
+--button-primary-text: var(--color-text-on-color);
+--button-primary-fg: var(--color-fg-on-color);
 --button-primary-border: var(--color-action-primary);
 --button-primary-border-hover: var(--color-action-primary-hover);
 --button-secondary-bg: var(--color-action-neutral);
@@ -753,14 +749,18 @@ Source: `packages/tokens/src/component-button.css`
 --button-link-fg-active: var(--color-fg-link-active);
 --button-link-border: transparent;
 --button-link-border-hover: transparent;
---button-success-bg: var(--color-action-success);
---button-success-bg-hover: var(--color-action-success-hover);
---button-success-bg-active: var(--color-action-success-active);
---button-success-border: var(--color-action-success);
---button-success-border-hover: var(--color-action-success-hover);
+--button-positive-bg: var(--color-action-positive);
+--button-positive-bg-hover: var(--color-action-positive-hover);
+--button-positive-bg-active: var(--color-action-positive-active);
+--button-positive-text: var(--color-text-on-color);
+--button-positive-fg: var(--color-fg-on-color);
+--button-positive-border: var(--color-action-positive);
+--button-positive-border-hover: var(--color-action-positive-hover);
 --button-destructive-bg: var(--color-action-destructive);
 --button-destructive-bg-hover: var(--color-action-destructive-hover);
 --button-destructive-bg-active: var(--color-action-destructive-active);
+--button-destructive-text: var(--color-text-on-color);
+--button-destructive-fg: var(--color-fg-on-color);
 --button-destructive-border: var(--color-action-destructive);
 --button-destructive-border-hover: var(--color-action-destructive-hover);
 --button-warning-bg: var(--color-action-warning);
@@ -776,6 +776,8 @@ Source: `packages/tokens/src/component-button.css`
 /* ── Sizes ── */
 --button-size-xs-height: 24px;
 --button-size-xs-padding-x: 6px;
+--button-size-xs-gap: var(--spacing-xxs);
+--button-size-xs-text-padding-x: var(--spacing-xxs);
 --button-size-xs-radius: var(--radius-xs);
 --button-size-xs-text: var(--text-sm);
 --button-size-xs-line-height: 14px;
@@ -783,6 +785,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-xs-icon-size: 12px;
 --button-size-sm-height: 28px;
 --button-size-sm-padding-x: 8px;
+--button-size-sm-gap: var(--spacing-xs);
+--button-size-sm-text-padding-x: var(--spacing-xxs);
 --button-size-sm-radius: var(--radius-xs);
 --button-size-sm-text: var(--text-sm);
 --button-size-sm-line-height: 14px;
@@ -790,6 +794,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-sm-icon-size: 16px;
 --button-size-md-height: 36px;
 --button-size-md-padding-x: 14px;
+--button-size-md-gap: var(--spacing-sm);
+--button-size-md-text-padding-x: var(--spacing-xxs);
 --button-size-md-radius: var(--radius-xs);
 --button-size-md-text: var(--text-sm);
 --button-size-md-line-height: 14px;
@@ -797,6 +803,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-size-md-icon-size: 16px;
 --button-size-lg-height: 48px;
 --button-size-lg-padding-x: 20px;
+--button-size-lg-gap: var(--spacing-xs);
+--button-size-lg-text-padding-x: var(--spacing-xs);
 --button-size-lg-radius: var(--radius-sm);
 --button-size-lg-text: var(--text-md);
 --button-size-lg-line-height: 20px;
@@ -835,7 +843,7 @@ Source: `packages/tokens/src/component-checkbox.css`
 --checkbox-bg: var(--color-bg-surface);
 --checkbox-border: var(--color-control-idle);
 --checkbox-border-hover: var(--color-control-idle-hover);
---checkbox-border-focus: var(--color-border-focus);
+--checkbox-border-focus: var(--color-focus-ring);
 --checkbox-focus-ring-inner-color: var(--color-bg-surface);
 --checkbox-mark-color: var(--color-fg-inverse);
 
@@ -883,8 +891,8 @@ Source: `packages/tokens/src/component-input.css`
 --input-placeholder: var(--color-text-tertiary);
 --input-border: var(--color-border-primary);
 --input-border-hover: var(--color-border-secondary);
---input-border-focus: var(--color-border-focus);
---input-focus-ring: var(--color-action-primary);
+--input-border-focus: var(--color-focus-ring);
+--input-focus-ring: var(--color-focus-ring);
 --input-focus-ring-offset: 1px;
 --input-focus-ring-width: 3px;
 --input-filled-text: var(--color-text-primary);
@@ -981,7 +989,7 @@ Source: `packages/tokens/src/component-file-input.css`
 --file-input-field-bg-disabled: var(--color-bg-disabled);
 --file-input-field-border: var(--color-border-primary);
 --file-input-field-border-hover: var(--color-border-secondary);
---file-input-field-border-focus: var(--color-border-focus);
+--file-input-field-border-focus: var(--color-focus-ring);
 --file-input-field-border-error: var(--color-border-error-strong);
 --file-input-field-border-disabled: var(--color-border-tertiary);
 --file-input-placeholder-text: var(--color-text-tertiary);
@@ -992,7 +1000,7 @@ Source: `packages/tokens/src/component-file-input.css`
 --file-input-clear-color-hover: var(--color-text-secondary);
 
 /* ── Focus ring ── */
---file-input-focus-ring: var(--color-action-primary);
+--file-input-focus-ring: var(--color-focus-ring);
 --file-input-focus-ring-width: 3px;
 --file-input-focus-ring-offset: 1px;
 
@@ -1126,9 +1134,9 @@ Source: `packages/tokens/src/component-progress.css`
 --progress-height-sm: 6px;
 --progress-height-md: 8px;
 --progress-fill-brand: var(--color-action-primary);
---progress-fill-success: var(--color-action-success);
---progress-fill-warning: var(--color-action-warning);
---progress-fill-error: var(--color-action-destructive);
+--progress-fill-success: var(--color-feedback-success-accent);
+--progress-fill-warning: var(--color-feedback-warning-accent);
+--progress-fill-error: var(--color-feedback-error-accent);
 --progress-label-color: var(--color-text-secondary);
 --progress-value-color: var(--color-text-primary);
 --progress-font-size: var(--text-sm);
@@ -1329,7 +1337,7 @@ Source: `packages/tokens/src/component-pagination.css`
 --pagination-item-text: var(--color-text-secondary);
 --pagination-item-text-active: var(--color-action-primary);
 --pagination-item-border: transparent;
---pagination-item-border-active: var(--color-border-focus);
+--pagination-item-border-active: var(--color-focus-ring);
 --pagination-font-size: var(--text-sm);
 --pagination-font-weight: var(--font-weight-medium);
 ```
@@ -1463,7 +1471,7 @@ Source: `packages/tokens/src/component-radio.css`
 --radio-bg: var(--color-bg-surface);
 --radio-border: var(--color-control-idle);
 --radio-border-hover: var(--color-control-idle-hover);
---radio-border-focus: var(--color-border-focus);
+--radio-border-focus: var(--color-focus-ring);
 --radio-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — checked ── */
@@ -1595,7 +1603,7 @@ Source: `packages/tokens/src/component-toggle.css`
 --toggle-focus-ring-width: 3px;
 --toggle-focus-ring-inner-width: 1px;
 --toggle-focus-ring-offset: 0;
---toggle-focus-ring-color: var(--color-border-focus);
+--toggle-focus-ring-color: var(--color-focus-ring);
 --toggle-focus-ring-inner-color: var(--color-bg-surface);
 
 /* ── Colors — track ── */
@@ -1828,7 +1836,7 @@ Source: `packages/tokens/src/component-dropdown-menu.css`
 --dropdown-menu-label-text: var(--color-text-tertiary);
 --dropdown-menu-shortcut-text: var(--color-text-tertiary);
 --dropdown-menu-separator: var(--color-border-secondary);
---dropdown-menu-focus-ring: var(--color-border-focus);
+--dropdown-menu-focus-ring: var(--color-focus-ring);
 ```
 
 ## Dialog Component Tokens
@@ -1993,7 +2001,7 @@ Source: `packages/tokens/src/component-calendar.css`
 --calendar-day-text-current: var(--color-action-primary);
 --calendar-day-bg-range: var(--color-action-primary-subtle);
 --calendar-day-bg-range-hover: var(--color-action-primary-subtle-hover);
---calendar-focus-ring: var(--color-border-focus);
+--calendar-focus-ring: var(--color-focus-ring);
 --calendar-focus-ring-width: 3px;
 --calendar-focus-ring-offset-color: var(--color-bg-surface);
 --calendar-picker-item-bg-hover: var(--color-action-neutral-subtle-hover);
@@ -2078,12 +2086,6 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-height-sm: 32px;
 --social-button-height: 40px;
 --social-button-height-lg: var(--button-size-lg-height);
---social-button-padding-x-sm: 10px;
---social-button-padding-x: var(--spacing-xl);
---social-button-padding-x-lg: var(--spacing-3xl);
---social-button-gap-sm: var(--spacing-2);
---social-button-gap: var(--spacing-2);
---social-button-gap-lg: var(--spacing-3);
 --social-button-radius: var(--radius-md);
 --social-button-border: var(--color-border-primary);
 --social-button-border-hover: var(--color-border-secondary);

@@ -23,6 +23,9 @@ describe("Button", () => {
     rerender(<Button variant="ghost">Test</Button>)
     expect(screen.getByRole("button")).toHaveClass("maxa-button--ghost")
 
+    rerender(<Button variant="positive">Test</Button>)
+    expect(screen.getByRole("button")).toHaveClass("maxa-button--positive")
+
     rerender(<Button variant="destructive">Test</Button>)
     expect(screen.getByRole("button")).toHaveClass("maxa-button--destructive")
   })
@@ -118,12 +121,16 @@ describe("Button", () => {
   it("implements the v3 optical spacing without icon-edge token branches", () => {
     const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
 
-    expect(css).toContain("--button-label-padding-x-current: var(--spacing-xxs)")
+    expect(css).toContain("--button-gap-current: var(--button-size-md-gap)")
+    expect(css).toContain("--button-label-padding-x-current: var(--button-size-md-text-padding-x)")
     expect(css).toMatch(/\.maxa-button__label\s*\{[^}]*padding-inline:/s)
     expect(css).toMatch(/\.maxa-button--link\s*\{[^}]*padding:\s*0;[^}]*height:\s*auto;/s)
     expect(css).not.toContain("padding-x-icon")
     expect(css).not.toContain("button-icon-only-")
-    expect(css).not.toContain("button-size-md-gap")
+    expect(css).toMatch(
+      /\.maxa-button--xs\.maxa-button--link\s*\{[^}]*gap:\s*var\(--spacing-xs\);/s,
+    )
+    expect(css).toMatch(/\.maxa-button--md\.maxa-button--link,[\s\S]*gap:\s*var\(--spacing-md\);/s)
   })
 
   it("has no accessibility violations", async () => {

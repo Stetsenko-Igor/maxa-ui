@@ -24,7 +24,7 @@
   --checkbox-bg:               var(--color-bg-surface);
   --checkbox-border:           var(--color-control-idle);
   --checkbox-border-hover:     var(--color-control-idle-hover);
-  --checkbox-border-focus:     var(--color-border-focus);
+  --checkbox-border-focus:     var(--color-focus-ring);
   --checkbox-focus-ring-inner-color: var(--color-bg-surface);
   --checkbox-mark-color:       var(--color-fg-inverse);
 

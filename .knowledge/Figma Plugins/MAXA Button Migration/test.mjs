@@ -22,10 +22,11 @@ vm.runInContext(source, sandbox, { filename: 'code.js' });
 
 const previewTokenColors = vm.runInContext('PREVIEW_TOKEN_COLORS', sandbox);
 const secondaryForegroundPreview = previewTokenColors['Button/secondary/fg'];
-assert.deepEqual(
-  JSON.parse(JSON.stringify(secondaryForegroundPreview)),
-  { r: 26 / 255, g: 25 / 255, b: 25 / 255 },
-);
+assert.deepEqual(JSON.parse(JSON.stringify(secondaryForegroundPreview)), {
+  r: 26 / 255,
+  g: 25 / 255,
+  b: 25 / 255,
+});
 
 const node = (id, name, type = 'FRAME') => ({ id, name, type });
 const surface = node('surface', 'Button', 'COMPONENT');
@@ -39,7 +40,8 @@ const outlineBackground = {
   fills: [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }],
 };
 
-assert.equal(sandbox.normalizeVariant('Positive'), 'success');
+assert.equal(sandbox.normalizeVariant('Positive'), 'positive');
+assert.equal(sandbox.normalizeVariant('Success'), 'positive');
 assert.equal(sandbox.normalizeVariant('Negative'), 'destructive');
 assert.equal(sandbox.normalizeVariant('𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline'), 'outline');
 assert.equal(sandbox.normalizeSize('XS - Xtra Small'), 'xs');
@@ -56,7 +58,10 @@ selectedButtonInstance.componentProperties = {
   State: { type: 'VARIANT', value: 'Pressed' },
 };
 assert.equal(
-  sandbox.collectTargets([selectedButtonInstance, surface, node('frame', 'Frame')]).map((item) => item.id).join(','),
+  sandbox
+    .collectTargets([selectedButtonInstance, surface, node('frame', 'Frame')])
+    .map((item) => item.id)
+    .join(','),
   'button-instance,surface',
 );
 assert.equal(sandbox.getVariantProperty(sandbox.getParsedProperties(selectedButtonInstance), ['type']), 'Primary');
@@ -90,13 +95,10 @@ await sandbox.visitDropdownVariantBranches(legacyDropdownInstance, async () => {
     leftSwap: legacyDropdownInstance.componentProperties['🔀 Icon Left Swap'].value,
   });
 });
-assert.deepEqual(
-  JSON.parse(JSON.stringify(visitedDropdownBranches)),
-  [
-    { dropdown: 'False', right: 'Yes', leftSwap: 'bird-icon' },
-    { dropdown: 'True', right: 'No', leftSwap: 'bird-icon' },
-  ],
-);
+assert.deepEqual(JSON.parse(JSON.stringify(visitedDropdownBranches)), [
+  { dropdown: 'False', right: 'Yes', leftSwap: 'bird-icon' },
+  { dropdown: 'True', right: 'No', leftSwap: 'bird-icon' },
+]);
 assert.equal(legacyDropdownInstance.componentProperties['Dropdown ▼'].value, 'False');
 assert.equal(legacyDropdownInstance.componentProperties['➡️ Icon Right'].value, 'Yes');
 assert.equal(legacyDropdownInstance.componentProperties['🔀 Icon Left Swap'].value, 'bird-icon');
@@ -131,7 +133,7 @@ function tokenFor(preview, role) {
 const outlineFocus = mapping({ variant: 'outline', state: 'focus' });
 assert.equal(tokenFor(outlineFocus, 'surface'), 'Button/outline/bg');
 assert.equal(tokenFor(outlineFocus, 'background-surface'), 'Button/outline/bg-surface');
-assert.equal(tokenFor(outlineFocus, 'border'), 'Button/focus/border');
+assert.equal(tokenFor(outlineFocus, 'border'), 'Button/outline/border');
 assert.equal(sandbox.detectLegacyBackgroundLayer({ children: [outlineBackground] }), outlineBackground);
 
 const outlinePressed = mapping({ variant: 'outline', state: 'pressed' });
@@ -145,7 +147,11 @@ assert.equal(linkHover.assignments.filter((assignment) => assignment.role === 'i
 assert.ok(linkHover.assignments.some((assignment) => assignment.role === 'link-layout' && !assignment.token));
 assert.equal(tokenFor(linkHover, 'padding-zero'), 'spacing-none');
 for (const forbiddenRole of ['height', 'padding-x', 'padding-left', 'padding-right', 'radius', 'size']) {
-  assert.equal(linkHover.assignments.some((assignment) => assignment.role === forbiddenRole), false, `Link must not use ${forbiddenRole}`);
+  assert.equal(
+    linkHover.assignments.some((assignment) => assignment.role === forbiddenRole),
+    false,
+    `Link must not use ${forbiddenRole}`,
+  );
 }
 assert.equal(tokenFor(linkHover, 'gap'), 'spacing-md');
 assert.equal(tokenFor(linkHover, 'text-size'), 'Button/size/md/text');
@@ -160,7 +166,7 @@ const primaryLoading = mapping({ variant: 'primary', state: 'loading' });
 assert.equal(tokenFor(primaryLoading, 'surface'), 'Button/primary/bg');
 assert.equal(tokenFor(primaryLoading, 'border'), 'Button/primary/border');
 assert.equal(tokenFor(primaryLoading, 'disabled'), undefined);
-assert.equal(tokenFor(primaryLoading, 'label'), 'Button/content/text-on-color');
+assert.equal(tokenFor(primaryLoading, 'label'), 'Button/primary/text');
 
 const iconOnlyXs = mapping({ variant: 'primary', state: 'default', size: 'xs', iconOnly: true });
 assert.equal(tokenFor(iconOnlyXs, 'size'), 'Button/size/xs/height');
@@ -182,20 +188,24 @@ assert.equal(tokenFor(primaryRightIcon, 'padding-right'), 'Button/size/md/paddin
 const primaryTwoIcons = mapping({ variant: 'primary', state: 'default', left: true, right: true });
 assert.equal(tokenFor(primaryTwoIcons, 'padding-left'), 'Button/size/md/padding-x');
 assert.equal(tokenFor(primaryTwoIcons, 'padding-right'), 'Button/size/md/padding-x');
-assert.equal(tokenFor(primaryTwoIcons, 'gap'), 'spacing-sm');
-assert.equal(tokenFor(primaryTwoIcons, 'leading-icon'), 'Button/content/fg-on-color');
-assert.equal(tokenFor(primaryTwoIcons, 'trailing-icon'), 'Button/content/fg-on-color');
+assert.equal(tokenFor(primaryTwoIcons, 'gap'), 'Button/size/md/gap');
+assert.equal(sandbox.getLabelPaddingToken('xs'), 'Button/size/xs/text-padding-x');
+assert.equal(sandbox.getLabelPaddingToken('sm'), 'Button/size/sm/text-padding-x');
+assert.equal(sandbox.getLabelPaddingToken('md'), 'Button/size/md/text-padding-x');
+assert.equal(sandbox.getLabelPaddingToken('lg'), 'Button/size/lg/text-padding-x');
+assert.equal(tokenFor(primaryTwoIcons, 'leading-icon'), 'Button/primary/fg');
+assert.equal(tokenFor(primaryTwoIcons, 'trailing-icon'), 'Button/primary/fg');
 
 for (const variant of ['secondary', 'outline', 'ghost', 'warning']) {
   const preview = mapping({ variant, state: 'hover', left: true, right: true });
   assert.equal(tokenFor(preview, 'leading-icon'), `Button/${variant}/fg`);
   assert.equal(tokenFor(preview, 'trailing-icon'), `Button/${variant}/fg`);
 }
-for (const variant of ['success', 'destructive']) {
+for (const variant of ['positive', 'destructive']) {
   const preview = mapping({ variant, state: 'hover', left: true, right: true });
-  assert.equal(tokenFor(preview, 'label'), 'Button/content/text-on-color');
-  assert.equal(tokenFor(preview, 'leading-icon'), 'Button/content/fg-on-color');
-  assert.equal(tokenFor(preview, 'trailing-icon'), 'Button/content/fg-on-color');
+  assert.equal(tokenFor(preview, 'label'), `Button/${variant}/text`);
+  assert.equal(tokenFor(preview, 'leading-icon'), `Button/${variant}/fg`);
+  assert.equal(tokenFor(preview, 'trailing-icon'), `Button/${variant}/fg`);
 }
 
 const primaryLoadingSpinner = mapping({ variant: 'primary', state: 'loading', loading: true });
@@ -297,14 +307,24 @@ assert.equal(componentTokenJson.Button.size.xs['padding-x'].$value, '{Spacing/sp
 assert.equal(componentTokenJson.Button.size.sm['padding-x'].$value, '{Spacing/spacing-md}');
 assert.equal(componentTokenJson.Button.size.md['padding-x'].$value, 14);
 assert.equal(componentTokenJson.Button.size.lg['padding-x'].$value, '{Spacing/spacing-2xl}');
+const expectedInternalSpacing = {
+  xs: { gap: '{Spacing/spacing-xxs}', text: '{Spacing/spacing-xxs}' },
+  sm: { gap: '{Spacing/spacing-xs}', text: '{Spacing/spacing-xxs}' },
+  md: { gap: '{Spacing/spacing-sm}', text: '{Spacing/spacing-xxs}' },
+  lg: { gap: '{Spacing/spacing-xs}', text: '{Spacing/spacing-xs}' },
+};
 for (const size of ['xs', 'sm', 'md', 'lg']) {
-  assert.equal(componentTokenJson.Button.size[size].gap, undefined);
+  assert.equal(componentTokenJson.Button.size[size].gap.$value, expectedInternalSpacing[size].gap);
+  assert.equal(componentTokenJson.Button.size[size]['text-padding-x'].$value, expectedInternalSpacing[size].text);
   assert.equal(componentTokenJson.Button.size[size]['padding-x-icon'], undefined);
 }
 assert.equal(componentTokenJson.Button['icon-only'], undefined);
-assert.equal(componentTokenJson.Button.content['text-on-color'].$value, '{Color modes/text/text-on-color}');
-assert.equal(componentTokenJson.Button.content['fg-on-color'].$value, '{Color modes/foreground/fg-on-color}');
-assert.equal(componentTokenJson.Button.focus.border.$value, '{Color modes/border/border-focus}');
+assert.equal(componentTokenJson.Button.content, undefined);
+for (const variant of ['primary', 'positive', 'destructive']) {
+  assert.equal(componentTokenJson.Button[variant].text.$value, '{Color modes/text/text-on-color}');
+  assert.equal(componentTokenJson.Button[variant].fg.$value, '{Color modes/foreground/fg-on-color}');
+}
+assert.equal(componentTokenJson.Button.focus, undefined);
 const types = ['Primary', 'Secondary', '𝙶̶𝚑̶𝚘̶𝚜̶𝚝̶ Outline', 'Positive', 'Negative', 'Link', 'Ghost'];
 const sizes = ['L - Large', 'M - Medium', 'S - Small', 'XS - Xtra Small'];
 const states = ['Default', 'Pressed', 'Focus', 'Hover', 'Selected', 'Loading', 'Disabled'];
@@ -335,10 +355,7 @@ for (const type of types) {
           if (assignment.token) {
             generatedTokens.add(assignment.token);
             if (['surface', 'border', 'label', 'leading-icon', 'trailing-icon'].includes(assignment.role)) {
-              assert.ok(
-                previewTokenColors[assignment.token],
-                `Preview color is missing: ${assignment.token}`,
-              );
+              assert.ok(previewTokenColors[assignment.token], `Preview color is missing: ${assignment.token}`);
             }
           }
         }

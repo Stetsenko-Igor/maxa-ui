@@ -36,7 +36,7 @@
   --calendar-day-text-current: var(--color-action-primary);
   --calendar-day-bg-range: var(--color-action-primary-subtle);
   --calendar-day-bg-range-hover: var(--color-action-primary-subtle-hover);
-  --calendar-focus-ring: var(--color-border-focus);
+  --calendar-focus-ring: var(--color-focus-ring);
   --calendar-focus-ring-width: 3px;
   --calendar-focus-ring-offset-color: var(--color-bg-surface);
   --calendar-picker-item-bg-hover: var(--color-action-neutral-subtle-hover);

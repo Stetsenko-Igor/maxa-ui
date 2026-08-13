@@ -58,5 +58,5 @@
   --dropdown-menu-label-text: var(--color-text-tertiary);
   --dropdown-menu-shortcut-text: var(--color-text-tertiary);
   --dropdown-menu-separator: var(--color-border-secondary);
-  --dropdown-menu-focus-ring: var(--color-border-focus);
+  --dropdown-menu-focus-ring: var(--color-focus-ring);
 }
