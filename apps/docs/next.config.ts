@@ -39,7 +39,7 @@ const config: NextConfig = {
   },
 }
 
-// GITHUB_PAGES=true switches to a static export served from /<repo-name>/
+// GITHUB_PAGES=true switches to a static export served from the configured base path.
 const githubPages: NextConfig = process.env.GITHUB_PAGES
   ? {
       output: "export",

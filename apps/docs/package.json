@@ -6,10 +6,11 @@
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
     "build": "next build && node scripts/normalize-next-env.mjs",
+    "build:netlify": "node scripts/clean-static-export.mjs && PAGES_BASE_PATH= GITHUB_PAGES=true next build && node scripts/verify-static-export.mjs && node scripts/normalize-next-env.mjs",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "eslint app/",
-    "build:pages": "GITHUB_PAGES=true next build && node scripts/normalize-next-env.mjs",
+    "build:pages": "node scripts/clean-static-export.mjs && PAGES_BASE_PATH=/maxa-ui GITHUB_PAGES=true next build && node scripts/verify-static-export.mjs /maxa-ui && node scripts/normalize-next-env.mjs",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots"
   },

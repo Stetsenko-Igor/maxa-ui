@@ -115,6 +115,8 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - Before accepting a primitive-only Figma export change for structural surfaces (`bg-page`, `bg-surface`, `bg-float`, `bg-muted`), compare the resolved semantic color with the live product and confirmed product styles.
 - `MaxaLogo` is a white-only brand component. Both `A` letterforms must keep connected apexes with no notch, triangular cut, or top gap.
 - Before changing or reusing the logo artwork, read `.knowledge/Maxa Logo — Source of Truth.md`; never substitute the rejected prototype SVG documented there.
+- The public design-system catalog at `https://maxa-ui.netlify.app` must be built with `pnpm --filter @maxa/docs build:netlify`. Do not deploy a GitHub Pages artifact with the `/maxa-ui` base path to Netlify.
+- Before a Netlify deploy, verify that every exported HTML asset reference uses `/_next/...` and that no file in `apps/docs/out/` contains `/maxa-ui/_next`.
 - Typography foundation is currently app-oriented, not marketing-oriented.
 - Typography uses:
   - `Font family/body = Montserrat`
