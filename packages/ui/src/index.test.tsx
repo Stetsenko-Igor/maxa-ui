@@ -1,10 +1,16 @@
 import { describe, it, expect } from "vitest"
 import { render, screen } from "@testing-library/react"
-import { Box, Heading, Inline, Stack, Surface, Text, TokenSwatch, version } from "./index"
+import { Box, Heading, Inline, MaxaLogo, Stack, Surface, Text, TokenSwatch, version } from "./index"
 
 describe("ui", () => {
   it("exports version", () => {
     expect(version).toBe("0.0.0")
+  })
+
+  it("exports MaxaLogo from the public API", () => {
+    render(<MaxaLogo />)
+
+    expect(screen.getByRole("img", { name: "MAXA" })).toBeInTheDocument()
   })
 })
 

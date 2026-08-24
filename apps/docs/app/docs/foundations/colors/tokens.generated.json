@@ -44,6 +44,13 @@
       "darkHex": "#fafafa"
     },
     {
+      "name": "--color-neutral-75",
+      "lightValue": "#f5f6fa",
+      "darkValue": null,
+      "lightHex": "#f5f6fa",
+      "darkHex": "#f5f6fa"
+    },
+    {
       "name": "--color-neutral-100",
       "lightValue": "#f4f3f3",
       "darkValue": null,
@@ -630,9 +637,9 @@
     "background": [
       {
         "name": "--color-bg-page",
-        "lightValue": "var(--color-neutral-50)",
+        "lightValue": "var(--color-neutral-75)",
         "darkValue": "var(--color-neutral-950)",
-        "lightHex": "#fafafa",
+        "lightHex": "#f5f6fa",
         "darkHex": "#1a1919"
       },
       {

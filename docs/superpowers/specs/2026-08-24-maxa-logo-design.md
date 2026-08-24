@@ -1,7 +1,7 @@
 # MaxaLogo Component Design
 
 **Date:** 2026-08-24  
-**Status:** Awaiting written-spec review
+**Status:** Implemented — corrected after visual review
 
 ## Goal
 
@@ -9,11 +9,9 @@ Add the official MAXA wordmark to `@maxa/ui` as the single reusable React compon
 
 ## Source of Truth
 
-The component uses the official 1518 × 262 wordmark geometry from:
+The source of truth is the user-approved white-on-black wordmark reference supplied on 2026-08-24. Both `A` letterforms have connected apexes with no triangular cuts at the top. The component renders the white wordmark only; the dark background belongs to the consuming surface.
 
-`AI/Client Side Updates and Improvements/prototypes/header-settings-explorations/assets/maxa-wordmark.svg`
-
-The vector matches the supplied white-on-black reference and the wordmark visible in the live dashboard, login, and Designer screenshots. The component renders the wordmark only; the black or white background belongs to the consuming surface.
+The prototype asset at `AI/Client Side Updates and Improvements/prototypes/header-settings-explorations/assets/maxa-wordmark.svg` is explicitly rejected. Its `A` letterforms are built from disconnected leg paths and omit the apex caps, so it must not be reused as an official logo source.
 
 ## Chosen Approach
 
@@ -23,17 +21,14 @@ This approach is preferred over separate `<img>` assets or a CSS mask because it
 
 - preserves the exact geometry at every size;
 - ships with `@maxa/ui` without runtime asset-path configuration;
-- supports controlled light and dark appearances from one component;
+- keeps the approved white artwork fixed in every use;
 - allows React refs, standard SVG attributes, and predictable accessibility;
 - prevents consumers from substituting text or recreating the wordmark.
 
 ## Public API
 
 ```tsx
-export type MaxaLogoAppearance = "dark" | "light"
-
 export interface MaxaLogoProps extends React.SVGAttributes<SVGSVGElement> {
-  appearance?: MaxaLogoAppearance
   decorative?: boolean
 }
 ```
@@ -44,15 +39,14 @@ Usage:
 import { MaxaLogo } from "@maxa/ui"
 
 <MaxaLogo />
-<MaxaLogo appearance="light" width={116} />
-<MaxaLogo appearance="dark" width={184} />
+<MaxaLogo width={116} />
+<MaxaLogo width={184} />
 <MaxaLogo decorative />
 ```
 
 Behavior:
 
-- `appearance="dark"` is the default and renders the dark wordmark for light surfaces.
-- `appearance="light"` renders the white wordmark for dark surfaces.
+- The wordmark is always white and must be placed on a surface with sufficient dark contrast.
 - The default width is `120`; height remains automatic through the `1518 262` view box.
 - Consumers may provide `width`, `height`, `className`, `style`, and other standard SVG attributes.
 - The component does not render a link or choose a destination. Navigation remains the consumer's responsibility.
@@ -60,22 +54,21 @@ Behavior:
 ## Visual Contract
 
 - The SVG view box is `0 0 1518 262`.
-- The four official path definitions are copied without geometric modification.
+- The four approved path definitions preserve connected apexes on both `A` letterforms.
 - The wordmark preserves its intrinsic aspect ratio.
 - The component has a transparent background.
-- Light and dark appearances change only the fill color; they do not modify geometry, spacing, or proportions.
-- Arbitrary named color variants are not supported. Brand consistency is more important than open-ended recoloring.
+- The fill remains white in every context and does not switch with the global theme.
+- Dark, theme-adaptive, and arbitrary color variants are not supported.
 
 ## Component Tokens
 
 The UI component reads component-level color tokens rather than hardcoded colors or primitive tokens:
 
 ```css
---maxa-logo-color-dark
---maxa-logo-color-light
+--maxa-logo-color
 ```
 
-The token source maps the dark wordmark to the approved static MAXA ink value and the light wordmark to white. These colors do not switch with the global Light/Dark theme because each appearance describes the contrast of the mark itself.
+The token maps directly to white and does not switch with the global Light/Dark theme.
 
 ## Accessibility
 
@@ -92,7 +85,7 @@ Implementation includes:
 - root export from `packages/ui/src/index.ts`;
 - component-token source and generated token reference updates;
 - `specs/components/maxa-logo.md`;
-- `/docs/components/maxa-logo` with default, light-on-dark, dark-on-light, sizing, usage, and API examples;
+- `/docs/components/maxa-logo` with white-on-dark, sizing, usage, and API examples;
 - a `Maxa Logo` entry in the documentation sidebar and component overview catalog;
 - replacement of text-based `MAXA` imitations in the toolbar/menu pattern documentation with `MaxaLogo`.
 
@@ -104,8 +97,8 @@ Tests must be written before implementation and cover:
 
 - root-package export;
 - exact view box and official path geometry;
-- default dark appearance;
-- light appearance;
+- connected `A` apex geometry without top cuts;
+- fixed white artwork with no appearance variant;
 - standard SVG prop and ref forwarding;
 - default accessible name;
 - decorative behavior;
@@ -120,6 +113,7 @@ The final verification command is `pnpm verify`.
 
 - A separate MAXA symbol or abstract mark component.
 - Raster PNG exports.
+- Dark or theme-adaptive logo variants.
 - User-supplied arbitrary brand colors.
 - An interactive or linked logo wrapper.
 - Creating or publishing a Figma component through this repository-only implementation.

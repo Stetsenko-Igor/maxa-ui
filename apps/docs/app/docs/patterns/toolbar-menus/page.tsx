@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
   IconButton,
   Input,
+  MaxaLogo,
 } from "@maxa/ui"
 import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
 import { ComponentPreview } from "../../../_components/component-preview"
@@ -61,16 +62,6 @@ const spacer: React.CSSProperties = {
 
 const darkButton: React.CSSProperties = {
   color: "var(--color-neutral-0)",
-}
-
-const logo: React.CSSProperties = {
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  minWidth: "70px",
-  fontSize: "var(--text-sm)",
-  fontWeight: "var(--font-weight-bold)",
-  letterSpacing: 0,
 }
 
 const note: React.CSSProperties = {
@@ -200,7 +191,7 @@ export default function ToolbarMenusPage() {
         <ComponentPreview code={`<DropdownMenu>\n  <DropdownMenuTrigger asChild>\n    <Button variant="ghost" size="sm" iconTrailing={<ChevronDownIcon />}>Request</Button>\n  </DropdownMenuTrigger>\n  <DropdownMenuContent align="end">\n    <DropdownMenuItem>Request Design</DropdownMenuItem>\n    <DropdownMenuItem>Template Requests</DropdownMenuItem>\n    <DropdownMenuItem>Concierge Requests</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>`}>
           <div style={surface}>
               <div style={darkBar}>
-                <span style={logo}>MAXA</span>
+                <MaxaLogo width={112} decorative />
               <Button size="sm" style={darkButton} variant="ghost">Workspace Admin</Button>
               <Button size="sm" style={darkButton} variant="ghost">Print Cart</Button>
               <Button size="sm" style={darkButton} variant="ghost">Swag Cart</Button>
@@ -325,7 +316,7 @@ export default function ToolbarMenusPage() {
         <ComponentPreview code={`<Button>Print</Button>\n<Button>Download</Button>\n<DropdownMenu>Share</DropdownMenu>`}>
           <div style={surface}>
               <div style={darkBar}>
-                <span style={logo}>MAXA</span>
+                <MaxaLogo width={112} decorative />
               <Button size="sm" style={darkButton} variant="ghost">Close</Button>
               <Badge intent="warning" emphasis="low">Designer 3.0 Beta</Badge>
               <div style={spacer} />

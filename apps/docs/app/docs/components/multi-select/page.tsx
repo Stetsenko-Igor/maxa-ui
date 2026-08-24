@@ -45,7 +45,7 @@ export default function MultiSelectPage() {
       toc={TOC}
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/multi-select"
       markdown=""
-      previous={{ href: "/docs/components/input", label: "Input" }}
+      previous={{ href: "/docs/components/maxa-logo", label: "Maxa Logo" }}
       next={{ href: "/docs/components/pagination", label: "Pagination" }}
       lead="Input-like multi-value selector for choosing several form values from a known list."
     >

@@ -6,6 +6,12 @@
 - SHA-256: `a6acd43b0b8cf1f516c40425bdf5f0ca3d798ad41f8f9a019bcfdb56bb6e4a9b`
 - Initial diff: 54 changes
 
+> **2026-08-24 product-calibration follow-up:** The export change to
+> `Colors/Neutral/50 = #FAFAFA` remains valid for neutral surface tints. A new
+> `Colors/Neutral/75 = #F5F6FA` primitive was added, and Light
+> `background/bg-page` now aliases Neutral/75 to match the live product
+> Designer background without changing Neutral/50 consumers.
+
 ## Integrated export changes
 
 ### Neutral primitives and semantics

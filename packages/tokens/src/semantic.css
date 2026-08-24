@@ -74,7 +74,7 @@
   --color-focus-ring-error: var(--color-red-500);
 
   /* ── Background — surface elevation ─────────────────────────────── */
-  --color-bg-page: var(--color-neutral-50); /* #FAFAFA — gray canvas */
+  --color-bg-page: var(--color-neutral-75); /* #F5F6FA — product page canvas */
   --color-bg-surface: var(--color-base-white); /* #FFFFFF — raised surfaces */
   --color-bg-float: var(--color-base-white); /* #FFFFFF — floating surfaces */
   --color-bg-muted: var(--color-neutral-100); /* #F4F3F3 — recessed zones */

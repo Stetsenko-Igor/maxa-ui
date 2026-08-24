@@ -2,10 +2,12 @@
 
 _Date: 2026-08-01_
 
-**Status: RESOLVED — approved 2026-08-06.** Light `bg-muted` now maps to
-Neutral/100 `#F4F3F3`; dark remains Neutral/975 `#161616`. Neutral/25 remains
-in the primitive palette without a semantic consumer. Table zebra remains a
-separate role: `Table/row-bg-striped` → `bg-neutral-surface` → Neutral/50.
+**Status: RESOLVED — approved 2026-08-06; bg-page calibrated 2026-08-24.**
+Light `bg-muted` maps to Neutral/100 `#F4F3F3`; dark remains Neutral/975
+`#161616`. Light `bg-page` now maps to Neutral/75 `#F5F6FA`, matching the live
+product Designer background. Neutral/25 remains in the primitive palette
+without a semantic consumer. Table zebra remains a separate role:
+`Table/row-bg-striped` → `bg-neutral-surface` → Neutral/50.
 
 > **2026-08-04 update:** the cell-level zebra recommendation below is superseded.
 > Striping is implemented at the row level as `Table/row-bg-striped`, with cells
@@ -13,6 +15,10 @@ separate role: `Table/row-bg-striped` → `bg-neutral-surface` → Neutral/50.
 >
 > **2026-08-06 resolution:** Light `bg-muted` moved to Neutral/100. The dark-mode
 > mapping and the separate zebra-row role were intentionally preserved.
+>
+> **2026-08-24 product calibration:** Light `bg-page` moved from Neutral/50
+> `#FAFAFA` to the new Neutral/75 `#F5F6FA`, matching the live product Designer
+> style while preserving Neutral/50 for striped rows and neutral surface tints.
 
 ---
 
@@ -63,14 +69,14 @@ Recessed metaphor from `specs/foundations/color.md:63` calls muted
 "Recessed/sunken zones". Before the resolution, its Light value was lighter
 than the page, which inverted that relationship:
 
-| Token | Light before | Light after | Dark |
+| Token | Light before | Light current | Dark |
 |---|---|---|---|
-| `bg-page` | Neutral/50 `#FAFAFA` | Neutral/50 `#FAFAFA` | Neutral/950 `#1A1919` |
+| `bg-page` | Neutral/50 `#FAFAFA` | Neutral/75 `#F5F6FA` | Neutral/950 `#1A1919` |
 | `bg-muted` | Neutral/25 `#FCFCFC` | Neutral/100 `#F4F3F3` | Neutral/975 `#161616` |
 | `bg-surface` | White `#FFFFFF` | White `#FFFFFF` | Neutral/900 `#2A2A2B` |
 
 - Dark: `muted < page < surface` — unchanged; the metaphor holds.
-- Light: `muted(100) < page(50) < surface` — the inversion is removed.
+- Light: `muted(100) < page(75) < surface` — the inversion is removed.
 
 Only the Light alias changed. The Dark alias was already correct and remains
 Neutral/975.
@@ -88,7 +94,8 @@ brightness-mirrors and cannot be.
 ## Neutral primitive scale — `packages/tokens/src/primitives.css`
 
 - Neutral/25 `#FCFCFC` — retained as a primitive; no semantic consumer yet.
-- Neutral/50 `#FAFAFA` — page canvas and striped/zebra table rows.
+- Neutral/50 `#FAFAFA` — neutral surface tint and striped/zebra table rows.
+- Neutral/75 `#F5F6FA` — live-product page canvas.
 - Neutral/100 `#F4F3F3` — recessed `bg-muted`, disabled and subtle fills.
 - Neutral/200 `#EDEDED`.
 - Neutral/300 `#E4E4E4`.

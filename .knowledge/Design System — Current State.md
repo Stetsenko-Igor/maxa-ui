@@ -194,6 +194,8 @@ Reason:
 
 Current important semantic values:
 
+- Light `bg-page -> Colors.Neutral.75 (#F5F6FA)`, calibrated to the live product Designer background
+- Light `bg-neutral-surface -> Colors.Neutral.50 (#FAFAFA)` for neutral surface tints and striped rows
 - Light `text/primary -> Colors.Neutral.950`
 - Light `text/secondary -> Colors.Neutral.800`
 - Light `text/tertiary -> Colors.Neutral.600`
@@ -202,6 +204,12 @@ Current important semantic values:
 - Dark `text/secondary -> Colors.Neutral.200`
 - Dark `text/tertiary -> Colors.Neutral.500`
 - Dark `bg-brand-strong -> Colors.Brand.600`
+
+Product surface calibration rule:
+
+- Do not let a primitive-only Figma export silently change structural product surfaces.
+- Before changing `bg-page`, `bg-surface`, `bg-float`, or `bg-muted`, compare the proposed resolved values with the live product and its confirmed product styles.
+- Product-specific visual evidence decides the semantic mapping; raw export changes may still remain valid for other primitive consumers.
 
 ## 8. Radius
 

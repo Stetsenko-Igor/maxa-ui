@@ -44,7 +44,7 @@ Current Figma names use slash grouping, for example `text/primary`. CSS names ma
 
 | Token | Light | Dark | Usage |
 |-------|-------|------|-------|
-| `bg/primary` | neutral-50 `#F5F6FA` | neutral-950 | Page background |
+| `bg/primary` | neutral-75 `#F5F6FA` | neutral-950 | Page background |
 | `bg/secondary` | neutral-25 `#FCFCFC` | neutral-900 | Cards, panels |
 | `bg/tertiary` | neutral-100 `#F4F3F3` | neutral-800 | Nested sections |
 | `bg/disabled` | neutral-100 | neutral-800 | Disabled fields |
@@ -161,7 +161,8 @@ Colors/
 | Stop | Hex | System Usage |
 |------|-----|--------------|
 | 25 | `#FCFCFC` | `bg/secondary` |
-| 50 | `#F5F6FA` | `bg/primary` |
+| 50 | `#FAFAFA` | Neutral surface tint, striped rows |
+| 75 | `#F5F6FA` | `bg/primary` / current `bg-page` |
 | 100 | `#F4F3F3` | `bg/tertiary`, `bg/disabled` |
 | 200 | `#E9EAEF` | `border/disabled` |
 | 300 | `#E4E4E4` | `border/primary` |

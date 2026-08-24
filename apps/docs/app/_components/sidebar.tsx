@@ -44,6 +44,7 @@ const NAV = [
       { href: "/docs/components/file-input", label: "FileInput", isNew: true },
       { href: "/docs/components/icon-button", label: "Icon Button" },
       { href: "/docs/components/input", label: "Input" },
+      { href: "/docs/components/maxa-logo", label: "Maxa Logo", isNew: true },
       { href: "/docs/components/multi-select", label: "Multi Select" },
       { href: "/docs/components/pagination", label: "Pagination" },
       { href: "/docs/components/popover", label: "Popover" },

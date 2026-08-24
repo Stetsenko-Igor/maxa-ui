@@ -50,6 +50,7 @@ specs/
 │   ├── motion.md                    ← duration + easing scale, reduced-motion guard
 │   └── breakpoints.md               ← breakpoints + responsive strategy
 ├── components/
+│   ├── maxa-logo.md                 ← official MAXA wordmark
 │   ├── button.md                    ← Button variants, sizes, states
 │   ├── icon-button.md               ← IconButton (Button + icon-only)
 │   ├── input.md                     ← Input primitive + form composition

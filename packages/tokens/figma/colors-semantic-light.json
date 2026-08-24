@@ -407,7 +407,7 @@
   "background": {
     "bg-page": {
       "$description": "Lowest layer: the page/viewport canvas.",
-      "$value": "{Colors.Neutral.50}",
+      "$value": "{Colors.Neutral.75}",
       "$type": "color"
     },
     "bg-surface": {

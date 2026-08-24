@@ -81,7 +81,7 @@ export default function InputPage() {
       githubHref={GITHUB_INPUT_URL}
       markdown={INPUT_MARKDOWN}
       previous={{ href: "/docs/components/button", label: "Button" }}
-      next={{ href: "/docs/components/textarea", label: "TextArea" }}
+      next={{ href: "/docs/components/maxa-logo", label: "Maxa Logo" }}
       lead={
         <>
           A composable form field family. MAXA separates field primitives from

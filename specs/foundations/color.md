@@ -61,7 +61,7 @@ The visual hierarchy comes from elevation, not shadow: the page is gray, content
 
 | Token                 | Light value           | Dark value            | When to use                                                                                                                                       |
 | --------------------- | --------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--color-bg-page`     | Neutral/50 (#FAFAFA)  | Neutral/950 (#1A1919) | Lowest layer — the page/viewport canvas itself. Everything else floats on top.                                                                    |
+| `--color-bg-page`     | Neutral/75 (#F5F6FA)  | Neutral/950 (#1A1919) | Lowest layer — the page/viewport canvas itself. Everything else floats on top. Matches the live product Designer background.                       |
 | `--color-bg-surface`  | Base white (#FFFFFF)  | Neutral/900 (#2A2A2B) | **Default for raised content.** Use for: inputs, cards, modals, sidebar/drawer, table rows, content containers.                                   |
 | `--color-bg-float`    | Base white (#FFFFFF)  | Neutral/800 (#444445) | Floating surfaces that sit above regular surfaces: dropdown menus, popovers, tooltips, floating command palettes.                                 |
 | `--color-bg-muted`    | Neutral/100 (#F4F3F3) | Neutral/975 (#161616) | Recessed/sunken zones. Use for: code blocks, wells, subdued table rows, search-fields embedded in dark sidebars, disabled-input fill alternative. |

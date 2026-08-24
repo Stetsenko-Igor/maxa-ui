@@ -47,6 +47,15 @@ describe("theme.css", () => {
     expect(css).toContain('@import "./component-avatar.css"')
   })
 
+  it("imports and defines the fixed white MaxaLogo color", () => {
+    expect(css).toContain('@import "./component-maxa-logo.css"')
+
+    const logoCss = readFileSync(join(src, "component-maxa-logo.css"), "utf-8")
+    expect(logoCss).toContain("--maxa-logo-color: var(--color-base-white);")
+    expect(logoCss).not.toContain("--maxa-logo-color-dark")
+    expect(logoCss).not.toContain("--maxa-logo-color-light")
+  })
+
   it("imports dropdown menu component tokens", () => {
     expect(css).toContain('@import "./component-dropdown-menu.css"')
   })
@@ -118,6 +127,10 @@ describe("primitives.css — gray", () => {
   it("defines the Figma neutral surface steps exactly", () => {
     expect(cssVariable(css, "color-neutral-50")?.toLowerCase()).toBe("#fafafa")
     expect(cssVariable(css, "color-neutral-925")?.toLowerCase()).toBe("#232324")
+  })
+
+  it("defines the product page background as Neutral/75", () => {
+    expect(cssVariable(css, "color-neutral-75")?.toLowerCase()).toBe("#f5f6fa")
   })
 
   it("defines all status palette steps used by semantic tokens", () => {
@@ -522,8 +535,10 @@ describe("figma import bundle", () => {
     const dark = bundle.collections["Color modes"]?.modes.Dark
 
     expect(primitives?.["Colors/Neutral/50"]).toBe("#FAFAFA")
+    expect(primitives?.["Colors/Neutral/75"]).toBe("#F5F6FA")
     expect(primitives?.["Colors/Neutral/450"]).toBe("#C9C9C9")
     expect(primitives?.["Colors/Neutral/925"]).toBe("#232324")
+    expect(light?.["background/bg-page"]).toBe("{Colors.Neutral.75}")
     expect(light?.["text/text-disabled"]).toBe("{Colors.Neutral.500}")
     expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.925}")
   })

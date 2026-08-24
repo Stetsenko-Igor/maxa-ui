@@ -48,6 +48,7 @@ import {
   FileInput,
   IconButton,
   Input,
+  MaxaLogo,
   MultiSelect,
   Pagination,
   PaginationItem,
@@ -596,6 +597,19 @@ export default function ComponentsPage() {
               </div>
             </div>
             <span style={footer}>View Input →</span>
+          </Link>
+
+          <Link href="/docs/components/maxa-logo" style={card}>
+            <NewBadge />
+            <p style={eyebrow}>Identity</p>
+            <h2 style={title}>Maxa Logo</h2>
+            <p style={description}>
+              The official MAXA wordmark with connected letterforms and fixed white artwork.
+            </p>
+            <div style={{ ...preview, background: "var(--color-bg-inverse)" }}>
+              <MaxaLogo width={144} decorative />
+            </div>
+            <span style={footer}>View Maxa Logo →</span>
           </Link>
 
           <Link href="/docs/components/textarea" style={card}>

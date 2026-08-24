@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1735
+Total tokens: 1737
 
 ## Primitives
 
@@ -28,6 +28,7 @@ Source: `packages/tokens/src/primitives.css`
 --color-neutral-0: var(--color-base-white);
 --color-neutral-25: #fcfcfc;
 --color-neutral-50: #fafafa;
+--color-neutral-75: #f5f6fa;
 --color-neutral-100: #f4f3f3;
 --color-neutral-200: #ededed;
 --color-neutral-300: #e4e4e4;
@@ -333,7 +334,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-focus-ring-error: var(--color-red-500);/* dark: var(--color-red-400) */
 
 /* ── Background — surface elevation ── */
---color-bg-page: var(--color-neutral-50);/* #FAFAFA — gray canvas | dark: var(--color-neutral-950) */
+--color-bg-page: var(--color-neutral-75);/* #F5F6FA — product page canvas | dark: var(--color-neutral-950) */
 --color-bg-surface: var(--color-base-white);/* #FFFFFF — raised surfaces | dark: var(--color-neutral-900) */
 --color-bg-float: var(--color-base-white);/* #FFFFFF — floating surfaces | dark: var(--color-neutral-800) */
 --color-bg-muted: var(--color-neutral-100);/* #F4F3F3 — recessed zones | dark: var(--color-neutral-975) */
@@ -1090,6 +1091,14 @@ Source: `packages/tokens/src/component-avatar.css`
 --avatar-group-overlap: 10px;
 --avatar-group-ring: var(--color-bg-surface);/* dark: var(--color-bg-page) */
 --avatar-group-ring-width: 2px;
+```
+
+## Maxa Logo Component Tokens
+
+Source: `packages/tokens/src/component-maxa-logo.css`
+
+```css
+--maxa-logo-color: var(--color-base-white);
 ```
 
 ## Spinner Component Tokens

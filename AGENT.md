@@ -111,6 +111,10 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
   - `Grid/gutter`, `Grid/margin`
 - `Grid/margin` intentionally stays separate from `Container/padding` by name, even when it aliases it, because the semantics are different.
 - Color semantic tokens point to primitive color tokens in `Primitives/Colors/...`.
+- Light `background/bg-page` aliases `Colors/Neutral/75 = #F5F6FA`, matching the live product Designer background. `Colors/Neutral/50 = #FAFAFA` remains the lighter neutral surface tint used by roles such as striped table rows.
+- Before accepting a primitive-only Figma export change for structural surfaces (`bg-page`, `bg-surface`, `bg-float`, `bg-muted`), compare the resolved semantic color with the live product and confirmed product styles.
+- `MaxaLogo` is a white-only brand component. Both `A` letterforms must keep connected apexes with no notch, triangular cut, or top gap.
+- Before changing or reusing the logo artwork, read `.knowledge/Maxa Logo — Source of Truth.md`; never substitute the rejected prototype SVG documented there.
 - Typography foundation is currently app-oriented, not marketing-oriented.
 - Typography uses:
   - `Font family/body = Montserrat`
