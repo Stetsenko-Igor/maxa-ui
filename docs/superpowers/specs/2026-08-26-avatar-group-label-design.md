@@ -32,7 +32,7 @@ The code and component tokens define the canonical size mapping:
 | lg | 48 px |
 | xl | 64 px |
 
-The current Figma variant labels incorrectly identify 48 px as `xl` and 64 px as `lg`. Rename those two options to match the canonical mapping without changing geometry or token bindings.
+The current Figma variants already use the correct geometry and size variables, but their numeric name suffixes are crossed: the 48 px `lg` variants are named `lg - 64`, while the 64 px `xl` variants are named `xl - 48`. Rename those options to `lg - 48` and `xl - 64` without changing geometry, variant ordering, or token bindings.
 
 ## Component Architecture
 
