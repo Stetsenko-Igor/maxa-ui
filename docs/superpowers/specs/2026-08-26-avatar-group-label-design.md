@@ -80,12 +80,12 @@ No raw color values may be introduced. If the negative overlap cannot be directl
 
 Variant properties:
 
-- `Size`: `md - 40`, `lg - 48`, `xl - 64`
+- `Size`: `sm (default)`, `md - 40`, `lg - 48`, `xl - 64`
 
 Component properties:
 
 - `Has description`: Boolean, default `false`
-- `Label`: Text, default `Olivia Rhye`
+- `Label`: Text, default `Maxa Design`
 - `Description`: Text, default `olivia@untitledui.com`
 
 Composition rules:
@@ -96,14 +96,14 @@ Composition rules:
 - The component uses horizontal auto layout and hugs its contents.
 - Label and description stay left aligned.
 - The description layer is hidden when `Has description` is false.
-- The three component sizes use Avatar sizes md, lg, and xl respectively.
+- The four component sizes use Avatar sizes sm, md, lg, and xl respectively.
 - Typography scales by component size while preserving the existing Foundation hierarchy.
 
 Token mapping:
 
 | Role | Token family |
 | --- | --- |
-| Primary label | semantic primary text + existing body/label typography |
+| Primary label | semantic secondary text + existing body/label typography |
 | Description | semantic secondary text + existing body typography |
 | Avatar-to-copy gap | existing spacing primitive |
 | Label-to-description gap | existing spacing primitive |
@@ -124,7 +124,7 @@ No raw color, radius, size, spacing, or typography values may be introduced when
 - Avatar images require meaningful alt text when the adjacent label does not already identify the person.
 - Presence dots remain decorative unless the product also exposes the status in text.
 - Overflow communicates hidden member count; consumers should expose the full member list through surrounding UI when it affects a workflow.
-- `Avatar Label` should not be used as an interactive control by itself. Interaction semantics belong to the consuming button, link, menu item, or row.
+- `Avatar Label` remains static by default. Its optional profile-link behavior is defined by the follow-up Avatar Label Profile Link contract.
 
 ## Validation Criteria
 
