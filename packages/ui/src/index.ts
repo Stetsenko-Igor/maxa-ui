@@ -2,6 +2,7 @@ export const version = "0.0.0"
 
 export * from "./base-tokens.js"
 export * from "./components/avatar/index.js"
+export * from "./components/avatar-label/index.js"
 export * from "./components/maxa-logo/index.js"
 export * from "./components/spinner/index.js"
 export * from "./components/skeleton/index.js"

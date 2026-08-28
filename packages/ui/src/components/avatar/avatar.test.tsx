@@ -50,7 +50,46 @@ describe("Avatar", () => {
     expect(avatar).toHaveAttribute("data-size", "md")
     expect(avatar).toHaveAttribute("data-shape", "circle")
     expect(avatar).toHaveAttribute("data-appearance", "blue")
-    expect(avatar).toHaveAttribute("data-emphasis", "strong")
+    expect(avatar).toHaveAttribute("data-emphasis", "neutral")
+  })
+
+  it("supports every colored appearance available in Figma", () => {
+    const appearances = [
+      "amber",
+      "blue",
+      "cyan",
+      "emerald",
+      "fuchsia",
+      "green",
+      "indigo",
+      "lime",
+      "orange",
+      "pink",
+      "purple",
+      "red",
+      "rose",
+      "teal",
+      "violet",
+      "yellow",
+    ] as const
+
+    const { rerender } = render(
+      <Avatar appearance={appearances[0]} emphasis="medium">
+        <AvatarFallback>IS</AvatarFallback>
+      </Avatar>,
+    )
+
+    for (const appearance of appearances) {
+      rerender(
+        <Avatar appearance={appearance} emphasis="medium">
+          <AvatarFallback>IS</AvatarFallback>
+        </Avatar>,
+      )
+      expect(document.querySelector(".maxa-avatar")).toHaveAttribute(
+        "data-appearance",
+        appearance,
+      )
+    }
   })
 
   it("applies size, appearance, emphasis, and square shape", () => {

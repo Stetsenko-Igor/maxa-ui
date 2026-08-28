@@ -10,15 +10,22 @@ export type AvatarShape = "circle" | "square"
 export type AvatarStatus = "online" | "offline" | "busy" | "away"
 export type AvatarEmphasis = "strong" | "medium" | "neutral"
 export type AvatarAppearance =
+  | "amber"
   | "blue"
+  | "cyan"
+  | "emerald"
+  | "fuchsia"
   | "green"
-  | "teal"
-  | "yellow"
+  | "indigo"
+  | "lime"
   | "orange"
+  | "pink"
+  | "purple"
   | "red"
   | "rose"
+  | "teal"
   | "violet"
-  | "purple"
+  | "yellow"
 
 export interface AvatarProps
   extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> {
@@ -35,6 +42,7 @@ export type AvatarImageProps =
 export type AvatarFallbackProps =
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
 
+/** @deprecated Avatar Group is not part of the current MAXA product contract. Prefer Avatar or AvatarLabel. */
 export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   max?: number
   overflow?: "count" | "ellipsis"
@@ -43,7 +51,7 @@ export interface AvatarGroupProps extends React.HTMLAttributes<HTMLDivElement> {
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   AvatarProps
->(({ className, children, appearance = "blue", shape = "circle", size = "md", status, emphasis = "strong", ...props }, ref) => (
+>(({ className, children, appearance = "blue", shape = "circle", size = "md", status, emphasis = "neutral", ...props }, ref) => (
   <AvatarPrimitive.Root
     ref={ref}
     className={cn("maxa-avatar", className)}
@@ -83,6 +91,7 @@ const AvatarFallback = React.forwardRef<
 ))
 AvatarFallback.displayName = "AvatarFallback"
 
+/** @deprecated Avatar Group is not part of the current MAXA product contract. Prefer Avatar or AvatarLabel. */
 const AvatarGroup = React.forwardRef<HTMLDivElement, AvatarGroupProps>(
   ({ className, children, max, overflow: overflowVariant = "count", ...props }, ref) => {
     const childArray = React.Children.toArray(children)
