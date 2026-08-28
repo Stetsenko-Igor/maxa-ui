@@ -33,7 +33,17 @@ function previewPane(page: Page) {
 
 // --- Component pages: first (default) preview block per page ---
 
-const COMPONENT_PAGES = ["button", "input", "select", "multi-select", "dropdown-menu", "dialog", "popover"]
+const COMPONENT_PAGES = [
+  "avatar",
+  "avatar-label",
+  "button",
+  "input",
+  "select",
+  "multi-select",
+  "dropdown-menu",
+  "dialog",
+  "popover",
+]
 
 for (const name of COMPONENT_PAGES) {
   test(`component: ${name} default preview`, async ({ page }) => {
@@ -43,6 +53,23 @@ for (const name of COMPONENT_PAGES) {
     await expect(preview).toHaveScreenshot(`component-${name}.png`)
   })
 }
+
+test("component: avatar-label profile link hover", async ({ page }) => {
+  await gotoStable(page, "/docs/components/avatar-label.html")
+  const preview = previews(page).first()
+  const profileLink = preview.getByRole("link", { name: "Open Maxa Design profile" })
+  await profileLink.hover()
+  await expect(preview).toHaveScreenshot("component-avatar-label-hover.png")
+})
+
+test("component: avatar-label profile link focus", async ({ page }) => {
+  await gotoStable(page, "/docs/components/avatar-label.html")
+  const preview = previews(page).first()
+  const profileLink = preview.getByRole("link", { name: "Open Maxa Design profile" })
+  await profileLink.focus()
+  await expect(profileLink).toBeFocused()
+  await expect(preview).toHaveScreenshot("component-avatar-label-focus.png")
+})
 
 // --- Form controls in both themes ---
 //
