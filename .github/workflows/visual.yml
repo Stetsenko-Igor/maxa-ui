@@ -32,7 +32,7 @@ jobs:
         run: pnpm build
 
       - name: Build docs static export
-        run: pnpm --filter @maxa/docs build:pages
+        run: pnpm --filter @maxa/docs build:netlify
 
       - name: Install Playwright browser
         run: pnpm --filter @maxa/docs exec playwright install chromium --with-deps
