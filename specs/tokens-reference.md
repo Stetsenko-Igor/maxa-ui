@@ -608,12 +608,10 @@ Source: `packages/tokens/src/dimensions.css`
 --radius-4xl: 24px;
 --radius-full: 9999px;
 
-/* ── Width — border widths ── */
+/* ── Component dimensions consumed directly by authored CSS ── */
 --width-1: 1px;
 --width-2: 2px;
 --width-4: 4px;
-
-/* ── Interaction — minimum touch-target hit area ── */
 --touch-target-size: 44px;
 
 /* ── Motion — durations + easings ── */
