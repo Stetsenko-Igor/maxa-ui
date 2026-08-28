@@ -62,21 +62,18 @@
   --radius-3xl:  20px;
   --radius-4xl:  24px;
   --radius-full: 9999px;
-
-  /* ── Width — border widths ───────────────────────────────────────── */
-  --width-1: 1px;
-  --width-2: 2px;
-  --width-4: 4px;
-
-  /* ── Interaction — minimum touch-target hit area ─────────────────── */
-  --touch-target-size: 44px;
-
 }
 
 /* These tokens are NOT Tailwind utilities — they must live in :root so
    Tailwind v4's @theme tree-shaking does not strip them from the output.
-   Component CSS references them as var(--duration-*) / var(--z-*) etc. */
+   Component CSS references them directly as custom properties. */
 :root {
+  /* ── Component dimensions consumed directly by authored CSS ──────── */
+  --width-1: 1px;
+  --width-2: 2px;
+  --width-4: 4px;
+  --touch-target-size: 44px;
+
   /* ── Motion — durations + easings ────────────────────────────────── */
   --duration-instant:  50ms;
   --duration-fast:     100ms;

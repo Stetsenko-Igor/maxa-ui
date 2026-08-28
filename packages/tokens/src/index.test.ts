@@ -413,6 +413,14 @@ describe("dimensions.css — spacing + radius + width", () => {
       expect(css).toContain(`--width-${n}:`)
     }
   })
+
+  it("publishes component-consumed dimensions in :root so Tailwind cannot tree-shake them", () => {
+    const rootBlock = css.match(/:root\s*\{[\s\S]*?\}/)?.[0] ?? ""
+
+    for (const token of ["--width-1:", "--width-2:", "--width-4:", "--touch-target-size:"]) {
+      expect(rootBlock).toContain(token)
+    }
+  })
 })
 
 // ── component-avatar.css ──────────────────────────────────────────────────
