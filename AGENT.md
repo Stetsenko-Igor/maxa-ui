@@ -155,22 +155,24 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - `packages/tokens/figma/import-bundle.json` must be regenerated before import when token files change.
 - Command to regenerate bundle from repo root:
   - `pnpm figma:bundle`
-- Current next working focus for a new chat:
-  - continue from **Component-based Tokens / Button**
-  - define exact Button variants, sizes, states, and aliases before implementation
-  - keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned
-  - reduce the design/code gap by giving developers approved components instead of recreated interpretations
-- Component-based Tokens are the next approved direction.
-- Layer order is foundation tokens -> Component-based Tokens -> Figma components -> React components -> documentation/catalog.
-- Do not create React components or docs/catalog pages until Component-based Tokens are approved.
-- First Component-based Tokens scope:
+- Current Avatar system state:
+  - Figma `Avatar` source: node `818:774` in MAXA Foundation
+  - Figma `Avatar Label` source: node `867:374` in MAXA Foundation
+  - every Avatar surface uses `Avatar/surface/border` and `Avatar/layout/border-width`
+  - rounded and square Avatar variants use `Avatar/layout/radius-circle` and `Avatar/layout/radius-square`
+  - `AvatarLabel` is a semantic profile link when `href` is provided and a static label otherwise
+  - `AvatarLabel` intentionally uses shared semantic interaction tokens; it does not add component-specific state tokens
+  - `AvatarGroup` is hidden in Figma and deprecated in React/docs until product usage makes it relevant again
+- The Component-based token layer is established. Layer order is foundation tokens -> Component-based tokens -> Figma components -> React components -> documentation/catalog.
+- For each new component family, agree either its component-token contract or an explicit semantic-token-only strategy before implementation. Existing approved components may be maintained without reopening that decision.
+- The original seed scope was:
   - `Button`
   - `Input`
   - `Badge`
   - `Alert`
 - `Card` is intentionally excluded because MAXA does not currently have an approved Card component.
-- Component-based Tokens naming:
-  - Figma collection: `Component-based Tokens`
+- Component-based token naming:
+  - Figma collection: `Component-based`
   - slash grouping in Figma, for example `Button/primary/bg-hover`
   - PascalCase component group names, for example `Button`
   - lowercase token roles, for example `primary`, `bg`, `text`, `border`, `size`, `md`

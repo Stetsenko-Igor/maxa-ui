@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
   Avatar,
   AvatarFallback,
-  AvatarGroup,
+  AvatarLabel,
   Badge,
   Breadcrumb,
   BreadcrumbItem,
@@ -280,26 +280,42 @@ export default function ComponentsPage() {
             <p style={eyebrow}>Identity</p>
             <h2 style={title}>Avatar</h2>
             <p style={description}>
-              User and collaborator identity primitive with fallback initials, sizes, statuses, and
-              groups.
+              User and account identity primitive with fallback initials, images, sizes, shapes, and
+              statuses.
             </p>
-            <div style={preview}>
-              <AvatarGroup max={3}>
-                <Avatar appearance="blue" emphasis="medium">
-                  <AvatarFallback>IS</AvatarFallback>
-                </Avatar>
-                <Avatar appearance="green" emphasis="medium">
-                  <AvatarFallback>AV</AvatarFallback>
-                </Avatar>
-                <Avatar appearance="rose" emphasis="medium">
-                  <AvatarFallback>MC</AvatarFallback>
-                </Avatar>
-                <Avatar appearance="orange" emphasis="medium">
-                  <AvatarFallback>JW</AvatarFallback>
-                </Avatar>
-              </AvatarGroup>
+            <div style={{ ...preview, gap: "8px" }}>
+              <Avatar>
+                <AvatarFallback>IS</AvatarFallback>
+              </Avatar>
+              <Avatar appearance="green" emphasis="medium">
+                <AvatarFallback>AV</AvatarFallback>
+              </Avatar>
+              <Avatar appearance="rose" emphasis="medium">
+                <AvatarFallback>MC</AvatarFallback>
+              </Avatar>
             </div>
             <span style={footer}>View Avatar →</span>
+          </Link>
+
+          <Link href="/docs/components/avatar-label" style={card}>
+            <p style={eyebrow}>Identity</p>
+            <h2 style={title}>Avatar Label</h2>
+            <p style={description}>
+              Avatar with a visible name and optional description. Static or one semantic profile
+              link target.
+            </p>
+            <div style={preview}>
+              <AvatarLabel
+                avatar={
+                  <Avatar>
+                    <AvatarFallback>MD</AvatarFallback>
+                  </Avatar>
+                }
+                label="Maxa Design"
+                description="Product designer"
+              />
+            </div>
+            <span style={footer}>View Avatar Label →</span>
           </Link>
 
           {/* B */}

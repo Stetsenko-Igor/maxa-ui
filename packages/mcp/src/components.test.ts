@@ -46,6 +46,14 @@ describe("listComponents", () => {
     const button = components.find((c) => c.name === "button")
     expect(button?.status).toBe("implemented")
   })
+
+  it("publishes Avatar Label as an implemented canonical component", () => {
+    const avatarLabel = components.find((c) => c.name === "avatar-label")
+
+    expect(avatarLabel?.specPath).toBe("specs/components/avatar-label.md")
+    expect(avatarLabel?.hasImplementation).toBe(true)
+    expect(avatarLabel?.status).toBe("implemented")
+  })
 })
 
 describe("getComponentSpec", () => {
@@ -60,6 +68,7 @@ describe("getComponentSpec", () => {
     expect(getComponentSpec(root, "DatePicker").name).toBe("date-picker")
     expect(getComponentSpec(root, "date picker").name).toBe("date-picker")
     expect(getComponentSpec(root, "BUTTON").name).toBe("button")
+    expect(getComponentSpec(root, "AvatarLabel").content).toContain("# Avatar Label")
   })
 
   it("returns valid names when nothing matches", () => {

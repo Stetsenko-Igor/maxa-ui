@@ -1,10 +1,12 @@
 # MAXA UI
 
-[![build](https://img.shields.io/github/actions/workflow/status/Stetsenko-Igor/maxa-ui/ci.yml?branch=main&style=flat-square&label=build)](https://github.com/Stetsenko-Igor/maxa-ui/actions/workflows/ci.yml) [![@maxa/ui](https://img.shields.io/github/package-json/v/Stetsenko-Igor/maxa-ui?filename=packages%2Fui%2Fpackage.json&style=flat-square&label=%40maxa%2Fui&color=0d9488)](https://github.com/Stetsenko-Igor/maxa-ui/blob/main/packages/ui/package.json) [![components](https://img.shields.io/badge/components-40-0d9488?style=flat-square)](https://stetsenko-igor.github.io/maxa-ui/docs/components) [![maintained with](https://img.shields.io/badge/maintained%20with-turborepo%20%2B%20pnpm-0d9488?style=flat-square)](https://turborepo.com) [![types](https://img.shields.io/badge/types-TypeScript-3178C6?style=flat-square)](https://www.typescriptlang.org/) [![docs](https://img.shields.io/badge/docs-online-0d9488?style=flat-square)](https://stetsenko-igor.github.io/maxa-ui/)
+[![build](https://img.shields.io/github/actions/workflow/status/Stetsenko-Igor/maxa-ui/ci.yml?branch=main&style=flat-square&label=build)](https://github.com/Stetsenko-Igor/maxa-ui/actions/workflows/ci.yml) [![@maxa/ui](https://img.shields.io/github/package-json/v/Stetsenko-Igor/maxa-ui?filename=packages%2Fui%2Fpackage.json&style=flat-square&label=%40maxa%2Fui&color=0d9488)](https://github.com/Stetsenko-Igor/maxa-ui/blob/main/packages/ui/package.json) [![components](https://img.shields.io/badge/components-42-0d9488?style=flat-square)](https://maxa-ui.netlify.app/docs/components) [![maintained with](https://img.shields.io/badge/maintained%20with-turborepo%20%2B%20pnpm-0d9488?style=flat-square)](https://turborepo.com) [![types](https://img.shields.io/badge/types-TypeScript-3178C6?style=flat-square)](https://www.typescriptlang.org/) [![docs](https://img.shields.io/badge/docs-online-0d9488?style=flat-square)](https://maxa-ui.netlify.app/)
 
 MAXA UI is the design system repository for Maxa. It packages the shared design language as workspace packages, Figma-ready tokens, React components, documentation, and agent-readable specifications. Packages publish to the GitLab Package Registry (primary); public npm stays an option for external developers - see [`RELEASING.md`](RELEASING.md).
 
-Docs site: https://stetsenko-igor.github.io/maxa-ui/ (deployed from `main` via GitHub Pages)
+Primary docs: https://maxa-ui.netlify.app/
+
+GitHub Pages mirror: https://stetsenko-igor.github.io/maxa-ui/
 
 The goal is to close the gap between design and engineering: the same decisions that shape Figma components also ship as tokens, component APIs, docs, tests, and specs that humans and AI agents can read before building product UI.
 

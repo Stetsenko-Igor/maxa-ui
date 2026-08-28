@@ -28,6 +28,7 @@ const NAV = [
       { href: "/docs/components/alert", label: "Alert" },
       { href: "/docs/components/alert-dialog", label: "Alert Dialog" },
       { href: "/docs/components/avatar", label: "Avatar" },
+      { href: "/docs/components/avatar-label", label: "Avatar Label", isNew: true },
       { href: "/docs/components/badge", label: "Badge" },
       { href: "/docs/components/breadcrumb", label: "Breadcrumb" },
       { href: "/docs/components/button", label: "Button" },

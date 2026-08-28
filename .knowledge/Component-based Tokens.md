@@ -1,28 +1,28 @@
 # Component-based Tokens
 
-> Status: Button v1 and Input v1 are prepared in token source and Figma import bundle.
-> Purpose: define the component token layer before building Figma components, React components, or documentation.
+> Status: established layer. Button, Input, Avatar, and other approved component contracts are implemented in the token source and Figma import bundle.
+> Purpose: define component-specific decisions while continuing to reuse shared semantic and foundation tokens.
 
 ## Position In The System
 
-Component-based Tokens sit above foundation tokens and below real UI components.
+Component-based tokens sit above foundation tokens and below real UI components.
 
 Current layer order:
 
 1. `Primitives`
 2. semantic/foundation layers: `Color modes`, `Spacing`, `Radius`, `Typography`, `Layout`, `Breakpoints`
-3. `Component-based Tokens`
+3. `Component-based`
 4. Figma components
 5. React components
 6. Documentation/catalog
 
-Component-based Tokens describe how a specific component uses the existing foundation layers. They should alias existing semantic/foundation tokens wherever possible.
+Component-based tokens describe how a specific component uses the existing foundation layers. They should alias existing semantic/foundation tokens wherever possible.
 
 ## What This Layer Is Not
 
-Component-based Tokens are not React primitives.
+Component-based tokens are not React primitives.
 
-Do not treat these as Component-based Tokens:
+Do not treat these as Component-based tokens:
 
 - `Box`
 - `Stack`
@@ -34,11 +34,11 @@ Do not treat these as Component-based Tokens:
 
 Those may become internal implementation helpers or documentation helpers later, but they are not the component token layer.
 
-Do not build docs preview pages or React components before the relevant Component-based Tokens are agreed.
+Before implementing a new component family, agree either its component-token contract or an explicit semantic-token-only strategy. Existing approved components can be maintained without reopening that decision.
 
-## First Component Scope
+## Original Seed Scope
 
-Phase 1 Component-based Tokens:
+The initial token-layer rollout covered:
 
 1. `Button`
 2. `Input`
@@ -51,7 +51,7 @@ Phase 1 Component-based Tokens:
 
 Use a dedicated Figma collection:
 
-- `Component-based Tokens`
+- `Component-based`
 
 Use slash grouping in Figma paths:
 
@@ -180,7 +180,7 @@ Prefer semantic component families over one oversized `type` axis.
 
 Accepted architectural rule:
 
-- token architecture can remain unified under `Component-based Tokens/Button/...`
+- token architecture can remain unified under `Component-based/Button/...`
 - Figma component sets may be split for performance, discoverability, and designer ergonomics
 - React may still expose a more compact API later if that proves useful in code
 
@@ -407,6 +407,35 @@ Figma component guidance:
 - recommended variant axes: `size = sm | md | lg`, `state = default | hover | focus | error | success | disabled | readonly`
 - keep `Select` and `DatePicker` as separate component families even if they reuse Input-like tokens in code
 
+## Avatar Token Model
+
+Avatar is synchronized across the MAXA Foundation Figma library, token source, React package, documentation, and MCP component registry.
+
+Canonical Figma sources:
+
+- `Avatar`: node `818:774`
+- `Avatar Label`: node `867:374`
+
+Approved Avatar shape and border tokens:
+
+| Token                         | Value or alias                          | Figma contract                                               |
+| ----------------------------- | --------------------------------------- | ------------------------------------------------------------ |
+| `Avatar/surface/border`       | `{Color modes/border/border-secondary}` | Bound to the Avatar body stroke                              |
+| `Avatar/layout/border-width`  | `1`                                     | Bound to all four inside stroke widths; scope `STROKE_FLOAT` |
+| `Avatar/layout/radius-circle` | `{Radius/radius-full}`                  | Bound to rounded Avatar variants                             |
+| `Avatar/layout/radius-square` | `{Radius/radius-md}`                    | Bound to square Avatar variants                              |
+
+The CSS projection is:
+
+- `--avatar-border: var(--color-border-secondary)`
+- `--avatar-border-width: 1px`
+- `--avatar-radius-circle: var(--radius-full)`
+- `--avatar-radius-square: var(--radius-md)`
+
+Avatar Label intentionally does not own component-specific interaction tokens. It combines the nested Avatar contract with shared semantic link and focus tokens. Add Avatar Label component tokens only if its behavior must diverge from universal MAXA interaction semantics.
+
+AvatarGroup is hidden in Figma and deprecated in React. Keep its export only for backwards compatibility and do not promote it in the public catalog.
+
 ## Button Alias Targets
 
 ### Variant Colors
@@ -507,12 +536,12 @@ published medium master). Runtime size modifiers also reference shared spacing v
 
 ## Implementation Rule
 
-Button v1 implementation checklist:
+For a new component family:
 
-1. Add source JSON under `packages/tokens/figma/`. Done for Button v1.
-2. Add the new collection to `manifest.json`. Done for Button v1.
-3. Update the Figma import bundle builder only if needed.
-4. Add tests for collection presence, token names, and alias behavior. Done for Button v1.
-5. Regenerate `import-bundle.json`. Done for Button v1.
-
-Do not create React components or docs pages until Component-based Tokens are approved.
+1. Inspect the live Figma component and existing product use.
+2. Approve either a component-token contract or an explicit semantic-token-only strategy.
+3. Add or update source JSON under `packages/tokens/figma/` when component tokens are needed.
+4. Add collection entries and bundle-builder support only when required.
+5. Add tests for token names, aliases, and CSS projection.
+6. Regenerate `import-bundle.json` and token reference documentation.
+7. Keep Figma bindings, React behavior, public docs, canonical specs, MCP, and agent guidance synchronized.

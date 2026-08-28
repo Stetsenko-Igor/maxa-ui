@@ -28,13 +28,39 @@ const TOC = [
 ]
 
 const PROPS = [
-  { name: "Breadcrumb", type: "nav", default: undefined, description: "Navigation landmark with breadcrumb label." },
-  { name: "BreadcrumbList", type: "ol", default: undefined, description: "Ordered list of hierarchy items." },
-  { name: "BreadcrumbItem", type: "li", default: undefined, description: "Single breadcrumb item." },
+  {
+    name: "Breadcrumb",
+    type: "nav",
+    default: undefined,
+    description: "Navigation landmark with breadcrumb label.",
+  },
+  {
+    name: "BreadcrumbList",
+    type: "ol",
+    default: undefined,
+    description: "Ordered list of hierarchy items.",
+  },
+  {
+    name: "BreadcrumbItem",
+    type: "li",
+    default: undefined,
+    description: "Single breadcrumb item.",
+  },
   { name: "BreadcrumbLink", type: "a", default: undefined, description: "Navigable parent item." },
-  { name: "BreadcrumbPage", type: "span", default: undefined, description: "Current page with aria-current." },
+  {
+    name: "BreadcrumbPage",
+    type: "span",
+    default: undefined,
+    description: "Current page with aria-current.",
+  },
   { name: "BreadcrumbSeparator", type: "li", default: "'/'", description: "Decorative separator." },
-  { name: "BreadcrumbEllipsis", type: "button", default: "'...'", description: "Collapsed middle hierarchy trigger. Pair with DropdownMenu when hidden levels are navigable." },
+  {
+    name: "BreadcrumbEllipsis",
+    type: "button",
+    default: "'...'",
+    description:
+      "Collapsed middle hierarchy trigger. Pair with DropdownMenu when hidden levels are navigable.",
+  },
 ]
 
 export default function BreadcrumbPageDocs() {
@@ -44,7 +70,7 @@ export default function BreadcrumbPageDocs() {
       toc={TOC}
       githubHref="https://github.com/Stetsenko-Igor/maxa-ui/tree/main/packages/ui/src/components/breadcrumb"
       markdown=""
-      previous={{ href: "/docs/components/avatar", label: "Avatar" }}
+      previous={{ href: "/docs/components/badge", label: "Badge" }}
       next={{ href: "/docs/components/button", label: "Button" }}
       lead="Hierarchy navigation for dashboard folders, template categories, packages, and admin surfaces."
     >
@@ -56,11 +82,15 @@ export default function BreadcrumbPageDocs() {
 
       <DocsSection id="long-path" title="Long path">
         <DocsExample title="Collapsed middle items">
-          <ComponentPreview code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <BreadcrumbEllipsis />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align="start">\n          <DropdownMenuItem>Workspaces</DropdownMenuItem>\n          <DropdownMenuItem>Marketing Packages</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}>
+          <ComponentPreview
+            code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <BreadcrumbEllipsis />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align="start">\n          <DropdownMenuItem>Workspaces</DropdownMenuItem>\n          <DropdownMenuItem>Marketing Packages</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
+          >
             <div style={{ padding: "32px" }}>
               <Breadcrumb>
                 <BreadcrumbList>
-                  <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                  </BreadcrumbItem>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
                     <DropdownMenu>
@@ -74,9 +104,13 @@ export default function BreadcrumbPageDocs() {
                     </DropdownMenu>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
-                  <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
+                  </BreadcrumbItem>
                   <BreadcrumbSeparator />
-                  <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+                  </BreadcrumbItem>
                 </BreadcrumbList>
               </Breadcrumb>
             </div>

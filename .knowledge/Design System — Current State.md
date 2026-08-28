@@ -146,20 +146,20 @@ Current `Layout` tokens:
 
 Current working values:
 
-| Token | Desktop | Tablet | Mobile |
-|------|---------|--------|--------|
-| `Stack/tight` | `spacing-xs` | `spacing-xs` | `spacing-xs` |
-| `Stack/text` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
-| `Stack/default` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
-| `Stack/group` | `spacing-3xl` | `spacing-3xl` | `spacing-3xl` |
-| `Stack/section` | `spacing-8xl` | `spacing-7xl` | `spacing-6xl` |
-| `Inline/tight` | `spacing-md` | `spacing-md` | `spacing-md` |
-| `Inline/default` | `spacing-lg` | `spacing-lg` | `spacing-lg` |
-| `Inline/group` | `spacing-xl` | `spacing-xl` | `spacing-xl` |
-| `Container/padding` | `spacing-4xl` | `spacing-3xl` | `spacing-xl` |
-| `Container/max-width` | `1568` | `1568` | `1568` |
-| `Grid/gutter` | `spacing-3xl` | `spacing-2xl` | `spacing-xl` |
-| `Grid/margin` | `Container/padding` | `Container/padding` | `Container/padding` |
+| Token                 | Desktop             | Tablet              | Mobile              |
+| --------------------- | ------------------- | ------------------- | ------------------- |
+| `Stack/tight`         | `spacing-xs`        | `spacing-xs`        | `spacing-xs`        |
+| `Stack/text`          | `spacing-lg`        | `spacing-lg`        | `spacing-lg`        |
+| `Stack/default`       | `spacing-xl`        | `spacing-xl`        | `spacing-xl`        |
+| `Stack/group`         | `spacing-3xl`       | `spacing-3xl`       | `spacing-3xl`       |
+| `Stack/section`       | `spacing-8xl`       | `spacing-7xl`       | `spacing-6xl`       |
+| `Inline/tight`        | `spacing-md`        | `spacing-md`        | `spacing-md`        |
+| `Inline/default`      | `spacing-lg`        | `spacing-lg`        | `spacing-lg`        |
+| `Inline/group`        | `spacing-xl`        | `spacing-xl`        | `spacing-xl`        |
+| `Container/padding`   | `spacing-4xl`       | `spacing-3xl`       | `spacing-xl`        |
+| `Container/max-width` | `1568`              | `1568`              | `1568`              |
+| `Grid/gutter`         | `spacing-3xl`       | `spacing-2xl`       | `spacing-xl`        |
+| `Grid/margin`         | `Container/padding` | `Container/padding` | `Container/padding` |
 
 These values are accepted as the current working state.
 
@@ -411,26 +411,26 @@ Validation:
 
 ## 14. Component-based Tokens
 
-Current status: Button and Input token sources are implemented for Figma import; the Figma Input component set has been created manually by Igor using the imported `Input/...` variables. Badge, Alert, and the next small component families remain deferred.
+Current status: the Component-based token layer is established across implemented component families. Button and Input token sources are available for Figma import, and the Avatar contract was synchronized across Figma, token source, React, documentation, and agent guidance on 2026-08-28.
 
-Component-based Tokens are the next design-system layer.
+Component-based tokens are the component-specific layer above shared foundations.
 
 Layer order:
 
 1. foundation tokens
-2. `Component-based Tokens`
+2. `Component-based`
 3. Figma components
 4. React components
 5. documentation/catalog
 
 Important:
 
-- Component-based Tokens are not React primitives.
-- Do not treat `Box`, `Stack`, `Inline`, `Text`, `Heading`, `Surface`, or `TokenSwatch` as Component-based Tokens.
-- Do not build React components or docs preview pages until Component-based Tokens are agreed.
+- Component-based tokens are not React primitives.
+- Do not treat `Box`, `Stack`, `Inline`, `Text`, `Heading`, `Surface`, or `TokenSwatch` as Component-based tokens.
+- Before adding a new component family, approve either its component-token contract or an explicit semantic-token-only strategy.
 - Full working notes live in `.knowledge/Component-based Tokens.md`.
 
-Phase 1 Component-based Tokens:
+Original seed scope:
 
 - `Button`
 - `Input`
@@ -441,7 +441,7 @@ Phase 1 Component-based Tokens:
 
 Naming direction:
 
-- Figma collection: `Component-based Tokens`
+- Figma collection: `Component-based`
 - Figma paths use slash grouping, for example `Button/primary/bg-hover`.
 - Component group names use PascalCase, for example `Button`.
 - Token roles use lowercase, for example `primary`, `bg`, `text`, `border`, `size`, `md`.
@@ -500,9 +500,18 @@ Current Input direction:
 - future Figma component work should follow Igor's demonstrated manual component-building method, not the earlier automated component creation attempt
 - keep Select and DatePicker separate component families even if they share Input-like implementation tokens in code
 
+### Avatar and Avatar Label (2026-08-28)
+
+- Figma `Avatar` source: node `818:774`; Figma `Avatar Label` source: node `867:374`.
+- Avatar surfaces bind `Avatar/surface/border` and `Avatar/layout/border-width`.
+- Rounded variants bind `Avatar/layout/radius-circle`; square variants bind `Avatar/layout/radius-square`.
+- React `Avatar` defaults to neutral emphasis and supports the 16 approved Figma appearances.
+- `AvatarLabel` renders a semantic anchor only when `href` is provided and supports profile-link hover, active, and keyboard-focus states.
+- `AvatarLabel` uses shared semantic interaction tokens directly. No component-specific interaction tokens are needed for this simple composition.
+- `AvatarGroup` is hidden in Figma and deprecated in React. Keep the export only for compatibility; do not promote it in public documentation.
+
 Next planned foundation component families:
 
-- `Avatar`
 - `Badge`
 - `Filter`
 - `Tag`
@@ -544,15 +553,12 @@ Short English explanation for team communication:
 
 ## 16. Next Conversation Starting Point
 
-Continue the next chat from **Component-based Tokens / small component taxonomy**.
+Continue from the next user-requested component family, using the live Figma library and its canonical component spec as the source of truth.
 
-Goal for the next stage:
+Current handoff:
 
-- define Badge/Tag/Pill/Filter boundaries
-- implement the accepted Badge/Tag plan: Badge and Tag remain separate, both support `lg`, Badge keeps `intent`, Tag has no `intent`
-- decide which next component token family to implement first
-- keep Input marked as done unless Igor explicitly asks for refinements
-- do not create React components or docs/catalog until the Figma component-token layer is validated
-- keep React components and docs/catalog paused until Component-based Tokens are approved
-- keep Figma variables, React components, Tailwind tokens, documentation, and AI-agent instructions aligned
-- reduce the design/code gap by giving developers approved components instead of asking them to recreate UI from interpretation
+- Avatar and Avatar Label are synchronized across Figma, tokens, React, docs, MCP, and agent instructions.
+- Avatar border width and both shape radii are explicit component contracts.
+- Avatar Label link behavior is approved for profile navigation and is based on shared semantic interaction tokens.
+- AvatarGroup remains hidden and deprecated until product demand returns.
+- For every new family, approve its component-token contract or semantic-token-only strategy before implementation, then keep Figma, React, documentation, tests, and agent guidance aligned.

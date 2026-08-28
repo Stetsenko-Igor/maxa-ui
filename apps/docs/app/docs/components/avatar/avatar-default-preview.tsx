@@ -1,6 +1,6 @@
 "use client"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@maxa/ui"
+import { Avatar, AvatarFallback, AvatarImage, type AvatarAppearance } from "@maxa/ui"
 import { ComponentPreview } from "../../../_components/component-preview"
 import type { PlaygroundConfig, PlaygroundValues } from "../../../_components/playground"
 
@@ -31,15 +31,22 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
       type: "select",
       name: "appearance",
       options: [
+        { label: "amber", value: "amber" },
         { label: "blue", value: "blue" },
+        { label: "cyan", value: "cyan" },
+        { label: "emerald", value: "emerald" },
+        { label: "fuchsia", value: "fuchsia" },
         { label: "green", value: "green" },
-        { label: "teal", value: "teal" },
-        { label: "yellow", value: "yellow" },
+        { label: "indigo", value: "indigo" },
+        { label: "lime", value: "lime" },
         { label: "orange", value: "orange" },
+        { label: "pink", value: "pink" },
+        { label: "purple", value: "purple" },
         { label: "red", value: "red" },
         { label: "rose", value: "rose" },
+        { label: "teal", value: "teal" },
         { label: "violet", value: "violet" },
-        { label: "purple", value: "purple" },
+        { label: "yellow", value: "yellow" },
       ],
       default: "blue",
     },
@@ -51,7 +58,7 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
         { label: "medium", value: "medium" },
         { label: "neutral", value: "neutral" },
       ],
-      default: "strong",
+      default: "neutral",
     },
     {
       type: "select",
@@ -78,13 +85,11 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
   ],
   render: (v: PlaygroundValues) => {
     const statusProps =
-      v.status === "none"
-        ? {}
-        : { status: v.status as "online" | "offline" | "busy" | "away" }
+      v.status === "none" ? {} : { status: v.status as "online" | "offline" | "busy" | "away" }
     return (
       <Avatar
         size={v.size as "xs" | "sm" | "md" | "lg" | "xl"}
-        appearance={v.appearance as "blue" | "green" | "teal" | "yellow" | "orange" | "red" | "rose" | "violet" | "purple"}
+        appearance={v.appearance as AvatarAppearance}
         emphasis={v.emphasis as "strong" | "medium" | "neutral"}
         shape={v.shape as "circle" | "square"}
         {...statusProps}
@@ -94,7 +99,12 @@ const AVATAR_PLAYGROUND: PlaygroundConfig = {
     )
   },
   code: (v: PlaygroundValues) => {
-    const attrs = [`size="${v.size}"`, `appearance="${v.appearance}"`, `emphasis="${v.emphasis}"`, `shape="${v.shape}"`]
+    const attrs = [
+      `size="${v.size}"`,
+      `appearance="${v.appearance}"`,
+      `emphasis="${v.emphasis}"`,
+      `shape="${v.shape}"`,
+    ]
     if (v.status !== "none") attrs.push(`status="${v.status}"`)
     return `<Avatar ${attrs.join(" ")}>\n  <AvatarFallback>${v.initials}</AvatarFallback>\n</Avatar>`
   },
@@ -111,7 +121,7 @@ export function AvatarDefaultPreview({ imageSrc }: { imageSrc: string }) {
           <AvatarImage alt="Igor Stetsenko" src={imageSrc} />
           <AvatarFallback>IS</AvatarFallback>
         </Avatar>
-        <Avatar appearance="teal" shape="square">
+        <Avatar appearance="teal" emphasis="medium" shape="square">
           <AvatarFallback>MW</AvatarFallback>
         </Avatar>
       </div>
