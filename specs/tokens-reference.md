@@ -1043,8 +1043,8 @@ Source: `packages/tokens/src/component-avatar.css`
 --avatar-size: var(--avatar-size-md);
 --avatar-bg: var(--color-bg-blue-strong);/* dark: var(--color-bg-blue-strong) */
 --avatar-text: var(--color-neutral-0);  /* dark: var(--color-neutral-0) */
---avatar-border: color-mix(in srgb, var(--avatar-bg) 80%, var(--color-bg-surface));/* dark: color-mix(in srgb, var(--avatar-bg) 80%, var(--color-bg-page)) */
---avatar-border-width: 0;
+--avatar-border: var(--color-border-secondary);
+--avatar-border-width: 1px;
 --avatar-radius: var(--radius-full);
 --avatar-radius-square: var(--radius-md);
 

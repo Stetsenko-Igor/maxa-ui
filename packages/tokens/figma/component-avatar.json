@@ -53,6 +53,16 @@
         "$value": "{Radius/radius-md}",
         "$type": "number"
       },
+      "border-width": {
+        "$description": "Avatar body border width.",
+        "$value": 1,
+        "$type": "number",
+        "$extensions": {
+          "com.figma.scopes": [
+            "STROKE_FLOAT"
+          ]
+        }
+      },
       "status-size-md": {
         "$description": "Avatar, layout: status size md.",
         "$value": 10,

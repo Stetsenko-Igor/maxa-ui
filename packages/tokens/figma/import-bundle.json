@@ -3367,6 +3367,7 @@
           "Avatar/layout/size-xl": 64,
           "Avatar/layout/radius-circle": "{Radius/radius-full}",
           "Avatar/layout/radius-square": "{Radius/radius-md}",
+          "Avatar/layout/border-width": 1,
           "Avatar/layout/status-size-md": 10,
           "Avatar/layout/group-overlap": 10,
           "Avatar/typography/font-family": "{Typography/Font family/body}",
@@ -4399,6 +4400,7 @@
         "Avatar/layout/size-xl": "Avatar, layout: size xl.",
         "Avatar/layout/radius-circle": "Avatar, layout: radius circle.",
         "Avatar/layout/radius-square": "Avatar, layout: radius square.",
+        "Avatar/layout/border-width": "Avatar body border width.",
         "Avatar/layout/status-size-md": "Avatar, layout: status size md.",
         "Avatar/layout/group-overlap": "Avatar, layout: group overlap.",
         "Avatar/typography/font-family": "Avatar, typography: font family.",
@@ -5430,6 +5432,7 @@
         "Avatar/layout/size-xl": "FLOAT",
         "Avatar/layout/radius-circle": "FLOAT",
         "Avatar/layout/radius-square": "FLOAT",
+        "Avatar/layout/border-width": "FLOAT",
         "Avatar/layout/status-size-md": "FLOAT",
         "Avatar/layout/group-overlap": "FLOAT",
         "Avatar/typography/font-family": "STRING",
@@ -6586,6 +6589,9 @@
         ],
         "Avatar/layout/radius-square": [
           "CORNER_RADIUS"
+        ],
+        "Avatar/layout/border-width": [
+          "STROKE_FLOAT"
         ],
         "Avatar/layout/status-size-md": [
           "WIDTH_HEIGHT"

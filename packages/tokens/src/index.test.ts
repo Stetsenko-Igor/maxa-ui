@@ -415,6 +415,19 @@ describe("dimensions.css — spacing + radius + width", () => {
   })
 })
 
+// ── component-avatar.css ──────────────────────────────────────────────────
+
+describe("component-avatar.css", () => {
+  const css = readFileSync(join(src, "component-avatar.css"), "utf-8")
+
+  it("matches the canonical Figma body border and radius tokens", () => {
+    expect(cssVariable(css, "avatar-border")).toBe("var(--color-border-secondary)")
+    expect(cssVariable(css, "avatar-border-width")).toBe("1px")
+    expect(cssVariable(css, "avatar-radius")).toBe("var(--radius-full)")
+    expect(cssVariable(css, "avatar-radius-square")).toBe("var(--radius-md)")
+  })
+})
+
 // ── figma tokens ───────────────────────────────────────────────────────────
 
 describe("figma manifest", () => {
@@ -541,6 +554,16 @@ describe("figma import bundle", () => {
     expect(light?.["background/bg-page"]).toBe("{Colors.Neutral.75}")
     expect(light?.["text/text-disabled"]).toBe("{Colors.Neutral.500}")
     expect(dark?.["background/bg-neutral-surface"]).toBe("{Colors.Neutral.925}")
+  })
+
+  it("matches the canonical Avatar body border contract", () => {
+    const component = bundle.collections["Component-based"]
+    const tokens = component?.modes.Default
+
+    expect(tokens?.["Avatar/surface/border"]).toBe("{Color modes/border/border-secondary}")
+    expect(tokens?.["Avatar/layout/border-width"]).toBe(1)
+    expect(component?.types?.["Avatar/layout/border-width"]).toBe("FLOAT")
+    expect(component?.scopes?.["Avatar/layout/border-width"]).toEqual(["STROKE_FLOAT"])
   })
 
   it("includes shadow effect styles for Figma", () => {
