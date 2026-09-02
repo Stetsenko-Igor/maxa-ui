@@ -101,10 +101,10 @@ is open or closed, the next search field starts 12px after the complete Dashboar
 - The resting navigation search field remains the only navigation state-color change; menu hover and
   selected rows continue to use `--color-bg-muted`.
 - In light mode, all image-free card preview areas use the shared pattern-scoped
-  `--pattern-card-placeholder-bg` value (`#ECEEF3`). This covers both generic result cards and the
+  `--pattern-card-placeholder-bg` value (`#E7EBF2`). This covers both generic result cards and the
   Dashboard overview cards. Dark mode maps the same pattern token back to
   `--color-bg-neutral-muted`.
-- Keep `#ECEEF3` local to the prototype pattern until the role is standardized across the product;
+- Keep `#E7EBF2` local to the prototype pattern until the role is standardized across the product;
   then promote it to a shared semantic token in the Maxa design system and Figma library.
 - Do not remap the global background semantics for this adjustment. `--color-bg-muted`,
   `--color-bg-neutral-muted`, and `--color-bg-page` remain shared system roles.
@@ -122,7 +122,7 @@ library is not gaining a new public Sidebar component in this pass.
   run must expose a classic scrollbar that consumes layout width rather than Playwright's hidden
   scrollbar default.
 - Color checks must assert that navigation hover/selection retain `--color-bg-muted`, generic card
-  thumbnails and Dashboard image placeholders resolve to `#ECEEF3` in light mode, and unrelated
+  thumbnails and Dashboard image placeholders resolve to `#E7EBF2` in light mode, and unrelated
   component fills retain their existing semantic tokens.
 - Navigation checks must assert exact root order, absence of `WORK`/`LIBRARY` captions, Dashboard
   child order, Manual Listings presence, disclosure semantics, selection independence, and collapsed
