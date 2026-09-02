@@ -111,6 +111,9 @@ is open or closed, the next search field starts 12px after the complete Dashboar
 - On the Templates fixture, keep the populated result count but do not infer an active filter from
   QA card metadata. `Social Media (test)` may remain as an individual card category label; it must
   not appear as an applied-filter chip or produce an active-filter count badge.
+- In the compact collection header, separate the toolbar/search from the result-count row by 24px,
+  then keep the related result count and card grid 12px apart. Other header row relationships and
+  empty-state spacing remain unchanged.
 
 ## Implementation boundaries
 
@@ -128,7 +131,8 @@ library is not gaining a new public Sidebar component in this pass.
   thumbnails and Dashboard image placeholders resolve to `#E7EBF2` in light mode, and unrelated
   component fills retain their existing semantic tokens.
 - Templates checks must keep the `6 items` result count while asserting zero applied-filter chips
-  and zero active-filter count badges in the default populated state.
+  and zero active-filter count badges in the default populated state. They must also assert the
+  compact header's 24px toolbar-to-count and 12px count-to-grid spacing.
 - Navigation checks must assert exact root order, absence of `WORK`/`LIBRARY` captions, Dashboard
   child order, Manual Listings presence, disclosure semantics, selection independence, and collapsed
   activation behavior.
