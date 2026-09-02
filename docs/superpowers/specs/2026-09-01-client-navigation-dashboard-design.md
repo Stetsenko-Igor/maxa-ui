@@ -18,9 +18,11 @@ the rail's edge rhythm and making navigation search read as an editable field.
   indentation system, and recursive tree renderer.
 - Change expanded navigation rows from an 8px outer inset to a geometrically symmetric 12px inset
   on both sides.
-- Keep the current `scrollbar-width: thin`, stable scrollbar gutter, and 4px WebKit fallback.
+- Keep the current `scrollbar-width: thin` and 4px WebKit fallback; use the native automatic gutter
+  so overlay scrollbars do not reserve empty space.
 - Allow the operating system and browser to control whether the native scrollbar thumb is visible.
-- Do not create a custom scrollbar or compensate for the gutter with asymmetric item margins.
+- Keep direct scroll-zone groups at the rail's inner width so a classic scrollbar cannot narrow the
+  lower hover/selection surfaces. Do not create a custom scrollbar or use asymmetric item margins.
 
 ### Navigation search
 
@@ -52,6 +54,9 @@ Remove the proposed `WORK` and `LIBRARY` captions. The expanded rail order is:
 Dashboard uses the same 36px row geometry, 14px typography, icon size, and horizontal padding as
 every other root navigation item. It must not use a larger context-row treatment.
 
+Dashboard and every ordinary disclosure use the same 1px root-to-children rhythm. Whether Dashboard
+is open or closed, the next search field starts 12px after the complete Dashboard section.
+
 ### Dashboard behavior
 
 - Dashboard is both the overview destination and the disclosure control for its three children.
@@ -78,10 +83,14 @@ every other root navigation item. It must not use a larger context-row treatment
 ### Configurable client trees
 
 - Preserve the current recursive data-driven navigation model and its existing multi-level depth.
-- The supplied Print Templates, Digital Templates, AMP Designs, and Admin example defines the kind
-  of admin-configured hierarchy the renderer must continue to support.
-- Do not hard-code that example as the only client's navigation and do not flatten nested category
-  rows. Existing client fixtures may remain unless a fixture update is needed to prove the structure.
+- Keep `Most Popular Templates`, the dynamic `Favorites` collection, `Swag Shop`, and
+  `Concierge Shop` before the configured client categories. `Favorites` remains hidden while empty.
+- The prototype fixture must reproduce the supplied Print Templates, Digital Templates, AMP Designs,
+  and Admin hierarchy exactly, including order, capitalization, punctuation, and all nested children.
+- Admin-configured category branches render in full inside the rail's single scroll flow; they do not
+  use `Show all`/`Show less`. Explore Tags retains its component-specific result limit and control.
+- Do not flatten nested category rows. The renderer remains data-driven so another client's admin
+  configuration can replace this fixture without changing the component anatomy.
 
 ### Visual language
 
@@ -100,12 +109,18 @@ library is not gaining a new public Sidebar component in this pass.
 ## Verification
 
 - Automated checks must assert 12px symmetric row insets, 16px search insets, unchanged 36px row
-  height, native thin scrollbar behavior, and default bordered search styling.
+  height, native thin scrollbar behavior, and default bordered search styling. At least one geometry
+  run must expose a classic scrollbar that consumes layout width rather than Playwright's hidden
+  scrollbar default.
 - Navigation checks must assert exact root order, absence of `WORK`/`LIBRARY` captions, Dashboard
   child order, Manual Listings presence, disclosure semantics, selection independence, and collapsed
   activation behavior.
 - Existing recursive-tree, favorites, row-menu, filtering, resize, focus, short-viewport, and
   single-scroll-owner tests must remain green.
+- Selecting a Favorites alias must produce exactly one selected row and one navigation
+  `aria-current`, on the alias that was activated.
+- The exact configured Templates fixture and the full rendering of its long direct-child lists must
+  be checked automatically.
 - Browser screenshots must cover the Dashboard branch open, the rail with overflow, Explore Tags
   open, and the Dashboard overview with skeleton previews.
 
