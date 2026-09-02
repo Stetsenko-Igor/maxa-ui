@@ -98,7 +98,11 @@ is open or closed, the next search field starts 12px after the complete Dashboar
   second icon style.
 - Preserve the existing neutral hover and selected treatments, tree connectors, favorites affordance,
   row menus, focus states, animation timing, and typography tokens.
-- The only state-color change in this pass is the resting navigation search field.
+- In light mode, navigation hover and selected surfaces use the pattern-scoped
+  `--pattern-nav-item-state-bg`, aliased to the existing cool `--color-gray-200` primitive
+  (`#E5E7EB`). Dark mode maps the same pattern token back to `--color-bg-muted`.
+- Do not remap the global `--color-bg-muted` semantic token for this adjustment. It is a recessed
+  surface role shared by readonly inputs, skeletons, tables, and other components.
 
 ## Implementation boundaries
 
@@ -112,6 +116,8 @@ library is not gaining a new public Sidebar component in this pass.
   height, native thin scrollbar behavior, and default bordered search styling. At least one geometry
   run must expose a classic scrollbar that consumes layout width rather than Playwright's hidden
   scrollbar default.
+- Color checks must assert that light navigation hover/selection resolve through the cool
+  component-scoped token while the global muted surface and dark navigation state remain unchanged.
 - Navigation checks must assert exact root order, absence of `WORK`/`LIBRARY` captions, Dashboard
   child order, Manual Listings presence, disclosure semantics, selection independence, and collapsed
   activation behavior.
