@@ -45,8 +45,12 @@
 }
 
 .maxa-tabs__trigger:focus-visible {
-  outline: none;
-  box-shadow: inset 0 0 0 2px var(--color-focus-ring);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+}
+
+.maxa-tabs__trigger[data-state="active"]:focus-visible {
+  outline-color: var(--tabs-trigger-text-active);
 }
 
 .maxa-tabs__trigger:disabled,
@@ -62,4 +66,14 @@
 .maxa-tabs__content:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+@media (forced-colors: active) {
+  .maxa-tabs__trigger:focus-visible {
+    outline-color: Highlight;
+  }
+
+  .maxa-tabs__trigger[data-state="active"]:focus-visible {
+    outline-color: Highlight;
+  }
 }
