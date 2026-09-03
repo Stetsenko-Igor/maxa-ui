@@ -1,7 +1,7 @@
 # Client Navigation Page Archetypes — Design Specification
 
 **Date:** 2026-09-02
-**Status:** Approved in visual brainstorming; awaiting written-spec review
+**Status:** Approved
 **Prototype:** `Client Side Updates and Improvements/prototypes/header-settings-explorations`
 
 ## 1. Purpose
