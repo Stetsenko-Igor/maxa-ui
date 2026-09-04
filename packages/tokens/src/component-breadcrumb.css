@@ -12,4 +12,7 @@
   --breadcrumb-ellipsis-size: 28px;
   --breadcrumb-font-size: var(--text-sm);
   --breadcrumb-font-weight: var(--font-weight-medium);
+  --breadcrumb-separator-size: 10px;
+  --breadcrumb-icon-size: 14px;
+  --breadcrumb-icon-gap: var(--spacing-sm);
 }

@@ -30,15 +30,16 @@ const BREADCRUMB_PLAYGROUND: PlaygroundConfig = {
       type: "select",
       name: "separator",
       options: [
+        { label: "chevron (default)", value: "chevron" },
         { label: "slash", value: "/" },
-        { label: "chevron", value: ">" },
       ],
-      default: "/",
+      default: "chevron",
     },
   ],
   render: (v: PlaygroundValues) => {
     const count = Number(v.levels)
     const items = FULL_PATH.slice(0, count)
+    const isChevron = v.separator === "chevron"
     return (
       <Breadcrumb>
         <BreadcrumbList>
@@ -53,7 +54,9 @@ const BREADCRUMB_PLAYGROUND: PlaygroundConfig = {
                     <BreadcrumbLink href="#">{label}</BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
-                {!isLast && <BreadcrumbSeparator>{v.separator as string}</BreadcrumbSeparator>}
+                {!isLast && (isChevron
+                  ? <BreadcrumbSeparator />
+                  : <BreadcrumbSeparator>{v.separator as string}</BreadcrumbSeparator>)}
               </span>
             )
           })}
@@ -64,7 +67,7 @@ const BREADCRUMB_PLAYGROUND: PlaygroundConfig = {
   code: (v: PlaygroundValues) => {
     const count = Number(v.levels)
     const items = FULL_PATH.slice(0, count)
-    const sep = v.separator === "/" ? "<BreadcrumbSeparator />" : `<BreadcrumbSeparator>${v.separator}</BreadcrumbSeparator>`
+    const sep = v.separator === "chevron" ? "<BreadcrumbSeparator />" : `<BreadcrumbSeparator>${v.separator}</BreadcrumbSeparator>`
     const lines: string[] = []
     items.forEach((label, index) => {
       const isLast = index === items.length - 1

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { HouseSimple } from "@maxa/icons"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -46,14 +47,24 @@ const PROPS = [
     default: undefined,
     description: "Single breadcrumb item.",
   },
-  { name: "BreadcrumbLink", type: "a", default: undefined, description: "Navigable parent item." },
+  {
+    name: "BreadcrumbLink",
+    type: "a",
+    default: undefined,
+    description: "Navigable parent item. Optional iconLeading prop for a leading icon (e.g. Home on the root crumb).",
+  },
   {
     name: "BreadcrumbPage",
     type: "span",
     default: undefined,
-    description: "Current page with aria-current.",
+    description: "Current page with aria-current. Also accepts iconLeading, for one-level trails.",
   },
-  { name: "BreadcrumbSeparator", type: "li", default: "'/'", description: "Decorative separator." },
+  {
+    name: "BreadcrumbSeparator",
+    type: "li",
+    default: "CaretRight icon",
+    description: "Decorative separator. Pass children to override with custom content (e.g. '/').",
+  },
   {
     name: "BreadcrumbEllipsis",
     type: "button",
@@ -83,13 +94,13 @@ export default function BreadcrumbPageDocs() {
       <DocsSection id="long-path" title="Long path">
         <DocsExample title="Collapsed middle items">
           <ComponentPreview
-            code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <BreadcrumbEllipsis />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align="start">\n          <DropdownMenuItem>Workspaces</DropdownMenuItem>\n          <DropdownMenuItem>Marketing Packages</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
+            code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/" iconLeading={<HouseSimple />}>Home</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <BreadcrumbEllipsis />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align="start">\n          <DropdownMenuItem>Workspaces</DropdownMenuItem>\n          <DropdownMenuItem>Marketing Packages</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
           >
             <div style={{ padding: "32px" }}>
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem>
-                    <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                    <BreadcrumbLink href="/" iconLeading={<HouseSimple />}>Home</BreadcrumbLink>
                   </BreadcrumbItem>
                   <BreadcrumbSeparator />
                   <BreadcrumbItem>
