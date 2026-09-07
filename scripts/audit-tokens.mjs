@@ -13,6 +13,11 @@
  *      re-introducing them or finding lingering external uses)
  *   4. Figma semantic color naming consistency: group names, leaf prefixes,
  *      and background intent suffixes must stay aligned.
+ *   5. Button-like elements that reset font-family: inherit (the longhand)
+ *      without an explicit font-size — <button> only inherits font-family
+ *      by default, not font-size, so the browser's own UA default leaks
+ *      through and renders inconsistently across browsers. The `font`
+ *      shorthand (font: inherit) is safe and not flagged — it resets size too.
  *
  * Exits with code 1 if violations found — use in CI to block regressions.
  *
@@ -647,6 +652,45 @@ function scanFigmaImportBundleIntegrity() {
   return violations;
 }
 
+const COMPONENT_CSS_DIR = join(ROOT, 'packages/ui/src/components');
+const BUTTON_LIKE_NAME_RE = /-(btn|button)\b/i;
+
+function scanButtonFontSizeInheritance() {
+  const violations = [];
+  const files = collectCssFiles(COMPONENT_CSS_DIR);
+
+  for (const filePath of files) {
+    const content = stripCssComments(readFileSync(filePath, 'utf8'));
+    // Innermost balanced { } blocks — matches rules inside @media too, since the capture
+    // groups themselves contain no braces regardless of surrounding nesting.
+    const blockRe = /([^{}]+)\{([^{}]*)\}/g;
+    let m;
+    while ((m = blockRe.exec(content)) !== null) {
+      const body = m[2];
+      if (!/font-family\s*:\s*inherit\s*;/.test(body)) continue; // longhand only — `font: inherit` is safe
+      if (/font-size\s*:/.test(body)) continue;
+
+      const selectorLines = m[1].trim().split('\n');
+      const selector = selectorLines[selectorLines.length - 1].trim();
+      const looksButtonLike = BUTTON_LIKE_NAME_RE.test(selector) ||
+        (/cursor\s*:\s*pointer/.test(body) && /border\s*:\s*(?:0|none)\b/.test(body));
+      if (!looksButtonLike) continue;
+
+      violations.push({
+        file: relative(ROOT, filePath),
+        line: content.slice(0, m.index).split('\n').length,
+        type: 'button-font-size-inheritance',
+        value: selector || '(unnamed rule)',
+        hint: 'font-family: inherit only resets font-family — <button> falls back to the ' +
+          "browser's own UA default font-size, which differs across browsers. Add an explicit " +
+          'font-size, or use the `font: inherit` shorthand (resets both).',
+      });
+    }
+  }
+
+  return violations;
+}
+
 // ── Run all checks ──────────────────────────────────────────────────────────
 const cssFiles = SCAN_DIRS.flatMap(d => collectCssFiles(join(ROOT, d)));
 const sourceFiles = SCAN_DIRS.flatMap(d => collectSourceFiles(join(ROOT, d)));
@@ -660,6 +704,7 @@ const violations = [
   ...scanFigmaTokenTypeSanity(),
   ...scanFigmaSemanticColorNaming(),
   ...scanFigmaImportBundleIntegrity(),
+  ...scanButtonFontSizeInheritance(),
 ];
 
 if (violations.length === 0) {
