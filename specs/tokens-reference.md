@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1737
+Total tokens: 1740
 
 ## Primitives
 
@@ -251,24 +251,6 @@ Source: `packages/tokens/src/primitives.css`
 --color-emerald-800: #065f46;
 --color-emerald-900: #064e3b;
 --color-emerald-950: #022c22;
-```
-
-## Brand Theme (Maxa)
-
-Source: `packages/tokens/src/themes/maxa.css`
-
-```css
---color-brand-50: #F3FDFA;
---color-brand-100: #E0FBF3;
---color-brand-200: #C3F6E7;
---color-brand-300: #A0F1DB;
---color-brand-400: #77ECCF;
---color-brand-500: #31E5C2;
---color-brand-600: #15CBA8;
---color-brand-700: #0DA88A;
---color-brand-800: #0C8A73;
---color-brand-900: #0D7462;
---color-brand-950: #053D35;
 ```
 
 ## Semantic Colors
@@ -656,33 +638,33 @@ Source: `packages/tokens/src/typography.css`
 
 /* ── Font sizes + line-heights ── */
 --text-heading-2xl: 40px;
+--text-heading-2xl--line-height: 48px;
 --text-heading-xl: 32px;
+--text-heading-xl--line-height: 40px;
 --text-heading-lg: 26px;
+--text-heading-lg--line-height: 34px;
 --text-heading-md: 22px;
+--text-heading-md--line-height: 30px;
 --text-heading-sm: 18px;
+--text-heading-sm--line-height: 26px;
 --text-heading-xs: 16px;
+--text-heading-xs--line-height: 24px;
 --text-lg: 16px;
+--text-lg--line-height: 24px;
 --text-md: 14px;
+--text-md--line-height: 20px;
 --text-sm: 12px;
+--text-sm--line-height: 18px;
 --text-caption-sm: 10px;
+--text-caption-sm--line-height: 16px;
 --text-caption-xs: 8px;
+--text-caption-xs--line-height: 12px;
 
 /* ── Font weights ── */
 --font-weight-regular: 400;
 --font-weight-medium: 500;
 --font-weight-semibold: 600;
 --font-weight-bold: 700;
---text-heading-2xl--line-height: 48px;
---text-heading-xl--line-height: 40px;
---text-heading-lg--line-height: 34px;
---text-heading-md--line-height: 30px;
---text-heading-sm--line-height: 26px;
---text-heading-xs--line-height: 24px;
---text-lg--line-height: 24px;
---text-md--line-height: 20px;
---text-sm--line-height: 18px;
---text-caption-sm--line-height: 16px;
---text-caption-xs--line-height: 12px;
 ```
 
 ## Shadows
@@ -1327,6 +1309,9 @@ Source: `packages/tokens/src/component-breadcrumb.css`
 --breadcrumb-ellipsis-size: 28px;
 --breadcrumb-font-size: var(--text-sm);
 --breadcrumb-font-weight: var(--font-weight-medium);
+--breadcrumb-separator-size: 10px;
+--breadcrumb-icon-size: 14px;
+--breadcrumb-icon-gap: var(--spacing-sm);
 ```
 
 ## Pagination Component Tokens
@@ -2248,4 +2233,22 @@ Source: `packages/tokens/src/component-date-picker.css`
 --date-picker-quarter-item-height: 40px;
 --date-picker-quarter-year-panel-width: 304px;
 --date-picker-quarter-year-panel-padding: 24px;
+```
+
+## Brand Theme (Maxa)
+
+Source: `packages/tokens/src/themes/maxa.css`
+
+```css
+--color-brand-50: #F3FDFA;
+--color-brand-100: #E0FBF3;
+--color-brand-200: #C3F6E7;
+--color-brand-300: #A0F1DB;
+--color-brand-400: #77ECCF;
+--color-brand-500: #31E5C2;
+--color-brand-600: #15CBA8;
+--color-brand-700: #0DA88A;
+--color-brand-800: #0C8A73;
+--color-brand-900: #0D7462;
+--color-brand-950: #053D35;
 ```

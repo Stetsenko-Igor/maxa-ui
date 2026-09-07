@@ -19,7 +19,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { join, dirname, basename, relative } from 'node:path';
+import { join, dirname, basename, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -31,13 +31,21 @@ const COLORS_DOC_OUTPUT = join(ROOT, 'apps/docs/app/docs/foundations/colors/toke
 const CHECK_MODE = process.argv.includes('--check');
 
 /** Resolve the ordered list of source files from theme.css imports. */
-function sourceFiles() {
-  const theme = readFileSync(THEME_CSS, 'utf8');
+export function sourceFiles(entrypoint = THEME_CSS) {
   const files = [];
-  for (const m of theme.matchAll(/@import\s+"\.\/(.+?)";/g)) {
-    const path = join(TOKENS_DIR, m[1]);
-    if (existsSync(path)) files.push(path);
+  const active = new Set();
+  function visit(file) {
+    if (active.has(file)) throw new Error(`Circular CSS import: ${file}`);
+    active.add(file);
+    const css = readFileSync(file, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const match of css.matchAll(/@import\s+["'](\.\.?\/[^"']+)["']\s*;/g)) {
+      visit(join(dirname(file), match[1]));
+    }
+    active.delete(file);
+    // A bundle may also declare tokens after its imports.
+    files.push(file);
   }
+  visit(entrypoint);
   return files;
 }
 
@@ -46,9 +54,11 @@ function sourceFiles() {
  * lightEntries: array of { kind: 'token'|'section', ... } in source order.
  * darkValues: Map<tokenName, darkValue>.
  */
-function parseFile(filePath) {
+export function parseFile(filePath) {
   const css = readFileSync(filePath, 'utf8');
-  const lines = css.split('\n');
+  // A font-size and its line-height may share a line. Preserve comments and
+  // continuation lines while presenting each declaration to the line parser.
+  const lines = css.replace(/;(\s*)(?=--[\w-]+\s*:)/g, ';\n$1').split('\n');
 
   const lightEntries = [];
   const darkValues = new Map();
@@ -283,6 +293,7 @@ function generateColorsDocData() {
   ) + '\n';
 }
 
+if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
 const content = generate();
 const colorsDocContent = generateColorsDocData();
 
@@ -307,4 +318,6 @@ if (CHECK_MODE) {
   const count = content.match(/Total tokens: (\d+)/)?.[1];
   console.log(`✓ Wrote specs/tokens-reference.md (${count} tokens).`);
   console.log('✓ Wrote apps/docs .../colors/tokens.generated.json.');
+}
+
 }

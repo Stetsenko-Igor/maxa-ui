@@ -1,3 +1,5 @@
+import "./normalize.css"
+
 export const version = "0.0.0"
 
 export * from "./base-tokens.js"

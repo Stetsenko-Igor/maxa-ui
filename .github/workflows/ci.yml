@@ -31,6 +31,9 @@ jobs:
       - name: Token audit
         run: pnpm audit:tokens
 
+      - name: CSS delivery contract
+        run: pnpm test:css-contract
+
       - name: Token reference freshness
         run: pnpm tokens:reference:check
 
@@ -43,5 +46,8 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Package smoke
-        run: pnpm pack:smoke
+      - name: Install browser for consumer smoke
+        run: pnpm --filter @maxa/docs exec playwright install chromium --with-deps
+
+      - name: Package and browser consumer smoke
+        run: pnpm pack:smoke:browser

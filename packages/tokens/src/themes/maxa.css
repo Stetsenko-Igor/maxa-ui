@@ -2,7 +2,7 @@
 /* This is the ONLY Maxa-specific file in the token system. */
 /* To create a new client theme: copy this file, replace hex values. */
 
-@theme {
+:root {
   /* Brand — MAXA teal. Theme behavior belongs to semantic tokens. */
   /* To create a new theme: copy this file and replace this one scale. */
   --color-brand-50:  #F3FDFA;

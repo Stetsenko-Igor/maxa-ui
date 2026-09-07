@@ -13,24 +13,13 @@ import { render } from "@testing-library/react"
 const tokensSrc = join(import.meta.dirname, "..", "..", "tokens", "src")
 
 function injectThemeCSS() {
-  const files = [
-    "primitives.css",
-    "themes/maxa.css",
-    "semantic.css",
-    "dimensions.css",
-    "typography.css",
-    "shadows.css",
-    "component-button.css",
-    "component-checkbox.css",
-    "component-input.css",
-    "component-nav.css",
-    "component-radio.css",
-  ]
-  const content = files
-    .map((f) => readFileSync(join(tokensSrc, f), "utf-8"))
-    .join("\n")
-    .replace(/@import\s+["'][^"']+["'];/g, "")
-    .replace(/@theme\s*\{/g, ":root {")
+  function readBundle(file: string): string {
+    return readFileSync(join(tokensSrc, file), "utf-8").replace(
+      /@import\s+["']\.\/([^"']+)["'];/g,
+      (_match, imported: string) => readBundle(imported),
+    )
+  }
+  const content = readBundle("theme.css")
   const style = document.createElement("style")
   style.textContent = content
   document.head.appendChild(style)

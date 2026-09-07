@@ -1,0 +1,7 @@
+/* Component-local sizing baseline. Never reset the consuming document. */
+/* Class lists may use any HTML ASCII whitespace, including ERB line breaks. */
+:where([class^="maxa-"], [class*=" maxa-"], [class*="\9 maxa-"], [class*="\a maxa-"], [class*="\c maxa-"], [class*="\d maxa-"]),
+:where([class^="maxa-"], [class*=" maxa-"], [class*="\9 maxa-"], [class*="\a maxa-"], [class*="\c maxa-"], [class*="\d maxa-"])::before,
+:where([class^="maxa-"], [class*=" maxa-"], [class*="\9 maxa-"], [class*="\a maxa-"], [class*="\c maxa-"], [class*="\d maxa-"])::after {
+  box-sizing: border-box;
+}

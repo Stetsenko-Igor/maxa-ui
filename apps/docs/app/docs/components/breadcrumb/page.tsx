@@ -1,23 +1,10 @@
 import type { Metadata } from "next"
-import { HouseSimple } from "@maxa/icons"
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@maxa/ui"
 import { ComponentPage, DocsExample, DocsSection } from "../../../_components/component-page"
 import { ComponentPreview } from "../../../_components/component-preview"
 import { InstallationBlock } from "../../../_components/installation-block"
 import { PropsTable } from "../../../_components/props-table"
 import { BreadcrumbDefaultPreview } from "./breadcrumb-default-preview"
+import { BreadcrumbLongPathPreview } from "./breadcrumb-long-path-preview"
 
 export const metadata: Metadata = { title: "Breadcrumb - MAXA UI" }
 
@@ -96,35 +83,7 @@ export default function BreadcrumbPageDocs() {
           <ComponentPreview
             code={`<Breadcrumb>\n  <BreadcrumbList>\n    <BreadcrumbItem><BreadcrumbLink href="/" iconLeading={<HouseSimple />}>Home</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem>\n      <DropdownMenu>\n        <DropdownMenuTrigger asChild>\n          <BreadcrumbEllipsis />\n        </DropdownMenuTrigger>\n        <DropdownMenuContent align="start">\n          <DropdownMenuItem>Workspaces</DropdownMenuItem>\n          <DropdownMenuItem>Marketing Packages</DropdownMenuItem>\n        </DropdownMenuContent>\n      </DropdownMenu>\n    </BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbLink href="/docs/components">Components</BreadcrumbLink></BreadcrumbItem>\n    <BreadcrumbSeparator />\n    <BreadcrumbItem><BreadcrumbPage>Breadcrumb</BreadcrumbPage></BreadcrumbItem>\n  </BreadcrumbList>\n</Breadcrumb>`}
           >
-            <div style={{ padding: "32px" }}>
-              <Breadcrumb>
-                <BreadcrumbList>
-                  <BreadcrumbItem>
-                    <BreadcrumbLink href="/" iconLeading={<HouseSimple />}>Home</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <BreadcrumbEllipsis />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="start">
-                        <DropdownMenuItem>Workspaces</DropdownMenuItem>
-                        <DropdownMenuItem>Marketing Packages</DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
-                  </BreadcrumbItem>
-                  <BreadcrumbSeparator />
-                  <BreadcrumbItem>
-                    <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
-                  </BreadcrumbItem>
-                </BreadcrumbList>
-              </Breadcrumb>
-            </div>
+            <BreadcrumbLongPathPreview />
           </ComponentPreview>
         </DocsExample>
       </DocsSection>

@@ -2,7 +2,7 @@
 
 > Raw: https://raw.githubusercontent.com/Stetsenko-Igor/maxa-ui/main/AGENT.md
 
-Component library: @maxa/ui (React + TypeScript + Radix UI + Tailwind v4). Supports React 17, 18, and 19 (a `useId` ponyfill covers React 17).
+Component library: @maxa/ui (React + TypeScript + Radix UI + native CSS). Supports React 17, 18, and 19 (a `useId` ponyfill covers React 17).
 
 **Status:** Under development — full context available in Phase 4.
 
@@ -63,7 +63,13 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - Project documentation must be written in English.
 - This includes `AGENT.md`, `.knowledge/*`, package READMEs, docs pages, and design-system memory notes.
 - Conversation with the user may be in Russian, but persisted documentation and repo knowledge should stay in English.
-- MAXA is design-system-first, not Tailwind-first.
+- MAXA is design-system-first, not Tailwind-first. Public CSS does not require Tailwind; docs tooling may still use it. No adapter is provided.
+- `@maxa/tokens/theme.css` is the complete MAXA theme; `core.css` excludes only the brand scale while retaining all foundation and component tokens. Custom whole-app themes require a complete root-level brand scale plus any needed semantic action, typography, dimension, and dark overrides. Eleven teal values are not a full rebrand.
+- `@maxa/ui/styles.css` aggregates CSS for HTML/ERB; CSS alone does not provide React behavior or accessibility. Both React and aggregate CSS entries include component-local border-box normalization for MAXA classes and pseudo-elements. Hosts own global reset and font loading.
+- Components that render icons using client React context must declare a `"use client"` boundary (including indirect icon use, such as Breadcrumb separators). Keep server-page metadata on the server and move interactive/icon previews into client modules; verify with the production docs build.
+- `@maxa/tokens` is a direct dependency of `@maxa/ui`, not a peer. Hosts still explicitly import token CSS.
+- Supported theming is document-root/whole-app only; nested scopes and portals across those scopes are unsupported. Resolve generic variable namespace collisions before a Concept3D client release.
+- `.maxa-*` classes do not prevent independent forks; rename in the fork if needed, without introducing a prefix factory now. React 16 is outside the supported 17–19 range. Packages remain unpublished.
 - Cross-design-system research lives outside this repo in the Obsidian corpus documented at `.knowledge/Design System Research Corpus.md`.
 - Before making Badge, Tag, Chip, Pill, Filter, component-token, or taxonomy decisions, consult that corpus first rather than relying only on MAXA UI implementation details.
 - Current Badge/Tag direction is documented in `.knowledge/Badge and Tag Component Plan.md`.

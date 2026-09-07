@@ -5,6 +5,9 @@ import path from "node:path"
 import { promisify } from "node:util"
 import { pathToFileURL } from "node:url"
 
+import { prepareBrowserFixtures, verifyConsumerBrowser } from "./lib/consumer-browser.mjs"
+
+const browserSmoke = process.argv.includes("--browser")
 const repoRoot = process.cwd()
 const packagesRoot = path.join(repoRoot, "packages")
 const execFileAsync = promisify(execFile)
@@ -304,6 +307,7 @@ function bundlerSmokeHtml() {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAXA Consumer Smoke</title>
+    <link rel="icon" href="data:," />
   </head>
   <body>
     <div id="root"></div>
@@ -318,12 +322,15 @@ function bundlerSmokeSource() {
 import React from "react"
 import { createRoot } from "react-dom/client"
 import "@maxa/tokens/theme.css"
-import { Button, Input } from "@maxa/ui"
+import { Button, Input, Popover, PopoverTrigger, PopoverContent } from "@maxa/ui"
 
 function App() {
   return (
     <main>
-      <Button variant="primary" size="md">Save</Button>
+      <h1 id="host-heading">Host heading</h1>
+      <ul id="host-list"><li>Host item</li></ul>
+      <Button id="save" variant="primary" size="md">Save</Button>
+      <Popover><PopoverTrigger asChild><Button variant="secondary">Open popover</Button></PopoverTrigger><PopoverContent id="portal-content">Portal content</PopoverContent></Popover>
       <Input label="Email" placeholder="you@maxa.com" />
     </main>
   )
@@ -398,6 +405,7 @@ async function assertConsumerInstall(packages) {
     await mkdir(path.join(tempDir, "src"))
     await writeFile(path.join(tempDir, "index.html"), bundlerSmokeHtml())
     await writeFile(path.join(tempDir, "src/main.jsx"), bundlerSmokeSource())
+    if (browserSmoke) await prepareBrowserFixtures(tempDir)
     await writeFile(
       path.join(tempDir, "vite.config.mjs"),
       `
@@ -406,6 +414,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
+  ${browserSmoke ? 'build: { rollupOptions: { input: ["index.html", "plain.html", "custom.html"] } },' : ""}
 })
 `,
     )
@@ -413,6 +422,7 @@ export default defineConfig({
       cwd: tempDir,
       maxBuffer: 1024 * 1024 * 8,
     })
+    if (browserSmoke) await verifyConsumerBrowser(tempDir, repoRoot)
   } catch (error) {
     fail(`consumer install smoke failed: ${formatError(error)}`)
   } finally {

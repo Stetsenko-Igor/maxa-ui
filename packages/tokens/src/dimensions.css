@@ -1,8 +1,8 @@
 /* Layer 1 — Dimension tokens */
-/* Defined in @theme {} — becomes Tailwind utilities. */
+/* Native CSS custom properties; no build plugin required. */
 /* No dark mode — dimensions are mode-independent. */
 
-@theme {
+:root {
   /* ── Breakpoints ─────────────────────────────────────────────────── */
   --breakpoint-mobile:  375px;
   --breakpoint-tablet:  768px;
@@ -62,12 +62,7 @@
   --radius-3xl:  20px;
   --radius-4xl:  24px;
   --radius-full: 9999px;
-}
 
-/* These tokens are NOT Tailwind utilities — they must live in :root so
-   Tailwind v4's @theme tree-shaking does not strip them from the output.
-   Component CSS references them directly as custom properties. */
-:root {
   /* ── Component dimensions consumed directly by authored CSS ──────── */
   --width-1: 1px;
   --width-2: 2px;

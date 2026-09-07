@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest"
-import { readFileSync } from "node:fs"
+import { describe, it, expect, beforeAll, afterAll } from "vitest"
+import { readFileSync, readdirSync } from "node:fs"
 import { join } from "node:path"
 
 const src = join(import.meta.dirname, ".")
@@ -12,15 +12,18 @@ function cssVariable(css: string, name: string): string | undefined {
 
 // ── theme.css ──────────────────────────────────────────────────────────────
 
-describe("theme.css", () => {
-  const css = readFileSync(join(src, "theme.css"), "utf-8")
+describe("core.css", () => {
+  let css: string
+  beforeAll(() => {
+    css = readFileSync(join(src, "core.css"), "utf-8")
+  })
 
   it("imports primitives", () => {
     expect(css).toContain('@import "./primitives.css"')
   })
 
-  it("imports maxa theme", () => {
-    expect(css).toContain('@import "./themes/maxa.css"')
+  it("leaves brand primitives to the consumer", () => {
+    expect(css).not.toContain("themes/maxa.css")
   })
 
   it("imports semantic", () => {
@@ -76,14 +79,12 @@ describe("theme.css", () => {
     }
   })
 
-  it("imports in correct order: primitives → maxa → semantic → dimensions → shadows", () => {
+  it("imports in correct order: primitives → semantic → dimensions → shadows", () => {
     const primIdx = css.indexOf('@import "./primitives.css"')
-    const maxaIdx = css.indexOf('@import "./themes/maxa.css"')
     const semIdx = css.indexOf('@import "./semantic.css"')
     const dimIdx = css.indexOf('@import "./dimensions.css"')
     const shadowIdx = css.indexOf('@import "./shadows.css"')
-    expect(primIdx).toBeLessThan(maxaIdx)
-    expect(maxaIdx).toBeLessThan(semIdx)
+    expect(primIdx).toBeLessThan(semIdx)
     expect(semIdx).toBeLessThan(dimIdx)
     expect(dimIdx).toBeLessThan(shadowIdx)
   })
@@ -414,7 +415,7 @@ describe("dimensions.css — spacing + radius + width", () => {
     }
   })
 
-  it("publishes component-consumed dimensions in :root so Tailwind cannot tree-shake them", () => {
+  it("publishes component-consumed dimensions as native root custom properties", () => {
     const rootBlock = css.match(/:root\s*\{[\s\S]*?\}/)?.[0] ?? ""
 
     for (const token of ["--width-1:", "--width-2:", "--width-4:", "--touch-target-size:"]) {
@@ -1857,19 +1858,16 @@ function injectCSS(content: string) {
   return style
 }
 
+function readCSSBundle(file: string): string {
+  // Resolve only standard imports; never rewrite framework directives into native CSS.
+  return readFileSync(join(src, file), "utf-8").replace(
+    /@import\s+["']\.\/([^"']+)["'];/g,
+    (_match, imported: string) => readCSSBundle(imported),
+  )
+}
+
 function readThemeCSS() {
-  // Inline all @import sources since happy-dom doesn't resolve @imports
-  const primitives = readFileSync(join(src, "primitives.css"), "utf-8")
-  const maxa = readFileSync(join(src, "themes/maxa.css"), "utf-8")
-  const semantic = readFileSync(join(src, "semantic.css"), "utf-8")
-  const dimensions = readFileSync(join(src, "dimensions.css"), "utf-8")
-  const typography = readFileSync(join(src, "typography.css"), "utf-8")
-  const shadows = readFileSync(join(src, "shadows.css"), "utf-8")
-  // Strip @import lines (already inlined above) and @theme wrappers
-  // happy-dom doesn't process @theme — extract variable declarations directly
-  const strip = (css: string) =>
-    css.replace(/@import\s+["'][^"']+["'];/g, "").replace(/@theme\s*\{/g, ":root {")
-  return [primitives, maxa, semantic, dimensions, typography, shadows].map(strip).join("\n")
+  return readCSSBundle("theme.css")
 }
 
 describe("runtime — dark mode CSS variable override", () => {
@@ -1960,5 +1958,62 @@ describe("runtime — dark mode CSS variable override", () => {
       .trim()
 
     expect(dark).not.toBe(light)
+  })
+})
+
+
+describe("native CSS delivery", () => {
+  it("contains no framework-only directives in any published token stylesheet", () => {
+    for (const file of [...readdirSync(src).filter((name) => name.endsWith(".css")), "themes/maxa.css"]) {
+      const css = readFileSync(join(src, file), "utf-8").replace(/\/\*[\s\S]*?\*\//g, "")
+      expect(css, file).not.toMatch(/@(theme|apply|tailwind|utility|variant|custom-variant|source|config|plugin)\b/)
+    }
+  })
+
+  it("includes every foundation and component stylesheet exactly once in core", () => {
+    const core = readFileSync(join(src, "core.css"), "utf-8")
+    const imports = [...core.matchAll(/@import\s+"\.\/([^";]+)";/g)].map((match) => match[1])
+    const expected = readdirSync(src).filter((file) => file.endsWith(".css") && !["core.css", "theme.css"].includes(file))
+    expect(imports.sort()).toEqual(expected.sort())
+  })
+
+  it("composes the default theme from complete core and Maxa brand", () => {
+    const theme = readFileSync(join(src, "theme.css"), "utf-8")
+    expect([...theme.matchAll(/@import\s+"([^";]+)";/g)].map((match) => match[1])).toEqual([
+      "./core.css", "./themes/maxa.css",
+    ])
+  })
+
+  it("exports complete custom-brand and individual CSS entrypoints", () => {
+    const { exports: entrypoints } = JSON.parse(readFileSync(join(root, "package.json"), "utf-8"))
+    expect(entrypoints["./core.css"]).toBe("./dist/core.css")
+    expect(entrypoints["./motion.css"]).toBe("./dist/motion.css")
+    for (const file of readdirSync(src).filter((name) => name.startsWith("component-") && name.endsWith(".css"))) {
+      expect(entrypoints[`./${file}`]).toBe(`./dist/${file}`)
+    }
+  })
+
+  it("resolves custom brand semantic aliases and component tokens with native CSS", () => {
+    document.documentElement.removeAttribute("data-theme")
+    const core = injectCSS(readCSSBundle("core.css"))
+    const brand = injectCSS(":root { --color-brand-600: rgb(123, 45, 67); }")
+    const probe = document.createElement("div")
+    probe.style.color = "var(--color-text-brand)"
+    probe.style.backgroundColor = "var(--button-primary-bg)"
+    probe.style.borderRadius = "var(--radius-md)"
+    document.body.appendChild(probe)
+    try {
+      expect(getComputedStyle(document.documentElement).getPropertyValue("--color-brand-500")).toBe("")
+      expect(getComputedStyle(probe).color).toBe("rgb(123, 45, 67)")
+      expect(getComputedStyle(probe).backgroundColor).toBe("#0576da")
+      expect(getComputedStyle(probe).borderRadius).toBe("8px")
+      for (const token of ["--font-body", "--duration-base", "--shadow-sm", "--checkbox-size-md", "--input-bg"]) {
+        expect(getComputedStyle(document.documentElement).getPropertyValue(token).trim(), token).toBeTruthy()
+      }
+    } finally {
+      probe.remove()
+      brand.remove()
+      core.remove()
+    }
   })
 })

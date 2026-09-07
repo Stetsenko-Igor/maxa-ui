@@ -2,7 +2,7 @@
 
 [![build](https://img.shields.io/github/actions/workflow/status/Stetsenko-Igor/maxa-ui/ci.yml?branch=main&style=flat-square&label=build)](https://github.com/Stetsenko-Igor/maxa-ui/actions/workflows/ci.yml) [![@maxa/ui](https://img.shields.io/github/package-json/v/Stetsenko-Igor/maxa-ui?filename=packages%2Fui%2Fpackage.json&style=flat-square&label=%40maxa%2Fui&color=0d9488)](https://github.com/Stetsenko-Igor/maxa-ui/blob/main/packages/ui/package.json) [![components](https://img.shields.io/badge/components-42-0d9488?style=flat-square)](https://maxa-ui.netlify.app/docs/components) [![maintained with](https://img.shields.io/badge/maintained%20with-turborepo%20%2B%20pnpm-0d9488?style=flat-square)](https://turborepo.com) [![types](https://img.shields.io/badge/types-TypeScript-3178C6?style=flat-square)](https://www.typescriptlang.org/) [![docs](https://img.shields.io/badge/docs-online-0d9488?style=flat-square)](https://maxa-ui.netlify.app/)
 
-MAXA UI is the design system repository for Maxa. It packages the shared design language as workspace packages, Figma-ready tokens, React components, documentation, and agent-readable specifications. Packages publish to the GitLab Package Registry (primary); public npm stays an option for external developers - see [`RELEASING.md`](RELEASING.md).
+MAXA UI is the design system repository for Maxa. It packages the shared design language as workspace packages, Figma-ready tokens, React components, documentation, and agent-readable specifications. Packages are not published yet. The intended target is the GitLab Package Registry (primary); public npm stays an option for external developers - see [`RELEASING.md`](RELEASING.md).
 
 Primary docs: https://maxa-ui.netlify.app/
 
@@ -67,7 +67,7 @@ packages/cli     -> @maxa/cli
 packages/mcp     -> @maxa/mcp
 ```
 
-At the app root, import the theme once:
+Tailwind is not required. At the app root, import the standard CSS theme once:
 
 ```ts
 import "@maxa/tokens/theme.css"
@@ -85,12 +85,16 @@ Formatted field wrappers are exported from the same entrypoint:
 import { NumberInput, CurrencyInput, PhoneInput } from "@maxa/ui"
 ```
 
+For HTML or Rails ERB, load `@maxa/tokens/theme.css` and `@maxa/ui/styles.css` through your asset pipeline. The latter aggregates component styles without JavaScript; markup, state, keyboard handling, focus management, and accessibility remain the host application’s responsibility. React imports already include component CSS.
+
+React imports and `@maxa/ui/styles.css` include component-local `border-box` sizing for MAXA classes and their pseudo-elements. Neither CSS entry includes a global reset or font files. Configure the host reset and load the chosen fonts explicitly. For a custom whole-app theme, use `@maxa/tokens/core.css` plus a complete root-level theme; see the [tokens README](packages/tokens/README.md).
+
 ### Compatibility
 
 `@maxa/ui`, `@maxa/hooks`, and `@maxa/icons` support **React 17, 18, and 19**
 (`react`/`react-dom` peer range `^17 || ^18 || ^19`). React 17 is supported via a
 `useId` ponyfill in `@maxa/hooks` (native `useId` on 18+, a stable counter fallback
-on 17) — intended for client-rendered (SPA) apps.
+on 17) — intended for client-rendered (SPA) apps. React 16 is outside this contract; historical Localist React 16 installations require an upgrade or a separate integration assessment.
 
 ## Installation / Consumption
 
@@ -115,23 +119,41 @@ Workspace packages reference each other with the `workspace:` protocol:
 Be aware of two constraints before choosing an approach:
 
 1. pnpm can install from a git subdirectory (`pnpm add github:Stetsenko-Igor/maxa-ui#path:packages/ui`), but that **does not work here**: the packages ship `dist/` only, and `dist/` is produced by repo-level build scripts (`scripts/*.mjs`, workspace TypeScript config) that do not run during a git install. You would get a package without build output.
-2. Subpackages depend on each other (`@maxa/ui` peer-depends on `@maxa/tokens`), so they must be consumed together from the same checkout.
+2. Subpackages depend on each other (`@maxa/ui` depends on `@maxa/tokens`, `@maxa/icons`, and `@maxa/hooks`), so they must be consumed together from the same checkout.
 
 Realistic options, in order of preference:
 
-**Option A - clone, build, link via `file:`**
+**Option A - build and install packed tarballs (verified by package smoke)**
 
 ```bash
 git clone https://github.com/Stetsenko-Igor/maxa-ui.git
-cd maxa-ui && pnpm install && pnpm build
+cd maxa-ui
+pnpm install
+pnpm build
+mkdir -p /absolute/path/to/consumer/vendor/maxa
+pnpm --filter '@maxa/ui...' -r exec pnpm pack --pack-destination /absolute/path/to/consumer/vendor/maxa
 ```
 
-```bash
-# in your project
-pnpm add file:../maxa-ui/packages/tokens file:../maxa-ui/packages/ui
+This packs UI and its workspace dependencies (tokens, icons, and hooks), rewriting `workspace:` ranges. In the consuming app, add the following to `package.json`; retain the app’s supported React/React DOM dependencies:
+
+```json
+{
+  "dependencies": {
+    "@maxa/ui": "file:vendor/maxa/maxa-ui-0.1.0.tgz",
+    "@maxa/tokens": "file:vendor/maxa/maxa-tokens-0.1.0.tgz"
+  },
+  "pnpm": {
+    "overrides": {
+      "@maxa/ui": "file:vendor/maxa/maxa-ui-0.1.0.tgz",
+      "@maxa/tokens": "file:vendor/maxa/maxa-tokens-0.1.0.tgz",
+      "@maxa/icons": "file:vendor/maxa/maxa-icons-0.1.0.tgz",
+      "@maxa/hooks": "file:vendor/maxa/maxa-hooks-0.0.1.tgz"
+    }
+  }
+}
 ```
 
-Re-run `pnpm build` in the clone (and reinstall if needed) when pulling updates.
+Run `pnpm install` in the consuming app. Adjust paths and versioned filenames to the actual pack output. Overrides keep transitive MAXA dependencies on the local tarballs instead of looking for unpublished registry packages. Rebuild, repack, and reinstall when updating. Direct `file:` links to source package directories are not the verified external consumption path.
 
 **Option B - git submodule + workspace link**
 

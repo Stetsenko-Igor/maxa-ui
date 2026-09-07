@@ -1,8 +1,8 @@
 /* Layer 1 — Neutral primitive tokens (shared across all brands) */
 /* Gray scale + base colors. NO brand-specific values here. */
-/* Defined in @theme {} — becomes Tailwind utilities if needed. */
+/* Native CSS custom properties; no build plugin required. */
 
-@theme {
+:root {
   /* ── Base — Figma: Colors/Base/* ────────────────────────────────── */
   --color-base-white: #ffffff;
   --color-base-black: #000000;

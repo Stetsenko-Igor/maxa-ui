@@ -22,29 +22,36 @@ import { spacing, radius } from "@maxa/tokens"
 
 ## Usage from GitHub (no npm registry)
 
-Clone the repo, build, then link via `file:`:
+Packages are not published yet. For tokens alone, clone and build the repository, then pack and install the generated tarball:
 
 ```bash
-git clone https://github.com/Stetsenko-Igor/maxa-ui.git
-cd maxa-ui && pnpm install && pnpm build
-# in your project:
-pnpm add file:../maxa-ui/packages/tokens
+# in the repository checkout
+pnpm install
+pnpm build
+mkdir -p /absolute/path/to/consumer/vendor/maxa
+pnpm --filter @maxa/tokens exec pnpm pack --pack-destination /absolute/path/to/consumer/vendor/maxa
+# in the consuming project; use the actual generated filename
+pnpm add file:vendor/maxa/maxa-tokens-0.1.0.tgz
 ```
 
-## CSS layers and import order
+For React components, pack all four MAXA runtime packages and configure local overrides using the root [external consumption recipe](../../README.md#in-an-external-project). Direct source-directory `file:` links are not the verified external route.
 
-`theme.css` is the complete bundle and the recommended entry point. For a custom brand, import the layers individually in this order, replacing `themes/maxa.css` with your own brand file:
+## Native CSS and custom themes
+
+Tailwind is not required. `theme.css` is standard CSS and includes all foundation and component tokens plus the MAXA brand scale. It does not include a global reset or load fonts; those are explicit host responsibilities.
+
+For a custom whole-app theme, use the complete foundation bundle without the MAXA brand scale:
 
 ```css
-@import "@maxa/tokens/primitives.css";   /* raw values - never reference in components */
-@import "@maxa/tokens/themes/maxa.css";  /* brand layer (light + dark overrides) */
-@import "@maxa/tokens/semantic.css";     /* --color-text-primary, --color-action-primary, ... */
-@import "@maxa/tokens/dimensions.css";   /* spacing and radius scales */
-@import "@maxa/tokens/typography.css";   /* Montserrat body, system mono code */
-@import "@maxa/tokens/shadows.css";
+@import "@maxa/tokens/core.css";
+@import "./client-theme.css";
 ```
 
-Note: `motion.css` and the per-component token files (`component-*.css`) are bundled inside `theme.css` but are not individually exported - use the full bundle if you need them.
+`core.css` includes primitives, semantics, dimensions, typography, shadows, motion, and every component-token stylesheet. It excludes only `themes/maxa.css`; it is not a brand-free design system. The default primary action remains blue and the default typography remains MAXA typography until explicitly overridden.
+
+In `client-theme.css`, declare the complete brand scale on `:root`: `--color-brand-50`, `--color-brand-100`, `--color-brand-200`, `--color-brand-300`, `--color-brand-400`, `--color-brand-500`, `--color-brand-600`, `--color-brand-700`, `--color-brand-800`, `--color-brand-900`, and `--color-brand-950`. Supply approved client values for all eleven tokens. Replacing that teal scale only changes brand roles; a full rebrand also requires reviewing semantic action colors (including hover/active and dark states), fonts, and dimensions. Define needed overrides on `:root` and `:root[data-theme="dark"]` after the core import, and load the selected fonts separately.
+
+The supported boundary is the document root and a whole-app theme. Nested theme scopes and portals crossing those scopes are not supported. Generic variable names such as `--color-*`, `--text-*`, and `--radius-*` can collide with host styles or Tailwind themes. A namespace decision is required before a Concept3D client release; this change preserves existing names and does not provide a Tailwind adapter.
 
 ## Dark mode
 

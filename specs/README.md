@@ -86,15 +86,10 @@ Component code (reads only component tokens or semantic tokens)
 
 ## Multi-client / white-label readiness
 
-Tokens are brand-agnostic. Two paths exist for serving a second client brand:
+- **Whole-app theming:** import `@maxa/tokens/core.css` plus a complete client theme on the document root. Supply all eleven `--color-brand-*` values and review action semantics, typography, dimensions, and light/dark states. A teal-scale replacement only changes brand roles; it does not rebrand primary blue actions or fonts.
+- **HTML/ERB consumption:** load token CSS and `@maxa/ui/styles.css`. The CSS is framework-independent; interaction and accessibility remain host responsibilities.
+- **Independent forks:** the `.maxa-*` class prefix does not block a fork. Rename classes consistently in the client fork if needed; no shared prefix factory is required now.
 
-- **Path A — re-theme (works today, zero component changes).** A new client brand is created by
-  copying `packages/tokens/src/themes/maxa.css` and replacing the `--color-brand-*` hex values.
-  Because every component reads only semantic/component tokens, swapping the brand palette
-  re-skins the entire system with no component edits.
-- **Path B — divergent components (blocked).** For clients that need structurally *different*
-  components (not just colors), the blocker is the hardcoded `.maxa-*` CSS class prefix used in
-  ~437 places (CSS selectors + cva base classes). Forking component packages would first require
-  extracting that prefix into a shared constant/factory.
+Nested theme scopes and portals crossing those scopes are unsupported. Existing generic custom-property names can collide with host or Tailwind themes; decide the namespace before a Concept3D client release. Tailwind is optional and no adapter is provided. No global reset or font files are included. React components support React 17–19; historical Localist React 16 requires separate integration work.
 
-**Status: DEFERRED.** No action taken. Revisit when a second client's component scope is known.
+See `architecture.md` and `../packages/tokens/README.md` for the current contract. Older native-token plans are historical context where they contradict these boundaries.

@@ -13,7 +13,7 @@ Owns:
 - CSS custom properties for primitives, semantic tokens, dimensions, typography, and component tokens
 - JS/TS token constants for typed non-CSS usage
 - Figma import/export token artifacts
-- Theme bundles such as `@maxa/tokens/theme.css`
+- Standard CSS entry points: `theme.css` (complete MAXA theme) and `core.css` (complete foundation/component tokens excluding the MAXA brand scale)
 
 Rule: new visual decisions start here unless they are truly component behavior.
 
@@ -25,7 +25,7 @@ Owns:
 
 - Component APIs and behavior
 - Accessibility states and interaction behavior
-- Component CSS that reads `@maxa/tokens` variables
+- Component CSS that reads `@maxa/tokens` variables, including the `styles.css` aggregate for HTML/ERB consumers
 - Composition helpers used by components
 
 Rule: components consume component-level or semantic tokens. They should not introduce raw color, spacing, radius, typography, or shadow values when a token exists or should exist.
@@ -49,6 +49,14 @@ Rule: `@maxa/tailwind` mirrors `@maxa/tokens`; it does not define independent de
 Continue building components in `@maxa/ui` using `@maxa/tokens` as the token source.
 
 Do not create `@maxa/tailwind` yet. Tailwind is currently only used by the docs app as an implementation tool, not as a required public integration.
+
+## Portability boundary
+
+Public token and component CSS must work without Tailwind. React consumers keep their existing imports; HTML/ERB consumers load token CSS and `@maxa/ui/styles.css` via their asset pipeline and implement required behavior and accessibility themselves. React and aggregate CSS entries include component-local border-box normalization for MAXA classes and their pseudo-elements. Neither entry includes a global reset or font loading.
+
+Custom themes use `core.css` plus a complete document-root brand scale and the required semantic action, typography, dimension, and dark-mode overrides. Eleven replacement teal values are not a full rebrand. Whole-app themes are supported; nested scopes and portals crossing scopes are not.
+
+Generic CSS variable names can collide with host themes. A namespace decision is required before a Concept3D client release. The `.maxa-*` class prefix does not block an independent fork: rename it consistently in the fork when its client scope is known. No prefix factory is required now.
 
 ## Distribution Contract
 

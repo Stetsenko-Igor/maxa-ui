@@ -72,14 +72,14 @@ export default function IntroductionPage() {
       toc={TOC}
       lead={
         <>
-          MAXA UI is a token-first React design system. Every design decision
-          color, spacing, typography, radius lives in CSS custom properties.
+          MAXA UI is a token-first React design system with standard CSS. Tailwind is not required.
+          Design decisions for color, spacing, typography, and radius live in CSS custom properties.
           Components consume tokens, never raw values.
         </>
       }
     >
       <div style={badgeRowStyle}>
-        {["React 17+", "TypeScript", "CSS Variables", "Radix Primitives", "CVA"].map((badge) => (
+        {["React 17–19", "TypeScript", "CSS Variables", "Radix Primitives", "CVA"].map((badge) => (
           <span key={badge} style={badgeStyle}>{badge}</span>
         ))}
       </div>
@@ -91,8 +91,9 @@ export default function IntroductionPage() {
           component-level or semantic tokens, never raw color or spacing values.
         </p>
         <p style={pStyle}>
-          This means your entire UI responds correctly to theming, dark mode,
-          and brand customization without touching a single component.
+          Whole-app themes and dark mode are configured at the document root. Custom brands use
+          core.css plus a complete brand scale and the necessary semantic action, typography,
+          and dimension overrides. A teal-scale replacement alone is not a full rebrand.
         </p>
 
         <div style={featureGridStyle}>
@@ -126,12 +127,21 @@ export default function IntroductionPage() {
       </DocsPageSection>
 
       <DocsPageSection id="quick-start" title="Quick start">
+        <p style={pStyle}>
+          Packages are not published yet; follow Installation to build and link them from source.
+          Import the theme once at the app root. The host owns its reset and font loading.
+        </p>
         <CodeBlock code={`import { Button } from "@maxa/ui"
 import "@maxa/tokens/theme.css"
 
 export default function App() {
   return <Button variant="primary">Get started</Button>
 }`} />
+        <p style={pStyle}>
+          HTML/ERB consumers can load token CSS and @maxa/ui/styles.css through their asset pipeline.
+          CSS alone does not provide component behavior or accessibility. Nested theme scopes
+          and portals crossing them are unsupported; React 16 requires separate integration work.
+        </p>
       </DocsPageSection>
     </DocsPageLayout>
   )

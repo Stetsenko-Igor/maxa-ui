@@ -11,7 +11,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
-    }
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist",
@@ -22,7 +23,8 @@
     "access": "public"
   },
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./dist/index.js"
   ],
   "scripts": {
     "build": "pnpm --filter @maxa/ui^... build && node ../../scripts/clean-package-dist.mjs packages/ui && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/ui",

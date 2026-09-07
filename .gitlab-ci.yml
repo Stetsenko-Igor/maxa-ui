@@ -17,6 +17,8 @@ verify:
   stage: verify
   script:
     - pnpm verify
+    - pnpm --filter @maxa/docs exec playwright install chromium --with-deps
+    - pnpm pack:smoke:browser
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH
