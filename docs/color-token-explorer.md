@@ -52,3 +52,8 @@ The last command expects local docs on port 3000. To test static export, run
 `pnpm --filter @maxa/docs build:netlify` then omit `EXPLORER_DEV=1`.
 The build command does not deploy. Existing visual baselines must be deliberately
 refreshed on Linux before publication, not replaced with macOS screenshots.
+
+Token display labels must preserve source naming order within a family (for example,
+Action primary, Action primary hover, Action primary active). Do not reorder a base
+label through a curated override. Figma/CSS identifiers are authoritative; explanatory
+copy belongs in the description, not in a conflicting token label.

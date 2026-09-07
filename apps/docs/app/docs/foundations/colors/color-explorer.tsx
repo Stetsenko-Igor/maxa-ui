@@ -8,7 +8,7 @@ import "./color-explorer.css"
 
 const ROLE_COPY: Record<string, [string, string]> = {
   "--color-action-primary": [
-    "Primary action",
+    "Action primary",
     "The main action color for primary buttons and links. Its component recipes also define hover, active, and focus states.",
   ],
   "--color-text-primary": [
