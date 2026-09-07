@@ -12,7 +12,8 @@
     "lint": "eslint app/",
     "build:pages": "node scripts/clean-static-export.mjs && PAGES_BASE_PATH=/maxa-ui GITHUB_PAGES=true next build && node scripts/verify-static-export.mjs /maxa-ui && node scripts/normalize-next-env.mjs",
     "test:visual": "playwright test",
-    "test:visual:update": "playwright test --update-snapshots"
+    "test:visual:update": "playwright test --update-snapshots",
+    "test:explorer": "playwright test -c playwright.explorer.config.ts"
   },
   "dependencies": {
     "@maxa/icons": "workspace:^",

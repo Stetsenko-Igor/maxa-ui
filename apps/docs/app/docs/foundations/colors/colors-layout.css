@@ -1,0 +1,14 @@
+.colors-page[data-view="explore"] .docs-component-page {
+  grid-template-columns: minmax(0, 1fr);
+}
+.colors-page[data-view="explore"] .docs-component-content {
+  max-width: none;
+}
+.colors-page .maxa-tabs__content {
+  padding-top: var(--spacing-6);
+}
+@media (max-width: 45rem) {
+  .colors-page .docs-component-page {
+    padding-inline: var(--spacing-4);
+  }
+}

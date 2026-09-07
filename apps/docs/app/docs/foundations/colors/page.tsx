@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
-import { DocsPageLayout, DocsPageSection } from "../../../_components/docs-page-layout"
+import { DocsPageSection } from "../../../_components/docs-page-layout"
 import tokenData from "./tokens.generated.json"
+import explorerData from "./explorer.generated.json"
+import { ColorsLayout } from "./colors-layout"
 
 export const metadata: Metadata = { title: "Colors — MAXA UI" }
 const TOC = [
@@ -42,42 +44,11 @@ function labelFor(name: string, prefix: string): string {
     .join(" ")
 }
 
-/* Editorial usage tags for the neutral-scale table (semantic roles per step). */
-const NEUTRAL_USAGE: Record<string, { light: string[]; dark: string[] }> = {
-  "--color-base-white": { light: ["bg/surface", "bg/float"], dark: [] },
-  "--color-neutral-25": { light: [], dark: [] },
-  "--color-neutral-50": { light: ["bg/page"], dark: [] },
-  "--color-neutral-100": {
-    light: ["border/tertiary", "bg/muted", "bg/disabled", "bg/neutral-subtle"],
-    dark: [],
-  },
-  "--color-neutral-200": { light: ["border/secondary", "bg/neutral-muted"], dark: [] },
-  "--color-neutral-300": {
-    light: ["border/primary", "action/neutral", "bg/neutral-on-muted"],
-    dark: [],
-  },
-  "--color-neutral-400": { light: ["action/neutral-hover"], dark: ["bg/neutral-strong"] },
-  "--color-neutral-500": {
-    light: ["text/disabled", "action/neutral-active"],
-    dark: ["text/tertiary", "border/neutral-strong"],
-  },
-  "--color-neutral-600": { light: ["text/tertiary"], dark: ["action/neutral-active"] },
-  "--color-neutral-700": {
-    light: [],
-    dark: ["border/primary", "text/disabled", "bg/neutral-on-muted"],
-  },
-  "--color-neutral-800": {
-    light: ["text/secondary", "bg/neutral-strong"],
-    dark: ["border/secondary", "bg/float", "bg/neutral-muted"],
-  },
-  "--color-neutral-900": {
-    light: [],
-    dark: ["bg/surface", "border/tertiary", "bg/neutral-subtle"],
-  },
-  "--color-neutral-925": { light: [], dark: ["bg/neutral-surface"] },
-  "--color-neutral-950": { light: ["text/primary", "bg/inverse"], dark: ["bg/inverse", "bg/page"] },
-  "--color-neutral-975": { light: [], dark: ["bg/muted"] },
-  "--color-neutral-1000": { light: [], dark: [] },
+/* Actual semantic references, generated from the source CSS for each mode. */
+function neutralUsage(name: string, mode: "light" | "dark"): string[] {
+  return explorerData.tokens
+    .filter(token => token.layer === "semantic" && token[mode].references.includes(name))
+    .map(token => token.name.replace(/^--color-/, "").replace(/^(bg|text|fg|border|action)-/, "$1/"))
 }
 
 const NEUTRAL_SCALE = tokenData.neutralScale
@@ -86,8 +57,8 @@ const NEUTRAL_SCALE = tokenData.neutralScale
     step: t.name === "--color-base-white" ? "0" : t.name.replace("--color-neutral-", ""),
     variable: t.name,
     hex: t.lightHex ?? "",
-    light: NEUTRAL_USAGE[t.name]?.light ?? [],
-    dark: NEUTRAL_USAGE[t.name]?.dark ?? [],
+    light: neutralUsage(t.name, "light"),
+    dark: neutralUsage(t.name, "dark"),
   }))
 
 function UsageTag({ label, mode }: { label: string; mode: "light" | "dark" }) {
@@ -1175,17 +1146,9 @@ function TokenContextDemo() {
 
 export default function ColorsPage() {
   return (
-    <DocsPageLayout
-      eyebrow="Foundations"
-      title="Colors"
+    <ColorsLayout
       toc={TOC}
-      lead={
-        <>
-          Choose color by purpose, not by hue. Product work starts with semantic roles; components
-          expose a thin component contract; raw palette steps stay inside the Foundation layer.
-        </>
-      }
-    >
+      overview={<>
       <div
         style={{
           display: "flex",
@@ -1264,6 +1227,8 @@ export default function ColorsPage() {
         <TokenContextDemo />
       </DocsPageSection>
 
+      </>}
+      reference={<>
       <DocsPageSection
         id="foreground"
         title="Foreground"
@@ -1593,6 +1558,7 @@ export default function ColorsPage() {
           </div>
         </div>
       </DocsPageSection>
-    </DocsPageLayout>
+      </>}
+    />
   )
 }
