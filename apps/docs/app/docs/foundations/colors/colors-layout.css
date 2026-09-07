@@ -1,7 +1,7 @@
-.colors-page[data-view="explore"] .docs-component-page {
+.colors-page[data-view="tokens"] .docs-component-page {
   grid-template-columns: minmax(0, 1fr);
 }
-.colors-page[data-view="explore"] .docs-component-content {
+.colors-page[data-view="tokens"] .docs-component-content {
   max-width: none;
 }
 .colors-page .maxa-tabs__content {

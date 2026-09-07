@@ -1,135 +1,88 @@
-import { expect, test } from "@playwright/test"
+import { expect, test, type Page } from "@playwright/test"
 
 const route = process.env.EXPLORER_DEV
   ? "/docs/foundations/colors"
   : "/docs/foundations/colors.html"
-async function explore(page: import("@playwright/test").Page) {
-  await page.goto(`${route}#explore`)
-  await expect(page.getByRole("tab", { name: "Explore", exact: true })).toHaveAttribute(
+async function tokens(page: Page, hash = "tokens") {
+  await page.goto(`${route}#${hash}`)
+  await expect(page.getByRole("tab", { name: "Tokens", exact: true })).toHaveAttribute(
     "data-state",
     "active",
   )
-  await expect(page.locator("[data-color-preview]")).toBeVisible()
+  await expect(page.getByRole("complementary", { name: "Color token inspector" })).toBeVisible()
 }
 
-test("Colors has three keyboard-accessible views", async ({ page }) => {
+test("Overview combines guidance and reference, with only two keyboard-accessible tabs", async ({
+  page,
+}) => {
   await page.goto(route)
-  const overview = page.getByRole("tab", { name: "Overview", exact: true })
-  await expect(overview).toBeVisible({ timeout: 7000 })
-  await overview.focus()
-  await page.keyboard.press("ArrowRight")
-  await expect(page.getByRole("tab", { name: "Explore", exact: true })).toBeFocused()
-  await page.getByRole("tab", { name: "Reference", exact: true }).click()
+  await expect(page.getByRole("tab")).toHaveCount(2)
+  await expect(page.locator("#token-model")).toBeVisible()
   await expect(
     page.getByRole("heading", { name: "Primitive neutral scale", exact: true }),
   ).toBeVisible()
+  await page.getByRole("tab", { name: "Overview", exact: true }).focus()
+  await page.keyboard.press("ArrowRight")
+  await expect(page.getByRole("tab", { name: "Tokens", exact: true })).toBeFocused()
 })
 
-test("semantic color trial propagates to real components, stays isolated, and resets", async ({
+test("read-only browser keeps usage and dependencies with inspector on the left", async ({
   page,
 }) => {
-  await explore(page)
-  const preview = page.locator("[data-color-preview]")
-  const button = preview.locator(".maxa-button--primary").first()
-  const original = await button.evaluate((el) => getComputedStyle(el).backgroundColor)
-  const root = await page.evaluate(() =>
-    getComputedStyle(document.documentElement).getPropertyValue("--color-action-primary"),
-  )
-  const trial = page.getByRole("textbox", { name: "Trial color", exact: true })
-  await trial.fill("#663399")
-  await expect(button).toHaveCSS("background-color", "rgb(102, 51, 153)")
-  expect(
-    await page.evaluate(() =>
-      getComputedStyle(document.documentElement).getPropertyValue("--color-action-primary"),
-    ),
-  ).toBe(root)
-  await page.getByRole("button", { name: "Reset color", exact: true }).click()
-  await expect(button).toHaveCSS("background-color", original)
-  await page.getByRole("button", { name: "Dark preview", exact: true }).click()
-  await expect(button).toHaveCSS("background-color", "rgb(5, 100, 185)")
-  expect(
-    await page.evaluate(() =>
-      getComputedStyle(document.documentElement).getPropertyValue("--color-action-primary"),
-    ),
-  ).toBe(root)
-})
-
-test("primitive aliases propagate locally and search can recover from no results", async ({
-  page,
-}) => {
-  await explore(page)
-  const search = page.getByRole("textbox", { name: "Search color tokens", exact: true })
-  await page.getByRole("combobox", { name: "Token layer" }).selectOption("primitive")
-  await search.fill("--color-blue-500")
-  await page.getByRole("button", { name: "Select --color-blue-500", exact: true }).first().click()
-  await page.getByRole("textbox", { name: "Trial color", exact: true }).fill("#663399")
-  await expect(page.locator("[data-color-preview] .maxa-button--primary").first()).toHaveCSS(
-    "background-color",
-    "rgb(102, 51, 153)",
-  )
-  await search.fill("this-token-does-not-exist")
-  await expect(page.getByText(/No matching tokens/)).toBeVisible()
-  await page.getByRole("combobox", { name: "Token layer" }).selectOption("semantic")
-  await search.fill("--color-action-primary")
+  await tokens(page, "explore")
+  await expect(page.getByText("Used by", { exact: true })).toBeVisible()
   await expect(
-    page.getByRole("button", { name: "Select --color-action-primary", exact: true }).first(),
+    page.getByText("Library CSS references, not a list of product screens.", { exact: true }),
+  ).toBeVisible()
+  await expect(page.getByRole("region", { name: "Live color preview" })).toHaveCount(0)
+  await expect(page.getByRole("textbox", { name: "Trial color", exact: true })).toHaveCount(0)
+  const inspector = await page.locator(".color-explorer__inspector").boundingBox()
+  const content = await page.locator(".color-explorer__main").boundingBox()
+  expect(inspector!.x + inspector!.width).toBeLessThanOrEqual(content!.x)
+  await page.getByRole("button", { name: "Follow --color-blue-500", exact: true }).click()
+  await expect(page.locator("[data-selected-token]")).toHaveText("--color-blue-500")
+})
+
+test("layer switch clears stale search and exposes all primitive colors", async ({ page }) => {
+  await tokens(page)
+  await page.getByRole("textbox", { name: "Search color tokens" }).fill("action-primary")
+  const layer = page.getByRole("combobox", { name: "Token layer" })
+  await expect(layer.locator('option[value="foundation"]')).toHaveCount(0)
+  await layer.selectOption("primitive")
+  await expect(page.getByRole("textbox", { name: "Search color tokens" })).toHaveValue("")
+  await expect(page.locator(".color-explorer__count")).toContainText("237 tokens")
+  await page.getByRole("textbox", { name: "Search color tokens" }).fill("--color-blue-500")
+  await expect(
+    page.getByRole("button", { name: "Select --color-blue-500", exact: true }),
   ).toBeVisible()
 })
 
-test("mobile layout stays within viewport and does not produce browser errors", async ({
+test("token browser follows site dark mode without a forced light container", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("maxa-theme", "dark"))
+  await tokens(page)
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark")
+  await expect(page.locator(".color-explorer__count")).toContainText("dark values")
+  await expect(page.locator('.color-explorer [data-theme="light"]')).toHaveCount(0)
+  const inspector = page.locator(".color-explorer__inspector")
+  expect(await inspector.evaluate((el) => getComputedStyle(el).backgroundColor)).not.toBe(
+    "rgb(255, 255, 255)",
+  )
+  await page.getByRole("button", { name: "Switch to light mode" }).click()
+  await expect(page.locator(".color-explorer__count")).toContainText("light values")
+})
+
+test("mobile browser keeps search above details without horizontal overflow or errors", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   const errors: string[] = []
   page.on("pageerror", (error) => errors.push(error.message))
-  await explore(page)
+  await tokens(page)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,
   )
-  await expect(
-    page.getByRole("textbox", { name: "Search color tokens", exact: true }),
-  ).toBeVisible()
+  const inspector = await page.locator(".color-explorer__inspector").boundingBox()
+  const content = await page.locator(".color-explorer__main").boundingBox()
+  expect(inspector!.y + inspector!.height).toBeLessThanOrEqual(content!.y)
   expect(errors).toEqual([])
-})
-
-test("component inspection reveals the recipe and incomplete colors preserve the last valid preview", async ({
-  page,
-}) => {
-  await explore(page)
-  await page.getByRole("button", { name: "Inspect Input border", exact: true }).click()
-  await expect(page.locator("[data-selected-token]")).toHaveText("--input-border")
-  await expect(
-    page.getByRole("button", { name: "Select --input-border", exact: true }),
-  ).toHaveAttribute("aria-pressed", "true")
-  const input = page.locator("[data-color-preview] .maxa-input__field")
-  const trial = page.getByRole("textbox", { name: "Trial color", exact: true })
-  await trial.fill("#663399")
-  await expect(input).toHaveCSS("border-top-color", "rgb(102, 51, 153)")
-  await trial.fill("")
-  await expect(trial).toHaveValue("")
-  await expect(trial).toHaveAttribute("aria-invalid", "true")
-  await expect(input).toHaveCSS("border-top-color", "rgb(102, 51, 153)")
-  await page.getByRole("button", { name: "Inspect Button background", exact: true }).click()
-  await expect(page.locator("[data-color-preview] .maxa-button--primary").first()).toHaveCSS(
-    "background-color",
-    "rgb(5, 118, 218)",
-  )
-  await expect(trial).toHaveValue("#0576da")
-  await page.getByRole("button", { name: "Follow --color-action-primary", exact: true }).click()
-  await expect(page.locator("[data-selected-token]")).toHaveText("--color-action-primary")
-})
-
-test("Alert title inspection identifies and recolors the real heading", async ({ page }) => {
-  await explore(page)
-  await page.getByRole("button", { name: "Inspect Alert title", exact: true }).click()
-  await expect(page.locator("[data-selected-token]")).toHaveText("--alert-success-title")
-  await page.getByRole("textbox", { name: "Trial color", exact: true }).fill("#663399")
-  const demo = page
-    .locator(".color-explorer__demo")
-    .filter({ has: page.getByRole("button", { name: "Inspect Alert title", exact: true }) })
-  await expect(demo).toHaveAttribute("data-affected", "true")
-  await expect(demo.getByText("Changes saved", { exact: true })).toHaveCSS(
-    "color",
-    "rgb(102, 51, 153)",
-  )
 })

@@ -192,15 +192,15 @@ Run the docs site:
 pnpm dev
 ```
 
-The Colors page has three views: **Overview** explains the model, **Explore**
-lets reviewers search tokens and trial colors on real components, and **Reference**
-keeps the detailed tables. Open `/docs/foundations/colors#explore` locally.
-Trials only affect the preview; they do not save a theme or edit source tokens.
+The Colors page has two views: **Overview** combines the color model and reference
+tables, while **Tokens** provides a read-only browser with search on the left,
+source values, dependencies, and component CSS usage. Open
+`/docs/foundations/colors#tokens` locally. The browser follows the site theme.
 
-Explorer values, dependencies, and component CSS references are generated from
-native token and component stylesheets. After changing those sources, run
-`pnpm tokens:reference`; CI checks freshness with `pnpm tokens:reference:check`.
-See [Color Explorer](docs/color-token-explorer.md) for usage and maintenance.
+Values, dependencies, and component CSS references are generated from native
+stylesheets. After changing those sources, run `pnpm tokens:reference`; CI checks
+freshness with `pnpm tokens:reference:check`.
+See [Color Token Browser](docs/color-token-explorer.md) for usage and maintenance.
 
 Run the full verification pipeline:
 

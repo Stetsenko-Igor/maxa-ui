@@ -1,22 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react"
-import { Alert, Button, Input } from "@maxa/ui"
+import { useEffect, useMemo, useRef, useState } from "react"
+import { Button, Input } from "@maxa/ui"
 import type { ColorExplorerData, ColorExplorerToken, ColorMode } from "./explorer-types"
 import "./color-explorer.css"
 
-const PARTS = [
-  { component: "Button", label: "Background", token: "--button-primary-bg" },
-  { component: "Button", label: "Text", token: "--button-primary-text" },
-  { component: "Button", label: "Focus ring", token: "--color-focus-ring" },
-  { component: "Input", label: "Background", token: "--input-bg" },
-  { component: "Input", label: "Border", token: "--input-border" },
-  { component: "Input", label: "Text", token: "--input-text" },
-  { component: "Alert", label: "Background", token: "--alert-success-bg" },
-  { component: "Alert", label: "Text", token: "--alert-success-text" },
-  { component: "Alert", label: "Title", token: "--alert-success-title" },
-]
 const ROLE_COPY: Record<string, [string, string]> = {
   "--color-action-primary": [
     "Primary action",
@@ -44,7 +33,7 @@ const ROLE_COPY: Record<string, [string, string]> = {
   ],
   "--color-focus-ring": [
     "Keyboard focus ring",
-    "Marks the active keyboard target. Focus a preview control to see this color in use.",
+    "Marks the active keyboard target with a visible focus outline.",
   ],
   "--input-bg": ["Field background", "The fill behind text inside a standard input field."],
   "--input-border": [
@@ -53,7 +42,7 @@ const ROLE_COPY: Record<string, [string, string]> = {
   ],
   "--input-text": [
     "Field text",
-    "The color of entered input text. Type in the preview to compare it with the separate placeholder treatment.",
+    "The color of entered input text. Placeholder text uses a separate token.",
   ],
   "--button-primary-bg": [
     "Primary button background",
@@ -77,21 +66,33 @@ const human = (name: string) =>
     .replace(/\bfg\b/g, "foreground")
     .replace(/-/g, " ")
     .replace(/^./, (c) => c.toUpperCase())
-const isHex = (value: string) => /^#[\da-f]{6}$/i.test(value)
 
 export function ColorExplorer({ data }: { data: ColorExplorerData }) {
   const [selectedName, setSelectedName] = useState("--color-action-primary")
   const [mode, setMode] = useState<ColorMode>("light")
+  useEffect(() => {
+    const root = document.documentElement
+    const update = () => setMode(root.dataset.theme === "dark" ? "dark" : "light")
+    update()
+    const observer = new MutationObserver(update)
+    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] })
+    return () => observer.disconnect()
+  }, [])
   const [search, setSearch] = useState("")
   const [layer, setLayer] = useState("semantic")
   const [group, setGroup] = useState("all")
-  const [trial, setTrial] = useState<string | null>(null)
-  const [draft, setDraft] = useState<string | null>(null)
   const [copied, setCopied] = useState(false)
   const listRef = useRef<HTMLDivElement>(null)
   const index = useMemo(() => new Map(data.tokens.map((token) => [token.name, token])), [data])
   const selected = index.get(selectedName) ?? data.tokens.find((token) => token.color)
   const colors = useMemo(() => data.tokens.filter((token) => token.color), [data])
+  const layers = useMemo(
+    () =>
+      (["semantic", "component", "primitive", "foundation"] as const)
+        .map((name) => ({ name, count: colors.filter((token) => token.layer === name).length }))
+        .filter((item) => item.count > 0),
+    [colors],
+  )
   const groups = useMemo(
     () =>
       [
@@ -137,12 +138,6 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
     }
     return new Map(data.tokens.map((token) => [token.name, walk(token.name)]))
   }, [data, index, mode])
-  const scope = useMemo(() => {
-    const values: Record<string, string> = {}
-    for (const token of data.tokens) values[token.name] = token[mode].raw
-    if (trial && selected) values[selected.name] = trial
-    return values as CSSProperties
-  }, [data, mode, selected, trial])
   if (!selected) return <p>No color tokens are available.</p>
   const choose = (name: string) => {
     const target = index.get(name)
@@ -152,12 +147,8 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
       setSearch("")
     }
     setSelectedName(name)
-    setTrial(null)
-    setDraft(null)
     setCopied(false)
   }
-  const affected = (name: string) =>
-    name === selected.name || dependencies.get(name)?.has(selected.name)
   const dependents = data.tokens.filter(
     (token) => token.name !== selected.name && dependencies.get(token.name)?.has(selected.name),
   )
@@ -169,13 +160,6 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
     token.consumers.map((consumer) => ({ ...consumer, token: token.name })),
   )
   const usageComponents = [...new Set(usages.map((usage) => usage.component))].sort()
-  const impact = PARTS.filter((part) => affected(part.token))
-  const value = trial ?? selected[mode].resolved ?? selected[mode].raw
-  const inputValue = draft ?? (isHex(value) ? value : "")
-  const changeTrial = (next: string) => {
-    setDraft(next)
-    if (isHex(next)) setTrial(next)
-  }
   const tokenButton = (token: ColorExplorerToken) => (
     <button
       type="button"
@@ -191,6 +175,81 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
 
   return (
     <div className="color-explorer">
+      <aside className="color-explorer__inspector" aria-label="Color token inspector">
+        <h3>Find a color token</h3>
+        <Input
+          aria-label="Search color tokens"
+          placeholder="Search name or role…"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+        />
+        <div className="color-explorer__filters">
+          <label>
+            Layer
+            <select
+              aria-label="Token layer"
+              value={layer}
+              onChange={(event) => {
+                setLayer(event.target.value)
+                setGroup("all")
+                setSearch("")
+              }}
+            >
+              {layers.map((item) => (
+                <option key={item.name} value={item.name}>
+                  {human(item.name)} ({item.count})
+                </option>
+              ))}
+              <option value="all">All layers ({colors.length})</option>
+            </select>
+          </label>
+          <label>
+            Group
+            <select
+              aria-label="Token group"
+              value={group}
+              onChange={(event) => setGroup(event.target.value)}
+            >
+              <option value="all">All groups</option>
+              {groups.map((item) => (
+                <option key={item} value={item}>
+                  {human(item)}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <p className="color-explorer__count">
+          {visible.length} tokens · {mode} values
+        </p>
+        <div className="color-explorer__list" ref={listRef}>
+          {visible.length ? (
+            visible.map((token) => (
+              <button
+                type="button"
+                className="color-explorer__row"
+                aria-label={`Select ${token.name}`}
+                key={token.name}
+                aria-pressed={selected.name === token.name}
+                onClick={() => choose(token.name)}
+              >
+                <span
+                  className="color-explorer__swatch"
+                  style={{ background: token[mode].resolved ?? "transparent" }}
+                />
+                <span>
+                  <strong>{human(token.name)}</strong>
+                  <code>{token.name}</code>
+                </span>
+              </button>
+            ))
+          ) : (
+            <p className="color-explorer__muted">
+              No matching tokens. Try another name, layer, or group.
+            </p>
+          )}
+        </div>
+      </aside>
       <div className="color-explorer__main">
         <header className="color-explorer__heading">
           <span className="color-explorer__eyebrow">
@@ -247,131 +306,6 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
             </p>
           </details>
         </header>
-
-        <section className="color-explorer__section" aria-label="Live color preview">
-          <div className="color-explorer__section-heading">
-            <h3>Try it in context</h3>
-            <div className="color-explorer__modes" aria-label="Preview theme">
-              {(["light", "dark"] as const).map((theme) => (
-                <Button
-                  key={theme}
-                  size="sm"
-                  variant={mode === theme ? "secondary" : "ghost"}
-                  aria-label={`${theme === "light" ? "Light" : "Dark"} preview`}
-                  aria-pressed={mode === theme}
-                  onClick={() => {
-                    setMode(theme)
-                    setTrial(null)
-                    setDraft(null)
-                  }}
-                >
-                  {theme === "light" ? "Light" : "Dark"}
-                </Button>
-              ))}
-            </div>
-          </div>
-          <div className="color-explorer__trial">
-            <label className="color-explorer__picker-label">
-              Trial color
-              <input
-                aria-label="Trial color picker"
-                type="color"
-                value={isHex(value) ? value : "#000000"}
-                onChange={(event) => changeTrial(event.target.value)}
-              />
-            </label>
-            <label className="color-explorer__hex-label">
-              Hex value
-              <input
-                aria-label="Trial color"
-                value={inputValue}
-                placeholder="#RRGGBB"
-                maxLength={7}
-                onChange={(event) => changeTrial(event.target.value)}
-                aria-invalid={draft !== null && !isHex(draft)}
-              />
-            </label>
-            <Button
-              aria-label="Reset color"
-              size="sm"
-              variant="ghost"
-              disabled={!trial && draft === null}
-              onClick={() => {
-                setTrial(null)
-                setDraft(null)
-              }}
-            >
-              Reset
-            </Button>
-          </div>
-          <p className="color-explorer__muted">
-            {draft !== null && !isHex(draft)
-              ? `Enter a six-digit hex color, including #. Preview still uses ${trial ?? selected[mode].resolved ?? selected[mode].raw}.`
-              : "Temporary preview only. Source tokens and the site theme stay unchanged."}
-          </p>
-          <div
-            className="color-explorer__preview"
-            data-color-preview
-            data-theme={mode}
-            style={scope}
-          >
-            {(["Button", "Input", "Alert"] as const).map((component) => (
-              <div
-                className="color-explorer__demo"
-                key={component}
-                data-affected={
-                  PARTS.some((part) => part.component === component && affected(part.token)) ||
-                  undefined
-                }
-              >
-                <div className="color-explorer__demo-heading">
-                  <strong>{component}</strong>
-                  <span>
-                    {PARTS.some((part) => part.component === component && affected(part.token))
-                      ? "Illustrated part uses token"
-                      : "No listed part uses token"}
-                  </span>
-                </div>
-                <div className="color-explorer__example">
-                  {component === "Button" && (
-                    <Button variant="primary" onClick={() => choose("--button-primary-bg")}>
-                      Save changes
-                    </Button>
-                  )}
-                  {component === "Input" && (
-                    <Input label="Project name" placeholder="Untitled project" />
-                  )}
-                  {component === "Alert" && (
-                    <Alert intent="success" title="Changes saved">
-                      Your project is up to date.
-                    </Alert>
-                  )}
-                </div>
-                <div className="color-explorer__parts" aria-label={`Inspect ${component} parts`}>
-                  {PARTS.filter((part) => part.component === component).map((part) => (
-                    <button
-                      type="button"
-                      key={part.token}
-                      aria-pressed={selected.name === part.token}
-                      data-affected={affected(part.token) || undefined}
-                      onClick={() => choose(part.token)}
-                      data-preview-part={`${component.toLowerCase()}-${part.label === "Background" ? "bg" : part.label === "Focus ring" ? "focus" : part.label.toLowerCase()}`}
-                      aria-label={`Inspect ${component} ${part.label.toLowerCase()}`}
-                    >
-                      {part.label}
-                      {affected(part.token) && <span aria-label="affected"> ·</span>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="color-explorer__muted" role="status">
-            {impact.length
-              ? `${impact.length} illustrated ${impact.length === 1 ? "part uses" : "parts use"} this token. Select a part to inspect its recipe.`
-              : "No illustrated component part uses this token. It may affect the preview canvas or surrounding surfaces; actual CSS consumers are listed below."}
-          </p>
-        </section>
 
         <section aria-label="Token dependency chain" className="color-explorer__section">
           <h3>Where this color comes from</h3>
@@ -439,80 +373,6 @@ export function ColorExplorer({ data }: { data: ColorExplorerData }) {
           )}
         </section>
       </div>
-
-      <aside className="color-explorer__inspector" aria-label="Color token inspector">
-        <h3>Find a color token</h3>
-        <Input
-          aria-label="Search color tokens"
-          placeholder="Search name or role…"
-          value={search}
-          onChange={(event) => setSearch(event.target.value)}
-        />
-        <div className="color-explorer__filters">
-          <label>
-            Layer
-            <select
-              aria-label="Token layer"
-              value={layer}
-              onChange={(event) => {
-                setLayer(event.target.value)
-                setGroup("all")
-              }}
-            >
-              <option value="semantic">Semantic</option>
-              <option value="component">Component</option>
-              <option value="primitive">Primitive</option>
-              <option value="foundation">Foundation</option>
-              <option value="all">All layers</option>
-            </select>
-          </label>
-          <label>
-            Group
-            <select
-              aria-label="Token group"
-              value={group}
-              onChange={(event) => setGroup(event.target.value)}
-            >
-              <option value="all">All groups</option>
-              {groups.map((item) => (
-                <option key={item} value={item}>
-                  {human(item)}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <p className="color-explorer__count">
-          {visible.length} tokens · {mode} values
-        </p>
-        <div className="color-explorer__list" ref={listRef}>
-          {visible.length ? (
-            visible.map((token) => (
-              <button
-                type="button"
-                className="color-explorer__row"
-                aria-label={`Select ${token.name}`}
-                key={token.name}
-                aria-pressed={selected.name === token.name}
-                onClick={() => choose(token.name)}
-              >
-                <span
-                  className="color-explorer__swatch"
-                  style={{ background: token[mode].resolved ?? "transparent" }}
-                />
-                <span>
-                  <strong>{human(token.name)}</strong>
-                  <code>{token.name}</code>
-                </span>
-              </button>
-            ))
-          ) : (
-            <p className="color-explorer__muted">
-              No matching tokens. Try another name, layer, or group.
-            </p>
-          )}
-        </div>
-      </aside>
     </div>
   )
 }

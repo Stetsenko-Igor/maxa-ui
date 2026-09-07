@@ -1,6 +1,20 @@
 # Color Explorer verification — 2026-09-08
 
-## Delivered
+## User-review revision
+
+The initial implementation below is retained as historical verification. The current
+page has been simplified following user feedback: Overview and Reference are merged,
+Tokens replaces Explore, the inspector moves left, and trial/component previews are
+removed. Used by and dependency navigation remain. The browser follows the site theme;
+empty color layers are omitted and layer switches clear stale searches. Usage links
+use underlined primary text for readable contrast in both themes.
+
+Revision checks: 5 updated local browser tests passed (merged tabs, left inspector,
+usage/dependencies, primitive filter recovery, site dark/light synchronization and
+mobile layout); docs typecheck, lint, token audit and generated-data freshness passed.
+Desktop and mobile dark-theme screenshots were inspected. No deployment performed.
+
+## Initial delivery (superseded UI)
 
 - Overview / Explore / Reference within the existing Colors documentation page.
 - Search and layer/group filters, source light/dark values, dependency navigation,

@@ -9,7 +9,7 @@ import explorerData from "./explorer.generated.json"
 import type { ColorExplorerData } from "./explorer-types"
 import "./colors-layout.css"
 
-type View = "overview" | "explore" | "reference"
+type View = "overview" | "tokens"
 
 export function ColorsLayout({
   overview,
@@ -24,15 +24,13 @@ export function ColorsLayout({
   useEffect(() => {
     const restore = () => {
       const hash = window.location.hash
-      if (hash === "#explore") setView("explore")
-      else if (hash === "#reference" || toc.slice(4).some((item) => item.href === hash))
-        setView("reference")
+      if (hash === "#explore" || hash === "#tokens") setView("tokens")
       else setView("overview")
     }
     restore()
     window.addEventListener("hashchange", restore)
     return () => window.removeEventListener("hashchange", restore)
-  }, [toc])
+  }, [])
 
   function changeView(value: string) {
     setView(value as View)
@@ -44,20 +42,21 @@ export function ColorsLayout({
       <DocsPageLayout
         eyebrow="Foundations"
         title="Colors"
-        lead="A color has a job. See how our palette becomes a purpose, how components use it, and what changes when you try another color."
-        toc={view === "explore" ? [] : view === "overview" ? toc.slice(0, 4) : toc.slice(4)}
+        lead="Understand our color roles, browse their source values, and see which components use them."
+        toc={view === "tokens" ? [] : toc}
       >
         <Tabs value={view} onValueChange={changeView}>
           <TabsList aria-label="Color documentation views">
             <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="explore">Explore</TabsTrigger>
-            <TabsTrigger value="reference">Reference</TabsTrigger>
+            <TabsTrigger value="tokens">Tokens</TabsTrigger>
           </TabsList>
-          <TabsContent value="overview">{overview}</TabsContent>
-          <TabsContent value="explore">
+          <TabsContent value="overview">
+            {overview}
+            {reference}
+          </TabsContent>
+          <TabsContent value="tokens">
             <ColorExplorer data={explorerData as ColorExplorerData} />
           </TabsContent>
-          <TabsContent value="reference">{reference}</TabsContent>
         </Tabs>
       </DocsPageLayout>
     </div>
