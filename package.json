@@ -29,7 +29,7 @@
     "release:version": "changeset version",
     "release:publish": "pnpm build && changeset publish",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,css,yml,yaml}\"",
-    "test:css-contract": "node --test scripts/lib/ui-styles.test.mjs scripts/generate-tokens-reference.test.mjs scripts/generate-color-explorer.test.mjs",
+    "test:css-contract": "node --test scripts/lib/ui-styles.test.mjs scripts/generate-tokens-reference.test.mjs scripts/generate-color-explorer.test.mjs scripts/lib/namespace.test.mjs scripts/build-token-themes.test.mjs scripts/build-namespaced-ui.test.mjs",
     "pack:smoke:browser": "node scripts/smoke-package-entrypoints.mjs --browser"
   },
   "devDependencies": {

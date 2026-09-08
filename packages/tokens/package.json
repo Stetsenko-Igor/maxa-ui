@@ -58,7 +58,10 @@
     "./component-toast.css": "./dist/component-toast.css",
     "./component-toggle.css": "./dist/component-toggle.css",
     "./component-tooltip.css": "./dist/component-tooltip.css",
-    "./component-utility-button.css": "./dist/component-utility-button.css"
+    "./component-utility-button.css": "./dist/component-utility-button.css",
+    "./namespaced/core.css": "./dist/namespaced/core.css",
+    "./namespaced/theme.css": "./dist/namespaced/theme.css",
+    "./namespaced/themes/maxa.css": "./dist/namespaced/themes/maxa.css"
   },
   "files": [
     "dist",
@@ -73,7 +76,7 @@
     "**/*.css"
   ],
   "scripts": {
-    "build": "node ../../scripts/clean-package-dist.mjs packages/tokens && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/tokens",
+    "build": "node ../../scripts/clean-package-dist.mjs packages/tokens && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/tokens && node ../../scripts/build-token-themes.mjs",
     "figma:bundle": "node ./scripts/build-figma-import-bundle.mjs",
     "figma:bundle:check": "node ./scripts/build-figma-import-bundle.mjs --check",
     "typecheck": "tsc --noEmit",

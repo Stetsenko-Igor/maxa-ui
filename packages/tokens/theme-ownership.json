@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "description": "Partition canonical logical tokens without copying their values. Core owns the shared non-brand palette and component aliases; the complete MAXA theme owns every visual selection.",
+  "corePrimitiveSources": ["primitives.css"],
+  "themeSources": ["themes/maxa.css", "semantic.css", "dimensions.css", "typography.css", "shadows.css"],
+  "componentRecipes": {
+    "sourcePattern": "component-*.css",
+    "valueForm": "single-variable-alias",
+    "targetLayers": ["semantic", "foundation", "component"],
+    "requireBothModes": true
+  },
+  "componentFallbackOwner": "theme",
+  "nonTokenStyles": { "motion.css": { "owner": "theme", "scope": "maxa-components" } },
+  "exceptions": {}
+}

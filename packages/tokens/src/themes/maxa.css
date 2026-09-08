@@ -1,10 +1,10 @@
 /* Maxa brand theme — brand teal primitives */
-/* This is the ONLY Maxa-specific file in the token system. */
-/* To create a new client theme: copy this file, replace hex values. */
+/* Legacy brand-only entry; the complete generated profile is namespaced/themes/maxa.css. */
+/* A full client theme also owns semantic, typography, geometry and component decisions. */
 
 :root {
   /* Brand — MAXA teal. Theme behavior belongs to semantic tokens. */
-  /* To create a new theme: copy this file and replace this one scale. */
+  /* Replacing this scale changes brand roles, not the independent primary action palette. */
   --color-brand-50:  #F3FDFA;
   --color-brand-100: #E0FBF3;
   --color-brand-200: #C3F6E7;

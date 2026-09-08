@@ -10,6 +10,19 @@ Accessible React components for the Maxa design system. Every component is style
 - React 16 is unsupported; historical Localist React 16 apps are not automatically compatible.
 - `@maxa/icons` is a direct dependency because components import curated system icons at runtime
 
+## Namespaced integration for new clients
+
+```tsx
+import "@maxa/tokens/namespaced/theme.css"
+import { Button, Input, Alert } from "@maxa/ui/namespaced"
+```
+
+The React API stays the same while generated component styles and inline token helpers use owned `--maxa-*` variables. The prefix identifies the library, not a client brand; Radix variables are preserved. Set `data-maxa-theme="dark"` on `<html>` for this delivery.
+
+HTML/ERB consumers load `@maxa/tokens/namespaced/theme.css` and `@maxa/ui/namespaced/styles.css`. CSS alone still does not implement interactions or accessibility. Both delivery variants include component-local border-box sizing; the host explicitly loads fonts and owns any document reset.
+
+Use only one UI variant per document because the variants share component classes. Generic `@maxa/ui` exports remain available for existing consumers. Namespaced core plus a complete MAXA profile separates reusable aliases from theme decisions; see the [token integration contract](../tokens/README.md#namespaced-delivery-for-new-clients). Primary blue actions and teal brand roles are independent. Whole-document themes remain supported; nested scopes, React 16, and an actual Concept3D palette/scaffold are not added.
+
 ## Usage inside this workspace
 
 Add the workspace dependency and import:
@@ -60,7 +73,7 @@ A static field and button can use ordinary HTML (or the same markup from ERB):
 <div class="maxa-input-wrapper maxa-input-wrapper--md">
   <label class="maxa-input__label" for="email">Email</label>
   <div class="maxa-input__field">
-    <input id="email" name="email" type="email" class="maxa-input__input">
+    <input id="email" name="email" type="email" class="maxa-input__input" />
   </div>
 </div>
 <button type="submit" class="maxa-button maxa-button--primary maxa-button--md">

@@ -414,7 +414,7 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
-  ${browserSmoke ? 'build: { rollupOptions: { input: ["index.html", "plain.html", "custom.html"] } },' : ""}
+  ${browserSmoke ? 'build: { rollupOptions: { input: ["index.html", "plain.html", "custom.html", "namespaced-html-before.html", "namespaced-html-after.html", "namespaced-react-before.html", "namespaced-react-after.html"] } },' : ""}
 })
 `,
     )

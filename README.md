@@ -89,6 +89,21 @@ For HTML or Rails ERB, load `@maxa/tokens/theme.css` and `@maxa/ui/styles.css` t
 
 React imports and `@maxa/ui/styles.css` include component-local `border-box` sizing for MAXA classes and their pseudo-elements. Neither CSS entry includes a global reset or font files. Configure the host reset and load the chosen fonts explicitly. For a custom whole-app theme, use `@maxa/tokens/core.css` plus a complete root-level theme; see the [tokens README](packages/tokens/README.md).
 
+### New-client integration: namespaced delivery
+
+Use the matching namespaced token and React entries for a new client application:
+
+```tsx
+import "@maxa/tokens/namespaced/theme.css"
+import { Button } from "@maxa/ui/namespaced"
+```
+
+HTML/ERB consumers pair `@maxa/tokens/namespaced/theme.css` with `@maxa/ui/namespaced/styles.css`. Set `data-maxa-theme="dark"` on `<html>` for this delivery. Public owned variables use `--maxa-*`; the prefix identifies the library, not the client brand. This avoids collisions with generic host token names while preserving vendor variables such as Radix properties.
+
+The namespaced full theme combines `namespaced/core.css` (non-brand palettes and reusable component aliases) with `namespaced/themes/maxa.css` (MAXA semantic, typography, geometry, motion, shadow, and component decisions). Blue primary actions remain separate from teal brand roles. A client may override primary-action recipes independently, but a complete rebrand still requires reviewing the whole theme. No Concept3D palette or scaffold is supplied yet.
+
+Load only one UI delivery variant per document: both variants use the same component classes. Existing generic exports and Figma identities remain unchanged; legacy `core.css` still contains MAXA defaults and is not neutral. See the [tokens contract](packages/tokens/README.md#namespaced-delivery-for-new-clients) for details. Whole-document themes and explicit host font loading remain required; nested scopes and React 16 support are not added.
+
 ### Compatibility
 
 `@maxa/ui`, `@maxa/hooks`, and `@maxa/icons` support **React 17, 18, and 19**

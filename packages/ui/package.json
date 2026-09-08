@@ -12,7 +12,13 @@
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./namespaced": {
+      "types": "./dist/namespaced/index.d.ts",
+      "import": "./dist/namespaced/index.js",
+      "default": "./dist/namespaced/index.js"
+    },
+    "./namespaced/styles.css": "./dist/namespaced/styles.css"
   },
   "files": [
     "dist",
@@ -24,10 +30,11 @@
   },
   "sideEffects": [
     "**/*.css",
-    "./dist/index.js"
+    "./dist/index.js",
+    "./dist/namespaced/index.js"
   ],
   "scripts": {
-    "build": "pnpm --filter @maxa/ui^... build && node ../../scripts/clean-package-dist.mjs packages/ui && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/ui",
+    "build": "pnpm --filter @maxa/ui^... build && node ../../scripts/clean-package-dist.mjs packages/ui && tsc --build --force && node ../../scripts/copy-css-assets.mjs packages/ui && node ../../scripts/build-namespaced-ui.mjs",
     "typecheck": "pnpm --filter @maxa/ui^... build && tsc --noEmit",
     "lint": "eslint src/",
     "test": "vitest run",

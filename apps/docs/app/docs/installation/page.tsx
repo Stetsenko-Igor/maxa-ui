@@ -95,8 +95,8 @@ export default function InstallationPage() {
       toc={TOC}
       lead={
         <>
-          Tailwind is not required. Import the standard token CSS and use the React components.
-          The host application controls its reset and font loading.
+          Tailwind is not required. Import the standard token CSS and use the React components. The
+          host application controls its reset and font loading.
         </>
       }
     >
@@ -129,8 +129,8 @@ export default function InstallationPage() {
       <DocsPageSection id="external-consumption" title="External consumption">
         <p style={pStyle}>
           For external projects, clone and build the repository, then pack UI and its workspace
-          dependencies. Packed manifests rewrite workspace ranges; direct source-directory links
-          are not the verified installation route. Packages remain unpublished.
+          dependencies. Packed manifests rewrite workspace ranges; direct source-directory links are
+          not the verified installation route. Packages remain unpublished.
         </p>
         <CodeBlock
           code={`git clone https://github.com/Stetsenko-Igor/maxa-ui.git
@@ -143,10 +143,13 @@ pnpm --filter '@maxa/ui...' -r exec pnpm pack --pack-destination /absolute/path/
         <p style={pStyle}>
           In the consuming app, depend on the UI and token tarballs and set pnpm overrides for all
           four packages (UI, tokens, icons, hooks) to their local tarballs. Follow the{" "}
-          <a href="https://github.com/Stetsenko-Igor/maxa-ui#in-an-external-project">complete package.json recipe</a>.
-          Adjust paths and versions to the pack output, then run <code style={inlineCodeStyle}>pnpm install</code>.
-          The app supplies React and React DOM 17–19. Overrides prevent transitive dependencies
-          from resolving against unpublished registry packages.
+          <a href="https://github.com/Stetsenko-Igor/maxa-ui#in-an-external-project">
+            complete package.json recipe
+          </a>
+          . Adjust paths and versions to the pack output, then run{" "}
+          <code style={inlineCodeStyle}>pnpm install</code>. The app supplies React and React DOM
+          17–19. Overrides prevent transitive dependencies from resolving against unpublished
+          registry packages.
         </p>
       </DocsPageSection>
 
@@ -156,20 +159,22 @@ pnpm --filter '@maxa/ui...' -r exec pnpm pack --pack-destination /absolute/path/
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Import the token stylesheet</p>
             <p style={stepDescStyle}>
-              Add the token CSS to your app root. This standard CSS needs no Tailwind processing and loads primitive, semantic, and component
-              tokens as CSS custom properties on <code style={inlineCodeStyle}>:root</code>.
+              For a new client, add the namespaced MAXA theme to your app root. This standard CSS
+              needs no Tailwind processing and loads primitive, semantic, and component tokens as
+              CSS custom properties on <code style={inlineCodeStyle}>:root</code>.
             </p>
             <CodeBlock
               code={`// app/layout.tsx (Next.js App Router)
-import "@maxa/tokens/theme.css"
+import "@maxa/tokens/namespaced/theme.css"
 
 // or in your global CSS entry
-@import "@maxa/tokens/theme.css";`}
+@import "@maxa/tokens/namespaced/theme.css";`}
             />
             <p style={noteStyle}>
               <strong style={{ color: "var(--color-text-primary)" }}>Note:</strong> Import{" "}
-              <code style={inlineCodeStyle}>theme.css</code> once at the app root. It includes no global reset
-              or font files. Load the selected fonts and configure your host reset explicitly.
+              <code style={inlineCodeStyle}>theme.css</code> once at the app root. It includes no
+              global reset or font files. Load the selected fonts and configure your host reset
+              explicitly.
             </p>
           </div>
         </div>
@@ -177,27 +182,40 @@ import "@maxa/tokens/theme.css"
 
       <DocsPageSection id="custom-theme" title="Custom theme and HTML">
         <p style={pStyle}>
-          For a whole-app custom theme, import <code style={inlineCodeStyle}>core.css</code> plus
-          a client theme at the document root. Core includes all foundation and component tokens,
-          excluding only the MAXA brand scale.
+          The namespaced full theme combines reusable non-brand palettes and component aliases with
+          a complete MAXA profile. To replace the profile, supply a complete reviewed theme:
         </p>
-        <CodeBlock code={`@import "@maxa/tokens/core.css";
-@import "./client-theme.css";`} />
+        <CodeBlock
+          code={`@import "@maxa/tokens/namespaced/core.css";
+@import "./client-theme.css";`}
+        />
         <p style={pStyle}>
-          Define all eleven brand steps (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950)
-          as <code style={inlineCodeStyle}>--color-brand-*</code> on <code style={inlineCodeStyle}>:root</code>.
-          Replacing the teal scale is not a full rebrand: review primary action colors, their
-          hover/active and dark states, fonts, and dimensions. Nested theme scopes and portals
-          crossing them are unsupported. Generic token names may collide with host styles;
-          resolve the namespace before a Concept3D client release. No Tailwind adapter is supplied.
+          The MAXA profile is exported as{" "}
+          <code style={inlineCodeStyle}>@maxa/tokens/namespaced/themes/maxa.css</code>. It owns
+          semantic mappings, brand teal, blue primary actions, typography, geometry, motion,
+          shadows, and component-specific decisions. Primary actions can be overridden independently
+          of brand roles. A palette swap alone is not a complete rebrand; review action states,
+          foregrounds, focus, and both color modes with the other theme decisions.
         </p>
         <p style={pStyle}>
-          For HTML or Rails ERB, load token CSS and <code style={inlineCodeStyle}>@maxa/ui/styles.css</code>
-          {" "}through the host asset pipeline. This aggregate supplies component styles, not React
-          behavior, keyboard handling, focus management, or accessibility. Implement and verify
-          those in the host. React imports already include component CSS. Both React and aggregate
-          CSS entries apply border-box sizing to MAXA classes and their pseudo-elements, keeping
-          borders within token dimensions without resetting host headings or lists.
+          Owned variables use <code style={inlineCodeStyle}>--maxa-*</code>, such as{" "}
+          <code style={inlineCodeStyle}>--maxa-color-action-primary</code>. The namespace identifies
+          the library, not a client brand. Matching React helpers and local CSS variables are
+          generated together; vendor Radix variables are preserved. No generic aliases are injected.
+          No real Concept3D palette or scaffold is included yet.
+        </p>
+        <p style={pStyle}>
+          HTML or Rails ERB consumers pair the namespaced token theme with{" "}
+          <code style={inlineCodeStyle}>@maxa/ui/namespaced/styles.css</code> through the host asset
+          pipeline. CSS supplies styles and component-local border-box sizing; the host implements
+          behavior, keyboard handling, focus management, and accessibility, and loads fonts.
+        </p>
+        <p style={noteStyle}>
+          Use only one UI delivery variant per document: generic and namespaced styles share
+          component classes. Existing generic exports and Figma remain compatible; legacy
+          <code style={inlineCodeStyle}> core.css</code> still contains MAXA defaults and is not
+          neutral. Whole-document themes remain the supported scope. Nested themes, React 16, and a
+          Tailwind adapter are not added. Namespacing does not isolate arbitrary global host CSS.
         </p>
       </DocsPageSection>
 
@@ -208,21 +226,21 @@ import "@maxa/tokens/theme.css"
             <p style={stepTitleStyle}>Set up dark mode</p>
             <p style={stepDescStyle}>
               Dark mode is driven entirely by a{" "}
-              <code style={inlineCodeStyle}>data-theme="dark"</code> attribute on the{" "}
+              <code style={inlineCodeStyle}>data-maxa-theme="dark"</code> attribute on the{" "}
               <code style={inlineCodeStyle}>{"<html>"}</code> element.
             </p>
             <CodeBlock
               code={`// app/layout.tsx
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="dark">
+    <html lang="en" data-maxa-theme="dark">
       <body>{children}</body>
     </html>
   )
 }
 
-document.documentElement.setAttribute("data-theme", "dark")
-document.documentElement.removeAttribute("data-theme")`}
+document.documentElement.setAttribute("data-maxa-theme", "dark")
+document.documentElement.removeAttribute("data-maxa-theme")`}
             />
           </div>
         </div>
@@ -234,11 +252,11 @@ document.documentElement.removeAttribute("data-theme")`}
           <div style={stepBodyStyle}>
             <p style={stepTitleStyle}>Import and use a component</p>
             <p style={stepDescStyle}>
-              All components are exported from <code style={inlineCodeStyle}>@maxa/ui</code>.
+              Use matching components from <code style={inlineCodeStyle}>@maxa/ui/namespaced</code>.
               Styling is controlled via CSS variables.
             </p>
             <CodeBlock
-              code={`import { Button } from "@maxa/ui"
+              code={`import { Button } from "@maxa/ui/namespaced"
 
 export default function Page() {
   return (
@@ -273,7 +291,7 @@ color: #ffffff;
 border-radius: 8px;
 
 /* If you see this instead, theme.css is missing: */
-background-color: var(--button-primary-bg);`}
+background-color: var(--maxa-button-primary-bg);`}
             />
             <p style={noteStyle}>
               Run <code style={inlineCodeStyle}>node scripts/audit-tokens.mjs</code> from the
@@ -285,10 +303,10 @@ background-color: var(--button-primary-bg);`}
 
       <DocsPageSection id="peer-dependencies" title="Peer dependencies">
         <p style={pStyle}>
-          MAXA UI supports React 17, 18, and 19 and does not bundle React itself. The component package
-          depends directly on <code style={inlineCodeStyle}>@maxa/tokens</code>; the consuming app
-          still explicitly loads token CSS once. React 16 is unsupported. Radix UI primitives and{" "}
-          <code style={inlineCodeStyle}>@maxa/icons</code> are direct dependencies of{" "}
+          MAXA UI supports React 17, 18, and 19 and does not bundle React itself. The component
+          package depends directly on <code style={inlineCodeStyle}>@maxa/tokens</code>; the
+          consuming app still explicitly loads token CSS once. React 16 is unsupported. Radix UI
+          primitives and <code style={inlineCodeStyle}>@maxa/icons</code> are direct dependencies of{" "}
           <code style={inlineCodeStyle}>@maxa/ui</code> and are installed automatically.
         </p>
         <CodeBlock
