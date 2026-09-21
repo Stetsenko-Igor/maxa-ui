@@ -444,6 +444,11 @@
       "$description": "Utility: fg rose.",
       "$value": "{Color modes/utility/fg-rose}",
       "$type": "color"
+    },
+    "fg-gray": {
+      "$value": "{Color modes/utility/fg-gray}",
+      "$type": "color",
+      "$description": "Utility: gray foreground for icons and non-text elements."
     }
   }
 }

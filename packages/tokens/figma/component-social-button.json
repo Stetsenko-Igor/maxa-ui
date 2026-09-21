@@ -52,17 +52,17 @@
     },
     "bg": {
       "$description": "Social Button: background.",
-      "$value": "{Color modes/background/bg-surface}",
+      "$value": "{Component-based/Button/outline/bg}",
       "$type": "color"
     },
     "bg-hover": {
       "$description": "Social Button: background (hover state).",
-      "$value": "{Color modes/background/bg-surface}",
+      "$value": "{Component-based/Button/outline/bg}",
       "$type": "color"
     },
     "bg-active": {
       "$description": "Social Button: background (active state).",
-      "$value": "{Color modes/background/bg-surface}",
+      "$value": "{Component-based/Button/outline/bg}",
       "$type": "color"
     },
     "text": {

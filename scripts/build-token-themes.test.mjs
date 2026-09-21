@@ -5,10 +5,10 @@ import { collectTokens, partitionTokens, generateThemeOutputs } from './build-to
 
 const canonical = collectTokens()
 
-test('ownership partitions all 1740 tokens exactly once without losing either mode', () => {
+test('ownership partitions all 1744 tokens exactly once without losing either mode', () => {
   const { core, theme } = partitionTokens(canonical)
-  assert.equal(core.length + theme.length, 1740)
-  assert.equal(new Set([...core, ...theme].map(token => token.name)).size, 1740)
+  assert.equal(core.length + theme.length, 1744)
+  assert.equal(new Set([...core, ...theme].map(token => token.name)).size, 1744)
   const combined = [...core, ...theme].sort((a, b) => a.name.localeCompare(b.name))
   assert.deepEqual(combined, [...canonical].sort((a, b) => a.name.localeCompare(b.name)))
   assert.ok(core.some(token => token.name === '--color-blue-500'))

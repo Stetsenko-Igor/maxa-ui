@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1740
+Total tokens: 1744
 
 ## Primitives
 
@@ -103,6 +103,8 @@ Source: `packages/tokens/src/primitives.css`
 --color-orange-950: #431407;
 
 /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ── */
+--color-neutral-alpha-white-100: #ffffff;
+--color-neutral-alpha-black-100: #000000;
 --color-neutral-alpha-ink-50: #1b1a1a80;
 --color-neutral-alpha-black-72: #000000b8;
 --color-neutral-alpha-white-45: #ffffff73;
@@ -295,8 +297,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-fg-warning: var(--color-yellow-600);/* dark: var(--color-yellow-400) */
 
 /* ── Border ── */
---color-border-primary: var(--color-neutral-300);/* dark: var(--color-neutral-700) */
---color-border-secondary: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
+--color-border-primary: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
+--color-border-secondary: var(--color-neutral-200);/* dark: var(--color-neutral-700) */
 --color-border-tertiary: var(--color-neutral-100);/* dark: var(--color-neutral-900) */
 --color-border-brand: var(--color-brand-500);/* dark: var(--color-brand-400) */
 --color-border-error-strong: var(--color-red-500);/* dark: var(--color-red-400) */
@@ -333,7 +335,7 @@ Source: `packages/tokens/src/semantic.css`
 --color-bg-brand-surface: var(--color-brand-100);/* dark: var(--color-brand-900) */
 --color-bg-brand-muted: var(--color-brand-200);/* dark: var(--color-brand-800) */
 --color-bg-brand-strong: var(--color-brand-500);/* dark: var(--color-brand-600) */
---color-bg-info-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
+--color-bg-info-subtle: var(--color-blue-100);/* dark: var(--color-blue-900) */
 --color-bg-info-surface: var(--color-blue-50);/* dark: var(--color-blue-950) */
 --color-bg-info-strong: var(--color-blue-700);/* dark: var(--color-blue-500) */
 --color-bg-success-subtle: var(--color-green-50);/* dark: var(--color-green-950) */
@@ -348,7 +350,7 @@ Source: `packages/tokens/src/semantic.css`
 
 /* ── Background — status/intent muted (medium emphasis: badge/tag) ── */
 --color-bg-neutral-muted: var(--color-neutral-200);/* dark: var(--color-neutral-800) */
---color-bg-info-muted: var(--color-blue-100);/* dark: var(--color-blue-900) */
+--color-bg-info-muted: var(--color-blue-100);/* dark: var(--color-blue-800) */
 --color-bg-success-muted: var(--color-green-100);/* dark: var(--color-green-900) */
 --color-bg-warning-muted: var(--color-orange-100);/* dark: var(--color-orange-900) */
 --color-bg-error-muted: var(--color-red-100);/* dark: var(--color-red-900) */
@@ -523,6 +525,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-menu-active: var(--color-action-neutral-subtle-active);/* dark: var(--color-action-neutral-active) */
 --color-border-focus-soft: var(--color-blue-150);
 --color-fg-on-inverse-muted: var(--color-neutral-alpha-white-45);
+--color-border-invert: var(--color-neutral-alpha-white-100);/* dark: var(--color-neutral-alpha-black-100) */
+--color-fg-gray: var(--color-text-gray);/* dark: var(--color-text-gray) */
 ```
 
 ## Dimensions (Spacing, Radius, Z-index, Breakpoints)
@@ -715,7 +719,7 @@ Source: `packages/tokens/src/component-button.css`
 --button-ghost-bg: transparent;
 --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
 --button-ghost-bg-active: var(--color-action-neutral-subtle-active);
---button-ghost-text: var(--color-text-secondary);
+--button-ghost-text: var(--color-text-primary);
 --button-ghost-fg: var(--color-fg-primary);
 --button-ghost-border: transparent;
 --button-ghost-border-hover: transparent;
@@ -2083,9 +2087,9 @@ Source: `packages/tokens/src/component-social-button.css`
 --social-button-border-hover: var(--color-border-secondary);
 --social-button-border-active: var(--color-border-secondary);
 --social-button-border-focus: var(--color-border-focus-soft);
---social-button-bg: var(--color-bg-surface);
---social-button-bg-hover: var(--color-bg-surface);
---social-button-bg-active: var(--color-bg-surface);
+--social-button-bg: var(--button-outline-bg);
+--social-button-bg-hover: var(--button-outline-bg);
+--social-button-bg-active: var(--button-outline-bg);
 --social-button-text: var(--color-text-primary);
 --social-button-shadow: var(--shadow-sm);
 --social-button-shadow-hover: var(--shadow-sm);

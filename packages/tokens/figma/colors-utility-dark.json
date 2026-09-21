@@ -373,6 +373,11 @@
     "fg-rose": {
       "$value": "{Color modes/utility/text-rose}",
       "$type": "color"
+    },
+    "fg-gray": {
+      "$value": "{Color modes/utility/text-gray}",
+      "$type": "color",
+      "$description": "Utility: gray foreground for icons and non-text elements."
     }
   }
 }

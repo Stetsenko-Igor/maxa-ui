@@ -161,6 +161,11 @@
       "$description": "Low-emphasis neutral outline.",
       "$value": "{Colors.Neutral.300}",
       "$type": "color"
+    },
+    "border-invert": {
+      "$value": "{Primitives/Colors/Neutral (alpha)/White/100}",
+      "$type": "color",
+      "$description": "Inverse border color for contrasting surfaces."
     }
   },
   "Effects/Focus rings": {

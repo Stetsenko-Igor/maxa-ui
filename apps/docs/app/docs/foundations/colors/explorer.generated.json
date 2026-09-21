@@ -1460,7 +1460,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -4175,17 +4175,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-text-secondary)",
-        "resolved": "#444445",
+        "raw": "var(--color-text-primary)",
+        "resolved": "#1a1919",
         "references": [
-          "--color-text-secondary"
+          "--color-text-primary"
         ]
       },
       "dark": {
-        "raw": "var(--color-text-secondary)",
-        "resolved": "#ededed",
+        "raw": "var(--color-text-primary)",
+        "resolved": "#f4f3f3",
         "references": [
-          "--color-text-secondary"
+          "--color-text-primary"
         ]
       },
       "consumers": [
@@ -4589,7 +4589,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -6654,7 +6654,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -7778,7 +7778,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -11115,10 +11115,10 @@
         ]
       },
       "dark": {
-        "raw": "var(--color-blue-900)",
-        "resolved": "#092f54",
+        "raw": "var(--color-blue-800)",
+        "resolved": "#073f72",
         "references": [
-          "--color-blue-900"
+          "--color-blue-800"
         ]
       },
       "consumers": []
@@ -11159,10 +11159,10 @@
         ]
       },
       "dark": {
-        "raw": "var(--color-blue-950)",
-        "resolved": "#061d35",
+        "raw": "var(--color-blue-900)",
+        "resolved": "#092f54",
         "references": [
-          "--color-blue-950"
+          "--color-blue-900"
         ]
       },
       "consumers": []
@@ -12753,6 +12753,28 @@
       "consumers": []
     },
     {
+      "name": "--color-border-invert",
+      "layer": "semantic",
+      "group": "border",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-neutral-alpha-white-100)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-neutral-alpha-white-100"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-neutral-alpha-black-100)",
+        "resolved": "#000000",
+        "references": [
+          "--color-neutral-alpha-black-100"
+        ]
+      },
+      "consumers": []
+    },
+    {
       "name": "--color-border-neutral-muted",
       "layer": "semantic",
       "group": "border",
@@ -12832,10 +12854,10 @@
         ]
       },
       "dark": {
-        "raw": "var(--color-neutral-700)",
-        "resolved": "#6b6b6d",
+        "raw": "var(--color-neutral-800)",
+        "resolved": "#444445",
         "references": [
-          "--color-neutral-700"
+          "--color-neutral-800"
         ]
       },
       "consumers": [
@@ -12860,10 +12882,10 @@
         ]
       },
       "dark": {
-        "raw": "var(--color-neutral-800)",
-        "resolved": "#444445",
+        "raw": "var(--color-neutral-700)",
+        "resolved": "#6b6b6d",
         "references": [
-          "--color-neutral-800"
+          "--color-neutral-700"
         ]
       },
       "consumers": []
@@ -14558,6 +14580,28 @@
         "resolved": "#f0abfc",
         "references": [
           "--color-text-fuchsia"
+        ]
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-fg-gray",
+      "layer": "semantic",
+      "group": "foreground",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-gray)",
+        "resolved": "#111827",
+        "references": [
+          "--color-text-gray"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-gray)",
+        "resolved": "#d1d5db",
+        "references": [
+          "--color-text-gray"
         ]
       },
       "consumers": []
@@ -16677,6 +16721,24 @@
       "consumers": []
     },
     {
+      "name": "--color-neutral-alpha-black-100",
+      "layer": "primitive",
+      "group": "neutral",
+      "source": "packages/tokens/src/primitives.css",
+      "color": true,
+      "light": {
+        "raw": "#000000",
+        "resolved": "#000000",
+        "references": []
+      },
+      "dark": {
+        "raw": "#000000",
+        "resolved": "#000000",
+        "references": []
+      },
+      "consumers": []
+    },
+    {
       "name": "--color-neutral-alpha-black-72",
       "layer": "primitive",
       "group": "neutral",
@@ -16708,6 +16770,24 @@
       "dark": {
         "raw": "#1b1a1a80",
         "resolved": "#1b1a1a80",
+        "references": []
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-neutral-alpha-white-100",
+      "layer": "primitive",
+      "group": "neutral",
+      "source": "packages/tokens/src/primitives.css",
+      "color": true,
+      "light": {
+        "raw": "#ffffff",
+        "resolved": "#ffffff",
+        "references": []
+      },
+      "dark": {
+        "raw": "#ffffff",
+        "resolved": "#ffffff",
         "references": []
       },
       "consumers": []
@@ -19542,7 +19622,7 @@
       },
       "dark": {
         "raw": "var(--dropdown-menu-border)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--dropdown-menu-border"
         ]
@@ -20058,7 +20138,7 @@
       },
       "dark": {
         "raw": "var(--dropdown-menu-separator)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--dropdown-menu-separator"
         ]
@@ -21144,7 +21224,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -21225,7 +21305,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -21902,7 +21982,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -22278,7 +22358,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -22582,7 +22662,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -23024,7 +23104,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -23448,7 +23528,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -23870,7 +23950,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -24042,7 +24122,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -24975,7 +25055,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -26379,7 +26459,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -26491,7 +26571,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -27803,7 +27883,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -27894,7 +27974,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -30342,7 +30422,7 @@
       },
       "dark": {
         "raw": "var(--select-listbox-border)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--select-listbox-border"
         ]
@@ -31030,7 +31110,7 @@
       },
       "dark": {
         "raw": "var(--input-border)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--input-border"
         ]
@@ -31086,7 +31166,7 @@
       },
       "dark": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--input-border-hover"
         ]
@@ -32008,7 +32088,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -34092,7 +34172,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -34513,7 +34593,7 @@
       },
       "dark": {
         "raw": "var(--input-border)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--input-border"
         ]
@@ -34569,7 +34649,7 @@
       },
       "dark": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--input-border-hover"
         ]
@@ -35009,7 +35089,7 @@
       },
       "dark": {
         "raw": "var(--dropdown-menu-border)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--dropdown-menu-border"
         ]
@@ -36211,7 +36291,7 @@
       },
       "dark": {
         "raw": "var(--divider-color)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--divider-color"
         ]
@@ -37075,17 +37155,17 @@
       "source": "packages/tokens/src/component-social-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#ffffff",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "dark": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#2a2a2b",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "consumers": [
@@ -37103,17 +37183,17 @@
       "source": "packages/tokens/src/component-social-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#ffffff",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "dark": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#2a2a2b",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "consumers": [
@@ -37131,17 +37211,17 @@
       "source": "packages/tokens/src/component-social-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#ffffff",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "dark": {
-        "raw": "var(--color-bg-surface)",
-        "resolved": "#2a2a2b",
+        "raw": "var(--button-outline-bg)",
+        "resolved": "transparent",
         "references": [
-          "--color-bg-surface"
+          "--button-outline-bg"
         ]
       },
       "consumers": [
@@ -37167,7 +37247,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -37195,7 +37275,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -37251,7 +37331,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -39005,7 +39085,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -39182,7 +39262,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -39314,7 +39394,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -40877,7 +40957,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -40910,7 +40990,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -40938,7 +41018,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -41712,7 +41792,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -41852,7 +41932,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]
@@ -43458,7 +43538,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -44023,7 +44103,7 @@
       },
       "dark": {
         "raw": "var(--color-border-primary)",
-        "resolved": "#6b6b6d",
+        "resolved": "#444445",
         "references": [
           "--color-border-primary"
         ]
@@ -46009,7 +46089,7 @@
       },
       "dark": {
         "raw": "var(--color-border-secondary)",
-        "resolved": "#444445",
+        "resolved": "#6b6b6d",
         "references": [
           "--color-border-secondary"
         ]

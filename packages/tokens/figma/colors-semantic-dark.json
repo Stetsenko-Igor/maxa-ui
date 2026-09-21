@@ -71,11 +71,11 @@
   },
   "border": {
     "border-primary": {
-      "$value": "{Colors.Neutral.700}",
+      "$value": "{Primitives/Colors/Neutral/800}",
       "$type": "color"
     },
     "border-secondary": {
-      "$value": "{Colors.Neutral.800}",
+      "$value": "{Primitives/Colors/Neutral/700}",
       "$type": "color"
     },
     "border-tertiary": {
@@ -129,6 +129,11 @@
     "border-neutral-subtle": {
       "$value": "{Colors.Neutral.700}",
       "$type": "color"
+    },
+    "border-invert": {
+      "$value": "{Primitives/Colors/Neutral (alpha)/Black/100}",
+      "$type": "color",
+      "$description": "Inverse border color for contrasting surfaces."
     }
   },
   "Effects/Focus rings": {
@@ -407,7 +412,7 @@
       "$type": "color"
     },
     "bg-info-subtle": {
-      "$value": "{Colors.Blue.950}",
+      "$value": "{Primitives/Colors/Blue/900}",
       "$type": "color"
     },
     "bg-info-surface": {
@@ -439,7 +444,7 @@
       "$type": "color"
     },
     "bg-info-muted": {
-      "$value": "{Colors.Blue.900}",
+      "$value": "{Primitives/Colors/Blue/800}",
       "$type": "color"
     },
     "bg-success-muted": {

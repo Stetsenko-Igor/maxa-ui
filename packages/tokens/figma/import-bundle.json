@@ -895,17 +895,39 @@
         "Colors/Brand/800": [],
         "Colors/Brand/900": [],
         "Colors/Brand/950": [],
-        "Colors/Gray/50": [],
-        "Colors/Gray/100": [],
-        "Colors/Gray/200": [],
-        "Colors/Gray/300": [],
-        "Colors/Gray/400": [],
-        "Colors/Gray/500": [],
-        "Colors/Gray/600": [],
-        "Colors/Gray/700": [],
-        "Colors/Gray/800": [],
-        "Colors/Gray/900": [],
-        "Colors/Gray/950": [],
+        "Colors/Gray/50": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/100": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/200": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/300": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/400": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/500": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/600": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/700": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/800": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/900": [
+          "ALL_FILLS"
+        ],
+        "Colors/Gray/950": [
+          "ALL_FILLS"
+        ],
         "Colors/Zinc/50": [],
         "Colors/Zinc/100": [],
         "Colors/Zinc/200": [],
@@ -928,72 +950,28 @@
         "Colors/Stone/800": [],
         "Colors/Stone/900": [],
         "Colors/Stone/950": [],
-        "Colors/Red/50": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/100": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/200": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/300": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/400": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/500": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/600": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/700": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/800": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/900": [
-          "ALL_FILLS"
-        ],
-        "Colors/Red/950": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/50": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/100": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/200": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/300": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/400": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/500": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/600": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/700": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/800": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/900": [
-          "ALL_FILLS"
-        ],
-        "Colors/Orange/950": [
-          "ALL_FILLS"
-        ],
+        "Colors/Red/50": [],
+        "Colors/Red/100": [],
+        "Colors/Red/200": [],
+        "Colors/Red/300": [],
+        "Colors/Red/400": [],
+        "Colors/Red/500": [],
+        "Colors/Red/600": [],
+        "Colors/Red/700": [],
+        "Colors/Red/800": [],
+        "Colors/Red/900": [],
+        "Colors/Red/950": [],
+        "Colors/Orange/50": [],
+        "Colors/Orange/100": [],
+        "Colors/Orange/200": [],
+        "Colors/Orange/300": [],
+        "Colors/Orange/400": [],
+        "Colors/Orange/500": [],
+        "Colors/Orange/600": [],
+        "Colors/Orange/700": [],
+        "Colors/Orange/800": [],
+        "Colors/Orange/900": [],
+        "Colors/Orange/950": [],
         "Colors/Amber/50": [],
         "Colors/Amber/100": [],
         "Colors/Amber/200": [],
@@ -1005,39 +983,17 @@
         "Colors/Amber/800": [],
         "Colors/Amber/900": [],
         "Colors/Amber/950": [],
-        "Colors/Yellow/50": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/100": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/200": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/300": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/400": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/500": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/600": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/700": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/800": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/900": [
-          "ALL_FILLS"
-        ],
-        "Colors/Yellow/950": [
-          "ALL_FILLS"
-        ],
+        "Colors/Yellow/50": [],
+        "Colors/Yellow/100": [],
+        "Colors/Yellow/200": [],
+        "Colors/Yellow/300": [],
+        "Colors/Yellow/400": [],
+        "Colors/Yellow/500": [],
+        "Colors/Yellow/600": [],
+        "Colors/Yellow/700": [],
+        "Colors/Yellow/800": [],
+        "Colors/Yellow/900": [],
+        "Colors/Yellow/950": [],
         "Colors/Lime/50": [],
         "Colors/Lime/100": [],
         "Colors/Lime/200": [],
@@ -1236,6 +1192,7 @@
           "border/border-neutral-strong": "{Colors.Neutral.700}",
           "border/border-neutral-muted": "{Colors.Neutral.400}",
           "border/border-neutral-subtle": "{Colors.Neutral.300}",
+          "border/border-invert": "{Primitives/Colors/Neutral (alpha)/White/100}",
           "Effects/Focus rings/focus-ring": "{Colors.Blue.500}",
           "Effects/Focus rings/focus-ring-error": "{Colors.Red.500}",
           "action/action-primary": "{Colors.Blue.500}",
@@ -1445,7 +1402,8 @@
           "utility/bg-rose-muted": "{Colors.Rose.100}",
           "utility/bg-rose-strong": "{Colors.Rose.700}",
           "utility/text-rose": "{Colors.Rose.900}",
-          "utility/fg-rose": "{Color modes/utility/text-rose}"
+          "utility/fg-rose": "{Color modes/utility/text-rose}",
+          "utility/fg-gray": "{Color modes/utility/text-gray}"
         },
         "Dark": {
           "text/text-primary": "{Colors.Neutral.100}",
@@ -1465,8 +1423,8 @@
           "text/text-warning": "{Colors.Orange.300}",
           "text/text-error": "{Colors.Red.300}",
           "text/text-info": "{Colors.Blue.300}",
-          "border/border-primary": "{Colors.Neutral.700}",
-          "border/border-secondary": "{Colors.Neutral.800}",
+          "border/border-primary": "{Primitives/Colors/Neutral/800}",
+          "border/border-secondary": "{Primitives/Colors/Neutral/700}",
           "border/border-tertiary": "{Colors.Neutral.900}",
           "border/border-brand": "{Colors.Brand.400}",
           "border/border-error-strong": "{Colors.Red.400}",
@@ -1480,6 +1438,7 @@
           "border/border-neutral-strong": "{Colors.Neutral.300}",
           "border/border-neutral-muted": "{Colors.Neutral.600}",
           "border/border-neutral-subtle": "{Colors.Neutral.700}",
+          "border/border-invert": "{Primitives/Colors/Neutral (alpha)/Black/100}",
           "Effects/Focus rings/focus-ring": "{Colors.Blue.400}",
           "Effects/Focus rings/focus-ring-error": "{Colors.Red.400}",
           "action/action-primary": "{Colors.Blue.600}",
@@ -1547,7 +1506,7 @@
           "background/bg-error-subtle": "{Colors.Red.950}",
           "background/bg-error-surface": "{Colors.Red.950}",
           "background/bg-error-strong": "{Colors.Red.500}",
-          "background/bg-info-subtle": "{Colors.Blue.950}",
+          "background/bg-info-subtle": "{Primitives/Colors/Blue/900}",
           "background/bg-info-surface": "{Colors.Blue.950}",
           "background/bg-info-strong": "{Colors.Blue.500}",
           "background/bg-neutral-surface": "{Colors.Neutral.925}",
@@ -1555,7 +1514,7 @@
           "background/bg-neutral-on-muted": "{Colors.Neutral.700}",
           "background/bg-neutral-strong": "{Colors.Neutral.400}",
           "background/bg-neutral-muted": "{Colors.Neutral.800}",
-          "background/bg-info-muted": "{Colors.Blue.900}",
+          "background/bg-info-muted": "{Primitives/Colors/Blue/800}",
           "background/bg-success-muted": "{Colors.Green.900}",
           "background/bg-warning-muted": "{Colors.Orange.900}",
           "background/bg-error-muted": "{Colors.Red.900}",
@@ -1689,7 +1648,8 @@
           "utility/bg-rose-muted": "{Colors.Rose.900}",
           "utility/bg-rose-strong": "{Colors.Rose.700}",
           "utility/text-rose": "{Colors.Rose.300}",
-          "utility/fg-rose": "{Color modes/utility/text-rose}"
+          "utility/fg-rose": "{Color modes/utility/text-rose}",
+          "utility/fg-gray": "{Color modes/utility/text-gray}"
         }
       },
       "descriptions": {
@@ -1725,6 +1685,7 @@
         "border/border-neutral-strong": "High-emphasis neutral outline.",
         "border/border-neutral-muted": "High-emphasis neutral outline.",
         "border/border-neutral-subtle": "Low-emphasis neutral outline.",
+        "border/border-invert": "Inverse border color for contrasting surfaces.",
         "Effects/Focus rings/focus-ring": "Default keyboard focus ring color.",
         "Effects/Focus rings/focus-ring-error": "Keyboard focus ring color for invalid controls.",
         "action/action-primary": "Primary CTA background (blue).",
@@ -1934,7 +1895,8 @@
         "utility/bg-rose-muted": "Utility: background rose muted.",
         "utility/bg-rose-strong": "Utility: background rose strong.",
         "utility/text-rose": "Utility: text color rose.",
-        "utility/fg-rose": "Utility: fg rose."
+        "utility/fg-rose": "Utility: fg rose.",
+        "utility/fg-gray": "Utility: gray foreground for icons and non-text elements."
       },
       "types": {
         "text/text-primary": "COLOR",
@@ -1969,6 +1931,7 @@
         "border/border-neutral-strong": "COLOR",
         "border/border-neutral-muted": "COLOR",
         "border/border-neutral-subtle": "COLOR",
+        "border/border-invert": "COLOR",
         "Effects/Focus rings/focus-ring": "COLOR",
         "Effects/Focus rings/focus-ring-error": "COLOR",
         "action/action-primary": "COLOR",
@@ -2178,7 +2141,8 @@
         "utility/bg-rose-muted": "COLOR",
         "utility/bg-rose-strong": "COLOR",
         "utility/text-rose": "COLOR",
-        "utility/fg-rose": "COLOR"
+        "utility/fg-rose": "COLOR",
+        "utility/fg-gray": "COLOR"
       },
       "scopes": {
         "text/text-primary": [
@@ -2275,6 +2239,9 @@
           "STROKE_COLOR"
         ],
         "border/border-neutral-subtle": [
+          "STROKE_COLOR"
+        ],
+        "border/border-invert": [
           "STROKE_COLOR"
         ],
         "Effects/Focus rings/focus-ring": [
@@ -2948,6 +2915,9 @@
         ],
         "utility/fg-rose": [
           "SHAPE_FILL"
+        ],
+        "utility/fg-gray": [
+          "SHAPE_FILL"
         ]
       }
     },
@@ -3370,6 +3340,12 @@
           "Avatar/layout/border-width": 1,
           "Avatar/layout/status-size-md": 10,
           "Avatar/layout/group-overlap": 10,
+          "Avatar/layout/status-border-width": 2,
+          "Avatar/layout/status-offset": 0,
+          "Avatar/layout/status-size-lg": 12,
+          "Avatar/layout/status-size-sm": 8,
+          "Avatar/layout/status-size-xl": 14,
+          "Avatar/layout/status-size-xs": 6,
           "Avatar/typography/font-family": "{Typography/Font family/body}",
           "Avatar/typography/font-weight": "{Typography/Font weight/semibold}",
           "Avatar/status/online": "{Color modes/background/bg-success-strong}",
@@ -3435,7 +3411,7 @@
           "Button/ghost/bg": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
           "Button/ghost/bg-active": "{Color modes/action/action-neutral-subtle-active}",
-          "Button/ghost/text": "{Color modes/text/text-secondary}",
+          "Button/ghost/text": "{Color modes/text/text-primary}",
           "Button/ghost/fg": "{Color modes/foreground/fg-primary}",
           "Button/ghost/border": "{Primitives/Colors/Base/Transparent}",
           "Button/ghost/border-hover": "{Primitives/Colors/Base/Transparent}",
@@ -4054,9 +4030,9 @@
           "Social Button/border-hover": "{Color modes/border/border-secondary}",
           "Social Button/border-active": "{Color modes/border/border-secondary}",
           "Social Button/border-focus": "{Color modes/border/border-focus-soft}",
-          "Social Button/bg": "{Color modes/background/bg-surface}",
-          "Social Button/bg-hover": "{Color modes/background/bg-surface}",
-          "Social Button/bg-active": "{Color modes/background/bg-surface}",
+          "Social Button/bg": "{Component-based/Button/outline/bg}",
+          "Social Button/bg-hover": "{Component-based/Button/outline/bg}",
+          "Social Button/bg-active": "{Component-based/Button/outline/bg}",
           "Social Button/text": "{Color modes/text/text-primary}",
           "Social Button/font-size-sm": "{Component-based/Button/size/sm/text}",
           "Social Button/font-size": "{Component-based/Button/size/md/text}",
@@ -4333,7 +4309,8 @@
           "Utility/bg-rose-muted": "{Color modes/utility/bg-rose-muted}",
           "Utility/bg-rose-strong": "{Color modes/utility/bg-rose-strong}",
           "Utility/text-rose": "{Color modes/utility/text-rose}",
-          "Utility/fg-rose": "{Color modes/utility/fg-rose}"
+          "Utility/fg-rose": "{Color modes/utility/fg-rose}",
+          "Utility/fg-gray": "{Color modes/utility/fg-gray}"
         }
       },
       "descriptions": {
@@ -4403,6 +4380,12 @@
         "Avatar/layout/border-width": "Avatar body border width.",
         "Avatar/layout/status-size-md": "Avatar, layout: status size md.",
         "Avatar/layout/group-overlap": "Avatar, layout: group overlap.",
+        "Avatar/layout/status-border-width": "Avatar status indicator: status border width.",
+        "Avatar/layout/status-offset": "Avatar status indicator: status offset.",
+        "Avatar/layout/status-size-lg": "Avatar status indicator: status size lg.",
+        "Avatar/layout/status-size-sm": "Avatar status indicator: status size sm.",
+        "Avatar/layout/status-size-xl": "Avatar status indicator: status size xl.",
+        "Avatar/layout/status-size-xs": "Avatar status indicator: status size xs.",
         "Avatar/typography/font-family": "Avatar, typography: font family.",
         "Avatar/typography/font-weight": "Avatar, typography: font weight.",
         "Avatar/status/online": "Avatar, status: online.",
@@ -5366,7 +5349,8 @@
         "Utility/bg-rose-muted": "Utility: background rose muted.",
         "Utility/bg-rose-strong": "Utility: background rose strong.",
         "Utility/text-rose": "Utility: text color rose.",
-        "Utility/fg-rose": "Utility: fg rose."
+        "Utility/fg-rose": "Utility: fg rose.",
+        "Utility/fg-gray": "Utility: gray foreground for icons and non-text elements."
       },
       "types": {
         "Alert/layout/radius": "FLOAT",
@@ -5435,6 +5419,12 @@
         "Avatar/layout/border-width": "FLOAT",
         "Avatar/layout/status-size-md": "FLOAT",
         "Avatar/layout/group-overlap": "FLOAT",
+        "Avatar/layout/status-border-width": "FLOAT",
+        "Avatar/layout/status-offset": "FLOAT",
+        "Avatar/layout/status-size-lg": "FLOAT",
+        "Avatar/layout/status-size-sm": "FLOAT",
+        "Avatar/layout/status-size-xl": "FLOAT",
+        "Avatar/layout/status-size-xs": "FLOAT",
         "Avatar/typography/font-family": "STRING",
         "Avatar/typography/font-weight": "STRING",
         "Avatar/status/online": "COLOR",
@@ -6398,7 +6388,8 @@
         "Utility/bg-rose-muted": "COLOR",
         "Utility/bg-rose-strong": "COLOR",
         "Utility/text-rose": "COLOR",
-        "Utility/fg-rose": "COLOR"
+        "Utility/fg-rose": "COLOR",
+        "Utility/fg-gray": "COLOR"
       },
       "scopes": {
         "Alert/layout/radius": [
@@ -6457,7 +6448,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/info/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/info/action": [
           "ALL_FILLS"
@@ -6475,7 +6466,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/success/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/success/action": [
           "ALL_FILLS"
@@ -6493,7 +6484,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/warning/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/warning/action": [
           "ALL_FILLS"
@@ -6511,7 +6502,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/error/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/error/action": [
           "ALL_FILLS"
@@ -6529,7 +6520,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/neutral/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/neutral/text": [
           "TEXT_FILL"
@@ -6549,7 +6540,7 @@
           "STROKE_COLOR"
         ],
         "Alert/color/emphasize/accent": [
-          "ALL_FILLS"
+          "SHAPE_FILL"
         ],
         "Alert/color/emphasize/text": [
           "TEXT_FILL"
@@ -6597,6 +6588,24 @@
           "WIDTH_HEIGHT"
         ],
         "Avatar/layout/group-overlap": [
+          "WIDTH_HEIGHT"
+        ],
+        "Avatar/layout/status-border-width": [
+          "STROKE_FLOAT"
+        ],
+        "Avatar/layout/status-offset": [
+          "WIDTH_HEIGHT"
+        ],
+        "Avatar/layout/status-size-lg": [
+          "WIDTH_HEIGHT"
+        ],
+        "Avatar/layout/status-size-sm": [
+          "WIDTH_HEIGHT"
+        ],
+        "Avatar/layout/status-size-xl": [
+          "WIDTH_HEIGHT"
+        ],
+        "Avatar/layout/status-size-xs": [
           "WIDTH_HEIGHT"
         ],
         "Avatar/typography/font-family": [
@@ -6847,13 +6856,16 @@
           "STROKE_COLOR"
         ],
         "Button/positive/bg": [
-          "ALL_FILLS"
+          "FRAME_FILL",
+          "SHAPE_FILL"
         ],
         "Button/positive/bg-hover": [
-          "ALL_FILLS"
+          "FRAME_FILL",
+          "SHAPE_FILL"
         ],
         "Button/positive/bg-active": [
-          "ALL_FILLS"
+          "FRAME_FILL",
+          "SHAPE_FILL"
         ],
         "Button/positive/text": [
           "TEXT_FILL"
@@ -9483,6 +9495,9 @@
           "TEXT_FILL"
         ],
         "Utility/fg-rose": [
+          "SHAPE_FILL"
+        ],
+        "Utility/fg-gray": [
           "SHAPE_FILL"
         ]
       }

@@ -142,7 +142,7 @@ describe("primitives.css — gray", () => {
     }
   })
 
-  it("does not keep button-only intermediate palette steps", () => {
+  it("does not keep unused intermediate palette steps", () => {
     for (const token of ["color-blue-550", "color-green-650", "color-green-750", "color-red-550"]) {
       expect(cssVariable(css, token)).toBeUndefined()
     }
@@ -360,7 +360,7 @@ describe("semantic.css — bg + action", () => {
     expect(cssVariable(light, "color-border-info-subtle")).toBe("var(--color-blue-200)")
     expect(cssVariable(light, "color-action-positive")).toBe("var(--color-green-500)")
     expect(cssVariable(light, "color-action-destructive")).toBe("var(--color-red-500)")
-    expect(cssVariable(dark, "color-bg-info-subtle")).toBe("var(--color-blue-950)")
+    expect(cssVariable(dark, "color-bg-info-subtle")).toBe("var(--color-blue-900)")
     expect(cssVariable(dark, "color-bg-success-subtle")).toBe("var(--color-green-950)")
     expect(cssVariable(dark, "color-bg-warning-subtle")).toBe("var(--color-yellow-950)")
     expect(cssVariable(dark, "color-bg-error-subtle")).toBe("var(--color-red-950)")
@@ -656,10 +656,13 @@ describe("figma import bundle", () => {
       "SHAPE_FILL",
       "STROKE_COLOR",
     ])
-    expect(bundle.collections.Primitives?.scopes?.["Colors/Orange/500"]).toEqual(["ALL_FILLS"])
-    expect(bundle.collections.Primitives?.scopes?.["Colors/Red/500"]).toEqual(["ALL_FILLS"])
-    expect(bundle.collections.Primitives?.scopes?.["Colors/Yellow/500"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Orange/500"]).toEqual([])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Red/500"]).toEqual([])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Yellow/500"]).toEqual([])
     expect(bundle.collections.Primitives?.scopes?.["Colors/Blue/500"]).toEqual([])
+    expect(bundle.collections.Primitives?.scopes?.["Colors/Gray/500"]).toEqual(["ALL_FILLS"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Alert/color/info/accent"]).toEqual(["SHAPE_FILL"])
+    expect(bundle.collections["Component-based"]?.scopes?.["Button/positive/bg"]).toEqual(["FRAME_FILL", "SHAPE_FILL"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/bg"]).toEqual(["ALL_FILLS"])
     expect(bundle.collections["Component-based"]?.scopes?.["Select/border"]).toEqual([
       "STROKE_COLOR",
@@ -682,7 +685,7 @@ describe("figma import bundle", () => {
 
     expect(component?.["Select/bg"]).toBe("{Component-based/Input/bg}")
     expect(component?.["Context Menu/bg"]).toBe("{Component-based/Dropdown Menu/surface/bg}")
-    expect(component?.["Social Button/bg"]).toBe("{Color modes/background/bg-surface}")
+    expect(component?.["Social Button/bg"]).toBe("{Component-based/Button/outline/bg}")
     expect(component?.["Drawer/overlay-bg"]).toBe("{Component-based/Dialog/overlay-bg}")
     expect(component?.["Spinner/color"]).toBe("{Component-based/Spinner/primary-color}")
     expect(component?.["Alert/color/info/action"]).toBe("{Color modes/feedback/info/action}")
@@ -2015,5 +2018,29 @@ describe("native CSS delivery", () => {
       brand.remove()
       core.remove()
     }
+  })
+})
+
+// Approved September Foundation synchronization: page canvas remains production-calibrated.
+describe("September Foundation synchronization", () => {
+  const semantic = readFileSync(join(src, "semantic.css"), "utf-8")
+  const [light, dark] = semantic.split('[data-theme="dark"] {')
+
+  it("preserves the approved page canvas while applying dark surface and border aliases", () => {
+    expect(cssVariable(light!, "color-bg-page")).toBe("var(--color-neutral-75)")
+    expect(cssVariable(readFileSync(join(src, "primitives.css"), "utf-8"), "color-neutral-75")).toBe("#f5f6fa")
+    expect(cssVariable(dark!, "color-bg-info-muted")).toBe("var(--color-blue-800)")
+    expect(cssVariable(dark!, "color-border-primary")).toBe("var(--color-neutral-800)")
+    expect(cssVariable(dark!, "color-border-secondary")).toBe("var(--color-neutral-700)")
+  })
+
+  it("delivers updated component aliases to CSS consumers", () => {
+    const button = readFileSync(join(src, "component-button.css"), "utf-8")
+    const social = readFileSync(join(src, "component-social-button.css"), "utf-8")
+    expect(cssVariable(button, "button-ghost-text")).toBe("var(--color-text-primary)")
+    for (const suffix of ["", "-hover", "-active"]) {
+      expect(cssVariable(social, `social-button-bg${suffix}`)).toBe("var(--button-outline-bg)")
+    }
+    expect(cssVariable(button, "button-outline-bg")).toBe("transparent")
   })
 })

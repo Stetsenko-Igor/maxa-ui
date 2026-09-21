@@ -8,7 +8,7 @@ Social Button provides provider sign-in and account-linking actions.
 
 - Color provider icon.
 - Provider label.
-- White outline-button surface with 8px radius, border, and `Shadows/sm`.
+- Transparent outline-button surface with 8px radius, border, and `Shadows/sm`.
 
 ## Variants
 
@@ -18,9 +18,9 @@ Social Button provides provider sign-in and account-linking actions.
 
 ## States
 
-- Default: white outline-button surface, gray border, `Shadows/sm`.
-- Hover: white surface, stronger border/shadow.
-- Focus: white surface with the Figma light-blue focus border treatment.
+- Default: transparent outline-button surface, gray border, `Shadows/sm`.
+- Hover: transparent surface, stronger border/shadow.
+- Focus: transparent surface with the Figma light-blue focus border treatment.
 
 ## Accessibility
 

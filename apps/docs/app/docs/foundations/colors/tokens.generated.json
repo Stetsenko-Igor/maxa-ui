@@ -502,22 +502,29 @@
         "darkValue": null,
         "lightHex": "#ffffff73",
         "darkHex": "#ffffff73"
+      },
+      {
+        "name": "--color-fg-gray",
+        "lightValue": "var(--color-text-gray)",
+        "darkValue": "var(--color-text-gray)",
+        "lightHex": "#111827",
+        "darkHex": "#d1d5db"
       }
     ],
     "border": [
       {
         "name": "--color-border-primary",
         "lightValue": "var(--color-neutral-300)",
-        "darkValue": "var(--color-neutral-700)",
+        "darkValue": "var(--color-neutral-800)",
         "lightHex": "#e4e4e4",
-        "darkHex": "#6b6b6d"
+        "darkHex": "#444445"
       },
       {
         "name": "--color-border-secondary",
         "lightValue": "var(--color-neutral-200)",
-        "darkValue": "var(--color-neutral-800)",
+        "darkValue": "var(--color-neutral-700)",
         "lightHex": "#ededed",
-        "darkHex": "#444445"
+        "darkHex": "#6b6b6d"
       },
       {
         "name": "--color-border-tertiary",
@@ -616,6 +623,13 @@
         "darkValue": null,
         "lightHex": "#c7e5f0",
         "darkHex": "#c7e5f0"
+      },
+      {
+        "name": "--color-border-invert",
+        "lightValue": "var(--color-neutral-alpha-white-100)",
+        "darkValue": "var(--color-neutral-alpha-black-100)",
+        "lightHex": "#ffffff",
+        "darkHex": "#000000"
       }
     ],
     "focusRings": [
@@ -743,9 +757,9 @@
       {
         "name": "--color-bg-info-subtle",
         "lightValue": "var(--color-blue-100)",
-        "darkValue": "var(--color-blue-950)",
+        "darkValue": "var(--color-blue-900)",
         "lightHex": "#ddeeff",
-        "darkHex": "#061d35"
+        "darkHex": "#092f54"
       },
       {
         "name": "--color-bg-info-surface",
@@ -834,9 +848,9 @@
       {
         "name": "--color-bg-info-muted",
         "lightValue": "var(--color-blue-100)",
-        "darkValue": "var(--color-blue-900)",
+        "darkValue": "var(--color-blue-800)",
         "lightHex": "#ddeeff",
-        "darkHex": "#092f54"
+        "darkHex": "#073f72"
       },
       {
         "name": "--color-bg-success-muted",

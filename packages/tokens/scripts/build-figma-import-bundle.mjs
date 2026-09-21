@@ -665,7 +665,7 @@ function inferVariableScopes(collectionName, tokenName, type) {
   const lower = tokenName.toLowerCase()
 
   if (collectionName === "Primitives") {
-    if (/^colors\/(orange|red|yellow)\//.test(lower)) return ["ALL_FILLS"]
+    if (/^colors\/gray\//.test(lower)) return ["ALL_FILLS"]
     return []
   }
   if (collectionName === "Breakpoints") return []
@@ -716,6 +716,10 @@ function inferVariableScopes(collectionName, tokenName, type) {
   }
 
   if (type === "COLOR") {
+    if (/^alert\/color\/[^/]+\/accent$/.test(lower)) return ["SHAPE_FILL"]
+    if (/^button\/positive\/bg(?:-(?:hover|active))?$/.test(lower)) {
+      return ["FRAME_FILL", "SHAPE_FILL"]
+    }
     if (/^alert\/color\/neutral\/action(?:-hover)?$/.test(lower)) {
       return ["ALL_FILLS", "STROKE_COLOR"]
     }

@@ -288,6 +288,10 @@
   --color-action-menu-active: var(--color-action-neutral-subtle-active);
   --color-border-focus-soft: var(--color-blue-150);
   --color-fg-on-inverse-muted: var(--color-neutral-alpha-white-45);
+
+  /* Additional roles synchronized from the Foundation library. */
+  --color-border-invert: var(--color-neutral-alpha-white-100);
+  --color-fg-gray: var(--color-text-gray);
 }
 
 [data-theme="dark"] {
@@ -328,8 +332,8 @@
   --color-fg-warning: var(--color-yellow-400);
 
   /* ── Border — dark ──────────────────────────────────────────────── */
-  --color-border-primary: var(--color-neutral-700);
-  --color-border-secondary: var(--color-neutral-800);
+  --color-border-primary: var(--color-neutral-800);
+  --color-border-secondary: var(--color-neutral-700);
   --color-border-tertiary: var(--color-neutral-900);
   --color-border-brand: var(--color-brand-400);
   --color-border-error-strong: var(--color-red-400);
@@ -362,7 +366,7 @@
   --color-bg-brand-surface: var(--color-brand-900);
   --color-bg-brand-muted: var(--color-brand-800);
   --color-bg-brand-strong: var(--color-brand-600);
-  --color-bg-info-subtle: var(--color-blue-950);
+  --color-bg-info-subtle: var(--color-blue-900);
   --color-bg-info-surface: var(--color-blue-950);
   --color-bg-info-strong: var(--color-blue-500);
   --color-bg-success-subtle: var(--color-green-950);
@@ -377,7 +381,7 @@
 
   /* ── Background — status/intent muted (medium emphasis: badge/tag) ─ */
   --color-bg-neutral-muted: var(--color-neutral-800);
-  --color-bg-info-muted: var(--color-blue-900);
+  --color-bg-info-muted: var(--color-blue-800);
   --color-bg-success-muted: var(--color-green-900);
   --color-bg-warning-muted: var(--color-orange-900);
   --color-bg-error-muted: var(--color-red-900);
@@ -533,4 +537,8 @@
   --color-bg-overlay-strong: var(--color-neutral-alpha-black-72);
   --color-action-menu-hover: var(--color-action-neutral-hover);
   --color-action-menu-active: var(--color-action-neutral-active);
+
+  /* Additional roles synchronized from the Foundation library. */
+  --color-border-invert: var(--color-neutral-alpha-black-100);
+  --color-fg-gray: var(--color-text-gray);
 }

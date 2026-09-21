@@ -38,7 +38,7 @@
   --button-ghost-bg: transparent;
   --button-ghost-bg-hover: var(--color-action-neutral-subtle-hover);
   --button-ghost-bg-active: var(--color-action-neutral-subtle-active);
-  --button-ghost-text: var(--color-text-secondary);
+  --button-ghost-text: var(--color-text-primary);
   --button-ghost-fg: var(--color-fg-primary);
   --button-ghost-border: transparent;
   --button-ghost-border-hover: transparent;

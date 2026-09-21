@@ -72,6 +72,36 @@
         "$description": "Avatar, layout: group overlap.",
         "$value": 10,
         "$type": "number"
+      },
+      "status-border-width": {
+        "$value": 2,
+        "$type": "number",
+        "$description": "Avatar status indicator: status border width."
+      },
+      "status-offset": {
+        "$value": 0,
+        "$type": "number",
+        "$description": "Avatar status indicator: status offset."
+      },
+      "status-size-lg": {
+        "$value": 12,
+        "$type": "number",
+        "$description": "Avatar status indicator: status size lg."
+      },
+      "status-size-sm": {
+        "$value": 8,
+        "$type": "number",
+        "$description": "Avatar status indicator: status size sm."
+      },
+      "status-size-xl": {
+        "$value": 14,
+        "$type": "number",
+        "$description": "Avatar status indicator: status size xl."
+      },
+      "status-size-xs": {
+        "$value": 6,
+        "$type": "number",
+        "$description": "Avatar status indicator: status size xs."
       }
     },
     "typography": {

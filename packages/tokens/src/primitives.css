@@ -96,6 +96,8 @@
   --color-orange-950: #431407;
 
   /* ── Alpha primitives — Figma: Colors/Neutral (alpha)/* ─────────── */
+  --color-neutral-alpha-white-100: #ffffff;
+  --color-neutral-alpha-black-100: #000000;
   --color-neutral-alpha-ink-50: #1b1a1a80;
   --color-neutral-alpha-black-72: #000000b8;
   --color-neutral-alpha-white-45: #ffffff73;

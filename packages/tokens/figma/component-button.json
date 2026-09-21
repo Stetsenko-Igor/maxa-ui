@@ -144,7 +144,7 @@
       },
       "text": {
         "$description": "Button, ghost: text color.",
-        "$value": "{Color modes/text/text-secondary}",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "fg": {
