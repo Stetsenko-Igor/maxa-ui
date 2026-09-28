@@ -13,6 +13,7 @@ const SPINNER_PLAYGROUND: PlaygroundConfig = {
         { label: "sm", value: "sm" },
         { label: "md", value: "md" },
         { label: "lg", value: "lg" },
+        { label: "xl", value: "xl" },
       ],
       default: "md",
     },
@@ -46,7 +47,7 @@ const SPINNER_PLAYGROUND: PlaygroundConfig = {
         }}
       >
         <Spinner
-          size={v.size as "sm" | "md" | "lg"}
+          size={v.size as "sm" | "md" | "lg" | "xl"}
           appearance={appearance}
           decorative={v.decorative as boolean}
           label={v.label as string}

@@ -45,6 +45,11 @@
       "$value": 2,
       "$type": "number"
     },
+    "stroke-width-xl": {
+      "$description": "Spinner: stroke width xl.",
+      "$value": 4,
+      "$type": "number"
+    },
     "duration": {
       "$description": "Spinner: duration.",
       "$value": "0.7s",
@@ -63,6 +68,11 @@
     "size-lg": {
       "$description": "Spinner: size lg.",
       "$value": 28,
+      "$type": "number"
+    },
+    "size-xl": {
+      "$description": "Spinner: size xl.",
+      "$value": 40,
       "$type": "number"
     }
   }

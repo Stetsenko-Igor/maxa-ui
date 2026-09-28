@@ -17,7 +17,7 @@ const TOC = [
 ]
 
 const PROPS = [
-  { name: "size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Visual size." },
+  { name: "size", type: "'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: "Visual size. XL is 40×40px with a 4px stroke." },
   { name: "appearance", type: "'white' | 'primary' | 'greyscale' | 'inverted'", default: "'primary'", description: "Spinner color for different surfaces." },
   { name: "label", type: "string", default: "'Loading'", description: "Accessible label for standalone loading." },
   { name: "decorative", type: "boolean", default: "false", description: "Hide from assistive tech when loading is already announced nearby." },
@@ -49,12 +49,13 @@ export default function SpinnerPage() {
       </DocsSection>
 
       <DocsSection id="sizes" title="Sizes">
-        <DocsExample title="sm, md, lg">
-          <ComponentPreview code={`<Spinner size="sm" label="Loading" />\n<Spinner size="md" label="Loading" />\n<Spinner size="lg" label="Loading" />`}>
+        <DocsExample title="sm, md, lg, xl">
+          <ComponentPreview code={`<Spinner size="sm" label="Loading" />\n<Spinner size="md" label="Loading" />\n<Spinner size="lg" label="Loading" />\n<Spinner size="xl" label="Loading" />`}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "24px", padding: "32px" }}>
               <Spinner size="sm" label="Loading small" />
               <Spinner size="md" label="Loading medium" />
               <Spinner size="lg" label="Loading large" />
+              <Spinner size="xl" label="Loading extra large" />
             </div>
           </ComponentPreview>
         </DocsExample>

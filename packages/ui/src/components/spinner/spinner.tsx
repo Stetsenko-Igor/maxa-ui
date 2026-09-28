@@ -2,7 +2,7 @@ import * as React from "react"
 import "./spinner.css"
 import { cn } from "../../lib/cn.js"
 
-export type SpinnerSize = "sm" | "md" | "lg"
+export type SpinnerSize = "sm" | "md" | "lg" | "xl"
 // `appearance` is a non-semantic color treatment (contrast on a given surface),
 // not the shared decorative hue palette. See specs/patterns/variant-vocabulary.md.
 export type SpinnerAppearance = "white" | "primary" | "greyscale" | "inverted"

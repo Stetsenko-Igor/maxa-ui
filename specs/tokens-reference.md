@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1746
+Total tokens: 1748
 
 ## Primitives
 
@@ -1101,10 +1101,12 @@ Source: `packages/tokens/src/component-spinner.css`
 --spinner-inverted-color: var(--color-text-primary);
 --spinner-inverted-track-color: var(--color-border-secondary);
 --spinner-stroke-width: 2px;
+--spinner-stroke-width-xl: 4px;
 --spinner-duration: 0.7s;
 --spinner-size-sm: 16px;
 --spinner-size-md: 20px;
 --spinner-size-lg: 28px;
+--spinner-size-xl: 40px;
 ```
 
 ## Skeleton Component Tokens

@@ -4056,10 +4056,12 @@
           "Spinner/inverted-color": "{Color modes/text/text-primary}",
           "Spinner/inverted-track-color": "{Color modes/border/border-secondary}",
           "Spinner/stroke-width": 2,
+          "Spinner/stroke-width-xl": 4,
           "Spinner/duration": "0.7s",
           "Spinner/size-sm": 16,
           "Spinner/size-md": 20,
           "Spinner/size-lg": 28,
+          "Spinner/size-xl": 40,
           "Table/bg": "{Color modes/background/bg-surface}",
           "Table/border": "{Color modes/border/border-secondary}",
           "Table/radius": "{Radius/radius-md}",
@@ -5098,10 +5100,12 @@
         "Spinner/inverted-color": "Spinner: inverted color.",
         "Spinner/inverted-track-color": "Spinner: inverted track color.",
         "Spinner/stroke-width": "Spinner: stroke width.",
+        "Spinner/stroke-width-xl": "Spinner: stroke width xl.",
         "Spinner/duration": "Spinner: duration.",
         "Spinner/size-sm": "Spinner: size sm.",
         "Spinner/size-md": "Spinner: size md.",
         "Spinner/size-lg": "Spinner: size lg.",
+        "Spinner/size-xl": "Spinner: size xl.",
         "Table/bg": "Table: background.",
         "Table/border": "Table: border.",
         "Table/radius": "Table: radius.",
@@ -6139,10 +6143,12 @@
         "Spinner/inverted-color": "COLOR",
         "Spinner/inverted-track-color": "COLOR",
         "Spinner/stroke-width": "FLOAT",
+        "Spinner/stroke-width-xl": "FLOAT",
         "Spinner/duration": "STRING",
         "Spinner/size-sm": "FLOAT",
         "Spinner/size-md": "FLOAT",
         "Spinner/size-lg": "FLOAT",
+        "Spinner/size-xl": "FLOAT",
         "Table/bg": "COLOR",
         "Table/border": "COLOR",
         "Table/radius": "FLOAT",
@@ -8745,6 +8751,9 @@
         "Spinner/stroke-width": [
           "STROKE_FLOAT"
         ],
+        "Spinner/stroke-width-xl": [
+          "STROKE_FLOAT"
+        ],
         "Spinner/duration": [],
         "Spinner/size-sm": [
           "WIDTH_HEIGHT"
@@ -8753,6 +8762,9 @@
           "WIDTH_HEIGHT"
         ],
         "Spinner/size-lg": [
+          "WIDTH_HEIGHT"
+        ],
+        "Spinner/size-xl": [
           "WIDTH_HEIGHT"
         ],
         "Table/bg": [

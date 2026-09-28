@@ -35,7 +35,7 @@ test('consumer extraction preserves selectors, declarations, media rules and key
 test('generated source graph covers the complete inventory and real button/color-mode contracts', () => {
   const data = generateExplorer()
   const token = name => data.tokens.find(item => item.name === name)
-  assert.equal(data.tokens.length, 1746)
+  assert.equal(data.tokens.length, 1748)
   assert.equal(new Set(data.tokens.map(item => item.name)).size, data.tokens.length)
   assert.equal(token('--button-primary-bg').layer, 'component')
   assert.equal(token('--button-primary-bg').group, 'button')

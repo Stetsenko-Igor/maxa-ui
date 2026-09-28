@@ -24,6 +24,12 @@
   height: var(--spinner-size-lg);
 }
 
+.maxa-spinner--xl {
+  width: var(--spinner-size-xl);
+  height: var(--spinner-size-xl);
+  border-width: var(--spinner-stroke-width-xl);
+}
+
 .maxa-spinner--white {
   border-color: var(--spinner-white-track-color);
   border-top-color: var(--spinner-white-color);

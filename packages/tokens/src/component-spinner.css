@@ -10,10 +10,12 @@
   --spinner-inverted-color: var(--color-text-primary);
   --spinner-inverted-track-color: var(--color-border-secondary);
   --spinner-stroke-width: 2px;
+  --spinner-stroke-width-xl: 4px;
   --spinner-duration: 0.7s;
   --spinner-size-sm: 16px;
   --spinner-size-md: 20px;
   --spinner-size-lg: 28px;
+  --spinner-size-xl: 40px;
 }
 
 [data-theme="dark"] {

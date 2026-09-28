@@ -11,7 +11,7 @@ Spinner communicates an indeterminate loading state for compact surfaces such as
 
 ## Variants
 
-- Size: `sm`, `md`, `lg`.
+- Size: `sm`, `md`, `lg`, `xl` (`40×40px` with a `4px` stroke).
 - Appearance: `white`, `primary`, `greyscale`, `inverted`.
 - Mode: semantic status by default, decorative when loading copy already exists nearby.
 

@@ -39264,6 +39264,35 @@
       ]
     },
     {
+      "name": "--spinner-size-xl",
+      "layer": "component",
+      "group": "spinner",
+      "source": "packages/tokens/src/component-spinner.css",
+      "color": false,
+      "light": {
+        "raw": "40px",
+        "resolved": "40px",
+        "references": []
+      },
+      "dark": {
+        "raw": "40px",
+        "resolved": "40px",
+        "references": []
+      },
+      "consumers": [
+        {
+          "component": "spinner",
+          "selector": ".maxa-spinner--xl",
+          "property": "width"
+        },
+        {
+          "component": "spinner",
+          "selector": ".maxa-spinner--xl",
+          "property": "height"
+        }
+      ]
+    },
+    {
       "name": "--spinner-stroke-width",
       "layer": "component",
       "group": "spinner",
@@ -39284,6 +39313,30 @@
           "component": "spinner",
           "selector": ".maxa-spinner",
           "property": "border"
+        }
+      ]
+    },
+    {
+      "name": "--spinner-stroke-width-xl",
+      "layer": "component",
+      "group": "spinner",
+      "source": "packages/tokens/src/component-spinner.css",
+      "color": false,
+      "light": {
+        "raw": "4px",
+        "resolved": "4px",
+        "references": []
+      },
+      "dark": {
+        "raw": "4px",
+        "resolved": "4px",
+        "references": []
+      },
+      "consumers": [
+        {
+          "component": "spinner",
+          "selector": ".maxa-spinner--xl",
+          "property": "border-width"
         }
       ]
     },
