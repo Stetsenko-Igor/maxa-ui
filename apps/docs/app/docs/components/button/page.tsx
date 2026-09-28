@@ -25,14 +25,14 @@ const TOC = [
 const BUTTON_PROPS = [
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive' | 'warning'",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive'",
     default: "'primary'",
     description: "Visual hierarchy.",
   },
   {
     name: "size",
     type: "'xs' | 'sm' | 'md' | 'lg'",
-    default: "'md'",
+    default: "'lg'",
     description: "Height, padding, and font size.",
   },
   {
@@ -60,10 +60,10 @@ const BUTTON_PROPS = [
     description: "Stretches the button to the available width.",
   },
   {
-    name: "outlineSurface",
+    name: "hasBackground",
     type: "boolean",
     default: "false",
-    description: "Adds the semantic surface fill to the outline variant. Other variants ignore it.",
+    description: "Adds the Figma background layer to outline and ghost variants.",
   },
   {
     name: "loading",
@@ -95,11 +95,11 @@ const ICON_BUTTON_PROPS = [
   },
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive' | 'warning'",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'positive' | 'destructive'",
     default: "'secondary'",
     description: "Visual style.",
   },
-  { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'md'", description: "Square size." },
+  { name: "size", type: "'xs' | 'sm' | 'md' | 'lg'", default: "'lg'", description: "Square size." },
   {
     name: "loading",
     type: "boolean",
@@ -114,7 +114,7 @@ const GITHUB_BUTTON_URL =
 
 const BUTTON_MARKDOWN = `# Button
 
-Actions, navigation, and form submission. Eight variants, four sizes, icon support, full-width layout, and a dedicated IconButton wrapper for icon-only use cases.
+Actions, navigation, and form submission. Seven variants, four sizes, icon support, full-width layout, and a dedicated IconButton wrapper for icon-only use cases.
 
 ## Installation
 
@@ -140,7 +140,7 @@ export default function ButtonPage() {
       next={{ href: "/docs/components/checkbox", label: "Checkbox" }}
       lead={
         <>
-          Actions, navigation, and form submission. Eight variants, four sizes, icon support, and a
+          Actions, navigation, and form submission. Seven variants, four sizes, icon support, and a
           dedicated <code>IconButton</code> wrapper for icon-only use cases.
         </>
       }
@@ -169,21 +169,21 @@ export default function ButtonPage() {
       <DocsSection
         id="variants"
         title="Variants"
-        description="Eight variants map to the action hierarchy. Use primary once per view for the main call-to-action."
+        description="Seven variants map to the Figma Button v3 hierarchy. Use primary once per view for the main call-to-action."
       >
         <DocsExample title="Action variants">
           <ComponentPreview
             code={`<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
-<Button variant="outline" outlineSurface>Outline on surface</Button>
+<Button variant="outline" hasBackground>Outline on surface</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="link">Link</Button>`}
           >
             <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="outline">Outline</Button>
-            <Button variant="outline" outlineSurface>
+            <Button variant="outline" hasBackground>
               Outline on surface
             </Button>
             <Button variant="ghost">Ghost</Button>
@@ -194,11 +194,9 @@ export default function ButtonPage() {
         <DocsExample title="Semantic variants">
           <ComponentPreview
             code={`<Button variant="positive">Confirm</Button>
-<Button variant="warning">Review</Button>
 <Button variant="destructive">Delete</Button>`}
           >
             <Button variant="positive">Confirm</Button>
-            <Button variant="warning">Review</Button>
             <Button variant="destructive">Delete</Button>
           </ComponentPreview>
         </DocsExample>

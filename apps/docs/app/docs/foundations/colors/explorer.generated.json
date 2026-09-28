@@ -3991,6 +3991,54 @@
       ]
     },
     {
+      "name": "--button-focus-ring-inner-width",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": false,
+      "light": {
+        "raw": "2px",
+        "resolved": "2px",
+        "references": []
+      },
+      "dark": {
+        "raw": "2px",
+        "resolved": "2px",
+        "references": []
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button:focus-visible",
+          "property": "box-shadow"
+        }
+      ]
+    },
+    {
+      "name": "--button-focus-ring-width",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": false,
+      "light": {
+        "raw": "4px",
+        "resolved": "4px",
+        "references": []
+      },
+      "dark": {
+        "raw": "4px",
+        "resolved": "4px",
+        "references": []
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button:focus-visible",
+          "property": "box-shadow"
+        }
+      ]
+    },
+    {
       "name": "--button-font-family",
       "layer": "component",
       "group": "button",
@@ -4569,7 +4617,7 @@
       "consumers": [
         {
           "component": "button",
-          "selector": ".maxa-button--outline.maxa-button--outline-surface",
+          "selector": ".maxa-button--outline.maxa-button--has-background",
           "property": "background-color"
         }
       ]
@@ -5413,6 +5461,16 @@
           "component": "button",
           "selector": ".maxa-button--lg .maxa-button__icon",
           "property": "height"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--lg .maxa-button__spinner",
+          "property": "width"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--lg .maxa-button__spinner",
+          "property": "height"
         }
       ]
     },
@@ -5668,6 +5726,16 @@
         {
           "component": "button",
           "selector": ".maxa-button--md .maxa-button__icon",
+          "property": "height"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--md .maxa-button__spinner",
+          "property": "width"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--md .maxa-button__spinner",
           "property": "height"
         }
       ]
@@ -5945,6 +6013,16 @@
           "component": "button",
           "selector": ".maxa-button--sm .maxa-button__icon",
           "property": "height"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--sm .maxa-button__spinner",
+          "property": "width"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--sm .maxa-button__spinner",
+          "property": "height"
         }
       ]
     },
@@ -6191,6 +6269,16 @@
           "component": "button",
           "selector": ".maxa-button--xs .maxa-button__icon",
           "property": "height"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--xs .maxa-button__spinner",
+          "property": "width"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--xs .maxa-button__spinner",
+          "property": "height"
         }
       ]
     },
@@ -6374,13 +6462,7 @@
           "--color-action-warning"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning",
-          "property": "background-color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-bg-active",
@@ -6402,13 +6484,7 @@
           "--color-action-warning-active"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning:active",
-          "property": "background-color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-bg-hover",
@@ -6430,13 +6506,7 @@
           "--color-action-warning-hover"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning:hover",
-          "property": "background-color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-border",
@@ -6458,13 +6528,7 @@
           "--color-action-warning"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning",
-          "property": "border-color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-border-hover",
@@ -6486,13 +6550,7 @@
           "--color-action-warning-hover"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning:hover",
-          "property": "border-color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-fg",
@@ -6514,13 +6572,7 @@
           "--color-fg-on-color"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning",
-          "property": "--button-fg-current"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-text",
@@ -6542,13 +6594,7 @@
           "--color-text-on-warning"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning",
-          "property": "color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-text-active",
@@ -6570,13 +6616,7 @@
           "--color-text-inverse"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning:active",
-          "property": "color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--button-warning-text-hover",
@@ -6598,13 +6638,7 @@
           "--color-text-on-warning"
         ]
       },
-      "consumers": [
-        {
-          "component": "button",
-          "selector": ".maxa-button--warning:hover",
-          "property": "color"
-        }
-      ]
+      "consumers": []
     },
     {
       "name": "--calendar-bg",
@@ -12058,7 +12092,18 @@
           "--color-neutral-900"
         ]
       },
-      "consumers": []
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button:focus-visible",
+          "property": "box-shadow"
+        },
+        {
+          "component": "button",
+          "selector": ".maxa-button--ghost.maxa-button--has-background",
+          "property": "background-color"
+        }
+      ]
     },
     {
       "name": "--color-bg-teal-muted",
@@ -15218,7 +15263,7 @@
         {
           "component": "button",
           "selector": ".maxa-button:focus-visible",
-          "property": "outline"
+          "property": "box-shadow"
         },
         {
           "component": "datatable",
@@ -33886,11 +33931,6 @@
         {
           "component": "avatar",
           "selector": ".maxa-avatar__status",
-          "property": "border-radius"
-        },
-        {
-          "component": "button",
-          "selector": ".maxa-button__spinner",
           "property": "border-radius"
         },
         {

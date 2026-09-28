@@ -29,8 +29,10 @@
 }
 
 .maxa-button:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow:
+    0 0 0 var(--button-focus-ring-inner-width) var(--color-bg-surface),
+    0 0 0 var(--button-focus-ring-width) var(--color-focus-ring);
 }
 
 .maxa-button:disabled,
@@ -168,7 +170,7 @@
   color: var(--button-outline-text);
   border-color: var(--button-outline-border);
 }
-.maxa-button--outline.maxa-button--outline-surface {
+.maxa-button--outline.maxa-button--has-background {
   background-color: var(--button-outline-bg-surface);
 }
 .maxa-button--outline:hover {
@@ -184,6 +186,9 @@
   background-color: var(--button-ghost-bg);
   color: var(--button-ghost-text);
   border-color: var(--button-ghost-border);
+}
+.maxa-button--ghost.maxa-button--has-background {
+  background-color: var(--color-bg-surface);
 }
 .maxa-button--ghost:hover {
   background-color: var(--button-ghost-bg-hover);
@@ -202,6 +207,7 @@
 }
 .maxa-button--link .maxa-button__label {
   padding-inline: 0;
+  text-decoration: underline;
 }
 .maxa-button--xs.maxa-button--link {
   gap: var(--spacing-xs);
@@ -247,21 +253,6 @@
 }
 .maxa-button--destructive:active {
   background-color: var(--button-destructive-bg-active);
-}
-.maxa-button--warning {
-  --button-fg-current: var(--button-warning-fg);
-  background-color: var(--button-warning-bg);
-  color: var(--button-warning-text);
-  border-color: var(--button-warning-border);
-}
-.maxa-button--warning:hover {
-  background-color: var(--button-warning-bg-hover);
-  color: var(--button-warning-text-hover);
-  border-color: var(--button-warning-border-hover);
-}
-.maxa-button--warning:active {
-  background-color: var(--button-warning-bg-active);
-  color: var(--button-warning-text-active);
 }
 /* ── Full width ──────────────────────────────────────────────── */
 
@@ -321,18 +312,22 @@
 /* ── Spinner ─────────────────────────────────────────────────── */
 
 .maxa-button__spinner {
-  display: inline-block;
-  color: var(--button-fg-current, currentColor);
-  width: 1em;
-  height: 1em;
-  border: 2px solid currentColor;
-  border-top-color: transparent;
-  border-radius: var(--radius-full);
-  animation: maxa-spin 0.6s linear infinite;
+  flex-shrink: 0;
 }
 
-@keyframes maxa-spin {
-  to {
-    transform: rotate(360deg);
-  }
+.maxa-button--xs .maxa-button__spinner {
+  width: var(--button-size-xs-icon-size);
+  height: var(--button-size-xs-icon-size);
+}
+.maxa-button--sm .maxa-button__spinner {
+  width: var(--button-size-sm-icon-size);
+  height: var(--button-size-sm-icon-size);
+}
+.maxa-button--md .maxa-button__spinner {
+  width: var(--button-size-md-icon-size);
+  height: var(--button-size-md-icon-size);
+}
+.maxa-button--lg .maxa-button__spinner {
+  width: var(--button-size-lg-icon-size);
+  height: var(--button-size-lg-icon-size);
 }

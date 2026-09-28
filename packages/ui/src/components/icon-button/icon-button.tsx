@@ -11,7 +11,7 @@ export interface IconButtonProps
 }
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ icon, size = "md", ...props }, ref) => {
+  ({ icon, size = "lg", ...props }, ref) => {
     return (
       <Button ref={ref} iconOnly iconLeading={icon} size={size} {...props} />
     )

@@ -17,7 +17,6 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
         { label: "link", value: "link" },
         { label: "positive", value: "positive" },
         { label: "destructive", value: "destructive" },
-        { label: "warning", value: "warning" },
       ],
       default: "primary",
     },
@@ -30,11 +29,11 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
         { label: "md", value: "md" },
         { label: "lg", value: "lg" },
       ],
-      default: "md",
+      default: "lg",
     },
     { type: "boolean", name: "loading", default: false },
     { type: "boolean", name: "disabled", default: false },
-    { type: "boolean", name: "outlineSurface", default: false },
+    { type: "boolean", name: "hasBackground", default: false },
     { type: "text", name: "label", default: "Create project" },
   ],
   render: (v: PlaygroundValues) => (
@@ -48,12 +47,11 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
           | "link"
           | "positive"
           | "destructive"
-          | "warning"
       }
       size={v.size as "xs" | "sm" | "md" | "lg"}
       loading={v.loading as boolean}
       disabled={v.disabled as boolean}
-      outlineSurface={v.outlineSurface as boolean}
+      hasBackground={v.hasBackground as boolean}
     >
       {v.label as string}
     </Button>
@@ -62,7 +60,7 @@ const BUTTON_PLAYGROUND: PlaygroundConfig = {
     const attrs = [`variant="${v.variant}"`, `size="${v.size}"`]
     if (v.loading) attrs.push("loading")
     if (v.disabled) attrs.push("disabled")
-    if (v.outlineSurface) attrs.push("outlineSurface")
+    if (v.hasBackground) attrs.push("hasBackground")
     return `<Button ${attrs.join(" ")}>${v.label}</Button>`
   },
 }
@@ -73,13 +71,13 @@ export function ButtonDefaultPreview() {
       code={`<Button variant="primary">Create project</Button>
 <Button variant="secondary">Cancel</Button>
 <Button variant="outline">Learn more</Button>
-<Button variant="outline" outlineSurface>On a surface</Button>`}
+<Button variant="outline" hasBackground>On a surface</Button>`}
       playground={BUTTON_PLAYGROUND}
     >
       <Button variant="primary">Create project</Button>
       <Button variant="secondary">Cancel</Button>
       <Button variant="outline">Learn more</Button>
-      <Button variant="outline" outlineSurface>
+      <Button variant="outline" hasBackground>
         On a surface
       </Button>
     </ComponentPreview>

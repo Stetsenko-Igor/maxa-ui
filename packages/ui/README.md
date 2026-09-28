@@ -103,7 +103,7 @@ Dark mode: set `data-theme="dark"` on `<html>`. Components react via token overr
 ## Rules
 
 - One `primary` button per view - see `specs/patterns/interactive-hierarchy.md`
-- `Button` supports `warning`, `text`, and `fullWidth` in addition to the core action variants.
+- `Button` mirrors the seven Figma Button v3 variants and also supports the code-only `fullWidth` layout flag.
 - Use `NumberInput`, `CurrencyInput`, and `PhoneInput` for formatted fields; do not add formatting modes to `Input.kind`.
 - Component anatomy, variants, and states are specified in `specs/components/`
 - Look up CSS variable names in `specs/tokens-reference.md` before styling

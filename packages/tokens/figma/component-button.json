@@ -341,6 +341,18 @@
         "$type": "color"
       }
     },
+    "focus-ring": {
+      "inner-width": {
+        "$description": "Button focus ring: inner surface ring width.",
+        "$value": 2,
+        "$type": "number"
+      },
+      "width": {
+        "$description": "Button focus ring: outer focus color ring width.",
+        "$value": 4,
+        "$type": "number"
+      }
+    },
     "disabled": {
       "opacity": {
         "$description": "Button, disabled: opacity.",

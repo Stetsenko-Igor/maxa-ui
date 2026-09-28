@@ -10,7 +10,7 @@ describe("Button", () => {
     render(<Button>Click me</Button>)
     const btn = screen.getByRole("button", { name: "Click me" })
     expect(btn).toBeInTheDocument()
-    expect(btn).toHaveClass("maxa-button--primary", "maxa-button--md")
+    expect(btn).toHaveClass("maxa-button--primary", "maxa-button--lg")
   })
 
   it("applies variant classes", () => {
@@ -38,16 +38,20 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("maxa-button--lg")
   })
 
-  it("adds the optional surface class without changing the outline variant", () => {
-    render(
-      <Button variant="outline" outlineSurface>
+  it("adds the Figma background layer to outline and ghost variants", () => {
+    const { rerender } = render(
+      <Button variant="outline" hasBackground>
         Test
       </Button>,
     )
-    expect(screen.getByRole("button")).toHaveClass(
-      "maxa-button--outline",
-      "maxa-button--outline-surface",
+    expect(screen.getByRole("button")).toHaveClass("maxa-button--outline", "maxa-button--has-background")
+
+    rerender(
+      <Button variant="ghost" hasBackground>
+        Test
+      </Button>,
     )
+    expect(screen.getByRole("button")).toHaveClass("maxa-button--ghost", "maxa-button--has-background")
   })
 
   it("is disabled when disabled prop is set", () => {
@@ -74,6 +78,7 @@ describe("Button", () => {
     expect(btn).toHaveAttribute("data-icon-leading")
     expect(btn).not.toHaveAttribute("data-icon-trailing")
     expect(spinner).toBeInTheDocument()
+    expect(spinner).toHaveClass("maxa-spinner", "maxa-spinner--white")
     expect(label).toHaveTextContent("Saving")
     expect(spinner?.nextElementSibling).toBe(label)
 
@@ -131,6 +136,48 @@ describe("Button", () => {
       /\.maxa-button--xs\.maxa-button--link\s*\{[^}]*gap:\s*var\(--spacing-xs\);/s,
     )
     expect(css).toMatch(/\.maxa-button--md\.maxa-button--link,[\s\S]*gap:\s*var\(--spacing-md\);/s)
+  })
+
+  it("matches the Figma link underline, focus ring, and loading spinner sizing", () => {
+    const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
+
+    expect(css).toMatch(/\.maxa-button--link \.maxa-button__label\s*\{[^}]*text-decoration:\s*underline;/s)
+    expect(css).toMatch(
+      /\.maxa-button:focus-visible\s*\{[^}]*box-shadow:\s*0 0 0 var\(--button-focus-ring-inner-width\) var\(--color-bg-surface\),\s*0 0 0 var\(--button-focus-ring-width\) var\(--color-focus-ring\);/s,
+    )
+    expect(css).toMatch(
+      /\.maxa-button--md \.maxa-button__spinner\s*\{[^}]*width:\s*var\(--button-size-md-icon-size\);[^}]*height:\s*var\(--button-size-md-icon-size\);/s,
+    )
+  })
+
+  it("uses the Figma spinner appearance for neutral and link loading states", () => {
+    const { rerender } = render(
+      <Button variant="secondary" loading>
+        Loading
+      </Button>,
+    )
+    expect(screen.getByRole("button").querySelector(".maxa-button__spinner")).toHaveClass(
+      "maxa-spinner--greyscale",
+    )
+
+    rerender(
+      <Button variant="link" loading>
+        Loading
+      </Button>,
+    )
+    expect(screen.getByRole("button").querySelector(".maxa-button__spinner")).toHaveClass(
+      "maxa-spinner--primary",
+    )
+  })
+
+  it("exposes only the seven Button types present in Figma", () => {
+    const source = readFileSync(resolve(process.cwd(), "src/components/button/button.tsx"), "utf8")
+    const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
+
+    expect(source).not.toContain('warning: "maxa-button--warning"')
+    expect(source).not.toContain("outlineSurface")
+    expect(css).not.toContain(".maxa-button--warning")
+    expect(css).not.toContain("maxa-button--outline-surface")
   })
 
   it("has no accessibility violations", async () => {

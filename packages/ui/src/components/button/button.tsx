@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
+import { Spinner } from "../spinner/spinner.js"
 
 import "./button.css"
 
@@ -16,7 +17,6 @@ const buttonVariants = cva("maxa-button", {
       link: "maxa-button--link",
       positive: "maxa-button--positive",
       destructive: "maxa-button--destructive",
-      warning: "maxa-button--warning",
     },
     size: {
       xs: "maxa-button--xs",
@@ -32,17 +32,17 @@ const buttonVariants = cva("maxa-button", {
       true: "maxa-button--full-width",
       false: "",
     },
-    outlineSurface: {
-      true: "maxa-button--outline-surface",
+    hasBackground: {
+      true: "maxa-button--has-background",
       false: "",
     },
   },
   defaultVariants: {
     variant: "primary",
-    size: "md",
+    size: "lg",
     iconOnly: false,
     fullWidth: false,
-    outlineSurface: false,
+    hasBackground: false,
   },
 })
 
@@ -54,6 +54,16 @@ export interface ButtonProps
   iconTrailing?: React.ReactNode
 }
 
+const spinnerAppearance = {
+  primary: "white",
+  secondary: "greyscale",
+  outline: "greyscale",
+  ghost: "greyscale",
+  link: "primary",
+  positive: "white",
+  destructive: "white",
+} as const
+
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
@@ -62,7 +72,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       iconOnly,
       fullWidth,
-      outlineSurface,
+      hasBackground,
       asChild = false,
       loading = false,
       disabled,
@@ -86,7 +96,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             size,
             iconOnly,
             fullWidth,
-            outlineSurface,
+            hasBackground,
             className,
           })}
           aria-disabled={isDisabled || undefined}
@@ -107,7 +117,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           size,
           iconOnly,
           fullWidth,
-          outlineSurface,
+          hasBackground,
           className,
         })}
         disabled={isDisabled}
@@ -119,7 +129,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {loading ? (
-          <span className="maxa-button__spinner" aria-hidden="true" />
+          <Spinner
+            className="maxa-button__spinner"
+            appearance={spinnerAppearance[variant ?? "primary"]}
+            decorative
+          />
         ) : (
           iconLeading && (
             <span className="maxa-button__icon maxa-button__icon--leading" aria-hidden="true">

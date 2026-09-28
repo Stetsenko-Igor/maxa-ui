@@ -33,9 +33,9 @@ describe("IconButton", () => {
     expect(screen.getByRole("button")).toBeDisabled()
   })
 
-  it("defaults to md size", () => {
+  it("defaults to the Figma lg size", () => {
     render(<IconButton icon={<svg />} aria-label="Test" />)
-    expect(screen.getByRole("button")).toHaveClass("maxa-button--md")
+    expect(screen.getByRole("button")).toHaveClass("maxa-button--lg")
   })
 
   it("has no accessibility violations", async () => {

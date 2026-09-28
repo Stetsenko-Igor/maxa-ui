@@ -1387,7 +1387,7 @@ describe("figma component-based button tokens", () => {
     return values
   }
 
-  it("defines approved Button variants", () => {
+  it("defines approved Button token groups", () => {
     expect(Object.keys(lightFile.Button)).toEqual([
       "primary",
       "secondary",
@@ -1397,10 +1397,14 @@ describe("figma component-based button tokens", () => {
       "positive",
       "destructive",
       "warning",
+      "focus-ring",
       "disabled",
       "size",
       "font-family",
     ])
+
+    expect(lightFile.Button["focus-ring"]["inner-width"].$value).toBe(2)
+    expect(lightFile.Button["focus-ring"].width.$value).toBe(4)
   })
 
   it("aliases Button font family to body typography", () => {

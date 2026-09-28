@@ -3449,6 +3449,8 @@
           "Button/warning/fg": "{Color modes/foreground/fg-on-color}",
           "Button/warning/border": "{Color modes/action/action-warning}",
           "Button/warning/border-hover": "{Color modes/action/action-warning-hover}",
+          "Button/focus-ring/inner-width": 2,
+          "Button/focus-ring/width": 4,
           "Button/disabled/opacity": 50,
           "Button/size/xs/height": 24,
           "Button/size/xs/padding-x": "{Spacing/spacing-sm}",
@@ -4489,6 +4491,8 @@
         "Button/warning/fg": "Button, warning: icon foreground color.",
         "Button/warning/border": "Button, warning: border.",
         "Button/warning/border-hover": "Button, warning: border (hover state).",
+        "Button/focus-ring/inner-width": "Button focus ring: inner surface ring width.",
+        "Button/focus-ring/width": "Button focus ring: outer focus color ring width.",
         "Button/disabled/opacity": "Button, disabled: opacity.",
         "Button/size/xs/height": "Button, size xs: height.",
         "Button/size/xs/padding-x": "Button, size xs: symmetric root padding.",
@@ -5528,6 +5532,8 @@
         "Button/warning/fg": "COLOR",
         "Button/warning/border": "COLOR",
         "Button/warning/border-hover": "COLOR",
+        "Button/focus-ring/inner-width": "FLOAT",
+        "Button/focus-ring/width": "FLOAT",
         "Button/disabled/opacity": "FLOAT",
         "Button/size/xs/height": "FLOAT",
         "Button/size/xs/padding-x": "FLOAT",
@@ -6929,6 +6935,12 @@
         ],
         "Button/warning/border-hover": [
           "STROKE_COLOR"
+        ],
+        "Button/focus-ring/inner-width": [
+          "WIDTH_HEIGHT"
+        ],
+        "Button/focus-ring/width": [
+          "WIDTH_HEIGHT"
         ],
         "Button/disabled/opacity": [
           "OPACITY"

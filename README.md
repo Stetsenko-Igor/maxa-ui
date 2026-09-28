@@ -273,7 +273,7 @@ Every production component should have:
 
 Current component API decisions:
 
-- `Button` includes `warning`, `text`, and `fullWidth` alongside the core variants.
+- `Button` mirrors the seven Figma Button v3 variants and also supports the code-only `fullWidth` layout flag.
 - Formatted fields use separate wrappers (`NumberInput`, `CurrencyInput`, `PhoneInput`) instead of expanding `Input.kind`.
 - `Alert` uses an explicit `action` slot with `AlertAction`; shorthand action props are intentionally not part of the public API.
 - Status color vocabulary is `info`/`success`/`warning`/`error` everywhere, with `destructive` reserved for interactive actions (e.g. `Button variant="destructive"`) — see [Color Token Naming Migration](docs/color-token-naming-migration-2026-07.md) for the full rename history and consumer migration steps.

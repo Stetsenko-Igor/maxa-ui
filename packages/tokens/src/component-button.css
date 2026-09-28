@@ -85,6 +85,10 @@
   --button-warning-border: var(--color-action-warning);
   --button-warning-border-hover: var(--color-action-warning-hover);
 
+  /* focus ring geometry */
+  --button-focus-ring-inner-width: 2px;
+  --button-focus-ring-width: 4px;
+
   /* ── Sizes ────────────────────────────────────────────────────── */
 
   /* xs */

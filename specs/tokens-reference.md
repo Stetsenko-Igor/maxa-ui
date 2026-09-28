@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1744
+Total tokens: 1746
 
 ## Primitives
 
@@ -757,6 +757,8 @@ Source: `packages/tokens/src/component-button.css`
 --button-warning-fg: var(--color-fg-on-color);
 --button-warning-border: var(--color-action-warning);
 --button-warning-border-hover: var(--color-action-warning-hover);
+--button-focus-ring-inner-width: 2px;
+--button-focus-ring-width: 4px;
 
 /* ── Sizes ── */
 --button-size-xs-height: 24px;

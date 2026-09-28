@@ -45,7 +45,7 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 
 - **Use when:** Tertiary action. Low visual weight but still prominent enough for a border.
 - **Background:** transparent by default (`--button-outline-bg`)
-- **Optional surface:** set `outlineSurface` to use `--button-outline-bg-surface` → `bg/surface`; useful over busy or non-surface content
+- **Optional surface:** set `hasBackground` to use `--button-outline-bg-surface` → `bg/surface`; useful over busy or non-surface content
 - **Border:** `--button-outline-border` → `border/primary`
 - **Hover/active border:** `--button-outline-border-hover` / `--button-outline-border-active` → `border/neutral-muted`
 - **Text:** `--button-outline-text` → `text/primary`
@@ -55,7 +55,8 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 - **Use when:** Inline actions, toolbar buttons, icon actions in dense UI.
 - **Background:** transparent (no fill, no border at rest)
 - **Hover:** `--button-ghost-bg-hover` → `action/neutral-subtle-hover`
-- **Text:** `--button-ghost-text` → `text/secondary`
+- **Text:** `--button-ghost-text` → `text/primary`
+- **Optional surface:** set `hasBackground` to add the Figma background layer
 
 ### `link`
 
@@ -66,7 +67,7 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 - **Icon foreground:** `--button-link-fg` → `foreground/fg-link`
 - **Hover/active icon foreground:** `--button-link-fg-hover` / `--button-link-fg-active`
 - **Layout:** Hug content with zero padding and zero border width; size tokens affect only the label, icon, and their gap
-- No underline by default in MAXA UI — relies on color context.
+- The label is underlined, matching Button v3 in Figma.
 
 ### `positive`
 
@@ -83,13 +84,6 @@ Design decision: Success Button text stays white in every theme and interaction 
 - **Background:** `--button-destructive-bg` → `action/destructive` (red)
 - **Text and icons:** `--button-destructive-text` / `--button-destructive-fg` → white in every state and theme
 - Always pair with a confirmation dialog for truly destructive actions.
-
-### `warning`
-
-- **Use when:** Reversible cautious actions that need attention but are not destructive (e.g. publish overrides, override-defaults).
-- **Background:** `--button-warning-bg` → `action/warning` (yellow)
-- **Text:** dark on default/hover yellow, then `text/inverse` on the stronger active fill
-- Distinct from `destructive` — warning does not imply destruction.
 
 ## Sizes
 
@@ -135,7 +129,7 @@ The root padding is symmetrical whether icons are visible or hidden. The Text pa
 
 **Loading rule:** Loading is behaviorally disabled but not visually disabled. Keep the native button disabled, expose `aria-busy="true"`, suppress click/focus/hover/active behavior, and explicitly restore `opacity: 1`. Regular buttons keep their visible label and show the animated Spinner at the leading edge; Icon Only buttons show the Spinner centered. Loading never uses `--button-disabled-opacity`.
 
-**Focus rule:** Focus never replaces the variant border. In Figma, apply the shared Focus ring effect to the component; in code, use `--color-focus-ring` directly for the keyboard-focus outline. Do not create a Button-specific focus color token.
+**Focus rule:** Focus never replaces the variant border. Match the shared Figma effect with `--button-focus-ring-inner-width` (2px) for the `bg/surface` inner ring and `--button-focus-ring-width` (4px) for the `--color-focus-ring` outer ring. These are effect-geometry tokens, not spacing tokens. Do not create a Button-specific focus color token.
 
 ### Loading spinner inheritance
 
@@ -145,7 +139,7 @@ Loading instances must keep the spinner component's own stroke unless a colored 
 | ---------- | ------------------ | ----------------------- |
 | Primary    | White              | `Button/primary/fg`     |
 | Positive   | White              | `Button/positive/fg`    |
-| Negative   | White              | `Button/destructive/fg` |
+| Destructive | White             | `Button/destructive/fg` |
 | Secondary  | Greyscale          | none; inherit Spinner   |
 | Outline    | Greyscale          | none; inherit Spinner   |
 | Ghost      | Greyscale          | none; inherit Spinner   |
@@ -265,7 +259,7 @@ Buttons/
     └── Text padding wrapper around Label
 ```
 
-**Canonical Type order:** Primary → Secondary → Outline → Positive → Negative → Ghost → Link.
+**Canonical Type order:** Primary → Secondary → Outline → Positive → Destructive → Ghost → Link.
 
 Within every Type, size rows run Large → Medium → Small → Xtra Small. Each row contains the six regular states first, followed by the six Icon Only states. Both groups use: Default → Hover → Active → Focus → Loading → Disabled.
 
