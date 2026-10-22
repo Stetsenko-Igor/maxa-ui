@@ -12,6 +12,7 @@ type SelectVisualState = "default" | "hover" | "focus" | "error" | "disabled" | 
 
 type SelectOption = {
   disabled?: boolean
+  description?: string
   label: string
   value: string
 }
@@ -30,6 +31,8 @@ export interface SelectProps
   options?: SelectOption[]
   placeholder?: string
   required?: boolean
+  renderValue?: (option: SelectOption) => React.ReactNode
+  renderOption?: (option: SelectOption) => React.ReactNode
   size?: FormFieldSize
   value?: string
   visualState?: SelectVisualState
@@ -40,6 +43,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       children,
+      "aria-label": ariaLabel,
+      "aria-labelledby": ariaLabelledBy,
       className,
       defaultValue,
       defaultOpen = false,
@@ -57,6 +62,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       options,
       placeholder = "Select an option",
       required,
+      renderValue,
+      renderOption,
       size = "md",
       value,
       visualState = "default",
@@ -156,7 +163,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         setHighlightedValue(enabledOptions[enabledOptions.length - 1]?.value ?? null)
       } else if (event.key === "Enter" || event.key === " ") {
         event.preventDefault()
-        if (open && highlightedValue) commitValue(highlightedValue)
+        if (open && highlightedValue !== null) commitValue(highlightedValue)
         else setOpen(true)
       } else if (event.key === "Escape") {
         event.preventDefault()
@@ -182,6 +189,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             type="button"
             aria-activedescendant={open && highlightedOption ? optionDomId(listboxId, highlightedIndex, highlightedOption.value) : undefined}
             aria-controls={listboxId}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
             aria-describedby={hintId}
             aria-disabled={disabled || undefined}
             aria-expanded={open}
@@ -205,7 +214,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             role="combobox"
           >
             <span className={showPlaceholder ? "maxa-select__placeholder" : "maxa-select__value"}>
-              {selectedOption?.label ?? placeholder}
+              {selectedOption ? renderValue?.(selectedOption) ?? selectedOption.label : placeholder}
             </span>
             <span className="maxa-select__chevron" aria-hidden="true">
               <ChevronDownIcon />
@@ -242,6 +251,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                     id={optionDomId(listboxId, index, option.value)}
                     type="button"
                     aria-disabled={option.disabled || undefined}
+                    aria-label={option.label}
+                    aria-describedby={option.description ? `${optionDomId(listboxId, index, option.value)}-description` : undefined}
                     aria-selected={selected}
                     className={cn(
                       "maxa-select__option",
@@ -261,7 +272,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
                     }}
                     role="option"
                   >
-                    <span className="maxa-select__option-label">{option.label}</span>
+                    <span className="maxa-select__option-content"><span className="maxa-select__option-label">{renderOption?.(option) ?? option.label}</span>{option.description && <span id={`${optionDomId(listboxId, index, option.value)}-description`} className="maxa-select__option-description">{option.description}</span>}</span>
                     {selected && <span className="maxa-select__option-check" aria-hidden="true"><CheckIcon /></span>}
                   </button>
                 )

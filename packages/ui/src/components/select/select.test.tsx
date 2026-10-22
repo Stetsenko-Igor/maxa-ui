@@ -4,6 +4,36 @@ import { axe } from "vitest-axe"
 import { Select } from "./select"
 
 describe("Select", () => {
+  it("selects an empty-valued option using the keyboard", () => {
+    const onValueChange=vi.fn();
+    render(<Select aria-label="Assignee" defaultValue="daniel" onValueChange={onValueChange} options={[{value:"",label:"Unassigned"},{value:"daniel",label:"Daniel Reed"}]}/>);
+    const trigger=screen.getByRole("combobox",{name:"Assignee"});
+    fireEvent.keyDown(trigger,{key:"ArrowUp"});
+    fireEvent.keyDown(trigger,{key:"Home"});
+    fireEvent.keyDown(trigger,{key:"Enter"});
+    expect(onValueChange).toHaveBeenCalledWith("");
+    expect(trigger).toHaveTextContent("Unassigned");
+  });
+
+  it("renders rich values and options while preserving selection semantics and descriptions", () => {
+    const onValueChange = vi.fn();
+    render(<Select aria-label="Status" defaultValue="paid" onValueChange={onValueChange} options={[{value:"paid",label:"Paid"},{value:"done",label:"Completed"},{value:"blocked",label:"Pending",disabled:true,description:"Payment is awaiting confirmation."}]} renderValue={option=><span data-testid="selected-tag">{option.label}</span>} renderOption={option=><strong>{option.label}</strong>}/>);
+    expect(screen.getByTestId("selected-tag")).toHaveTextContent("Paid");
+    fireEvent.click(screen.getByRole("combobox",{name:"Status"}));
+    expect(screen.getByRole("option",{name:"Pending"})).toHaveAccessibleDescription("Payment is awaiting confirmation.");
+    expect(screen.getByRole("option",{name:"Pending"})).toBeDisabled();
+    fireEvent.click(screen.getByRole("option",{name:"Completed"}));
+    expect(onValueChange).toHaveBeenCalledWith("done");
+    expect(screen.getByTestId("selected-tag")).toHaveTextContent("Completed");
+  });
+
+  it("names the visible combobox from explicit ARIA attributes", () => {
+    const { rerender } = render(<Select aria-label="Order status" options={[{value: "paid", label: "Paid"}]}/>);
+    expect(screen.getByRole("combobox", {name: "Order status"})).toBeVisible();
+    rerender(<><span id="status-title">Fulfillment status</span><Select aria-labelledby="status-title" options={[{value: "paid", label: "Paid"}]}/></>);
+    expect(screen.getByRole("combobox", {name: "Fulfillment status"})).toBeVisible();
+  });
+
   it("renders a labeled custom combobox field", () => {
     render(
       <Select label="Dropdown" defaultValue="">
