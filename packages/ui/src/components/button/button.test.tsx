@@ -38,20 +38,74 @@ describe("Button", () => {
     expect(screen.getByRole("button")).toHaveClass("maxa-button--lg")
   })
 
+  it("scopes inverse controls without forwarding the styling prop to the DOM", () => {
+    const { rerender } = render(
+      <Button variant="ghost" colorScheme="inverse" hasBackground>
+        Navigation
+      </Button>,
+    )
+    expect(screen.getByRole("button")).toHaveClass(
+      "maxa-button--inverse",
+      "maxa-button--has-background",
+    )
+    expect(screen.getByRole("button")).not.toHaveAttribute("colorScheme")
+    rerender(
+      <Button variant="outline" colorScheme="inverse" loading>
+        Navigation
+      </Button>,
+    )
+    expect(screen.getByRole("button").querySelector(".maxa-spinner")).toHaveClass(
+      "maxa-spinner--white",
+    )
+    rerender(
+      <Button asChild variant="ghost" colorScheme="inverse">
+        <a href="/">Home</a>
+      </Button>,
+    )
+    expect(screen.getByRole("link")).toHaveClass("maxa-button--inverse")
+    expect(screen.getByRole("link")).not.toHaveAttribute("colorScheme")
+  })
+
+  it("supports outlined destructive actions without changing filled destructive loading", () => {
+    const { rerender } = render(
+      <Button variant="destructive-outline" loading>
+        Cancel request
+      </Button>,
+    )
+    const button = screen.getByRole("button")
+    expect(button).toHaveClass("maxa-button--destructive-outline")
+    expect(button).toBeDisabled()
+    expect(button.querySelector(".maxa-spinner")).toHaveClass("maxa-spinner--greyscale")
+    rerender(
+      <Button variant="destructive" loading>
+        Delete
+      </Button>,
+    )
+    expect(screen.getByRole("button").querySelector(".maxa-spinner")).toHaveClass(
+      "maxa-spinner--white",
+    )
+  })
+
   it("adds the Figma background layer to outline and ghost variants", () => {
     const { rerender } = render(
       <Button variant="outline" hasBackground>
         Test
       </Button>,
     )
-    expect(screen.getByRole("button")).toHaveClass("maxa-button--outline", "maxa-button--has-background")
+    expect(screen.getByRole("button")).toHaveClass(
+      "maxa-button--outline",
+      "maxa-button--has-background",
+    )
 
     rerender(
       <Button variant="ghost" hasBackground>
         Test
       </Button>,
     )
-    expect(screen.getByRole("button")).toHaveClass("maxa-button--ghost", "maxa-button--has-background")
+    expect(screen.getByRole("button")).toHaveClass(
+      "maxa-button--ghost",
+      "maxa-button--has-background",
+    )
   })
 
   it("is disabled when disabled prop is set", () => {
@@ -141,7 +195,9 @@ describe("Button", () => {
   it("matches the Figma link underline, focus ring, and loading spinner sizing", () => {
     const css = readFileSync(resolve(process.cwd(), "src/components/button/button.css"), "utf8")
 
-    expect(css).toMatch(/\.maxa-button--link \.maxa-button__label\s*\{[^}]*text-decoration:\s*underline;/s)
+    expect(css).toMatch(
+      /\.maxa-button--link \.maxa-button__label\s*\{[^}]*text-decoration:\s*underline;/s,
+    )
     expect(css).toMatch(
       /\.maxa-button:focus-visible\s*\{[^}]*box-shadow:\s*0 0 0 var\(--button-focus-ring-inner-width\) var\(--color-bg-surface\),\s*0 0 0 var\(--button-focus-ring-width\) var\(--color-focus-ring\);/s,
     )

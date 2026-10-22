@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs"
+import { resolve } from "node:path"
 import { describe, it, expect, beforeAll, vi } from "vitest"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import { axe } from "vitest-axe"
@@ -75,6 +77,20 @@ describe("DropdownMenu", () => {
     })
   })
 
+  it("keeps destructive text and icons in the same color through highlighted states", () => {
+    const css = readFileSync(
+      resolve(process.cwd(), "src/components/dropdown-menu/dropdown-menu.css"),
+      "utf8",
+    )
+    expect(css).toMatch(
+      /\.maxa-dropdown-menu__item--destructive\[data-highlighted\]:active\s*\{[^}]*color:\s*var\(--dropdown-menu-item-text-destructive\);/s,
+    )
+    expect(css).toMatch(/\.maxa-dropdown-menu__item--destructive svg\s*\{\s*color:\s*inherit;/s)
+    expect(css).toMatch(
+      /\.maxa-dropdown-menu__item\[data-disabled\]\s*\{[^}]*color:\s*var\(--dropdown-menu-item-text-disabled\);/s,
+    )
+  })
+
   it("renders styled content, item, label, separator, and destructive item", async () => {
     const { container } = renderMenu()
     openMenu()
@@ -84,9 +100,7 @@ describe("DropdownMenu", () => {
     expect(container.ownerDocument.querySelector(".maxa-dropdown-menu__item")).not.toBeNull()
     expect(container.ownerDocument.querySelector(".maxa-dropdown-menu__label")).not.toBeNull()
     expect(container.ownerDocument.querySelector(".maxa-dropdown-menu__separator")).not.toBeNull()
-    expect(screen.getByText("Cancel request")).toHaveClass(
-      "maxa-dropdown-menu__item--destructive",
-    )
+    expect(screen.getByText("Cancel request")).toHaveClass("maxa-dropdown-menu__item--destructive")
   })
 
   it("merges custom className onto content and item", async () => {

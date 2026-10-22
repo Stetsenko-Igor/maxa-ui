@@ -46,3 +46,9 @@ in Figma.
 - Keep label, required marker, helper text, and error text in `FormField`.
 - Do not expose a public `Dropdown` alias unless the value-selection and
   action-menu boundary is redesigned.
+
+## Rich values
+
+Use `renderValue(option)` and `renderOption(option)` to display existing Badge or Avatar compositions without replacing Select anatomy or field padding. Keep each option label as plain text for native form values, keyboard matching and accessible names. Optional `description` is rendered below option content and associated through aria-describedby, including disabled options.
+
+Rich selected values and options containing Badge or Avatar use the shared `--select-rich-content-padding-start` (6px) on the leading edge. Plain text Select spacing and trailing chevron spacing remain unchanged. Consumers must not patch field padding locally.

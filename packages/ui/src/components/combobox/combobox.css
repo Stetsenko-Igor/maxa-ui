@@ -1,0 +1,13 @@
+/* The editable field reuses Input; its popup follows the Select token contract. */
+.maxa-combobox { position: relative; min-width: 0; width: 100%; }
+.maxa-combobox__caret { width: var(--select-icon-md-size); height: var(--select-icon-md-size); color: var(--select-icon); }
+.maxa-combobox--sm .maxa-combobox__caret { width: var(--select-icon-sm-size); height: var(--select-icon-sm-size); }
+.maxa-combobox--lg .maxa-combobox__caret { width: var(--select-icon-lg-size); height: var(--select-icon-lg-size); }
+.maxa-combobox__caret--open { transform: rotate(180deg); }
+.maxa-combobox__list { position: absolute; z-index: var(--select-listbox-z); top: calc(100% + var(--select-listbox-offset)); left: 0; right: 0; padding-block: var(--select-listbox-padding-y); max-height: var(--select-listbox-max-height); overflow-y: auto; overscroll-behavior: contain; background: var(--select-listbox-bg); border: 1px solid var(--select-listbox-border); border-radius: var(--select-listbox-radius); box-shadow: var(--select-listbox-shadow); }
+.maxa-combobox__option, .maxa-combobox__empty { display: flex; align-items: center; min-height: var(--select-option-height); padding: var(--spacing-xs) var(--select-option-padding-x); color: var(--select-option-text); font-family: var(--select-font-family); font-size: var(--select-option-font-size); font-weight: var(--select-option-font-weight); line-height: var(--select-option-line-height); overflow-wrap: anywhere; }
+.maxa-combobox__option { cursor: pointer; }
+.maxa-combobox__option--active { background: var(--select-option-bg-hover); color: var(--select-option-text-hover); }
+.maxa-combobox__option[aria-selected=true] { background: var(--select-option-bg-selected); color: var(--select-option-text-selected); }
+.maxa-combobox__option[aria-selected=true].maxa-combobox__option--active { background: var(--select-option-bg-selected-hover); }
+.maxa-combobox__empty { color: var(--color-text-secondary); }

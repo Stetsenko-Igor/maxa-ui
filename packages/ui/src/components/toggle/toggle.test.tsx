@@ -4,6 +4,12 @@ import { axe } from "vitest-axe"
 import { Toggle } from "./toggle"
 
 describe("Toggle", () => {
+  it("supports full-width labels without forwarding the layout prop to the switch", () => {
+    const {container} = render(<Toggle fullWidth sideLabel="Print this for me" />)
+    expect(container.querySelector(".maxa-toggle-field")).toHaveClass("maxa-toggle-field--full-width")
+    expect(screen.getByRole("switch")).not.toHaveAttribute("fullWidth")
+  })
+
   it("renders with role switch", () => {
     render(<Toggle aria-label="Notifications" />)
     expect(screen.getByRole("switch")).toBeInTheDocument()

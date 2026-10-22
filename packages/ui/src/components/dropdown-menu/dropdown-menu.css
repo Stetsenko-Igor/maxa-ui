@@ -65,7 +65,11 @@
   color: var(--dropdown-menu-item-text-active);
 }
 
-.maxa-dropdown-menu__item--destructive[data-highlighted] {
+.maxa-dropdown-menu__item--destructive:hover,
+.maxa-dropdown-menu__item--destructive[data-state="open"],
+.maxa-dropdown-menu__item--destructive[data-highlighted],
+.maxa-dropdown-menu__item--destructive[data-highlighted]:active {
+  color: var(--dropdown-menu-item-text-destructive);
   background-color: var(--dropdown-menu-item-bg-destructive-hover);
 }
 
@@ -82,6 +86,11 @@
 .maxa-dropdown-menu__item svg {
   flex: 0 0 auto;
   color: var(--dropdown-menu-item-icon);
+}
+
+/* Destructive icons share the label color through hover/focus and disabled states. */
+.maxa-dropdown-menu__item--destructive svg {
+  color: inherit;
 }
 
 .maxa-dropdown-menu__indicator svg {

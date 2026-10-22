@@ -122,3 +122,8 @@ Extends `React.TdHTMLAttributes<HTMLTableCellElement>`.
 - Row selection state.
 - Empty/loading states.
 - Column visibility and density controls.
+
+
+## Shared composition options
+
+Table supports appearance="embedded" inside a framed section, edgeInset="section" for shared section rails and responsive="stacked" for labeled mobile records. Column widths and record-specific layout remain product composition.

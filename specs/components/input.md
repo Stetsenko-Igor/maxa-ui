@@ -81,3 +81,15 @@ they remain wrappers so the base `Input` stays minimal.
 - React component: `packages/ui/src/components/input/`
 - Component tokens: `packages/tokens/src/component-input.css`
 - Docs page: `apps/docs/app/docs/components/input/page.tsx`
+
+
+## Shared field label weight
+
+Field labels use Medium (500) at every size. Input and the shared FormField shell
+reference `--input-label-font-weight`; FileInput references
+`--file-input-label-font-weight`. Both component tokens resolve to
+`--font-weight-medium`. Product forms must not override label weight.
+
+Required markers use `--input-required-text` (Input/shared FormField) or
+`--file-input-required-text` (FileInput), both resolving to the semantic
+`--color-feedback-error-action`. Error message colors remain independent.

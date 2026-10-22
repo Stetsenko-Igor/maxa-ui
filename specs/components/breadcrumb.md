@@ -20,3 +20,8 @@ Breadcrumb shows the user's location in a hierarchy and provides quick navigatio
 ## Accessibility
 
 Current page uses `aria-current="page"`. Separators are presentation-only.
+
+
+## Shared composition options
+
+Breadcrumb appearance="muted" uses tertiary ancestor labels with a semibold current page, matching application Heading composition.

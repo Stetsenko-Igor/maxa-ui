@@ -25,8 +25,12 @@
 
 .maxa-toggle-field__row {
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--toggle-content-gap);
+}
+
+.maxa-toggle-field__row[data-description] {
+  align-items: flex-start;
 }
 
 .maxa-toggle-field__content {
@@ -39,6 +43,9 @@
 }
 
 .maxa-toggle-field__side-label {
+  display: flex;
+  align-items: center;
+  min-height: var(--toggle-track-height);
   color: var(--toggle-text-color);
   font-size: var(--toggle-side-label-font-size);
   font-weight: var(--toggle-side-label-font-weight);
@@ -147,4 +154,18 @@
   width: max(100%, var(--spacing-6));
   height: max(100%, var(--spacing-6));
   transform: translate(-50%, -50%);
+}
+
+.maxa-toggle-field--full-width {
+  width: 100%;
+  max-width: none;
+}
+
+.maxa-toggle-field--full-width .maxa-toggle-field__row {
+  width: 100%;
+}
+
+.maxa-toggle-field--full-width .maxa-toggle-field__content {
+  flex: 1;
+  max-width: none;
 }

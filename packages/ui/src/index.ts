@@ -45,3 +45,5 @@ export * from "./components/social-button/index.js"
 export * from "./components/utility-button/index.js"
 export * from "./components/toast/index.js"
 export * from "./components/datatable/index.js"
+
+export * from "./components/combobox/index.js"

@@ -22,6 +22,7 @@ export interface PopoverContentProps
   /** Distance in px between trigger and content. */
   sideOffset?: number
   /** Render the directional arrow. */
+  padding?: "default" | "none"
   arrow?: boolean
 }
 
@@ -37,6 +38,7 @@ const PopoverContent = React.forwardRef<
       align = "center",
       sideOffset = 8,
       arrow = true,
+      padding = "default",
       ...props
     },
     ref,
@@ -47,7 +49,7 @@ const PopoverContent = React.forwardRef<
         side={side}
         align={align}
         sideOffset={sideOffset}
-        className={cn("maxa-popover", className)}
+        className={cn("maxa-popover", padding === "none" && "maxa-popover--no-padding", className)}
         {...props}
       >
         {children}

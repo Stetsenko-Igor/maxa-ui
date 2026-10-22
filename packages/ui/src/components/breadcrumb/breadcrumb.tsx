@@ -9,12 +9,12 @@ function BreadcrumbSeparatorIcon() {
   return <CaretRight width="100%" height="100%" aria-hidden focusable={false} />
 }
 
-const Breadcrumb = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement>>(
-  ({ className, ...props }, ref) => (
+const Breadcrumb = React.forwardRef<HTMLElement, React.HTMLAttributes<HTMLElement> & {appearance?: "default" | "muted"}>(
+  ({ className, appearance = "default", ...props }, ref) => (
     <nav
       ref={ref}
       aria-label="Breadcrumb"
-      className={cn("maxa-breadcrumb", className)}
+      className={cn("maxa-breadcrumb", appearance === "muted" && "maxa-breadcrumb--muted", className)}
       {...props}
     />
   ),

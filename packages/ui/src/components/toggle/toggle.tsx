@@ -10,6 +10,8 @@ export interface ToggleProps
   children?: React.ReactNode
   containerClassName?: string
   description?: React.ReactNode
+  /** Let the label use the available container width. */
+  fullWidth?: boolean
   error?: boolean
   label?: React.ReactNode
   sideLabel?: React.ReactNode
@@ -28,6 +30,7 @@ const Toggle = React.forwardRef<
   description,
   disabled,
   error = false,
+  fullWidth = false,
   label,
   sideLabel,
   ...props
@@ -45,7 +48,7 @@ const Toggle = React.forwardRef<
 
   return (
     <div
-      className={`maxa-toggle-field${containerClassName ? ` ${containerClassName}` : ""}`}
+      className={`maxa-toggle-field${fullWidth ? " maxa-toggle-field--full-width" : ""}${containerClassName ? ` ${containerClassName}` : ""}`}
       data-disabled={disabled || undefined}
     >
       {label ? (
@@ -55,7 +58,7 @@ const Toggle = React.forwardRef<
           </span>
         </div>
       ) : null}
-      <div className="maxa-toggle-field__row">
+      <div className="maxa-toggle-field__row" data-description={description ? "true" : undefined}>
         <TogglePrimitive.Root
           ref={ref}
           className={`maxa-toggle${className ? ` ${className}` : ""}`}

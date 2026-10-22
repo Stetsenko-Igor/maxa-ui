@@ -24,15 +24,18 @@ export type TableCellType =
 export type TableCellSize = "sm" | "lg"
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
+  appearance?: "default" | "embedded"
+  edgeInset?: "default" | "section"
+  responsive?: "scroll" | "stacked"
   density?: TableDensity
 }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ className, density = "md", ...props }, ref) => (
+  ({ className, density = "md", appearance = "default", edgeInset = "default", responsive = "scroll", ...props }, ref) => (
     <div className="maxa-table__container">
       <table
         ref={ref}
-        className={cn("maxa-table", `maxa-table--${density}`, className)}
+        className={cn("maxa-table", `maxa-table--${density}`, appearance === "embedded" && "maxa-table--embedded", edgeInset === "section" && "maxa-table--section-inset", responsive === "stacked" && "maxa-table--stacked", className)}
         {...props}
       />
     </div>

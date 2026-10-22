@@ -6,6 +6,8 @@ import { cn } from "../../lib/cn.js"
 import { useControlledState } from "@maxa/hooks"
 
 export interface SegmentedControlProps extends React.HTMLAttributes<HTMLDivElement> {
+  labelWeight?: "medium" | "semibold"
+  variant?: "default" | "pill"
   value?: string
   defaultValue?: string
   onValueChange?: (value: string) => void
@@ -27,6 +29,8 @@ const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>
   (
     {
       className,
+      variant = "default",
+      labelWeight,
       value: controlledValue,
       defaultValue,
       onValueChange,
@@ -46,7 +50,7 @@ const SegmentedControl = React.forwardRef<HTMLDivElement, SegmentedControlProps>
         <div
           ref={ref}
           role="group"
-          className={cn("maxa-segmented-control", className)}
+          className={cn("maxa-segmented-control", variant === "pill" && "maxa-segmented-control--pill", labelWeight === "medium" && "maxa-segmented-control--medium-label", labelWeight === "semibold" && "maxa-segmented-control--semibold-label", className)}
           {...props}
         >
           {children}

@@ -114,3 +114,5 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
+
+.maxa-dialog__body--scrollable{min-height:0;overflow:auto}

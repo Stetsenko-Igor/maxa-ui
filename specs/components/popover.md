@@ -76,3 +76,8 @@ import { Button, Popover, PopoverContent, PopoverTrigger } from "@maxa/ui"
 | Modal form or destructive confirmation | Dialog |
 | Main navigation menu | Navigation/Menu component |
 | Clickable Tooltip content | `Popover` |
+
+
+## Shared composition options
+
+PopoverContent padding="none" supports composed header/body/footer content; product code owns the container layout.

@@ -17,6 +17,11 @@ const buttonVariants = cva("maxa-button", {
       link: "maxa-button--link",
       positive: "maxa-button--positive",
       destructive: "maxa-button--destructive",
+      "destructive-outline": "maxa-button--destructive-outline",
+    },
+    colorScheme: {
+      default: "",
+      inverse: "maxa-button--inverse",
     },
     size: {
       xs: "maxa-button--xs",
@@ -39,6 +44,7 @@ const buttonVariants = cva("maxa-button", {
   },
   defaultVariants: {
     variant: "primary",
+    colorScheme: "default",
     size: "lg",
     iconOnly: false,
     fullWidth: false,
@@ -62,6 +68,7 @@ const spinnerAppearance = {
   link: "primary",
   positive: "white",
   destructive: "white",
+  "destructive-outline": "greyscale",
 } as const
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -69,6 +76,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       variant,
+      colorScheme,
       size,
       iconOnly,
       fullWidth,
@@ -93,6 +101,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ref={ref}
           className={buttonVariants({
             variant,
+            colorScheme,
             size,
             iconOnly,
             fullWidth,
@@ -114,6 +123,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={buttonVariants({
           variant,
+          colorScheme,
           size,
           iconOnly,
           fullWidth,
@@ -131,7 +141,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? (
           <Spinner
             className="maxa-button__spinner"
-            appearance={spinnerAppearance[variant ?? "primary"]}
+            appearance={
+              colorScheme === "inverse" && (variant === "ghost" || variant === "outline")
+                ? "white"
+                : spinnerAppearance[variant ?? "primary"]
+            }
             decorative
           />
         ) : (

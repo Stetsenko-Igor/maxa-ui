@@ -48,3 +48,8 @@ export { XCircle } from "@phosphor-icons/react/XCircle"
  *   <social.GoogleIcon />
  */
 export * as social from "./social.js"
+
+export { BellSimple } from "@phosphor-icons/react/BellSimple"
+export { CallBell } from "@phosphor-icons/react/CallBell"
+
+export { Images } from "@phosphor-icons/react/Images"

@@ -148,9 +148,9 @@ const DialogDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttri
 )
 DialogDescription.displayName = "DialogDescription"
 
-const DialogBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn("maxa-dialog__body", className)} {...props} />
+const DialogBody = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & {scrollable?:boolean}>(
+  ({ className, scrollable = false, ...props }, ref) => (
+    <div ref={ref} className={cn("maxa-dialog__body", scrollable && "maxa-dialog__body--scrollable", className)} {...props} />
   ),
 )
 DialogBody.displayName = "DialogBody"

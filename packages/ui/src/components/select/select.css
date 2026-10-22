@@ -194,3 +194,19 @@
     transition: none;
   }
 }
+
+.maxa-select__option-content { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: var(--spacing-1); }
+.maxa-select__option-description { color: var(--select-option-description-color); font-size: var(--select-option-description-font-size); line-height: var(--select-option-description-line-height); font-weight: var(--font-weight-regular); white-space: normal; padding-inline-start: var(--select-option-description-inset, 0px); }
+
+.maxa-select__option:has(.maxa-select__option-description) { padding-block: var(--spacing-2); }
+
+/* Match the text rail inside a rendered Badge, including its border. */
+.maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--sm) { --select-option-description-inset: calc(var(--badge-size-sm-padding-x) + 1px); }
+.maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--md) { --select-option-description-inset: calc(var(--badge-size-md-padding-x) + 1px); }
+.maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--lg) { --select-option-description-inset: calc(var(--badge-size-lg-padding-x) + 1px); }
+
+/* Rich values use one compact content inset across triggers and options. */
+.maxa-select__field:has(> .maxa-select__value :is(.maxa-badge, .maxa-avatar)),
+.maxa-select__option:has(> .maxa-select__option-content > .maxa-select__option-label :is(.maxa-badge, .maxa-avatar)) {
+  padding-inline-start: var(--select-rich-content-padding-start);
+}

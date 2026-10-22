@@ -9,6 +9,7 @@
 @import "./components/button/button.css";
 @import "./components/calendar/calendar.css";
 @import "./components/checkbox/checkbox.css";
+@import "./components/combobox/combobox.css";
 @import "./components/context-menu/context-menu.css";
 @import "./components/datatable/datatable.css";
 @import "./components/date-picker/date-picker.css";

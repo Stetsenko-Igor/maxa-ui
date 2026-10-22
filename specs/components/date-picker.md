@@ -40,3 +40,15 @@ the quarter dropdown with year navigation and year selection.
 - Keep single date, range date, and quarter date as separate components:
   `DatePicker`, `DateRangePicker`, and `QuarterPicker`.
 - Keep label, required marker, helper text, and error text in `FormField`.
+
+
+## Shared field label weight
+
+Field labels use Medium (500) at every size. Input and the shared FormField shell
+reference `--input-label-font-weight`; FileInput references
+`--file-input-label-font-weight`. Both component tokens resolve to
+`--font-weight-medium`. Product forms must not override label weight.
+
+Required markers use `--input-required-text` (Input/shared FormField) or
+`--file-input-required-text` (FileInput), both resolving to the semantic
+`--color-feedback-error-action`. Error message colors remain independent.

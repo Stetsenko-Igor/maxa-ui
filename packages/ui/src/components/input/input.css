@@ -34,7 +34,7 @@
   font-family: var(--input-font-family);
   font-size: var(--input-size-md-text);
   font-weight: var(--font-weight-semibold);
-  color: var(--input-error-text);
+  color: var(--input-required-text);
   line-height: 1;
 }
 

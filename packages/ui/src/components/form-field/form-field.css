@@ -21,7 +21,7 @@
 .maxa-form-field__label {
   font-family: var(--input-font-family);
   font-size: var(--input-size-md-text);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--input-label-font-weight);
   color: var(--input-label-text);
   line-height: 1;
 }
@@ -30,7 +30,7 @@
   font-family: var(--input-font-family);
   font-size: var(--input-size-md-text);
   font-weight: var(--font-weight-semibold);
-  color: var(--input-error-text);
+  color: var(--input-required-text);
   line-height: 1;
 }
 

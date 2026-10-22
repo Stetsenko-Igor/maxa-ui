@@ -114,3 +114,13 @@ import { Toggle } from "@maxa/ui"
 - React component: `packages/ui/src/components/toggle/toggle.tsx`
 - Styles: `packages/ui/src/components/toggle/toggle.css`
 - Tests: `packages/ui/src/components/toggle/toggle.test.tsx`
+
+
+## Vertical label alignment
+
+Center the side label vertically with the track. The content shell has no vertical
+padding. With a description, align the track with the label row, and place the
+description beneath it; do not center the track against the combined text block.
+
+Use `fullWidth` for labels that should use the available form width, rather
+than overriding internal label/container widths in a product stylesheet.

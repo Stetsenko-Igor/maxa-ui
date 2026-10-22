@@ -45,3 +45,22 @@
   opacity: 0.5;
   pointer-events: none;
 }
+
+/* Optional pill treatment; the default geometry remains backward compatible. */
+.maxa-segmented-control--pill {
+  --segmented-control-border: transparent;
+  --segmented-control-radius: var(--segmented-control-pill-radius);
+  --segmented-control-padding: var(--segmented-control-pill-padding);
+  --segmented-control-gap: var(--segmented-control-pill-gap);
+  --segmented-control-item-radius: var(--segmented-control-pill-item-radius);
+  --segmented-control-item-height: var(--segmented-control-pill-item-height);
+  --segmented-control-item-padding-x: var(--segmented-control-pill-item-padding-x);
+  --segmented-control-item-bg-active: var(--segmented-control-pill-item-bg-active);
+  --segmented-control-item-text-active: var(--segmented-control-pill-item-text-active);
+  --segmented-control-item-font-size: var(--segmented-control-pill-item-font-size);
+  --segmented-control-item-font-weight: var(--segmented-control-pill-item-font-weight);
+  border-width: var(--segmented-control-pill-border-width);
+}
+
+.maxa-segmented-control--medium-label{--segmented-control-pill-item-font-weight:var(--font-weight-medium)}
+.maxa-segmented-control--semibold-label{--segmented-control-pill-item-font-weight:var(--font-weight-semibold)}

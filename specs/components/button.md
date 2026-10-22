@@ -50,6 +50,13 @@ The Figma v3 master (`11020:118515`) is the current design source of truth. Figm
 - **Hover/active border:** `--button-outline-border-hover` / `--button-outline-border-active` → `border/neutral-muted`
 - **Text:** `--button-outline-text` → `text/primary`
 
+### `destructive-outline`
+
+- **Use when:** A destructive supporting action beside a primary action, before confirmation.
+- Surface background, error text/icons, subtle error border; error surface hover and muted active background.
+- Shares Button size, focus, disabled, and loading behavior. Filled `destructive` remains unchanged.
+- All colors use `--button-destructive-outline-*` tokens; do not recreate this treatment in host CSS.
+
 ### `ghost`
 
 - **Use when:** Inline actions, toolbar buttons, icon actions in dense UI.
@@ -272,3 +279,7 @@ Figma v3 has 336 variants. Dropdown, Icon Left, and Icon Right are no longer var
 - Token JSON: `packages/tokens/figma/component-button.json`
 - Figma collection: `Component-based` / `Default` → `Button/*`
 - React component: `packages/ui/src/components/button/` (reference pattern)
+
+## Inverse surfaces
+
+`colorScheme="inverse"` supports `ghost` and `outline` controls on dark host surfaces. Text and icons remain on-color white in both themes. `hasBackground` adds the dark navigation surface. Hover and active use subtle on-color overlays; disabled keeps the shared opacity contract. Apply the prop to individual Buttons, never to a header-wide selector or a dropdown portal.

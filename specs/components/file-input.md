@@ -100,3 +100,15 @@ button maps to `--color-action-primary` (blue) with `--color-text-inverse` label
 - Tokens: `packages/tokens/src/component-file-input.css`
 - Tests: `packages/ui/src/components/file-input/file-input.test.tsx`
 - Docs: `apps/docs/app/docs/components/file-input/page.tsx`
+
+
+## Shared field label weight
+
+Field labels use Medium (500) at every size. Input and the shared FormField shell
+reference `--input-label-font-weight`; FileInput references
+`--file-input-label-font-weight`. Both component tokens resolve to
+`--font-weight-medium`. Product forms must not override label weight.
+
+Required markers use `--input-required-text` (Input/shared FormField) or
+`--file-input-required-text` (FileInput), both resolving to the semantic
+`--color-feedback-error-action`. Error message colors remain independent.

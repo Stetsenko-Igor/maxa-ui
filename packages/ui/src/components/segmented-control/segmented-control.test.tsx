@@ -37,6 +37,23 @@ describe("SegmentedControl", () => {
     expect(onValueChange).toHaveBeenCalledWith("right")
   })
 
+  it("supports the pill variant without changing selection or disabled behavior", () => {
+    const onValueChange = vi.fn()
+    render(
+      <SegmentedControl variant="pill" defaultValue="all" onValueChange={onValueChange} aria-label="Request status">
+        <SegmentedControlItem value="all">All</SegmentedControlItem>
+        <SegmentedControlItem value="requested">Requested</SegmentedControlItem>
+        <SegmentedControlItem value="cancelled" disabled>Cancelled</SegmentedControlItem>
+      </SegmentedControl>,
+    )
+    expect(screen.getByRole("group", { name: "Request status" })).toHaveClass("maxa-segmented-control--pill")
+    fireEvent.click(screen.getByRole("button", { name: "Requested" }))
+    expect(screen.getByRole("button", { name: "Requested" })).toHaveAttribute("aria-pressed", "true")
+    fireEvent.click(screen.getByRole("button", { name: "Cancelled" }))
+    expect(onValueChange).toHaveBeenCalledTimes(1)
+    expect(onValueChange).toHaveBeenCalledWith("requested")
+  })
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <SegmentedControl defaultValue="left" aria-label="Alignment">

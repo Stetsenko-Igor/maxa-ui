@@ -31,3 +31,8 @@ Dialog presents a modal surface for focused decisions, short forms, and containe
 ## Accessibility
 
 Content uses `role="dialog"`, `aria-modal`, and title/description wiring. Trigger text must clearly name the action.
+
+
+## Shared composition options
+
+DialogBody scrollable enables min-height:0 and overflow:auto without product selectors targeting its internals.

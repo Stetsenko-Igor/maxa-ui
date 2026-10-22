@@ -331,3 +331,37 @@
   width: var(--button-size-lg-icon-size);
   height: var(--button-size-lg-icon-size);
 }
+
+/* Lower emphasis destructive actions retain the shared button geometry/states. */
+.maxa-button--destructive-outline {
+  --button-fg-current: var(--button-destructive-outline-fg);
+  background-color: var(--button-destructive-outline-bg);
+  color: var(--button-destructive-outline-text);
+  border-color: var(--button-destructive-outline-border);
+}
+.maxa-button--destructive-outline:hover {
+  background-color: var(--button-destructive-outline-bg-hover);
+  border-color: var(--button-destructive-outline-border-hover);
+}
+.maxa-button--destructive-outline:active {
+  background-color: var(--button-destructive-outline-bg-active);
+}
+
+/* Scope inverse treatment to the actual control, never its host or portal. */
+.maxa-button--inverse.maxa-button--ghost,
+.maxa-button--inverse.maxa-button--outline {
+  --button-fg-current: var(--button-inverse-fg);
+  color: var(--button-inverse-text);
+}
+.maxa-button--inverse.maxa-button--outline {
+  border-color: var(--button-inverse-border);
+}
+.maxa-button--inverse.maxa-button--has-background:is(.maxa-button--ghost, .maxa-button--outline) {
+  background-color: var(--button-inverse-bg-surface);
+}
+.maxa-button--inverse:is(.maxa-button--ghost, .maxa-button--outline):hover {
+  background-color: var(--button-inverse-bg-hover);
+}
+.maxa-button--inverse:is(.maxa-button--ghost, .maxa-button--outline):active {
+  background-color: var(--button-inverse-bg-active);
+}
