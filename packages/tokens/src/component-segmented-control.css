@@ -1,7 +1,7 @@
 /* Segmented Control component tokens */
 
 :root {
-  --segmented-control-bg: var(--color-bg-muted);
+  --segmented-control-bg: var(--color-action-neutral-control);
   --segmented-control-border: var(--color-border-secondary);
   --segmented-control-radius: var(--radius-md);
   --segmented-control-padding: var(--spacing-1);
@@ -16,6 +16,19 @@
   --segmented-control-item-padding-x: var(--spacing-4);
   --segmented-control-item-font-size: var(--text-sm);
   --segmented-control-item-font-weight: var(--font-weight-medium);
+
+  /* Pill variant matches the heading status switcher in Layout / Structure. */
+  --segmented-control-pill-border-width: 0px;
+  --segmented-control-pill-radius: var(--radius-full);
+  --segmented-control-pill-padding: var(--spacing-1);
+  --segmented-control-pill-gap: var(--spacing-2);
+  --segmented-control-pill-item-radius: var(--radius-full);
+  --segmented-control-pill-item-height: calc(var(--spacing-7) + var(--spacing-xxs));
+  --segmented-control-pill-item-padding-x: var(--spacing-3);
+  --segmented-control-pill-item-bg-active: var(--color-bg-surface);
+  --segmented-control-pill-item-text-active: var(--color-text-secondary);
+  --segmented-control-pill-item-font-size: var(--text-sm);
+  --segmented-control-pill-item-font-weight: var(--font-weight-semibold);
 }
 
 [data-theme="dark"] {

@@ -10,7 +10,7 @@
   --toggle-label-gap:                8px;
   --toggle-label-icon-gap:           4px;
   --toggle-description-gap:          2px;
-  --toggle-content-padding-y:        3px;
+  --toggle-content-padding-y:        0;
 
   /* ── Track ─────────────────────────────────────────────────────── */
   --toggle-track-width:      36px;

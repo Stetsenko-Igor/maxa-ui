@@ -650,6 +650,20 @@
     ],
     "background": [
       {
+        "name": "--color-bg-on-color-hover",
+        "lightValue": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
+        "darkValue": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
+        "lightHex": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
+        "darkHex": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)"
+      },
+      {
+        "name": "--color-bg-on-color-active",
+        "lightValue": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
+        "darkValue": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
+        "lightHex": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
+        "darkHex": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)"
+      },
+      {
         "name": "--color-bg-page",
         "lightValue": "var(--color-neutral-75)",
         "darkValue": "var(--color-neutral-950)",
@@ -923,6 +937,27 @@
         "darkValue": "var(--color-blue-900)",
         "lightHex": "#badbfb",
         "darkHex": "#092f54"
+      },
+      {
+        "name": "--color-action-neutral-control",
+        "lightValue": "var(--color-gray-200)",
+        "darkValue": "var(--color-neutral-800)",
+        "lightHex": "#e5e7eb",
+        "darkHex": "#444445"
+      },
+      {
+        "name": "--color-action-neutral-control-hover",
+        "lightValue": "var(--color-gray-300)",
+        "darkValue": "var(--color-neutral-700)",
+        "lightHex": "#d1d5db",
+        "darkHex": "#6b6b6d"
+      },
+      {
+        "name": "--color-action-neutral-control-active",
+        "lightValue": "var(--color-gray-400)",
+        "darkValue": "var(--color-neutral-600)",
+        "lightHex": "#9ca3af",
+        "darkHex": "#8c8c8e"
       },
       {
         "name": "--color-action-neutral",

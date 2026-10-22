@@ -1401,6 +1401,9 @@ describe("figma component-based button tokens", () => {
       "disabled",
       "size",
       "font-family",
+      // Added with the Figma v3 button alignment: a bordered destructive action
+      // for rows and toolbars where a filled destructive button is too loud.
+      "destructive-outline",
     ])
 
     expect(lightFile.Button["focus-ring"]["inner-width"].$value).toBe(2)

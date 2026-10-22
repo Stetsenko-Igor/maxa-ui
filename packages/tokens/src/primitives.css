@@ -101,6 +101,8 @@
   --color-neutral-alpha-ink-50: #1b1a1a80;
   --color-neutral-alpha-black-72: #000000b8;
   --color-neutral-alpha-white-45: #ffffff73;
+  --color-neutral-alpha-white-10: #ffffff1a;
+  --color-neutral-alpha-white-20: #ffffff33;
 
   /* ── Extended decorative palette — Tailwind v4 defaults ─────────── */
   /* Used by Badge/Tag appearance prop for user-defined color labels.   */

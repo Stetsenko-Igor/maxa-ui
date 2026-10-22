@@ -17,12 +17,12 @@
     },
     "trigger-bg": {
       "$description": "Tabs: trigger bg.",
-      "$value": "var(--color-action-neutral-subtle)",
+      "$value": "var(--color-action-neutral-control)",
       "$type": "color"
     },
     "trigger-bg-hover": {
       "$description": "Tabs: trigger bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "var(--color-action-neutral-control-hover)",
       "$type": "color"
     },
     "trigger-bg-active": {

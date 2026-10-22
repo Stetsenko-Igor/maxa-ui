@@ -67,4 +67,8 @@
   --select-option-bg-selected-hover: var(--dropdown-menu-item-bg-active);
   --select-option-check: var(--color-fg-primary);
   --select-option-check-size: 16px;
+  --select-option-description-font-size: var(--text-caption-sm);
+  --select-option-description-line-height: var(--text-caption-sm--line-height);
+  --select-option-description-color: var(--color-text-tertiary);
+  --select-rich-content-padding-start: var(--spacing-sm);
 }

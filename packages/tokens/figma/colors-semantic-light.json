@@ -330,6 +330,21 @@
       "$description": "Low-emphasis warning action fill, active state.",
       "$value": "{Colors.Yellow.100}",
       "$type": "color"
+    },
+    "action-neutral-control": {
+      "$description": "Cold neutral interactive control surface.",
+      "$value": "{Colors.Gray.200}",
+      "$type": "color"
+    },
+    "action-neutral-control-hover": {
+      "$description": "Cold neutral interactive control surface hover.",
+      "$value": "{Colors.Gray.300}",
+      "$type": "color"
+    },
+    "action-neutral-control-active": {
+      "$description": "Cold neutral interactive control surface active.",
+      "$value": "{Colors.Gray.400}",
+      "$type": "color"
     }
   },
   "foreground": {
@@ -568,6 +583,16 @@
     "bg-error-muted": {
       "$description": "Slightly stronger error fill.",
       "$value": "{Colors.Red.100}",
+      "$type": "color"
+    },
+    "bg-on-color-hover": {
+      "$description": "Hover wash over saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
+      "$value": "{Colors.Neutral (alpha).White.10}",
+      "$type": "color"
+    },
+    "bg-on-color-active": {
+      "$description": "Pressed wash over saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
+      "$value": "{Colors.Neutral (alpha).White.20}",
       "$type": "color"
     }
   },

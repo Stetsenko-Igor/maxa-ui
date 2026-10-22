@@ -40,17 +40,17 @@
     "secondary": {
       "bg": {
         "$description": "Button, secondary: background.",
-        "$value": "{Color modes/action/action-neutral}",
+        "$value": "{Color modes/action/action-neutral-control}",
         "$type": "color"
       },
       "bg-hover": {
         "$description": "Button, secondary: background (hover state).",
-        "$value": "{Color modes/action/action-neutral-hover}",
+        "$value": "{Color modes/action/action-neutral-control-hover}",
         "$type": "color"
       },
       "bg-active": {
         "$description": "Button, secondary: background (active state).",
-        "$value": "{Color modes/action/action-neutral-active}",
+        "$value": "{Color modes/action/action-neutral-control-active}",
         "$type": "color"
       },
       "text": {
@@ -70,12 +70,12 @@
       },
       "border": {
         "$description": "Button, secondary: border.",
-        "$value": "{Color modes/action/action-neutral}",
+        "$value": "{Color modes/action/action-neutral-control}",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Button, secondary: border (hover state).",
-        "$value": "{Color modes/action/action-neutral-hover}",
+        "$value": "{Color modes/action/action-neutral-control-hover}",
         "$type": "color"
       }
     },
@@ -554,6 +554,43 @@
       "$description": "Button: font family.",
       "$value": "{Typography/Font family/body}",
       "$type": "string"
+    },
+    "destructive-outline": {
+      "bg": {
+        "$description": "Button, destructive outline: bg.",
+        "$value": "{Color modes/background/bg-surface}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$description": "Button, destructive outline: bg-hover.",
+        "$value": "{Color modes/background/bg-error-surface}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$description": "Button, destructive outline: bg-active.",
+        "$value": "{Color modes/background/bg-error-muted}",
+        "$type": "color"
+      },
+      "text": {
+        "$description": "Button, destructive outline: text.",
+        "$value": "{Color modes/text/text-error}",
+        "$type": "color"
+      },
+      "fg": {
+        "$description": "Button, destructive outline: fg.",
+        "$value": "{Color modes/text/text-error}",
+        "$type": "color"
+      },
+      "border": {
+        "$description": "Button, destructive outline: border.",
+        "$value": "{Color modes/border/border-error-subtle}",
+        "$type": "color"
+      },
+      "border-hover": {
+        "$description": "Button, destructive outline: border-hover.",
+        "$value": "{Color modes/border/border-error-strong}",
+        "$type": "color"
+      }
     }
   }
 }

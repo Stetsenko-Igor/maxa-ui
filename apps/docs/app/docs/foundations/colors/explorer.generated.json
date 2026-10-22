@@ -3939,6 +3939,202 @@
       ]
     },
     {
+      "name": "--button-destructive-outline-bg",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-bg-surface)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-bg-surface"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-surface)",
+        "resolved": "#2a2a2b",
+        "references": [
+          "--color-bg-surface"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-bg-active",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-bg-error-muted)",
+        "resolved": "#ffe1df",
+        "references": [
+          "--color-bg-error-muted"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-error-muted)",
+        "resolved": "#5c100e",
+        "references": [
+          "--color-bg-error-muted"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline:active",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-bg-hover",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-bg-error-surface)",
+        "resolved": "#fff1f0",
+        "references": [
+          "--color-bg-error-surface"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-error-surface)",
+        "resolved": "#360806",
+        "references": [
+          "--color-bg-error-surface"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline:hover",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-border",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-border-error-subtle)",
+        "resolved": "#ffc3bf",
+        "references": [
+          "--color-border-error-subtle"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-border-error-subtle)",
+        "resolved": "#ffc3bf",
+        "references": [
+          "--color-border-error-subtle"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline",
+          "property": "border-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-border-hover",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-border-error-strong)",
+        "resolved": "#d31510",
+        "references": [
+          "--color-border-error-strong"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-border-error-strong)",
+        "resolved": "#ea514b",
+        "references": [
+          "--color-border-error-strong"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline:hover",
+          "property": "border-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-fg",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-error)",
+        "resolved": "#5c100e",
+        "references": [
+          "--color-text-error"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-error)",
+        "resolved": "#fa908b",
+        "references": [
+          "--color-text-error"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline",
+          "property": "--button-fg-current"
+        }
+      ]
+    },
+    {
+      "name": "--button-destructive-outline-text",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-error)",
+        "resolved": "#5c100e",
+        "references": [
+          "--color-text-error"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-error)",
+        "resolved": "#fa908b",
+        "references": [
+          "--color-text-error"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--destructive-outline",
+          "property": "color"
+        }
+      ]
+    },
+    {
       "name": "--button-destructive-text",
       "layer": "component",
       "group": "button",
@@ -4240,6 +4436,174 @@
         {
           "component": "button",
           "selector": ".maxa-button--ghost",
+          "property": "color"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-bg-active",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": false,
+      "light": {
+        "raw": "var(--color-bg-on-color-active)",
+        "resolved": null,
+        "references": [
+          "--color-bg-on-color-active"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-on-color-active)",
+        "resolved": null,
+        "references": [
+          "--color-bg-on-color-active"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse:is(.maxa-button--ghost, .maxa-button--outline):active",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-bg-hover",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": false,
+      "light": {
+        "raw": "var(--color-bg-on-color-hover)",
+        "resolved": null,
+        "references": [
+          "--color-bg-on-color-hover"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-on-color-hover)",
+        "resolved": null,
+        "references": [
+          "--color-bg-on-color-hover"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse:is(.maxa-button--ghost, .maxa-button--outline):hover",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-bg-surface",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-bg-overlay-strong)",
+        "resolved": "#1b1a1a80",
+        "references": [
+          "--color-bg-overlay-strong"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-overlay-strong)",
+        "resolved": "#000000b8",
+        "references": [
+          "--color-bg-overlay-strong"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse.maxa-button--has-background:is(.maxa-button--ghost, .maxa-button--outline)",
+          "property": "background-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-border",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-fg-on-inverse-muted)",
+        "resolved": "#ffffff73",
+        "references": [
+          "--color-fg-on-inverse-muted"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-fg-on-inverse-muted)",
+        "resolved": "#ffffff73",
+        "references": [
+          "--color-fg-on-inverse-muted"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse.maxa-button--outline",
+          "property": "border-color"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-fg",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-fg-on-color)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-fg-on-color"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-fg-on-color)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-fg-on-color"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse.maxa-button--ghost, .maxa-button--inverse.maxa-button--outline",
+          "property": "--button-fg-current"
+        }
+      ]
+    },
+    {
+      "name": "--button-inverse-text",
+      "layer": "component",
+      "group": "button",
+      "source": "packages/tokens/src/component-button.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-on-color)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-text-on-color"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-on-color)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-text-on-color"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "button",
+          "selector": ".maxa-button--inverse.maxa-button--ghost, .maxa-button--inverse.maxa-button--outline",
           "property": "color"
         }
       ]
@@ -5161,17 +5525,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral)",
-        "resolved": "#e4e4e4",
+        "raw": "var(--color-action-neutral-control)",
+        "resolved": "#e5e7eb",
         "references": [
-          "--color-action-neutral"
+          "--color-action-neutral-control"
         ]
       },
       "dark": {
-        "raw": "var(--color-action-neutral)",
+        "raw": "var(--color-action-neutral-control)",
         "resolved": "#444445",
         "references": [
-          "--color-action-neutral"
+          "--color-action-neutral-control"
         ]
       },
       "consumers": [
@@ -5189,17 +5553,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral-active)",
-        "resolved": "#c9c9c9",
+        "raw": "var(--color-action-neutral-control-active)",
+        "resolved": "#9ca3af",
         "references": [
-          "--color-action-neutral-active"
+          "--color-action-neutral-control-active"
         ]
       },
       "dark": {
-        "raw": "var(--color-action-neutral-active)",
+        "raw": "var(--color-action-neutral-control-active)",
         "resolved": "#8c8c8e",
         "references": [
-          "--color-action-neutral-active"
+          "--color-action-neutral-control-active"
         ]
       },
       "consumers": [
@@ -5217,17 +5581,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral-hover)",
-        "resolved": "#d7d5d5",
+        "raw": "var(--color-action-neutral-control-hover)",
+        "resolved": "#d1d5db",
         "references": [
-          "--color-action-neutral-hover"
+          "--color-action-neutral-control-hover"
         ]
       },
       "dark": {
-        "raw": "var(--color-action-neutral-hover)",
+        "raw": "var(--color-action-neutral-control-hover)",
         "resolved": "#6b6b6d",
         "references": [
-          "--color-action-neutral-hover"
+          "--color-action-neutral-control-hover"
         ]
       },
       "consumers": [
@@ -5245,17 +5609,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral)",
-        "resolved": "#e4e4e4",
+        "raw": "var(--color-action-neutral-control)",
+        "resolved": "#e5e7eb",
         "references": [
-          "--color-action-neutral"
+          "--color-action-neutral-control"
         ]
       },
       "dark": {
-        "raw": "var(--color-action-neutral)",
+        "raw": "var(--color-action-neutral-control)",
         "resolved": "#444445",
         "references": [
-          "--color-action-neutral"
+          "--color-action-neutral-control"
         ]
       },
       "consumers": [
@@ -5273,17 +5637,17 @@
       "source": "packages/tokens/src/component-button.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral-hover)",
-        "resolved": "#d7d5d5",
+        "raw": "var(--color-action-neutral-control-hover)",
+        "resolved": "#d1d5db",
         "references": [
-          "--color-action-neutral-hover"
+          "--color-action-neutral-control-hover"
         ]
       },
       "dark": {
-        "raw": "var(--color-action-neutral-hover)",
+        "raw": "var(--color-action-neutral-control-hover)",
         "resolved": "#6b6b6d",
         "references": [
-          "--color-action-neutral-hover"
+          "--color-action-neutral-control-hover"
         ]
       },
       "consumers": [
@@ -9623,6 +9987,72 @@
       "consumers": []
     },
     {
+      "name": "--color-action-neutral-control",
+      "layer": "semantic",
+      "group": "action",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-gray-200)",
+        "resolved": "#e5e7eb",
+        "references": [
+          "--color-gray-200"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-neutral-800)",
+        "resolved": "#444445",
+        "references": [
+          "--color-neutral-800"
+        ]
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-action-neutral-control-active",
+      "layer": "semantic",
+      "group": "action",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-gray-400)",
+        "resolved": "#9ca3af",
+        "references": [
+          "--color-gray-400"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-neutral-600)",
+        "resolved": "#8c8c8e",
+        "references": [
+          "--color-neutral-600"
+        ]
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-action-neutral-control-hover",
+      "layer": "semantic",
+      "group": "action",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-gray-300)",
+        "resolved": "#d1d5db",
+        "references": [
+          "--color-gray-300"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-neutral-700)",
+        "resolved": "#6b6b6d",
+        "references": [
+          "--color-neutral-700"
+        ]
+      },
+      "consumers": []
+    },
+    {
       "name": "--color-action-neutral-hover",
       "layer": "semantic",
       "group": "action",
@@ -11462,6 +11892,50 @@
         "resolved": "#232324",
         "references": [
           "--color-neutral-925"
+        ]
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-bg-on-color-active",
+      "layer": "semantic",
+      "group": "background",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
+        "resolved": null,
+        "references": [
+          "--color-text-on-color"
+        ]
+      },
+      "dark": {
+        "raw": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
+        "resolved": null,
+        "references": [
+          "--color-text-on-color"
+        ]
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-bg-on-color-hover",
+      "layer": "semantic",
+      "group": "background",
+      "source": "packages/tokens/src/semantic.css",
+      "color": true,
+      "light": {
+        "raw": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
+        "resolved": null,
+        "references": [
+          "--color-text-on-color"
+        ]
+      },
+      "dark": {
+        "raw": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
+        "resolved": null,
+        "references": [
+          "--color-text-on-color"
         ]
       },
       "consumers": []
@@ -19004,8 +19478,18 @@
           "property": "color"
         },
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__empty",
+          "property": "color"
+        },
+        {
           "component": "date-picker",
           "selector": ".maxa-date-picker__time-label",
+          "property": "color"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--stacked .maxa-table__cell::before",
           "property": "color"
         }
       ]
@@ -19103,6 +19587,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "breadcrumb",
+          "selector": ".maxa-breadcrumb--muted",
+          "property": "--breadcrumb-text"
+        },
         {
           "component": "pagination",
           "selector": ".maxa-pagination__ellipsis",
@@ -24438,7 +24927,7 @@
       "consumers": [
         {
           "component": "dropdown-menu",
-          "selector": ".maxa-dropdown-menu__item--destructive[data-highlighted]",
+          "selector": ".maxa-dropdown-menu__item--destructive:hover, .maxa-dropdown-menu__item--destructive[data-state=\"open\"], .maxa-dropdown-menu__item--destructive[data-highlighted], .maxa-dropdown-menu__item--destructive[data-highlighted]:active",
           "property": "background-color"
         }
       ]
@@ -24741,6 +25230,11 @@
         {
           "component": "dropdown-menu",
           "selector": ".maxa-dropdown-menu__item--destructive",
+          "property": "color"
+        },
+        {
+          "component": "dropdown-menu",
+          "selector": ".maxa-dropdown-menu__item--destructive:hover, .maxa-dropdown-menu__item--destructive[data-state=\"open\"], .maxa-dropdown-menu__item--destructive[data-highlighted], .maxa-dropdown-menu__item--destructive[data-highlighted]:active",
           "property": "color"
         }
       ]
@@ -26857,17 +27351,17 @@
       "source": "packages/tokens/src/component-file-input.css",
       "color": false,
       "light": {
-        "raw": "var(--font-weight-semibold)",
-        "resolved": "600",
+        "raw": "var(--font-weight-medium)",
+        "resolved": "500",
         "references": [
-          "--font-weight-semibold"
+          "--font-weight-medium"
         ]
       },
       "dark": {
-        "raw": "var(--font-weight-semibold)",
-        "resolved": "600",
+        "raw": "var(--font-weight-medium)",
+        "resolved": "500",
         "references": [
-          "--font-weight-semibold"
+          "--font-weight-medium"
         ]
       },
       "consumers": [
@@ -27377,17 +27871,17 @@
       "source": "packages/tokens/src/component-file-input.css",
       "color": true,
       "light": {
-        "raw": "var(--color-text-error)",
-        "resolved": "#5c100e",
+        "raw": "var(--color-feedback-error-action)",
+        "resolved": "#d31510",
         "references": [
-          "--color-text-error"
+          "--color-feedback-error-action"
         ]
       },
       "dark": {
-        "raw": "var(--color-text-error)",
-        "resolved": "#fa908b",
+        "raw": "var(--color-feedback-error-action)",
+        "resolved": "#ea514b",
         "references": [
-          "--color-text-error"
+          "--color-feedback-error-action"
         ]
       },
       "consumers": [
@@ -27761,9 +28255,9 @@
           "property": "font-weight"
         },
         {
-          "component": "form-field",
-          "selector": ".maxa-form-field__label",
-          "property": "font-weight"
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--medium-label",
+          "property": "--segmented-control-pill-item-font-weight"
         },
         {
           "component": "toast",
@@ -27814,6 +28308,11 @@
       },
       "consumers": [
         {
+          "component": "breadcrumb",
+          "selector": ".maxa-breadcrumb--muted .maxa-breadcrumb__page",
+          "property": "font-weight"
+        },
+        {
           "component": "calendar",
           "selector": ".maxa-calendar__weekday",
           "property": "font-weight"
@@ -27847,6 +28346,11 @@
           "component": "input",
           "selector": ".maxa-input__required",
           "property": "font-weight"
+        },
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--semibold-label",
+          "property": "--segmented-control-pill-item-font-weight"
         }
       ]
     },
@@ -28011,17 +28515,17 @@
       "source": "packages/tokens/src/component-input.css",
       "color": true,
       "light": {
-        "raw": "var(--color-border-secondary)",
-        "resolved": "#ededed",
+        "raw": "var(--color-border-neutral-muted)",
+        "resolved": "#d7d5d5",
         "references": [
-          "--color-border-secondary"
+          "--color-border-neutral-muted"
         ]
       },
       "dark": {
-        "raw": "var(--color-border-secondary)",
-        "resolved": "#6b6b6d",
+        "raw": "var(--color-border-neutral-muted)",
+        "resolved": "#8c8c8e",
         "references": [
-          "--color-border-secondary"
+          "--color-border-neutral-muted"
         ]
       },
       "consumers": [
@@ -28320,16 +28824,6 @@
         ]
       },
       "consumers": [
-        {
-          "component": "form-field",
-          "selector": ".maxa-form-field__required",
-          "property": "color"
-        },
-        {
-          "component": "input",
-          "selector": ".maxa-input__required",
-          "property": "color"
-        },
         {
           "component": "input",
           "selector": ".maxa-input-wrapper--error .maxa-input__input",
@@ -28834,20 +29328,25 @@
       "source": "packages/tokens/src/component-input.css",
       "color": false,
       "light": {
-        "raw": "var(--font-weight-semibold)",
-        "resolved": "600",
+        "raw": "var(--font-weight-medium)",
+        "resolved": "500",
         "references": [
-          "--font-weight-semibold"
+          "--font-weight-medium"
         ]
       },
       "dark": {
-        "raw": "var(--font-weight-semibold)",
-        "resolved": "600",
+        "raw": "var(--font-weight-medium)",
+        "resolved": "500",
         "references": [
-          "--font-weight-semibold"
+          "--font-weight-medium"
         ]
       },
       "consumers": [
+        {
+          "component": "form-field",
+          "selector": ".maxa-form-field__label",
+          "property": "font-weight"
+        },
         {
           "component": "input",
           "selector": ".maxa-input__label",
@@ -29031,6 +29530,39 @@
         {
           "component": "input",
           "selector": ".maxa-input-wrapper--readonly .maxa-input__input",
+          "property": "color"
+        }
+      ]
+    },
+    {
+      "name": "--input-required-text",
+      "layer": "component",
+      "group": "input",
+      "source": "packages/tokens/src/component-input.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-feedback-error-action)",
+        "resolved": "#d31510",
+        "references": [
+          "--color-feedback-error-action"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-feedback-error-action)",
+        "resolved": "#ea514b",
+        "references": [
+          "--color-feedback-error-action"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "form-field",
+          "selector": ".maxa-form-field__required",
+          "property": "color"
+        },
+        {
+          "component": "input",
+          "selector": ".maxa-input__required",
           "property": "color"
         }
       ]
@@ -31204,14 +31736,14 @@
       "color": true,
       "light": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#ededed",
+        "resolved": "#d7d5d5",
         "references": [
           "--input-border-hover"
         ]
       },
       "dark": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#6b6b6d",
+        "resolved": "#8c8c8e",
         "references": [
           "--input-border-hover"
         ]
@@ -34176,10 +34708,10 @@
       "source": "packages/tokens/src/component-segmented-control.css",
       "color": true,
       "light": {
-        "raw": "var(--color-bg-muted)",
-        "resolved": "#f4f3f3",
+        "raw": "var(--color-action-neutral-control)",
+        "resolved": "#e5e7eb",
         "references": [
-          "--color-bg-muted"
+          "--color-action-neutral-control"
         ]
       },
       "dark": {
@@ -34558,6 +35090,312 @@
       ]
     },
     {
+      "name": "--segmented-control-pill-border-width",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "0px",
+        "resolved": "0px",
+        "references": []
+      },
+      "dark": {
+        "raw": "0px",
+        "resolved": "0px",
+        "references": []
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "border-width"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-gap",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--spacing-2)",
+        "resolved": "8px",
+        "references": [
+          "--spacing-2"
+        ]
+      },
+      "dark": {
+        "raw": "var(--spacing-2)",
+        "resolved": "8px",
+        "references": [
+          "--spacing-2"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-gap"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-bg-active",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-bg-surface)",
+        "resolved": "#ffffff",
+        "references": [
+          "--color-bg-surface"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-bg-surface)",
+        "resolved": "#2a2a2b",
+        "references": [
+          "--color-bg-surface"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-bg-active"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-font-size",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--text-sm)",
+        "resolved": "12px",
+        "references": [
+          "--text-sm"
+        ]
+      },
+      "dark": {
+        "raw": "var(--text-sm)",
+        "resolved": "12px",
+        "references": [
+          "--text-sm"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-font-size"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-font-weight",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--font-weight-semibold)",
+        "resolved": "600",
+        "references": [
+          "--font-weight-semibold"
+        ]
+      },
+      "dark": {
+        "raw": "var(--font-weight-semibold)",
+        "resolved": "600",
+        "references": [
+          "--font-weight-semibold"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-font-weight"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-height",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "calc(var(--spacing-7) + var(--spacing-xxs))",
+        "resolved": null,
+        "references": [
+          "--spacing-7",
+          "--spacing-xxs"
+        ]
+      },
+      "dark": {
+        "raw": "calc(var(--spacing-7) + var(--spacing-xxs))",
+        "resolved": null,
+        "references": [
+          "--spacing-7",
+          "--spacing-xxs"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-height"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-padding-x",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--spacing-3)",
+        "resolved": "12px",
+        "references": [
+          "--spacing-3"
+        ]
+      },
+      "dark": {
+        "raw": "var(--spacing-3)",
+        "resolved": "12px",
+        "references": [
+          "--spacing-3"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-padding-x"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-radius",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--radius-full)",
+        "resolved": "9999px",
+        "references": [
+          "--radius-full"
+        ]
+      },
+      "dark": {
+        "raw": "var(--radius-full)",
+        "resolved": "9999px",
+        "references": [
+          "--radius-full"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-radius"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-item-text-active",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-secondary)",
+        "resolved": "#444445",
+        "references": [
+          "--color-text-secondary"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-secondary)",
+        "resolved": "#ededed",
+        "references": [
+          "--color-text-secondary"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-item-text-active"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-padding",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--spacing-1)",
+        "resolved": "4px",
+        "references": [
+          "--spacing-1"
+        ]
+      },
+      "dark": {
+        "raw": "var(--spacing-1)",
+        "resolved": "4px",
+        "references": [
+          "--spacing-1"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-padding"
+        }
+      ]
+    },
+    {
+      "name": "--segmented-control-pill-radius",
+      "layer": "component",
+      "group": "segmented-control",
+      "source": "packages/tokens/src/component-segmented-control.css",
+      "color": false,
+      "light": {
+        "raw": "var(--radius-full)",
+        "resolved": "9999px",
+        "references": [
+          "--radius-full"
+        ]
+      },
+      "dark": {
+        "raw": "var(--radius-full)",
+        "resolved": "9999px",
+        "references": [
+          "--radius-full"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "segmented-control",
+          "selector": ".maxa-segmented-control--pill",
+          "property": "--segmented-control-radius"
+        }
+      ]
+    },
+    {
       "name": "--segmented-control-radius",
       "layer": "component",
       "group": "segmented-control",
@@ -34682,14 +35520,14 @@
       "color": true,
       "light": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#ededed",
+        "resolved": "#d7d5d5",
         "references": [
           "--input-border-hover"
         ]
       },
       "dark": {
         "raw": "var(--input-border-hover)",
-        "resolved": "#6b6b6d",
+        "resolved": "#8c8c8e",
         "references": [
           "--input-border-hover"
         ]
@@ -34920,6 +35758,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "font-family"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__field",
           "property": "font-family"
@@ -34981,6 +35824,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__caret",
+          "property": "color"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__chevron",
           "property": "color"
@@ -35008,6 +35856,16 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox--lg .maxa-combobox__caret",
+          "property": "width"
+        },
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox--lg .maxa-combobox__caret",
+          "property": "height"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__field--lg .maxa-select__chevron",
@@ -35042,6 +35900,16 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__caret",
+          "property": "width"
+        },
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__caret",
+          "property": "height"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__chevron",
           "property": "width"
@@ -35074,6 +35942,16 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox--sm .maxa-combobox__caret",
+          "property": "width"
+        },
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox--sm .maxa-combobox__caret",
+          "property": "height"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__field--sm .maxa-select__chevron",
@@ -35108,6 +35986,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "background"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__listbox",
           "property": "background-color"
@@ -35136,6 +36019,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "border"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__listbox",
           "property": "border"
@@ -35159,6 +36047,11 @@
         "references": []
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "max-height"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__listbox",
@@ -35212,6 +36105,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "top"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__listbox",
           "property": "top"
@@ -35239,6 +36137,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "padding-block"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__listbox",
@@ -35268,6 +36171,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "border-radius"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__listbox",
           "property": "border-radius"
@@ -35295,6 +36203,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "box-shadow"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__listbox",
@@ -35324,6 +36237,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__list",
+          "property": "z-index"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__listbox",
           "property": "z-index"
@@ -35351,6 +36269,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option--active",
+          "property": "background"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__option:hover, .maxa-select__option--highlighted",
@@ -35380,6 +36303,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option[aria-selected=true]",
+          "property": "background"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__option--selected",
           "property": "background-color"
@@ -35407,6 +36335,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option[aria-selected=true].maxa-combobox__option--active",
+          "property": "background"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__option--selected.maxa-select__option--highlighted",
@@ -35493,6 +36426,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "font-size"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__option",
           "property": "font-size"
@@ -35520,6 +36458,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "font-weight"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__option",
@@ -35577,6 +36520,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "min-height"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__option",
           "property": "min-height"
@@ -35604,6 +36552,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "line-height"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__option",
@@ -35633,6 +36586,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "padding"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__option",
           "property": "padding-inline"
@@ -35660,6 +36618,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "color"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__listbox",
@@ -35722,6 +36685,11 @@
       },
       "consumers": [
         {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option--active",
+          "property": "color"
+        },
+        {
           "component": "select",
           "selector": ".maxa-select__option:hover, .maxa-select__option--highlighted",
           "property": "color"
@@ -35749,6 +36717,11 @@
         ]
       },
       "consumers": [
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option[aria-selected=true]",
+          "property": "color"
+        },
         {
           "component": "select",
           "selector": ".maxa-select__option--selected",
@@ -38267,6 +39240,11 @@
           "component": "skeleton",
           "selector": ".maxa-skeleton--rect",
           "property": "min-height"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--stacked .maxa-table__cell",
+          "property": "gap"
         }
       ]
     },
@@ -38386,6 +39364,11 @@
           "property": "gap"
         },
         {
+          "component": "table",
+          "selector": ".maxa-table--stacked .maxa-table__row",
+          "property": "gap"
+        },
+        {
           "component": "toast",
           "selector": ".maxa-toast__action",
           "property": "padding-inline"
@@ -38484,6 +39467,11 @@
         {
           "component": "dialog",
           "selector": ".maxa-dialog__portal",
+          "property": "padding"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--stacked .maxa-table__row",
           "property": "padding"
         },
         {
@@ -38612,6 +39600,16 @@
           "component": "radio",
           "selector": ".maxa-radio__input",
           "property": "height"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--section-inset :is(.maxa-table__head,.maxa-table__cell):first-child",
+          "property": "padding-left"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--section-inset :is(.maxa-table__head,.maxa-table__cell):last-child",
+          "property": "padding-right"
         },
         {
           "component": "tag",
@@ -38970,6 +39968,11 @@
           "component": "button",
           "selector": ".maxa-button--xs.maxa-button--link",
           "property": "gap"
+        },
+        {
+          "component": "combobox",
+          "selector": ".maxa-combobox__option, .maxa-combobox__empty",
+          "property": "padding"
         }
       ]
     },
@@ -39506,6 +40509,11 @@
         {
           "component": "table",
           "selector": ".maxa-table__head, .maxa-table__cell",
+          "property": "border-bottom"
+        },
+        {
+          "component": "table",
+          "selector": ".maxa-table--stacked .maxa-table__row",
           "property": "border-bottom"
         }
       ]
@@ -41933,10 +42941,10 @@
       "source": "packages/tokens/src/component-tabs.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral-subtle)",
-        "resolved": "#f4f3f3",
+        "raw": "var(--color-action-neutral-control)",
+        "resolved": "#e5e7eb",
         "references": [
-          "--color-action-neutral-subtle"
+          "--color-action-neutral-control"
         ]
       },
       "dark": {
@@ -41989,10 +42997,10 @@
       "source": "packages/tokens/src/component-tabs.css",
       "color": true,
       "light": {
-        "raw": "var(--color-action-neutral-subtle-hover)",
-        "resolved": "#ededed",
+        "raw": "var(--color-action-neutral-control-hover)",
+        "resolved": "#d1d5db",
         "references": [
-          "--color-action-neutral-subtle-hover"
+          "--color-action-neutral-control-hover"
         ]
       },
       "dark": {
@@ -44639,13 +45647,13 @@
       "source": "packages/tokens/src/component-toggle.css",
       "color": false,
       "light": {
-        "raw": "3px",
-        "resolved": "3px",
+        "raw": "0",
+        "resolved": "0",
         "references": []
       },
       "dark": {
-        "raw": "3px",
-        "resolved": "3px",
+        "raw": "0",
+        "resolved": "0",
         "references": []
       },
       "consumers": [
@@ -45665,6 +46673,11 @@
         "references": []
       },
       "consumers": [
+        {
+          "component": "toggle",
+          "selector": ".maxa-toggle-field__side-label",
+          "property": "min-height"
+        },
         {
           "component": "toggle",
           "selector": ".maxa-toggle",

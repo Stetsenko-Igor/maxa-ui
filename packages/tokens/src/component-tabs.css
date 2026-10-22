@@ -4,8 +4,8 @@
   --tabs-list-bg: var(--color-bg-surface);
   --tabs-list-border: var(--color-border-secondary);
   --tabs-list-radius: var(--radius-sm);
-  --tabs-trigger-bg: var(--color-action-neutral-subtle);
-  --tabs-trigger-bg-hover: var(--color-action-neutral-subtle-hover);
+  --tabs-trigger-bg: var(--color-action-neutral-control);
+  --tabs-trigger-bg-hover: var(--color-action-neutral-control-hover);
   --tabs-trigger-bg-active: var(--color-bg-neutral-strong);
   --tabs-trigger-text: var(--color-text-secondary);
   --tabs-trigger-text-hover: var(--color-text-primary);

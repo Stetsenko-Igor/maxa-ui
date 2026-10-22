@@ -24,6 +24,8 @@
   --color-text-inverse: var(--color-base-white);
   --color-text-on-brand: var(--color-neutral-950);
   --color-text-on-color: var(--color-base-white);
+  --color-bg-on-color-hover: var(--color-neutral-alpha-white-10);
+  --color-bg-on-color-active: var(--color-neutral-alpha-white-20);
   --color-text-on-warning: var(--color-base-black);
   --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand: var(--color-brand-600);
@@ -120,6 +122,10 @@
   --color-action-primary-subtle: var(--color-blue-100);
   --color-action-primary-subtle-hover: var(--color-blue-150);
   --color-action-primary-subtle-active: var(--color-blue-200);
+  /* Cold neutral controls: secondary buttons, tabs and segmented controls. */
+  --color-action-neutral-control: var(--color-gray-200);
+  --color-action-neutral-control-hover: var(--color-gray-300);
+  --color-action-neutral-control-active: var(--color-gray-400);
   --color-action-neutral: var(--color-neutral-300);
   --color-action-neutral-hover: var(--color-neutral-400);
   --color-action-neutral-active: var(--color-neutral-450);
@@ -303,6 +309,8 @@
   --color-text-inverse: var(--color-neutral-900);
   --color-text-on-brand: var(--color-neutral-950);
   --color-text-on-color: var(--color-base-white);
+  --color-bg-on-color-hover: var(--color-neutral-alpha-white-10);
+  --color-bg-on-color-active: var(--color-neutral-alpha-white-20);
   --color-text-on-warning: var(--color-base-black);
   --color-text-on-neutral-action-active: var(--color-neutral-950);
   --color-text-brand: var(--color-brand-400);
@@ -393,6 +401,9 @@
   --color-action-primary-subtle: var(--color-blue-950);
   --color-action-primary-subtle-hover: var(--color-blue-950);
   --color-action-primary-subtle-active: var(--color-blue-900);
+  --color-action-neutral-control: var(--color-neutral-800);
+  --color-action-neutral-control-hover: var(--color-neutral-700);
+  --color-action-neutral-control-active: var(--color-neutral-600);
   --color-action-neutral: var(--color-neutral-800);
   --color-action-neutral-hover: var(--color-neutral-700);
   --color-action-neutral-active: var(--color-neutral-600);

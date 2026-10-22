@@ -7,7 +7,7 @@
   --input-text:             var(--color-text-primary);
   --input-placeholder:      var(--color-text-tertiary);
   --input-border:           var(--color-border-primary);
-  --input-border-hover:     var(--color-border-secondary);
+  --input-border-hover:     var(--color-border-neutral-muted);
   --input-border-focus:     var(--color-focus-ring);
   --input-focus-ring:       var(--color-focus-ring);
   --input-focus-ring-offset: 1px;
@@ -36,6 +36,7 @@
   --input-readonly-text:    var(--color-text-secondary);
 
   /* ── Label / hint ─────────────────────────────────────────────── */
+  --input-required-text:    var(--color-feedback-error-action);
   --input-label-text:       var(--color-text-secondary);
   --input-hint-text:        var(--color-text-tertiary);
   --input-label-gap:        var(--spacing-xs);
@@ -78,5 +79,5 @@
   /* ── Shared ───────────────────────────────────────────────────── */
   --input-font-family: var(--font-body);
   --input-font-weight: var(--font-weight-regular);
-  --input-label-font-weight: var(--font-weight-semibold);
+  --input-label-font-weight: var(--font-weight-medium);
 }

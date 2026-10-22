@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1748
+Total tokens: 1778
 
 ## Primitives
 
@@ -268,6 +268,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-text-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-text-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
+--color-bg-on-color-hover: color-mix(in srgb, var(--color-text-on-color) 12%, transparent);/* dark: color-mix(in srgb, var(--color-text-on-color) 12%, transparent) */
+--color-bg-on-color-active: color-mix(in srgb, var(--color-text-on-color) 20%, transparent);/* dark: color-mix(in srgb, var(--color-text-on-color) 20%, transparent) */
 --color-text-on-warning: var(--color-base-black);/* dark: var(--color-base-black) */
 --color-text-on-neutral-action-active: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
@@ -362,6 +364,9 @@ Source: `packages/tokens/src/semantic.css`
 --color-action-primary-subtle: var(--color-blue-100);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-hover: var(--color-blue-150);/* dark: var(--color-blue-950) */
 --color-action-primary-subtle-active: var(--color-blue-200);/* dark: var(--color-blue-900) */
+--color-action-neutral-control: var(--color-gray-200);/* dark: var(--color-neutral-800) */
+--color-action-neutral-control-hover: var(--color-gray-300);/* dark: var(--color-neutral-700) */
+--color-action-neutral-control-active: var(--color-gray-400);/* dark: var(--color-neutral-600) */
 --color-action-neutral: var(--color-neutral-300);/* dark: var(--color-neutral-800) */
 --color-action-neutral-hover: var(--color-neutral-400);/* dark: var(--color-neutral-700) */
 --color-action-neutral-active: var(--color-neutral-450);/* dark: var(--color-neutral-600) */
@@ -699,14 +704,14 @@ Source: `packages/tokens/src/component-button.css`
 --button-primary-fg: var(--color-fg-on-color);
 --button-primary-border: var(--color-action-primary);
 --button-primary-border-hover: var(--color-action-primary-hover);
---button-secondary-bg: var(--color-action-neutral);
---button-secondary-bg-hover: var(--color-action-neutral-hover);
---button-secondary-bg-active: var(--color-action-neutral-active);
+--button-secondary-bg: var(--color-action-neutral-control);
+--button-secondary-bg-hover: var(--color-action-neutral-control-hover);
+--button-secondary-bg-active: var(--color-action-neutral-control-active);
 --button-secondary-text: var(--color-text-primary);
 --button-secondary-text-active: var(--color-text-on-neutral-action-active);
 --button-secondary-fg: var(--color-fg-primary);
---button-secondary-border: var(--color-action-neutral);
---button-secondary-border-hover: var(--color-action-neutral-hover);
+--button-secondary-border: var(--color-action-neutral-control);
+--button-secondary-border-hover: var(--color-action-neutral-control-hover);
 --button-outline-bg: transparent;
 --button-outline-bg-surface: var(--color-bg-surface);
 --button-outline-bg-hover: var(--color-action-neutral-subtle-hover);
@@ -748,6 +753,13 @@ Source: `packages/tokens/src/component-button.css`
 --button-destructive-fg: var(--color-fg-on-color);
 --button-destructive-border: var(--color-action-destructive);
 --button-destructive-border-hover: var(--color-action-destructive-hover);
+--button-destructive-outline-bg: var(--color-bg-surface);
+--button-destructive-outline-bg-hover: var(--color-bg-error-surface);
+--button-destructive-outline-bg-active: var(--color-bg-error-muted);
+--button-destructive-outline-text: var(--color-text-error);
+--button-destructive-outline-fg: var(--color-text-error);
+--button-destructive-outline-border: var(--color-border-error-subtle);
+--button-destructive-outline-border-hover: var(--color-border-error-strong);
 --button-warning-bg: var(--color-action-warning);
 --button-warning-bg-hover: var(--color-action-warning-hover);
 --button-warning-bg-active: var(--color-action-warning-active);
@@ -757,6 +769,12 @@ Source: `packages/tokens/src/component-button.css`
 --button-warning-fg: var(--color-fg-on-color);
 --button-warning-border: var(--color-action-warning);
 --button-warning-border-hover: var(--color-action-warning-hover);
+--button-inverse-text: var(--color-text-on-color);
+--button-inverse-fg: var(--color-fg-on-color);
+--button-inverse-bg-surface: var(--color-bg-overlay-strong);
+--button-inverse-bg-hover: var(--color-bg-on-color-hover);
+--button-inverse-bg-active: var(--color-bg-on-color-active);
+--button-inverse-border: var(--color-fg-on-inverse-muted);
 --button-focus-ring-inner-width: 2px;
 --button-focus-ring-width: 4px;
 
@@ -877,7 +895,7 @@ Source: `packages/tokens/src/component-input.css`
 --input-text: var(--color-text-primary);
 --input-placeholder: var(--color-text-tertiary);
 --input-border: var(--color-border-primary);
---input-border-hover: var(--color-border-secondary);
+--input-border-hover: var(--color-border-neutral-muted);
 --input-border-focus: var(--color-focus-ring);
 --input-focus-ring: var(--color-focus-ring);
 --input-focus-ring-offset: 1px;
@@ -906,6 +924,7 @@ Source: `packages/tokens/src/component-input.css`
 --input-readonly-text: var(--color-text-secondary);
 
 /* ── Label / hint ── */
+--input-required-text: var(--color-feedback-error-action);
 --input-label-text: var(--color-text-secondary);
 --input-hint-text: var(--color-text-tertiary);
 --input-label-gap: var(--spacing-xs);
@@ -942,7 +961,7 @@ Source: `packages/tokens/src/component-input.css`
 /* ── Shared ── */
 --input-font-family: var(--font-body);
 --input-font-weight: var(--font-weight-regular);
---input-label-font-weight: var(--font-weight-semibold);
+--input-label-font-weight: var(--font-weight-medium);
 ```
 
 ## File Input Component Tokens
@@ -959,8 +978,8 @@ Source: `packages/tokens/src/component-file-input.css`
 --file-input-label-text: var(--color-text-secondary);
 --file-input-label-font-size: var(--text-sm);
 --file-input-label-line-height: var(--text-sm--line-height);
---file-input-label-font-weight: var(--font-weight-semibold);
---file-input-required-text: var(--color-text-error);
+--file-input-label-font-weight: var(--font-weight-medium);
+--file-input-required-text: var(--color-feedback-error-action);
 --file-input-info-color: var(--color-text-tertiary);
 
 /* ── Button ("Choose File") ── */
@@ -1174,8 +1193,8 @@ Source: `packages/tokens/src/component-tabs.css`
 --tabs-list-bg: var(--color-bg-surface);
 --tabs-list-border: var(--color-border-secondary);
 --tabs-list-radius: var(--radius-sm);
---tabs-trigger-bg: var(--color-action-neutral-subtle);/* dark: var(--color-action-neutral-subtle) */
---tabs-trigger-bg-hover: var(--color-action-neutral-subtle-hover);/* dark: var(--color-action-neutral-subtle-hover) */
+--tabs-trigger-bg: var(--color-action-neutral-control);/* dark: var(--color-action-neutral-subtle) */
+--tabs-trigger-bg-hover: var(--color-action-neutral-control-hover);/* dark: var(--color-action-neutral-subtle-hover) */
 --tabs-trigger-bg-active: var(--color-bg-neutral-strong);/* dark: var(--color-bg-neutral-strong) */
 --tabs-trigger-text: var(--color-text-secondary);
 --tabs-trigger-text-hover: var(--color-text-primary);/* dark: var(--color-text-primary) */
@@ -1196,7 +1215,7 @@ Source: `packages/tokens/src/component-tabs.css`
 Source: `packages/tokens/src/component-segmented-control.css`
 
 ```css
---segmented-control-bg: var(--color-bg-muted);/* dark: var(--color-bg-muted) */
+--segmented-control-bg: var(--color-action-neutral-control);/* dark: var(--color-bg-muted) */
 --segmented-control-border: var(--color-border-secondary);
 --segmented-control-radius: var(--radius-md);
 --segmented-control-padding: var(--spacing-1);
@@ -1211,6 +1230,17 @@ Source: `packages/tokens/src/component-segmented-control.css`
 --segmented-control-item-padding-x: var(--spacing-4);
 --segmented-control-item-font-size: var(--text-sm);
 --segmented-control-item-font-weight: var(--font-weight-medium);
+--segmented-control-pill-border-width: 0px;
+--segmented-control-pill-radius: var(--radius-full);
+--segmented-control-pill-padding: var(--spacing-1);
+--segmented-control-pill-gap: var(--spacing-2);
+--segmented-control-pill-item-radius: var(--radius-full);
+--segmented-control-pill-item-height: calc(var(--spacing-7) + var(--spacing-xxs));
+--segmented-control-pill-item-padding-x: var(--spacing-3);
+--segmented-control-pill-item-bg-active: var(--color-bg-surface);
+--segmented-control-pill-item-text-active: var(--color-text-secondary);
+--segmented-control-pill-item-font-size: var(--text-sm);
+--segmented-control-pill-item-font-weight: var(--font-weight-semibold);
 ```
 
 ## Table Component Tokens
@@ -1587,7 +1617,7 @@ Source: `packages/tokens/src/component-toggle.css`
 --toggle-label-gap: 8px;
 --toggle-label-icon-gap: 4px;
 --toggle-description-gap: 2px;
---toggle-content-padding-y: 3px;
+--toggle-content-padding-y: 0;
 
 /* ── Track ── */
 --toggle-track-width: 36px;

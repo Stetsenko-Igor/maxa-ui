@@ -14,14 +14,14 @@
   --button-primary-border-hover: var(--color-action-primary-hover);
 
   /* secondary */
-  --button-secondary-bg: var(--color-action-neutral);
-  --button-secondary-bg-hover: var(--color-action-neutral-hover);
-  --button-secondary-bg-active: var(--color-action-neutral-active);
+  --button-secondary-bg: var(--color-action-neutral-control);
+  --button-secondary-bg-hover: var(--color-action-neutral-control-hover);
+  --button-secondary-bg-active: var(--color-action-neutral-control-active);
   --button-secondary-text: var(--color-text-primary);
   --button-secondary-text-active: var(--color-text-on-neutral-action-active);
   --button-secondary-fg: var(--color-fg-primary);
-  --button-secondary-border: var(--color-action-neutral);
-  --button-secondary-border-hover: var(--color-action-neutral-hover);
+  --button-secondary-border: var(--color-action-neutral-control);
+  --button-secondary-border-hover: var(--color-action-neutral-control-hover);
 
   /* outline */
   --button-outline-bg: transparent;
@@ -74,6 +74,15 @@
   --button-destructive-border: var(--color-action-destructive);
   --button-destructive-border-hover: var(--color-action-destructive-hover);
 
+  /* destructive outline: lower-emphasis destructive action */
+  --button-destructive-outline-bg: var(--color-bg-surface);
+  --button-destructive-outline-bg-hover: var(--color-bg-error-surface);
+  --button-destructive-outline-bg-active: var(--color-bg-error-muted);
+  --button-destructive-outline-text: var(--color-text-error);
+  --button-destructive-outline-fg: var(--color-text-error);
+  --button-destructive-outline-border: var(--color-border-error-subtle);
+  --button-destructive-outline-border-hover: var(--color-border-error-strong);
+
   /* warning */
   --button-warning-bg: var(--color-action-warning);
   --button-warning-bg-hover: var(--color-action-warning-hover);
@@ -84,6 +93,14 @@
   --button-warning-fg: var(--color-fg-on-color);
   --button-warning-border: var(--color-action-warning);
   --button-warning-border-hover: var(--color-action-warning-hover);
+
+  /* Inverse controls are used on a consistently dark host surface. */
+  --button-inverse-text: var(--color-text-on-color);
+  --button-inverse-fg: var(--color-fg-on-color);
+  --button-inverse-bg-surface: var(--color-bg-overlay-strong);
+  --button-inverse-bg-hover: var(--color-bg-on-color-hover);
+  --button-inverse-bg-active: var(--color-bg-on-color-active);
+  --button-inverse-border: var(--color-fg-on-inverse-muted);
 
   /* focus ring geometry */
   --button-focus-ring-inner-width: 2px;

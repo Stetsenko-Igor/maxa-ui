@@ -1225,6 +1225,9 @@
           "action/action-warning-subtle": "{Colors.Yellow.50}",
           "action/action-warning-subtle-hover": "{Colors.Yellow.50}",
           "action/action-warning-subtle-active": "{Colors.Yellow.100}",
+          "action/action-neutral-control": "{Colors.Gray.200}",
+          "action/action-neutral-control-hover": "{Colors.Gray.300}",
+          "action/action-neutral-control-active": "{Colors.Gray.400}",
           "foreground/fg-primary": "{Colors.Neutral.950}",
           "foreground/fg-secondary": "{Colors.Neutral.800}",
           "foreground/fg-tertiary": "{Colors.Neutral.600}",
@@ -1272,6 +1275,8 @@
           "background/bg-success-muted": "{Colors.Green.100}",
           "background/bg-warning-muted": "{Colors.Orange.100}",
           "background/bg-error-muted": "{Colors.Red.100}",
+          "background/bg-on-color-hover": "{Colors.Neutral (alpha).White.10}",
+          "background/bg-on-color-active": "{Colors.Neutral (alpha).White.20}",
           "control/control-idle": "{Colors.Neutral.500}",
           "control/control-idle-hover": "{Colors.Neutral.400}",
           "control/control-checked": "{Colors.Neutral.900}",
@@ -1471,6 +1476,9 @@
           "action/action-warning-subtle": "{Colors.Yellow.950}",
           "action/action-warning-subtle-hover": "{Colors.Yellow.950}",
           "action/action-warning-subtle-active": "{Colors.Yellow.900}",
+          "action/action-neutral-control": "{Colors.Neutral.800}",
+          "action/action-neutral-control-hover": "{Colors.Neutral.700}",
+          "action/action-neutral-control-active": "{Colors.Neutral.600}",
           "foreground/fg-primary": "{Colors.Neutral.100}",
           "foreground/fg-secondary": "{Colors.Neutral.200}",
           "foreground/fg-tertiary": "{Colors.Neutral.500}",
@@ -1518,6 +1526,8 @@
           "background/bg-success-muted": "{Colors.Green.900}",
           "background/bg-warning-muted": "{Colors.Orange.900}",
           "background/bg-error-muted": "{Colors.Red.900}",
+          "background/bg-on-color-hover": "{Colors.Neutral (alpha).White.10}",
+          "background/bg-on-color-active": "{Colors.Neutral (alpha).White.20}",
           "control/control-idle": "{Colors.Neutral.600}",
           "control/control-idle-hover": "{Colors.Neutral.700}",
           "control/control-checked": "{Colors.Neutral.200}",
@@ -1718,6 +1728,9 @@
         "action/action-warning-subtle": "Low-emphasis warning action fill.",
         "action/action-warning-subtle-hover": "Low-emphasis warning action fill, hover state.",
         "action/action-warning-subtle-active": "Low-emphasis warning action fill, active state.",
+        "action/action-neutral-control": "Cold neutral interactive control surface.",
+        "action/action-neutral-control-hover": "Cold neutral interactive control surface hover.",
+        "action/action-neutral-control-active": "Cold neutral interactive control surface active.",
         "foreground/fg-primary": "Highest-emphasis icons and foreground marks.",
         "foreground/fg-secondary": "Supporting icons.",
         "foreground/fg-tertiary": "Low-emphasis icons and subtle controls.",
@@ -1765,6 +1778,8 @@
         "background/bg-success-muted": "Slightly stronger success fill.",
         "background/bg-warning-muted": "Slightly stronger warning fill.",
         "background/bg-error-muted": "Slightly stronger error fill.",
+        "background/bg-on-color-hover": "Hover wash over saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
+        "background/bg-on-color-active": "Pressed wash over saturated or brand-colored backgrounds. Always White in Light and Dark themes.",
         "control/control-idle": "Default border or track for unchecked controls.",
         "control/control-idle-hover": "Hover border or track for unchecked controls.",
         "control/control-checked": "Checked control fill or border.",
@@ -1964,6 +1979,9 @@
         "action/action-warning-subtle": "COLOR",
         "action/action-warning-subtle-hover": "COLOR",
         "action/action-warning-subtle-active": "COLOR",
+        "action/action-neutral-control": "COLOR",
+        "action/action-neutral-control-hover": "COLOR",
+        "action/action-neutral-control-active": "COLOR",
         "foreground/fg-primary": "COLOR",
         "foreground/fg-secondary": "COLOR",
         "foreground/fg-tertiary": "COLOR",
@@ -2011,6 +2029,8 @@
         "background/bg-success-muted": "COLOR",
         "background/bg-warning-muted": "COLOR",
         "background/bg-error-muted": "COLOR",
+        "background/bg-on-color-hover": "COLOR",
+        "background/bg-on-color-active": "COLOR",
         "control/control-idle": "COLOR",
         "control/control-idle-hover": "COLOR",
         "control/control-checked": "COLOR",
@@ -2372,6 +2392,18 @@
           "ALL_FILLS",
           "STROKE_COLOR"
         ],
+        "action/action-neutral-control": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "action/action-neutral-control-hover": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "action/action-neutral-control-active": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
         "foreground/fg-primary": [
           "ALL_FILLS"
         ],
@@ -2515,6 +2547,12 @@
           "ALL_FILLS"
         ],
         "background/bg-error-muted": [
+          "ALL_FILLS"
+        ],
+        "background/bg-on-color-hover": [
+          "ALL_FILLS"
+        ],
+        "background/bg-on-color-active": [
           "ALL_FILLS"
         ],
         "control/control-idle": [
@@ -3391,14 +3429,14 @@
           "Button/primary/fg": "{Color modes/foreground/fg-on-color}",
           "Button/primary/border": "{Color modes/action/action-primary}",
           "Button/primary/border-hover": "{Color modes/action/action-primary-hover}",
-          "Button/secondary/bg": "{Color modes/action/action-neutral}",
-          "Button/secondary/bg-hover": "{Color modes/action/action-neutral-hover}",
-          "Button/secondary/bg-active": "{Color modes/action/action-neutral-active}",
+          "Button/secondary/bg": "{Color modes/action/action-neutral-control}",
+          "Button/secondary/bg-hover": "{Color modes/action/action-neutral-control-hover}",
+          "Button/secondary/bg-active": "{Color modes/action/action-neutral-control-active}",
           "Button/secondary/text": "{Color modes/text/text-primary}",
           "Button/secondary/text-active": "{Color modes/text/text-on-neutral-action-active}",
           "Button/secondary/fg": "{Color modes/foreground/fg-primary}",
-          "Button/secondary/border": "{Color modes/action/action-neutral}",
-          "Button/secondary/border-hover": "{Color modes/action/action-neutral-hover}",
+          "Button/secondary/border": "{Color modes/action/action-neutral-control}",
+          "Button/secondary/border-hover": "{Color modes/action/action-neutral-control-hover}",
           "Button/outline/bg": "{Primitives/Colors/Base/Transparent}",
           "Button/outline/bg-surface": "{Color modes/background/bg-surface}",
           "Button/outline/bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
@@ -3489,6 +3527,13 @@
           "Button/size/lg/weight": "{Typography/Font weight/semibold}",
           "Button/size/lg/icon-size": 20,
           "Button/font-family": "{Typography/Font family/body}",
+          "Button/destructive-outline/bg": "{Color modes/background/bg-surface}",
+          "Button/destructive-outline/bg-hover": "{Color modes/background/bg-error-surface}",
+          "Button/destructive-outline/bg-active": "{Color modes/background/bg-error-muted}",
+          "Button/destructive-outline/text": "{Color modes/text/text-error}",
+          "Button/destructive-outline/fg": "{Color modes/text/text-error}",
+          "Button/destructive-outline/border": "{Color modes/border/border-error-subtle}",
+          "Button/destructive-outline/border-hover": "{Color modes/border/border-error-strong}",
           "Calendar/bg": "{Color modes/background/bg-surface}",
           "Calendar/border": "{Color modes/border/border-secondary}",
           "Calendar/radius": "{Radius/radius-md}",
@@ -3923,7 +3968,7 @@
           "Radio/typography/description-font-size": "{Typography/Font size/caption-sm}",
           "Radio/typography/description-line-height": 16,
           "Radio/typography/description-font-weight": "{Typography/Font weight/medium}",
-          "Segmented Control/bg": "{Color modes/background/bg-muted}",
+          "Segmented Control/bg": "{Color modes/action/action-neutral-control}",
           "Segmented Control/border": "{Color modes/border/border-secondary}",
           "Segmented Control/radius": "{Radius/radius-md}",
           "Segmented Control/padding": "{Spacing/spacing-xs}",
@@ -3938,6 +3983,17 @@
           "Segmented Control/item-padding-x": "{Spacing/spacing-xl}",
           "Segmented Control/item-font-size": "{Typography/Font size/text-sm}",
           "Segmented Control/item-font-weight": "{Typography/Font weight/medium}",
+          "Segmented Control/pill-border-width": 0,
+          "Segmented Control/pill-radius": "{Radius/radius-full}",
+          "Segmented Control/pill-padding": "{Spacing/spacing-xs}",
+          "Segmented Control/pill-gap": "{Spacing/spacing-md}",
+          "Segmented Control/pill-item-radius": "{Radius/radius-full}",
+          "Segmented Control/pill-item-height": 30,
+          "Segmented Control/pill-item-padding-x": "{Spacing/spacing-lg}",
+          "Segmented Control/pill-item-bg-active": "{Color modes/background/bg-surface}",
+          "Segmented Control/pill-item-text-active": "{Color modes/text/text-secondary}",
+          "Segmented Control/pill-item-font-size": "{Typography/Font size/text-sm}",
+          "Segmented Control/pill-item-font-weight": "{Typography/Font weight/semibold}",
           "Select/bg": "{Component-based/Input/bg}",
           "Select/border": "{Component-based/Input/border}",
           "Select/border-hover": "{Component-based/Input/border-hover}",
@@ -4104,8 +4160,8 @@
           "Tabs/list-bg": "{Color modes/background/bg-surface}",
           "Tabs/list-border": "{Color modes/border/border-secondary}",
           "Tabs/list-radius": "{Radius/radius-sm}",
-          "Tabs/trigger-bg": "{Color modes/action/action-neutral-subtle}",
-          "Tabs/trigger-bg-hover": "{Color modes/action/action-neutral-subtle-hover}",
+          "Tabs/trigger-bg": "{Color modes/action/action-neutral-control}",
+          "Tabs/trigger-bg-hover": "{Color modes/action/action-neutral-control-hover}",
           "Tabs/trigger-bg-active": "{Color modes/background/bg-neutral-strong}",
           "Tabs/trigger-text": "{Color modes/text/text-secondary}",
           "Tabs/trigger-text-hover": "{Color modes/text/text-primary}",
@@ -4533,6 +4589,13 @@
         "Button/size/lg/weight": "Button, size lg: font weight.",
         "Button/size/lg/icon-size": "Button, size lg: icon size.",
         "Button/font-family": "Button: font family.",
+        "Button/destructive-outline/bg": "Button, destructive outline: bg.",
+        "Button/destructive-outline/bg-hover": "Button, destructive outline: bg-hover.",
+        "Button/destructive-outline/bg-active": "Button, destructive outline: bg-active.",
+        "Button/destructive-outline/text": "Button, destructive outline: text.",
+        "Button/destructive-outline/fg": "Button, destructive outline: fg.",
+        "Button/destructive-outline/border": "Button, destructive outline: border.",
+        "Button/destructive-outline/border-hover": "Button, destructive outline: border-hover.",
         "Calendar/bg": "Calendar: background.",
         "Calendar/border": "Calendar: border.",
         "Calendar/radius": "Calendar: radius.",
@@ -4982,6 +5045,17 @@
         "Segmented Control/item-padding-x": "Segmented Control: item padding x.",
         "Segmented Control/item-font-size": "Segmented Control: item font size.",
         "Segmented Control/item-font-weight": "Segmented Control: item font weight.",
+        "Segmented Control/pill-border-width": "Segmented Control pill: border-width.",
+        "Segmented Control/pill-radius": "Segmented Control pill: radius.",
+        "Segmented Control/pill-padding": "Segmented Control pill: padding.",
+        "Segmented Control/pill-gap": "Segmented Control pill: gap.",
+        "Segmented Control/pill-item-radius": "Segmented Control pill: item-radius.",
+        "Segmented Control/pill-item-height": "Segmented Control pill: item-height.",
+        "Segmented Control/pill-item-padding-x": "Segmented Control pill: item-padding-x.",
+        "Segmented Control/pill-item-bg-active": "Segmented Control pill: item-bg-active.",
+        "Segmented Control/pill-item-text-active": "Segmented Control pill: item-text-active.",
+        "Segmented Control/pill-item-font-size": "Segmented Control pill: item-font-size.",
+        "Segmented Control/pill-item-font-weight": "Segmented Control pill: item-font-weight.",
         "Select/bg": "Select: background.",
         "Select/border": "Select: border.",
         "Select/border-hover": "Select: border (hover state).",
@@ -5576,6 +5650,13 @@
         "Button/size/lg/weight": "STRING",
         "Button/size/lg/icon-size": "FLOAT",
         "Button/font-family": "STRING",
+        "Button/destructive-outline/bg": "COLOR",
+        "Button/destructive-outline/bg-hover": "COLOR",
+        "Button/destructive-outline/bg-active": "COLOR",
+        "Button/destructive-outline/text": "COLOR",
+        "Button/destructive-outline/fg": "COLOR",
+        "Button/destructive-outline/border": "COLOR",
+        "Button/destructive-outline/border-hover": "COLOR",
         "Calendar/bg": "COLOR",
         "Calendar/border": "COLOR",
         "Calendar/radius": "FLOAT",
@@ -6025,6 +6106,17 @@
         "Segmented Control/item-padding-x": "FLOAT",
         "Segmented Control/item-font-size": "FLOAT",
         "Segmented Control/item-font-weight": "STRING",
+        "Segmented Control/pill-border-width": "FLOAT",
+        "Segmented Control/pill-radius": "FLOAT",
+        "Segmented Control/pill-padding": "FLOAT",
+        "Segmented Control/pill-gap": "FLOAT",
+        "Segmented Control/pill-item-radius": "FLOAT",
+        "Segmented Control/pill-item-height": "FLOAT",
+        "Segmented Control/pill-item-padding-x": "FLOAT",
+        "Segmented Control/pill-item-bg-active": "COLOR",
+        "Segmented Control/pill-item-text-active": "COLOR",
+        "Segmented Control/pill-item-font-size": "FLOAT",
+        "Segmented Control/pill-item-font-weight": "STRING",
         "Select/bg": "COLOR",
         "Select/border": "COLOR",
         "Select/border-hover": "COLOR",
@@ -7061,6 +7153,28 @@
         ],
         "Button/font-family": [
           "FONT_FAMILY"
+        ],
+        "Button/destructive-outline/bg": [
+          "ALL_FILLS"
+        ],
+        "Button/destructive-outline/bg-hover": [
+          "ALL_FILLS"
+        ],
+        "Button/destructive-outline/bg-active": [
+          "ALL_FILLS"
+        ],
+        "Button/destructive-outline/text": [
+          "TEXT_FILL"
+        ],
+        "Button/destructive-outline/fg": [
+          "SHAPE_FILL",
+          "STROKE_COLOR"
+        ],
+        "Button/destructive-outline/border": [
+          "STROKE_COLOR"
+        ],
+        "Button/destructive-outline/border-hover": [
+          "STROKE_COLOR"
         ],
         "Calendar/bg": [
           "ALL_FILLS"
@@ -8399,6 +8513,39 @@
           "FONT_SIZE"
         ],
         "Segmented Control/item-font-weight": [
+          "FONT_STYLE"
+        ],
+        "Segmented Control/pill-border-width": [
+          "STROKE_FLOAT"
+        ],
+        "Segmented Control/pill-radius": [
+          "CORNER_RADIUS"
+        ],
+        "Segmented Control/pill-padding": [
+          "GAP"
+        ],
+        "Segmented Control/pill-gap": [
+          "GAP"
+        ],
+        "Segmented Control/pill-item-radius": [
+          "CORNER_RADIUS"
+        ],
+        "Segmented Control/pill-item-height": [
+          "WIDTH_HEIGHT"
+        ],
+        "Segmented Control/pill-item-padding-x": [
+          "GAP"
+        ],
+        "Segmented Control/pill-item-bg-active": [
+          "ALL_FILLS"
+        ],
+        "Segmented Control/pill-item-text-active": [
+          "TEXT_FILL"
+        ],
+        "Segmented Control/pill-item-font-size": [
+          "FONT_SIZE"
+        ],
+        "Segmented Control/pill-item-font-weight": [
           "FONT_STYLE"
         ],
         "Select/bg": [

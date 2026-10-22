@@ -12,8 +12,8 @@
   --file-input-label-text: var(--color-text-secondary);
   --file-input-label-font-size: var(--text-sm);
   --file-input-label-line-height: var(--text-sm--line-height);
-  --file-input-label-font-weight: var(--font-weight-semibold);
-  --file-input-required-text: var(--color-text-error);
+  --file-input-label-font-weight: var(--font-weight-medium);
+  --file-input-required-text: var(--color-feedback-error-action);
   --file-input-info-color: var(--color-text-tertiary);
 
   /* ── Button ("Choose File") ─────────────────────────────────── */
