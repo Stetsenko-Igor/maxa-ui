@@ -651,17 +651,17 @@
     "background": [
       {
         "name": "--color-bg-on-color-hover",
-        "lightValue": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
-        "darkValue": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
-        "lightHex": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
-        "darkHex": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)"
+        "lightValue": "var(--color-neutral-alpha-white-10)",
+        "darkValue": "var(--color-neutral-alpha-white-10)",
+        "lightHex": "#ffffff1a",
+        "darkHex": "#ffffff1a"
       },
       {
         "name": "--color-bg-on-color-active",
-        "lightValue": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
-        "darkValue": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
-        "lightHex": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
-        "darkHex": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)"
+        "lightValue": "var(--color-neutral-alpha-white-20)",
+        "darkValue": "var(--color-neutral-alpha-white-20)",
+        "lightHex": "#ffffff33",
+        "darkHex": "#ffffff33"
       },
       {
         "name": "--color-bg-page",

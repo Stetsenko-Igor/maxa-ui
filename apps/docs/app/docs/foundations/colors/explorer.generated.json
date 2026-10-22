@@ -2880,6 +2880,11 @@
           "component": "badge",
           "selector": ".maxa-badge--lg",
           "property": "padding-inline"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--lg)",
+          "property": "--select-option-description-inset"
         }
       ]
     },
@@ -3017,6 +3022,11 @@
           "component": "badge",
           "selector": ".maxa-badge--md",
           "property": "padding-inline"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--md)",
+          "property": "--select-option-description-inset"
         }
       ]
     },
@@ -3154,6 +3164,11 @@
           "component": "badge",
           "selector": ".maxa-badge--sm",
           "property": "padding-inline"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-content:has(> .maxa-select__option-label > .maxa-badge--sm)",
+          "property": "--select-option-description-inset"
         }
       ]
     },
@@ -4445,17 +4460,17 @@
       "layer": "component",
       "group": "button",
       "source": "packages/tokens/src/component-button.css",
-      "color": false,
+      "color": true,
       "light": {
         "raw": "var(--color-bg-on-color-active)",
-        "resolved": null,
+        "resolved": "#ffffff33",
         "references": [
           "--color-bg-on-color-active"
         ]
       },
       "dark": {
         "raw": "var(--color-bg-on-color-active)",
-        "resolved": null,
+        "resolved": "#ffffff33",
         "references": [
           "--color-bg-on-color-active"
         ]
@@ -4473,17 +4488,17 @@
       "layer": "component",
       "group": "button",
       "source": "packages/tokens/src/component-button.css",
-      "color": false,
+      "color": true,
       "light": {
         "raw": "var(--color-bg-on-color-hover)",
-        "resolved": null,
+        "resolved": "#ffffff1a",
         "references": [
           "--color-bg-on-color-hover"
         ]
       },
       "dark": {
         "raw": "var(--color-bg-on-color-hover)",
-        "resolved": null,
+        "resolved": "#ffffff1a",
         "references": [
           "--color-bg-on-color-hover"
         ]
@@ -11903,17 +11918,17 @@
       "source": "packages/tokens/src/semantic.css",
       "color": true,
       "light": {
-        "raw": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
-        "resolved": null,
+        "raw": "var(--color-neutral-alpha-white-20)",
+        "resolved": "#ffffff33",
         "references": [
-          "--color-text-on-color"
+          "--color-neutral-alpha-white-20"
         ]
       },
       "dark": {
-        "raw": "color-mix(in srgb, var(--color-text-on-color) 20%, transparent)",
-        "resolved": null,
+        "raw": "var(--color-neutral-alpha-white-20)",
+        "resolved": "#ffffff33",
         "references": [
-          "--color-text-on-color"
+          "--color-neutral-alpha-white-20"
         ]
       },
       "consumers": []
@@ -11925,17 +11940,17 @@
       "source": "packages/tokens/src/semantic.css",
       "color": true,
       "light": {
-        "raw": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
-        "resolved": null,
+        "raw": "var(--color-neutral-alpha-white-10)",
+        "resolved": "#ffffff1a",
         "references": [
-          "--color-text-on-color"
+          "--color-neutral-alpha-white-10"
         ]
       },
       "dark": {
-        "raw": "color-mix(in srgb, var(--color-text-on-color) 12%, transparent)",
-        "resolved": null,
+        "raw": "var(--color-neutral-alpha-white-10)",
+        "resolved": "#ffffff1a",
         "references": [
-          "--color-text-on-color"
+          "--color-neutral-alpha-white-10"
         ]
       },
       "consumers": []
@@ -17294,6 +17309,24 @@
       "consumers": []
     },
     {
+      "name": "--color-neutral-alpha-white-10",
+      "layer": "primitive",
+      "group": "neutral",
+      "source": "packages/tokens/src/primitives.css",
+      "color": true,
+      "light": {
+        "raw": "#ffffff1a",
+        "resolved": "#ffffff1a",
+        "references": []
+      },
+      "dark": {
+        "raw": "#ffffff1a",
+        "resolved": "#ffffff1a",
+        "references": []
+      },
+      "consumers": []
+    },
+    {
       "name": "--color-neutral-alpha-white-100",
       "layer": "primitive",
       "group": "neutral",
@@ -17307,6 +17340,24 @@
       "dark": {
         "raw": "#ffffff",
         "resolved": "#ffffff",
+        "references": []
+      },
+      "consumers": []
+    },
+    {
+      "name": "--color-neutral-alpha-white-20",
+      "layer": "primitive",
+      "group": "neutral",
+      "source": "packages/tokens/src/primitives.css",
+      "color": true,
+      "light": {
+        "raw": "#ffffff33",
+        "resolved": "#ffffff33",
+        "references": []
+      },
+      "dark": {
+        "raw": "#ffffff33",
+        "resolved": "#ffffff33",
         "references": []
       },
       "consumers": []
@@ -28287,6 +28338,11 @@
           "component": "avatar-label",
           "selector": ".maxa-avatar-label__description",
           "property": "font-weight"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-description",
+          "property": "font-weight"
         }
       ]
     },
@@ -36405,6 +36461,90 @@
       ]
     },
     {
+      "name": "--select-option-description-color",
+      "layer": "component",
+      "group": "select",
+      "source": "packages/tokens/src/component-select.css",
+      "color": true,
+      "light": {
+        "raw": "var(--color-text-tertiary)",
+        "resolved": "#8c8c8e",
+        "references": [
+          "--color-text-tertiary"
+        ]
+      },
+      "dark": {
+        "raw": "var(--color-text-tertiary)",
+        "resolved": "#a1a1a4",
+        "references": [
+          "--color-text-tertiary"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-description",
+          "property": "color"
+        }
+      ]
+    },
+    {
+      "name": "--select-option-description-font-size",
+      "layer": "component",
+      "group": "select",
+      "source": "packages/tokens/src/component-select.css",
+      "color": false,
+      "light": {
+        "raw": "var(--text-caption-sm)",
+        "resolved": "10px",
+        "references": [
+          "--text-caption-sm"
+        ]
+      },
+      "dark": {
+        "raw": "var(--text-caption-sm)",
+        "resolved": "10px",
+        "references": [
+          "--text-caption-sm"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-description",
+          "property": "font-size"
+        }
+      ]
+    },
+    {
+      "name": "--select-option-description-line-height",
+      "layer": "component",
+      "group": "select",
+      "source": "packages/tokens/src/component-select.css",
+      "color": false,
+      "light": {
+        "raw": "var(--text-caption-sm--line-height)",
+        "resolved": "16px",
+        "references": [
+          "--text-caption-sm--line-height"
+        ]
+      },
+      "dark": {
+        "raw": "var(--text-caption-sm--line-height)",
+        "resolved": "16px",
+        "references": [
+          "--text-caption-sm--line-height"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-description",
+          "property": "line-height"
+        }
+      ]
+    },
+    {
       "name": "--select-option-font-size",
       "layer": "component",
       "group": "select",
@@ -36754,6 +36894,34 @@
           "component": "select",
           "selector": ".maxa-select__placeholder",
           "property": "color"
+        }
+      ]
+    },
+    {
+      "name": "--select-rich-content-padding-start",
+      "layer": "component",
+      "group": "select",
+      "source": "packages/tokens/src/component-select.css",
+      "color": false,
+      "light": {
+        "raw": "var(--spacing-sm)",
+        "resolved": "6px",
+        "references": [
+          "--spacing-sm"
+        ]
+      },
+      "dark": {
+        "raw": "var(--spacing-sm)",
+        "resolved": "6px",
+        "references": [
+          "--spacing-sm"
+        ]
+      },
+      "consumers": [
+        {
+          "component": "select",
+          "selector": ".maxa-select__field:has(> .maxa-select__value :is(.maxa-badge, .maxa-avatar)), .maxa-select__option:has(> .maxa-select__option-content > .maxa-select__option-label :is(.maxa-badge, .maxa-avatar))",
+          "property": "padding-inline-start"
         }
       ]
     },
@@ -38998,6 +39166,11 @@
           "component": "pagination",
           "selector": ".maxa-pagination__link--text",
           "property": "gap"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option-content",
+          "property": "gap"
         }
       ]
     },
@@ -39235,6 +39408,11 @@
           "component": "progress",
           "selector": ".maxa-progress__root",
           "property": "gap"
+        },
+        {
+          "component": "select",
+          "selector": ".maxa-select__option:has(.maxa-select__option-description)",
+          "property": "padding-block"
         },
         {
           "component": "skeleton",

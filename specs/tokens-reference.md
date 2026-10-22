@@ -9,7 +9,7 @@ from `packages/tokens/src`. Values shown are light mode; tokens with a
 see the foundation specs in `specs/foundations/` and component specs
 in `specs/components/`.
 
-Total tokens: 1778
+Total tokens: 1784
 
 ## Primitives
 
@@ -108,6 +108,8 @@ Source: `packages/tokens/src/primitives.css`
 --color-neutral-alpha-ink-50: #1b1a1a80;
 --color-neutral-alpha-black-72: #000000b8;
 --color-neutral-alpha-white-45: #ffffff73;
+--color-neutral-alpha-white-10: #ffffff1a;
+--color-neutral-alpha-white-20: #ffffff33;
 
 /* ── Extended decorative palette — Tailwind v4 defaults ── */
 --color-gray-50: #f9fafb;
@@ -268,8 +270,8 @@ Source: `packages/tokens/src/semantic.css`
 --color-text-inverse: var(--color-base-white);/* dark: var(--color-neutral-900) */
 --color-text-on-brand: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-on-color: var(--color-base-white);/* dark: var(--color-base-white) */
---color-bg-on-color-hover: color-mix(in srgb, var(--color-text-on-color) 12%, transparent);/* dark: color-mix(in srgb, var(--color-text-on-color) 12%, transparent) */
---color-bg-on-color-active: color-mix(in srgb, var(--color-text-on-color) 20%, transparent);/* dark: color-mix(in srgb, var(--color-text-on-color) 20%, transparent) */
+--color-bg-on-color-hover: var(--color-neutral-alpha-white-10);/* dark: var(--color-neutral-alpha-white-10) */
+--color-bg-on-color-active: var(--color-neutral-alpha-white-20);/* dark: var(--color-neutral-alpha-white-20) */
 --color-text-on-warning: var(--color-base-black);/* dark: var(--color-base-black) */
 --color-text-on-neutral-action-active: var(--color-neutral-950);/* dark: var(--color-neutral-950) */
 --color-text-brand: var(--color-brand-600);/* dark: var(--color-brand-400) */
@@ -1603,6 +1605,10 @@ Source: `packages/tokens/src/component-select.css`
 --select-option-bg-selected-hover: var(--dropdown-menu-item-bg-active);
 --select-option-check: var(--color-fg-primary);
 --select-option-check-size: 16px;
+--select-option-description-font-size: var(--text-caption-sm);
+--select-option-description-line-height: var(--text-caption-sm--line-height);
+--select-option-description-color: var(--color-text-tertiary);
+--select-rich-content-padding-start: var(--spacing-sm);
 ```
 
 ## Toggle Component Tokens
