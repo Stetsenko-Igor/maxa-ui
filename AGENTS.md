@@ -81,6 +81,11 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - Badge is a non-removable status/count/metadata indicator with `intent`, `appearance`, `emphasis`, and sizes `sm | md | lg`.
 - Tag is a data/category/removable label with `appearance`, `emphasis`, and sizes `sm | md | lg`; Tag must not expose `intent`.
 - Figma token source of truth lives in `packages/tokens/figma/`.
+- The live Figma library is **MAXA Foundation**, file key `ODH3pmxkKyP8pAslgDb15s`
+  (`https://www.figma.com/design/ODH3pmxkKyP8pAslgDb15s/`). Every node reference in
+  `specs/` and `docs/` is relative to that file. Use this key for Figma MCP calls,
+  Code Connect configuration and token import or export; do not guess it from a
+  pasted URL in an old plan.
 - Figma collections currently use:
   - `Primitives`
   - `Color modes`

@@ -2,6 +2,19 @@
 
 This folder contains the import-ready token source for the MAXA design system.
 
+**Target file:** MAXA Foundation, file key `ODH3pmxkKyP8pAslgDb15s`
+(`https://www.figma.com/design/ODH3pmxkKyP8pAslgDb15s/`). The importer plugin
+writes these collections into that file; node references throughout `specs/`
+and `docs/` point at it.
+
+**Reference notation:** values may be written either as a Figma alias
+(`{Color modes/text/text-primary}`) or as a CSS variable
+(`var(--color-text-primary)`); `scripts/build-figma-import-bundle.mjs`
+converts the latter when it builds the bundle. Prefer the alias form - it is
+what the bundle emits, what the team ui-kit reads, and it keeps diffs
+meaningful. Reference the semantic layer rather than a raw primitive
+(`{Spacing/spacing-md}`, not `{Spacing/2}`) wherever a semantic token exists.
+
 ## Collections
 
 - `Primitives`
