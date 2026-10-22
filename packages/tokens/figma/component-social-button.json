@@ -22,27 +22,27 @@
     },
     "height-lg": {
       "$description": "Social Button: height lg.",
-      "$value": "var(--button-size-lg-height)",
+      "$value": "{Component-based/Button/size/lg/height}",
       "$type": "number"
     },
     "radius": {
       "$description": "Social Button: radius.",
-      "$value": "var(--radius-md)",
+      "$value": "{Radius/radius-md}",
       "$type": "number"
     },
     "border": {
       "$description": "Social Button: border.",
-      "$value": "var(--color-border-primary)",
+      "$value": "{Color modes/border/border-primary}",
       "$type": "color"
     },
     "border-hover": {
       "$description": "Social Button: border (hover state).",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "border-active": {
       "$description": "Social Button: border (active state).",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "border-focus": {
@@ -67,7 +67,7 @@
     },
     "text": {
       "$description": "Social Button: text color.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "shadow": {
@@ -87,37 +87,37 @@
     },
     "font-size-sm": {
       "$description": "Social Button: font size sm.",
-      "$value": "var(--button-size-sm-text)",
+      "$value": "{Component-based/Button/size/sm/text}",
       "$type": "number"
     },
     "font-size": {
       "$description": "Social Button: font size.",
-      "$value": "var(--button-size-md-text)",
+      "$value": "{Component-based/Button/size/md/text}",
       "$type": "number"
     },
     "font-size-lg": {
       "$description": "Social Button: font size lg.",
-      "$value": "var(--button-size-lg-text)",
+      "$value": "{Component-based/Button/size/lg/text}",
       "$type": "number"
     },
     "line-height-sm": {
       "$description": "Social Button: line height sm.",
-      "$value": "var(--button-size-sm-line-height)",
+      "$value": "{Component-based/Button/size/sm/line-height}",
       "$type": "number"
     },
     "line-height": {
       "$description": "Social Button: line height.",
-      "$value": "var(--button-size-md-line-height)",
+      "$value": "{Component-based/Button/size/md/line-height}",
       "$type": "number"
     },
     "line-height-lg": {
       "$description": "Social Button: line height lg.",
-      "$value": "var(--button-size-lg-line-height)",
+      "$value": "{Component-based/Button/size/lg/line-height}",
       "$type": "number"
     },
     "font-weight": {
       "$description": "Social Button: font weight.",
-      "$value": "var(--button-size-md-weight)",
+      "$value": "{Component-based/Button/size/md/weight}",
       "$type": "string"
     },
     "icon-size-sm": {
@@ -137,7 +137,7 @@
     },
     "disabled-opacity": {
       "$description": "Social Button: disabled opacity.",
-      "$value": "var(--opacity-disabled)",
+      "$value": 0.5,
       "$type": "number"
     }
   }

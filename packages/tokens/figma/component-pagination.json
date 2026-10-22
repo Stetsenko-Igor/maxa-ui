@@ -2,7 +2,7 @@
   "Pagination": {
     "gap": {
       "$description": "Pagination: gap.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "item-size": {
@@ -12,12 +12,12 @@
     },
     "item-padding-x": {
       "$description": "Pagination: item padding x.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     },
     "item-radius": {
       "$description": "Pagination: item radius.",
-      "$value": "var(--radius-sm)",
+      "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "item-bg": {
@@ -27,22 +27,22 @@
     },
     "item-bg-hover": {
       "$description": "Pagination: item bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "item-bg-active": {
       "$description": "Pagination: item bg (active state).",
-      "$value": "var(--color-action-primary-subtle)",
+      "$value": "{Color modes/action/action-primary-subtle}",
       "$type": "color"
     },
     "item-text": {
       "$description": "Pagination: item text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "item-text-active": {
       "$description": "Pagination: item text (active state).",
-      "$value": "var(--color-action-primary)",
+      "$value": "{Color modes/action/action-primary}",
       "$type": "color"
     },
     "item-border": {
@@ -57,12 +57,12 @@
     },
     "font-size": {
       "$description": "Pagination: font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "font-weight": {
       "$description": "Pagination: font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     }
   }

@@ -8,17 +8,17 @@
       },
       "padding-x": {
         "$description": "Toast, layout: padding x.",
-        "$value": "var(--spacing-4)",
+        "$value": "{Spacing/spacing-xl}",
         "$type": "string"
       },
       "padding-y": {
         "$description": "Toast, layout: padding y.",
-        "$value": "var(--spacing-3)",
+        "$value": "{Spacing/spacing-lg}",
         "$type": "string"
       },
       "gap": {
         "$description": "Toast, layout: gap.",
-        "$value": "var(--spacing-2)",
+        "$value": "{Spacing/spacing-md}",
         "$type": "string"
       },
       "stripe-width": {
@@ -35,59 +35,59 @@
     "color": {
       "bg": {
         "$description": "Toast, color: background.",
-        "$value": "var(--color-bg-float)",
+        "$value": "{Color modes/background/bg-float}",
         "$type": "color"
       },
       "border": {
         "$description": "Toast, color: border.",
-        "$value": "var(--color-border-primary)",
+        "$value": "{Color modes/border/border-primary}",
         "$type": "color"
       },
       "title": {
         "$description": "Toast, color: title text.",
-        "$value": "var(--color-text-primary)",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "description": {
         "$description": "Toast, color: description.",
-        "$value": "var(--color-text-secondary)",
+        "$value": "{Color modes/text/text-secondary}",
         "$type": "color"
       },
       "stripe-neutral": {
         "$description": "Toast, color: stripe neutral.",
-        "$value": "var(--color-border-primary)",
+        "$value": "{Color modes/border/border-primary}",
         "$type": "color"
       },
       "stripe-info": {
         "$description": "Toast, color: stripe info.",
-        "$value": "var(--color-border-info-strong)",
+        "$value": "{Color modes/border/border-info-strong}",
         "$type": "color"
       },
       "stripe-success": {
         "$description": "Toast, color: stripe success.",
-        "$value": "var(--color-border-success-strong)",
+        "$value": "{Color modes/border/border-success-strong}",
         "$type": "color"
       },
       "stripe-warning": {
         "$description": "Toast, color: stripe warning.",
-        "$value": "var(--color-border-warning-strong)",
+        "$value": "{Color modes/border/border-warning-strong}",
         "$type": "color"
       },
       "stripe-error": {
         "$description": "Toast, color: stripe error.",
-        "$value": "var(--color-border-error-strong)",
+        "$value": "{Color modes/border/border-error-strong}",
         "$type": "color"
       }
     },
     "radius": {
       "$description": "Toast: radius.",
-      "$value": "var(--radius-lg)",
+      "$value": "{Radius/radius-lg}",
       "$type": "string"
     },
     "shadow": {
       "$description": "Toast: shadow.",
       "$value": "var(--shadow-lg)",
-      "$type": "string"
+      "$type": "shadow"
     }
   }
 }

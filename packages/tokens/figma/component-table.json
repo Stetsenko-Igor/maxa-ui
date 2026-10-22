@@ -2,17 +2,17 @@
   "Table": {
     "bg": {
       "$description": "Table: background.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "border": {
       "$description": "Table: border.",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "radius": {
       "$description": "Table: radius.",
-      "$value": "var(--radius-md)",
+      "$value": "{Radius/radius-md}",
       "$type": "number"
     },
     "min-width": {
@@ -22,57 +22,57 @@
     },
     "font-family": {
       "$description": "Table: font family.",
-      "$value": "var(--font-body)",
+      "$value": "{Typography/Font family/body}",
       "$type": "string"
     },
     "font-size": {
       "$description": "Table: font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "line-height": {
       "$description": "Table: line height.",
-      "$value": "var(--text-sm--line-height)",
+      "$value": "{Typography/Line height/text-sm}",
       "$type": "number"
     },
     "header-bg": {
       "$description": "Table: header bg.",
-      "$value": "var(--color-bg-neutral-muted)",
+      "$value": "{Color modes/background/bg-neutral-muted}",
       "$type": "color"
     },
     "fg": {
       "$description": "Table: icons and secondary foreground.",
-      "$value": "var(--color-fg-secondary)",
+      "$value": "{Color modes/foreground/fg-secondary}",
       "$type": "color"
     },
     "fg-disabled": {
       "$description": "Table: disabled icon foreground.",
-      "$value": "var(--color-fg-disabled)",
+      "$value": "{Color modes/foreground/fg-disabled}",
       "$type": "color"
     },
     "header-text": {
       "$description": "Table: header text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "header-font-size": {
       "$description": "Table: header font size.",
-      "$value": "var(--text-caption-sm)",
+      "$value": "{Typography/Font size/caption-sm}",
       "$type": "number"
     },
     "header-line-height": {
       "$description": "Table: header line height.",
-      "$value": "var(--text-caption-sm--line-height)",
+      "$value": "{Typography/Line height/caption-sm}",
       "$type": "number"
     },
     "header-font-weight": {
       "$description": "Table: header font weight.",
-      "$value": "var(--font-weight-semibold)",
+      "$value": "{Typography/Font weight/semibold}",
       "$type": "string"
     },
     "head-gap": {
       "$description": "Table: head gap.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "sort-icon-size": {
@@ -82,7 +82,7 @@
     },
     "sort-icon-font-size": {
       "$description": "Table: sort icon font size.",
-      "$value": "var(--text-caption-sm)",
+      "$value": "{Typography/Font size/caption-sm}",
       "$type": "number"
     },
     "row-height-sm": {
@@ -102,42 +102,42 @@
     },
     "row-bg": {
       "$description": "Table: default row background.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "row-bg-striped": {
       "$description": "Table: striped row background.",
-      "$value": "var(--color-bg-neutral-surface)",
+      "$value": "{Color modes/background/bg-neutral-surface}",
       "$type": "color"
     },
     "row-bg-hover": {
       "$description": "Table: row bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "row-bg-selected": {
       "$description": "Table: row bg (selected state).",
-      "$value": "var(--color-action-primary-subtle)",
+      "$value": "{Color modes/action/action-primary-subtle}",
       "$type": "color"
     },
     "row-bg-selected-hover": {
       "$description": "Table: row bg (selected hover state).",
-      "$value": "var(--color-action-primary-subtle-hover)",
+      "$value": "{Color modes/action/action-primary-subtle-hover}",
       "$type": "color"
     },
     "row-bg-subdued": {
       "$description": "Table: row bg subdued.",
-      "$value": "var(--color-bg-muted)",
+      "$value": "{Color modes/background/bg-muted}",
       "$type": "color"
     },
     "cell-text": {
       "$description": "Table: cell text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "cell-font-weight": {
       "$description": "Table: cell font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     },
     "cell-icon-size": {
@@ -147,52 +147,52 @@
     },
     "cell-padding-x": {
       "$description": "Table: cell padding x.",
-      "$value": "var(--spacing-4)",
+      "$value": "{Spacing/spacing-xl}",
       "$type": "number"
     },
     "cell-padding-y-sm": {
       "$description": "Table: cell padding y sm.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "cell-padding-y": {
       "$description": "Table: cell padding y.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     },
     "cell-padding-y-lg": {
       "$description": "Table: cell padding y lg.",
-      "$value": "var(--spacing-4)",
+      "$value": "{Spacing/spacing-xl}",
       "$type": "number"
     },
     "footer-bg": {
       "$description": "Table: footer bg.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "footer-text": {
       "$description": "Table: footer text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "footer-text-caption": {
       "$description": "Table: supporting footer text.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "{Color modes/text/text-tertiary}",
       "$type": "color"
     },
     "footer-font-weight": {
       "$description": "Table: footer font weight.",
-      "$value": "var(--font-weight-semibold)",
+      "$value": "{Typography/Font weight/semibold}",
       "$type": "string"
     },
     "text-caption": {
       "$description": "Table: caption text.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "{Color modes/text/text-tertiary}",
       "$type": "color"
     },
     "caption-padding-y": {
       "$description": "Table: caption padding y.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     }
   }

@@ -69,77 +69,77 @@
     "color": {
       "bg": {
         "$description": "Checkbox, color: background.",
-        "$value": "var(--color-bg-surface)",
+        "$value": "{Color modes/background/bg-surface}",
         "$type": "color"
       },
       "border": {
         "$description": "Checkbox, color: border.",
-        "$value": "var(--color-control-idle)",
+        "$value": "{Color modes/control/control-idle}",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Checkbox, color: border (hover state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "bg-checked": {
         "$description": "Checkbox, color: background (checked state).",
-        "$value": "var(--color-control-checked)",
+        "$value": "{Color modes/control/control-checked}",
         "$type": "color"
       },
       "bg-checked-hover": {
         "$description": "Checkbox, color: background (checked hover state).",
-        "$value": "var(--color-control-checked-hover)",
+        "$value": "{Color modes/control/control-checked-hover}",
         "$type": "color"
       },
       "mark": {
         "$description": "Checkbox, color: mark.",
-        "$value": "var(--color-fg-inverse)",
+        "$value": "{Color modes/foreground/fg-inverse}",
         "$type": "color"
       },
       "border-error": {
         "$description": "Checkbox, color: border error.",
-        "$value": "var(--color-border-error-strong)",
+        "$value": "{Color modes/border/border-error-strong}",
         "$type": "color"
       },
       "border-disabled": {
         "$description": "Checkbox, color: border (disabled state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "bg-disabled-checked": {
         "$description": "Checkbox, color: background (disabled checked state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "top-label": {
         "$description": "Checkbox, color: top label.",
-        "$value": "var(--color-text-primary)",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "side-label": {
         "$description": "Checkbox, color: side label.",
-        "$value": "var(--color-text-primary)",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "description": {
         "$description": "Checkbox, color: description.",
-        "$value": "var(--color-text-secondary)",
+        "$value": "{Color modes/text/text-secondary}",
         "$type": "color"
       },
       "top-label-disabled": {
         "$description": "Checkbox, color: top label (disabled state).",
-        "$value": "var(--color-text-disabled)",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "text-disabled": {
         "$description": "Checkbox, color: text color (disabled state).",
-        "$value": "var(--color-text-disabled)",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "error": {
         "$description": "Checkbox, color: error.",
-        "$value": "var(--color-text-error)",
+        "$value": "{Color modes/text/text-error}",
         "$type": "color"
       }
     },

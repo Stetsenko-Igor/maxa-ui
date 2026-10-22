@@ -2,17 +2,17 @@
   "Skeleton": {
     "bg": {
       "$description": "Skeleton: background.",
-      "$value": "var(--color-bg-neutral-subtle)",
+      "$value": "{Color modes/background/bg-neutral-subtle}",
       "$type": "color"
     },
     "highlight": {
       "$description": "Skeleton: highlight.",
-      "$value": "var(--color-bg-muted)",
+      "$value": "{Color modes/background/bg-muted}",
       "$type": "string"
     },
     "radius": {
       "$description": "Skeleton: radius.",
-      "$value": "var(--radius-sm)",
+      "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "text-height": {

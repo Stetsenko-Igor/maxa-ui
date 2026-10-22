@@ -2,7 +2,7 @@
   "Separator": {
     "color": {
       "$description": "Separator: color.",
-      "$value": "var(--color-border-primary)",
+      "$value": "{Color modes/border/border-primary}",
       "$type": "string"
     },
     "size": {

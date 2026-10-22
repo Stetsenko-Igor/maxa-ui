@@ -2,23 +2,23 @@
   "Context Menu": {
     "bg": {
       "$description": "Context Menu: background.",
-      "$value": "var(--dropdown-menu-bg)",
+      "$value": "{Component-based/Dropdown Menu/surface/bg}",
       "$type": "color"
     },
     "border": {
       "$description": "Context Menu: border.",
-      "$value": "var(--dropdown-menu-border)",
+      "$value": "{Component-based/Dropdown Menu/surface/border}",
       "$type": "color"
     },
     "radius": {
       "$description": "Context Menu: radius.",
-      "$value": "var(--dropdown-menu-radius)",
+      "$value": "{Component-based/Dropdown Menu/layout/radius}",
       "$type": "string"
     },
     "shadow": {
       "$description": "Context Menu: shadow.",
       "$value": "var(--dropdown-menu-shadow)",
-      "$type": "color"
+      "$type": "shadow"
     },
     "min-width": {
       "$description": "Context Menu: min width.",
@@ -32,87 +32,87 @@
     },
     "padding-y": {
       "$description": "Context Menu: padding y.",
-      "$value": "var(--dropdown-menu-padding-y)",
+      "$value": "{Component-based/Dropdown Menu/layout/padding-y}",
       "$type": "string"
     },
     "item-height": {
       "$description": "Context Menu: item height.",
-      "$value": "var(--dropdown-menu-item-height)",
+      "$value": "{Component-based/Dropdown Menu/layout/item-height}",
       "$type": "string"
     },
     "item-padding-x": {
       "$description": "Context Menu: item padding x.",
-      "$value": "var(--dropdown-menu-item-padding-x)",
+      "$value": "{Component-based/Dropdown Menu/layout/item-padding-x}",
       "$type": "string"
     },
     "item-gap": {
       "$description": "Context Menu: item gap.",
-      "$value": "var(--dropdown-menu-item-gap)",
+      "$value": "{Component-based/Dropdown Menu/layout/item-gap}",
       "$type": "string"
     },
     "item-text": {
       "$description": "Context Menu: item text.",
-      "$value": "var(--dropdown-menu-item-text)",
+      "$value": "{Component-based/Dropdown Menu/item/text}",
       "$type": "color"
     },
     "item-text-hover": {
       "$description": "Context Menu: item text (hover state).",
-      "$value": "var(--dropdown-menu-item-text-hover)",
+      "$value": "{Component-based/Dropdown Menu/item/text}",
       "$type": "color"
     },
     "item-text-disabled": {
       "$description": "Context Menu: item text (disabled state).",
-      "$value": "var(--dropdown-menu-item-text-disabled)",
+      "$value": "{Component-based/Dropdown Menu/item/text-disabled}",
       "$type": "color"
     },
     "item-text-destructive": {
       "$description": "Context Menu: item text destructive.",
-      "$value": "var(--dropdown-menu-item-text-destructive)",
+      "$value": "{Component-based/Dropdown Menu/item/text-destructive}",
       "$type": "color"
     },
     "item-bg-hover": {
       "$description": "Context Menu: item bg (hover state).",
-      "$value": "var(--dropdown-menu-item-bg-hover)",
+      "$value": "{Component-based/Dropdown Menu/item/bg-hover}",
       "$type": "color"
     },
     "item-bg-active": {
       "$description": "Context Menu: item bg (active state).",
-      "$value": "var(--dropdown-menu-item-bg-active)",
+      "$value": "{Component-based/Dropdown Menu/item/bg-active}",
       "$type": "color"
     },
     "separator": {
       "$description": "Context Menu: separator.",
-      "$value": "var(--dropdown-menu-separator)",
+      "$value": "{Component-based/Dropdown Menu/support/separator}",
       "$type": "color"
     },
     "label-text": {
       "$description": "Context Menu: label text text.",
-      "$value": "var(--dropdown-menu-label-text)",
+      "$value": "{Component-based/Dropdown Menu/support/label-text}",
       "$type": "color"
     },
     "shortcut-text": {
       "$description": "Context Menu: shortcut text.",
-      "$value": "var(--dropdown-menu-shortcut-text)",
+      "$value": "{Component-based/Dropdown Menu/support/shortcut-text}",
       "$type": "color"
     },
     "font-family": {
       "$description": "Context Menu: font family.",
-      "$value": "var(--dropdown-menu-font-family)",
+      "$value": "{Component-based/Dropdown Menu/typography/font-family}",
       "$type": "string"
     },
     "font-size": {
       "$description": "Context Menu: font size.",
-      "$value": "var(--dropdown-menu-font-size)",
+      "$value": "{Component-based/Dropdown Menu/typography/font-size}",
       "$type": "string"
     },
     "line-height": {
       "$description": "Context Menu: line height.",
-      "$value": "var(--dropdown-menu-line-height)",
+      "$value": "{Component-based/Dropdown Menu/typography/line-height}",
       "$type": "string"
     },
     "z": {
       "$description": "Context Menu: z.",
-      "$value": "var(--z-dropdown)",
+      "$value": 1000,
       "$type": "string"
     }
   }

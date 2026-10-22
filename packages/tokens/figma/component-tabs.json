@@ -2,52 +2,52 @@
   "Tabs": {
     "list-bg": {
       "$description": "Tabs: list bg.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "list-border": {
       "$description": "Tabs: list border.",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "list-radius": {
       "$description": "Tabs: list radius.",
-      "$value": "var(--radius-sm)",
+      "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "trigger-bg": {
       "$description": "Tabs: trigger bg.",
-      "$value": "var(--color-action-neutral-control)",
+      "$value": "{Color modes/action/action-neutral-control}",
       "$type": "color"
     },
     "trigger-bg-hover": {
       "$description": "Tabs: trigger bg (hover state).",
-      "$value": "var(--color-action-neutral-control-hover)",
+      "$value": "{Color modes/action/action-neutral-control-hover}",
       "$type": "color"
     },
     "trigger-bg-active": {
       "$description": "Tabs: trigger bg (active state).",
-      "$value": "var(--color-bg-neutral-strong)",
+      "$value": "{Color modes/background/bg-neutral-strong}",
       "$type": "color"
     },
     "trigger-text": {
       "$description": "Tabs: trigger text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "trigger-text-hover": {
       "$description": "Tabs: trigger text (hover state).",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "trigger-text-active": {
       "$description": "Tabs: trigger text (active state).",
-      "$value": "var(--color-text-inverse)",
+      "$value": "{Color modes/text/text-inverse}",
       "$type": "color"
     },
     "trigger-border": {
       "$description": "Tabs: trigger border.",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "trigger-border-width": {
@@ -57,12 +57,12 @@
     },
     "trigger-border-active": {
       "$description": "Tabs: trigger border (active state).",
-      "$value": "var(--color-bg-neutral-strong)",
+      "$value": "{Color modes/background/bg-neutral-strong}",
       "$type": "color"
     },
     "trigger-radius": {
       "$description": "Tabs: trigger radius.",
-      "$value": "var(--radius-sm)",
+      "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "trigger-height": {
@@ -72,22 +72,22 @@
     },
     "trigger-padding-x": {
       "$description": "Tabs: trigger padding x.",
-      "$value": "var(--spacing-5)",
+      "$value": "{Spacing/spacing-2xl}",
       "$type": "number"
     },
     "trigger-gap": {
       "$description": "Tabs: trigger gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "trigger-font-size": {
       "$description": "Tabs: trigger font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "trigger-font-weight": {
       "$description": "Tabs: trigger font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     }
   }

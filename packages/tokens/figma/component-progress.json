@@ -2,12 +2,12 @@
   "Progress": {
     "bg": {
       "$description": "Progress: background.",
-      "$value": "var(--color-bg-neutral-subtle)",
+      "$value": "{Color modes/background/bg-neutral-subtle}",
       "$type": "color"
     },
     "radius": {
       "$description": "Progress: radius.",
-      "$value": "var(--radius-full)",
+      "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "height-sm": {
@@ -22,7 +22,7 @@
     },
     "fill-brand": {
       "$description": "Progress: fill brand.",
-      "$value": "var(--color-action-primary)",
+      "$value": "{Color modes/action/action-primary}",
       "$type": "color"
     },
     "fill-success": {
@@ -42,22 +42,22 @@
     },
     "label-color": {
       "$description": "Progress: label text color.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "string"
     },
     "value-color": {
       "$description": "Progress: value color.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "string"
     },
     "font-size": {
       "$description": "Progress: font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "font-weight": {
       "$description": "Progress: font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     }
   }

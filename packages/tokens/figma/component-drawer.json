@@ -2,23 +2,23 @@
   "Drawer": {
     "overlay-bg": {
       "$description": "Drawer: overlay bg.",
-      "$value": "var(--dialog-overlay-bg)",
+      "$value": "{Component-based/Dialog/overlay-bg}",
       "$type": "string"
     },
     "content-bg": {
       "$description": "Drawer: content bg.",
-      "$value": "var(--color-bg-float)",
+      "$value": "{Color modes/background/bg-float}",
       "$type": "color"
     },
     "content-border": {
       "$description": "Drawer: content border.",
-      "$value": "var(--color-border-primary)",
+      "$value": "{Color modes/border/border-primary}",
       "$type": "color"
     },
     "content-shadow": {
       "$description": "Drawer: content shadow.",
       "$value": "var(--shadow-lg)",
-      "$type": "string"
+      "$type": "shadow"
     },
     "content-width-sm": {
       "$description": "Drawer: content width sm.",
@@ -52,87 +52,87 @@
     },
     "header-padding-x": {
       "$description": "Drawer: header padding x.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "header-padding-top": {
       "$description": "Drawer: header padding top.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "header-padding-bottom": {
       "$description": "Drawer: header padding bottom.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "header-gap": {
       "$description": "Drawer: header gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "header-border": {
       "$description": "Drawer: header border.",
-      "$value": "var(--color-border-primary)",
+      "$value": "{Color modes/border/border-primary}",
       "$type": "color"
     },
     "body-padding-x": {
       "$description": "Drawer: body padding x.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "body-padding-y": {
       "$description": "Drawer: body padding y.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "body-font-size": {
       "$description": "Drawer: body font size.",
-      "$value": "var(--text-md)",
+      "$value": "{Typography/Font size/text-md}",
       "$type": "number"
     },
     "body-line-height": {
       "$description": "Drawer: body line height.",
-      "$value": "var(--text-md--line-height)",
+      "$value": "{Typography/Line height/text-md}",
       "$type": "number"
     },
     "body-font-weight": {
       "$description": "Drawer: body font weight.",
-      "$value": "var(--font-weight-regular)",
+      "$value": "{Typography/Font weight/regular}",
       "$type": "number"
     },
     "body-color": {
       "$description": "Drawer: body color.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "footer-padding-x": {
       "$description": "Drawer: footer padding x.",
-      "$value": "var(--spacing-6)",
+      "$value": "{Spacing/spacing-3xl}",
       "$type": "number"
     },
     "footer-padding-top": {
       "$description": "Drawer: footer padding top.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     },
     "footer-padding-bottom": {
       "$description": "Drawer: footer padding bottom.",
-      "$value": "var(--spacing-4)",
+      "$value": "{Spacing/spacing-xl}",
       "$type": "number"
     },
     "footer-gap": {
       "$description": "Drawer: footer gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "title-color": {
       "$description": "Drawer: title text color.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "title-font-size": {
       "$description": "Drawer: title text font size.",
-      "$value": "var(--text-heading-xs)",
+      "$value": "{Typography/Font size/heading-xs}",
       "$type": "number"
     },
     "title-line-height": {
@@ -142,27 +142,27 @@
     },
     "title-font-weight": {
       "$description": "Drawer: title text font weight.",
-      "$value": "var(--font-weight-bold)",
+      "$value": "{Typography/Font weight/bold}",
       "$type": "number"
     },
     "description-color": {
       "$description": "Drawer: description color.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "description-font-size": {
       "$description": "Drawer: description font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "description-line-height": {
       "$description": "Drawer: description line height.",
-      "$value": "var(--text-sm--line-height)",
+      "$value": "{Typography/Line height/text-sm}",
       "$type": "number"
     },
     "description-font-weight": {
       "$description": "Drawer: description font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "number"
     },
     "close-size": {
@@ -177,27 +177,27 @@
     },
     "close-offset": {
       "$description": "Drawer: close offset.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     },
     "close-bg-hover": {
       "$description": "Drawer: close bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "close-bg-active": {
       "$description": "Drawer: close bg (active state).",
-      "$value": "var(--color-action-neutral-subtle-active)",
+      "$value": "{Color modes/action/action-neutral-subtle-active}",
       "$type": "color"
     },
     "close-color": {
       "$description": "Drawer: close color.",
-      "$value": "var(--color-fg-secondary)",
+      "$value": "{Color modes/foreground/fg-secondary}",
       "$type": "color"
     },
     "z": {
       "$description": "Drawer: z.",
-      "$value": "var(--z-modal)",
+      "$value": 1400,
       "$type": "number"
     }
   }

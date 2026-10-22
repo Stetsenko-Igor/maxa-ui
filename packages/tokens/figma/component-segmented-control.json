@@ -2,27 +2,27 @@
   "Segmented Control": {
     "bg": {
       "$description": "Segmented Control: background.",
-      "$value": "var(--color-action-neutral-control)",
+      "$value": "{Color modes/action/action-neutral-control}",
       "$type": "color"
     },
     "border": {
       "$description": "Segmented Control: border.",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "radius": {
       "$description": "Segmented Control: radius.",
-      "$value": "var(--radius-md)",
+      "$value": "{Radius/radius-md}",
       "$type": "number"
     },
     "padding": {
       "$description": "Segmented Control: padding.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "gap": {
       "$description": "Segmented Control: gap.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "item-bg": {
@@ -32,47 +32,47 @@
     },
     "item-bg-hover": {
       "$description": "Segmented Control: item bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "item-bg-active": {
       "$description": "Segmented Control: item bg (active state).",
-      "$value": "var(--color-bg-neutral-strong)",
+      "$value": "{Color modes/background/bg-neutral-strong}",
       "$type": "color"
     },
     "item-text": {
       "$description": "Segmented Control: item text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "item-text-active": {
       "$description": "Segmented Control: item text (active state).",
-      "$value": "var(--color-text-inverse)",
+      "$value": "{Color modes/text/text-inverse}",
       "$type": "color"
     },
     "item-radius": {
       "$description": "Segmented Control: item radius.",
-      "$value": "var(--radius-sm)",
+      "$value": "{Radius/radius-sm}",
       "$type": "number"
     },
     "item-height": {
       "$description": "Segmented Control: item height.",
-      "$value": "var(--spacing-9)",
+      "$value": 36,
       "$type": "number"
     },
     "item-padding-x": {
       "$description": "Segmented Control: item padding x.",
-      "$value": "var(--spacing-4)",
+      "$value": "{Spacing/spacing-xl}",
       "$type": "number"
     },
     "item-font-size": {
       "$description": "Segmented Control: item font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "item-font-weight": {
       "$description": "Segmented Control: item font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     },
     "pill-border-width": {
@@ -82,22 +82,22 @@
     },
     "pill-radius": {
       "$description": "Segmented Control pill: radius.",
-      "$value": "var(--radius-full)",
+      "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "pill-padding": {
       "$description": "Segmented Control pill: padding.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "pill-gap": {
       "$description": "Segmented Control pill: gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "pill-item-radius": {
       "$description": "Segmented Control pill: item-radius.",
-      "$value": "var(--radius-full)",
+      "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "pill-item-height": {
@@ -107,27 +107,27 @@
     },
     "pill-item-padding-x": {
       "$description": "Segmented Control pill: item-padding-x.",
-      "$value": "var(--spacing-3)",
+      "$value": "{Spacing/spacing-lg}",
       "$type": "number"
     },
     "pill-item-bg-active": {
       "$description": "Segmented Control pill: item-bg-active.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "pill-item-text-active": {
       "$description": "Segmented Control pill: item-text-active.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "pill-item-font-size": {
       "$description": "Segmented Control pill: item-font-size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "pill-item-font-weight": {
       "$description": "Segmented Control pill: item-font-weight.",
-      "$value": "var(--font-weight-semibold)",
+      "$value": "{Typography/Font weight/semibold}",
       "$type": "number"
     }
   }

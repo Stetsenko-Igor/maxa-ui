@@ -89,27 +89,27 @@
     "color": {
       "track-off": {
         "$description": "Toggle, color: track off.",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "track-off-hover": {
         "$description": "Toggle, color: track off (hover state).",
-        "$value": "var(--color-control-idle)",
+        "$value": "{Color modes/control/control-idle}",
         "$type": "color"
       },
       "track-on": {
         "$description": "Toggle, color: track on.",
-        "$value": "var(--color-action-primary)",
+        "$value": "{Color modes/action/action-primary}",
         "$type": "color"
       },
       "track-on-hover": {
         "$description": "Toggle, color: track on (hover state).",
-        "$value": "var(--color-action-primary-hover)",
+        "$value": "{Color modes/action/action-primary-hover}",
         "$type": "color"
       },
       "track-disabled": {
         "$description": "Toggle, color: track (disabled state).",
-        "$value": "var(--color-action-neutral)",
+        "$value": "{Color modes/action/action-neutral}",
         "$type": "color"
       },
       "thumb": {
@@ -119,7 +119,7 @@
       },
       "thumb-disabled": {
         "$description": "Toggle, color: thumb (disabled state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "label": {

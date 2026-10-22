@@ -2,42 +2,42 @@
   "Breadcrumb": {
     "gap": {
       "$description": "Breadcrumb: gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "text": {
       "$description": "Breadcrumb: text color.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "text-hover": {
       "$description": "Breadcrumb: text color (hover state).",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "current-text": {
       "$description": "Breadcrumb: current text.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "separator": {
       "$description": "Breadcrumb: separator.",
-      "$value": "var(--color-fg-tertiary)",
+      "$value": "{Color modes/foreground/fg-tertiary}",
       "$type": "color"
     },
     "ellipsis-bg-hover": {
       "$description": "Breadcrumb: ellipsis bg (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "ellipsis-bg-active": {
       "$description": "Breadcrumb: ellipsis bg (active state).",
-      "$value": "var(--color-action-neutral-subtle-active)",
+      "$value": "{Color modes/action/action-neutral-subtle-active}",
       "$type": "color"
     },
     "ellipsis-radius": {
       "$description": "Breadcrumb: ellipsis radius.",
-      "$value": "var(--radius-xs)",
+      "$value": "{Radius/radius-xs}",
       "$type": "number"
     },
     "ellipsis-size": {
@@ -47,12 +47,12 @@
     },
     "font-size": {
       "$description": "Breadcrumb: font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "font-weight": {
       "$description": "Breadcrumb: font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     }
   }

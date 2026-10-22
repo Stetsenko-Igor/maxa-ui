@@ -2,27 +2,27 @@
   "File Input": {
     "bg": {
       "$description": "File Input: background.",
-      "$value": "var(--color-bg-surface)",
+      "$value": "{Color modes/background/bg-surface}",
       "$type": "color"
     },
     "bg-hover": {
       "$description": "File Input: background (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "bg-dragging": {
       "$description": "File Input: background dragging.",
-      "$value": "var(--color-action-primary-subtle)",
+      "$value": "{Color modes/action/action-primary-subtle}",
       "$type": "color"
     },
     "border": {
       "$description": "File Input: border.",
-      "$value": "var(--color-border-primary)",
+      "$value": "{Color modes/border/border-primary}",
       "$type": "color"
     },
     "border-hover": {
       "$description": "File Input: border (hover state).",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "border-focus": {
@@ -32,17 +32,17 @@
     },
     "border-error": {
       "$description": "File Input: border error.",
-      "$value": "var(--color-border-error-strong)",
+      "$value": "{Color modes/border/border-error-strong}",
       "$type": "color"
     },
     "border-disabled": {
       "$description": "File Input: border (disabled state).",
-      "$value": "var(--color-border-tertiary)",
+      "$value": "{Color modes/border/border-tertiary}",
       "$type": "color"
     },
     "radius": {
       "$description": "File Input: radius.",
-      "$value": "var(--radius-md)",
+      "$value": "{Radius/radius-md}",
       "$type": "number"
     },
     "focus-ring": {
@@ -62,87 +62,87 @@
     },
     "font-family": {
       "$description": "File Input: font family.",
-      "$value": "var(--font-body)",
+      "$value": "{Typography/Font family/body}",
       "$type": "string"
     },
     "label-text": {
       "$description": "File Input: label text text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "label-font-size": {
       "$description": "File Input: label text font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "label-line-height": {
       "$description": "File Input: label text line height.",
-      "$value": "var(--text-sm--line-height)",
+      "$value": "{Typography/Line height/text-sm}",
       "$type": "number"
     },
     "label-font-weight": {
       "$description": "File Input: label text font weight.",
-      "$value": "var(--font-weight-semibold)",
+      "$value": "{Typography/Font weight/semibold}",
       "$type": "number"
     },
     "title-text": {
       "$description": "File Input: title text text.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "color"
     },
     "title-font-size": {
       "$description": "File Input: title text font size.",
-      "$value": "var(--text-md)",
+      "$value": "{Typography/Font size/text-md}",
       "$type": "number"
     },
     "title-line-height": {
       "$description": "File Input: title text line height.",
-      "$value": "var(--text-md--line-height)",
+      "$value": "{Typography/Line height/text-md}",
       "$type": "number"
     },
     "title-font-weight": {
       "$description": "File Input: title text font weight.",
-      "$value": "var(--font-weight-semibold)",
+      "$value": "{Typography/Font weight/semibold}",
       "$type": "number"
     },
     "description-text": {
       "$description": "File Input: description text.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "color"
     },
     "description-font-size": {
       "$description": "File Input: description font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "description-line-height": {
       "$description": "File Input: description line height.",
-      "$value": "var(--text-sm--line-height)",
+      "$value": "{Typography/Line height/text-sm}",
       "$type": "number"
     },
     "hint-text": {
       "$description": "File Input: hint text.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "{Color modes/text/text-tertiary}",
       "$type": "color"
     },
     "error-text": {
       "$description": "File Input: error text.",
-      "$value": "var(--color-text-error)",
+      "$value": "{Color modes/text/text-error}",
       "$type": "color"
     },
     "meta-text": {
       "$description": "File Input: meta text.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "{Color modes/text/text-tertiary}",
       "$type": "color"
     },
     "gap": {
       "$description": "File Input: gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "label-gap": {
       "$description": "File Input: label text gap.",
-      "$value": "var(--spacing-xs)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "padding-sm": {
@@ -192,57 +192,57 @@
     },
     "file-list-gap": {
       "$description": "File Input: file list gap.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "file-item-gap": {
       "$description": "File Input: file item gap.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "file-item-padding-x": {
       "$description": "File Input: file item padding x.",
-      "$value": "var(--spacing-2)",
+      "$value": "{Spacing/spacing-md}",
       "$type": "number"
     },
     "file-item-padding-y": {
       "$description": "File Input: file item padding y.",
-      "$value": "var(--spacing-1)",
+      "$value": "{Spacing/spacing-xs}",
       "$type": "number"
     },
     "file-item-radius": {
       "$description": "File Input: file item radius.",
-      "$value": "var(--radius-xs)",
+      "$value": "{Radius/radius-xs}",
       "$type": "number"
     },
     "file-item-bg": {
       "$description": "File Input: file item bg.",
-      "$value": "var(--color-bg-muted)",
+      "$value": "{Color modes/background/bg-muted}",
       "$type": "color"
     },
     "icon-bg": {
       "$description": "File Input: icon color bg.",
-      "$value": "var(--color-bg-muted)",
+      "$value": "{Color modes/background/bg-muted}",
       "$type": "color"
     },
     "icon-color": {
       "$description": "File Input: icon color color.",
-      "$value": "var(--color-fg-secondary)",
+      "$value": "{Color modes/foreground/fg-secondary}",
       "$type": "color"
     },
     "icon-color-active": {
       "$description": "File Input: icon color color (active state).",
-      "$value": "var(--color-fg-brand)",
+      "$value": "{Color modes/foreground/fg-brand}",
       "$type": "color"
     },
     "disabled-bg": {
       "$description": "File Input: disabled bg.",
-      "$value": "var(--color-bg-disabled)",
+      "$value": "{Color modes/background/bg-disabled}",
       "$type": "color"
     },
     "disabled-text": {
       "$description": "File Input: disabled text.",
-      "$value": "var(--color-text-disabled)",
+      "$value": "{Color modes/text/text-disabled}",
       "$type": "color"
     },
     "disabled-opacity": {

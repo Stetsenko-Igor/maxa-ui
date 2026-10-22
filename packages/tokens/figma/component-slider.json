@@ -12,17 +12,17 @@
     },
     "track-radius": {
       "$description": "Slider: track radius.",
-      "$value": "var(--radius-full)",
+      "$value": "{Radius/radius-full}",
       "$type": "number"
     },
     "track-bg": {
       "$description": "Slider: track bg.",
-      "$value": "var(--color-bg-neutral-subtle)",
+      "$value": "{Color modes/background/bg-neutral-subtle}",
       "$type": "color"
     },
     "range-bg": {
       "$description": "Slider: range bg.",
-      "$value": "var(--color-action-primary)",
+      "$value": "{Color modes/action/action-primary}",
       "$type": "color"
     },
     "thumb-size": {
@@ -32,17 +32,17 @@
     },
     "thumb-hit-area": {
       "$description": "Slider: thumb hit area.",
-      "$value": "var(--touch-target-size)",
+      "$value": 44,
       "$type": "number"
     },
     "thumb-bg": {
       "$description": "Slider: thumb bg.",
-      "$value": "var(--color-bg-page)",
+      "$value": "{Color modes/background/bg-page}",
       "$type": "color"
     },
     "thumb-border": {
       "$description": "Slider: thumb border.",
-      "$value": "var(--color-action-primary)",
+      "$value": "{Color modes/action/action-primary}",
       "$type": "color"
     },
     "thumb-border-width": {
@@ -53,12 +53,12 @@
     "thumb-shadow": {
       "$description": "Slider: thumb shadow.",
       "$value": "var(--shadow-sm)",
-      "$type": "string"
+      "$type": "shadow"
     },
     "thumb-shadow-hover": {
       "$description": "Slider: thumb shadow (hover state).",
       "$value": "var(--shadow-md)",
-      "$type": "string"
+      "$type": "shadow"
     },
     "disabled-opacity": {
       "$description": "Slider: disabled opacity.",
@@ -67,32 +67,32 @@
     },
     "label-color": {
       "$description": "Slider: label text color.",
-      "$value": "var(--color-text-primary)",
+      "$value": "{Color modes/text/text-primary}",
       "$type": "string"
     },
     "value-color": {
       "$description": "Slider: value color.",
-      "$value": "var(--color-text-secondary)",
+      "$value": "{Color modes/text/text-secondary}",
       "$type": "string"
     },
     "mark-color": {
       "$description": "Slider: mark color.",
-      "$value": "var(--color-text-tertiary)",
+      "$value": "{Color modes/text/text-tertiary}",
       "$type": "string"
     },
     "mark-font-size": {
       "$description": "Slider: mark font size.",
-      "$value": "var(--text-caption-sm)",
+      "$value": "{Typography/Font size/caption-sm}",
       "$type": "number"
     },
     "meta-font-size": {
       "$description": "Slider: meta font size.",
-      "$value": "var(--text-sm)",
+      "$value": "{Typography/Font size/text-sm}",
       "$type": "number"
     },
     "meta-font-weight": {
       "$description": "Slider: meta font weight.",
-      "$value": "var(--font-weight-medium)",
+      "$value": "{Typography/Font weight/medium}",
       "$type": "string"
     }
   }

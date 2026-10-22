@@ -17,7 +17,7 @@
     },
     "radius": {
       "$description": "Utility Button: radius.",
-      "$value": "var(--radius-xs)",
+      "$value": "{Radius/radius-xs}",
       "$type": "number"
     },
     "bg": {
@@ -27,12 +27,12 @@
     },
     "bg-hover": {
       "$description": "Utility Button: background (hover state).",
-      "$value": "var(--color-action-neutral-subtle-hover)",
+      "$value": "{Color modes/action/action-neutral-subtle-hover}",
       "$type": "color"
     },
     "bg-active": {
       "$description": "Utility Button: background (active state).",
-      "$value": "var(--color-action-neutral-subtle-active)",
+      "$value": "{Color modes/action/action-neutral-subtle-active}",
       "$type": "color"
     },
     "bg-disabled": {
@@ -52,27 +52,27 @@
     },
     "border-active": {
       "$description": "Utility Button: border (active state).",
-      "$value": "var(--color-border-secondary)",
+      "$value": "{Color modes/border/border-secondary}",
       "$type": "color"
     },
     "text": {
       "$description": "Utility Button: text color.",
-      "$value": "var(--color-fg-secondary)",
+      "$value": "{Color modes/foreground/fg-secondary}",
       "$type": "color"
     },
     "text-hover": {
       "$description": "Utility Button: text color (hover state).",
-      "$value": "var(--color-fg-primary)",
+      "$value": "{Color modes/foreground/fg-primary}",
       "$type": "color"
     },
     "text-active": {
       "$description": "Utility Button: text color (active state).",
-      "$value": "var(--color-fg-primary)",
+      "$value": "{Color modes/foreground/fg-primary}",
       "$type": "color"
     },
     "text-disabled": {
       "$description": "Utility Button: text color (disabled state).",
-      "$value": "var(--color-text-disabled)",
+      "$value": "{Color modes/text/text-disabled}",
       "$type": "color"
     },
     "icon-sm": {

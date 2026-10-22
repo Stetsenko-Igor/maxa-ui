@@ -54,82 +54,82 @@
     "color": {
       "bg": {
         "$description": "Radio, color: background.",
-        "$value": "var(--color-bg-surface)",
+        "$value": "{Color modes/background/bg-surface}",
         "$type": "color"
       },
       "border": {
         "$description": "Radio, color: border.",
-        "$value": "var(--color-control-idle)",
+        "$value": "{Color modes/control/control-idle}",
         "$type": "color"
       },
       "border-hover": {
         "$description": "Radio, color: border (hover state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "border-checked": {
         "$description": "Radio, color: border (checked state).",
-        "$value": "var(--color-action-primary)",
+        "$value": "{Color modes/action/action-primary}",
         "$type": "color"
       },
       "border-checked-hover": {
         "$description": "Radio, color: border (checked hover state).",
-        "$value": "var(--color-action-primary-hover)",
+        "$value": "{Color modes/action/action-primary-hover}",
         "$type": "color"
       },
       "dot": {
         "$description": "Radio, color: dot.",
-        "$value": "var(--color-action-primary)",
+        "$value": "{Color modes/action/action-primary}",
         "$type": "color"
       },
       "dot-hover": {
         "$description": "Radio, color: dot (hover state).",
-        "$value": "var(--color-action-primary-hover)",
+        "$value": "{Color modes/action/action-primary-hover}",
         "$type": "color"
       },
       "border-error": {
         "$description": "Radio, color: border error.",
-        "$value": "var(--color-border-error-strong)",
+        "$value": "{Color modes/border/border-error-strong}",
         "$type": "color"
       },
       "border-disabled": {
         "$description": "Radio, color: border (disabled state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "dot-disabled": {
         "$description": "Radio, color: dot (disabled state).",
-        "$value": "var(--color-control-idle-hover)",
+        "$value": "{Color modes/control/control-idle-hover}",
         "$type": "color"
       },
       "top-label": {
         "$description": "Radio, color: top label.",
-        "$value": "var(--color-text-primary)",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "side-label": {
         "$description": "Radio, color: side label.",
-        "$value": "var(--color-text-primary)",
+        "$value": "{Color modes/text/text-primary}",
         "$type": "color"
       },
       "description": {
         "$description": "Radio, color: description.",
-        "$value": "var(--color-text-secondary)",
+        "$value": "{Color modes/text/text-secondary}",
         "$type": "color"
       },
       "top-label-disabled": {
         "$description": "Radio, color: top label (disabled state).",
-        "$value": "var(--color-text-disabled)",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "text-disabled": {
         "$description": "Radio, color: text color (disabled state).",
-        "$value": "var(--color-text-disabled)",
+        "$value": "{Color modes/text/text-disabled}",
         "$type": "color"
       },
       "error": {
         "$description": "Radio, color: error.",
-        "$value": "var(--color-text-error)",
+        "$value": "{Color modes/text/text-error}",
         "$type": "color"
       }
     },
