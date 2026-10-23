@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["packages/ui/src/**/*.figma.ts"],
+    "importPaths": {
+      "packages/ui/src/components/*": "@maxa/ui"
+    },
+    "documentUrlSubstitutions": {
+      "<COMPONENTS>": "https://www.figma.com/design/9M6ulX7a6bDlmctFdClAzu",
+      "<FOUNDATION>": "https://www.figma.com/design/ODH3pmxkKyP8pAslgDb15s"
+    }
+  }
+}

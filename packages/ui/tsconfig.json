@@ -10,6 +10,12 @@
     "src/*.test.tsx",
     "src/**/*.test.ts",
     "src/**/*.test.tsx",
-    "src/test-setup.ts"
+    "src/test-setup.ts",
+    // Code Connect templates are not package source: they run inside Figma's
+    // template runtime against its own `figma` module, and shipping them in
+    // dist would put a file in the published package that no consumer can
+    // import. They are validated by `pnpm figma:connect:parse` and by
+    // button.figma.test.ts instead.
+    "src/**/*.figma.ts"
   ]
 }

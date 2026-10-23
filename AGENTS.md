@@ -81,11 +81,17 @@ Primitives  →  Semantic tokens  →  Component tokens  →  Code
 - Badge is a non-removable status/count/metadata indicator with `intent`, `appearance`, `emphasis`, and sizes `sm | md | lg`.
 - Tag is a data/category/removable label with `appearance`, `emphasis`, and sizes `sm | md | lg`; Tag must not expose `intent`.
 - Figma token source of truth lives in `packages/tokens/figma/`.
-- The live Figma library is **MAXA Foundation**, file key `ODH3pmxkKyP8pAslgDb15s`
-  (`https://www.figma.com/design/ODH3pmxkKyP8pAslgDb15s/`). Every node reference in
-  `specs/` and `docs/` is relative to that file. Use this key for Figma MCP calls,
-  Code Connect configuration and token import or export; do not guess it from a
-  pasted URL in an old plan.
+- The MAXA design system is split across several Figma library files. The two we
+  work with directly:
+  - **🟠 [MAXA] Foundation** - `ODH3pmxkKyP8pAslgDb15s`. Variables and tokens;
+    the importer plugin writes `packages/tokens/figma/` into this file. Node
+    references in `specs/components/*.md` for foundations point here.
+  - **04_Components (Reusable UI Elements)** - `9M6ulX7a6bDlmctFdClAzu`. The
+    component library, including `🟢 Button v3` (component set `11020:118515`).
+    Code Connect templates target this file.
+  Other libraries exist (`05_Layout & Structure`, `06_Navigation`,
+  `03_Phosphor Icons`); their file keys are not recorded yet - ask rather than
+  guess. Never infer a file key from a URL pasted into an old plan.
 - Figma collections currently use:
   - `Primitives`
   - `Color modes`
